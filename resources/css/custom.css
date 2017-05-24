@@ -1,0 +1,17 @@
+/*
+ *自定义样式
+ */
+
+.custom-title {
+    font-weight: bold;
+    font-family: "YouYuan";
+    font-size: 32px;
+}
+
+.custom-search-top {
+    margin-top: 10px;
+}
+
+.custom-menu-mright {
+    margin-right: 15px;
+}
