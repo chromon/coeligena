@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>首页 - 编乎</title>
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="../resources/css/bootstrap.css" media="screen">
@@ -13,80 +13,293 @@
     <link rel="stylesheet" href="../resources/css/font-awesome.min.css">
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!-- navbar title -->
-        <div class="navbar-header">
-            <a href="../" class="navbar-brand custom-title">编乎</a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <!-- navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- navbar title -->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand custom-title">编乎</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- navbar component auto collapse -->
+            <div class="navbar-collapse collapse" id="navbar-main">
+
+                <!-- search -->
+                <form class="navbar-form navbar-left custom-search-top" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm" size="30" placeholder="搜索你感兴趣的内容...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary btn-sm" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                <!-- navbar left -->
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">首页</a>
+                    </li>
+                    <li>
+                        <a href="#">话题</a>
+                    </li>
+                    <li>
+                        <a href="#">发现</a>
+                    </li>
+                    <li>
+                        <a href="#">消息</a>
+                    </li>
+                </ul>
+
+                <!-- navbar right -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="button" class="btn btn-primary btn-sm navbar-btn custom-ask-btn">提问</button>
+                    </li>   
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Ellery
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#"><i class="fa fa-user-o custom-menu-mright "></i> 我的主页</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-envelope-o custom-menu-mright"></i> 私信</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-cog custom-menu-mright"></i> 设置</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#"><i class="fa fa-power-off custom-menu-mright"></i> 退出</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul><!-- end navbar right -->
+            </div>
         </div>
+    </div><!-- navbar -->
 
-        <!-- navbar component auto collapse -->
-        <div class="navbar-collapse collapse" id="navbar-main">
-
-            <!-- search -->
-            <form class="navbar-form navbar-left custom-search-top" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control input-sm" size="40" placeholder="搜索你感兴趣的内容...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary btn-sm" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
+    <!-- main content -->
+    <div class="container">
+        <div class="row custom-content-margin">
+            <div class="col-sm-8">
+                <!-- media list title -->
+                <div class="custom-list-title">
+                    <i class="fa fa-list-ul"></i> 最新动态
+                    <span class="custom-cleaner-setting custom-right">
+                        <a href="#">
+                            <i class="fa fa-cog"></i> 设置
+                        </a>
                     </span>
                 </div>
-            </form>
 
-            <!-- navbar left -->
-            <ul class="nav navbar-nav">
-                <li>
-                  <a href="#">首页</a>
-                </li>
-                <li>
-                  <a href="#">话题</a>
-                </li>
-                <li>
-                  <a href="#">发现</a>
-                </li>
-                <li>
-                  <a href="#">消息</a>
-                </li>
-            </ul>
+                <!-- left main feed -->
+                <ul class="media-list">
+                    <li class="media custom-boder-top custom-padding-top10">
+                        <div class="media-left media-top">
 
-            <!-- navbar right -->
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">提问</a>
-                </li>   
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        Ellery
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="#"><i class="fa fa-user-o custom-menu-mright "></i> 我的主页</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-envelope-o custom-menu-mright"></i> 私信</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cog custom-menu-mright"></i> 设置</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-power-off custom-menu-mright"></i> 退出</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                            <!-- avatar image -->
+                            <a href="#">
+                              <img class="media-object custom-avatar38" src="../resources/images/avatar/a.jpg" alt="...">
+                            </a>
+
+                            <!-- votebar -->
+                            <div class="custom-votebar">
+                                <button class="custom-up" title="赞同">
+                                    <i class="fa fa-caret-up custom-vote-arrow"></i> 
+                                    <span class="custom-count">122</span>
+                                </button>
+                                <button class="custom-down" title="反对，不会显示你的姓名">
+                                    <i class="fa fa-caret-down custom-vote-arrow"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <!-- agree with article -->
+                            <!-- <div class="custom-feed-source">
+                                <a href="#">Ellery</a>
+                                赞了
+                                <a href="#">ABC</a>
+                                中的文章
+                                <span class="custom-bull">•</span>
+                                <span>57分钟前</span>
+                                <span class="custom-close custom-right"><i class="fa fa-times"></i></span>
+                            </div> -->
+
+                            <!-- agree with answer  -->
+                            <div class="custom-feed-source">
+                                <a href="#">Ellery</a>
+                                赞同了回答
+
+                                <!-- collect article -->
+                                <!-- 关注了问题 -->
+
+                                <!-- collect article -->
+                                <!-- 关注了问题 -->
+                                <!-- collect answer -->
+                                <!-- 收藏了回答 -->
+
+                                <!-- collect article -->
+                                <!-- 收藏了文章 -->
+
+                                <span class="custom-bull">•</span>
+                                <span>57分钟前</span>
+                                <span class="custom-close custom-right"><i class="fa fa-times"></i></span>
+                            </div>
+
+                            <!-- question title -->
+                            <a href="#">
+                                <h5 class="media-heading custom-media-heading">
+                                    当你迷茫的时候，你应该做些什么？
+                                </h5>
+                            </a>
+
+                            <!-- author info -->
+                            <div class="custom-name">
+                                <a href="#" class="">Ellery</a>
+                                ，
+                                <span class="custom-bio">中央处理器 (CPU)</span>
+                            </div>
+
+                            <!-- answer content -->
+                            <div>Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979
+                            </div>
+
+                            <!-- answer date -->
+                            <p class="custom-edit-time">
+                                <a href="#">编辑于 12:23</a>
+                            </p>
+
+                            <!-- feed meta -->
+                            <div class="custom-meta-panel">
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-plus"></i> 
+                                    关注问题
+                                </a>
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-comment-o"></i> 
+                                    添加评论
+                                </a>
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-heart-o"></i> 
+                                    感谢
+                                </a>
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-share"></i> 
+                                    分享
+                                </a>
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-bookmark-o"></i> 
+                                    收藏
+                                </a>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item"> 
+                                    没有帮助
+                                </a>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item"> 
+                                    举报
+                                </a>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item"> 
+                                    作者保留权利
+                                </a>
+                                <a href="#" class="custom-meta-item custom-right"> 
+                                    <i class="fa fa-chevron-circle-up"></i> 
+                                    收起
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="media custom-boder-top custom-padding-top10">
+                        <div class="media-left media-top">
+                            <a href="#">
+                              <img class="media-object custom-avatar38" src="../resources/images/avatar/a.jpg" alt="...">
+                            </a>
+                            <div class="custom-item-vote">
+                                <a class="custom-item-vote-count js-expand js-vote-count" href="javascript:;">100</a>
+                            </div>
+                        </div>
+                        <div class="media-body">
+
+                            <!-- agree with answer  -->
+                            <div class="custom-feed-source">
+                                <a href="#">Ellery</a>
+                                <!-- collect article -->
+                                关注了问题
+                                <span class="custom-bull">•</span>
+                                <span>57分钟前</span>
+                                <span class="custom-close custom-right"><i class="fa fa-times"></i></span>
+                            </div>
+
+                            <a href="#">
+                                <h5 class="media-heading custom-media-heading">
+                                    当你迷茫的时候，你应该做些什么？
+                                </h5>
+                            </a>
+
+                            <div class="custom-meta-panel">
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-plus"></i> 
+                                    关注问题
+                                </a>
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-comment-o"></i> 
+                                    添加评论
+                                </a>
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-heart-o"></i> 
+                                    感谢
+                                </a>
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-share"></i> 
+                                    分享
+                                </a>
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-bookmark-o"></i> 
+                                    收藏
+                                </a>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item"> 
+                                    没有帮助
+                                </a>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item"> 
+                                    举报
+                                </a>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item"> 
+                                    作者保留权利
+                                </a>
+                                <a href="#" class="custom-meta-item custom-right"> 
+                                    <i class="fa fa-chevron-circle-up"></i> 
+                                    收起
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <a href="#" class="btn btn-default btn-md btn-block" data-loading-text="Loading...">加载更多</a>
+                    </li>
+                </ul><!-- end left main feed -->
+            </div>
+            <div class="col-sm-3 col-sm-offset-1 custom-border">
+                dxddddddddddddddxdddddddx
+            </div>
         </div>
     </div>
-</div>
 
-<script type="text/javascript" src='../resources/js/jquery-3.2.1.min.js'></script>
-<script type="text/javascript" src='../resources/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src='../resources/js/jquery-3.2.1.min.js'></script>
+    <script type="text/javascript" src='../resources/js/bootstrap.min.js'></script>
 </body>
 </html>
