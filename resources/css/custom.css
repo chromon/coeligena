@@ -210,3 +210,44 @@
     overflow: hidden;
     -webkit-text-size-adjust: none;
 }
+
+.custom-group-item {
+    border: 0;
+    padding: 5px 5px;
+    height: 28px;
+    font-size: 13px;
+    color: #666;
+}
+
+.custom-list-group {
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    color: #666;
+}
+
+.custom-margin-bottom10 {
+    margin-bottom: 10px;
+}
+
+.custom-bottom-border {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.custom-list-group-title {
+    padding: 0 5px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.custom-footer {
+    margin-top: 10px;
+    text-align: left;
+    clear: both;
+}
+
+.custom-footer a {
+    font-size: 13px;
+    color: #999;
+    text-decoration: none;
+}
