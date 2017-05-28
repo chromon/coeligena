@@ -61,6 +61,12 @@
     border-radius: 3px;
 }
 
+.custom-avatar24 {
+    height: 24px;
+    width: 24px;
+    border-radius: 3px;
+}
+
 .custom-padding-top10 {
     padding-top: 15px;
 }
@@ -250,4 +256,25 @@
     font-size: 13px;
     color: #999;
     text-decoration: none;
+}
+
+.custom-panel {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.custom-panel-body {
+    padding: 10px;
+}
+
+.custom-panel-body .custom-comment-name {
+    font-weight: 600;
+    color: #666;
+    text-decoration: none;
+}
+
+.custom-time {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.7;
 }
