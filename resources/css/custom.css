@@ -291,7 +291,7 @@
 
 .custom-hover-card {
     color: #8590a6;
-    margin: 10px 0;
+    margin: 15px 0;
     padding: 10px 0;
     line-height: 1.75;
     border-top: 1px solid #f0f2f7;
@@ -367,11 +367,29 @@
 }
 
 .custom-hovercard-btn {
-    margin-left: 20%;
+    margin-left: 18%;
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
 .custom-margin-right30 {
     margin-right: 30px;
+}
+
+.custom-display-none {
+    display: none;
+}
+
+.custom-modal-size {
+    width: 400px;
+    max-height: 236px;
+    min-height: 140px;
+}
+
+.custom-margin-left45 {
+    margin-left: 45px;
+}
+
+.custom-left {
+    float: left;
 }
