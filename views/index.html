@@ -497,25 +497,44 @@
     <!-- collection modal -->
     <div class="modal fade" id="collectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog custom-modal-size" role="document">
-            <div class="modal-content">
+            <div id="add_favorite" class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">添加收藏</h4>
+                    <h4 id="modalAddLabel" class="modal-title">添加到收藏夹</h4>
+                    <h4 id="modalCreateLabel" class="modal-title hidden">创建新收藏夹</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="custom-margin-left45">
+                    <div id="favorite_list" class="custom-margin-left45">
                         <input type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
                         <input type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
                         <input type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
                     </div>
+                    <div id="create_favorite" class="hidden">
+                        <form>
+                            <input type="text" class="form-control custom-margin-bottom10" placeholder="收藏标题">
+                            <textarea class="form-control custom-margin-bottom10" rows="3" id="textArea" placeholder="收藏描述（可选）"></textarea>
+                            <div class="custom-margin-bottom10">
+                                <input class="" type="radio" value="option1" checked="">
+                                公开 有其他人关注此收藏夹时不可设置为私密
+                            </div>
+                            <div class="custom-margin-bottom10">
+                                <input type="radio" value="option2" checked="">
+                                私密 只有你自己可以查看这个收藏夹
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default custom-left">
+                <div id="modalAddFooter" class="modal-footer">
+                    <button type="button" class="btn btn-default custom-left" id="create_favorite_btn">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i> 创建收藏夹
                     </button>
                     <button type="button" class="btn btn-primary">完成</button>
+                </div>
+                <div id="modalCreateFooter" class="modal-footer hidden">
+                    <button type="button" class="btn btn-default" id="return_add_favorite">返回</button>
+                    <button type="button" class="btn btn-primary">确认创建</button>
                 </div>
             </div>
         </div>
@@ -528,19 +547,49 @@
     <script type="text/javascript" src="../resources/plugin/jquery-labelauty/jquery-labelauty.js"></script>
 
     <script type="text/javascript">
+
+        // user info hover card
         $('#user-avatar').webuiPopover({
             url: '#user_info',
             placement:'auto',
             width: '360',
-            // title:'Title',
-            // content:'Content',
             trigger:'hover',
-            // style:'inverse',
             animation:'pop'
         });
 
-        $(":checkbox").labelauty({
-            minimum_width: "270px"
+        // the width of favorite
+        $(':checkbox').labelauty({
+            minimum_width: '270px'
+        });
+
+        // create favorite button click
+        $('#create_favorite_btn').click(function () {
+            $('#modalAddLabel').hide();
+            $('#modalCreateLabel').removeClass('hidden');
+            $('#modalCreateLabel').show();
+
+            $('#favorite_list').hide();
+            $('#create_favorite').removeClass('hidden');
+            $('#create_favorite').show();
+
+            $('#modalAddFooter').hide();
+            $('#modalCreateFooter').removeClass('hidden');
+            $('#modalCreateFooter').show();
+        });
+
+        // back to add favorite
+        $('#return_add_favorite').click(function () {
+            $('#modalCreateLabel').hide();
+            $('#modalCreateLabel').addClass('hidden');
+            $('#modalAddLabel').show();
+
+            $('#create_favorite').hide();
+            $('#create_favorite').addClass('hidden');
+            $('#favorite_list').show()
+
+            $('#modalCreateFooter').hide();
+            $('#modalCreateFooter').addClass('hidden');
+            $('#modalAddFooter').show();
         });
     </script>
 </body>
