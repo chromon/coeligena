@@ -291,11 +291,7 @@
 
 .custom-hover-card {
     color: #8590a6;
-<<<<<<< HEAD
-    margin: 10px 0;
-=======
     margin: 15px 0;
->>>>>>> dev
     padding: 10px 0;
     line-height: 1.75;
     border-top: 1px solid #f0f2f7;
@@ -371,19 +367,13 @@
 }
 
 .custom-hovercard-btn {
-<<<<<<< HEAD
-    margin-left: 20%;
-=======
     margin-left: 18%;
->>>>>>> dev
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
 .custom-margin-right30 {
     margin-right: 30px;
-<<<<<<< HEAD
-=======
 }
 
 .custom-display-none {
@@ -444,5 +434,4 @@
     right: 0;
     left: 0;
     margin: auto;
->>>>>>> dev
 }
