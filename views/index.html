@@ -560,6 +560,15 @@
     </div>
     <!-- end report modal -->
 
+    <!-- back to top -->
+    <div class="custom-backtotop" id="back_to_top">
+        <a class="custom-btn-action" href="javascript:;">
+            <div class="custom-arrow"></div>
+            <div class="custom-stick"></div>
+        </a>
+    </div>
+    <!-- end back to top -->
+
     <script type="text/javascript" src='../resources/js/jquery-3.2.1.min.js'></script>
     <script type="text/javascript" src='../resources/js/bootstrap.min.js'></script>
     <script type="text/javascript" src='../resources/plugin/webui-popover/jquery.webui-popover.min.js'></script>
@@ -651,6 +660,20 @@
             expandIcon: 'fa fa-plus',
             collapseIcon: 'fa fa-minus',
             emptyIcon: ''
+        });
+
+        // back to top
+        $(window).scroll(function (e) {
+            //若滚动条离顶部大于100元素
+            if($(window).scrollTop()>100)
+                $("#back_to_top").fadeIn(1000); // 以1秒的间隔渐显id=back_to_top的元素
+            else
+                $("#back_to_top").fadeOut(1000); // 以1秒的间隔渐隐id=back_to_top的元素
+        });
+        //点击回到顶部的元素
+        $("#back_to_top").click(function(e) {
+            //以0.3秒的间隔返回顶部
+            $('body,html').animate({scrollTop: 0}, 300);
         });
     </script>
 </body>
