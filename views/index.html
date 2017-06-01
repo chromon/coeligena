@@ -209,7 +209,7 @@
                                     没有帮助
                                 </a>
                                 <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item"> 
+                                <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#reportModal"> 
                                     举报
                                 </a>
                                 <span class="custom-bull">•</span>
@@ -541,10 +541,30 @@
     </div>
     <!-- end collection modal -->
 
+    <!-- report modal -->
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog custom-modal-size" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">举报</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="reportTree"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">举报</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end report modal -->
+
     <script type="text/javascript" src='../resources/js/jquery-3.2.1.min.js'></script>
     <script type="text/javascript" src='../resources/js/bootstrap.min.js'></script>
     <script type="text/javascript" src='../resources/plugin/webui-popover/jquery.webui-popover.min.js'></script>
     <script type="text/javascript" src="../resources/plugin/jquery-labelauty/jquery-labelauty.js"></script>
+    <script type="text/javascript" src="../resources/plugin/bootstrap-treeview/bootstrap-treeview.min.js"></script>
 
     <script type="text/javascript">
 
@@ -590,6 +610,47 @@
             $('#modalCreateFooter').hide();
             $('#modalCreateFooter').addClass('hidden');
             $('#modalAddFooter').show();
+        });
+
+        // report tree
+        var tree = [{
+            text: "侵犯我的权益",
+            nodes: [{
+                text: "骚扰我"
+              }, {
+                text: "抄袭了我的内容"
+              }, {
+                text: "侵犯了我企业的权益"
+              }, {
+                text: "侵犯了我个人的权益"
+            }],
+            state: {
+                expanded: false
+            }
+        }, {
+            text: "对编乎社区有害的内容",
+            nodes: [{
+                text: "垃圾广告信息"
+              }, {
+                text: "色情、暴力、血腥等违反法律法规的内容"
+              }, {
+                text: "政治敏感"
+              }, {
+                text: "不规范转载"
+              }, {
+                text: "诱导投票"
+            }],
+            state: {
+                expanded: false
+            }
+        }, {
+            text: "辱骂、歧视、挑衅等（不友善）"
+        }];
+        $('#reportTree').treeview({
+            data: tree,
+            expandIcon: 'fa fa-plus',
+            collapseIcon: 'fa fa-minus',
+            emptyIcon: ''
         });
     </script>
 </body>
