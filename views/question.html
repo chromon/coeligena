@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>首页 - 编乎</title>
-    <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
+    <title>当你迷茫的时候，你应该做些什么？- 编乎</title>
+    <meta name="description" content="一个真实的网络现编社区，帮助你寻找答案，分享知识。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
@@ -31,6 +31,22 @@
             <!-- navbar component auto collapse -->
             <div class="navbar-collapse collapse" id="navbar-main">
 
+                <!-- navbar left -->
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">首页</a>
+                    </li>
+                    <li>
+                        <a href="#">发现</a>
+                    </li>
+                    <li>
+                        <a href="#">话题</a>
+                    </li>
+                    <li>
+                        <a href="#">消息</a>
+                    </li>
+                </ul>
+
                 <!-- search -->
                 <form class="navbar-form navbar-left custom-search-top" role="search">
                     <div class="input-group">
@@ -42,22 +58,6 @@
                         </span>
                     </div>
                 </form>
-
-                <!-- navbar left -->
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#">首页</a>
-                    </li>
-                    <li>
-                        <a href="#">话题</a>
-                    </li>
-                    <li>
-                        <a href="#">发现</a>
-                    </li>
-                    <li>
-                        <a href="#">消息</a>
-                    </li>
-                </ul>
 
                 <!-- navbar right -->
                 <ul class="nav navbar-nav navbar-right">
@@ -91,20 +91,105 @@
 
     <!-- main content -->
     <div class="container">
+
+        <!-- question header -->
         <div class="row custom-content-margin">
             <div class="col-sm-8">
+                <!-- question header main -->
+                <div class="custom-margin-bottom20">
+                    <!-- tag -->
+                    <div>
+                        <span class="label label-primary">Primary</span>
+                        <span class="label label-primary">Primary</span>
+                        <span class="label label-primary">Primary</span>
+                        <span class="label label-primary">Primary</span>
+                    </div>
+
+                    <!-- question title -->
+                    <div class="custom-question-title">
+                        当你迷茫的时候，你应该做些什么？
+                    </div>
+
+                    <!-- question detail -->
+                    <div class="custom-question-rich-text">
+                        当你迷茫的时候，你应该做些什么？
+                    </div>
+
+                    <!-- question feed meta -->
+                    <div class="custom-meta-panel">
+                        <a href="#" class="custom-meta-item">
+                            <i class="fa fa-comment"></i> 
+                            9条评论
+                        </a>
+                        <a href="#comment" data-toggle="collapse" class="custom-meta-item">
+                            <i class="fa fa-paper-plane"></i> 
+                            分享
+                        </a>
+                        <a href="#"class="custom-meta-item">
+                            <i class="fa fa-star"></i> 
+                            邀请回答
+                        </a>
+                        <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#reportModal">
+                            <i class="fa fa-flag"></i> 
+                            举报
+                        </a>
+                        <span class="custom-bull">•</span>
+                        <a href="#" class="custom-meta-item"> 
+                            使用匿名身份
+                        </a>
+                        <span class="custom-bull">•</span>
+                        <a href="#" class="custom-meta-item"> 
+                            查看问题日志
+                        </a>
+                    </div>
+                </div>
+                <!-- end question header main -->
+            </div>
+
+            <!-- question header right -->
+            <div class="col-sm-3 col-sm-offset-1">   
+                <div class="custom-number-board">
+                    <a href="#" class="custom-button custom-number-board-item custom-button-plain">
+                        <div class="custom-number-board-name">回答</div>
+                        <div class="custom-number-board-value">125</div>
+                    </a>
+                    <a href="#" class="custom-button custom-number-board-item custom-button-plain">
+                        <div class="custom-number-board-name">回答</div>
+                        <div class="custom-number-board-value">125</div>
+                    </a>
+                </div>
+
+                <div class="custom-hovercard-btn">
+                    <a href="#" class="btn btn-primary">
+                        关注问题
+                    </a>
+                    <a href="#" class="btn btn-default">
+                        <i class="fa fa-pencil"></i>
+                        写答案
+                    </a>
+                </div>
+            </div>
+            <!-- end question header right -->
+        </div>
+        <!-- end question header -->
+
+        <!-- answer main -->
+        <div class="row custom-margin-top20">
+            <div class="col-sm-8">
+
                 <!-- media list title -->
                 <div class="custom-list-title">
-                    <i class="fa fa-list-ul"></i> 最新动态
+                    130个回答
                     <span class="custom-cleaner-setting custom-right">
                         <a href="#">
-                            <i class="fa fa-cog"></i> 设置
+                            <i class="fa fa-sort"></i> 默认排序
                         </a>
                     </span>
                 </div>
 
                 <!-- left main feed -->
                 <ul class="media-list">
+
                     <li class="media custom-boder-top custom-padding-top10">
                         <div class="media-left media-top">
 
@@ -389,49 +474,13 @@
 
             <!-- sidebar -->
             <div class="col-sm-3 col-sm-offset-1">
-            
-                <div class="list-group custom-margin-bottom10">
-                    <a href="#" class="list-group-item custom-group-item">
-                        <span class="badge">8</span>
-                        <i class="fa fa-bookmark-o"></i> 我的收藏
-                    </a>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <i class="fa fa-check-square-o"></i> 我关注的问题
-                    </a>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <span class="badge">13</span>
-                        <i class="fa fa-file-o"></i> 邀请我回答的问题
-                    </a>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <i class="fa fa-map-o"></i> 我的礼券
-                    </a>
-                </div>
 
                 <div class="list-group custom-list-group custom-margin-bottom10">
+                    <div class="custom-list-group-title">相关问题</div>
                     <a href="#" class="list-group-item custom-group-item">
-                        <i class="fa fa-list"></i> 公共编辑动态
-                    </a>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <i class="fa fa-home"></i> 社区服务中心
-                    </a>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <i class="fa fa-copyright"></i> 版权服务中心
+                        活了这么久，你懂得了什么使你改变？
                     </a>
                 </div>
-
-                <div class="list-group custom-list-group custom-margin-bottom10">
-                    <div class="custom-list-group-title">知乎专栏</div>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <i class="fa fa-book"></i> 专栏 • 发现
-                    </a>
-                </div>
-
-                <div class="list-group custom-list-group custom-margin-bottom10 custom-bottom-border">
-                    <a href="#" class="list-group-item custom-group-item">
-                        <i class="fa fa-cloud-download"></i> 下载 APP
-                    </a>
-                </div>
-
                 <div class="custom-footer">
                     <a href="#" target="_blank">编乎指南 • </a>
                     <a href="#" target="_blank">建议反馈 • </a>
@@ -444,6 +493,7 @@
                 </div>
             </div><!-- end sidebar -->
         </div>
+        <!-- end answer main -->
     </div>
 
     <!-- user info hover card -->
