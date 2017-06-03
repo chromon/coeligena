@@ -33,7 +33,7 @@
     border: 1px solid #e6e6e6;
 }
 
-.custom-boder-top {
+.custom-border-top {
     border-top: 1px solid #e6e6e6;
 }
 
@@ -452,4 +452,35 @@
 
 .custom-margin-top20 {
     margin-top:20px;
+}
+
+.custom-margin-top30 {
+    margin-top: 30px;
+}
+
+.custom-list-title {
+    padding: 0 5px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #262626;
+}
+
+.custom-similar-question {
+    margin-left: 5px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #8590a6;
+}
+
+.custom-padding-top10 {
+    padding-top: 10px;
+}
+
+.custom-padding-left5 {
+    padding-left: 5px;
+}
+
+.custom-similar-question a {
+    display: inline;
+    color: #175199;
 }
