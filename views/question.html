@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../resources/css/font-awesome.min.css">
     <link rel="stylesheet" href="../resources/plugin/webui-popover/jquery.webui-popover.min.css">
     <link rel="stylesheet" href="../resources/plugin/jquery-labelauty/jquery-labelauty.css">
+    <link rel="stylesheet" href="../resources/plugin/summernote/summernote.css">
 </head>
 <body>
     <!-- navbar -->
@@ -31,6 +32,18 @@
             <!-- navbar component auto collapse -->
             <div class="navbar-collapse collapse" id="navbar-main">
 
+                <!-- search -->
+                <form class="navbar-form navbar-left custom-search-top" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm" size="30" placeholder="搜索你感兴趣的内容...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary btn-sm" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
                 <!-- navbar left -->
                 <ul class="nav navbar-nav">
                     <li class="active">
@@ -46,18 +59,6 @@
                         <a href="#">消息</a>
                     </li>
                 </ul>
-
-                <!-- search -->
-                <form class="navbar-form navbar-left custom-search-top" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control input-sm" size="30" placeholder="搜索你感兴趣的内容...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary btn-sm" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </form>
 
                 <!-- navbar right -->
                 <ul class="nav navbar-nav navbar-right">
@@ -147,7 +148,7 @@
             </div>
 
             <!-- question header right -->
-            <div class="col-sm-3 col-sm-offset-1">   
+            <div class="col-sm-3 col-sm-offset-1 hidden-xs">   
                 <div class="custom-number-board">
                     <a href="#" class="custom-button custom-number-board-item custom-button-plain">
                         <div class="custom-number-board-name">关注者</div>
@@ -259,7 +260,9 @@
                             <!-- answer content -->
                             <div>Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
                             Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979
+                            Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
                             </div>
 
                             <!-- answer date -->
@@ -396,79 +399,40 @@
                             </div><!-- end comment -->
                         </div>
                     </li>
-                    <li class="media custom-border-top custom-padding-top10">
-                        <div class="media-left media-top">
-                            <a href="#">
-                              <img class="media-object custom-avatar38" src="../resources/images/avatar/a.jpg" alt="...">
-                            </a>
-                            <div class="custom-item-vote">
-                                <a class="custom-item-vote-count js-expand js-vote-count" href="javascript:;">100</a>
-                            </div>
-                        </div>
-                        <div class="media-body">
-
-                            <!-- agree with answer  -->
-                            <div class="custom-feed-source">
-                                <a href="#">Ellery</a>
-                                <!-- collect article -->
-                                关注了问题
-                                <span class="custom-bull">•</span>
-                                <span>57分钟前</span>
-                                <span class="custom-close custom-right"><i class="fa fa-times"></i></span>
-                            </div>
-
-                            <a href="#">
-                                <h5 class="media-heading custom-media-heading">
-                                    当你迷茫的时候，你应该做些什么？
-                                </h5>
-                            </a>
-
-                            <div class="custom-meta-panel">
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-plus"></i> 
-                                    关注问题
-                                </a>
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-comment"></i> 
-                                    添加评论
-                                </a>
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-heart"></i> 
-                                    感谢
-                                </a>
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-paper-plane"></i> 
-                                    分享
-                                </a>
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-star"></i> 
-                                    收藏
-                                </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item"> 
-                                    没有帮助
-                                </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item"> 
-                                    举报
-                                </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item"> 
-                                    作者保留权利
-                                </a>
-                                <a href="#" class="custom-meta-item custom-right"> 
-                                    <i class="fa fa-chevron-circle-up"></i> 
-                                    收起
-                                </a>
-                            </div>
-                        </div>
-                    </li>
+                    
                     <li class="media">
                         <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
                         <a href="#" class="btn btn-default btn-md btn-block">
                             <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                         </a>
                     </li>
+                    
+                    <!-- author info -->
+                    <li class="media custom-border-top custom-padding-top10">
+                        <div class="media-left media-top">
+
+                            <!-- avatar image -->
+                            <a href="#" id="user-avatar">
+                              <img class="media-object custom-avatar38" src="../resources/images/avatar/a.jpg" alt="...">
+                            </a>
+                        </div>
+
+                        <div class="media-body">
+                            <!-- author info -->
+                            <div class="custom-name">
+                                <a href="#" class="">Ellery</a>
+                                <span class="custom-right">
+                                    使用匿名身份回答
+                                </span><br/>
+                                <span class="custom-bio">中央处理器 (CPU)</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="media">
+                        <div id="summernote">Hello Summernote</div>
+                    </li>
+
                 </ul><!-- end left main feed -->
             </div>
 
@@ -644,6 +608,8 @@
     <script type="text/javascript" src='../resources/plugin/webui-popover/jquery.webui-popover.min.js'></script>
     <script type="text/javascript" src="../resources/plugin/jquery-labelauty/jquery-labelauty.js"></script>
     <script type="text/javascript" src="../resources/plugin/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <script type="text/javascript" src="../resources/plugin/summernote/summernote.min.js"></script>
+    <script type="text/javascript" src="../resources/plugin/summernote/lang/summernote-zh-CN.js"></script>
 
     <script type="text/javascript">
         // user info hover card
@@ -743,6 +709,14 @@
         $("#back_to_top").click(function(e) {
             //以0.3秒的间隔返回顶部
             $('body,html').animate({scrollTop: 0}, 300);
+        });
+
+        $('#summernote').summernote({
+            height: 200,                 // set editor height
+            lang: 'zh-CN',
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
         });
     </script>
 </body>
