@@ -608,7 +608,7 @@
     <script type="text/javascript" src='../resources/plugin/webui-popover/jquery.webui-popover.min.js'></script>
     <script type="text/javascript" src="../resources/plugin/jquery-labelauty/jquery-labelauty.js"></script>
     <script type="text/javascript" src="../resources/plugin/bootstrap-treeview/bootstrap-treeview.min.js"></script>
-    <script type="text/javascript" src="../resources/plugin/summernote/summernote.min.js"></script>
+    <script type="text/javascript" src="../resources/plugin/summernote/summernote.js"></script>
     <script type="text/javascript" src="../resources/plugin/summernote/lang/summernote-zh-CN.js"></script>
 
     <script type="text/javascript">
@@ -714,9 +714,23 @@
         $('#summernote').summernote({
             height: 200,                 // set editor height
             lang: 'zh-CN',
+            // airMode: true,
             minHeight: null,             // set minimum height of editor
             maxHeight: null,             // set maximum height of editor
-            focus: true                  // set focus to editable area after initializing summernote
+            focus: true,
+            codemirror: { // codemirror options
+                theme: 'monokai'
+            },
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                // ['fontname', ['fontname']],
+                // ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
         });
     </script>
 </body>

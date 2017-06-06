@@ -1892,7 +1892,7 @@
   };
 
   var editor = renderer.create('<div class="note-editor note-frame panel panel-default"/>');
-  var toolbar = renderer.create('<div class="note-toolbar panel-heading"/>');
+  var toolbar = renderer.create('<div class="note-toolbar panel-heading" style="background-color: white;"/>');
   var editingArea = renderer.create('<div class="note-editing-area"/>');
   var codable = renderer.create('<textarea class="note-codable"/>');
   var editable = renderer.create('<div class="note-editable panel-body" contentEditable="true"/>');
@@ -5395,8 +5395,8 @@
               },
               callback: function ($button) {
                 var $recentColor = $button.find('.note-recent-color');
-                $recentColor.css('background-color', '#FFFF00');
-                $button.attr('data-backColor', '#FFFF00');
+                $recentColor.css('background-color', '#F7F7F7');
+                $button.attr('data-backColor', '#F7F7F7');
               }
             }),
             ui.button({
