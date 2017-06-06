@@ -71,7 +71,7 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class="fa fa-user-o custom-menu-mright "></i> 我的主页</a>
+                                <a href="#"><i class="fa fa-user-o custom-menu-mright"></i> 我的主页</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-envelope-o custom-menu-mright"></i> 私信</a>
@@ -133,15 +133,25 @@
                         <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#reportModal">
                             <i class="fa fa-flag"></i> 
                             举报
-                        </a>
-                        <span class="custom-bull">•</span>
-                        <a href="#" class="custom-meta-item"> 
-                            使用匿名身份
-                        </a>
-                        <span class="custom-bull">•</span>
-                        <a href="#" class="custom-meta-item"> 
-                            查看问题日志
-                        </a>
+                        </a>                        
+
+                        <div class="btn-group custom-margin-left10">
+                            <a href="#" class="custom-meta-item dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                •••
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" class="custom-meta-item">使用匿名身份</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="custom-meta-item">查看问题日志</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="custom-meta-item">关注问题</a>
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
                 </div>
                 <!-- end question header main -->
@@ -182,16 +192,27 @@
                 <div class="custom-list-title">
                     130个回答
                     <span class="custom-cleaner-setting custom-right">
-                        <a href="#">
-                            <i class="fa fa-sort"></i> 默认排序
-                        </a>
+
+                        <div class="btn-group">
+                            <a href="#" class="custom-meta-item dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="fa fa-sort"></i> 默认排序
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" class="custom-meta-item">按时间排序</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="custom-meta-item">按赞同排序</a>
+                                </li>
+                            </ul>
+                        </div>
                     </span>
                 </div>
 
                 <!-- left main feed -->
                 <ul class="media-list">
 
-                    <li class="media custom-border-top custom-padding-top10">
+                    <li id="answer" class="media custom-border-top custom-padding-top10">
                         <div class="media-left media-top">
 
                             <!-- avatar image -->
@@ -240,7 +261,9 @@
 
                                 <span class="custom-bull">•</span>
                                 <span>57分钟前</span>
-                                <span class="custom-close custom-right"><i class="fa fa-times"></i></span>
+                                <a href="#" class="custom-close custom-right">
+                                    <i class="fa fa-times"></i>
+                                </a>
                             </div>
 
                             <!-- question title -->
@@ -272,17 +295,9 @@
 
                             <!-- feed meta -->
                             <div class="custom-meta-panel">
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-plus"></i> 
-                                    关注问题
-                                </a>
                                 <a href="#comment" data-toggle="collapse" class="custom-meta-item">
                                     <i class="fa fa-comment"></i> 
                                     添加评论
-                                </a>
-                                <a href="#"class="custom-meta-item">
-                                    <i class="fa fa-heart"></i> 
-                                    感谢
                                 </a>
                                 <a href="#" class="custom-meta-item">
                                     <i class="fa fa-paper-plane"></i> 
@@ -292,18 +307,27 @@
                                     <i class="fa fa-star"></i> 
                                     收藏
                                 </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item"> 
-                                    没有帮助
+                                <a href="#" class="custom-meta-item">
+                                    <i class="fa fa-heart"></i> 
+                                    感谢
                                 </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#reportModal"> 
-                                    举报
+                                <a href="#" id="more_point" class="custom-meta-item">
+                                    •••
                                 </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item"> 
-                                    作者保留权利
-                                </a>
+                                <div class="custom-collapse-item">
+                                    <span class="custom-bull">•</span>
+                                    <a href="#" class="custom-meta-item"> 
+                                        没有帮助
+                                    </a>
+                                    <span class="custom-bull">•</span>
+                                    <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#reportModal"> 
+                                        举报
+                                    </a>
+                                    <span class="custom-bull">•</span>
+                                    <a href="#" class="custom-meta-item"> 
+                                        作者保留权利
+                                    </a>
+                                </div>
                                 <a href="#" class="custom-meta-item custom-right"> 
                                     <i class="fa fa-chevron-circle-up"></i> 
                                     收起
@@ -711,6 +735,7 @@
             $('body,html').animate({scrollTop: 0}, 300);
         });
 
+        // editor
         $('#summernote').summernote({
             height: 200,                 // set editor height
             lang: 'zh-CN',
@@ -731,6 +756,16 @@
                 ['insert', ['link', 'picture', 'video']],
                 ['view', ['fullscreen', 'codeview']]
             ]
+        });
+
+        // collapse item
+        $(".custom-collapse-item").hide();
+        $("#answer").hover(function () {
+            $(".custom-collapse-item").show();
+            $("#more_point").hide();
+        }, function () {
+            $(".custom-collapse-item").hide();
+            $("#more_point").show();
         });
     </script>
 </body>

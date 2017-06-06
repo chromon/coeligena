@@ -484,3 +484,7 @@
     display: inline;
     color: #175199;
 }
+
+.custom-collapse-item {
+    display: inline;
+}

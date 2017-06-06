@@ -105,7 +105,7 @@
 
                 <!-- left main feed -->
                 <ul class="media-list">
-                    <li class="media custom-border-top custom-padding-top10">
+                    <li id="feed-item-1" class="media custom-border-top custom-padding-top10">
                         <div class="media-left media-top">
 
                             <!-- avatar image -->
@@ -192,26 +192,31 @@
                                     <i class="fa fa-comment"></i> 
                                     添加评论
                                 </a>
-                                <a href="#"class="custom-meta-item">
-                                    <i class="fa fa-heart"></i> 
-                                    感谢
-                                </a>
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-paper-plane"></i> 
-                                    分享
-                                </a>
-                                <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#collectModal">
-                                    <i class="fa fa-star"></i> 
-                                    收藏
-                                </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item"> 
-                                    没有帮助
-                                </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#reportModal"> 
-                                    举报
-                                </a>
+
+                                <!-- collapse meta item -->
+                                <div class="custom-collapse-item">
+                                    <a href="#"class="custom-meta-item">
+                                        <i class="fa fa-heart"></i> 
+                                        感谢
+                                    </a>
+                                    <a href="#" class="custom-meta-item">
+                                        <i class="fa fa-paper-plane"></i> 
+                                        分享
+                                    </a>
+                                    <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#collectModal">
+                                        <i class="fa fa-star"></i> 
+                                        收藏
+                                    </a>
+                                    <span class="custom-bull">•</span>
+                                    <a href="#" class="custom-meta-item"> 
+                                        没有帮助
+                                    </a>
+                                    <span class="custom-bull">•</span>
+                                    <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#reportModal"> 
+                                        举报
+                                    </a>
+                                </div>
+
                                 <span class="custom-bull">•</span>
                                 <a href="#" class="custom-meta-item"> 
                                     作者保留权利
@@ -311,7 +316,7 @@
                             </div><!-- end comment -->
                         </div>
                     </li>
-                    <li class="media custom-border-top custom-padding-top10">
+                    <li id="feed-item-2" class="media custom-border-top custom-padding-top10">
                         <div class="media-left media-top">
                             <a href="#">
                               <img class="media-object custom-avatar38" src="../resources/images/avatar/a.jpg" alt="...">
@@ -347,26 +352,30 @@
                                     <i class="fa fa-comment"></i> 
                                     添加评论
                                 </a>
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-heart"></i> 
-                                    感谢
-                                </a>
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-paper-plane"></i> 
-                                    分享
-                                </a>
-                                <a href="#" class="custom-meta-item">
-                                    <i class="fa fa-star"></i> 
-                                    收藏
-                                </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item"> 
-                                    没有帮助
-                                </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item"> 
-                                    举报
-                                </a>
+
+                                <div class="custom-collapse-item">
+                                    <a href="#" class="custom-meta-item">
+                                        <i class="fa fa-heart"></i> 
+                                        感谢
+                                    </a>
+                                    <a href="#" class="custom-meta-item">
+                                        <i class="fa fa-paper-plane"></i> 
+                                        分享
+                                    </a>
+                                    <a href="#" class="custom-meta-item">
+                                        <i class="fa fa-star"></i> 
+                                        收藏
+                                    </a>
+                                    <span class="custom-bull">•</span>
+                                    <a href="#" class="custom-meta-item"> 
+                                        没有帮助
+                                    </a>
+                                    <span class="custom-bull">•</span>
+                                    <a href="#" class="custom-meta-item"> 
+                                        举报
+                                    </a>
+                                </div>
+
                                 <span class="custom-bull">•</span>
                                 <a href="#" class="custom-meta-item"> 
                                     作者保留权利
@@ -678,6 +687,14 @@
         $("#back_to_top").click(function(e) {
             //以0.3秒的间隔返回顶部
             $('body,html').animate({scrollTop: 0}, 300);
+        });
+
+        // collapse item
+        $(".custom-collapse-item").hide();
+        $("#feed-item").hover(function () {
+            $(".custom-collapse-item").show();
+        }, function () {
+            $(".custom-collapse-item").hide();
         });
     </script>
 </body>
