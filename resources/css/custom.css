@@ -6,14 +6,19 @@
     font-family: 'Helvetica Neue','Helvetica','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','WenQuanYi Micro Hei','Arial,sans-serif';
  }
 
+a:visited { 
+    text-decoration: none;
+}
+
 .custom-title {
+    color: rgb(15, 136, 235) !important;
     font-weight: bold;
     font-family: "YouYuan";
     font-size: 32px;
 }
 
 .custom-search-top {
-    margin-top: 10px;
+    margin-top: 18px;
 }
 
 .custom-menu-mright {
@@ -26,7 +31,7 @@
 }
 
 .custom-content-margin {
-    margin-top: 70px;
+    margin-top: 100px;
 }
 
 .custom-border {
@@ -102,7 +107,7 @@
 .custom-media-heading {
     margin-top: 5px;
     margin-bottom: 5px;
-    color: #259;
+    color: #2d84cc;
     text-decoration: none;
     font-weight: 700;
     font-size: 14px;
@@ -154,7 +159,7 @@
 
 .custom-votebar .custom-up, .custom-votebar .custom-down {
     display: block;
-    color: #698ebf;
+    color: #2d84cc;
     height: 24px;
     line-height: 24px;
     width: 38px;
@@ -179,7 +184,7 @@
     left: 50%;
     margin-left: -6px;
     border-top-width: 0;
-    border-bottom-color: #698ebf;
+    border-bottom-color: #2d84cc;
     border-top-style: solid;
 }
 
@@ -189,7 +194,7 @@
 
 .custom-votebar .custom-down .custom-vote-arrow {
     border-bottom-width: 0;
-    border-top-color: #698ebf;
+    border-top-color: #2d84cc;
 }
 
 .custom-votebar .custom-vote-arrow {
@@ -211,7 +216,7 @@
 
 .custom-item-vote-count {
     display: block;
-    color: #698ebf;
+    color: #2d84cc;
     height: 24px;
     line-height: 24px;
     width: 38px;

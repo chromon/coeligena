@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../resources/css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="../resources/css/bootstrap-paper.min.css" media="screen">
     <link rel="stylesheet" href="../resources/css/custom.css">
     <link rel="stylesheet" href="../resources/css/font-awesome.min.css">
     <link rel="stylesheet" href="../resources/plugin/webui-popover/jquery.webui-popover.min.css">
@@ -195,7 +195,7 @@
 
                                 <!-- collapse meta item -->
                                 <div class="custom-collapse-item">
-                                    <a href="#"class="custom-meta-item">
+                                    <a href="#" class="custom-meta-item">
                                         <i class="fa fa-heart"></i> 
                                         感谢
                                     </a>
@@ -389,7 +389,7 @@
                     </li>
                     <li class="media">
                         <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
-                        <a href="#" class="btn btn-default btn-md btn-block">
+                        <a href="#" class="btn btn-default btn-lg btn-block">
                             <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                         </a>
                     </li>
@@ -691,9 +691,11 @@
 
         // collapse item
         $(".custom-collapse-item").hide();
-        $("#feed-item").hover(function () {
+        $("#feed-item-1").hover(function () {
+            console.log('show');
             $(".custom-collapse-item").show();
         }, function () {
+            console.log('hide');
             $(".custom-collapse-item").hide();
         });
     </script>
