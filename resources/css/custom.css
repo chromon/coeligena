@@ -10,6 +10,10 @@ a:visited {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .custom-title {
     color: rgb(15, 136, 235) !important;
     font-weight: bold;
@@ -82,6 +86,12 @@ a:visited {
     border-radius: 3px;
 }
 
+.custom-avatar168 {
+    height: 168px;
+    width: 168px;
+    border-radius: 5px;
+}
+
 .custom-padding-top10 {
     padding-top: 15px;
 }
@@ -107,7 +117,7 @@ a:visited {
 .custom-media-heading {
     margin-top: 5px;
     margin-bottom: 5px;
-    color: #2d84cc;
+    color: #175199;
     text-decoration: none;
     font-weight: 700;
     font-size: 14px;
@@ -492,4 +502,39 @@ a:visited {
 
 .custom-collapse-item {
     display: inline;
+}
+
+.custom-profile-card {
+    margin-top: 40px;
+}
+
+.custom-profile-title {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.custom-profile-text {
+    margin-left: 12px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.custom-profile-info {
+    font-size: 14px;
+    line-height: 20px;
+    box-sizing: border-box;
+}
+
+.custom-profile-driver {
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    margin: 0 8px;
+    background: #e7eaf1;
+}
+
+.custom-profile-icon {
+    margin: 0 8px;
+    color: #9fadc7;
 }
