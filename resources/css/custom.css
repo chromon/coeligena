@@ -74,6 +74,12 @@ a:hover {
     border-radius: 3px;
 }
 
+.custom-avatar48 {
+    height: 48px;
+    width: 48px;
+    border-radius: 3px;
+}
+
 .custom-avatar24 {
     height: 24px;
     width: 24px;
@@ -537,4 +543,42 @@ a:hover {
 .custom-profile-icon {
     margin: 0 8px;
     color: #9fadc7;
+}
+
+.custom-question-topic {
+    margin: 3px 5px 3px 0;
+    vertical-align: middle;
+}
+
+.custom-tag {
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    padding: 0 12px;
+    font-size: 14px;
+    line-height: 30px;
+    color: #3e7ac2;
+    vertical-align: top;
+    background: #eef4fa;
+    border-radius: 100px;
+}
+
+.custom-margin-top5 {
+    margin-top: 5px;
+}
+
+.custom-item-link {
+    color: #999 !important;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.custom-hot-collect {
+    padding: 5px;
+
+}
+
+.custom-meta-link {
+    color: #259;
+    font-size: 13px;
 }

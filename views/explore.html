@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Bone - 编乎</title>
-    <meta name="description" content="一个真实的网络现编社区，帮助你寻找答案，分享知识。">
+    <title>发现 - 编乎</title>
+    <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
@@ -49,10 +49,10 @@
                         <a href="#">首页</a>
                     </li>
                     <li>
-                        <a href="#">发现</a>
+                        <a href="#">话题</a>
                     </li>
                     <li>
-                        <a href="#">话题</a>
+                        <a href="#">发现</a>
                     </li>
                     <li>
                         <a href="#">消息</a>
@@ -70,7 +70,7 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class="fa fa-user-o custom-menu-mright"></i> 我的主页</a>
+                                <a href="#"><i class="fa fa-user-o custom-menu-mright "></i> 我的主页</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-envelope-o custom-menu-mright"></i> 私信</a>
@@ -91,126 +91,118 @@
 
     <!-- main content -->
     <div class="container">
-
-        <!-- home header -->
         <div class="row custom-content-margin">
-            <div class="col-sm-12">
-                <div class="media">
-                    <div class="media-left media-top">
-                        <a href="#">
-                            <img class="media-object custom-avatar168" src="../resources/images/avatar/a.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <div class="custom-profile-card">
-                            <span class="media-heading custom-profile-title">Middlex</span>
-                            <span class="custom-profile-text">QWERTYASDFGH</span>
-                            <div class="custom-profile-info">
-                                <div class="custom-profile-item">
-                                    <i class="fa fa-briefcase custom-profile-icon" aria-hidden="true"></i>
-                                    business
-                                    <div class="custom-profile-driver"></div>
-                                    company
-                                    <div class="custom-profile-driver"></div>
-                                    position
-                                </div>
-                                <div class="custom-profile-item">
-                                    <i class="fa fa-graduation-cap custom-profile-icon" aria-hidden="true"></i>
-                                    school
-                                    <div class="custom-profile-driver"></div>
-                                    major
-                                    <div class="custom-profile-driver"></div>
-                                    <i class="fa fa-mars" aria-hidden="true"></i>
-                                </div>
-                                <div class="custom-profile-item">
-                                    <i class="fa fa-quote-left fa-2x custom-profile-icon" aria-hidden="true"></i>
-                                    Personal profile
-                                    <a href="#" class="btn btn-primary custom-right">编辑个人资料</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end home header -->
-
-        <!-- answer main -->
-        <div class="row custom-margin-top20">
             <div class="col-sm-8">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#activities" data-toggle="tab">动态</a></li>
-                    <li><a href="#answers" data-toggle="tab">回答</a></li>
-                    <li><a href="#asks" data-toggle="tab">提问</a></li>
-                    <li><a href="#columns" data-toggle="tab">专栏</a></li>
-                    <li><a href="#collections" data-toggle="tab">收藏</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            更多 <span class="caret"></span>
+                <!-- media list title -->
+                <div class="custom-list-title">
+                    <i class="fa fa-list-ul"></i> 编辑推荐
+                    <span class="custom-cleaner-setting custom-right">
+                        <a href="#">
+                            更多推荐 <i class="fa fa-angle-double-right"></i>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#shares" data-toggle="tab">分享</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#following" data-toggle="tab">关注</a></li>
-                        </ul>
+                    </span>
+                </div>
+
+                <!-- left main feed -->
+                <ul class="media-list">
+                    <li class="media custom-border-top custom-padding-top10">
+                        <div class="media-left media-top">
+
+                            <!-- avatar image -->
+                            <a href="#" id="user-avatar">
+                              <img class="media-object custom-avatar38" src="../resources/images/avatar/a.jpg" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+
+                            <!-- question title -->
+                            <a href="#">
+                                <h4 class="media-heading custom-media-heading">
+                                    当你迷茫的时候，你应该做些什么？
+                                </h4>
+                            </a>
+
+                            <!-- author info -->
+                            <div class="custom-name">
+                                <a href="#" class="">Ellery</a>
+                                ，
+                                <span class="custom-bio">中央处理器 (CPU)</span>
+                            </div>
+
+                            <!-- answer content -->
+                            <div>Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979
+                            </div>
+
+                        </div>
                     </li>
+                    <li class="media custom-border-top custom-padding-top10">
+                        <!-- question title -->
+                        <a href="#">
+                            <span class="custom-media-heading">
+                                当你迷茫的时候，你应该做些什么？
+                            </span>
+                        </a>
+                        <span class="custom-right">问答</span>
+                    </li>
+                    <li class="media custom-border-top custom-padding-top10">
+                        <!-- question title -->
+                        <a href="#">
+                            <span class="custom-media-heading">
+                                当你迷茫的时候，你应该做些什么？
+                            </span>
+                        </a>
+                        <span class="custom-right">问答</span>
+                    </li>
+                    <li class="media custom-border-top custom-padding-top10">
+                        <!-- question title -->
+                        <a href="#">
+                            <span class="custom-media-heading">
+                                当你迷茫的时候，你应该做些什么？
+                            </span>
+                        </a>
+                        <span class="custom-right">问答</span>
+                    </li>
+                    <li class="media custom-border-top custom-padding-top10">
+                        <!-- question title -->
+                        <a href="#">
+                            <span class="custom-media-heading">
+                                当你迷茫的时候，你应该做些什么？
+                            </span>
+                        </a>
+                        <span class="custom-right">问答</span>
+                    </li>
+                    <li class="media custom-border-top custom-padding-top10">
+                        <!-- question title -->
+                        <a href="#">
+                            <span class="custom-media-heading">
+                                当你迷茫的时候，你应该做些什么？
+                            </span>
+                        </a>
+                        <span class="custom-right">问答</span>
+                    </li>
+                    
+                </ul><!-- end left main feed -->
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#daily_hot" data-toggle="tab">今日最热</a></li>
+                    <li><a href="#monthly_hot" data-toggle="tab">本月最热</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
 
-                    <!-- activities tab -->
-                    <div class="tab-pane fade active in" id="activities">
+                    <!--  daily hot tab -->
+                    <div class="tab-pane fade active in" id="daily_hot">
                         <ul class="media-list">
                             <li id="feed-item-1" class="media custom-border-top custom-padding-top10">
                                 <div class="media-left media-top">
 
-                                    <!-- avatar image -->
-                                    <a href="#" id="user-avatar">
-                                      <img class="media-object custom-avatar38" src="../resources/images/avatar/a.jpg" alt="...">
-                                    </a>
-
                                     <!-- votebar -->
-                                    <div class="custom-votebar">
-                                        <button class="custom-up" title="赞同">
-                                            <i class="fa fa-caret-up custom-vote-arrow"></i> 
-                                            <span class="custom-count">122</span>
-                                        </button>
-                                        <button class="custom-down" title="反对，不会显示你的姓名">
-                                            <i class="fa fa-caret-down custom-vote-arrow"></i>
-                                        </button>
+                                    <div class="custom-item-vote custom-margin-top5">
+                                        <a class="custom-item-vote-count js-expand js-vote-count" href="javascript:;">100</a>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <!-- agree with article -->
-                                    <!-- <div class="custom-feed-source">
-                                        <a href="#">Ellery</a>
-                                        赞了
-                                        <a href="#">ABC</a>
-                                        中的文章
-                                        <span class="custom-bull">•</span>
-                                        <span>57分钟前</span>
-                                        <span class="custom-close custom-right"><i class="fa fa-times"></i></span>
-                                    </div> -->
-
-                                    <!-- agree with answer  -->
-                                    <div class="custom-feed-source">
-                                        <a href="#">Ellery</a>
-                                        赞同了回答
-
-                                        <!-- collect article -->
-                                        <!-- 关注了问题 -->
-
-                                        <!-- collect article -->
-                                        <!-- 关注了问题 -->
-                                        <!-- collect answer -->
-                                        <!-- 收藏了回答 -->
-
-                                        <!-- collect article -->
-                                        <!-- 收藏了文章 -->
-
-                                        <span class="custom-bull">•</span>
-                                        <span>57分钟前</span>
-                                        <span class="custom-close custom-right"><i class="fa fa-times"></i></span>
-                                    </div>
 
                                     <!-- question title -->
                                     <a href="#">
@@ -231,11 +223,6 @@
                                     Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
                                     Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979
                                     </div>
-
-                                    <!-- answer date -->
-                                    <p class="custom-edit-time">
-                                        <a href="#">编辑于 12:23</a>
-                                    </p>
 
                                     <!-- feed meta -->
                                     <div class="custom-meta-panel">
@@ -337,70 +324,87 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- activities tab -->
+                    <!-- daily hot tab -->
 
-
-                    <div class="tab-pane fade" id="answers">
-                        <p>answers</p>
-                    </div>
-                    <div class="tab-pane fade" id="asks">
-                        <p>asks</p>
-                    </div>
-                    <div class="tab-pane fade" id="columns">
-                        <p>columns</p>
-                    </div>
-                    <div class="tab-pane fade" id="collections">
-                        <p>collections</p>
-                    </div>
-                    <div class="tab-pane fade" id="shares">
-                        <p>shares</p>
-                    </div>
-                    <div class="tab-pane fade" id="following">
-                        <p>following</p>
+                    <div class="tab-pane fade" id="monthly_hot">
+                        <p>monthly_hot</p>
                     </div>
                 </div>
             </div>
 
             <!-- sidebar -->
-            <div class="col-sm-3 col-sm-offset-1 custom-margin-top30">
+            <div class="col-sm-3 col-sm-offset-1">
 
-                <div class="list-group custom-list-group custom-margin-bottom10">
-                    <div class="custom-list-title">个人成就</div>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 参与 11 次公共编辑
-                    </a>
+                <div class="list-group custom-margin-bottom10">
+                    <div class="custom-list-group-title">
+                        热门话题 
+                        <span class="custom-right">
+                            <a href="#" class="custom-item-link">
+                                更多话题 <i class="fa fa-angle-double-right"></i>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="media">
+                        <div class="media-left media-top">
+                            <a href="#">
+                                <img class="media-object custom-avatar48" src="../resources/images/avatar/a.jpg" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <a href="#">
+                                <h4 class="media-heading custom-media-heading">
+                                    WWDC17
+                                </h4>
+                                <div class="custom-item-link">
+                                    2837 人关注
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="list-group custom-list-group custom-margin-bottom10">
-                    <a href="#" class="list-group-item custom-group-item">
-                        <span class="badge">8</span>关注的话题
-                    </a>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <span class="badge">0</span>关注的专栏
-                    </a>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <span class="badge">13</span>关注的问题
-                    </a>
-                    <a href="#" class="list-group-item custom-group-item">
-                        <span class="badge">0</span>关注的收藏夹
-                    </a>
+                <div class="list-group custom-list-group custom-margin-bottom10 custom-bottom-border">
+                    
+                    <div class="custom-list-group-title">
+                        热门收藏
+                        <span class="custom-right">
+                            <a href="#" class="custom-item-link">
+                                换一换 <i class="fa fa-angle-double-right"></i>
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="custom-hot-collect custom-bottom-border">
+                        <a href="" class="custom-meta-item custom-meta-link">我的收藏</a>
+                        <div class="custom-item-link">
+                            <span>32 人关注</span>
+                            <span> • </span>
+                            <span>37 条内容</span>
+                        </div>
+                    </div>
+
+                    <div class="custom-hot-collect">
+                        <a href="" class="custom-meta-item custom-meta-link">我的收藏</a>
+                        <div class="custom-item-link">
+                            <span>32 人关注</span>
+                            <span> • </span>
+                            <span>37 条内容</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="custom-footer custom-border-top custom-padding-top10 custom-padding-left5">
-                    <a href="#">个人主页被浏览 2254 次</a>
-                </div>
-                <div class="custom-footer custom-border-top custom-padding-top10 custom-padding-left5">
-                    <a href="#">编乎指南 • </a>
-                    <a href="#">建议反馈 • </a>
-                    <a href="#">移动应用 • </a>
-                    <a href="#">加入编乎</a>
-                    <a href="#">编乎协议 • </a>
-                    <a href="#">举报投诉 • </a>
-                    <a href="#">联系我们</a><br/>
-                    <a href="#">&copy;2017</a>
+
+                <div class="custom-footer">
+                    <a href="#" target="_blank">编乎指南 • </a>
+                    <a href="#" target="_blank">建议反馈 • </a>
+                    <a href="#" target="_blank">移动应用 • </a>
+                    <a href="#" target="_blank">加入编乎</a>
+                    <a href="#" target="_blank">编乎协议 • </a>
+                    <a href="#" target="_blank">举报投诉 • </a>
+                    <a href="#" target="_blank">联系我们</a><br/>
+                    <a href="#" target="_blank">&copy;2017</a>
                 </div>
             </div><!-- end sidebar -->
         </div>
-        <!-- end answer main -->
     </div>
 
     <!-- user info hover card -->
@@ -536,8 +540,6 @@
     <script type="text/javascript" src='../resources/plugin/webui-popover/jquery.webui-popover.min.js'></script>
     <script type="text/javascript" src="../resources/plugin/jquery-labelauty/jquery-labelauty.js"></script>
     <script type="text/javascript" src="../resources/plugin/bootstrap-treeview/bootstrap-treeview.min.js"></script>
-    <script type="text/javascript" src="../resources/plugin/summernote/summernote.js"></script>
-    <script type="text/javascript" src="../resources/plugin/summernote/lang/summernote-zh-CN.js"></script>
 
     <script type="text/javascript">
 
@@ -555,6 +557,15 @@
             $('body,html').animate({scrollTop: 0}, 300);
         });
 
+        // collapse item
+        $(".custom-collapse-item").hide();
+        $("#feed-item-1").hover(function () {
+            console.log('show');
+            $(".custom-collapse-item").show();
+        }, function () {
+            console.log('hide');
+            $(".custom-collapse-item").hide();
+        });
     </script>
 </body>
 </html>
