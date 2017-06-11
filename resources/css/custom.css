@@ -582,3 +582,38 @@ a:hover {
     color: #259;
     font-size: 13px;
 }
+
+.custom-topic-content {
+    margin: 15px;
+}
+
+.custom-topic-name {
+    margin-left: 10px;
+    color: #555;
+    font-weight: 700;
+    font-size: 14px;
+    max-width: 40%;
+    word-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.custom-margin-bottom20 {
+    margin-bottom: 20px;
+}
+
+.custom-switcher a.custom-current {
+    color: #999;
+    cursor: text;
+}
+
+.custom-topic-item {
+    margin-right: 3px;
+}
+
+.custom-other-topic {
+    margin: 10px 0 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e6e6e6;
+}
