@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>账号设置 - 编乎</title>
+    <meta name="description" content="一个真实的网络现编社区，帮助你寻找答案，分享知识。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="../resources/css/bootstrap-paper.min.css" media="screen">
+    <link rel="stylesheet" href="../resources/css/custom.css">
+    <link rel="stylesheet" href="../resources/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- navbar title -->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand custom-title">编乎</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- navbar component auto collapse -->
+            <div class="navbar-collapse collapse" id="navbar-main">
+
+                <!-- search -->
+                <form class="navbar-form navbar-left custom-search-top" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm" size="30" placeholder="搜索你感兴趣的内容...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary btn-sm" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                <!-- navbar left -->
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">首页</a>
+                    </li>
+                    <li>
+                        <a href="#">发现</a>
+                    </li>
+                    <li>
+                        <a href="#">话题</a>
+                    </li>
+                    <li>
+                        <a href="#">消息</a>
+                    </li>
+                </ul>
+
+                <!-- navbar right -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="button" class="btn btn-primary btn-sm navbar-btn custom-ask-btn">提问</button>
+                    </li>   
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Ellery
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#"><i class="fa fa-user-o custom-menu-mright"></i> 我的主页</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-envelope-o custom-menu-mright"></i> 私信</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-cog custom-menu-mright"></i> 设置</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#"><i class="fa fa-power-off custom-menu-mright"></i> 退出</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul><!-- end navbar right -->
+            </div>
+        </div>
+    </div><!-- navbar -->
+
+    <!-- main content -->
+    <div class="container">
+
+        <!-- home header -->
+        <div class="row custom-content-margin">
+            <div class="col-sm-12">
+                
+                <ul class="nav nav-tabs custom-tab-border">
+                    <li><a href="#profile" data-toggle="tab">基本资料</a></li>
+                    <li class="active"><a href="#account" data-toggle="tab">账号和密码</a></li> 
+                    <li><a href="#notification" data-toggle="tab">消息和邮件</a></li> 
+                    <li><a href="#filter" data-toggle="tab">屏蔽</a></li> 
+                    <li><a href="#lab" data-toggle="tab">实验室</a></li> 
+                </ul>
+                <div id="myTabContent" class="tab-content custom-margin-top20">
+                    <!-- profile tab -->
+                    <div class="col-sm-6 tab-pane fade" id="profile">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">姓名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">个性域名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control">
+                                    <span class="help-block">只能修改一次 例：bianhu.com/people/bone</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">隐私保护</label>
+                                <div class="col-lg-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">
+                                            在站外搜到我在知乎创作的内容时，我的姓名将不会被显示
+                                        </label>
+                                        <span class="help-block">
+                                            <a href="">什么情况下应该使用这个选项？</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <button type="submit" class="btn btn-primary">保存</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- end profile tab -->
+
+                    <!-- account tab -->
+                    <div class="col-sm-6 tab-pane fade active in" id="account">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">邮箱</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">手机</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control">
+                                    <span class="help-block">只能修改一次 例：bianhu.com/people/bone</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">账号密码</label>
+                                <div class="col-lg-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">
+                                            在站外搜到我在知乎创作的内容时，我的姓名将不会被显示
+                                        </label>
+                                        <span class="help-block">
+                                            <a href="">什么情况下应该使用这个选项？</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">社交账号</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control">
+                                    <span class="help-block">只能修改一次 例：bianhu.com/people/bone</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <button type="submit" class="btn btn-primary">保存</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- end account tab -->
+
+                    <div class="tab-pane fade" id="notification">
+                    </div>
+                    <div class="tab-pane fade" id="filter">
+                    </div>
+                    <div class="tab-pane fade" id="lab">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end home header -->
+
+    </div>
+
+    <script type="text/javascript" src='../resources/js/jquery-3.2.1.min.js'></script>
+    <script type="text/javascript" src='../resources/js/bootstrap.min.js'></script>
+
+</body>
+</html>
