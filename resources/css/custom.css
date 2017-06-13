@@ -621,3 +621,15 @@ a:hover {
 .custom-tab-border {
     border-bottom: 1px solid #ddd;
 }
+
+.custom-form-padding {
+    padding-top: 7px;
+}
+
+.custom-margin-right10 {
+    margin-right: 10px;
+}
+
+.custom-col-padding {
+    padding-left: 15px;
+}
