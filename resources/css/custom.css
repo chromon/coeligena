@@ -633,3 +633,18 @@ a:hover {
 .custom-col-padding {
     padding-left: 15px;
 }
+
+.custom-filter-card {
+    float: left;
+    margin: 0 2px 2px 0;
+    padding: .8em;
+    width: 30%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 #f2f4f5;
+    box-sizing: border-box;
+}
+
+.custom-filter-card img {
+    float: left;
+}
