@@ -648,3 +648,17 @@ a:hover {
 .custom-filter-card img {
     float: left;
 }
+
+.custom-grey {
+    color: #999;
+    font-size: 13px;
+}
+
+.custom-darker {
+    color: #666;
+    font-size: 13px;
+}
+
+.custom-msg-btn {
+    margin: 15px 5px 20px;
+}
