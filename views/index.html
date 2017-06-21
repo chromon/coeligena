@@ -62,7 +62,7 @@
                 <!-- navbar right -->
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <button type="button" class="btn btn-primary btn-sm navbar-btn custom-ask-btn">提问</button>
+                        <button type="button" class="btn btn-primary btn-sm navbar-btn custom-ask-btn" data-toggle="modal" data-target="#askModal">提问</button>
                     </li>   
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -521,9 +521,7 @@
                 </div>
                 <div class="modal-body">
                     <div id="favorite_list" class="custom-margin-left45">
-                        <input type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
-                        <input type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
-                        <input type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
+                        <input id="collect_list" type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
                     </div>
                     <div id="create_favorite" class="hidden">
                         <form>
@@ -574,6 +572,43 @@
     </div>
     <!-- end report modal -->
 
+    <!-- ask modal -->
+    <div class="modal fade" id="askModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">提问</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form">
+                        <div class="form-group">
+                            <input class="form-control input-sm" type="text" id="inputSmall" placeholder="写下你的问题">
+                        </div>
+                        <div class="form-group">
+                            <label for="textArea" class="control-label">问题说明（可选）：</label>
+                            <textarea class="form-control input-sm" rows="4" id="textArea" placeholder="问题背景、条件等详细信息"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="textArea" class="control-label">选择话题</label>
+                            <input class="form-control input-sm" type="text" id="inputSmall" placeholder="搜索话题">
+                            <span class="help-block custom-right">话题越精准，越容易让相关领域专业人士看到你的问题</span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="checkbox custom-left">
+                        <label>
+                            <input type="checkbox"> 匿名
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-primary">发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end ask modal -->
+
     <!-- back to top -->
     <div class="custom-backtotop" id="back_to_top">
         <a class="custom-btn-action" href="javascript:;">
@@ -600,7 +635,7 @@
         });
 
         // the width of favorite
-        $(':checkbox').labelauty({
+        $('#collect_list').labelauty({
             minimum_width: '270px'
         });
 
