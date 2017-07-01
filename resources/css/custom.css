@@ -35,7 +35,7 @@ a:hover {
 }
 
 .custom-content-margin {
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 .custom-border {
@@ -71,6 +71,12 @@ a:hover {
 .custom-avatar38 {
     height: 38px;
     width: 38px;
+    border-radius: 3px;
+}
+
+.custom-avatar30 {
+    height: 30px;
+    width: 30px;
     border-radius: 3px;
 }
 
@@ -661,4 +667,39 @@ a:hover {
 
 .custom-msg-btn {
     margin: 15px 5px 20px;
+}
+
+.custom-input-size {
+    width: 70%;
+}
+
+.custom-navbar a {
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 30px;
+    color: #8590a6 !important;
+}
+
+.navbar-nav>li>a {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.navbar-brand {
+    height: 30px;
+    padding-top: 20px;
+}
+
+.navbar {
+    min-height: 50px;
+}
+
+.custom-user-info {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+.custom-nav-icon {
+    font-size: 20px;
+    color: #9fadc7 !important; 
 }

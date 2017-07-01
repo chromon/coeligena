@@ -31,47 +31,57 @@
 
             <!-- navbar component auto collapse -->
             <div class="navbar-collapse collapse" id="navbar-main">
-
-                <!-- search -->
-                <form class="navbar-form navbar-left custom-search-top" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control input-sm" size="30" placeholder="搜索你感兴趣的内容...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary btn-sm" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </form>
-
                 <!-- navbar left -->
-                <ul class="nav navbar-nav">
-                    <li">
-                        <a href="#">首页</a>
-                    </li>
+                <ul class="nav navbar-nav custom-navbar">
                     <li>
-                        <a href="#">发现</a>
+                        <a href="#">首页</a>
                     </li>
                     <li>
                         <a href="#">话题</a>
                     </li>
                     <li>
-                        <a href="#">消息</a>
+                        <a href="#">发现</a>
+                    </li>
+                    <li>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="input-group">
+                                <input type="text" class="form-control input-sm" size="40" placeholder="搜索你感兴趣的内容...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary btn-sm" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="navbar-form navbar-left" >
+                            <div class="input-group">
+                                <button class="btn btn-primary btn-sm custom-ask-btn" data-toggle="modal" data-target="#askModal">提问</button>
+                            </div>
+                        </form>
                     </li>
                 </ul>
 
                 <!-- navbar right -->
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <button type="button" class="btn btn-primary btn-sm navbar-btn custom-ask-btn">提问</button>
-                    </li>   
+                        <a class="custom-nav-icon" href="#">
+                            <i class="fa fa-bell"></i> 
+                        </a>
+                    </li>
+                    <li>
+                        <a class="custom-nav-icon" href="#">
+                            <i class="fa fa-comments"></i> 
+                        </a>
+                    </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            Ellery
+                        <a href="#" class="dropdown-toggle custom-user-info" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <img class="custom-avatar30" src="../resources/images/avatar/a.jpg" alt="...">
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class="fa fa-user-o custom-menu-mright"></i> 我的主页</a>
+                                <a href="#"><i class="fa fa-user-o custom-menu-mright "></i> 我的主页</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-envelope-o custom-menu-mright"></i> 私信</a>
