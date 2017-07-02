@@ -5,6 +5,7 @@
  body {
     font-family: 'Helvetica Neue','Helvetica','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','WenQuanYi Micro Hei','Arial,sans-serif';
     background: #f7f8fa;
+    font-size: 15px;
  }
 
 a:visited { 
@@ -111,7 +112,7 @@ a:hover {
 
 .custom-feed-source, .custom-feed-source a {
     color: #999;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.7;
     text-decoration: none;
 }
@@ -133,12 +134,13 @@ a:hover {
     color: #175199;
     text-decoration: none;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
     outline: 0;
 }
 
 .custom-name a {
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 600;
     color: #666;
 }
 
@@ -152,8 +154,8 @@ a:hover {
 }
 
 .custom-edit-time a {
-    color: #999;
-    font-size: 13px;
+    color: #8590a6;
+    font-size: 14px;
     line-height: 1.7;
 }
 
@@ -163,8 +165,8 @@ a:hover {
 }
 
 .custom-meta-item {
-    color: #999;
-    font-size: 13px;
+    color: #8590a6;
+    font-size: 14px;
     line-height: 1.7;
     word-wrap: break-word;
     margin-right: 5px;
@@ -752,3 +754,8 @@ a:hover {
     padding: 16px 20px;
 }
 
+.custom-badge {
+    border-radius: 3px;
+    background: #f7f8fa;
+    color: #8590a6;
+}
