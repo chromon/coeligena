@@ -4,6 +4,7 @@
 
  body {
     font-family: 'Helvetica Neue','Helvetica','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','WenQuanYi Micro Hei','Arial,sans-serif';
+    background: #f7f8fa;
  }
 
 a:visited { 
@@ -257,9 +258,9 @@ a:hover {
 .custom-group-item {
     border: 0;
     padding: 5px 5px;
-    height: 28px;
-    font-size: 13px;
-    color: #666;
+    height: 40px;
+    font-size: 15px;
+    color: #8590a6 !important;
 }
 
 .custom-list-group {
@@ -628,6 +629,10 @@ a:hover {
     border-bottom: 1px solid #ddd;
 }
 
+.custom-margin-right5 {
+    margin-right: 5px;
+}
+
 .custom-form-padding {
     padding-top: 7px;
 }
@@ -703,3 +708,47 @@ a:hover {
     font-size: 20px;
     color: #9fadc7 !important; 
 }
+
+.custom-card {
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #e7eaf1;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,37,55,.05);
+    box-sizing: border-box;
+}
+
+.custom-color-9f {
+    color: #9fadc7;
+}
+
+.custom-top-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    line-height: 58px;
+    padding: 0 20px;
+}
+
+.custom-top-header-navItem {
+    display: inline-block;
+    transition: color .2s ease-in;
+    font-size: 16px;
+    color: #262626;
+    margin-right: 40px;
+}
+
+.custom-top-header-navItem-right {
+    color: #8590a6;
+    font-size: 15px;
+    transition: color .2s ease-in;
+}
+
+.custom-story-item {
+    position: relative;
+    padding: 16px 20px;
+}
+
