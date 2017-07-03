@@ -37,7 +37,7 @@ a:hover {
 }
 
 .custom-content-margin {
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .custom-border {
@@ -134,7 +134,7 @@ a:hover {
     color: #175199;
     text-decoration: none;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 17px;
     outline: 0;
 }
 
@@ -429,7 +429,7 @@ a:hover {
     bottom: 113px;
     left: 50%;
     z-index: 19;
-    margin-left: 230px;
+    margin-left: 310px;
 }
 
 .custom-backtotop .custom-btn-action {
@@ -758,4 +758,35 @@ a:hover {
     border-radius: 3px;
     background: #f7f8fa;
     color: #8590a6;
+}
+
+.custom-question-header {
+    padding: 20px 20px;
+}
+
+.custom-question-footer {
+    margin: 0 20px 20px;
+}
+
+.custom-question-footer-right {
+    text-align: right;
+}
+
+.custom-question-footer-right a {
+    margin: 0 4px;
+}
+
+a.custom-question-more {
+    display: block;
+    line-height: 50px;
+    color: #8590a6;
+    text-align: center;
+}
+
+.custom-question-more {
+    width: 100%;
+    height: 50px;
+    font-size: 15px;
+    border: none;
+    border-radius: 0;
 }

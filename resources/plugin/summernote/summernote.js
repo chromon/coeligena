@@ -1891,7 +1891,7 @@
     }
   };
 
-  var editor = renderer.create('<div class="note-editor note-frame panel panel-default"/>');
+  var editor = renderer.create('<div class="note-editor note-frame panel panel-default" style="margin-bottom: 0"/>');
   var toolbar = renderer.create('<div class="note-toolbar panel-heading" style="background-color: white;"/>');
   var editingArea = renderer.create('<div class="note-editing-area"/>');
   var codable = renderer.create('<textarea class="note-codable"/>');
