@@ -488,6 +488,10 @@ a:hover {
     margin-top: 30px;
 }
 
+.custom-margin-top40 {
+    margin-top: 40px;
+}
+
 .custom-list-title {
     padding: 0 5px;
     font-weight: 500;
@@ -623,12 +627,10 @@ a:hover {
 
 .custom-other-topic {
     margin: 10px 0 10px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e6e6e6;
 }
 
 .custom-tab-border {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd !important;
 }
 
 .custom-margin-right5 {
