@@ -37,6 +37,10 @@ a:hover {
 }
 
 .custom-content-margin {
+    margin-top: 80px;
+}
+
+.custom-content-margin60 {
     margin-top: 60px;
 }
 
@@ -162,6 +166,14 @@ a:hover {
 .custom-meta-panel {
     padding: 5px 0;
     margin-bottom: -5px;
+}
+
+.custom-meta-panel span{
+    color: #8590a6;
+    font-size: 14px;
+    line-height: 1.7;
+    word-wrap: break-word;
+    margin-right: 5px;
 }
 
 .custom-meta-item {
