@@ -804,3 +804,9 @@ a.custom-question-more {
     border: none;
     border-radius: 0;
 }
+
+.custom-log-detail {
+    border-left: 3px solid #DDD;
+    padding: 5px 10px;
+    margin: 5px 0;
+}
