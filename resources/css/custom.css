@@ -251,6 +251,10 @@ a:hover {
     margin-top: 10px;
 }
 
+.custom-item-scan {
+    margin-top: 4px;
+}
+
 .custom-item-vote-count {
     display: block;
     color: #2d84cc;
