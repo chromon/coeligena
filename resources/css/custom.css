@@ -842,3 +842,55 @@ ins {
 .webui-popover {
     border: 0 !important;
 }
+
+.custom-tab-width {
+    width: 33.3%;
+}
+
+.custom-tab-width a {
+    text-align: center;
+    color: #c2cfde;
+}
+
+.nav-tabs>li>a, .nav-tabs>li>a:focus {
+    color: #c2cfde;
+}
+
+.custom-notifications-list {
+    height: 350px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.custom-nushNotifications-item {
+    position: relative;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #262626;
+    border-bottom: 1px solid #ebeef5;
+}
+
+.custom-nushNotifications-newItem {
+    background: #f4f8fb;
+}
+
+.custom-notifications-footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    padding: 0 16px;
+    line-height: 40px;
+    background: #fff;
+    border-top: 1px solid #ebeef5;
+    box-sizing: border-box;
+}
+
+.custom-footer-item {
+    color: #8590a6;
+}

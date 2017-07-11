@@ -65,7 +65,7 @@
                 <!-- navbar right -->
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="custom-nav-icon" href="#">
+                        <a class="custom-nav-icon" id="notification_bell" href="#">
                             <i class="fa fa-bell"></i> 
                         </a>
                     </li>
@@ -528,6 +528,112 @@
     </div>
     <!-- end user info hover card -->
 
+    <!-- notification click card -->
+    <div class="media custom-display-none" id="notification_card">
+        <ul class="nav nav-tabs">
+            <li class="active custom-tab-width">
+                <a href="#notification_default" data-toggle="tab">
+                    <i class="fa fa-list fa-lg" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="custom-tab-width">
+                <a href="#follow" data-toggle="tab">
+                    <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="custom-tab-width">
+                <a href="#vote_thank" data-toggle="tab">
+                    <i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="notification_default">
+                <div class="custom-notifications-list">
+                    <div class="custom-nushNotifications-item custom-nushNotifications-newItem">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item custom-nushNotifications-newItem">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="custom-notifications-footer">
+                    <a href="" class="custom-footer-item">
+                        <i class="fa fa-cog"></i> 设置
+                    </a>
+                    <a href="" class="custom-right custom-footer-item">
+                        查看全部提醒
+                    </a>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="follow">
+                hot
+            </div>
+            <div class="tab-pane fade" id="vote_thank">
+                askdlf
+            </div>
+        </div>
+    </div>
+    <!-- end notification click card -->
+
     <!-- collection modal -->
     <div class="modal fade" id="collectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog custom-modal-size" role="document">
@@ -652,6 +758,16 @@
             width: '360',
             trigger: 'hover',
             arrow: false,
+            animation: 'pop'
+        });
+
+        // message click card
+        $('#notification_bell').webuiPopover({
+            url: '#notification_card',
+            placement: 'bottom',
+            width: '360',
+            trigger: 'click',
+            arrow: true,
             animation: 'pop'
         });
 
