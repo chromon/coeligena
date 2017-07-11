@@ -847,6 +847,10 @@ ins {
     width: 33.3%;
 }
 
+.custom-tab-width2 {
+    width: 100%;
+}
+
 .custom-tab-width a {
     text-align: center;
     color: #c2cfde;
@@ -893,4 +897,8 @@ ins {
 
 .custom-footer-item {
     color: #8590a6;
+}
+
+.custom-tab-center {
+    text-align: center;
 }

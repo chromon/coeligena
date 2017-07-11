@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="custom-nav-icon" href="#">
+                        <a class="custom-nav-icon" id="message_bar" href="#">
                             <i class="fa fa-comments"></i> 
                         </a>
                     </li>
@@ -634,6 +634,96 @@
     </div>
     <!-- end notification click card -->
 
+    <!-- private message click card -->
+    <div class="media custom-display-none" id="message_card">
+        <ul class="nav nav-tabs">
+            <li class="active custom-tab-width2">
+                <a href="#notification_default" data-toggle="tab" class="custom-tab-center">
+                    我的私信
+                </a>
+            </li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="notification_default">
+                <div class="custom-notifications-list">
+                    <div class="custom-nushNotifications-item custom-nushNotifications-newItem">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item custom-nushNotifications-newItem">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                    <div class="custom-nushNotifications-item">
+                        <span>
+                            <span><a href="">Ellery</a></span>
+                            <span>回答了</span>
+                            <span><a href="">alloric</a></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="custom-notifications-footer">
+                    <a href="" class="custom-footer-item">
+                        <i class="fa fa-pencil"></i> 写新私信
+                    </a>
+                    <a href="" class="custom-right custom-footer-item">
+                        查看全部私信
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end private message click card -->
+
     <!-- collection modal -->
     <div class="modal fade" id="collectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog custom-modal-size" role="document">
@@ -761,9 +851,19 @@
             animation: 'pop'
         });
 
-        // message click card
+        // notification click card
         $('#notification_bell').webuiPopover({
             url: '#notification_card',
+            placement: 'bottom',
+            width: '360',
+            trigger: 'click',
+            arrow: true,
+            animation: 'pop'
+        });
+
+        // message click card
+        $('#message_bar').webuiPopover({
+            url: '#message_card',
             placement: 'bottom',
             width: '360',
             trigger: 'click',
