@@ -1,15 +1,24 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Ellery
+  Date: 2017/8/7
+  Time: 22:43
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-	<title>编乎 - 与世界分享你编的知识、经验和见解</title>
+    <title>编乎 - 与世界分享你编的知识、经验和见解</title>
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
-    <link rel="stylesheet" type="text/css" href="../resources/css/signin.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/signin.css">
 </head>
 <body>
 <div>
-   <canvas id="canvas"></canvas>
-   <div class="cent-box">
+    <canvas id="canvas"></canvas>
+    <div class="cent-box">
         <div class="cent-box-header">
             <h1 class="main-title"></h1>
             <h2 class="sub-title">与世界分享你编的知识、经验和见解</h2>
@@ -20,7 +29,7 @@
                 <div class="index-slide-nav">
                     <a id="signin_tab" href="#" class="active">登录</a>
                     <a id="signup_tab" href="#">注册</a>
-                    <div class="slide-bar"></div>               
+                    <div class="slide-bar"></div>
                 </div>
             </div>
 
@@ -38,16 +47,16 @@
                 </div>
                 <div class="group hide" id="signup">
                     <div class="group-ipt email">
-                        <input type="text" name="email" id="email" class="ipt" placeholder="邮箱">
+                        <input type="text" name="email" id="email2" class="ipt" placeholder="邮箱">
                     </div>
                     <div class="group-ipt name">
                         <input type="text" name="name" id="name" class="ipt" placeholder="姓名">
                     </div>
                     <div class="group-ipt password">
-                        <input type="password" name="password" id="password" class="ipt" placeholder="密码">
+                        <input type="password" name="password" id="password2" class="ipt" placeholder="密码">
                     </div>
                     <div class="group-ipt captcha">
-                        <input type="text" name="captcha" id="captcha" class="ipt" placeholder="验证码">
+                        <input type="text" name="captcha" id="captcha2" class="ipt" placeholder="验证码">
                     </div>
                 </div>
             </div>
@@ -88,8 +97,8 @@
     </div>
 </div>
 
-<script type="text/javascript" src='../resources/js/jquery-3.2.1.min.js'></script>
-<script type="text/javascript" src='../resources/js/canvas.js'></script>
-<script type="text/javascript" src='../resources/js/signin.js'></script>
+<script type="text/javascript" src='<%=request.getContextPath()%>/resources/js/jquery-3.2.1.min.js'></script>
+<script type="text/javascript" src='<%=request.getContextPath()%>/resources/js/canvas.js'></script>
+<script type="text/javascript" src='<%=request.getContextPath()%>/resources/js/signin.js'></script>
 </body>
 </html>
