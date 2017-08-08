@@ -9,6 +9,6 @@ public class HelloMVCController {
 
 	@RequestMapping("/index")
 	public String helloMVC() {
-		return "collectionLog";
+		return "signin";
 	}
 }

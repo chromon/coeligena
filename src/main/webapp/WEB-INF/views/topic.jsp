@@ -17,96 +17,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-paper.min.css" media="screen">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/custom.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/webui-popover/jquery.webui-popover.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/jquery-labelauty/jquery-labelauty.css">
+    <!-- css -->
+    <%@include file="includeCss.jsp"%>
 </head>
 <body>
+
 <!-- navbar -->
-<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!-- navbar title -->
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand custom-title">编乎</a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <!-- navbar component auto collapse -->
-        <div class="navbar-collapse collapse" id="navbar-main">
-            <!-- navbar left -->
-            <ul class="nav navbar-nav custom-navbar">
-                <li>
-                    <a href="#">首页</a>
-                </li>
-                <li>
-                    <a href="#">话题</a>
-                </li>
-                <li>
-                    <a href="#">发现</a>
-                </li>
-                <li>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-sm" size="40" placeholder="搜索你感兴趣的内容...">
-                            <span class="input-group-btn">
-                                    <button class="btn btn-primary btn-sm" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                        </div>
-                    </form>
-                </li>
-                <li>
-                    <form class="navbar-form navbar-left" >
-                        <div class="input-group">
-                            <button class="btn btn-primary btn-sm custom-ask-btn" data-toggle="modal" data-target="#askModal">提问</button>
-                        </div>
-                    </form>
-                </li>
-            </ul>
-
-            <!-- navbar right -->
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="custom-nav-icon" href="#">
-                        <i class="fa fa-bell"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="custom-nav-icon" href="#">
-                        <i class="fa fa-comments"></i>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle custom-user-info" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <img class="custom-avatar30" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="#"><i class="fa fa-user-o custom-menu-mright "></i> 我的主页</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-envelope-o custom-menu-mright"></i> 私信</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cog custom-menu-mright"></i> 设置</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-power-off custom-menu-mright"></i> 退出</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul><!-- end navbar right -->
-        </div>
-    </div>
-</div><!-- navbar -->
+<%@include file="navbar.jsp"%>
 
 <!-- main content -->
 <div class="container">
@@ -148,7 +65,7 @@
 
                             <!-- votebar -->
                             <div class="custom-item-vote custom-margin-top5">
-                                <a class="custom-item-vote-count js-expand js-vote-count" href="javascript:;">100</a>
+                                <a class="custom-item-vote-count js-expand js-vote-count" href="">100</a>
                             </div>
                         </div>
                         <div class="media-body">
@@ -343,165 +260,10 @@
     </div>
 </div>
 
-<!-- user info hover card -->
-<div class="media custom-display-none" id="user_info">
-    <div class="media-left">
-        <a href="#">
-            <img class="media-object custom-avatar68" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
-        </a>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading">Media heading</h4>
-        <div>
-            啊咧，一句话介绍不清楚的喵。
-            啊咧，一句话介绍不清楚的喵。
-        </div>
-    </div>
-    <div class="custom-hover-card">
-        <div class="custom-hover-card-item">
-            <i class="fa fa-briefcase"></i>
-            <span class="custom-margin-left10">Microsoft</span>
-            <div class="custom-hover-card-divider"></div> Developer
-        </div>
-        <div class="custom-hover-card-item">
-            <i class="fa fa-users"></i>
-            <span class="custom-margin-left10">AAA、BBB、CCC</span>
-            也关注了他
-        </div>
-    </div>
-    <div class="custom-number-board">
-        <a href="#" class="custom-button custom-number-board-item custom-button-plain">
-            <div class="custom-number-board-name">回答</div>
-            <div class="custom-number-board-value">125</div>
-        </a>
-        <a href="#" class="custom-button custom-number-board-item custom-button-plain">
-            <div class="custom-number-board-name">回答</div>
-            <div class="custom-number-board-value">125</div>
-        </a>
-        <a href="#" class="custom-button custom-number-board-item custom-button-plain">
-            <div class="custom-number-board-name">回答</div>
-            <div class="custom-number-board-value">125</div>
-        </a>
-    </div>
-    <div class="custom-hovercard-btn">
-        <a href="#" class="btn btn-primary custom-margin-right30">
-            <i class="fa fa-plus"></i>
-            关注TA
-        </a>
-        <a href="#" class="btn btn-default">
-            <i class="fa fa-comments"></i>
-            发私信
-        </a>
-    </div>
-</div>
-<!-- end user info hover card -->
+<!-- modal -->
+<%@include file="modal.jsp"%>
 
-<!-- collection modal -->
-<div class="modal fade" id="collectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog custom-modal-size" role="document">
-        <div id="add_favorite" class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 id="modalAddLabel" class="modal-title">添加到收藏夹</h4>
-                <h4 id="modalCreateLabel" class="modal-title hidden">创建新收藏夹</h4>
-            </div>
-            <div class="modal-body">
-                <div id="favorite_list" class="custom-margin-left45">
-                    <input type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
-                    <input type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
-                    <input type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
-                </div>
-                <div id="create_favorite" class="hidden">
-                    <form>
-                        <input type="text" class="form-control custom-margin-bottom10" placeholder="收藏标题">
-                        <textarea class="form-control custom-margin-bottom10" rows="3" id="textArea" placeholder="收藏描述（可选）"></textarea>
-                        <div class="custom-margin-bottom10">
-                            <input class="" type="radio" value="option1" checked="">
-                            公开 有其他人关注此收藏夹时不可设置为私密
-                        </div>
-                        <div class="custom-margin-bottom10">
-                            <input type="radio" value="option2" checked="">
-                            私密 只有你自己可以查看这个收藏夹
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div id="modalAddFooter" class="modal-footer">
-                <button type="button" class="btn btn-default custom-left" id="create_favorite_btn">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> 创建收藏夹
-                </button>
-                <button type="button" class="btn btn-primary">完成</button>
-            </div>
-            <div id="modalCreateFooter" class="modal-footer hidden">
-                <button type="button" class="btn btn-default" id="return_add_favorite">返回</button>
-                <button type="button" class="btn btn-primary">确认创建</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end collection modal -->
-
-<!-- report modal -->
-<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog custom-modal-size" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">举报</h4>
-            </div>
-            <div class="modal-body">
-                <div id="reportTree"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">举报</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end report modal -->
-
-<!-- back to top -->
-<div class="custom-backtotop" id="back_to_top">
-    <a class="custom-btn-action" href="javascript:;">
-        <div class="custom-arrow"></div>
-        <div class="custom-stick"></div>
-    </a>
-</div>
-<!-- end back to top -->
-
-<script type="text/javascript" src='<%=request.getContextPath()%>/resources/js/jquery-3.2.1.min.js'></script>
-<script type="text/javascript" src='<%=request.getContextPath()%>/resources/js/bootstrap.min.js'></script>
-<script type="text/javascript" src='<%=request.getContextPath()%>/resources/plugin/webui-popover/jquery.webui-popover.min.js'></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugin/jquery-labelauty/jquery-labelauty.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugin/bootstrap-treeview/bootstrap-treeview.min.js"></script>
-
-<script type="text/javascript">
-
-    // back to top
-    $(window).scroll(function (e) {
-        //若滚动条离顶部大于100元素
-        if($(window).scrollTop()>100)
-            $("#back_to_top").fadeIn(1000); // 以1秒的间隔渐显id=back_to_top的元素
-        else
-            $("#back_to_top").fadeOut(1000); // 以1秒的间隔渐隐id=back_to_top的元素
-    });
-    //点击回到顶部的元素
-    $("#back_to_top").click(function(e) {
-        //以0.3秒的间隔返回顶部
-        $('body,html').animate({scrollTop: 0}, 300);
-    });
-
-    // collapse item
-    $(".custom-collapse-item").hide();
-    $("#feed-item-1").hover(function () {
-        console.log('show');
-        $(".custom-collapse-item").show();
-    }, function () {
-        console.log('hide');
-        $(".custom-collapse-item").hide();
-    });
-</script>
+<!-- js -->
+<%@include file="includeJs.jsp"%>
 </body>
 </html>
