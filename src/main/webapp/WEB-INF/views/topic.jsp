@@ -47,18 +47,20 @@
             </div>
 
             <div class="custom-topic-content custom-story-item custom-card">
-                <div class="custom-margin-bottom20">
+                <div>
                     <a href="#">
                         <img class="custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="">
                     </a>
                     <a href="#" class="custom-topic-name">知乎</a>
 
                     <span class="custom-switcher custom-right">
-                            <a href="" class="custom-current">默认排序</a> |
-                            <a href="">时间排序</a>
-                        </span>
+                        <a href="" class="custom-current">默认排序</a> |
+                        <a href="">时间排序</a>
+                    </span>
                 </div>
+            </div>
 
+            <div class="custom-topic-content custom-story-item custom-card">
                 <ul class="media-list">
                     <li id="feed-item-1" class="media custom-padding-top10">
                         <div class="media-left media-top">

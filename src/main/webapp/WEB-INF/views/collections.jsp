@@ -38,7 +38,7 @@
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade active in" id="followedCollections">
                     <div class="custom-story-item custom-card">
-                        <a href="#">
+                        <a href="${pageContext.request.contextPath}/collection/123">
                             <h4 class="custom-media-heading">
                                 机器学习
                                 <span class="badge custom-badge">123 new</span>

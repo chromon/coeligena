@@ -43,7 +43,7 @@
                         添加评论
                     </a>
                     <span class="custom-bull">•</span>
-                    <a href="#" class="custom-meta-item">
+                    <a href="${pageContext.request.contextPath}/collection/123/log" class="custom-meta-item">
                         修改记录
                     </a>
                 </div>

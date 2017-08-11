@@ -25,13 +25,13 @@
             <!-- navbar left -->
             <ul class="nav navbar-nav custom-navbar">
                 <li>
-                    <a href="#">首页</a>
+                    <a href="${pageContext.request.contextPath}/index">首页</a>
                 </li>
                 <li>
-                    <a href="#">话题</a>
+                    <a href="${pageContext.request.contextPath}/explore">话题</a>
                 </li>
                 <li>
-                    <a href="#">发现</a>
+                    <a href="${pageContext.request.contextPath}/topic">发现</a>
                 </li>
                 <li>
                     <form class="navbar-form navbar-left" role="search">
@@ -72,17 +72,25 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="#"><i class="fa fa-user-o custom-menu-mright "></i> 我的主页</a>
+                            <a href="${pageContext.request.contextPath}/people/123">
+                                <i class="fa fa-user-o custom-menu-mright"></i> 我的主页
+                            </a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-envelope-o custom-menu-mright"></i> 私信</a>
+                            <a href="${pageContext.request.contextPath}/inbox">
+                                <i class="fa fa-envelope-o custom-menu-mright"></i> 私信
+                            </a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cog custom-menu-mright"></i> 设置</a>
+                            <a href="${pageContext.request.contextPath}/setting">
+                                <i class="fa fa-cog custom-menu-mright"></i> 设置
+                            </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-power-off custom-menu-mright"></i> 退出</a>
+                            <a href="#">
+                                <i class="fa fa-power-off custom-menu-mright"></i> 退出
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -278,7 +286,7 @@
                 <a href="" class="custom-footer-item">
                     <i class="fa fa-pencil"></i> 写新私信
                 </a>
-                <a href="" class="custom-right custom-footer-item">
+                <a href="${pageContext.request.contextPath}/inbox" class="custom-right custom-footer-item">
                     查看全部私信
                 </a>
             </div>

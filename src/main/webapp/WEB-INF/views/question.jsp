@@ -191,7 +191,7 @@
                             <a href="#" class="custom-meta-item">使用匿名身份</a>
                         </li>
                         <li>
-                            <a href="#" class="custom-meta-item">查看问题日志</a>
+                            <a href="${pageContext.request.contextPath}/question/123/log" class="custom-meta-item">查看问题日志</a>
                         </li>
                         <li>
                             <a href="#" class="custom-meta-item">关注问题</a>

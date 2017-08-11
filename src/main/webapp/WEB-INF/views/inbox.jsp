@@ -7,6 +7,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +68,7 @@
                                 6月13日 21:18
                             </a>
                             <span class="custom-right">
-                                <a href="#" class="custom-meta-item">
+                                <a href="/inbox/123" class="custom-meta-item">
                                     查看对话
                                 </a>
 

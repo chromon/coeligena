@@ -15,8 +15,11 @@
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon">
 
+    <link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
+    
     <!-- css -->
     <%@include file="WEB-INF/views/includeCss.jsp"%>
 </head>
@@ -103,7 +106,7 @@
                         </div>
 
                         <!-- question title -->
-                        <a href="#">
+                        <a href="${pageContext.request.contextPath}/question/123">
                             <h4 class="media-heading custom-media-heading">
                                 当你迷茫的时候，你应该做些什么？
                             </h4>
@@ -345,14 +348,14 @@
         <div class="col-sm-3">
 
             <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
-                <a href="#" class="list-group-item custom-group-item">
+                <a href="${pageContext.request.contextPath}/collections" class="list-group-item custom-group-item">
                     <span class="badge custom-badge">8</span>
                     <i class="fa fa-star"></i> 我的收藏
                 </a>
-                <a href="#" class="list-group-item custom-group-item">
+                <a href="${pageContext.request.contextPath}/people/123/following/questions" class="list-group-item custom-group-item">
                     <i class="fa fa-check-circle-o"></i> 我的关注
                 </a>
-                <a href="#" class="list-group-item custom-group-item">
+                <a href="${pageContext.request.contextPath}/question/invited" class="list-group-item custom-group-item">
                     <span class="badge custom-badge">13</span>
                     <i class="fa fa-user-plus"></i> 我的邀请
                 </a>
