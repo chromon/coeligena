@@ -17,97 +17,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-paper.min.css" media="screen">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/custom.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/webui-popover/jquery.webui-popover.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/jquery-labelauty/jquery-labelauty.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/summernote/summernote.css">
+    <!-- css -->
+    <%@include file="includeCss.jsp"%>
 </head>
 <body>
+
 <!-- navbar -->
-<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!-- navbar title -->
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand custom-title">编乎</a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <!-- navbar component auto collapse -->
-        <div class="navbar-collapse collapse" id="navbar-main">
-            <!-- navbar left -->
-            <ul class="nav navbar-nav custom-navbar">
-                <li>
-                    <a href="#">首页</a>
-                </li>
-                <li>
-                    <a href="#">话题</a>
-                </li>
-                <li>
-                    <a href="#">发现</a>
-                </li>
-                <li>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-sm" size="40" placeholder="搜索你感兴趣的内容...">
-                            <span class="input-group-btn">
-                                    <button class="btn btn-primary btn-sm" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                        </div>
-                    </form>
-                </li>
-                <li>
-                    <form class="navbar-form navbar-left" >
-                        <div class="input-group">
-                            <button class="btn btn-primary btn-sm custom-ask-btn" data-toggle="modal" data-target="#askModal">提问</button>
-                        </div>
-                    </form>
-                </li>
-            </ul>
-
-            <!-- navbar right -->
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="custom-nav-icon" href="#">
-                        <i class="fa fa-bell"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="custom-nav-icon" href="#">
-                        <i class="fa fa-comments"></i>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle custom-user-info" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <img class="custom-avatar30" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="#"><i class="fa fa-user-o custom-menu-mright "></i> 我的主页</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-envelope-o custom-menu-mright"></i> 私信</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cog custom-menu-mright"></i> 设置</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-power-off custom-menu-mright"></i> 退出</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul><!-- end navbar right -->
-        </div>
-    </div>
-</div><!-- navbar -->
+<%@include file="navbar.jsp"%>
 
 <!-- main content -->
 <div class="container">

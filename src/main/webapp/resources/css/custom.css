@@ -467,7 +467,7 @@ a:hover {
 .custom-backtotop {
     position: fixed;
     bottom: 113px;
-    left: 97%;
+    right: 50px;
     z-index: 19;
     /*margin-left: 310px;*/
 }
@@ -955,4 +955,25 @@ ins {
     font-weight: 500;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.custom-notification-item {
+    border-top: 1px solid #eee;
+}
+
+.custom-notification-content {
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #262626;
+    border-bottom: 1px dashed #ebeef5;
+}
+
+.custom-notification-more {
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #262626;
 }

@@ -15,7 +15,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugin/jquery-labelauty/jquery-labelauty.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugin/bootstrap-treeview/bootstrap-treeview.min.js"></script>
 
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/common.js"></script>
-
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugin/summernote/summernote.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugin/summernote/lang/summernote-zh-CN.js"></script>
+
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/common.js"></script>

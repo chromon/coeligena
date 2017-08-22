@@ -131,3 +131,26 @@ $("#feed-item-1").hover(function () {
     console.log('hide');
     $(".custom-collapse-item").hide();
 });
+
+// editor
+$('#summernote').summernote({
+    height: 200,                 // set editor height
+    lang: 'zh-CN',
+    // airMode: true,
+    minHeight: null,             // set minimum height of editor
+    maxHeight: null,             // set maximum height of editor
+    focus: false,
+    codemirror: { // codemirror options
+        theme: 'monokai'
+    },
+    toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        // ['fontname', ['fontname']],
+        // ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview']]
+    ]
+});
