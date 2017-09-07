@@ -235,7 +235,7 @@ CREATE TABLE IF NOT EXISTS tag (
  * 问题日志表 
  *
  ** event包括 添加了问题，添加了话题，编辑了问题，编辑了补充说明，移除了补充说明，移除了话题等*/
-CREATE TABLE IF NOT EXISTS qlog (
+CREATE TABLE IF NOT EXISTS question_log (
     id          INT(11)     NOT NULL AUTO_INCREMENT, /* 日志ID（唯一标识） */
     question_id INT(11)     NOT NULL, /* 问题ID（唯一标识） */
     user_id     INT(11)     NOT NULL, /* 用户ID（唯一标识） */

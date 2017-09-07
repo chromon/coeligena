@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Ellery
@@ -27,53 +28,74 @@
         <div class="cont-main clearfix">
             <div class="index-tab">
                 <div class="index-slide-nav">
-                    <a id="signin_tab" href="#" class="active">登录</a>
-                    <a id="signup_tab" href="#">注册</a>
+                    <a id="signIn_tab" href="#" class="active">登录</a>
+                    <a id="signUp_tab" href="#">注册</a>
                     <div class="slide-bar"></div>
                 </div>
             </div>
 
-            <div class="form">
-                <div class="group" id="signin">
+            <div class="form" id="signInForm">
+                <div class="group">
+                    <div class="group-ipt account">
+                        <input type="text" name="account" id="account" class="ipt" placeholder="手机号或邮箱">
+                    </div>
+                    <div class="group-ipt password">
+                        <input type="password" name="password" id="signIn_password" class="ipt" placeholder="密码">
+                    </div>
+                    <div class="group-ipt captcha hide">
+                        <input type="text" name="captcha" id="signIn_captcha" class="ipt" placeholder="验证码">
+                    </div>
+                </div>
+
+                <div class="button">
+                    <button type="submit" class="_btn">登录</button>
+                </div>
+
+                <div class="remember clearfix">
+                    <label class="remember-me">
+                        <span class="icon">
+                            <span class="selected"></span>
+                        </span>
+                        <input type="checkbox" name="remember-me" id="signIn_RememberMe" class="remember-me-check" checked>记住我</label>
+                    </label>
+                    <label class="forgot-password">
+                        <a href="#">出现问题？</a>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form hide" id="signUpForm">
+                <div class="group">
+                    <div class="group-ipt fullName">
+                        <input type="text" name="fullName" id="fullName" class="ipt" placeholder="姓名">
+                    </div>
                     <div class="group-ipt email">
                         <input type="text" name="email" id="email" class="ipt" placeholder="邮箱">
                     </div>
                     <div class="group-ipt password">
-                        <input type="password" name="password" id="password" class="ipt" placeholder="密码">
+                        <input type="password" name="password" id="signUp_password" class="ipt" placeholder="密码（不少于6位）">
                     </div>
-                    <div class="group-ipt captcha">
-                        <input type="text" name="captcha" id="captcha" class="ipt" placeholder="验证码">
-                    </div>
-                </div>
-                <div class="group hide" id="signup">
-                    <div class="group-ipt email">
-                        <input type="text" name="email" id="email2" class="ipt" placeholder="邮箱">
-                    </div>
-                    <div class="group-ipt name">
-                        <input type="text" name="name" id="name" class="ipt" placeholder="姓名">
-                    </div>
-                    <div class="group-ipt password">
-                        <input type="password" name="password" id="password2" class="ipt" placeholder="密码">
-                    </div>
-                    <div class="group-ipt captcha">
-                        <input type="text" name="captcha" id="captcha2" class="ipt" placeholder="验证码">
+                    <div class="group-ipt captcha hide">
+                        <input type="text" name="captcha" id="signUp_captcha" class="ipt" placeholder="验证码">
                     </div>
                 </div>
-            </div>
 
-            <div class="button">
-                <button type="submit" class="login-btn register-btn" id="_btn">登录</button>
-            </div>
+                <div class="button">
+                    <button type="submit" class="_btn">注册</button>
+                </div>
 
-            <div class="remember clearfix">
-                <label class="remember-me">
-                    <span class="icon">
-                        <span class="selected"></span>
-                    </span>
-                    <input type="checkbox" name="remember-me" id="remember-me" class="remember-mecheck" checked>记住我</label>
-                <label class="forgot-password">
-                    <a href="#">出现问题？</a>
-                </label>
+                <div class="remember clearfix">
+                    <label class="remember-me">
+                        <span class="icon">
+                            <span class="selected"></span>
+                        </span>
+                        <input type="checkbox" name="remember-me" id="signUp_RememberMe" class="remember-me-check" checked>记住我</label>
+                    </label>
+                    <label class="forgot-password">
+                        <a href="#">出现问题？</a>
+                    </label>
+                </div>
+
             </div>
         </div>
     </div>
