@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * index controller
  *
- * @author Ellery
  * @version 0.1
  *
  * Created by Ellery on 2017/8/10.

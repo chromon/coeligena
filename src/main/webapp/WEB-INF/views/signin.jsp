@@ -56,7 +56,7 @@
                         <span class="icon">
                             <span class="selected"></span>
                         </span>
-                        <input type="checkbox" name="remember-me" id="signIn_RememberMe" class="remember-me-check" checked>记住我</label>
+                        <input type="checkbox" name="remember-me" id="signIn_RememberMe" class="remember-me-check" checked>记住我
                     </label>
                     <label class="forgot-password">
                         <a href="#">出现问题？</a>
@@ -89,7 +89,7 @@
                         <span class="icon">
                             <span class="selected"></span>
                         </span>
-                        <input type="checkbox" name="remember-me" id="signUp_RememberMe" class="remember-me-check" checked>记住我</label>
+                        <input type="checkbox" name="remember-me" id="signUp_RememberMe" class="remember-me-check" checked>记住我
                     </label>
                     <label class="forgot-password">
                         <a href="#">出现问题？</a>
