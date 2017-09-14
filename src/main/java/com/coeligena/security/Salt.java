@@ -10,7 +10,7 @@ import java.security.SecureRandom;
  *
  * Created by Ellery on 2017/9/12.
  */
-@Component("salt")
+@Component
 public class Salt {
 
     protected String getSalt() {

@@ -14,7 +14,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 public class SaltTest extends UnitTestBase {
 
     public SaltTest() {
-        super("classpath:*:/WEB-INF/configs/root-context.xml");
+        super("src/main/webapp/WEB-INF/configs/application-context.xml");
     }
 
     @Test

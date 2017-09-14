@@ -19,10 +19,10 @@
     <!-- 启用注解 -->
     <context:annotation-config/>
 
-    <!-- 为 spring 容器中配置了@aspectj 切面的 bean 自动创建代理 -->
+    <!-- 为 spring 容器中配置了 @aspectj 切面的 bean 自动创建代理 -->
     <aop:aspectj-autoproxy/>
 
-	<!-- DispatcherServlet 上下文只搜索其他 bean 如@service，忽略  @controller 注解的内容 -->
+	<!-- DispatcherServlet 上下文只搜索其他 bean 如 @service，忽略 @controller 注解的内容 -->
     <context:component-scan base-package="com.coeligena">
     	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>

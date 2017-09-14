@@ -3,7 +3,7 @@ package com.coeligena.base;
 import org.junit.After;
 import org.junit.Before;
 import org.springframework.beans.BeansException;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.util.StringUtils;
 
 /**
@@ -13,25 +13,25 @@ import org.springframework.util.StringUtils;
  */
 public class UnitTestBase {
 
-    private ClassPathXmlApplicationContext context;
+    private FileSystemXmlApplicationContext context;
 
-    private String springXmlPath;
+    private String springConfigPath;
 
     public UnitTestBase() {}
 
     public UnitTestBase(String springXmlPath) {
-        this.springXmlPath = springXmlPath;
+        this.springConfigPath = springXmlPath;
     }
 
     @Before
     public void before() {
         // 判断 spring 配置文件路径
-        if (StringUtils.isEmpty(springXmlPath)) {
-            springXmlPath = "classpath:*:/WEB-INF/configs/*-context.xml";
+        if (StringUtils.isEmpty(springConfigPath)) {
+            springConfigPath = "src/main/webapp/WEB-INF/configs/*-context.xml";
         }
         try {
             // 加载配置文件，创建文件上下文
-            context = new ClassPathXmlApplicationContext(springXmlPath);
+            context = new FileSystemXmlApplicationContext(springConfigPath);
             context.start();
         } catch (BeansException e) {
             e.printStackTrace();
