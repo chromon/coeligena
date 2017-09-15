@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
 /**
- * 密码加密盐单元测试测试
+ * 密码加密盐单元测试
  *
  * Created by Ellery on 2017/9/12.
  */

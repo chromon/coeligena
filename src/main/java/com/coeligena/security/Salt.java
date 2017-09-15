@@ -12,7 +12,7 @@ import java.security.SecureRandom;
  * Created by Ellery on 2017/9/12.
  */
 @Component
-class Salt {
+public class Salt {
 
     /**
      * 随机数种子偏移量
@@ -34,7 +34,7 @@ class Salt {
      *
      * @return 密码加密盐字节数组
      */
-    byte[] generateSalt() {
+    private byte[] generateSalt() {
         byte[] salt = new byte[SALT_BYTE_SIZE];
 
         SecureRandom secureRandom;
@@ -54,42 +54,8 @@ class Salt {
      *
      * @return 密码加密盐字符串
      */
-    String getSalt() {
-
-        return toHex(this.generateSalt());
-    }
-
-    /**
-     * 十六进制字符串转换为字节数组
-     *
-     * @param hex 十六进制字符串
-     * @return 十六进制字符串解码成的字节数组
-     */
-    private static byte[] fromHex(String hex) {
-        byte[] binary = new byte[hex.length() / 2];
-
-        for(int i = 0; i < binary.length; i++) {
-            binary[i] = (byte)Integer.parseInt(hex.substring(2*i, 2*i+2), 16);
-        }
-
-        return binary;
-    }
-
-    /**
-     * 字节数组转换为十六进制字符串
-     *
-     * @param array 待转换的字节数组
-     * @return 字节数组编码成的十六进制字符串
-     */
-    private static String toHex(byte[] array) {
-        BigInteger bi = new BigInteger(1, array);
-        String hex = bi.toString(16);
-        int paddingLength = (array.length * 2) - hex.length();
-
-        if(paddingLength > 0) {
-            return String.format("%0" + paddingLength + "d", 0) + hex;
-        }
-        return hex;
+    byte[] getSalt() {
+        return this.generateSalt();
     }
 
 }

@@ -19,8 +19,8 @@ public class UnitTestBase {
 
     public UnitTestBase() {}
 
-    public UnitTestBase(String springXmlPath) {
-        this.springConfigPath = springXmlPath;
+    public UnitTestBase(String springConfigPath) {
+        this.springConfigPath = springConfigPath;
     }
 
     @Before
