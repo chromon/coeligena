@@ -2,13 +2,13 @@ package com.coeligena.security;
 
 import org.springframework.stereotype.Component;
 
-import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 /**
  * 生成密码加密盐字符串
  *
+ * <p>
  * Created by Ellery on 2017/9/12.
  */
 @Component

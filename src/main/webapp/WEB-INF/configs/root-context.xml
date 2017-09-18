@@ -30,6 +30,41 @@
     <!-- 静态资源处理，js、css、images -->
     <mvc:resources location="/resources/" mapping="/resources/**"/>
 
+    <!-- 配置 ViewResolver，可以用多个 ViewResolver。使用 order 属性排序。InternalResourceViewResolver 放在最后。 -->
+    <!--<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
+        <!--<property name="order" value="1" />-->
+        <!--<property name="mediaTypes">-->
+            <!--<map>-->
+                <!--<entry key="json" value="application/json" />-->
+                <!--<entry key="xml" value="application/xml" />-->
+                <!--<entry key="htm" value="text/html" />-->
+            <!--</map>-->
+        <!--</property>-->
+
+        <!--<property name="defaultViews">-->
+            <!--<list>-->
+                <!--&lt;!&ndash; JSON View &ndash;&gt;-->
+                <!--<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="ignoreAcceptHeader" value="true" />-->
+    <!--</bean>-->
+
+    <bean id="contentNegotiationManager"  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="true"/>
+        <property name="ignoreAcceptHeader" value="true"/>
+        <property name="useJaf" value="false"/>
+        <property name="defaultContentType" value="text/html"/>
+
+        <property name="mediaTypes">
+            <map>
+                <entry key="html" value="text/html"/>
+                <entry key="json" value="application/json"/>
+                <entry key="xml" value="application/xml"/>
+            </map>
+        </property>
+    </bean>
+
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 		<property name="prefix" value="/WEB-INF/views/"/>

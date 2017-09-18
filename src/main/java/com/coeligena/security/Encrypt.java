@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * 使用加密盐对密码进行加密
  *
+ * <p>
  * Created by Ellery on 2017/9/14.
  */
 @Component

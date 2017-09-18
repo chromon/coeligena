@@ -36,6 +36,7 @@
         <spring.version>4.3.9.RELEASE</spring.version>
         <hibernate.version>5.2.10.Final</hibernate.version>
         <mysql.version>6.0.6</mysql.version>
+        <jackson.version>2.9.1</jackson.version>
     </properties>
 
     <!-- 继承自该项目的所有子项目的默认依赖信息。
@@ -148,6 +149,13 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+
+        <!-- jackson dependency -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 

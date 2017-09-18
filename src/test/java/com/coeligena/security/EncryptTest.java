@@ -8,6 +8,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 /**
  * 密码加密单元
  *
+ * <p>
  * Created by Ellery on 2017/9/15.
  */
 @RunWith(BlockJUnit4ClassRunner.class)
