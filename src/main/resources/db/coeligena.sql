@@ -3,10 +3,10 @@ CREATE DATABASE coeligena;
 USE coeligena;
 
 /*
- * 用户表
+ * 验证用户表
  */
 CREATE TABLE IF NOT EXISTS auto_user (
-    id              INT UNSIGNED        NOT NULL AUTO_INCREMENT, /* 用户 ID（唯一标识） */
+    id              INT UNSIGNED        NOT NULL AUTO_INCREMENT, /* 验证用户 ID（唯一标识） */
     email           VARCHAR(128)        NOT NULL, /* 邮箱*/
     phone           VARCHAR(16)         NULL, /* 手机 */
     password        VARCHAR(256)        NOT NULL, /* 密码 */
@@ -38,12 +38,13 @@ CREATE TABLE IF NOT EXISTS role (
 );
 
 /*
- * 用户与角色对应表
+ * 验证用户与角色对应表
  */
 CREATE TABLE IF NOT EXISTS role_auth_user (
+    id           INT UNSIGNED NOT NULL AUTO_INCREMENT,
     role_id      INT UNSIGNED NOT NULL DEFAULT '0', /* 角色 ID（唯一标识） */
-    auth_user_id INT UNSIGNED NOT NULL DEFAULT '0', /* 用户 ID（唯一标识） */
-    PRIMARY KEY (role_id, auth_user_id)
+    auth_user_id INT UNSIGNED NOT NULL DEFAULT '0', /* 验证用户 ID（唯一标识） */
+    PRIMARY KEY (id)
 );
 
 /*
@@ -67,9 +68,10 @@ CREATE TABLE IF NOT EXISTS permission (
  * 角色权限对应表
  */
 CREATE TABLE IF NOT EXISTS role_permission (
+    id            INT UNSIGNED NOT NULL AUTO_INCREMENT,
     role_id       INT UNSIGNED NOT NULL DEFAULT '0', /* 角色 ID（唯一标识） */
     permission_id INT UNSIGNED NOT NULL DEFAULT '0', /* 权限 ID（唯一标识） */
-    PRIMARY KEY (role_id, permission_id)
+    PRIMARY KEY (id)
 );
 
 
