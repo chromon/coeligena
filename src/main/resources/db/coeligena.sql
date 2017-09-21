@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS user (
     answer_num      INT(11)     NOT NULL DEFAULT '0', /* 回答数 */
     collect_num     INT(11)     NOT NULL DEFAULT '0', /* 收藏夹数 */
     personality_url VARCHAR(64)          DEFAULT NULL, /* 个性网址 */
-    is_emailactive  INT(11)     NOT NULL DEFAULT '0', /* 邮箱是否激活 0：否， 1：是 */
+    is_email_active  INT(11)     NOT NULL DEFAULT '0', /* 邮箱是否激活 0：否， 1：是 */
     auth_user_id    INT         NOT NULL DEFAULT '0', /* 用户ID */
     PRIMARY KEY (id),
     INDEX (auth_user_id)
@@ -120,10 +120,10 @@ CREATE TABLE IF NOT EXISTS user (
 CREATE TABLE IF NOT EXISTS relationship (
     id          INT(11) NOT NULL AUTO_INCREMENT, /* 关系ID（唯一标识） */
     user_id     INT(11) NOT NULL, /* 用户ID */
-    followee_id INT(11) NOT NULL, /* 当前用户关注的人  */
+    followed_id INT(11) NOT NULL, /* 当前用户关注的人  */
     PRIMARY KEY (id),
     INDEX (user_id),
-    INDEX (followee_id)
+    INDEX (followed_id)
 );
 
 /* 
