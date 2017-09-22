@@ -132,12 +132,12 @@ CREATE TABLE IF NOT EXISTS relationship (
 CREATE TABLE IF NOT EXISTS question (
     id               INT(11)      NOT NULL AUTO_INCREMENT, /* 问题ID（唯一标识） */
     question_title   VARCHAR(256) NOT NULL, /* 问题标题 */
-    question_content TEXT                  DEFAULT NULL, /* 问题内容 */
-    answers_num      INT(11)      NOT NULL DEFAULT '0', /* 回答数 */
-    followers_num    INT(11)      NOT NULL DEFAULT '0', /* 关注人数 */
-    last_updated     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 更新时间 */
+    question_content TEXT         NOT NULL DEFAULT NULL, /* 问题内容 */
+    answer_num       INT(11)      NOT NULL DEFAULT '0', /* 答案数 */
+    follower_num     INT(11)      NOT NULL DEFAULT '0', /* 关注人数 */
+    last_update      TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 更新时间 */
     scan_num         INT(11)      NOT NULL DEFAULT '0', /* 浏览数 */
-    reply_num        INT(11)      NOT NULL, /* 评论数 */
+    comment_num      INT(11)      NOT NULL, /* 评论数 */
     is_anonymous     INT(11)      NOT NULL DEFAULT '0', /* 是否匿名 1：是， 0：否 */
     user_id          INT(11)      NOT NULL, /* 提问用户 */
     PRIMARY KEY (id),
@@ -148,12 +148,12 @@ CREATE TABLE IF NOT EXISTS question (
  * 草稿表
  */
 CREATE TABLE IF NOT EXISTS draft (
-    id            INT(11)      NOT NULL AUTO_INCREMENT, /* 草稿问题ID（唯一标识） */
-    draft_title   VARCHAR(256) NOT NULL, /* 草稿问题标题 */
-    draft_content TEXT         NOT NULL, /* 草稿问题内容 */
-    last_updated  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 草稿更新时间 */
+    id            INT(11)      NOT NULL AUTO_INCREMENT, /* 草稿ID（唯一标识） */
+    question_id   INT(11)      NOT NULL, /* 草稿问题 id */
+    draft_content MEDIUMTEXT   NOT NULL, /* 草稿内容 */
+    last_update   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 草稿更新时间 */
     is_anonymous  INT(11)      NOT NULL DEFAULT '0', /* 草稿是否匿名 1：是， 0：否 */
-    user_id       INT(11)      NOT NULL, /* 草稿提问用户 */
+    user_id       INT(11)      NOT NULL, /* 草稿回答用户 */
     PRIMARY KEY (id),
     INDEX (user_id)
 );
