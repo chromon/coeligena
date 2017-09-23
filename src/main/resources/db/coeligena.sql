@@ -91,11 +91,11 @@ CREATE TABLE IF NOT EXISTS user (
     major           VARCHAR(128)         DEFAULT NULL, /* 专业 */
     description     VARCHAR(256)         DEFAULT NULL, /* 个人描述 */
     autograph       VARCHAR(128)         DEFAULT NULL, /* 签名 */
-    approve_num     INT(11)     NOT NULL DEFAULT '0', /* 获得赞同数 */
-    thank_num       INT(11)     NOT NULL DEFAULT '0', /* 获得感谢数 */
-    question_num    INT(11)     NOT NULL DEFAULT '0', /* 提问数 */
-    answer_num      INT(11)     NOT NULL DEFAULT '0', /* 回答数 */
-    collect_num     INT(11)     NOT NULL DEFAULT '0', /* 收藏夹数 */
+    approve_count     INT(11)     NOT NULL DEFAULT '0', /* 获得赞同数 */
+    thank_count      INT(11)     NOT NULL DEFAULT '0', /* 获得感谢数 */
+    question_count    INT(11)     NOT NULL DEFAULT '0', /* 提问数 */
+    answer_count      INT(11)     NOT NULL DEFAULT '0', /* 回答数 */
+    collect_count     INT(11)     NOT NULL DEFAULT '0', /* 收藏夹数 */
     personality_url VARCHAR(64)          DEFAULT NULL, /* 个性网址 */
     is_email_active  INT(11)     NOT NULL DEFAULT '0', /* 邮箱是否激活 0：否， 1：是 */
     auth_user_id    INT         NOT NULL DEFAULT '0', /* 用户ID */
@@ -165,8 +165,8 @@ CREATE TABLE IF NOT EXISTS feeds (
     id            INT(11)     NOT NULL AUTO_INCREMENT, /* 动态ID */
     feeds_id      INT(11)     NOT NULL, /* 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同答案和回答问题对应的是答案ID */
     feeds_type    VARCHAR(64) NOT NULL, /* 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题*/
-    p_feeds_id    INT(11)     NOT NULL DEFAULT '0', /* 父动态类型所对应的ID，赞同答案和回答问题对应的是问题ID */
-    p_feeds_type  VARCHAR(64)          DEFAULT NULL, /* 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题*/
+    parent_feeds_id    INT(11)     NOT NULL DEFAULT '0', /* 父动态类型所对应的ID，赞同答案和回答问题对应的是问题ID */
+    parent_feeds_type  VARCHAR(64)          DEFAULT NULL, /* 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题*/
     feeds_time    TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 动态时间 */
     feeds_user_id INT(11)     NOT NULL, /* 动态发起人 */
     PRIMARY KEY (id),
@@ -188,13 +188,13 @@ CREATE TABLE IF NOT EXISTS follow (
 /* 
  * 答案表 
  */
-CREATE TABLE IF NOT EXISTS answers (
+CREATE TABLE IF NOT EXISTS answer (
     id            INT(11)          NOT NULL AUTO_INCREMENT, /* 答案ID（唯一标识） */
     question_id   INT(11) UNSIGNED NOT NULL, /* 问题ID（唯一标识） */
     author_id     INT(10) UNSIGNED NOT NULL, /* 作者ID（唯一标识） */
-    answers       TEXT             NOT NULL, /* 答案 */
-    answer_date   TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 回答或更新时间 */
-    reply_num     INT(11)          NOT NULL, /* 评论数 */
+    answer_content MEDIUMTEXT      NOT NULL, /* 答案 */
+    answer_time   TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 回答或更新时间 */
+    comment_count     INT(11)          NOT NULL, /* 评论数 */
     is_top_answer INT(11)          NOT NULL DEFAULT '0', /* 是否是精华答案 */
     is_anonymous  INT(11)          NOT NULL DEFAULT '0', /* 是否匿名 1：是， 0：否 */
     PRIMARY KEY (id),

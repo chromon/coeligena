@@ -23,19 +23,19 @@ public class Question {
     private String questionContent;
 
     // 答案数
-    private int answerNum;
+    private int answerCount;
 
     // 关注人数
-    private int followerNum;
+    private int followerCount;
 
     // 修改时间
     private Timestamp lastUpdate;
 
     // 浏览数
-    private int scanNum;
+    private int scanCount;
 
     // 评论数
-    private int commentNum;
+    private int commentCount;
 
     // 是否匿名 1：是， 0：否
     private int isAnonymous;
@@ -100,34 +100,34 @@ public class Question {
      * 获取答案数
      * @return 答案数
      */
-    @Column(name = "answer_num", nullable = false)
-    public int getAnswerNum() {
-        return answerNum;
+    @Column(name = "answer_count", nullable = false)
+    public int getAnswerCount() {
+        return answerCount;
     }
 
     /**
      * 设置答案数
-     * @param answerNum 答案数
+     * @param answerCount 答案数
      */
-    public void setAnswerNum(int answerNum) {
-        this.answerNum = answerNum;
+    public void setAnswerCount(int answerCount) {
+        this.answerCount = answerCount;
     }
 
     /**
      * 获取关注人数
      * @return 关注人数
      */
-    @Column(name = "follower_num", nullable = false)
-    public int getFollowerNum() {
-        return followerNum;
+    @Column(name = "follower_count", nullable = false)
+    public int getFollowerCount() {
+        return followerCount;
     }
 
     /**
      * 设置关注人数
-     * @param followerNum 关注人数
+     * @param followerCount 关注人数
      */
-    public void setFollowerNum(int followerNum) {
-        this.followerNum = followerNum;
+    public void setFollowerCount(int followerCount) {
+        this.followerCount = followerCount;
     }
 
     /**
@@ -151,34 +151,34 @@ public class Question {
      * 获取浏览数
      * @return 浏览数
      */
-    @Column(name = "scan_num", nullable = false)
-    public int getScanNum() {
-        return scanNum;
+    @Column(name = "scan_count", nullable = false)
+    public int getScanCount() {
+        return scanCount;
     }
 
     /**
      * 设置浏览数
-     * @param scanNum 浏览数
+     * @param scanCount 浏览数
      */
-    public void setScanNum(int scanNum) {
-        this.scanNum = scanNum;
+    public void setScanCount(int scanCount) {
+        this.scanCount = scanCount;
     }
 
     /**
      * 获取评论数
      * @return 评论数
      */
-    @Column(name = "comment_num", nullable = false)
-    public int getCommentNum() {
-        return commentNum;
+    @Column(name = "comment_count", nullable = false)
+    public int getCommentCount() {
+        return commentCount;
     }
 
     /**
      * 设置评论数
-     * @param commentNum 评论数
+     * @param commentCount 评论数
      */
-    public void setCommentNum(int commentNum) {
-        this.commentNum = commentNum;
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 
     /**

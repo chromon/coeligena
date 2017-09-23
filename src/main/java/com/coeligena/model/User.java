@@ -49,19 +49,19 @@ public class User {
     private String autograph;
 
     // 获得赞同数
-    private int approveNum;
+    private int approveCount;
 
     // 获得感谢数
-    private int thankNum;
+    private int thankCount;
 
     // 提问数
-    private int questionNum;
+    private int questionCount;
 
     // 回答数
-    private int answerNum;
+    private int answerCount;
 
     // 收藏夹数
-    private int collectNum;
+    private int collectCount;
 
     // 个性网址
     private String personalityURL;
@@ -282,85 +282,85 @@ public class User {
      * 获取赞同数
      * @return 赞同数
      */
-    @Column(name = "approve_num", nullable = false)
-    public int getApproveNum() {
-        return approveNum;
+    @Column(name = "approve_count", nullable = false)
+    public int getApproveCount() {
+        return approveCount;
     }
 
     /**
      * 设置赞同数
-     * @param approveNum 赞同数
+     * @param approveCount 赞同数
      */
-    public void setApproveNum(int approveNum) {
-        this.approveNum = approveNum;
+    public void setApproveCount(int approveCount) {
+        this.approveCount = approveCount;
     }
 
     /**
      * 获取获得的感谢数
      * @return  获得的感谢数
      */
-    @Column(name = "thank_num", nullable = false)
-    public int getThankNum() {
-        return thankNum;
+    @Column(name = "thank_count", nullable = false)
+    public int getThankCount() {
+        return thankCount;
     }
 
     /**
      * 设置获得的感谢数
-     * @param thankNum 获得的感谢数
+     * @param thankCount 获得的感谢数
      */
-    public void setThankNum(int thankNum) {
-        this.thankNum = thankNum;
+    public void setThankCount(int thankCount) {
+        this.thankCount = thankCount;
     }
 
     /**
      * 获取提问数
      * @return 提问数
      */
-    @Column(name = "question_num", nullable = false)
-    public int getQuestionNum() {
-        return questionNum;
+    @Column(name = "question_count", nullable = false)
+    public int getQuestionCount() {
+        return questionCount;
     }
 
     /**
      * 设置提问数
-     * @param questionNum 提问数
+     * @param questionCount 提问数
      */
-    public void setQuestionNum(int questionNum) {
-        this.questionNum = questionNum;
+    public void setQuestionCount(int questionCount) {
+        this.questionCount = questionCount;
     }
 
     /**
      * 获取回答数
      * @return 回答数
      */
-    @Column(name = "answer_num", nullable = false)
-    public int getAnswerNum() {
-        return answerNum;
+    @Column(name = "answer_count", nullable = false)
+    public int getAnswerCount() {
+        return answerCount;
     }
 
     /**
      * 设置回答数
-     * @param answerNum 回答数
+     * @param answerCount 回答数
      */
-    public void setAnswerNum(int answerNum) {
-        this.answerNum = answerNum;
+    public void setAnswerCount(int answerCount) {
+        this.answerCount = answerCount;
     }
 
     /**
      * 获取收藏夹数
      * @return 收藏夹数
      */
-    @Column(name = "collect_num", nullable = false)
-    public int getCollectNum() {
-        return collectNum;
+    @Column(name = "collect_count", nullable = false)
+    public int getCollectCount() {
+        return collectCount;
     }
 
     /**
      * 设置收藏夹数
-     * @param collectNum 收藏夹数
+     * @param collectCount 收藏夹数
      */
-    public void setCollectNum(int collectNum) {
-        this.collectNum = collectNum;
+    public void setCollectCount(int collectCount) {
+        this.collectCount = collectCount;
     }
 
     /**
