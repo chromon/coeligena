@@ -79,28 +79,46 @@ CREATE TABLE IF NOT EXISTS role_permission (
  * 用户信息表
  */
 CREATE TABLE IF NOT EXISTS user (
-    id              INT(11)     NOT NULL AUTO_INCREMENT, /* 用户ID（唯一标识） */
-    fullname        VARCHAR(64) NOT NULL, /* 全名 */
-    gender          INT(11)     NOT NULL DEFAULT '0', /* 性别  1:male , 2:female , 3: other */
-    avatar_path     VARCHAR(256)         DEFAULT NULL, /* 头像路径 */
-    location        VARCHAR(128)         DEFAULT NULL, /* 居住位置 */
-    business        VARCHAR(128)         DEFAULT NULL, /* 行业 */
-    employment      VARCHAR(128)         DEFAULT NULL, /* 公司或组织名称 */
-    position        VARCHAR(128)         DEFAULT NULL, /* 职位 */
-    education       VARCHAR(128)         DEFAULT NULL, /* 学校或教育机构 */
-    major           VARCHAR(128)         DEFAULT NULL, /* 专业 */
-    description     VARCHAR(256)         DEFAULT NULL, /* 个人描述 */
-    autograph       VARCHAR(128)         DEFAULT NULL, /* 签名 */
-    approve_count     INT(11)     NOT NULL DEFAULT '0', /* 获得赞同数 */
-    thank_count      INT(11)     NOT NULL DEFAULT '0', /* 获得感谢数 */
-    question_count    INT(11)     NOT NULL DEFAULT '0', /* 提问数 */
-    answer_count      INT(11)     NOT NULL DEFAULT '0', /* 回答数 */
-    collect_count     INT(11)     NOT NULL DEFAULT '0', /* 收藏夹数 */
-    personality_url VARCHAR(64)          DEFAULT NULL, /* 个性网址 */
-    is_email_active  INT(11)     NOT NULL DEFAULT '0', /* 邮箱是否激活 0：否， 1：是 */
-    auth_user_id    INT         NOT NULL DEFAULT '0', /* 用户ID */
+    id              INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 用户ID（唯一标识） */
+    fullname        VARCHAR(64)      NOT NULL, /* 全名 */
+    gender          INT(11)          NOT NULL DEFAULT '0', /* 性别  1:male , 2:female , 3: other */
+    avatar_path     VARCHAR(256)              DEFAULT NULL, /* 头像路径 */
+    location        VARCHAR(128)              DEFAULT NULL, /* 居住位置 */
+    business        VARCHAR(128)              DEFAULT NULL, /* 行业 */
+    employment      VARCHAR(128)              DEFAULT NULL, /* 公司或组织名称 */
+    position        VARCHAR(128)              DEFAULT NULL, /* 职位 */
+    education       VARCHAR(128)              DEFAULT NULL, /* 学校或教育机构 */
+    major           VARCHAR(128)              DEFAULT NULL, /* 专业 */
+    description     VARCHAR(256)              DEFAULT NULL, /* 个人描述 */
+    autograph       VARCHAR(128)              DEFAULT NULL, /* 签名 */
+    approval_count  INT(11)          NOT NULL DEFAULT '0', /* 获得赞同数 */
+    thank_count     INT(11)          NOT NULL DEFAULT '0', /* 获得感谢数 */
+    question_count  INT(11)          NOT NULL DEFAULT '0', /* 提问数 */
+    answer_count    INT(11)          NOT NULL DEFAULT '0', /* 回答数 */
+    collect_count   INT(11)          NOT NULL DEFAULT '0', /* 收藏夹数 */
+    personality_url VARCHAR(64)               DEFAULT NULL, /* 个性网址 */
+    is_email_active INT(11)          NOT NULL DEFAULT '0', /* 邮箱是否激活 0：否， 1：是 */
+    auth_user_id    INT              NOT NULL DEFAULT '0', /* 用户ID */
     PRIMARY KEY (id),
     INDEX (auth_user_id)
+);
+
+
+/*
+ * 账户激活数据表
+ */
+CREATE TABLE IF NOT EXISTS activation (
+    id               INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 账户激活数据 ID */
+    active_code      VARCHAR(32)      NOT NULL, /* 账户激活码 */
+    active_type_code VARCHAR(16)      NOT NULL, /* 账户激活码类型：email url 或 phone code */
+    creat_time       TIMESTAMP                 DEFAULT CURRENT_TIMESTAMP, /* 激活码创建时间 */
+    expire_time      TIMESTAMP                 DEFAULT NULL, /* 激活码过期时间 */
+    create_ip        VARCHAR(15)      NOT NULL, /* 激活码创建时 IP */
+    active_time      TIMESTAMP                 DEFAULT NULL, /* 触发激活时间 */
+    active_ip        VARCHAR(15)               DEFAULT NULL, /* 激活时 IP */
+    PRIMARY KEY (id),
+    INDEX (active_code),
+    INDEX (active_type_code)
 );
 
 /* 
@@ -148,12 +166,12 @@ CREATE TABLE IF NOT EXISTS question (
  * 草稿表
  */
 CREATE TABLE IF NOT EXISTS draft (
-    id            INT(11)      NOT NULL AUTO_INCREMENT, /* 草稿ID（唯一标识） */
-    question_id   INT(11)      NOT NULL, /* 草稿问题 id */
-    draft_content MEDIUMTEXT   NOT NULL, /* 草稿内容 */
-    last_update   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 草稿更新时间 */
-    is_anonymous  INT(11)      NOT NULL DEFAULT '0', /* 草稿是否匿名 1：是， 0：否 */
-    user_id       INT(11)      NOT NULL, /* 草稿回答用户 */
+    id            INT(11)    NOT NULL AUTO_INCREMENT, /* 草稿ID（唯一标识） */
+    question_id   INT(11)    NOT NULL, /* 草稿问题 id */
+    draft_content MEDIUMTEXT NOT NULL, /* 草稿内容 */
+    last_update   TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 草稿更新时间 */
+    is_anonymous  INT(11)    NOT NULL DEFAULT '0', /* 草稿是否匿名 1：是， 0：否 */
+    user_id       INT(11)    NOT NULL, /* 草稿回答用户 */
     PRIMARY KEY (id),
     INDEX (user_id)
 );
@@ -162,13 +180,13 @@ CREATE TABLE IF NOT EXISTS draft (
  * 动态表
  */
 CREATE TABLE IF NOT EXISTS feeds (
-    id            INT(11)     NOT NULL AUTO_INCREMENT, /* 动态ID */
-    feeds_id      INT(11)     NOT NULL, /* 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同答案和回答问题对应的是答案ID */
-    feeds_type    VARCHAR(64) NOT NULL, /* 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题*/
-    parent_feeds_id    INT(11)     NOT NULL DEFAULT '0', /* 父动态类型所对应的ID，赞同答案和回答问题对应的是问题ID */
-    parent_feeds_type  VARCHAR(64)          DEFAULT NULL, /* 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题*/
-    feeds_time    TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 动态时间 */
-    feeds_user_id INT(11)     NOT NULL, /* 动态发起人 */
+    id                INT(11)     NOT NULL AUTO_INCREMENT, /* 动态ID */
+    feeds_id          INT(11)     NOT NULL, /* 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同答案和回答问题对应的是答案ID */
+    feeds_type        VARCHAR(64) NOT NULL, /* 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题*/
+    parent_feeds_id   INT(11)     NOT NULL DEFAULT '0', /* 父动态类型所对应的ID，赞同答案和回答问题对应的是问题ID */
+    parent_feeds_type VARCHAR(64)          DEFAULT NULL, /* 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题*/
+    feeds_time        TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 动态时间 */
+    feeds_user_id     INT(11)     NOT NULL, /* 动态发起人 */
     PRIMARY KEY (id),
     INDEX (feeds_user_id)
 );
@@ -189,14 +207,19 @@ CREATE TABLE IF NOT EXISTS follow (
  * 答案表 
  */
 CREATE TABLE IF NOT EXISTS answer (
-    id            INT(11)          NOT NULL AUTO_INCREMENT, /* 答案ID（唯一标识） */
-    question_id   INT(11) UNSIGNED NOT NULL, /* 问题ID（唯一标识） */
-    author_id     INT(10) UNSIGNED NOT NULL, /* 作者ID（唯一标识） */
-    answer_content MEDIUMTEXT      NOT NULL, /* 答案 */
-    answer_time   TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 回答或更新时间 */
-    comment_count     INT(11)          NOT NULL, /* 评论数 */
-    is_top_answer INT(11)          NOT NULL DEFAULT '0', /* 是否是精华答案 */
-    is_anonymous  INT(11)          NOT NULL DEFAULT '0', /* 是否匿名 1：是， 0：否 */
+    id                 INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 答案ID（唯一标识） */
+    question_id        INT(11) UNSIGNED NOT NULL, /* 问题ID（唯一标识） */
+    author_id          INT(11) UNSIGNED NOT NULL, /* 作者ID（唯一标识） */
+    answer_content     MEDIUMTEXT       NOT NULL, /* 答案 */
+    answer_time        TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 回答或更新时间 */
+    against_count      INT(11)          NOT NULL DEFAULT '0', /* 反对数 */
+    approval_count     INT(11)          NOT NULL DEFAULT '0', /* 支持数 */
+    comment_count      INT(11)          NOT NULL DEFAULT '0', /* 评论数 */
+    uninterested_count INT(11)          NOT NULL DEFAULT '0', /* 不感兴趣数 */
+    thanks_count       INT(11)          NOT NULL DEFAULT '0', /* 感谢数 */
+    is_top_answer      INT(11)          NOT NULL DEFAULT '0', /* 是否是精华答案 */
+    is_anonymous       INT(11)          NOT NULL DEFAULT '0', /* 是否匿名 1：是， 0：否 */
+    is_force_fold      INT(11)          NOT NULL DEFAULT '0', /* 是否强制折叠 1：是， 0：否 */
     PRIMARY KEY (id),
     INDEX (question_id),
     INDEX (author_id)
@@ -205,16 +228,16 @@ CREATE TABLE IF NOT EXISTS answer (
 /* 
  * 问题/回答评论表
  *
- ** 问题id与答案id按评论位置适时填写，二者取一 */
+ ** 问题 id 与答案 id 按评论位置适时填写，二者取一 */
 CREATE TABLE IF NOT EXISTS comment (
     id                INT(11)   NOT NULL AUTO_INCREMENT, /* 评论ID（唯一标识） */
     question_id       INT(11)   NOT NULL DEFAULT '0', /* 被评论的问题ID（唯一标识） */
     answer_id         INT(11)   NOT NULL DEFAULT '0', /* 被评论的答案ID（唯一标识） */
     reviewer_id       INT(11)   NOT NULL DEFAULT '0', /* 评论用户ID（唯一标识） */
     parent_comment_id INT(11)   NOT NULL DEFAULT '0', /* 被回复评论的ID（唯一标识） */
-    content           TEXT      NOT NULL, /* 评论内容 */
-    comment_date      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
-    favour_num        INT(11)   NOT NULL DEFAULT '0', /* 赞同数量 */
+    comment_content   TEXT      NOT NULL, /* 评论内容 */
+    comment_time      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
+    approval_count    INT(11)   NOT NULL DEFAULT '0', /* 赞同数量 */
     PRIMARY KEY (id),
     INDEX (question_id),
     INDEX (answer_id),
