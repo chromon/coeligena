@@ -492,7 +492,25 @@ CREATE TABLE IF NOT EXISTS block (
  */
 CREATE TABLE IF NOT EXISTS settings (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 话题表 ID（唯一标识） */
-    /* TODO */
+    is_privacy_protection INT(11) NOT NULL DEFAULT '1', /* 是否隐私保护（站外搜索到我的内容，不会被显示姓名）0：否，1：是 */
+    message_receive INT(11) NOT NULL DEFAULT '0', /* 别人给我发私信，0：允许所有人给我发私信，1：只允许我关注的人给我发私信 */
+    stranger_inbox INT(11) NOT NULL DEFAULT '0', /* 开启陌生人私信箱，0：否，1：是 */
+    message_email INT(11) NOT NULL DEFAULT '0', /* 有私信时邮件提醒，0：否，1：是 */
+    invite_me INT(11) NOT NULL DEFAULT '0', /* 邀请我回答问题，0：接收所有人的消息，1：只接收关注人的消息 */
+    new_answer INT(11) NOT NULL DEFAULT '0', /* 关注的问题有了新回答，0：接收所有人的消息，1：只接收关注人的消息 */
+    new_article INT(11) NOT NULL DEFAULT '0', /* 关注的专栏有了新文章，0：接收消息，1：不接收消息 */
+    new_book INT(11) NOT NULL DEFAULT '0', /* 关注的人有了新的电子书，0：接收消息，1：不接收消息 */
+    at_comment_me INT(11) NOT NULL DEFAULT '0', /* @/评论我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    agree_thank_me INT(11) NOT NULL DEFAULT '0', /* 赞同、感谢我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    like_commnet INT(11) NOT NULL DEFAULT '0', /* 赞了我的评论，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    like_article INT(11) NOT NULL DEFAULT '0', /* 赞了我的文章，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    like_book INT(11) NOT NULL DEFAULT '0', /* 赞了我的电子书，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    admire_article INT(11) NOT NULL DEFAULT '0', /* 赞赏了我的文章，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    follow_me INT(11) NOT NULL DEFAULT '0', /* 有人关注了我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    follow_column INT(11) NOT NULL DEFAULT '0', /* 有人关注了我的专栏，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    follow_collection INT(11) NOT NULL DEFAULT '0', /* 有人关注了我的收藏，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    weekly_email INT(11) NOT NULL DEFAULT '0', /* 是否接受每周精选，0：否，1：是 */
+    new_product_email INT(11) NOT NULL DEFAULT '0', /* 新产品或活动通知，0：否，1：是 */
     PRIMARY KEY (id)
 );
 
