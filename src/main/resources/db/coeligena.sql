@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS question_comment (
 /*
  * 问题话题节点表
  */
-CREATE TABLE IF NOT EXISTS question_topic_nodes (
+CREATE TABLE IF NOT EXISTS topic_nodes (
     id                 INT(11)      NOT NULL AUTO_INCREMENT, /* 话题节点 ID（唯一标识） */
     topic_name         VARCHAR(256) NOT NULL, /* 话题名称 */
     topic_introduction TEXT         NOT NULL DEFAULT '', /* 话题描述 */
@@ -217,7 +217,7 @@ CREATE TABLE IF NOT EXISTS question_topic_nodes (
 /*
  * 问题话题关系表
  */
-CREATE TABLE IF NOT EXISTS question_topic_relations (
+CREATE TABLE IF NOT EXISTS topic_relations (
     id              INT(11) NOT NULL AUTO_INCREMENT, /* 话题关系 ID（唯一标识） */
     parent_topic_id INT(11) NOT NULL DEFAULT '0', /* 父话题 ID */
     child_topic_id  INT(11) NOT NULL DEFAULT '0', /* 子话题 ID */
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS question_topic_relations (
 /*
  * 问题话题编辑锁定表
  */
-CREATE TABLE IF NOT EXISTS question_topic_lock (
+CREATE TABLE IF NOT EXISTS topic_lock (
     id                     INT(11) NOT NULL AUTO_INCREMENT, /* 话题编辑锁定 ID（唯一标识） */
     is_locked_all          INT(11) NOT NULL DEFAULT '0', /* 是否完全锁定 0：是，1：否 */
     is_locked_name         INT(11) NOT NULL DEFAULT '0', /* 是否锁定话题名称 0：是，1：否 */
@@ -245,7 +245,7 @@ CREATE TABLE IF NOT EXISTS question_topic_lock (
  *  本话题会被删除，相关内容会自动迁移至目标话题中，同时添加话题别名。
  *  请将不常用的话题合并至常用话题。
  */
-CREATE TABLE IF NOT EXISTS question_topic_merge (
+CREATE TABLE IF NOT EXISTS topic_merge (
     id           INT(11)   NOT NULL AUTO_INCREMENT, /* 话题合并 ID（唯一标识） */
     merged_to_id INT(11)   NOT NULL, /* 合并到话题 ID */
     merged_time  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 合并时间 */
@@ -256,7 +256,7 @@ CREATE TABLE IF NOT EXISTS question_topic_merge (
 /*
  * 问题话题别名表
  */
-CREATE TABLE IF NOT EXISTS question_topic_alias (
+CREATE TABLE IF NOT EXISTS topic_alias (
     id          INT(11)      NOT NULL AUTO_INCREMENT, /* 话题别名 ID（唯一标识） */
     topic_alias VARCHAR(256) NOT NULL, /* 话题别名 */
     topic_id    INT(11)      NOT NULL, /* 话题 ID */
@@ -266,9 +266,15 @@ CREATE TABLE IF NOT EXISTS question_topic_alias (
 /*
  * 问题话题日志表
  */
-CREATE TABLE IF NOT EXISTS question_topic_logs (
-    id INT(11) NOT NULL AUTO_INCREMENT, /* 话题日志 ID（唯一标识） */
-    /* TODO */
+CREATE TABLE IF NOT EXISTS topic_logs (
+    id            INT(11)     NOT NULL AUTO_INCREMENT, /* 话题日志 ID（唯一标识） */
+    topic_id      INT(11)     NOT NULL, /* 话题节点 ID（唯一标识） */
+    user_id       INT(11)     NOT NULL, /* 操作人员 ID（唯一标识） */
+    event         VARCHAR(64) NOT NULL, /* 日志事件 */
+    reason        TEXT        NOT NULL, /* 修改理由 */
+    revision_text TEXT        NOT NULL, /* 实际修改结果（HTML） */
+    log_time      TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 日志记录时间 */
+
     PRIMARY KEY (id)
 );
 
@@ -286,13 +292,16 @@ CREATE TABLE IF NOT EXISTS question_tag (
 /*
  * 问题日志表
  *
- ** event包括 添加了问题，添加了话题，编辑了问题，编辑了补充说明，移除了补充说明，移除了话题等*/
+ * event 包括 添加了问题，添加了话题，编辑了问题，编辑了补充说明，移除了补充说明，移除了话题等
+ */
 CREATE TABLE IF NOT EXISTS question_log (
-    id          INT(11)     NOT NULL AUTO_INCREMENT, /* 日志ID（唯一标识） */
-    question_id INT(11)     NOT NULL, /* 问题ID（唯一标识） */
-    user_id     INT(11)     NOT NULL, /* 用户ID（唯一标识） */
-    event       VARCHAR(20) NOT NULL, /* 日志事件 */
-    log_time    TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 日志记录时间 */
+    id            INT(11)     NOT NULL AUTO_INCREMENT, /* 日志ID（唯一标识） */
+    question_id   INT(11)     NOT NULL, /* 问题 ID（唯一标识） */
+    user_id       INT(11)     NOT NULL, /* 操作人员 ID（唯一标识） */
+    event         VARCHAR(64) NOT NULL, /* 日志事件 */
+    reason        TEXT        NOT NULL, /* 修改理由 */
+    revision_text TEXT        NOT NULL, /* 实际修改结果（HTML） */
+    log_time      TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 日志记录时间 */
     PRIMARY KEY (id),
     INDEX (question_id),
     INDEX (user_id)
@@ -338,7 +347,7 @@ CREATE TABLE IF NOT EXISTS answer (
 /*
  * 答案投票表
  */
-CREATE TABLE IF NOT EXISTS answer_vote (
+CREATE TABLE IF NOT EXISTS vote (
     id        INT(11)     NOT NULL AUTO_INCREMENT, /* 投票ID（唯一标识） */
     answer_id INT(11)     NOT NULL, /* 答案ID（唯一标识） */
     voter_id  INT(11)     NOT NULL, /* 投票用户ID */
@@ -382,7 +391,7 @@ CREATE TABLE IF NOT EXISTS comment_approval (
 /*
  * 答案感谢表
  */
-CREATE TABLE IF NOT EXISTS answer_thanks (
+CREATE TABLE IF NOT EXISTS thanks (
     id         INT(11)   NOT NULL AUTO_INCREMENT, /* 感谢ID（唯一标识） */
     answer_id  INT(11)   NOT NULL, /* 被感谢答案ID */
     thanker_id INT(11)   NOT NULL, /* 感谢用户ID */
@@ -395,7 +404,7 @@ CREATE TABLE IF NOT EXISTS answer_thanks (
 /*
  * 回答没有帮助表
  */
-CREATE TABLE IF NOT EXISTS answer_nohelp (
+CREATE TABLE IF NOT EXISTS nohelp (
     id          INT(11)   NOT NULL AUTO_INCREMENT, /* 回答没有帮助ID（唯一标识） */
     answer_id   INT(11)   NOT NULL, /* 没有帮助的回答 ID */
     user_id     INT(11)   NOT NULL, /* 用户 ID */
@@ -408,7 +417,7 @@ CREATE TABLE IF NOT EXISTS answer_nohelp (
 /**
  * 回答草稿表
  */
-CREATE TABLE IF NOT EXISTS answer_draft (
+CREATE TABLE IF NOT EXISTS draft (
     id            INT(11)    NOT NULL AUTO_INCREMENT, /* 草稿ID（唯一标识） */
     question_id   INT(11)    NOT NULL, /* 草稿问题 id */
     draft_content MEDIUMTEXT NOT NULL, /* 草稿内容 */
@@ -491,26 +500,26 @@ CREATE TABLE IF NOT EXISTS block (
  * 设置表
  */
 CREATE TABLE IF NOT EXISTS settings (
-    id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 话题表 ID（唯一标识） */
-    is_privacy_protection INT(11) NOT NULL DEFAULT '1', /* 是否隐私保护（站外搜索到我的内容，不会被显示姓名）0：否，1：是 */
-    message_receive INT(11) NOT NULL DEFAULT '0', /* 别人给我发私信，0：允许所有人给我发私信，1：只允许我关注的人给我发私信 */
-    stranger_inbox INT(11) NOT NULL DEFAULT '0', /* 开启陌生人私信箱，0：否，1：是 */
-    message_email INT(11) NOT NULL DEFAULT '0', /* 有私信时邮件提醒，0：否，1：是 */
-    invite_me INT(11) NOT NULL DEFAULT '0', /* 邀请我回答问题，0：接收所有人的消息，1：只接收关注人的消息 */
-    new_answer INT(11) NOT NULL DEFAULT '0', /* 关注的问题有了新回答，0：接收所有人的消息，1：只接收关注人的消息 */
-    new_article INT(11) NOT NULL DEFAULT '0', /* 关注的专栏有了新文章，0：接收消息，1：不接收消息 */
-    new_book INT(11) NOT NULL DEFAULT '0', /* 关注的人有了新的电子书，0：接收消息，1：不接收消息 */
-    at_comment_me INT(11) NOT NULL DEFAULT '0', /* @/评论我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    agree_thank_me INT(11) NOT NULL DEFAULT '0', /* 赞同、感谢我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    like_commnet INT(11) NOT NULL DEFAULT '0', /* 赞了我的评论，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    like_article INT(11) NOT NULL DEFAULT '0', /* 赞了我的文章，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    like_book INT(11) NOT NULL DEFAULT '0', /* 赞了我的电子书，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    admire_article INT(11) NOT NULL DEFAULT '0', /* 赞赏了我的文章，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    follow_me INT(11) NOT NULL DEFAULT '0', /* 有人关注了我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    follow_column INT(11) NOT NULL DEFAULT '0', /* 有人关注了我的专栏，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    follow_collection INT(11) NOT NULL DEFAULT '0', /* 有人关注了我的收藏，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    weekly_email INT(11) NOT NULL DEFAULT '0', /* 是否接受每周精选，0：否，1：是 */
-    new_product_email INT(11) NOT NULL DEFAULT '0', /* 新产品或活动通知，0：否，1：是 */
+    id                    INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 话题表 ID（唯一标识） */
+    is_privacy_protection INT(11)          NOT NULL DEFAULT '1', /* 是否隐私保护（站外搜索到我的内容，不会被显示姓名）0：否，1：是 */
+    message_receive       INT(11)          NOT NULL DEFAULT '0', /* 别人给我发私信，0：允许所有人给我发私信，1：只允许我关注的人给我发私信 */
+    stranger_inbox        INT(11)          NOT NULL DEFAULT '0', /* 开启陌生人私信箱，0：否，1：是 */
+    message_email         INT(11)          NOT NULL DEFAULT '0', /* 有私信时邮件提醒，0：否，1：是 */
+    invite_me             INT(11)          NOT NULL DEFAULT '0', /* 邀请我回答问题，0：接收所有人的消息，1：只接收关注人的消息 */
+    new_answer            INT(11)          NOT NULL DEFAULT '0', /* 关注的问题有了新回答，0：接收所有人的消息，1：只接收关注人的消息 */
+    new_article           INT(11)          NOT NULL DEFAULT '0', /* 关注的专栏有了新文章，0：接收消息，1：不接收消息 */
+    new_book              INT(11)          NOT NULL DEFAULT '0', /* 关注的人有了新的电子书，0：接收消息，1：不接收消息 */
+    at_comment_me         INT(11)          NOT NULL DEFAULT '0', /* @/评论我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    agree_thank_me        INT(11)          NOT NULL DEFAULT '0', /* 赞同、感谢我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    like_commnet          INT(11)          NOT NULL DEFAULT '0', /* 赞了我的评论，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    like_article          INT(11)          NOT NULL DEFAULT '0', /* 赞了我的文章，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    like_book             INT(11)          NOT NULL DEFAULT '0', /* 赞了我的电子书，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    admire_article        INT(11)          NOT NULL DEFAULT '0', /* 赞赏了我的文章，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    follow_me             INT(11)          NOT NULL DEFAULT '0', /* 有人关注了我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    follow_column         INT(11)          NOT NULL DEFAULT '0', /* 有人关注了我的专栏，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    follow_collection     INT(11)          NOT NULL DEFAULT '0', /* 有人关注了我的收藏，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    weekly_email          INT(11)          NOT NULL DEFAULT '0', /* 是否接受每周精选，0：否，1：是 */
+    new_product_email     INT(11)          NOT NULL DEFAULT '0', /* 新产品或活动通知，0：否，1：是 */
     PRIMARY KEY (id)
 );
 
