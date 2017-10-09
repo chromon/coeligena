@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS user (
     gender             INT(11)          NOT NULL DEFAULT '0', /* 性别  1:male , 2:female , 3: other */
     avatar_path        VARCHAR(512)              DEFAULT NULL, /* 头像路径 */
     location           VARCHAR(128)              DEFAULT NULL, /* 居住位置 */
-    business           VARCHAR(128)              DEFAULT NULL, /* 行业 */
+    business_id        INT(11)                   DEFAULT '0', /* 所属行业 ID */
     employment         VARCHAR(128)              DEFAULT NULL, /* 公司或组织名称 */
     position           VARCHAR(128)              DEFAULT NULL, /* 职位 */
     education          VARCHAR(128)              DEFAULT NULL, /* 学校或教育机构 */
@@ -591,46 +591,25 @@ CREATE TABLE IF NOT EXISTS article_draft (
     INDEX (user_id)
 );
 
-/**
- * 	（^为直接插入存储 ， #为动态读取）
- * 
- * 用户对用户：
- * 	1. 私信 ^ -- PrivateMsg
- * 
- * 系统对用户：
- * 	1. 提醒
- * 		别人邀请你回答一个问题^	-- InviteMsg
- * 		*别人评论了你的回答^		-- CommentAnswerMsg
- * 		*别人评论了你的问题^		-- CommentQuestionMsg
- * 		*别人回答了你的问题^		-- AnswerQuestionMsg
- * 		@用户 提到了你^			-- AtYouMsg
- * 		二级回复 回复了你的评论^	-- ReplyCommentMsg
- * 	2. 系统通知
- * 		*别人关注了你^			-- FollowingYouMsg
- * 		*你关注的问题有了一个新回答 #-- NewAnswerMsg
- * 		*系统公告#				-- SystemNotice
- * 		*别人赞同了你的回答^		-- AgreeAnswerMsg
- * 		*别人感谢了你的回答^		-- ThankYouAnswerMsg
- */
-
 /*
- * 消息内容表
+ * 公共提醒内容表
  */
-CREATE TABLE IF NOT EXISTS message_text (
-    id           INT(11)     NOT NULL AUTO_INCREMENT, /* 消息内容ID（唯一标识） */
-    content      TEXT        NOT NULL, /* 消息内容 */
-    message_name VARCHAR(64) NOT NULL, /* 消息英文名称  */
+CREATE TABLE IF NOT EXISTS notification_text (
+    id      INT(11) NOT NULL AUTO_INCREMENT, /* 消息提醒内容ID（唯一标识） */
+    content TEXT    NOT NULL, /* 消息提醒内容 */
     PRIMARY KEY (id)
 );
 
 /*
- * 公共消息表
+ * 公共提醒消息表
  */
-CREATE TABLE IF NOT EXISTS public_message (
+CREATE TABLE IF NOT EXISTS notification (
     id               INT(11)     NOT NULL AUTO_INCREMENT, /* 公共消息ID（唯一标识） */
     text_id          INT(11)     NOT NULL, /* 消息内容ID */
     send_time        TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 发送时间 */
+    read_time        TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 阅读时间 */
     message_type     VARCHAR(64) NOT NULL, /* 消息类型  */
+    is_read          SMALLINT    NOT NULL, /* 是否已读 0:否 ，1：是  */
     message_group_id INT(11)     NOT NULL, /* 关注问题的用户组  0:默认所有人*/
     PRIMARY KEY (id),
     INDEX (text_id),
@@ -638,35 +617,85 @@ CREATE TABLE IF NOT EXISTS public_message (
 );
 
 /*
- * 消息记录表
+ * 私信内容表
  */
-CREATE TABLE IF NOT EXISTS message_log (
-    id               INT(11)     NOT NULL AUTO_INCREMENT, /* 用户消息ID（唯一标识） */
-    sender_id        INT(11)     NOT NULL, /* 发送用户ID */
-    receiver_id      INT(11)     NOT NULL, /* 接收用户ID */
-    text_id          INT(11)     NOT NULL, /* 消息内容ID */
-    send_time        TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 发送时间  设置时间时不需要更新*/
-    read_time        TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 阅读时间 */
-    message_type     VARCHAR(64) NOT NULL, /* 消息类型  */
-    sender_isdel     SMALLINT    NOT NULL, /* 发送用户是否删除 0:否 ，1：是 */
-    receiver_isdel   SMALLINT    NOT NULL, /* 接收用户是否删除 0:否 ，1：是 */
-    is_read          SMALLINT    NOT NULL, /* 是否已读 0:否 ，1：是  */
-    message_group_id INT(11)     NOT NULL, /* 关注问题的用户组 */
+CREATE TABLE IF NOT EXISTS message_text (
+    id      INT(11) NOT NULL AUTO_INCREMENT, /* 消息内容ID（唯一标识） */
+    content TEXT    NOT NULL, /* 消息内容 */
+    PRIMARY KEY (id)
+);
+
+/*
+ * 私人消息表
+ */
+CREATE TABLE IF NOT EXISTS private_message (
+    id              INT(11)     NOT NULL AUTO_INCREMENT, /* 用户消息ID（唯一标识） */
+    sender_id       INT(11)     NOT NULL, /* 发送用户ID */
+    recipient_id    INT(11)     NOT NULL, /* 接收用户ID */
+    text_id         INT(11)     NOT NULL, /* 消息内容ID */
+    send_time       TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 发送时间  设置时间时不需要更新*/
+    read_time       TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 阅读时间 */
+    message_type    VARCHAR(64) NOT NULL, /* 消息类型  */
+    sender_isdel    SMALLINT    NOT NULL, /* 发送用户是否删除 0:否 ，1：是 */
+    recipient_isdel SMALLINT    NOT NULL, /* 接收用户是否删除 0:否 ，1：是 */
+    is_read         SMALLINT    NOT NULL, /* 是否已读 0:否 ，1：是  */
     PRIMARY KEY (id),
     INDEX (sender_id),
-    INDEX (receiver_id),
-    INDEX (text_id),
-    INDEX (message_group_id)
+    INDEX (recipient_id),
+    INDEX (text_id)
 );
 
 /**
  * 消息组表
+ * 	（^为直接插入存储 ， #为动态读取）
+ *
+ * 用户对用户：
+ * 	1. 私信（私信页面） ^ -- PrivateMsg
+ *
+ * 系统对用户：
+ * 	1. 提醒（提醒页面）
+ * 		*某人（trigger_id）邀请你回答一个问题（question_id）^
+        -- InviteMsg
+ * 		*某人（trigger_id）评论（comment_id）了你的问题（question_id）^
+        -- CommentQuestionMsg
+ * 		*某人（trigger_id）回答（answer_id）了你的问题（question_id）^
+        -- AnswerQuestionMsg
+ * 		*某人（trigger_id）评论（comment_id）了你在某问题（question_id）下的回答（answer_id）^
+        -- CommentAnswerMsg
+ * 		*某人（trigger_id）赞同了你在某问题（question_id）下的回答（answer_id）^
+        -- AgreeAnswerMsg
+ * 		*某人（trigger_id）感谢了你在某问题（question_id）下的回答（answer_id）^
+        -- ThankAnswerMsg
+ *      *某人（trigger_id）赞同了你在问题（question_id）下的评论（comment_id）^
+        -- AgreeQuestionComment
+ *      *某人（trigger_id）赞同了你在问题（question_id）下某人（answerer_id）回答下的评论（comment_id）^
+        -- AgreeAnswerComment
+ *      *某人（trigger_id）赞同了你在专栏文章（article_id）下的评论（comment_id）^
+        -- AgreeArticleComment
+ * 		*二级回复 某人（trigger_id）回复了你在某问题（question_id）下的评论（comment_id）^
+        -- ReplyQuestionCommentMsg
+ * 		*二级回复 某人（trigger_id）回复了你在某问题（question_id）下某人（answerer_id）回答下的评论（comment_id）^
+        -- ReplyAnswerCommentMsg
+ * 		*二级回复 某人（trigger_id）回复了你在某专栏文章（article_id）下的评论（comment_id）^
+        -- ReplyArticleCommentMsg
+ * 		*某人（trigger_id）关注了你^
+        -- FollowingYouMsg
+ * 		*@用户（trigger_id） 提到了你^
+        -- AtYouMsg
+ * 		**某人（trigger_id）在你关注的问题（question_id）发表了一个新回答（answer_id） #
+        -- NewAnswerMsg
+ * 	2. 系统通知（私信页面）
+ * 		*系统公告私信 #	-- SystemMessage
  */
 CREATE TABLE IF NOT EXISTS message_group (
     id          INT(11) NOT NULL AUTO_INCREMENT, /* 消息组 ID（唯一标识） */
-    user_id     INT(11) NOT NULL, /* 用户 ID */
+    trigger_id  INT(11) NOT NULL, /* 触发用户 ID */
     question_id INT(11) NOT NULL, /* 问题 ID */
+    article_id  INT(11) NOT NULL, /* 专栏文章 ID */
     answer_id   INT(11) NOT NULL, /* 答案 ID */
+    answerer_id INT(11) NOT NULL, /* 回答用户 ID */
+    comment_id  INT(11) NOT NULL, /* 评论 ID */
+    user_id     INT(11) NOT NULL, /* 用户 ID */
     PRIMARY KEY (id),
     INDEX (user_id),
     INDEX (question_id),
@@ -687,13 +716,24 @@ CREATE TABLE IF NOT EXISTS report_type (
  * 举报表
  */
 CREATE TABLE IF NOT EXISTS report (
-    id                 INT(11)   NOT NULL AUTO_INCREMENT, /* 举报主键ID（唯一标识） */
-    report_type_id     INT(11)   NOT NULL, /* 举报类型 ID */
-    report_category    INT(11)   NOT NULL, /* 举报内容所属分类 0：问题，1：答案，2：评论 */
-    report_category_id INT(11)   NOT NULL, /* 举报内容所属分类对应的问题、评论、答案id */
-    report_time        TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 举报时间 */
-    user_id            INT(11)   NOT NULL, /* 举报用户 ID（唯一标识） */
+    id                 INT(11)      NOT NULL AUTO_INCREMENT, /* 举报主键ID（唯一标识） */
+    report_type_id     INT(11)      NOT NULL, /* 举报类型 ID */
+    report_category    INT(11)      NOT NULL, /* 举报内容所属分类 0：问题，1：答案，2：评论 */
+    report_category_id INT(11)      NOT NULL, /* 举报内容所属分类对应的问题、评论、答案id */
+    report_time        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 举报时间 */
+    report_reason      VARCHAR(512) NOT NULL, /* 举报理由 */
+    is_resolved        INT(11)      NOT NULL, /* 是否处理完成，1：是，0：否 */
+    user_id            INT(11)      NOT NULL, /* 举报用户 ID（唯一标识） */
     PRIMARY KEY (id),
     INDEX (report_type_id),
     INDEX (user_id)
+);
+
+/*
+ * 所属行业表
+ */
+CREATE TABLE IF NOT EXISTS business (
+    id       INT(11)     NOT NULL AUTO_INCREMENT, /* 所在行业主键ID（唯一标识） */
+    job_name VARCHAR(64) NOT NULL, /* 所在行业名称 */
+    PRIMARY KEY (id)
 );
