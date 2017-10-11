@@ -5,7 +5,7 @@ USE coeligena;
 /*
  * 验证用户表
  */
-CREATE TABLE IF NOT EXISTS auto_user (
+CREATE TABLE IF NOT EXISTS auto_users (
     id                  INT UNSIGNED        NOT NULL AUTO_INCREMENT, /* 验证用户 ID（唯一标识） */
     email               VARCHAR(128)        NULL, /* 邮箱*/
     phone               VARCHAR(16)         NULL, /* 手机 */
@@ -20,14 +20,15 @@ CREATE TABLE IF NOT EXISTS auto_user (
     PRIMARY KEY (id),
     INDEX (email),
     INDEX (phone),
-    INDEX (password)
+    INDEX (password),
+    INDEX (salt)
 );
 
 /*
  * 角色表
  * 一定数量的权限的集合，权限的载体
  */
-CREATE TABLE IF NOT EXISTS role (
+CREATE TABLE IF NOT EXISTS roles (
     id          INT UNSIGNED        NOT NULL AUTO_INCREMENT, /* 角色 ID（唯一标识） */
     rolename    VARCHAR(32)         NOT NULL, /* 角色名 */
     pid         INT UNSIGNED                 DEFAULT '0', /* 父角色 ID */
@@ -35,7 +36,9 @@ CREATE TABLE IF NOT EXISTS role (
     create_time TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 创建时间（时间戳） */
     update_time TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 更改时间（时间戳）*/
     remark      VARCHAR(256)                 DEFAULT NULL, /* 备注信息 */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (rolename),
+    INDEX (pid)
 );
 
 /*
@@ -45,13 +48,15 @@ CREATE TABLE IF NOT EXISTS role_auth_user (
     id           INT UNSIGNED NOT NULL AUTO_INCREMENT,
     role_id      INT UNSIGNED NOT NULL DEFAULT '0', /* 角色 ID（唯一标识） */
     auth_user_id INT UNSIGNED NOT NULL DEFAULT '0', /* 验证用户 ID（唯一标识） */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (role_id),
+    INDEX (auth_user_id)
 );
 
 /*
  * 权限表
  */
-CREATE TABLE IF NOT EXISTS permission (
+CREATE TABLE IF NOT EXISTS permissions (
     id          INT UNSIGNED         NOT NULL AUTO_INCREMENT, /* 权限 ID（唯一标识） */
     name        VARCHAR(32)          NOT NULL, /* 权限名称（英文名，对应应用控制器、应用、方法名） */
     title       VARCHAR(64)                   DEFAULT NULL, /* 权限名称 */
@@ -62,7 +67,8 @@ CREATE TABLE IF NOT EXISTS permission (
     level       TINYINT(1) UNSIGNED  NOT NULL, /* 权限类型：1-表示应用（模块）, 2-表示控制器, 3-表示方法 */
     create_time TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 创建时间（时间戳） */
     update_time TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 更改时间（时间戳）*/
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (pid)
 );
 
 /**
@@ -72,14 +78,16 @@ CREATE TABLE IF NOT EXISTS role_permission (
     id            INT UNSIGNED NOT NULL AUTO_INCREMENT,
     role_id       INT UNSIGNED NOT NULL DEFAULT '0', /* 角色 ID（唯一标识） */
     permission_id INT UNSIGNED NOT NULL DEFAULT '0', /* 权限 ID（唯一标识） */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (role_id),
+    INDEX (permission_id)
 );
 
 
 /*
  * 用户信息表
  */
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
     id                 INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 用户ID（唯一标识） */
     fullname           VARCHAR(64)      NOT NULL, /* 全名 */
     gender             INT(11)          NOT NULL DEFAULT '0', /* 性别  1:male , 2:female , 3: other */
@@ -104,6 +112,8 @@ CREATE TABLE IF NOT EXISTS user (
     is_phone_active    INT(11)          NOT NULL DEFAULT '0', /* 手机是否激活 0：否， 1：是 */
     auth_user_id       INT              NOT NULL DEFAULT '0', /* 用户ID */
     PRIMARY KEY (id),
+    INDEX (fullname),
+    INDEX (personality_url),
     INDEX (auth_user_id)
 );
 
@@ -111,7 +121,7 @@ CREATE TABLE IF NOT EXISTS user (
 /*
  * 账户激活数据表
  */
-CREATE TABLE IF NOT EXISTS activation (
+CREATE TABLE IF NOT EXISTS activations (
     id               INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 账户激活数据 ID */
     active_code      VARCHAR(32)      NOT NULL, /* 账户激活码 */
     active_type_code VARCHAR(16)      NOT NULL, /* 账户激活码类型：email url 或 phone code */
@@ -140,7 +150,7 @@ CREATE TABLE IF NOT EXISTS activation (
  *	判断两个用户的关系
  *	查询带关系状态的任一列表
  * */
-CREATE TABLE IF NOT EXISTS relationship (
+CREATE TABLE IF NOT EXISTS relationships (
     id          INT(11) NOT NULL AUTO_INCREMENT, /* 关系ID（唯一标识） */
     user_id     INT(11) NOT NULL, /* 用户ID */
     followed_id INT(11) NOT NULL, /* 当前用户关注的人  */
@@ -152,7 +162,7 @@ CREATE TABLE IF NOT EXISTS relationship (
 /* 
  * 问题表 
  */
-CREATE TABLE IF NOT EXISTS question (
+CREATE TABLE IF NOT EXISTS questions (
     id               INT(11)      NOT NULL AUTO_INCREMENT, /* 问题ID（唯一标识） */
     question_content VARCHAR(255) NOT NULL, /* 问题标题 */
     question_detail  TEXT         NOT NULL DEFAULT NULL, /* 问题内容 */
@@ -165,8 +175,11 @@ CREATE TABLE IF NOT EXISTS question (
     question_ip      VARCHAR(15)  NOT NULL, /* 提问 IP 地址 */
     is_locked        INT(11)      NOT NULL DEFAULT '0', /* 是否被锁定 1：是， 0：否 */
     is_anonymous     INT(11)      NOT NULL DEFAULT '0', /* 是否匿名 1：是， 0：否 */
+    is_recommend     INT(11)      NOT NULL DEFAULT '0', /* 是否是推荐问题 1：是，0：否 */
     user_id          INT(11)      NOT NULL, /* 提问用户 */
     PRIMARY KEY (id),
+    INDEX (question_content),
+    INDEX (is_recommend),
     INDEX (user_id)
 );
 
@@ -186,18 +199,21 @@ CREATE TABLE IF NOT EXISTS follow (
 /*
  * 问题评论表
  */
-CREATE TABLE IF NOT EXISTS question_comment (
-    id                INT(11)   NOT NULL AUTO_INCREMENT, /* 评论ID（唯一标识） */
-    question_id       INT(11)   NOT NULL DEFAULT '0', /* 被评论的问题ID（唯一标识） */
-    reviewer_id       INT(11)   NOT NULL DEFAULT '0', /* 评论用户ID（唯一标识） */
-    parent_comment_id INT(11)   NOT NULL DEFAULT '0', /* 被回复评论的ID（唯一标识） */
-    comment_content   TEXT      NOT NULL, /* 评论内容 */
-    comment_time      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
-    approval_count    INT(11)   NOT NULL DEFAULT '0', /* 赞同数量 */
+CREATE TABLE IF NOT EXISTS question_comments (
+    id                   INT(11)   NOT NULL AUTO_INCREMENT, /* 评论ID（唯一标识） */
+    question_id          INT(11)   NOT NULL DEFAULT '0', /* 被评论的问题ID（唯一标识） */
+    reviewer_id          INT(11)   NOT NULL DEFAULT '0', /* 评论用户ID（唯一标识） */
+    parent_comment_id    INT(11)   NOT NULL DEFAULT '0', /* 被回复评论的ID（唯一标识） */
+    comment_content      TEXT      NOT NULL, /* 评论内容 */
+    comment_time         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
+    is_featured_comments INT(11)   NOT NULL DEFAULT '0', /* 是否是精选评论 0：否，1：是 */
+    approval_count       INT(11)   NOT NULL DEFAULT '0', /* 赞同数量 */
     PRIMARY KEY (id),
     INDEX (question_id),
     INDEX (reviewer_id),
-    INDEX (parent_comment_id)
+    INDEX (parent_comment_id),
+    INDEX (is_featured_comments),
+    INDEX (approval_count)
 );
 
 /*
@@ -211,7 +227,8 @@ CREATE TABLE IF NOT EXISTS topic_nodes (
     follow_count       INT(11)      NOT NULL DEFAULT '0', /* 话题关注者数量 */
     create_time        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 话题创建时间 */
     is_merged_to       INT(11)      NOT NULL DEFAULT '0', /* 是否合并到其他节点 */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (topic_name)
 );
 
 /*
@@ -221,7 +238,9 @@ CREATE TABLE IF NOT EXISTS topic_relations (
     id              INT(11) NOT NULL AUTO_INCREMENT, /* 话题关系 ID（唯一标识） */
     parent_topic_id INT(11) NOT NULL DEFAULT '0', /* 父话题 ID */
     child_topic_id  INT(11) NOT NULL DEFAULT '0', /* 子话题 ID */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (parent_topic_id),
+    INDEX (child_topic_id)
 );
 
 /*
@@ -236,7 +255,8 @@ CREATE TABLE IF NOT EXISTS topic_lock (
     is_locked_parent       INT(11) NOT NULL DEFAULT '0', /* 是否锁定父话题 0：是，1：否 */
     is_locked_child        INT(11) NOT NULL DEFAULT '0', /* 是否锁定子话题 0：是，1：否 */
     topic_id               INT(11) NOT NULL, /* 话题 ID */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (topic_id)
 );
 
 /*
@@ -250,7 +270,9 @@ CREATE TABLE IF NOT EXISTS topic_merge (
     merged_to_id INT(11)   NOT NULL, /* 合并到话题 ID */
     merged_time  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 合并时间 */
     topic_id     INT(11)   NOT NULL, /* 话题 ID */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (merged_to_id),
+    INDEX (topic_id)
 );
 
 /*
@@ -260,7 +282,8 @@ CREATE TABLE IF NOT EXISTS topic_alias (
     id          INT(11)      NOT NULL AUTO_INCREMENT, /* 话题别名 ID（唯一标识） */
     topic_alias VARCHAR(256) NOT NULL, /* 话题别名 */
     topic_id    INT(11)      NOT NULL, /* 话题 ID */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (topic_id)
 );
 
 /*
@@ -274,18 +297,20 @@ CREATE TABLE IF NOT EXISTS topic_logs (
     reason        TEXT        NOT NULL, /* 修改理由 */
     revision_text TEXT        NOT NULL, /* 实际修改结果（HTML） */
     log_time      TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 日志记录时间 */
-
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (topic_id),
+    INDEX (user_id)
 );
 
 /*
  * 问题标签表
  */
-CREATE TABLE IF NOT EXISTS question_tag (
+CREATE TABLE IF NOT EXISTS question_tags (
     id                INT(11) NOT NULL AUTO_INCREMENT, /* 标签ID（唯一标识） */
     question_topic_id INT(11) NOT NULL, /* 话题 ID */
     question_id       INT(11) NOT NULL DEFAULT '0', /* 标签的问题ID（唯一标识） */
     PRIMARY KEY (id),
+    INDEX (question_topic_id),
     INDEX (question_id)
 );
 
@@ -294,7 +319,7 @@ CREATE TABLE IF NOT EXISTS question_tag (
  *
  * event 包括 添加了问题，添加了话题，编辑了问题，编辑了补充说明，移除了补充说明，移除了话题等
  */
-CREATE TABLE IF NOT EXISTS question_log (
+CREATE TABLE IF NOT EXISTS question_logs (
     id            INT(11)     NOT NULL AUTO_INCREMENT, /* 日志ID（唯一标识） */
     question_id   INT(11)     NOT NULL, /* 问题 ID（唯一标识） */
     user_id       INT(11)     NOT NULL, /* 操作人员 ID（唯一标识） */
@@ -310,7 +335,7 @@ CREATE TABLE IF NOT EXISTS question_log (
 /**
  * 问题回答邀请表
  */
-CREATE TABLE IF NOT EXISTS invite (
+CREATE TABLE IF NOT EXISTS invites (
     id          INT(11)   NOT NULL AUTO_INCREMENT, /* 邀请ID（唯一标识） */
     question_id INT(11)   NOT NULL, /* 问题ID */
     inviter_id  INT(11)   NOT NULL, /* 邀请人ID */
@@ -325,29 +350,37 @@ CREATE TABLE IF NOT EXISTS invite (
 /* 
  * 回答表
  */
-CREATE TABLE IF NOT EXISTS answer (
-    id                 INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 答案ID（唯一标识） */
-    question_id        INT(11) UNSIGNED NOT NULL, /* 问题ID（唯一标识） */
-    author_id          INT(11) UNSIGNED NOT NULL, /* 作者ID（唯一标识） */
-    answer_content     MEDIUMTEXT       NOT NULL, /* 答案 */
-    answer_time        TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 回答或更新时间 */
-    against_count      INT(11)          NOT NULL DEFAULT '0', /* 反对数 */
-    approval_count     INT(11)          NOT NULL DEFAULT '0', /* 支持数 */
-    comment_count      INT(11)          NOT NULL DEFAULT '0', /* 评论数 */
-    uninterested_count INT(11)          NOT NULL DEFAULT '0', /* 不感兴趣数 */
-    thanks_count       INT(11)          NOT NULL DEFAULT '0', /* 感谢数 */
-    is_top_answer      INT(11)          NOT NULL DEFAULT '0', /* 是否是精华答案 */
-    is_anonymous       INT(11)          NOT NULL DEFAULT '0', /* 是否匿名 1：是， 0：否 */
-    is_force_fold      INT(11)          NOT NULL DEFAULT '0', /* 是否强制折叠 1：是， 0：否 */
+CREATE TABLE IF NOT EXISTS answers (
+    id             INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 答案ID（唯一标识） */
+    question_id    INT(11) UNSIGNED NOT NULL, /* 问题ID（唯一标识） */
+    author_id      INT(11) UNSIGNED NOT NULL, /* 作者ID（唯一标识） */
+    answer_content MEDIUMTEXT       NOT NULL, /* 答案 */
+    answer_time    TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 回答或更新时间 */
+    against_count  INT(11)          NOT NULL DEFAULT '0', /* 反对数 */
+    approval_count INT(11)          NOT NULL DEFAULT '0', /* 支持数 */
+    comment_count  INT(11)          NOT NULL DEFAULT '0', /* 评论数 */
+    thanks_count   INT(11)          NOT NULL DEFAULT '0', /* 感谢数 */
+    nohelp_count   INT(11)          NOT NULL DEFAULT '0', /* 没有帮助数 */
+    is_sec_licence INT(11)          NOT NULL DEFAULT '0', /* 是否作者保留权利 */
+    is_top_answer  INT(11)          NOT NULL DEFAULT '0', /* 是否是精华答案 */
+    is_anonymous   INT(11)          NOT NULL DEFAULT '0', /* 是否匿名 1：是， 0：否 */
+    is_force_fold  INT(11)          NOT NULL DEFAULT '0', /* 是否强制折叠 1：是， 0：否 */
     PRIMARY KEY (id),
     INDEX (question_id),
+    INDEX (author_id),
+    INDEX (answer_time),
+    INDEX (approval_count),
+    INDEX (nohelp_count),
+    INDEX (against_count),
+    INDEX (is_top_answer),
+    INDEX (is_force_fold),
     INDEX (author_id)
 );
 
 /*
  * 答案投票表
  */
-CREATE TABLE IF NOT EXISTS vote (
+CREATE TABLE IF NOT EXISTS votes (
     id        INT(11)     NOT NULL AUTO_INCREMENT, /* 投票ID（唯一标识） */
     answer_id INT(11)     NOT NULL, /* 答案ID（唯一标识） */
     voter_id  INT(11)     NOT NULL, /* 投票用户ID */
@@ -355,30 +388,33 @@ CREATE TABLE IF NOT EXISTS vote (
     vote_type VARCHAR(16) NOT NULL, /* 投票 up、down、unconcern */
     PRIMARY KEY (id),
     INDEX (answer_id),
-    INDEX (voter_id)
+    INDEX (voter_id),
+    INDEX (vote_type)
 );
 
 /* 
  * 回答评论表
  */
-CREATE TABLE IF NOT EXISTS answer_comment (
-    id                INT(11)   NOT NULL AUTO_INCREMENT, /* 评论ID（唯一标识） */
-    answer_id         INT(11)   NOT NULL DEFAULT '0', /* 被评论的答案ID（唯一标识） */
-    reviewer_id       INT(11)   NOT NULL DEFAULT '0', /* 评论用户ID（唯一标识） */
-    parent_comment_id INT(11)   NOT NULL DEFAULT '0', /* 被回复评论的ID（唯一标识） */
-    comment_content   TEXT      NOT NULL, /* 评论内容 */
-    comment_time      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
-    approval_count    INT(11)   NOT NULL DEFAULT '0', /* 赞同数量 */
+CREATE TABLE IF NOT EXISTS answer_comments (
+    id                   INT(11)   NOT NULL AUTO_INCREMENT, /* 评论ID（唯一标识） */
+    answer_id            INT(11)   NOT NULL DEFAULT '0', /* 被评论的答案ID（唯一标识） */
+    reviewer_id          INT(11)   NOT NULL DEFAULT '0', /* 评论用户ID（唯一标识） */
+    parent_comment_id    INT(11)   NOT NULL DEFAULT '0', /* 被回复评论的ID（唯一标识） */
+    comment_content      TEXT      NOT NULL, /* 评论内容 */
+    comment_time         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
+    approval_count       INT(11)   NOT NULL DEFAULT '0', /* 赞同数量 */
+    is_featured_comments INT(11)   NOT NULL DEFAULT '0', /* 是否是精选评论 0：否，1：是 */
     PRIMARY KEY (id),
     INDEX (answer_id),
     INDEX (reviewer_id),
-    INDEX (parent_comment_id)
+    INDEX (parent_comment_id),
+    INDEX (is_featured_comments)
 );
 
 /*
  * 评论赞同表（不包括答案投票）
  */
-CREATE TABLE IF NOT EXISTS comment_approval (
+CREATE TABLE IF NOT EXISTS comment_approvals (
     id            INT(11)   NOT NULL AUTO_INCREMENT, /* 赞同ID（唯一标识） */
     comment_id    INT(11)   NOT NULL, /* 被赞同评论ID（唯一标识） */
     approval_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 评论点赞时间 */
@@ -404,7 +440,7 @@ CREATE TABLE IF NOT EXISTS thanks (
 /*
  * 回答没有帮助表
  */
-CREATE TABLE IF NOT EXISTS nohelp (
+CREATE TABLE IF NOT EXISTS nohelps (
     id          INT(11)   NOT NULL AUTO_INCREMENT, /* 回答没有帮助ID（唯一标识） */
     answer_id   INT(11)   NOT NULL, /* 没有帮助的回答 ID */
     user_id     INT(11)   NOT NULL, /* 用户 ID */
@@ -417,7 +453,7 @@ CREATE TABLE IF NOT EXISTS nohelp (
 /**
  * 回答草稿表
  */
-CREATE TABLE IF NOT EXISTS draft (
+CREATE TABLE IF NOT EXISTS drafts (
     id            INT(11)    NOT NULL AUTO_INCREMENT, /* 草稿ID（唯一标识） */
     question_id   INT(11)    NOT NULL, /* 草稿问题 id */
     draft_content MEDIUMTEXT NOT NULL, /* 草稿内容 */
@@ -425,13 +461,14 @@ CREATE TABLE IF NOT EXISTS draft (
     is_anonymous  INT(11)    NOT NULL DEFAULT '0', /* 草稿是否匿名 1：是， 0：否 */
     user_id       INT(11)    NOT NULL, /* 草稿回答用户 */
     PRIMARY KEY (id),
+    INDEX (question_id),
     INDEX (user_id)
 );
 
 /*
  * 答案收藏夹表
  */
-CREATE TABLE IF NOT EXISTS collection_folder (
+CREATE TABLE IF NOT EXISTS collection_folders (
     id            INT(11)      NOT NULL AUTO_INCREMENT, /* 收藏夹ID（唯一标识） */
     foldername    VARCHAR(256) NOT NULL, /* 收藏夹名称 */
     description   VARCHAR(256)          DEFAULT NULL, /* 收藏夹描述 */
@@ -446,7 +483,7 @@ CREATE TABLE IF NOT EXISTS collection_folder (
 /*
  * 答案收藏表
  */
-CREATE TABLE IF NOT EXISTS collection (
+CREATE TABLE IF NOT EXISTS collections (
     id                   INT(11) NOT NULL AUTO_INCREMENT, /* 收藏ID（唯一标识） */
     answer_id            INT(11) NOT NULL, /* 被收藏的答案ID */
     collection_folder_id INT(11) NOT NULL, /* 所属收藏夹ID */
@@ -481,13 +518,17 @@ CREATE TABLE IF NOT EXISTS feeds (
     feeds_time        TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 动态时间 */
     feeds_user_id     INT(11)     NOT NULL, /* 动态发起人 */
     PRIMARY KEY (id),
+    INDEX (feeds_id),
+    INDEX (feeds_type),
+    INDEX (parent_feeds_id),
+    INDEX (parent_feeds_type),
     INDEX (feeds_user_id)
 );
 
 /*
  * 屏蔽用户
  */
-CREATE TABLE IF NOT EXISTS block (
+CREATE TABLE IF NOT EXISTS blocks (
     id         INT(11) NOT NULL AUTO_INCREMENT, /* 屏蔽表ID（唯一标识） */
     user_id    INT(11) NOT NULL, /* 当前用户ID */
     blocked_id INT(11) NOT NULL, /* 被屏蔽用户ID */
@@ -535,13 +576,14 @@ CREATE TABLE IF NOT EXISTS columns (
     column_create_time     TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 专栏创建时间 */
     is_locked              INT(11)          NOT NULL DEFAULT '0', /* 专栏是否被锁定 1：是，0：否 */
     column_author_id       INT(11)          NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (column_author_id)
 );
 
 /*
  * 专栏文章表
  */
-CREATE TABLE IF NOT EXISTS article (
+CREATE TABLE IF NOT EXISTS articles (
     id                  INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 屏蔽表ID（唯一标识） */
     article_title       VARCHAR(255)     NOT NULL, /* 文章标题 */
     article_content     MEDIUMTEXT       NOT NULL, /* 文章正文 */
@@ -552,8 +594,11 @@ CREATE TABLE IF NOT EXISTS article (
     views_count         INT(11)          NOT NULL DEFAULT '0', /* 浏览数量 */
     approval_count      INT(11)          NOT NULL DEFAULT '0', /* 文章点赞数量 */
     is_locked           INT(11)          NOT NULL DEFAULT '0', /* 文章是否被锁定 1：是，0：否 */
+    column_id           INT(11)          NOT NULL, /* 专栏 ID */
     author_id           INT(11)          NOT NULL, /* 文章作者 ID */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (column_id),
+    INDEX (author_id)
 );
 
 /*
@@ -564,7 +609,9 @@ CREATE TABLE IF NOT EXISTS column_topics (
     topic_name    VARCHAR(64)      NOT NULL, /* 专栏主题名称 */
     article_count INT(11)          NOT NULL DEFAULT '0', /* 专栏主题包含文章数 */
     column_id     INT(11)          NOT NULL, /* 专栏 ID */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (topic_name),
+    INDEX (column_id)
 );
 
 /*
@@ -574,13 +621,15 @@ CREATE TABLE IF NOT EXISTS article_topics (
     id              INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 专栏文章主题表ID（唯一标识） */
     column_topic_id INT(11)          NOT NULL, /* 专栏主题 ID */
     article_id      INT(11)          NOT NULL, /* 文章 ID */
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    INDEX (column_topic_id),
+    INDEX (article_id)
 );
 
 /**
  * 专栏文章草稿表
  */
-CREATE TABLE IF NOT EXISTS article_draft (
+CREATE TABLE IF NOT EXISTS article_drafts (
     id               INT(11)    NOT NULL AUTO_INCREMENT, /* 草稿ID（唯一标识） */
     column_id        INT(11)    NOT NULL, /* 草稿专栏 id */
     draft_content    MEDIUMTEXT NOT NULL, /* 草稿内容 */
@@ -588,6 +637,7 @@ CREATE TABLE IF NOT EXISTS article_draft (
     is_anonymous     INT(11)    NOT NULL DEFAULT '0', /* 草稿是否匿名 1：是， 0：否 */
     user_id          INT(11)    NOT NULL, /* 草稿作者 */
     PRIMARY KEY (id),
+    INDEX (column_id),
     INDEX (user_id)
 );
 
@@ -603,7 +653,7 @@ CREATE TABLE IF NOT EXISTS notification_text (
 /*
  * 公共提醒消息表
  */
-CREATE TABLE IF NOT EXISTS notification (
+CREATE TABLE IF NOT EXISTS notifications (
     id               INT(11)     NOT NULL AUTO_INCREMENT, /* 公共消息ID（唯一标识） */
     text_id          INT(11)     NOT NULL, /* 消息内容ID */
     send_time        TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 发送时间 */
@@ -613,6 +663,7 @@ CREATE TABLE IF NOT EXISTS notification (
     message_group_id INT(11)     NOT NULL, /* 关注问题的用户组  0:默认所有人*/
     PRIMARY KEY (id),
     INDEX (text_id),
+    INDEX (is_read),
     INDEX (message_group_id)
 );
 
@@ -628,7 +679,7 @@ CREATE TABLE IF NOT EXISTS message_text (
 /*
  * 私人消息表
  */
-CREATE TABLE IF NOT EXISTS private_message (
+CREATE TABLE IF NOT EXISTS private_messages (
     id              INT(11)     NOT NULL AUTO_INCREMENT, /* 用户消息ID（唯一标识） */
     sender_id       INT(11)     NOT NULL, /* 发送用户ID */
     recipient_id    INT(11)     NOT NULL, /* 接收用户ID */
@@ -642,7 +693,8 @@ CREATE TABLE IF NOT EXISTS private_message (
     PRIMARY KEY (id),
     INDEX (sender_id),
     INDEX (recipient_id),
-    INDEX (text_id)
+    INDEX (text_id),
+    INDEX (is_read)
 );
 
 /**
@@ -687,7 +739,7 @@ CREATE TABLE IF NOT EXISTS private_message (
  * 	2. 系统通知（私信页面）
  * 		*系统公告私信 #	-- SystemMessage
  */
-CREATE TABLE IF NOT EXISTS message_group (
+CREATE TABLE IF NOT EXISTS message_groups (
     id          INT(11) NOT NULL AUTO_INCREMENT, /* 消息组 ID（唯一标识） */
     trigger_id  INT(11) NOT NULL, /* 触发用户 ID */
     question_id INT(11) NOT NULL, /* 问题 ID */
@@ -697,9 +749,13 @@ CREATE TABLE IF NOT EXISTS message_group (
     comment_id  INT(11) NOT NULL, /* 评论 ID */
     user_id     INT(11) NOT NULL, /* 用户 ID */
     PRIMARY KEY (id),
-    INDEX (user_id),
+    INDEX (trigger_id),
     INDEX (question_id),
-    INDEX (answer_id)
+    INDEX (article_id),
+    INDEX (answer_id),
+    INDEX (answerer_id),
+    INDEX (comment_id),
+    INDEX (user_id)
 );
 
 /**
@@ -715,7 +771,7 @@ CREATE TABLE IF NOT EXISTS report_type (
 /**
  * 举报表
  */
-CREATE TABLE IF NOT EXISTS report (
+CREATE TABLE IF NOT EXISTS reports (
     id                 INT(11)      NOT NULL AUTO_INCREMENT, /* 举报主键ID（唯一标识） */
     report_type_id     INT(11)      NOT NULL, /* 举报类型 ID */
     report_category    INT(11)      NOT NULL, /* 举报内容所属分类 0：问题，1：答案，2：评论 */
@@ -726,6 +782,8 @@ CREATE TABLE IF NOT EXISTS report (
     user_id            INT(11)      NOT NULL, /* 举报用户 ID（唯一标识） */
     PRIMARY KEY (id),
     INDEX (report_type_id),
+    INDEX (report_category),
+    INDEX (is_resolved),
     INDEX (user_id)
 );
 
@@ -737,3 +795,19 @@ CREATE TABLE IF NOT EXISTS business (
     job_name VARCHAR(64) NOT NULL, /* 所在行业名称 */
     PRIMARY KEY (id)
 );
+
+/*
+ * 页面信息表
+ */
+CREATE TABLE IF NOT EXISTS pages (
+    id          INT(11)     NOT NULL AUTO_INCREMENT, /* 页面信息 ID */
+    url_token   VARCHAR(32) NOT NULL, /* 页面 URL */
+    title       VARCHAR(255)         DEFAULT NULL, /* 页面 title */
+    keywords    VARCHAR(255)         DEFAULT NULL, /* 页面关键字 */
+    description VARCHAR(255)         DEFAULT NULL, /* 页面描述 */
+    contents    TEXT, /* 页面 content 信息 */
+    enabled     INT(11)     NOT NULL DEFAULT '0', /* 页面是否可用 */
+    PRIMARY KEY (id),
+    UNIQUE KEY (url_token),
+    INDEX (url_token)
+)
