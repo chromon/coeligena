@@ -10,8 +10,8 @@ import java.sql.Timestamp;
  * Created by Ellery on 2017/9/20.
  */
 @Entity
-@Table(name = "permission")
-public class Permission {
+@Table(name = "permissions")
+public class Permissions {
 
     // 权限 id
     private int id;
@@ -35,7 +35,7 @@ public class Permission {
     private short pid;
 
     // 权限类型：1-表示应用（模块）, 2-表示控制器, 3-表示方法
-    private short level;
+    private byte level;
 
     // 权限创建时间
     private Timestamp createTime;
@@ -168,8 +168,8 @@ public class Permission {
      * 获取权限类型
      * @return 权限类型
      */
-    @Column(name = "level", nullable = false)
-    public short getLevel() {
+    @Column(name = "level", nullable = false, columnDefinition = "tinyint")
+    public byte getLevel() {
         return level;
     }
 
@@ -177,7 +177,7 @@ public class Permission {
      * 设置权限类型
      * @param level 权限类型
      */
-    public void setLevel(short level) {
+    public void setLevel(byte level) {
         this.level = level;
     }
 

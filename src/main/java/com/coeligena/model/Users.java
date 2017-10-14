@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "user")
-public class User {
+public class Users {
 
     // 用户信息 id
     private int id;
@@ -28,7 +28,7 @@ public class User {
     private String location;
 
     // 行业
-    private String business;
+    private int businessId;
 
     // 公司或组织名称
     private String employment;
@@ -49,7 +49,7 @@ public class User {
     private String autograph;
 
     // 获得赞同数
-    private int approveCount;
+    private int approvalCount;
 
     // 获得感谢数
     private int thankCount;
@@ -63,11 +63,20 @@ public class User {
     // 收藏夹数
     private int collectCount;
 
+    // 邀请回答数
+    private int inviteCount;
+
+    // 主页浏览数
+    private int profileViewCount;
+
     // 个性网址
     private String personalityURL;
 
     // 邮箱地址是否激活
-    private int isEmailActive;
+    private byte isEmailActive;
+
+    // 手机是否激活
+    private byte isPhoneActive;
 
     // 验证用户 id
     private int authUserId;
@@ -163,17 +172,17 @@ public class User {
      * 获取行业
      * @return 行业
      */
-    @Column(name = "business", length = 128)
-    public String getBusiness() {
-        return business;
+    @Column(name = "business_id")
+    public int getBusinessId() {
+        return businessId;
     }
 
     /**
      * 设置行业
-     * @param business 行业
+     * @param businessId 行业
      */
-    public void setBusiness(String business) {
-        this.business = business;
+    public void setBusinessId(int businessId) {
+        this.businessId = businessId;
     }
 
     /**
@@ -283,16 +292,16 @@ public class User {
      * @return 赞同数
      */
     @Column(name = "approve_count", nullable = false)
-    public int getApproveCount() {
-        return approveCount;
+    public int getApprovalCount() {
+        return approvalCount;
     }
 
     /**
      * 设置赞同数
-     * @param approveCount 赞同数
+     * @param approvalCount 赞同数
      */
-    public void setApproveCount(int approveCount) {
-        this.approveCount = approveCount;
+    public void setApprovalCount(int approvalCount) {
+        this.approvalCount = approvalCount;
     }
 
     /**
@@ -384,8 +393,8 @@ public class User {
      * 获取邮箱是否激活
      * @return 邮箱是否激活
      */
-    @Column(name = "is_email_active", nullable = false)
-    public int getIsEmailActive() {
+    @Column(name = "is_email_active", nullable = false, columnDefinition = "tinyint")
+    public byte getIsEmailActive() {
         return isEmailActive;
     }
 
@@ -393,8 +402,59 @@ public class User {
      * 设置邮箱是否激活
      * @param isEmailActive 邮箱是否激活
      */
-    public void setIsEmailActive(int isEmailActive) {
+    public void setIsEmailActive(byte isEmailActive) {
         this.isEmailActive = isEmailActive;
+    }
+
+    /**
+     * 获取邀请回答数量
+     * @return 邀请回答数量
+     */
+    @Column(name = "invite_count", nullable = false)
+    public int getInviteCount() {
+        return inviteCount;
+    }
+
+    /**
+     * 设置邀请回答数量
+     * @param inviteCount 邀请回答数量
+     */
+    public void setInviteCount(int inviteCount) {
+        this.inviteCount = inviteCount;
+    }
+
+    /**
+     * 获取主页浏览数量
+     * @return 主页浏览数量
+     */
+    @Column(name = "profile_view_count", nullable = false)
+    public int getProfileViewCount() {
+        return profileViewCount;
+    }
+
+    /**
+     * 获取主页浏览数量
+     * @param profileViewCount 主页浏览数量
+     */
+    public void setProfileViewCount(int profileViewCount) {
+        this.profileViewCount = profileViewCount;
+    }
+
+    /**
+     * 手机是否激活
+     * @return 是否激活
+     */
+    @Column(name = "is_phone_active", nullable = false, columnDefinition = "tinyint")
+    public byte getIsPhoneActive() {
+        return isPhoneActive;
+    }
+
+    /**
+     * 设置手机是否激活
+     * @param isPhoneActive 手机是否激活
+     */
+    public void setIsPhoneActive(byte isPhoneActive) {
+        this.isPhoneActive = isPhoneActive;
     }
 
     /**

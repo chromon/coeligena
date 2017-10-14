@@ -10,8 +10,8 @@ import java.sql.Timestamp;
  * Created by Ellery on 2017/9/19.
  */
 @Entity
-@Table(name = "auto_user")
-public class AutoUser {
+@Table(name = "auth_users")
+public class AuthUsers {
 
     // 验证用户 id
     private int id;
@@ -37,8 +37,14 @@ public class AutoUser {
     // 最近登录的 ip 地址
     private String lastLoginIP;
 
-    // 启用状态：0-表示禁用，1-表示启用
-    private short status;
+    // 是否是禁言状态
+    private byte isMutedStatus;
+
+    // 禁言截止时间
+    private Timestamp mutedTime;
+
+    // 是否是禁用账户
+    private byte isBanned;
 
     // 备注信息
     private String remark;
@@ -182,20 +188,54 @@ public class AutoUser {
     }
 
     /**
-     * 获取启用状态：0-表示禁用，1-表示启用
-     * @return 启用状态
+     * 判断是否是禁言状态
+     * @return 禁言状态
      */
-    @Column(name = "status", nullable = false)
-    public short getStatus() {
-        return status;
+    @Column(name = "is_muted_status", nullable = false, columnDefinition="tinyint")
+    public byte getIsMutedStatus() {
+        return isMutedStatus;
     }
 
     /**
-     * 设置启用状态：0-表示禁用，1-表示启用
-     * @param status  启用状态
+     * 设置禁言状态
+     * @param isMutedStatus 是否是禁言状态
      */
-    public void setStatus(short status) {
-        this.status = status;
+    public void setIsMutedStatus(byte isMutedStatus) {
+        this.isMutedStatus = isMutedStatus;
+    }
+
+    /**
+     * 获取禁言截止时间
+     * @return 截止时间
+     */
+    @Column(name = "muted_time")
+    public Timestamp getMutedTime() {
+        return mutedTime;
+    }
+
+    /**
+     * 设置禁言截止时间
+     * @param mutedTime 禁言截止时间
+     */
+    public void setMutedTime(Timestamp mutedTime) {
+        this.mutedTime = mutedTime;
+    }
+
+    /**
+     * 判断是否禁用状态
+     * @return 是否禁用状态
+     */
+    @Column(name = "is_banned", nullable = false, columnDefinition="tinyint")
+    public byte getIsBanned() {
+        return isBanned;
+    }
+
+    /**
+     * 设置禁用状态
+     * @param isBanned 禁用状态
+     */
+    public void setIsBanned(byte isBanned) {
+        this.isBanned = isBanned;
     }
 
     /**

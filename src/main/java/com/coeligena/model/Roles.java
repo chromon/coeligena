@@ -12,8 +12,8 @@ import java.sql.Timestamp;
  * Created by Ellery on 2017/9/19.
  */
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name = "roles")
+public class Roles {
 
     // 角色 id
     private int id;
@@ -25,7 +25,7 @@ public class Role {
     private int pid;
 
     // 启用状态：0-表示禁用，1-表示启用
-    private short status;
+    private byte status;
 
     // 创建时间
     private Timestamp createTime;
@@ -93,8 +93,8 @@ public class Role {
      * 获取启用状态：0-表示禁用，1-表示启用
      * @return 启用状态码
      */
-    @Column(name = "status", nullable = false)
-    public short getStatus() {
+    @Column(name = "status", nullable = false, columnDefinition = "tinyint")
+    public byte getStatus() {
         return status;
     }
 
@@ -102,7 +102,7 @@ public class Role {
      * 设置启用状态：0-表示禁用，1-表示启用
      * @param status 启用状态码
      */
-    public void setStatus(short status) {
+    public void setStatus(byte status) {
         this.status = status;
     }
 

@@ -5,18 +5,19 @@ USE coeligena;
 /*
  * 验证用户表
  */
-CREATE TABLE IF NOT EXISTS auto_users (
-    id                  INT UNSIGNED        NOT NULL AUTO_INCREMENT, /* 验证用户 ID（唯一标识） */
-    email               VARCHAR(128)        NULL, /* 邮箱*/
-    phone               VARCHAR(16)         NULL, /* 手机 */
-    password            VARCHAR(256)        NOT NULL, /* 密码 */
-    salt                VARCHAR(128)        NOT NULL, /* 密码加密盐 */
-    create_time         TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 创建时间（时间戳） */
-    last_login_time     TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 最近一次登录时间（时间戳）*/
-    last_login_ip       VARCHAR(15)         NOT NULL, /* 最近登录的IP地址 */
-    is_forbidden_status TINYINT(4) UNSIGNED NOT NULL, /* 是否状态：1-表示禁用，0-表示启用 */
-    forbidden_time      TIMESTAMP           NOT NULL, /* 禁用截止日期 */
-    remark              VARCHAR(256)                 DEFAULT NULL, /* 备注信息 */
+CREATE TABLE IF NOT EXISTS auth_users (
+    id              INT UNSIGNED NOT NULL AUTO_INCREMENT, /* 验证用户 ID（唯一标识） */
+    email           VARCHAR(128) NULL, /* 邮箱*/
+    phone           VARCHAR(16)  NULL, /* 手机 */
+    password        VARCHAR(256) NOT NULL, /* 密码 */
+    salt            VARCHAR(128) NOT NULL, /* 密码加密盐 */
+    create_time     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 创建时间（时间戳） */
+    last_login_time TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 最近一次登录时间（时间戳）*/
+    last_login_ip   VARCHAR(15)  NOT NULL, /* 最近登录的IP地址 */
+    is_muted_status TINYINT(4)   NOT NULL, /* 是否禁言状态：1-表示禁言，0-表示正常 */
+    muted_time      TIMESTAMP             DEFAULT NULL, /* 禁言截止日期 */
+    is_banned       TINYINT(4)   NOT NULL DEFAULT '0', /* 是否禁用账户 */
+    remark          VARCHAR(256)          DEFAULT NULL, /* 备注信息 */
     PRIMARY KEY (id),
     INDEX (email),
     INDEX (phone),
@@ -104,9 +105,9 @@ CREATE TABLE IF NOT EXISTS users (
     thank_count        INT(11)          NOT NULL DEFAULT '0', /* 获得感谢数 */
     question_count     INT(11)          NOT NULL DEFAULT '0', /* 提问数 */
     answer_count       INT(11)          NOT NULL DEFAULT '0', /* 回答数 */
+    collect_count      INT(11)          NOT NULL DEFAULT '0', /* 收藏夹数 */
     invite_count       INT(11)          NOT NULL DEFAULT '0', /* 邀请回答数 */
     profile_view_count INT(11)          NOT NULL DEFAULT '0', /* 主页浏览数 */
-    collect_count      INT(11)          NOT NULL DEFAULT '0', /* 收藏夹数 */
     personality_url    VARCHAR(64)               DEFAULT NULL, /* 个性网址 */
     is_email_active    TINYINT(4)       NOT NULL DEFAULT '0', /* 邮箱是否激活 0：否， 1：是 */
     is_phone_active    TINYINT(4)       NOT NULL DEFAULT '0', /* 手机是否激活 0：否， 1：是 */
@@ -122,18 +123,18 @@ CREATE TABLE IF NOT EXISTS users (
  * 账户激活数据表
  */
 CREATE TABLE IF NOT EXISTS activations (
-    id               INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 账户激活数据 ID */
-    active_code      VARCHAR(32)      NOT NULL, /* 账户激活码 */
-    active_type_code VARCHAR(16)      NOT NULL, /* 账户激活码类型：email url 或 phone code */
-    creat_time       TIMESTAMP                 DEFAULT CURRENT_TIMESTAMP, /* 激活码创建时间 */
-    expire_time      TIMESTAMP                 DEFAULT NULL, /* 激活码过期时间 */
-    create_ip        VARCHAR(15)      NOT NULL, /* 激活码创建时 IP */
-    active_time      TIMESTAMP                 DEFAULT NULL, /* 触发激活时间 */
-    active_ip        VARCHAR(15)               DEFAULT NULL, /* 激活时 IP */
-    user_id          INT(11)          NOT NULL DEFAULT '0', /* 用户 ID */
+    id                   INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 账户激活数据 ID */
+    activation_code      VARCHAR(32)      NOT NULL, /* 账户激活码 */
+    activation_type_code VARCHAR(16)      NOT NULL, /* 账户激活码类型：email url 或 phone code */
+    create_time          TIMESTAMP                 DEFAULT CURRENT_TIMESTAMP, /* 激活码创建时间 */
+    expire_time          TIMESTAMP                 DEFAULT NULL, /* 激活码过期时间 */
+    create_ip            VARCHAR(15)      NOT NULL, /* 激活码创建时 IP */
+    activation_time      TIMESTAMP                 DEFAULT NULL, /* 触发激活时间 */
+    activation_ip        VARCHAR(15)               DEFAULT NULL, /* 激活时 IP */
+    user_id              INT(11)          NOT NULL DEFAULT '0', /* 用户 ID */
     PRIMARY KEY (id),
-    INDEX (active_code),
-    INDEX (active_type_code)
+    INDEX (activation_code),
+    INDEX (activation_type_code)
 );
 
 /* 
