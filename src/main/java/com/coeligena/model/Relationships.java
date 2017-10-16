@@ -23,8 +23,8 @@ import javax.persistence.*;
  * Created by Ellery on 2017/9/21.
  */
 @Entity
-@Table(name = "relationship")
-public class Relationship {
+@Table(name = "relationships")
+public class Relationships {
 
     // 用户关系 id
     private int id;

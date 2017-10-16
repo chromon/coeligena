@@ -1,6 +1,7 @@
 package com.coeligena.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * 问题关注实体类
@@ -20,6 +21,9 @@ public class Follow {
 
     // 问题关注人 id
     private int followerId;
+
+    // 关注时间
+    private Timestamp followTime;
 
     /**
      * 获取问题关注 id
@@ -72,5 +76,22 @@ public class Follow {
      */
     public void setFollowerId(int followerId) {
         this.followerId = followerId;
+    }
+
+    /**
+     * 获取关注时间
+     * @return 关注时间
+     */
+    @Column(name = "follow_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    public Timestamp getFollowTime() {
+        return followTime;
+    }
+
+    /**
+     * 设置关注时间
+     * @param followTime 关注时间
+     */
+    public void setFollowTime(Timestamp followTime) {
+        this.followTime = followTime;
     }
 }

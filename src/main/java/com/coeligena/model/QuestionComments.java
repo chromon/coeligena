@@ -4,26 +4,20 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * 问题、回答评论实体类
- *
- * <p>
- * 问题 id 与答案 id 按评论位置适时填写，二者取一
+ * 问题评论实体类
  *
  * <p>
  * Created by Ellery on 2017/9/24.
  */
 @Entity
-@Table(name = "comment")
-public class Comment {
+@Table(name = "question_comments")
+public class QuestionComments {
 
     // 评论 id
     private int id;
 
     // 被评论的问题 id
     private int questionId;
-
-    // 被评论的答案 id
-    private int answerId;
 
     // 发表评论用户 id
     private int reviewerId;
@@ -36,6 +30,9 @@ public class Comment {
 
     // 评论时间
     private Timestamp commentTime;
+
+    // 是否是精选评论
+    private byte isFeaturedComments;
 
     // 评论赞同数
     private int approvalCount;
@@ -74,23 +71,6 @@ public class Comment {
      */
     public void setQuestionId(int questionId) {
         this.questionId = questionId;
-    }
-
-    /**
-     * 获取被评论的答案 id
-     * @return 被评论的答案 id
-     */
-    @Column(name = "answer_id", nullable = false)
-    public int getAnswerId() {
-        return answerId;
-    }
-
-    /**
-     * 设置被评论的答案 id
-     * @param answerId 被评论的答案 id
-     */
-    public void setAnswerId(int answerId) {
-        this.answerId = answerId;
     }
 
     /**
@@ -159,6 +139,23 @@ public class Comment {
      */
     public void setCommentTime(Timestamp commentTime) {
         this.commentTime = commentTime;
+    }
+
+    /**
+     * 判断是否是精品评论
+     * @return 是否是精品评论
+     */
+    @Column(name = "is_featured_comments", nullable = false, columnDefinition = "tinyint")
+    public byte getIsFeaturedComments() {
+        return isFeaturedComments;
+    }
+
+    /**
+     * 设置是否是精品评论
+     * @param isFeaturedComments 是否是精品评论
+     */
+    public void setIsFeaturedComments(byte isFeaturedComments) {
+        this.isFeaturedComments = isFeaturedComments;
     }
 
     /**
