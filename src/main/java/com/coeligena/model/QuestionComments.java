@@ -13,28 +13,28 @@ import java.sql.Timestamp;
 @Table(name = "question_comments")
 public class QuestionComments {
 
-    // 评论 id
+    /** 评论 id */
     private int id;
 
-    // 被评论的问题 id
+    /** 被评论的问题 id */
     private int questionId;
 
-    // 发表评论用户 id
+    /** 发表评论用户 id */
     private int reviewerId;
 
-    // 被回复评论的 id
+    /** 被回复评论的 id */
     private int parentCommentId;
 
-    // 评论内容
+    /** 评论内容 */
     private String commentContent;
 
-    // 评论时间
+    /** 评论时间 */
     private Timestamp commentTime;
 
-    // 是否是精选评论
+    /** 是否是精选评论 */
     private byte isFeaturedComments;
 
-    // 评论赞同数
+    /** 评论赞同数 */
     private int approvalCount;
 
     /**

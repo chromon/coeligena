@@ -13,28 +13,28 @@ import java.sql.Timestamp;
 @Table(name = "answer")
 public class Answer {
 
-    // 答案 id
+    /** 答案 id */
     private int id;
 
-    // 问题 id
+    /** 问题 id */
     private int questionId;
 
-    // 作者 id
+    /** 作者 id */
     private int authorId;
 
-    // 答案
+    /** 答案 */
     private String answerContent;
 
-    // 回答时间
+    /** 回答时间 */
     private Timestamp answerTime;
 
-    // 评论数
+    /** 评论数 */
     private int commentCount;
 
-    // 是否为精华回答
+    /** 是否为精华回答 */
     private int isTopAnswer;
 
-    // 是否匿名回答
+    /** 是否匿名回答 */
     private int isAnonymous;
 
     /**

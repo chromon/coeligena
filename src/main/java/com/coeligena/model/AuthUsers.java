@@ -13,40 +13,40 @@ import java.sql.Timestamp;
 @Table(name = "auth_users")
 public class AuthUsers {
 
-    // 验证用户 id
+    /** 验证用户 id */
     private int id;
 
-    // 邮箱地址
+    /** 邮箱地址 */
     private String email;
 
-    // 手机号码
+    /** 手机号码 */
     private String phone;
 
-    // 密码
+    /** 密码 */
     private String password;
 
-    // 密码盐
+    /** 密码盐 */
     private String salt;
 
-    // 创建时间
+    /** 创建时间 */
     private Timestamp createTime;
 
-    // 最后一次登录时间
+    /** 最后一次登录时间 */
     private Timestamp lastLoginTime;
 
-    // 最近登录的 ip 地址
+    /** 最近登录的 ip 地址 */
     private String lastLoginIP;
 
-    // 是否是禁言状态
+    /** 是否是禁言状态 */
     private byte isMutedStatus;
 
-    // 禁言截止时间
+    /** 禁言截止时间 */
     private Timestamp mutedTime;
 
-    // 是否是禁用账户
+    /** 是否是禁用账户 */
     private byte isBanned;
 
-    // 备注信息
+    /** 备注信息 */
     private String remark;
 
     /**

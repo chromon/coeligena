@@ -13,46 +13,46 @@ import java.sql.Timestamp;
 @Table(name = "questions")
 public class Questions {
 
-    // 问题 id
+    /** 问题 id */
     private int id;
 
-    // 问题标题
+    /** 问题标题 */
     private String questionContent;
 
-    // 问题内容
+    /** 问题内容 */
     private String questionDetail;
 
-    // 提问时间
+    /** 提问时间 */
     private Timestamp questionTime;
 
-    // 修改时间
+    /** 修改时间 */
     private Timestamp updateTime;
 
-    // 答案数
+    /** 答案数 */
     private int answerCount;
 
-    // 浏览数
+    /** 浏览数 */
     private int viewCount;
 
-    // 关注人数
+    /** 关注人数 */
     private int followerCount;
 
-    // 评论数
+    /** 评论数 */
     private int commentCount;
 
-    // 提问 IP
+    /** 提问 IP */
     private String questionIP;
 
-    // 问题是否被锁定
+    /** 问题是否被锁定 */
     private byte isLocked;
 
-    // 是否匿名 1：是， 0：否
+    /** 是否匿名 1：是， 0：否 */
     private byte isAnonymous;
 
-    // 是否是推荐问题
+    /** 是否是推荐问题 */
     private byte isRecommend;
 
-    // 提问用户 id
+    /** 提问用户 id */
     private int userId;
 
     /**

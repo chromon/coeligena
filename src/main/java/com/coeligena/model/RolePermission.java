@@ -12,13 +12,13 @@ import javax.persistence.*;
 @Table(name = "role_permission")
 public class RolePermission {
 
-    // 角色权限对应 id
+    /** 角色权限对应 id */
     private int id;
 
-    // 角色 id
+    /** 角色 id */
     private int roleId;
 
-    // 权限 id
+    /** 权限 id */
     private int permissionId;
 
     /**

@@ -13,16 +13,16 @@ import java.sql.Timestamp;
 @Table(name = "follow")
 public class Follow {
 
-    // 问题关注标识 id
+    /** 问题关注标识 id */
     private int id;
 
-    // 被关注的问题 id
+    /** 被关注的问题 id */
     private int questionId;
 
-    // 问题关注人 id
+    /** 问题关注人 id */
     private int followerId;
 
-    // 关注时间
+    /** 关注时间 */
     private Timestamp followTime;
 
     /**

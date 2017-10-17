@@ -12,13 +12,13 @@ import javax.persistence.*;
 @Table(name = "role_auth_user")
 public class RoleAuthUser {
 
-    // 验证用户与角色对应 id
+    /** 验证用户与角色对应 id */
     private int id;
 
-    // 角色 id
+    /** 角色 id */
     private int roleId;
 
-    // 验证用户验证 id
+    /** 验证用户验证 id */
     private int authUserId;
 
     /**

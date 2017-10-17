@@ -15,25 +15,25 @@ import java.sql.Timestamp;
 @Table(name = "roles")
 public class Roles {
 
-    // 角色 id
+    /** 角色 id */
     private int id;
 
-    // 角色名称
+    /** 角色名称 */
     private String roleName;
 
-    // 父角色 id
+    /** 父角色 id */
     private int pid;
 
-    // 启用状态：0-表示禁用，1-表示启用
+    /** 启用状态：0-表示禁用，1-表示启用 */
     private byte status;
 
-    // 创建时间
+    /** 创建时间 */
     private Timestamp createTime;
 
-    // 更改时间
+    /** 更改时间 */
     private Timestamp updateTime;
 
-    // 备注信息
+    /** 备注信息 */
     private String remark;
 
     /**

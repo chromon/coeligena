@@ -13,31 +13,31 @@ import java.sql.Timestamp;
 @Table(name = "activations")
 public class Activations {
 
-    // 账户激活数据 id
+    /** 账户激活数据 id */
     private int id;
 
-    // 账户激活码
+    /** 账户激活码 */
     private String activationCode;
 
-    // 账户激活码类型，email url or phone code
+    /** 账户激活码类型，email url or phone code */
     private String activationTypeCode;
 
-    // 激活码创建时间
+    /** 激活码创建时间 */
     private Timestamp createTime;
 
-    // 激活码过期时间
+    /** 激活码过期时间 */
     private Timestamp expireTime;
 
-    // 激活码创建时 ip
+    /** 激活码创建时 ip */
     private String createIP;
 
-    // 激活码激活时间
+    /** 激活码激活时间 */
     private Timestamp activationTime;
 
-    // 激活 ip
+    /** 激活 ip */
     private String activationIP;
 
-    // 用户 id
+    /** 用户 id */
     private int userId;
 
     /**

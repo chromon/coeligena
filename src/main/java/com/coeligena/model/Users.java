@@ -12,73 +12,73 @@ import javax.persistence.*;
 @Table(name = "user")
 public class Users {
 
-    // 用户信息 id
+    /** 用户信息 id */
     private int id;
 
-    // 用户全名
+    /** 用户全名 */
     private String fullname;
 
-    // 性别
+    /** 性别 */
     private int gender;
 
-    // 头像路径
+    /** 头像路径 */
     private String avatarPath;
 
-    // 居住位置
+    /** 居住位置 */
     private String location;
 
-    // 行业
+    /** 行业 */
     private int businessId;
 
-    // 公司或组织名称
+    /** 公司或组织名称 */
     private String employment;
 
-    // 职位
+    /** 职位 */
     private String position;
 
-    // 学校或教育机构
+    /** 学校或教育机构 */
     private String education;
 
-    // 专业
+    /** 专业 */
     private String major;
 
-    // 个人描述
+    /** 个人描述 */
     private String description;
 
-    // 签名
+    /** 签名 */
     private String autograph;
 
-    // 获得赞同数
+    /** 获得赞同数 */
     private int approvalCount;
 
-    // 获得感谢数
+    /** 获得感谢数 */
     private int thankCount;
 
-    // 提问数
+    /** 提问数 */
     private int questionCount;
 
-    // 回答数
+    /** 回答数 */
     private int answerCount;
 
-    // 收藏夹数
+    /** 收藏夹数 */
     private int collectCount;
 
-    // 邀请回答数
+    /** 邀请回答数 */
     private int inviteCount;
 
-    // 主页浏览数
+    /** 主页浏览数 */
     private int profileViewCount;
 
-    // 个性网址
+    /** 个性网址 */
     private String personalityURL;
 
-    // 邮箱地址是否激活
+    /** 邮箱地址是否激活 */
     private byte isEmailActive;
 
-    // 手机是否激活
+    /** 手机是否激活 */
     private byte isPhoneActive;
 
-    // 验证用户 id
+    /** 验证用户 id */
     private int authUserId;
 
     /**

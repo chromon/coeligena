@@ -26,13 +26,13 @@ import javax.persistence.*;
 @Table(name = "relationships")
 public class Relationships {
 
-    // 用户关系 id
+    /** 用户关系 id */
     private int id;
 
-    // 用户 id
+    /** 用户 id */
     private int userId;
 
-    // 当前用户关注的人 id
+    /** 当前用户关注的人 id */
     private int followedId;
 
     /**

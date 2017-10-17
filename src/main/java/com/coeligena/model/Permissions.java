@@ -13,34 +13,34 @@ import java.sql.Timestamp;
 @Table(name = "permissions")
 public class Permissions {
 
-    // 权限 id
+    /** 权限 id */
     private int id;
 
-    // 权限名称，对应应用控制器、应用、方法名
+    /** 权限名称，对应应用控制器、应用、方法名 */
     private String name;
 
-    // 权限名称
+    /** 权限名称 */
     private String title;
 
-    // 启用状态码
+    /** 启用状态码 */
     private short status;
 
-    // 备注信息
+    /** 备注信息 */
     private String remark;
 
-    // 排序值（默认是50）
+    /** 排序值（默认是50） */
     private short sort;
 
-    // 父权限 id
+    /** 父权限 id */
     private short pid;
 
-    // 权限类型：1-表示应用（模块）, 2-表示控制器, 3-表示方法
+    /** 权限类型：1-表示应用（模块）, 2-表示控制器, 3-表示方法 */
     private byte level;
 
-    // 权限创建时间
+    /** 权限创建时间 */
     private Timestamp createTime;
 
-    // 权限更新时间
+    /** 权限更新时间 */
     private Timestamp updateTime;
 
     /**
