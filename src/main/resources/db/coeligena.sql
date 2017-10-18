@@ -293,7 +293,7 @@ CREATE TABLE IF NOT EXISTS topic_alias (
 CREATE TABLE IF NOT EXISTS topic_logs (
     id            INT(11)     NOT NULL AUTO_INCREMENT, /* 话题日志 ID（唯一标识） */
     topic_id      INT(11)     NOT NULL DEFAULT '0', /* 话题节点 ID（唯一标识） */
-    user_id       INT(11)     NOT NULL DEFAULT '0', /* 操作人员 ID（唯一标识） */
+    user_id       INT(11)     NOT NULL DEFAULT '0', /* 日志操作人员 ID（唯一标识） */
     event         VARCHAR(64) NOT NULL, /* 日志事件 */
     reason        TEXT        NOT NULL, /* 修改理由 */
     revision_text TEXT        NOT NULL, /* 实际修改结果（HTML） */
