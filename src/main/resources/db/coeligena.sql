@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS questions (
     question_detail  TEXT         NOT NULL DEFAULT NULL, /* 问题内容 */
     question_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 提问时间 */
     update_time      TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 问题更新时间 */
-    answer_count     INT(11)      NOT NULL DEFAULT '0', /* 答案数 */
+    answer_count     INT(11)      NOT NULL DEFAULT '0', /* 回答数 */
     view_count       INT(11)      NOT NULL DEFAULT '0', /* 浏览次数 */
     follower_count   INT(11)      NOT NULL DEFAULT '0', /* 关注人数 */
     comment_count    INT(11)      NOT NULL DEFAULT '0', /* 评论数 */
@@ -352,18 +352,18 @@ CREATE TABLE IF NOT EXISTS invites (
  * 回答表
  */
 CREATE TABLE IF NOT EXISTS answers (
-    id             INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 答案ID（唯一标识） */
-    question_id    INT(11) UNSIGNED NOT NULL DEFAULT '0', /* 问题ID（唯一标识） */
-    author_id      INT(11) UNSIGNED NOT NULL DEFAULT '0', /* 作者ID（唯一标识） */
-    answer_content MEDIUMTEXT       NOT NULL, /* 答案 */
+    id             INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 回答ID（唯一标识） */
+    question_id    INT(11)          NOT NULL DEFAULT '0', /* 问题ID（唯一标识） */
+    author_id      INT(11)          NOT NULL DEFAULT '0', /* 作者ID（唯一标识） */
+    answer_content MEDIUMTEXT       NOT NULL, /* 回答 */
     answer_time    TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 回答或更新时间 */
     against_count  INT(11)          NOT NULL DEFAULT '0', /* 反对数 */
     approval_count INT(11)          NOT NULL DEFAULT '0', /* 支持数 */
     comment_count  INT(11)          NOT NULL DEFAULT '0', /* 评论数 */
     thanks_count   INT(11)          NOT NULL DEFAULT '0', /* 感谢数 */
     nohelp_count   INT(11)          NOT NULL DEFAULT '0', /* 没有帮助数 */
-    is_sec_licence INT(11)          NOT NULL DEFAULT '0', /* 是否作者保留权利 */
-    is_top_answer  INT(11)          NOT NULL DEFAULT '0', /* 是否是精华答案 */
+    is_sec_licence TINYINT(4)       NOT NULL DEFAULT '0', /* 是否作者保留权利 */
+    is_top_answer  TINYINT(4)       NOT NULL DEFAULT '0', /* 是否是精华回答 */
     is_anonymous   TINYINT(4)       NOT NULL DEFAULT '0', /* 是否匿名 1：是， 0：否 */
     is_force_fold  TINYINT(4)       NOT NULL DEFAULT '0', /* 是否强制折叠 1：是， 0：否 */
     PRIMARY KEY (id),
@@ -379,13 +379,13 @@ CREATE TABLE IF NOT EXISTS answers (
 );
 
 /*
- * 答案投票表
+ * 回答投票表
  */
 CREATE TABLE IF NOT EXISTS votes (
     id        INT(11)    NOT NULL AUTO_INCREMENT, /* 投票ID（唯一标识） */
-    answer_id INT(11)    NOT NULL DEFAULT '0', /* 答案ID（唯一标识） */
+    answer_id INT(11)    NOT NULL DEFAULT '0', /* 回答ID（唯一标识） */
     voter_id  INT(11)    NOT NULL DEFAULT '0', /* 投票用户ID */
-    vote_time TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 答案投票时间 */
+    vote_time TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 回答投票时间 */
     vote_type TINYINT(4) NOT NULL DEFAULT '0', /* 投票 1:up、2:down、3:unconcern */
     PRIMARY KEY (id),
     INDEX (answer_id),
@@ -398,7 +398,7 @@ CREATE TABLE IF NOT EXISTS votes (
  */
 CREATE TABLE IF NOT EXISTS answer_comments (
     id                   INT(11)    NOT NULL AUTO_INCREMENT, /* 评论ID（唯一标识） */
-    answer_id            INT(11)    NOT NULL DEFAULT '0', /* 被评论的答案ID（唯一标识） */
+    answer_id            INT(11)    NOT NULL DEFAULT '0', /* 被评论的回答ID（唯一标识） */
     reviewer_id          INT(11)    NOT NULL DEFAULT '0', /* 评论用户ID（唯一标识） */
     parent_comment_id    INT(11)    NOT NULL DEFAULT '0', /* 被回复评论的ID（唯一标识） */
     comment_content      TEXT       NOT NULL, /* 评论内容 */
@@ -413,7 +413,7 @@ CREATE TABLE IF NOT EXISTS answer_comments (
 );
 
 /*
- * 评论赞同表（不包括答案投票）
+ * 评论赞同表（不包括回答投票）
  */
 CREATE TABLE IF NOT EXISTS comment_approvals (
     id            INT(11)   NOT NULL AUTO_INCREMENT, /* 赞同ID（唯一标识） */
@@ -426,13 +426,13 @@ CREATE TABLE IF NOT EXISTS comment_approvals (
 );
 
 /*
- * 答案感谢表
+ * 回答感谢表
  */
 CREATE TABLE IF NOT EXISTS thanks (
     id         INT(11)   NOT NULL AUTO_INCREMENT, /* 感谢ID（唯一标识） */
-    answer_id  INT(11)   NOT NULL DEFAULT '0', /* 被感谢答案ID */
+    answer_id  INT(11)   NOT NULL DEFAULT '0', /* 被感谢回答ID */
     thanker_id INT(11)   NOT NULL DEFAULT '0', /* 感谢用户ID */
-    thank_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 感谢答案时间 */
+    thank_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 感谢回答时间 */
     PRIMARY KEY (id),
     INDEX (answer_id),
     INDEX (thanker_id)
@@ -467,14 +467,14 @@ CREATE TABLE IF NOT EXISTS drafts (
 );
 
 /*
- * 答案收藏夹表
+ * 回答收藏夹表
  */
 CREATE TABLE IF NOT EXISTS collection_folders (
     id            INT(11)      NOT NULL AUTO_INCREMENT, /* 收藏夹ID（唯一标识） */
     foldername    VARCHAR(256) NOT NULL, /* 收藏夹名称 */
     description   VARCHAR(256)          DEFAULT NULL, /* 收藏夹描述 */
     owner_id      INT(11)      NOT NULL DEFAULT '0', /* 创建者ID */
-    answers_num   INT(11)      NOT NULL DEFAULT '0', /* 包含答案数量 */
+    answers_num   INT(11)      NOT NULL DEFAULT '0', /* 包含回答数量 */
     followers_num INT(11)      NOT NULL DEFAULT '0', /* 关注者数量 */
     is_public     TINYINT(4)   NOT NULL DEFAULT '1', /* 是否公开 0：否， 1：是 */
     PRIMARY KEY (id),
@@ -482,11 +482,11 @@ CREATE TABLE IF NOT EXISTS collection_folders (
 );
 
 /*
- * 答案收藏表
+ * 回答收藏表
  */
 CREATE TABLE IF NOT EXISTS collections (
     id                   INT(11) NOT NULL AUTO_INCREMENT, /* 收藏ID（唯一标识） */
-    answer_id            INT(11) NOT NULL DEFAULT '0', /* 被收藏的答案ID */
+    answer_id            INT(11) NOT NULL DEFAULT '0', /* 被收藏的回答ID */
     collection_folder_id INT(11) NOT NULL DEFAULT '0', /* 所属收藏夹ID */
     owner_id             INT(11) NOT NULL DEFAULT '0', /* 收藏夹所属用户ID */
     PRIMARY KEY (id),
@@ -512,9 +512,9 @@ CREATE TABLE IF NOT EXISTS collection_folder_follow (
  */
 CREATE TABLE IF NOT EXISTS feeds (
     id                INT(11)    NOT NULL AUTO_INCREMENT, /* 动态ID */
-    feeds_id          INT(11)    NOT NULL DEFAULT '0', /* 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同答案和回答问题对应的是答案ID */
+    feeds_id          INT(11)    NOT NULL DEFAULT '0', /* 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同回答和回答问题对应的是回答ID */
     feeds_type        TINYINT(4) NOT NULL DEFAULT '0', /* 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题*/
-    parent_feeds_id   INT(11)    NOT NULL DEFAULT '0', /* 父动态类型所对应的ID，赞同答案和回答问题对应的是问题ID */
+    parent_feeds_id   INT(11)    NOT NULL DEFAULT '0', /* 父动态类型所对应的ID，赞同回答和回答问题对应的是问题ID */
     parent_feeds_type TINYINT(4)          DEFAULT '0', /* 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题*/
     feeds_time        TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 动态时间 */
     feeds_user_id     INT(11)    NOT NULL DEFAULT '0', /* 动态发起人 */
@@ -745,7 +745,7 @@ CREATE TABLE IF NOT EXISTS message_groups (
     trigger_id  INT(11) NOT NULL DEFAULT '0', /* 触发用户 ID */
     question_id INT(11) NOT NULL DEFAULT '0', /* 问题 ID */
     article_id  INT(11) NOT NULL DEFAULT '0', /* 专栏文章 ID */
-    answer_id   INT(11) NOT NULL DEFAULT '0', /* 答案 ID */
+    answer_id   INT(11) NOT NULL DEFAULT '0', /* 回答 ID */
     answerer_id INT(11) NOT NULL DEFAULT '0', /* 回答用户 ID */
     comment_id  INT(11) NOT NULL DEFAULT '0', /* 评论 ID */
     user_id     INT(11) NOT NULL DEFAULT '0', /* 用户 ID */
@@ -765,7 +765,7 @@ CREATE TABLE IF NOT EXISTS message_groups (
 CREATE TABLE IF NOT EXISTS report_type (
     id                  INT(11)     NOT NULL AUTO_INCREMENT, /* 举报类型主键 ID（唯一标识） */
     report_type_content VARCHAR(64) NOT NULL, /* 举报类型 */
-    is_common           INT(11)     NOT NULL DEFAULT '0', /* 判断是否是通用类型（即答案评论类型） */
+    is_common           INT(11)     NOT NULL DEFAULT '0', /* 判断是否是通用类型（即回答评论类型） */
     PRIMARY KEY (id)
 );
 
@@ -775,8 +775,8 @@ CREATE TABLE IF NOT EXISTS report_type (
 CREATE TABLE IF NOT EXISTS reports (
     id                 INT(11)      NOT NULL AUTO_INCREMENT, /* 举报主键ID（唯一标识） */
     report_type_id     INT(11)      NOT NULL DEFAULT '0', /* 举报类型 ID */
-    report_category    TINYINT(4)   NOT NULL DEFAULT '0', /* 举报内容所属分类 1：问题，2：答案，3：评论 */
-    report_category_id INT(11)      NOT NULL, /* 举报内容所属分类对应的问题、评论、答案id */
+    report_category    TINYINT(4)   NOT NULL DEFAULT '0', /* 举报内容所属分类 1：问题，2：回答，3：评论 */
+    report_category_id INT(11)      NOT NULL, /* 举报内容所属分类对应的问题、评论、回答id */
     report_time        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 举报时间 */
     report_reason      VARCHAR(512) NOT NULL, /* 举报理由 */
     is_resolved        TINYINT(4)   NOT NULL DEFAULT '0', /* 是否处理完成，1：是，0：否 */
