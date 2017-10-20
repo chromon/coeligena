@@ -404,22 +404,22 @@ CREATE TABLE IF NOT EXISTS answer_comments (
     comment_content      TEXT       NOT NULL, /* 评论内容 */
     comment_time         TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
     approval_count       INT(11)    NOT NULL DEFAULT '0', /* 赞同数量 */
-    is_featured_comments TINYINT(4) NOT NULL DEFAULT '0', /* 是否是精选评论 0：否，1：是 */
+    is_featured_comment  TINYINT(4) NOT NULL DEFAULT '0', /* 是否是精选评论 0：否，1：是 */
     PRIMARY KEY (id),
     INDEX (answer_id),
     INDEX (reviewer_id),
     INDEX (parent_comment_id),
-    INDEX (is_featured_comments)
+    INDEX (is_featured_comment)
 );
 
 /*
- * 评论赞同表（不包括回答投票）
+ * 评论赞同表
  */
 CREATE TABLE IF NOT EXISTS comment_approvals (
     id            INT(11)   NOT NULL AUTO_INCREMENT, /* 赞同ID（唯一标识） */
     comment_id    INT(11)   NOT NULL DEFAULT '0', /* 被赞同评论ID（唯一标识） */
     approval_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 评论点赞时间 */
-    user_id       INT(11)   NOT NULL DEFAULT '0', /* 用户ID（唯一标识） */
+    user_id       INT(11)   NOT NULL DEFAULT '0', /* 点赞用户ID（唯一标识） */
     PRIMARY KEY (id),
     INDEX (comment_id),
     INDEX (user_id)
