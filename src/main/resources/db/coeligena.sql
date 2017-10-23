@@ -470,13 +470,13 @@ CREATE TABLE IF NOT EXISTS drafts (
  * 回答收藏夹表
  */
 CREATE TABLE IF NOT EXISTS collection_folders (
-    id            INT(11)      NOT NULL AUTO_INCREMENT, /* 收藏夹ID（唯一标识） */
-    foldername    VARCHAR(256) NOT NULL, /* 收藏夹名称 */
-    description   VARCHAR(256)          DEFAULT NULL, /* 收藏夹描述 */
-    owner_id      INT(11)      NOT NULL DEFAULT '0', /* 创建者ID */
-    answers_num   INT(11)      NOT NULL DEFAULT '0', /* 包含回答数量 */
-    followers_num INT(11)      NOT NULL DEFAULT '0', /* 关注者数量 */
-    is_public     TINYINT(4)   NOT NULL DEFAULT '1', /* 是否公开 0：否， 1：是 */
+    id              INT(11)      NOT NULL AUTO_INCREMENT, /* 收藏夹ID（唯一标识） */
+    folder_name     VARCHAR(256) NOT NULL, /* 收藏夹名称 */
+    description     VARCHAR(256)          DEFAULT NULL, /* 收藏夹描述 */
+    answers_count   INT(11)      NOT NULL DEFAULT '0', /* 包含回答数量 */
+    followers_count INT(11)      NOT NULL DEFAULT '0', /* 关注者数量 */
+    is_public       TINYINT(4)   NOT NULL DEFAULT '1', /* 是否公开 0：否， 1：是 */
+    owner_id        INT(11)      NOT NULL DEFAULT '0', /* 创建者ID */
     PRIMARY KEY (id),
     INDEX (owner_id)
 );
@@ -485,10 +485,10 @@ CREATE TABLE IF NOT EXISTS collection_folders (
  * 回答收藏表
  */
 CREATE TABLE IF NOT EXISTS collections (
-    id                   INT(11) NOT NULL AUTO_INCREMENT, /* 收藏ID（唯一标识） */
-    answer_id            INT(11) NOT NULL DEFAULT '0', /* 被收藏的回答ID */
-    collection_folder_id INT(11) NOT NULL DEFAULT '0', /* 所属收藏夹ID */
-    owner_id             INT(11) NOT NULL DEFAULT '0', /* 收藏夹所属用户ID */
+    id                   INT(11) NOT NULL AUTO_INCREMENT, /* 收藏 ID（唯一标识） */
+    answer_id            INT(11) NOT NULL DEFAULT '0', /* 被收藏的回答 ID */
+    collection_folder_id INT(11) NOT NULL DEFAULT '0', /* 所属收藏夹 ID */
+    owner_id             INT(11) NOT NULL DEFAULT '0', /* 收藏夹所属用户 ID */
     PRIMARY KEY (id),
     INDEX (answer_id),
     INDEX (collection_folder_id),
@@ -499,9 +499,9 @@ CREATE TABLE IF NOT EXISTS collections (
  * 收藏夹关注表
  */
 CREATE TABLE IF NOT EXISTS collection_folder_follow (
-    id                   INT(11) NOT NULL AUTO_INCREMENT, /* 收藏ID（唯一标识） */
-    collection_folder_id INT(11) NOT NULL DEFAULT '0', /* 收藏夹ID */
-    follower_id          INT(11) NOT NULL DEFAULT '0', /* 收藏夹关注者ID */
+    id                   INT(11) NOT NULL AUTO_INCREMENT, /* 收藏关注 ID（唯一标识） */
+    collection_folder_id INT(11) NOT NULL DEFAULT '0', /* 收藏夹 ID */
+    follower_id          INT(11) NOT NULL DEFAULT '0', /* 收藏夹关注者 ID */
     PRIMARY KEY (id),
     INDEX (collection_folder_id),
     INDEX (follower_id)
