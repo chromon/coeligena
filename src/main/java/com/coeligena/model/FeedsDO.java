@@ -13,32 +13,40 @@ import java.sql.Timestamp;
 @Table(name = "feeds")
 public class FeedsDO {
 
-    // 动态 id
+    /** 动态 id */
     private int id;
 
-    // 动态类型所对应的 id,
-    // 如关注和提出问题对应的是问题 id
-    // 赞同答案和回答问题对应的是答案 id
+    /**
+     * 动态类型所对应的 id,
+     * 如关注和提出问题对应的是问题 id
+     * 赞同答案和回答问题对应的是答案 id
+     */
     private int feedsId;
 
-    // 动态类型
-    // 1：关注该问题，2：赞同该回答，
-    // 3：回答了该问题，4：提了一个问题
-    private String feedsType;
+    /**
+     * 动态类型
+     * 1：关注该问题，2：赞同该回答，
+     * 3：回答了该问题，4：提了一个问题
+     */
+    private byte feedsType;
 
-    // 父动态类型所对应的 id，
-    // 赞同答案和回答问题对应的是问题 id
+    /**
+     * 父动态类型所对应的 id，
+     * 赞同答案和回答问题对应的是问题 id
+     */
     private int parentFeedsId;
 
-    // 父动态类型
-    // 1：赞同该回答——对应问题，
-    // 2：回答了该问题——对应问题
-    private String parentFeedsType;
+    /**
+     * 父动态类型
+     * 1：赞同该回答——对应问题，
+     * 2：回答了该问题——对应问题
+     */
+    private byte parentFeedsType;
 
-    // 动态产生时间
+    /** 动态产生时间 */
     private Timestamp feedsTime;
 
-    // 动态发起人
+    /** 动态发起人 */
     private int feedsUserId;
 
     /**
@@ -83,8 +91,8 @@ public class FeedsDO {
      * 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题
      * @return 动态类型
      */
-    @Column(name = "feeds_type", nullable = false, length = 64)
-    public String getFeedsType() {
+    @Column(name = "feeds_type", nullable = false, columnDefinition = "tinyint")
+    public byte getFeedsType() {
         return feedsType;
     }
 
@@ -92,7 +100,7 @@ public class FeedsDO {
      * 设置动态类型
      * @param feedsType 动态类型
      */
-    public void setFeedsType(String feedsType) {
+    public void setFeedsType(byte feedsType) {
         this.feedsType = feedsType;
     }
 
@@ -118,8 +126,8 @@ public class FeedsDO {
      * 1：赞同该回答 —— 对应问题，2：回答了该问题 —— 对应问题
      * @return 父动态类型
      */
-    @Column(name = "parent_feeds_type", nullable = false, length = 64)
-    public String getParentFeedsType() {
+    @Column(name = "parent_feeds_type", nullable = false, columnDefinition = "tinyint")
+    public byte getParentFeedsType() {
         return parentFeedsType;
     }
 
@@ -127,7 +135,7 @@ public class FeedsDO {
      * 设置父动态类型
      * @param parentFeedsType 父动态类型
      */
-    public void setParentFeedsType(String parentFeedsType) {
+    public void setParentFeedsType(byte parentFeedsType) {
         this.parentFeedsType = parentFeedsType;
     }
 

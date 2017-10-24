@@ -542,7 +542,7 @@ CREATE TABLE IF NOT EXISTS blocks (
  * 设置表
  */
 CREATE TABLE IF NOT EXISTS settings (
-    id                    INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 话题表 ID（唯一标识） */
+    id                    INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 设置 ID（唯一标识） */
     is_privacy_protection TINYINT(4)       NOT NULL DEFAULT '1', /* 是否隐私保护（站外搜索到我的内容，不会被显示姓名）0：否，1：是 */
     message_receive       TINYINT(4)       NOT NULL DEFAULT '0', /* 别人给我发私信，0：允许所有人给我发私信，1：只允许我关注的人给我发私信 */
     stranger_inbox        TINYINT(4)       NOT NULL DEFAULT '0', /* 开启陌生人私信箱，0：否，1：是 */
@@ -553,7 +553,7 @@ CREATE TABLE IF NOT EXISTS settings (
     new_book              TINYINT(4)       NOT NULL DEFAULT '0', /* 关注的人有了新的电子书，0：接收消息，1：不接收消息 */
     at_comment_me         TINYINT(4)       NOT NULL DEFAULT '0', /* @/评论我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
     agree_thank_me        TINYINT(4)       NOT NULL DEFAULT '0', /* 赞同、感谢我，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
-    like_commnet          TINYINT(4)       NOT NULL DEFAULT '0', /* 赞了我的评论，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
+    like_comment          TINYINT(4)       NOT NULL DEFAULT '0', /* 赞了我的评论，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
     like_article          TINYINT(4)       NOT NULL DEFAULT '0', /* 赞了我的文章，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
     like_book             TINYINT(4)       NOT NULL DEFAULT '0', /* 赞了我的电子书，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
     admire_article        TINYINT(4)       NOT NULL DEFAULT '0', /* 赞赏了我的文章，0：接收所有人的消息，1：只接收关注人的消息，2：不接收任何人的消息*/
