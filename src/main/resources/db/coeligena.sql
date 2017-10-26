@@ -573,7 +573,7 @@ CREATE TABLE IF NOT EXISTS columns (
     column_name            VARCHAR(128)     NOT NULL, /* 专栏名称 */
     column_intro           VARCHAR(255)     NOT NULL, /* 专栏介绍 */
     column_followers_count INT(11)          NOT NULL DEFAULT '0', /* 专栏关注人数 */
-    article_count          INT(11)          NOT NULL DEFAULT '0', /* 专栏关注人数 */
+    article_count          INT(11)          NOT NULL DEFAULT '0', /* 专栏文章数 */
     column_create_time     TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 专栏创建时间 */
     is_locked              TINYINT(4)       NOT NULL DEFAULT '0', /* 专栏是否被锁定 1：是，0：否 */
     column_author_id       INT(11)          NOT NULL DEFAULT '0',
@@ -585,7 +585,7 @@ CREATE TABLE IF NOT EXISTS columns (
  * 专栏文章表
  */
 CREATE TABLE IF NOT EXISTS articles (
-    id                  INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 屏蔽表ID（唯一标识） */
+    id                  INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 专栏文章 ID（唯一标识） */
     article_title       VARCHAR(255)     NOT NULL, /* 文章标题 */
     article_content     MEDIUMTEXT       NOT NULL, /* 文章正文 */
     title_image         VARCHAR(255)              DEFAULT '', /* 文章题图 */
@@ -606,7 +606,7 @@ CREATE TABLE IF NOT EXISTS articles (
  * 专栏主题表
  */
 CREATE TABLE IF NOT EXISTS column_topics (
-    id            INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 专栏文章主题表ID（唯一标识） */
+    id            INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 专栏主题表ID（唯一标识） */
     topic_name    VARCHAR(64)      NOT NULL, /* 专栏主题名称 */
     article_count INT(11)          NOT NULL DEFAULT '0', /* 专栏主题包含文章数 */
     column_id     INT(11)          NOT NULL DEFAULT '0', /* 专栏 ID */
