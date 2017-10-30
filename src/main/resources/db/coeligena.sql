@@ -765,7 +765,7 @@ CREATE TABLE IF NOT EXISTS message_groups (
 CREATE TABLE IF NOT EXISTS report_type (
     id                  INT(11)     NOT NULL AUTO_INCREMENT, /* 举报类型主键 ID（唯一标识） */
     report_type_content VARCHAR(64) NOT NULL, /* 举报类型 */
-    is_common           INT(11)     NOT NULL DEFAULT '0', /* 判断是否是通用类型（即回答评论类型） */
+    is_common           TINYINT(4)  NOT NULL DEFAULT '0', /* 判断是否是通用类型（即回答评论类型） */
     PRIMARY KEY (id)
 );
 
