@@ -44,7 +44,7 @@ public class QuestionTagsDO {
      * 获取话题 id
      * @return 话题 id
      */
-    @Column(name = "question_topic_id", nullable = false)
+    @Column(name = "question_topic_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getQuestionTopicId() {
         return questionTopicId;
     }
@@ -61,7 +61,7 @@ public class QuestionTagsDO {
      * 获取问题 id
      * @return 问题 id
      */
-    @Column(name = "question_id", nullable = false)
+    @Column(name = "question_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getQuestionId() {
         return questionId;
     }

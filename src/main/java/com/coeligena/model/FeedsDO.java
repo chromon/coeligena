@@ -73,7 +73,7 @@ public class FeedsDO {
      *  如关注和提出问题对应的是问题 id，赞同答案和回答问题对应的是答案 id
      * @return 问题或答案 id
      */
-    @Column(name = "feeds_id", nullable = false)
+    @Column(name = "feeds_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getFeedsId() {
         return feedsId;
     }
@@ -91,7 +91,7 @@ public class FeedsDO {
      * 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题
      * @return 动态类型
      */
-    @Column(name = "feeds_type", nullable = false, columnDefinition = "tinyint")
+    @Column(name = "feeds_type", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getFeedsType() {
         return feedsType;
     }
@@ -108,7 +108,7 @@ public class FeedsDO {
      * 父动态类型所对应的 id，赞同答案和回答问题对应的是问题ID
      * @return 父动态类型所对应的 id
      */
-    @Column(name = "parent_feeds_id", nullable = false)
+    @Column(name = "parent_feeds_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getParentFeedsId() {
         return parentFeedsId;
     }
@@ -126,7 +126,7 @@ public class FeedsDO {
      * 1：赞同该回答 —— 对应问题，2：回答了该问题 —— 对应问题
      * @return 父动态类型
      */
-    @Column(name = "parent_feeds_type", nullable = false, columnDefinition = "tinyint")
+    @Column(name = "parent_feeds_type", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getParentFeedsType() {
         return parentFeedsType;
     }
@@ -160,7 +160,7 @@ public class FeedsDO {
      * 获取动态发起人 id
      * @return 动态发起人 id
      */
-    @Column(name = "feeds_user_id", nullable = false)
+    @Column(name = "feeds_user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getFeedsUserId() {
         return feedsUserId;
     }

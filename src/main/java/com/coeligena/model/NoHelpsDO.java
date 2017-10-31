@@ -48,7 +48,7 @@ public class NoHelpsDO {
      * 获取没有帮助的回答 id
      * @return 没有帮助的回答 id
      */
-    @Column(name = "answer_id", nullable = false)
+    @Column(name = "answer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswerId() {
         return answerId;
     }
@@ -65,7 +65,7 @@ public class NoHelpsDO {
      * 获取提交没有帮助用户 id
      * @return 提交没有帮助用户 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }
@@ -82,7 +82,7 @@ public class NoHelpsDO {
      * 获取提交没有帮助时间
      * @return 提交没有帮助时间
      */
-    @Column(name = "nohelp_time", nullable = false, columnDefinition="timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "nohelp_time", nullable = false, columnDefinition="timestamp default CURRENT_TIMESTAMP")
     public Timestamp getNoHelpTime() {
         return noHelpTime;
     }

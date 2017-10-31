@@ -57,7 +57,7 @@ public class TopicLogsDO {
      * 获取话题节点 id
      * @return 话题节点 id
      */
-    @Column(name = "topic_id", nullable = false)
+    @Column(name = "topic_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getTopicId() {
         return topicId;
     }
@@ -74,7 +74,7 @@ public class TopicLogsDO {
      * 获取日志操作人员 id
      * @return 日志操作人员 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }
@@ -91,7 +91,7 @@ public class TopicLogsDO {
      * 获取日志事件
      * @return 日志事件
      */
-    @Column(name = "event", nullable = false, length = 64)
+    @Column(name = "event", nullable = false, length = 64, columnDefinition = "varchar(64)")
     public String getEvent() {
         return event;
     }

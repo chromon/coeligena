@@ -44,7 +44,7 @@ public class TopicRelationsDO {
      * 获取父话题 id
      * @return 父话题 id
      */
-    @Column(name = "parent_topic_id", nullable = false)
+    @Column(name = "parent_topic_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getParentTopicId() {
         return parentTopicId;
     }
@@ -61,7 +61,7 @@ public class TopicRelationsDO {
      * 获取子话题 id
      * @return 子话题 id
      */
-    @Column(name = "child_topic_id", nullable = false)
+    @Column(name = "child_topic_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getChildTopicId() {
         return childTopicId;
     }

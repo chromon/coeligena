@@ -28,8 +28,8 @@ public class NotificationsDO {
     /** 消息类型 */
     private String messageType;
 
-    /** 是否已读 */
-    private byte isRead;
+    /** 是否未读 */
+    private byte unread;
 
     /** 关注问题的用户组  0:默认所有人 */
     private int messageGroupId;
@@ -57,7 +57,7 @@ public class NotificationsDO {
      * 获取消息内容
      * @return 消息内容 id
      */
-    @Column(name = "text_id", nullable = false)
+    @Column(name = "text_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getTextId() {
         return textId;
     }
@@ -108,7 +108,7 @@ public class NotificationsDO {
      * 获取消息类型
      * @return 消息类型
      */
-    @Column(name = "message_type", nullable = false, length = 64)
+    @Column(name = "message_type", nullable = false, length = 64, columnDefinition = "varchar(64)")
     public String getMessageType() {
         return messageType;
     }
@@ -125,24 +125,24 @@ public class NotificationsDO {
      * 判断是否已读
      * @return 是否已读
      */
-    @Column(name = "is_read", nullable = false, columnDefinition = "tinyint")
-    public byte getIsRead() {
-        return isRead;
+    @Column(name = "unread", nullable = false, columnDefinition = "tinyint(4) default '1'")
+    public byte getUnread() {
+        return unread;
     }
 
     /**
      * 设置是否已读
-     * @param isRead 是否已读
+     * @param unread 是否已读
      */
-    public void setIsRead(byte isRead) {
-        this.isRead = isRead;
+    public void setUnread(byte unread) {
+        this.unread = unread;
     }
 
     /**
      * 获取关注问题的用户组
      * @return 关注问题的用户组 id
      */
-    @Column(name = "message_group_id", nullable = false)
+    @Column(name = "message_group_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getMessageGroupId() {
         return messageGroupId;
     }

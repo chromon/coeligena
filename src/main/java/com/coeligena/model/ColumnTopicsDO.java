@@ -47,7 +47,7 @@ public class ColumnTopicsDO {
      * 获取专栏主题名称
      * @return 专栏主题名称
      */
-    @Column(name = "topic_name", nullable = false, length = 64)
+    @Column(name = "topic_name", nullable = false, length = 64, columnDefinition = "varchar(64)")
     public String getTopicName() {
         return topicName;
     }
@@ -64,7 +64,7 @@ public class ColumnTopicsDO {
      * 获取专栏主题包含文章数
      * @return 专栏主题包含文章数
      */
-    @Column(name = "article_count", nullable = false)
+    @Column(name = "article_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getArticleCount() {
         return articleCount;
     }
@@ -81,7 +81,7 @@ public class ColumnTopicsDO {
      * 获取所属专栏
      * @return 所属专栏 id
      */
-    @Column(name = "column_id", nullable = false)
+    @Column(name = "column_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getColumnId() {
         return columnId;
     }

@@ -23,16 +23,16 @@ public class PermissionsDO {
     private String title;
 
     /** 启用状态码 */
-    private short status;
+    private byte status;
 
     /** 备注信息 */
     private String remark;
 
     /** 排序值（默认是50） */
-    private short sort;
+    private int sort;
 
     /** 父权限 id */
-    private short pid;
+    private int pid;
 
     /** 权限类型：1-表示应用（模块）, 2-表示控制器, 3-表示方法 */
     private byte level;
@@ -66,7 +66,7 @@ public class PermissionsDO {
      * 获取权限名称，对应应用控制器、应用、方法名）
      * @return 权限名称
      */
-    @Column(name = "name", nullable = false, length = 32)
+    @Column(name = "name", nullable = false, length = 32, columnDefinition = "varchar(32)")
     public String getName() {
         return name;
     }
@@ -83,7 +83,7 @@ public class PermissionsDO {
      * 获取权限名称
      * @return 权限名称
      */
-    @Column(name = "title", nullable = false, length = 64)
+    @Column(name = "title", length = 64, columnDefinition = "varchar(64) default ''")
     public String getTitle() {
         return title;
     }
@@ -100,8 +100,8 @@ public class PermissionsDO {
      * 获取启用状态
      * @return 启用状态码
      */
-    @Column(name = "status", nullable = false)
-    public short getStatus() {
+    @Column(name = "status", nullable = false, columnDefinition = "tinyint(4) default '1'")
+    public byte getStatus() {
         return status;
     }
 
@@ -109,7 +109,7 @@ public class PermissionsDO {
      * 设置启用状态码
      * @param status 启用状态码
      */
-    public void setStatus(short status) {
+    public void setStatus(byte status) {
         this.status = status;
     }
 
@@ -117,7 +117,7 @@ public class PermissionsDO {
      * 获取备注信息
      * @return 备注信息
      */
-    @Column(name = "remark", nullable = false, length = 256)
+    @Column(name = "remark", length = 256, columnDefinition = "varchar(256) default ''")
     public String getRemark() {
         return remark;
     }
@@ -134,8 +134,8 @@ public class PermissionsDO {
      * 获取排序值
      * @return 排序值
      */
-    @Column(name = "sort", nullable = false)
-    public short getSort() {
+    @Column(name = "sort", columnDefinition = "int(11) default '50'")
+    public int getSort() {
         return sort;
     }
 
@@ -143,7 +143,7 @@ public class PermissionsDO {
      * 设置排序值
      * @param sort 排序值
      */
-    public void setSort(short sort) {
+    public void setSort(int sort) {
         this.sort = sort;
     }
 
@@ -151,8 +151,8 @@ public class PermissionsDO {
      * 获取父权限 id
      * @return 父权限 id
      */
-    @Column(name = "pid", nullable = false)
-    public short getPid() {
+    @Column(name = "pid", nullable = false, columnDefinition = "int(11) default '0'")
+    public int getPid() {
         return pid;
     }
 
@@ -160,7 +160,7 @@ public class PermissionsDO {
      * 设置父权限 id
      * @param pid 父权限 id
      */
-    public void setPid(short pid) {
+    public void setPid(int pid) {
         this.pid = pid;
     }
 
@@ -168,7 +168,7 @@ public class PermissionsDO {
      * 获取权限类型
      * @return 权限类型
      */
-    @Column(name = "level", nullable = false, columnDefinition = "tinyint")
+    @Column(name = "level", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getLevel() {
         return level;
     }

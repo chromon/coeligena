@@ -32,7 +32,7 @@ public class QuestionCommentsDO {
     private Timestamp commentTime;
 
     /** 是否是精选评论 */
-    private byte isFeaturedComments;
+    private byte featuredComments;
 
     /** 评论赞同数 */
     private int approvalCount;
@@ -60,7 +60,7 @@ public class QuestionCommentsDO {
      * 获取被评论的问题 id
      * @return 被评论的问题 id
      */
-    @Column(name = "question_id", nullable = false)
+    @Column(name = "question_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getQuestionId() {
         return questionId;
     }
@@ -77,7 +77,7 @@ public class QuestionCommentsDO {
      * 获取发表评论的用户 id
      * @return 发表评论的用户 id
      */
-    @Column(name = "reviewer_id", nullable = false)
+    @Column(name = "reviewer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getReviewerId() {
         return reviewerId;
     }
@@ -94,7 +94,7 @@ public class QuestionCommentsDO {
      * 获取被回复的评论 id
      * @return 被回复的评论 id
      */
-    @Column(name = "parent_comment_id", nullable = false)
+    @Column(name = "parent_comment_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getParentCommentId() {
         return parentCommentId;
     }
@@ -111,7 +111,7 @@ public class QuestionCommentsDO {
      * 获取评论内容
      * @return 评论内容
      */
-    @Column(name = "comment_content", nullable = false)
+    @Column(name = "comment_content", nullable = false, columnDefinition = "text")
     public String getCommentContent() {
         return commentContent;
     }
@@ -145,24 +145,24 @@ public class QuestionCommentsDO {
      * 判断是否是精品评论
      * @return 是否是精品评论
      */
-    @Column(name = "is_featured_comments", nullable = false, columnDefinition = "tinyint")
-    public byte getIsFeaturedComments() {
-        return isFeaturedComments;
+    @Column(name = "featured_comments", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getFeaturedComments() {
+        return featuredComments;
     }
 
     /**
      * 设置是否是精品评论
-     * @param isFeaturedComments 是否是精品评论
+     * @param featuredComments 是否是精品评论
      */
-    public void setIsFeaturedComments(byte isFeaturedComments) {
-        this.isFeaturedComments = isFeaturedComments;
+    public void setFeaturedComments(byte featuredComments) {
+        this.featuredComments = featuredComments;
     }
 
     /**
      * 获取评论赞同数
      * @return 评论赞同数
      */
-    @Column(name = "approval_count", nullable = false)
+    @Column(name = "approval_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getApprovalCount() {
         return approvalCount;
     }

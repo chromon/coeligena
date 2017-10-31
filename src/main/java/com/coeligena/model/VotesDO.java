@@ -51,7 +51,7 @@ public class VotesDO {
      * 获取回答 id
      * @return 回答 id
      */
-    @Column(name = "answer_id", nullable = false)
+    @Column(name = "answer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswerId() {
         return answerId;
     }
@@ -68,7 +68,7 @@ public class VotesDO {
      * 获取投票用户 id
      * @return 投票用户 id
      */
-    @Column(name = "voter_id", nullable = false)
+    @Column(name = "voter_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getVoterId() {
         return voterId;
     }
@@ -102,7 +102,7 @@ public class VotesDO {
      * 获取投票类型
      * @return 投票类型
      */
-    @Column(name = "vote_type", nullable = false, columnDefinition = "tinyint")
+    @Column(name = "vote_type", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getVoteType() {
         return voteType;
     }

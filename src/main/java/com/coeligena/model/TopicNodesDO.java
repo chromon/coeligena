@@ -32,7 +32,7 @@ public class TopicNodesDO {
     private Timestamp createTime;
 
     /** 是否合并到其他节点，0：否，1：是 */
-    private byte isMergedTo;
+    private byte mergedTo;
 
     /**
      * 获取话题节点 id
@@ -57,7 +57,7 @@ public class TopicNodesDO {
      * 获取话题名称
      * @return 话题名称
      */
-    @Column(name = "topic_name", nullable = false, length = 256)
+    @Column(name = "topic_name", nullable = false, length = 256, columnDefinition = "varchar(256)")
     public String getTopicName() {
         return topicName;
     }
@@ -74,7 +74,7 @@ public class TopicNodesDO {
      * 获取话题描述
      * @return 话题描述
      */
-    @Column(name = "topic_introduction", nullable = false)
+    @Column(name = "topic_introduction", nullable = false, columnDefinition = "text default ''")
     public String getTopicIntroduction() {
         return topicIntroduction;
     }
@@ -91,7 +91,7 @@ public class TopicNodesDO {
      * 获取话题图片路径
      * @return 话题图片路径
      */
-    @Column(name = "image_path", nullable = false, length = 512)
+    @Column(name = "image_path", nullable = false, length = 512, columnDefinition = "varchar(512) default ''")
     public String getImagePath() {
         return imagePath;
     }
@@ -108,7 +108,7 @@ public class TopicNodesDO {
      * 获取话题关注数量
      * @return 话题关注数量
      */
-    @Column(name = "follow_count", nullable = false)
+    @Column(name = "follow_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getFollowCount() {
         return followCount;
     }
@@ -125,7 +125,7 @@ public class TopicNodesDO {
      * 获取话题创建时间
      * @return 话题创建时间
      */
-    @Column(name = "create_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "create_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP")
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -142,16 +142,16 @@ public class TopicNodesDO {
      * 判断是否合并到其他话题节点
      * @return 是否
      */
-    @Column(name = "is_merged_to", nullable = false, columnDefinition = "tinyint")
-    public byte getIsMergedTo() {
-        return isMergedTo;
+    @Column(name = "merged_to", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getMergedTo() {
+        return mergedTo;
     }
 
     /**
      * 设置是否合并到其他话题节点
-     * @param isMergedTo 是否
+     * @param mergedTo 是否
      */
-    public void setIsMergedTo(byte isMergedTo) {
-        this.isMergedTo = isMergedTo;
+    public void setMergedTo(byte mergedTo) {
+        this.mergedTo = mergedTo;
     }
 }

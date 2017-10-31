@@ -63,7 +63,7 @@ public class ActivationsDO {
      * 获取 激活码
      * @return 激活码
      */
-    @Column(name = "activation_code", nullable = false, length = 32)
+    @Column(name = "activation_code", nullable = false, length = 32, columnDefinition = "varchar(32)")
     public String getActivationCode() {
         return activationCode;
     }
@@ -80,7 +80,7 @@ public class ActivationsDO {
      * 获取激活码 类型
      * @return 激活码类型
      */
-    @Column(name = "activation_type_code", nullable = false, length = 16)
+    @Column(name = "activation_type_code", nullable = false, length = 16, columnDefinition = "varchar(16)")
     public String getActivationTypeCode() {
         return activationTypeCode;
     }
@@ -131,7 +131,7 @@ public class ActivationsDO {
      * 获取激活码创建时 ip
      * @return 创建 ip
      */
-    @Column(name = "create_ip", nullable = false, length = 15)
+    @Column(name = "create_ip", nullable = false, length = 15, columnDefinition = "varchar(15)")
     public String getCreateIP() {
         return createIP;
     }
@@ -155,7 +155,7 @@ public class ActivationsDO {
 
     /**
      * 设置激活时间
-     * @param activationTime
+     * @param activationTime 激活时间
      */
     public void setActivationTime(Timestamp activationTime) {
         this.activationTime = activationTime;
@@ -165,7 +165,7 @@ public class ActivationsDO {
      * 获取激活 ip
      * @return 激活 ip
      */
-    @Column(name = "activation_ip", nullable = false, length = 15)
+    @Column(name = "activation_ip", nullable = false, length = 15, columnDefinition = "varchar(15)")
     public String getActivationIP() {
         return activationIP;
     }
@@ -182,7 +182,7 @@ public class ActivationsDO {
      * 获取激活用户 id
      * @return 激活用户 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }

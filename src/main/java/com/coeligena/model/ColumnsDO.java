@@ -32,7 +32,7 @@ public class ColumnsDO {
     private Timestamp columnCreateTime;
 
     /** 专栏是否被锁定 0：否，1：是 */
-    private byte isLocked;
+    private byte locked;
 
     /** 专栏作者 id */
     private int columnAuthorId;
@@ -60,7 +60,7 @@ public class ColumnsDO {
      * 获取专栏名称
      * @return 专栏名称
      */
-    @Column(name = "column_name", nullable = false, length = 128)
+    @Column(name = "column_name", nullable = false, length = 128, columnDefinition = "varchar(128)")
     public String getColumnName() {
         return columnName;
     }
@@ -77,7 +77,7 @@ public class ColumnsDO {
      * 获取专栏介绍
      * @return 专栏介绍
      */
-    @Column(name = "column_intro", nullable = false, length = 255)
+    @Column(name = "column_intro", nullable = false, length = 256, columnDefinition = "varchar(256)")
     public String getColumnIntro() {
         return columnIntro;
     }
@@ -94,7 +94,7 @@ public class ColumnsDO {
      * 获取专栏关注人数
      * @return 专栏关注人数
      */
-    @Column(name = "column_followers_count", nullable = false)
+    @Column(name = "column_followers_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getColumnFollowersCount() {
         return columnFollowersCount;
     }
@@ -111,7 +111,7 @@ public class ColumnsDO {
      * 获取专栏文章数
      * @return 专栏文章数
      */
-    @Column(name = "article_count", nullable = false)
+    @Column(name = "article_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getArticleCount() {
         return articleCount;
     }
@@ -128,7 +128,7 @@ public class ColumnsDO {
      * 设置专栏创建时间
      * @return 专栏创建时间
      */
-    @Column(name = "column_create_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "column_create_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP")
     public Timestamp getColumnCreateTime() {
         return columnCreateTime;
     }
@@ -145,24 +145,24 @@ public class ColumnsDO {
      * 获取专栏是否锁定，0：否，1：是
      * @return 专栏是否锁定
      */
-    @Column(name = "is_locked", nullable = false, columnDefinition = "tinyint")
-    public byte getIsLocked() {
-        return isLocked;
+    @Column(name = "locked", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getLocked() {
+        return locked;
     }
 
     /**
      * 设置专栏锁定
-     * @param isLocked 专栏是否锁定
+     * @param locked 专栏是否锁定
      */
-    public void setIsLocked(byte isLocked) {
-        this.isLocked = isLocked;
+    public void setLocked(byte locked) {
+        this.locked = locked;
     }
 
     /**
      * 获取专栏作者 id
      * @return 专栏作者 id
      */
-    @Column(name = "column_author_id", nullable = false)
+    @Column(name = "column_author_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getColumnAuthorId() {
         return columnAuthorId;
     }

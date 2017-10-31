@@ -48,7 +48,7 @@ public class CommentApprovalsDO {
      * 获取被点赞评论 id
      * @return 被点赞评论 id
      */
-    @Column(name = "comment_id", nullable = false)
+    @Column(name = "comment_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getCommentId() {
         return commentId;
     }
@@ -82,7 +82,7 @@ public class CommentApprovalsDO {
      * 获取点赞用户 id
      * @return 点赞用户 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }

@@ -32,7 +32,7 @@ public class ReportsDO {
     private String reportReason;
 
     /** 是否处理完成，1：是，0：否 */
-    private byte isResolved;
+    private byte resolved;
 
     /** 举报用户 id */
     private int userId;
@@ -60,7 +60,7 @@ public class ReportsDO {
      * 获取举报类型
      * @return 举报类型 id
      */
-    @Column(name = "report_type_id", nullable = false)
+    @Column(name = "report_type_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getReportTypeId() {
         return reportTypeId;
     }
@@ -77,7 +77,7 @@ public class ReportsDO {
      * 获取举报内容所属分类
      * @return 举报内容所属分类 1：问题，2：回答，3：评论
      */
-    @Column(name = "report_category", nullable = false, columnDefinition = "tinyint")
+    @Column(name = "report_category", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getReportCategory() {
         return reportCategory;
     }
@@ -94,7 +94,7 @@ public class ReportsDO {
      * 获取举报内容所属分类对应的问题、评论、回答 id
      * @return 举报内容所属分类对应的问题、评论、回答 id
      */
-    @Column(name = "report_category_id", nullable = false)
+    @Column(name = "report_category_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getReportCategoryId() {
         return reportCategoryId;
     }
@@ -111,7 +111,7 @@ public class ReportsDO {
      * 获取举报时间
      * @return 举报时间
      */
-    @Column(name = "report_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "report_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP")
     public Timestamp getReportTime() {
         return reportTime;
     }
@@ -128,7 +128,7 @@ public class ReportsDO {
      * 获取举报理由
      * @return 举报理由
      */
-    @Column(name = "report_reason", nullable = false, length = 512)
+    @Column(name = "report_reason", nullable = false, length = 512, columnDefinition = "varchar(512)")
     public String getReportReason() {
         return reportReason;
     }
@@ -145,24 +145,24 @@ public class ReportsDO {
      * 判断是否处理完成
      * @return 是否处理完成 1：是，0：否
      */
-    @Column(name = "is_resolved", nullable = false, columnDefinition = "tinyint")
-    public byte getIsResolved() {
-        return isResolved;
+    @Column(name = "resolved", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getResolved() {
+        return resolved;
     }
 
     /**
      * 设置是否处理完成
-     * @param isResolved 是否处理完成 1：是，0：否
+     * @param resolved 是否处理完成 1：是，0：否
      */
-    public void setIsResolved(byte isResolved) {
-        this.isResolved = isResolved;
+    public void setResolved(byte resolved) {
+        this.resolved = resolved;
     }
 
     /**
      * 设置举报人
      * @return 举报人 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }

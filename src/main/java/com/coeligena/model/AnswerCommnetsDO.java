@@ -35,7 +35,7 @@ public class AnswerCommnetsDO {
     private int approvalCount;
 
     /** 是否是精选评论 0：否，1：是 */
-    private byte isFeaturedComment;
+    private byte featuredComment;
 
     /**
      * 获取评论 id
@@ -60,7 +60,7 @@ public class AnswerCommnetsDO {
      * 获取回答 id
      * @return 回答 id
      */
-    @Column(name = "answer_id", nullable = false)
+    @Column(name = "answer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswerId() {
         return answerId;
     }
@@ -77,7 +77,7 @@ public class AnswerCommnetsDO {
      * 获取评论用户 id
      * @return 评论用户 id
      */
-    @Column(name = "reviewer_id", nullable = false)
+    @Column(name = "reviewer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getReviewerId() {
         return reviewerId;
     }
@@ -94,7 +94,7 @@ public class AnswerCommnetsDO {
      * 获取被回复评论的id
      * @return 被回复评论的 id
      */
-    @Column(name = "parent_comment_id", nullable = false)
+    @Column(name = "parent_comment_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getParentCommentId() {
         return parentCommentId;
     }
@@ -145,7 +145,7 @@ public class AnswerCommnetsDO {
      * 获取赞同数
      * @return 赞同数
      */
-    @Column(name = "approval_count", nullable = false)
+    @Column(name = "approval_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getApprovalCount() {
         return approvalCount;
     }
@@ -162,16 +162,16 @@ public class AnswerCommnetsDO {
      * 判断是否是精选评论
      * @return 是否是精选评论
      */
-    @Column(name = "is_featured_comment", nullable = false, columnDefinition = "tinyint")
-    public byte getIsFeaturedComment() {
-        return isFeaturedComment;
+    @Column(name = "featured_comment", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getFeaturedComment() {
+        return featuredComment;
     }
 
     /**
      * 设置是否是精选评论
-     * @param isFeaturedComment 是否是精选评论
+     * @param featuredComment 是否是精选评论
      */
-    public void setIsFeaturedComment(byte isFeaturedComment) {
-        this.isFeaturedComment = isFeaturedComment;
+    public void setFeaturedComment(byte featuredComment) {
+        this.featuredComment = featuredComment;
     }
 }

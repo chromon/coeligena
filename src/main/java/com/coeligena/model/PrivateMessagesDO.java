@@ -41,7 +41,7 @@ public class PrivateMessagesDO {
     private byte recipientIsDel;
 
     /** 消息是否已读 */
-    private byte isRead;
+    private byte unRead;
 
     /**
      * 获取用户消息 id
@@ -66,7 +66,7 @@ public class PrivateMessagesDO {
      * 获取发送用户
      * @return 发送用户 id
      */
-    @Column(name = "sender_id", nullable = false)
+    @Column(name = "sender_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getSenderId() {
         return senderId;
     }
@@ -83,7 +83,7 @@ public class PrivateMessagesDO {
      * 获取接收用户 id
      * @return 接收用户 id
      */
-    @Column(name = "recipient_id", nullable = false)
+    @Column(name = "recipient_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getRecipientId() {
         return recipientId;
     }
@@ -100,7 +100,7 @@ public class PrivateMessagesDO {
      * 获取消息内容
      * @return 消息内容 id
      */
-    @Column(name = "text_id", nullable = false)
+    @Column(name = "text_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getTextId() {
         return textId;
     }
@@ -117,7 +117,7 @@ public class PrivateMessagesDO {
      * 获取发送时间
      * @return 发送时间
      */
-    @Column(name = "send_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "send_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP")
     public Timestamp getSendTime() {
         return sendTime;
     }
@@ -151,7 +151,7 @@ public class PrivateMessagesDO {
      * 获取消息类型
      * @return 消息类型
      */
-    @Column(name = "message_type", nullable = false, length = 64)
+    @Column(name = "message_type", nullable = false, length = 64, columnDefinition = "varchar(64)")
     public String getMessageType() {
         return messageType;
     }
@@ -168,7 +168,7 @@ public class PrivateMessagesDO {
      * 判断发送用户是否删除
      * @return 发送用户是否删除
      */
-    @Column(name = "sender_isdel", nullable = false, columnDefinition = "tinyint")
+    @Column(name = "sender_isdel", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getSenderIsDel() {
         return senderIsDel;
     }
@@ -185,7 +185,7 @@ public class PrivateMessagesDO {
      * 判断接收用户是否删除
      * @return 接收用户是否删除
      */
-    @Column(name = "recipient_isdel", nullable = false, columnDefinition = "tinyint")
+    @Column(name = "recipient_isdel", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getRecipientIsDel() {
         return recipientIsDel;
     }
@@ -202,16 +202,16 @@ public class PrivateMessagesDO {
      * 判断是否已读
      * @return 是否已读
      */
-    @Column(name = "is_read", nullable = false, columnDefinition = "tinyint")
-    public byte getIsRead() {
-        return isRead;
+    @Column(name = "unread", nullable = false, columnDefinition = "tinyint(4) default '1'")
+    public byte getUnRead() {
+        return unRead;
     }
 
     /**
      * 设置是否已读
-     * @param isRead 是否已读
+     * @param unRead 是否已读
      */
-    public void setIsRead(byte isRead) {
-        this.isRead = isRead;
+    public void setUnRead(byte unRead) {
+        this.unRead = unRead;
     }
 }

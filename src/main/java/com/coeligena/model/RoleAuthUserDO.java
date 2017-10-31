@@ -44,7 +44,7 @@ public class RoleAuthUserDO {
      * 获取角色 id
      * @return 角色 id
      */
-    @Column(name = "role_id", nullable = false)
+    @Column(name = "role_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getRoleId() {
         return roleId;
     }
@@ -61,7 +61,7 @@ public class RoleAuthUserDO {
      * 获取验证用户 id
      * @return 验证用户 id
      */
-    @Column(name = "auth_user_id", nullable = false)
+    @Column(name = "auth_user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAuthUserId() {
         return authUserId;
     }

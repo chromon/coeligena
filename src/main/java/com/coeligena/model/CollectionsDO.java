@@ -47,7 +47,7 @@ public class CollectionsDO {
      * 获取被收藏的回答 id
      * @return 被收藏的回答 id
      */
-    @Column(name = "answer_id", nullable = false)
+    @Column(name = "answer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswerId() {
         return answerId;
     }
@@ -64,7 +64,7 @@ public class CollectionsDO {
      * 获取所属收藏夹 id
      * @return 所属收藏夹 id
      */
-    @Column(name = "collection_folder_id", nullable = false)
+    @Column(name = "collection_folder_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getCollectionFolderId() {
         return collectionFolderId;
     }
@@ -81,7 +81,7 @@ public class CollectionsDO {
      * 获取收藏夹所属用户 id
      * @return 收藏夹所属用户id
      */
-    @Column(name = "owner_id", nullable = false)
+    @Column(name = "owner_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getOwnerId() {
         return ownerId;
     }

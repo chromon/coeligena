@@ -16,7 +16,7 @@ public class SettingsDO {
     private int id;
 
     /** 是否隐私保护（站外搜索到我的内容，不会被显示姓名）0：否，1：是  */
-    private byte isPrivacyProtection;
+    private byte privacyProtection;
 
     /** 别人给我发私信，0：允许所有人给我发私信，1：只允许我关注的人给我发私信  */
     private byte messageReceive;
@@ -95,24 +95,24 @@ public class SettingsDO {
      * 判断是否隐私保护
      * @return 是否隐私保护
      */
-    @Column(name = "is_privacy_protection", nullable = false, columnDefinition = "tinyint default '1'")
-    public byte getIsPrivacyProtection() {
-        return isPrivacyProtection;
+    @Column(name = "privacy_protection", nullable = false, columnDefinition = "tinyint(4) default '1'")
+    public byte getPrivacyProtection() {
+        return privacyProtection;
     }
 
     /**
      * 设置是否隐私保护
-     * @param isPrivacyProtection 是否隐私保护
+     * @param privacyProtection 是否隐私保护
      */
-    public void setIsPrivacyProtection(byte isPrivacyProtection) {
-        this.isPrivacyProtection = isPrivacyProtection;
+    public void setPrivacyProtection(byte privacyProtection) {
+        this.privacyProtection = privacyProtection;
     }
 
     /**
      * 获取别人给我发私信设置
      * @return 别人是否给我发私信
      */
-    @Column(name = "message_receive", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "message_receive", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getMessageReceive() {
         return messageReceive;
     }
@@ -129,7 +129,7 @@ public class SettingsDO {
      * 判断是否开启陌生人信箱
      * @return 是否开启陌生人信箱
      */
-    @Column(name = "stranger_inbox", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "stranger_inbox", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getStrangerInbox() {
         return strangerInbox;
     }
@@ -146,7 +146,7 @@ public class SettingsDO {
      * 判断是否有私信时邮件提醒
      * @return 是否有私信时邮件提醒
      */
-    @Column(name = "message_email", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "message_email", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getMessageEmail() {
         return messageEmail;
     }
@@ -163,7 +163,7 @@ public class SettingsDO {
      * 判断是否可以邀请我回答问题
      * @return 是否可以邀请我回答问题
      */
-    @Column(name = "invite_me", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "invite_me", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getInviteMe() {
         return inviteMe;
     }
@@ -180,7 +180,7 @@ public class SettingsDO {
      * 判断是否接收关注的问题有了新答案消息
      * @return 是否接收关注的问题有了新答案消息
      */
-    @Column(name = "new_answer", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "new_answer", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getNewAnswer() {
         return newAnswer;
     }
@@ -197,7 +197,7 @@ public class SettingsDO {
      * 判断是否接收关注的专栏有了新文章消息
      * @return 是否接收关注的专栏有了新文章消息
      */
-    @Column(name = "new_article", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "new_article", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getNewArticle() {
         return newArticle;
     }
@@ -214,7 +214,7 @@ public class SettingsDO {
      * 判断是否接收关注的人有了新电子书消息
      * @return 是否接收关注的人有了新电子书消息
      */
-    @Column(name = "new_book", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "new_book", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getNewBook() {
         return newBook;
     }
@@ -231,7 +231,7 @@ public class SettingsDO {
      * 判断是否接收 @ 和评论我的消息
      * @return 是否接收 @ 和评论我的消息
      */
-    @Column(name = "at_comment_me", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "at_comment_me", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getAtCommentMe() {
         return atCommentMe;
     }
@@ -248,7 +248,7 @@ public class SettingsDO {
      * 判断是否接收赞同、感谢我的消息
      * @return 是否接收赞同、感谢我的消息
      */
-    @Column(name = "agree_thank_me", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "agree_thank_me", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getAgreeThankMe() {
         return agreeThankMe;
     }
@@ -265,7 +265,7 @@ public class SettingsDO {
      * 判断是否接收赞了我的评论消息
      * @return 是否接收赞了我的评论消息
      */
-    @Column(name = "like_comment", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "like_comment", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getLikeComment() {
         return likeComment;
     }
@@ -282,7 +282,7 @@ public class SettingsDO {
      * 判断是否接收赞了我的文章的消息
      * @return 是否接收赞了我的文章的消息
      */
-    @Column(name = "like_article", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "like_article", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getLikeArticle() {
         return likeArticle;
     }
@@ -299,7 +299,7 @@ public class SettingsDO {
      * 判断是否接收赞了我的电子书的消息
      * @return 是否接收赞了我的电子书的消息
      */
-    @Column(name = "like_book", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "like_book", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getLikeBook() {
         return likeBook;
     }
@@ -316,7 +316,7 @@ public class SettingsDO {
      * 判断是否接收赞赏了我的文章消息
      * @return 是否接收赞赏了我的文章消息
      */
-    @Column(name = "admire_article", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "admire_article", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getAdmireArticle() {
         return admireArticle;
     }
@@ -333,7 +333,7 @@ public class SettingsDO {
      * 判断是否接收有人关注了我的消息
      * @return 是否接收有人关注了我的消息
      */
-    @Column(name = "follow_me", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "follow_me", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getFollowMe() {
         return followMe;
     }
@@ -350,7 +350,7 @@ public class SettingsDO {
      * 判断是否接收有人关注了我的专栏消息
      * @return 是否接收有人关注了我的专栏消息
      */
-    @Column(name = "follow_column", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "follow_column", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getFollowColumn() {
         return followColumn;
     }
@@ -367,7 +367,7 @@ public class SettingsDO {
      * 判断是否接收有人关注了我的收藏消息
      * @return 是否接收有人关注了我的收藏消息
      */
-    @Column(name = "follow_collection", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "follow_collection", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getFollowCollection() {
         return followCollection;
     }
@@ -384,7 +384,7 @@ public class SettingsDO {
      * 判断是否接收每周精选
      * @return 是否接收每周精选
      */
-    @Column(name = "weekly_email", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "weekly_email", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getWeeklyEmail() {
         return weeklyEmail;
     }
@@ -401,7 +401,7 @@ public class SettingsDO {
      * 判断是否接收新产品或活动通知
      * @return 是否接收新产品或活动通知
      */
-    @Column(name = "new_roduct_email", nullable = false, columnDefinition = "tinyint default '0'")
+    @Column(name = "new_roduct_email", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public byte getNewProductEmail() {
         return newProductEmail;
     }

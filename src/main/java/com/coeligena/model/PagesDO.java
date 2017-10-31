@@ -56,7 +56,7 @@ public class PagesDO {
      * 获取页面 url
      * @return 页面 url
      */
-    @Column(name = "url_token", nullable = false, length = 32)
+    @Column(name = "url_token", nullable = false, length = 32, columnDefinition = "varchar(32)")
     public String getUrlToken() {
         return urlToken;
     }
@@ -73,7 +73,7 @@ public class PagesDO {
      * 获取页面 title
      * @return 页面 title
      */
-    @Column(name = "title", length = 255)
+    @Column(name = "title", length = 256, columnDefinition = "varchar(256) default ''")
     public String getTitle() {
         return title;
     }
@@ -90,7 +90,7 @@ public class PagesDO {
      * 获取页面关键字
      * @return 页面关键字
      */
-    @Column(name = "keywords", length = 255)
+    @Column(name = "keywords", length = 256, columnDefinition = "varchar(256) default ''")
     public String getKeywords() {
         return keywords;
     }
@@ -107,7 +107,7 @@ public class PagesDO {
      * 获取页面描述
      * @return 页面描述
      */
-    @Column(name = "description", length = 255)
+    @Column(name = "description", length = 256, columnDefinition = "varchar(256) default ''")
     public String getDescription() {
         return description;
     }
@@ -141,7 +141,7 @@ public class PagesDO {
      * 判断页面是否可用
      * @return 页面是否可用
      */
-    @Column(name = "enabled", nullable = false)
+    @Column(name = "enabled", nullable = false, columnDefinition = "int(11) default '0'")
     public int getEnabled() {
         return enabled;
     }

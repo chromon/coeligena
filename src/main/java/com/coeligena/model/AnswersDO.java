@@ -44,16 +44,16 @@ public class AnswersDO {
     private int noHelpCount;
 
     /** 是否作者保留权利 0：否，1：是  */
-    private byte isSecLicence;
+    private byte secLicence;
 
     /** 是否是精华回答 0：否，1：是  */
-    private byte isTopAnswer;
+    private byte topAnswer;
 
     /** 是否匿名回答 0：否，1：是 */
-    private byte isAnonymous;
+    private byte anonymous;
 
     /** 是否强制折叠 0：否，1：是 */
-    private byte isForceFold;
+    private byte forceFold;
 
     /**
      * 获取回答 id
@@ -78,7 +78,7 @@ public class AnswersDO {
      * 获取问题 id
      * @return 问题 id
      */
-    @Column(name = "question_id", nullable = false)
+    @Column(name = "question_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getQuestionId() {
         return questionId;
     }
@@ -95,7 +95,7 @@ public class AnswersDO {
      * 获取作者 id
      * @return 作者 id
      */
-    @Column(name = "author_id", nullable = false)
+    @Column(name = "author_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAuthorId() {
         return authorId;
     }
@@ -119,7 +119,7 @@ public class AnswersDO {
 
     /**
      * 设置回答内容
-     * @param answerContent
+     * @param answerContent 回答内容
      */
     public void setAnswerContent(String answerContent) {
         this.answerContent = answerContent;
@@ -136,7 +136,7 @@ public class AnswersDO {
 
     /**
      * 设置回答时间
-     * @param answerTime
+     * @param answerTime 回答时间
      */
     public void setAnswerTime(Timestamp answerTime) {
         this.answerTime = answerTime;
@@ -146,7 +146,7 @@ public class AnswersDO {
      * 获取反对数
      * @return 反对数
      */
-    @Column(name = "against_count", nullable = false)
+    @Column(name = "against_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAgainstCount() {
         return againstCount;
     }
@@ -163,7 +163,7 @@ public class AnswersDO {
      * 获取赞同数
      * @return 赞同数
      */
-    @Column(name = "approval_count", nullable = false)
+    @Column(name = "approval_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getApprovalCount() {
         return approvalCount;
     }
@@ -180,7 +180,7 @@ public class AnswersDO {
      * 获取评论数
      * @return 评论数
      */
-    @Column(name = "comment_count", nullable = false)
+    @Column(name = "comment_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getCommentCount() {
         return commentCount;
     }
@@ -197,7 +197,7 @@ public class AnswersDO {
      * 获取感谢数
      * @return 感谢数
      */
-    @Column(name = "thanks_count", nullable = false)
+    @Column(name = "thanks_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getThanksCount() {
         return thanksCount;
     }
@@ -214,7 +214,7 @@ public class AnswersDO {
      * 获取没有帮助数
      * @return 没有帮助数
      */
-    @Column(name = "nohelp_count", nullable = false)
+    @Column(name = "nohelp_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getNoHelpCount() {
         return noHelpCount;
     }
@@ -231,67 +231,67 @@ public class AnswersDO {
      * 判断是否作者保留权利
      * @return 是否作者保留权利
      */
-    @Column(name = "is_sec_licence", nullable = false, columnDefinition = "tinyint")
-    public byte getIsSecLicence() {
-        return isSecLicence;
+    @Column(name = "sec_licence", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getSecLicence() {
+        return secLicence;
     }
 
     /**
      * 设置是否作者保留权利
-     * @param isSecLicence 是否作者保留权利
+     * @param secLicence 是否作者保留权利
      */
-    public void setIsSecLicence(byte isSecLicence) {
-        this.isSecLicence = isSecLicence;
+    public void setSecLicence(byte secLicence) {
+        this.secLicence = secLicence;
     }
 
     /**
      * 判断是否是精华回答
      * @return 是否是精华回答
      */
-    @Column(name = "is_top_answer", nullable = false, columnDefinition = "tinyint")
-    public byte getIsTopAnswer() {
-        return isTopAnswer;
+    @Column(name = "top_answer", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getTopAnswer() {
+        return topAnswer;
     }
 
     /**
      * 设置是否是精华回答
-     * @param isTopAnswer 是否是精华回答
+     * @param topAnswer 是否是精华回答
      */
-    public void setIsTopAnswer(byte isTopAnswer) {
-        this.isTopAnswer = isTopAnswer;
+    public void setTopAnswer(byte topAnswer) {
+        this.topAnswer = topAnswer;
     }
 
     /**
      * 判断是否是匿名回答
      * @return 是否是匿名回答
      */
-    @Column(name = "is_anonymous", nullable = false, columnDefinition = "tinyint")
-    public byte getIsAnonymous() {
-        return isAnonymous;
+    @Column(name = "anonymous", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getAnonymous() {
+        return anonymous;
     }
 
     /**
      * 设置是否是匿名回答
-     * @param isAnonymous 是否是匿名回答
+     * @param anonymous 是否是匿名回答
      */
-    public void setIsAnonymous(byte isAnonymous) {
-        this.isAnonymous = isAnonymous;
+    public void setAnonymous(byte anonymous) {
+        this.anonymous = anonymous;
     }
 
     /**
      * 判断是否是强制折叠
      * @return 是否是强制折叠
      */
-    @Column(name = "is_force_fold", nullable = false, columnDefinition = "tinyint")
-    public byte getIsForceFold() {
-        return isForceFold;
+    @Column(name = "force_fold", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getForceFold() {
+        return forceFold;
     }
 
     /**
      * 设置是否是强制折叠
-     * @param isForceFold 是否是强制折叠
+     * @param forceFold 是否是强制折叠
      */
-    public void setIsForceFold(byte isForceFold) {
-        this.isForceFold = isForceFold;
+    public void setForceFold(byte forceFold) {
+        this.forceFold = forceFold;
     }
 }

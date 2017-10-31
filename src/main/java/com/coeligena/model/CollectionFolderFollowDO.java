@@ -44,7 +44,7 @@ public class CollectionFolderFollowDO {
      * 获取收藏夹 id
      * @return 收藏夹 id
      */
-    @Column(name = "collection_folder_id", nullable = false)
+    @Column(name = "collection_folder_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getCollectionFolderId() {
         return collectionFolderId;
     }
@@ -61,7 +61,7 @@ public class CollectionFolderFollowDO {
      * 获取收藏夹关注者 id
      * @return 收藏夹关注者 id
      */
-    @Column(name = "follower_id", nullable = false)
+    @Column(name = "follower_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getFollowerId() {
         return followerId;
     }

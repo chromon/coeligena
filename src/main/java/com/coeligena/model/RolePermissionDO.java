@@ -44,7 +44,7 @@ public class RolePermissionDO {
      * 获取角色 id
      * @return 角色 id
      */
-    @Column(name = "role_id", nullable = false)
+    @Column(name = "role_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getRoleId() {
         return roleId;
     }
@@ -61,7 +61,7 @@ public class RolePermissionDO {
      * 获取权限 id
      * @return 权限 id
      */
-    @Column(name = "permission_id", nullable = false)
+    @Column(name = "permission_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getPermissionId() {
         return permissionId;
     }

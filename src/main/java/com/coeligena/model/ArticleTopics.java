@@ -44,7 +44,7 @@ public class ArticleTopics {
      * 获取专栏主题
      * @return 专栏主题 id
      */
-    @Column(name = "column_topic_id", nullable = false)
+    @Column(name = "column_topic_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getColumnTopicId() {
         return columnTopicId;
     }
@@ -61,7 +61,7 @@ public class ArticleTopics {
      * 获取文章
      * @return 文章 id
      */
-    @Column(name = "article_id", nullable = false)
+    @Column(name = "article_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getArticleId() {
         return articleId;
     }

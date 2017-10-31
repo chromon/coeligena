@@ -48,7 +48,7 @@ public class ThanksDO {
      * 获取被感谢回答 id
      * @return 被感谢的回答 id
      */
-    @Column(name = "answer_id", nullable = false)
+    @Column(name = "answer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswerId() {
         return answerId;
     }
@@ -65,7 +65,7 @@ public class ThanksDO {
      * 获取发出感谢用户 id
      * @return 发出感谢用户 id
      */
-    @Column(name = "thanker_id", nullable = false)
+    @Column(name = "thanker_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getThankerId() {
         return thankerId;
     }

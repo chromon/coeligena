@@ -28,7 +28,7 @@ public class CollectionFoldersDO {
     private int followersCount;
 
     /** 是否是公开收藏夹 */
-    private byte isPublic;
+    private byte forPublic;
 
     /** 收藏夹创建者 id */
     private int ownerId;
@@ -56,7 +56,7 @@ public class CollectionFoldersDO {
      * 获取收藏夹名称
      * @return 收藏夹名称
      */
-    @Column(name = "folder_name", nullable = false, length = 256)
+    @Column(name = "folder_name", nullable = false, length = 256, columnDefinition = "varchar(256)")
     public String getFolderName() {
         return folderName;
     }
@@ -73,7 +73,7 @@ public class CollectionFoldersDO {
      * 获取收藏夹描述
      * @return 收藏夹描述
      */
-    @Column(name = "description", nullable = false, length = 256)
+    @Column(name = "description", nullable = false, length = 256, columnDefinition = "varchar(256) default ''")
     public String getDescription() {
         return description;
     }
@@ -90,7 +90,7 @@ public class CollectionFoldersDO {
      * 获取收藏夹创建者 id
      * @return 收藏夹创建者 id
      */
-    @Column(name = "owner_id", nullable = false)
+    @Column(name = "owner_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getOwnerId() {
         return ownerId;
     }
@@ -107,7 +107,7 @@ public class CollectionFoldersDO {
      * 获取收藏夹包含回答数量
      * @return 收藏夹包含回答数量
      */
-    @Column(name = "answers_count", nullable = false)
+    @Column(name = "answers_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswersCount() {
         return answersCount;
     }
@@ -124,7 +124,7 @@ public class CollectionFoldersDO {
      * 获取收藏夹包含关注者数量
      * @return 收藏夹包含关注者数量
      */
-    @Column(name = "followers_count", nullable = false)
+    @Column(name = "followers_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getFollowersCount() {
         return followersCount;
     }
@@ -141,16 +141,16 @@ public class CollectionFoldersDO {
      * 判断是否公开
      * @return 是否公开
      */
-    @Column(name = "is_public", nullable = false, columnDefinition = "tinyint")
-    public byte getIsPublic() {
-        return isPublic;
+    @Column(name = "for_public", nullable = false, columnDefinition = "tinyint(4) default '1'")
+    public byte getForPublic() {
+        return forPublic;
     }
 
     /**
      * 设置是否公开
-     * @param isPublic 是否公开
+     * @param forPublic 是否公开
      */
-    public void setIsPublic(byte isPublic) {
-        this.isPublic = isPublic;
+    public void setForPublic(byte forPublic) {
+        this.forPublic = forPublic;
     }
 }

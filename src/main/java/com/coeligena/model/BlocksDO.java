@@ -44,7 +44,7 @@ public class BlocksDO {
      * 获取当前用户 id
      * @return 当前用户 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }
@@ -61,7 +61,7 @@ public class BlocksDO {
      * 获取被屏蔽用户 id
      * @return 被屏蔽用户 id
      */
-    @Column(name = "blocked_id", nullable = false)
+    @Column(name = "blocked_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getBlockedId() {
         return blockedId;
     }

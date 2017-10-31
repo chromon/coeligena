@@ -44,13 +44,13 @@ public class QuestionsDO {
     private String questionIP;
 
     /** 问题是否被锁定 */
-    private byte isLocked;
+    private byte locked;
 
     /** 是否匿名 1：是， 0：否 */
-    private byte isAnonymous;
+    private byte anonymous;
 
     /** 是否是推荐问题 */
-    private byte isRecommend;
+    private byte recommend;
 
     /** 提问用户 id */
     private int userId;
@@ -78,7 +78,7 @@ public class QuestionsDO {
      * 获取问题标题
      * @return 问题标题
      */
-    @Column(name = "question_content", nullable = false, length = 256)
+    @Column(name = "question_content", nullable = false, length = 256, columnDefinition = "varchar(256)")
     public String getQuestionContent() {
         return questionContent;
     }
@@ -95,7 +95,7 @@ public class QuestionsDO {
      * 获取问题详情
      * @return 问题详情
      */
-    @Column(name = "question_detail", nullable = false)
+    @Column(name = "question_detail", nullable = false, columnDefinition = "text default ''")
     public String getQuestionDetail() {
         return questionDetail;
     }
@@ -112,7 +112,7 @@ public class QuestionsDO {
      * 获取答案数
      * @return 答案数
      */
-    @Column(name = "answer_count", nullable = false)
+    @Column(name = "answer_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswerCount() {
         return answerCount;
     }
@@ -129,7 +129,7 @@ public class QuestionsDO {
      * 获取关注人数
      * @return 关注人数
      */
-    @Column(name = "follower_count", nullable = false)
+    @Column(name = "follower_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getFollowerCount() {
         return followerCount;
     }
@@ -163,7 +163,7 @@ public class QuestionsDO {
      * 获取浏览数
      * @return 浏览数
      */
-    @Column(name = "view_count", nullable = false)
+    @Column(name = "view_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getViewCount() {
         return viewCount;
     }
@@ -180,7 +180,7 @@ public class QuestionsDO {
      * 获取评论数
      * @return 评论数
      */
-    @Column(name = "comment_count", nullable = false)
+    @Column(name = "comment_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getCommentCount() {
         return commentCount;
     }
@@ -197,24 +197,24 @@ public class QuestionsDO {
      * 提问是否匿名
      * @return 提问是否匿名
      */
-    @Column(name = "is_anonymous", nullable = false, columnDefinition = "tinyint")
-    public byte getIsAnonymous() {
-        return isAnonymous;
+    @Column(name = "anonymous", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getAnonymous() {
+        return anonymous;
     }
 
     /**
      * 设置提问是否匿名
-     * @param isAnonymous 提问是否匿名
+     * @param anonymous 提问是否匿名
      */
-    public void setIsAnonymous(byte isAnonymous) {
-        this.isAnonymous = isAnonymous;
+    public void setAnonymous(byte anonymous) {
+        this.anonymous = anonymous;
     }
 
     /**
      * 获取提问时间
      * @return 提问时间
      */
-    @Column(name = "question_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "question_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP")
     public Timestamp getQuestionTime() {
         return questionTime;
     }
@@ -231,7 +231,7 @@ public class QuestionsDO {
      * 获取提问 IP
      * @return 提问 IP
      */
-    @Column(name = "question_ip", nullable = false)
+    @Column(name = "question_ip", nullable = false, length = 15, columnDefinition = "varchar(15)")
     public String getQuestionIP() {
         return questionIP;
     }
@@ -248,41 +248,41 @@ public class QuestionsDO {
      * 判断问题是否被锁定
      * @return 问题是否被锁定
      */
-    @Column(name = "is_locked", nullable = false, columnDefinition = "tinyint")
-    public byte getIsLocked() {
-        return isLocked;
+    @Column(name = "locked", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getLocked() {
+        return locked;
     }
 
     /**
      * 设置问题锁定
-     * @param isLocked 问题锁定
+     * @param locked 问题锁定
      */
-    public void setIsLocked(byte isLocked) {
-        this.isLocked = isLocked;
+    public void setLocked(byte locked) {
+        this.locked = locked;
     }
 
     /**
      * 判断是否是推荐问题
      * @return 推荐问题
      */
-    @Column(name = "is_recommend", nullable = false, columnDefinition = "tinyint")
-    public byte getIsRecommend() {
-        return isRecommend;
+    @Column(name = "recommend", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getRecommend() {
+        return recommend;
     }
 
     /**
      * 设置推荐问题
-     * @param isRecommend 推荐问题
+     * @param recommend 推荐问题
      */
-    public void setIsRecommend(byte isRecommend) {
-        this.isRecommend = isRecommend;
+    public void setRecommend(byte recommend) {
+        this.recommend = recommend;
     }
 
     /**
      * 获取提问用户 id
      * @return 提问用户 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }

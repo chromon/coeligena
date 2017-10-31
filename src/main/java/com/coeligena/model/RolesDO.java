@@ -59,7 +59,7 @@ public class RolesDO {
      * 获取角色名称
      * @return 角色名称
      */
-    @Column(name = "rolename", nullable = false, length = 32)
+    @Column(name = "rolename", nullable = false, length = 32, columnDefinition = "varchar(32)")
     public String getRoleName() {
         return roleName;
     }
@@ -76,7 +76,7 @@ public class RolesDO {
      * 获取父角色 id
      * @return 父角色 id
      */
-    @Column(name = "pid")
+    @Column(name = "pid", columnDefinition = "int(11) default '0'")
     public int getPid() {
         return pid;
     }
@@ -93,7 +93,7 @@ public class RolesDO {
      * 获取启用状态：0-表示禁用，1-表示启用
      * @return 启用状态码
      */
-    @Column(name = "status", nullable = false, columnDefinition = "tinyint")
+    @Column(name = "status", nullable = false, columnDefinition = "tinyint(4) default '1'")
     public byte getStatus() {
         return status;
     }
@@ -144,7 +144,7 @@ public class RolesDO {
      * 获取备注信息
      * @return 备注信息
      */
-    @Column(name = "remark", nullable = false, length = 256)
+    @Column(name = "remark", length = 256, columnDefinition = "varchar(256) default ''")
     public String getRemark() {
         return remark;
     }

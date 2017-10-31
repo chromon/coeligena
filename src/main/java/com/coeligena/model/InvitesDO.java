@@ -50,7 +50,7 @@ public class InvitesDO {
      * 获取问题 id
      * @return 问题 id
      */
-    @Column(name = "question_id", nullable = false)
+    @Column(name = "question_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getQuestionId() {
         return questionId;
     }
@@ -67,7 +67,7 @@ public class InvitesDO {
      * 获取邀请人 id
      * @return 邀请人 id
      */
-    @Column(name = "inviter_id", nullable = false)
+    @Column(name = "inviter_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getInviterId() {
         return inviterId;
     }
@@ -84,7 +84,7 @@ public class InvitesDO {
      * 获取被邀请人 id
      * @return 被邀请人 id
      */
-    @Column(name = "invitee_id", nullable = false)
+    @Column(name = "invitee_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getInviteeId() {
         return inviteeId;
     }
@@ -101,7 +101,7 @@ public class InvitesDO {
      * 获取邀请时间
      * @return 邀请时间
      */
-    @Column(name = "invite_time", nullable = false, columnDefinition="timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "invite_time", nullable = false, columnDefinition="timestamp default CURRENT_TIMESTAMP")
     public int getInviteTime() {
         return inviteTime;
     }

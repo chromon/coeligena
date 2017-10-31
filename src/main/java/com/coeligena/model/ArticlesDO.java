@@ -41,7 +41,7 @@ public class ArticlesDO {
     private int approvalCount;
 
     /** 文章是否被锁定 */
-    private byte isLocked;
+    private byte locked;
 
     /** 专栏 id */
     private int columnId;
@@ -72,7 +72,7 @@ public class ArticlesDO {
      * 获取文章标题
      * @return 文章标题
      */
-    @Column(name = "article_title", nullable = false, length = 255)
+    @Column(name = "article_title", nullable = false, length = 256, columnDefinition = "varchar(256)")
     public String getArticleTitle() {
         return articleTitle;
     }
@@ -106,7 +106,7 @@ public class ArticlesDO {
      * 获取文章题图
      * @return 文章题图路径
      */
-    @Column(name = "title_image", length = 255)
+    @Column(name = "title_image", length = 256, columnDefinition = "varchar(256) default ''")
     public String getTitleImage() {
         return titleImage;
     }
@@ -123,7 +123,7 @@ public class ArticlesDO {
      * 获取文章创作时间
      * @return 文章创作时间
      */
-    @Column(name = "compose_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "compose_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP")
     public Timestamp getComposeTime() {
         return composeTime;
     }
@@ -157,7 +157,7 @@ public class ArticlesDO {
      * 获取评论数量
      * @return 评论数量
      */
-    @Column(name = "comments_count", nullable = false)
+    @Column(name = "comments_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getCommentsCount() {
         return commentsCount;
     }
@@ -174,7 +174,7 @@ public class ArticlesDO {
      * 获取文章浏览数量
      * @return 文章浏览数量
      */
-    @Column(name = "views_count", nullable = false)
+    @Column(name = "views_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getViewsCount() {
         return viewsCount;
     }
@@ -191,7 +191,7 @@ public class ArticlesDO {
      * 获取赞同数量
      * @return 文章点赞数量
      */
-    @Column(name = "approval_count", nullable = false)
+    @Column(name = "approval_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getApprovalCount() {
         return approvalCount;
     }
@@ -208,24 +208,24 @@ public class ArticlesDO {
      * 判断文章是否锁定
      * @return 是否被锁定
      */
-    @Column(name ="is_locked", nullable = false, columnDefinition = "tinyint")
-    public byte getIsLocked() {
-        return isLocked;
+    @Column(name ="locked", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getLocked() {
+        return locked;
     }
 
     /**
      * 设置文章锁定
-     * @param isLocked 文章是否锁定
+     * @param locked 文章是否锁定
      */
-    public void setIsLocked(byte isLocked) {
-        this.isLocked = isLocked;
+    public void setLocked(byte locked) {
+        this.locked = locked;
     }
 
     /**
      * 获取文章所属专栏 id
      * @return 专栏 id
      */
-    @Column(name = "column_id", nullable = false)
+    @Column(name = "column_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getColumnId() {
         return columnId;
     }
@@ -242,7 +242,7 @@ public class ArticlesDO {
      * 获取文章作者
      * @return 文章作者 id
      */
-    @Column(name = "author_id", nullable = false)
+    @Column(name = "author_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAuthor_id() {
         return author_id;
     }

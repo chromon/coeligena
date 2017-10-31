@@ -73,10 +73,10 @@ public class UsersDO {
     private String personalityURL;
 
     /** 邮箱地址是否激活 */
-    private byte isEmailActive;
+    private byte emailActive;
 
     /** 手机是否激活 */
-    private byte isPhoneActive;
+    private byte phoneActive;
 
     /** 验证用户 id */
     private int authUserId;
@@ -104,7 +104,7 @@ public class UsersDO {
      * 获取全名
      * @return 用户全名
      */
-    @Column(name = "fullname", nullable = false, length = 64)
+    @Column(name = "fullname", nullable = false, length = 64, columnDefinition = "varchar(64)")
     public String getFullname() {
         return fullname;
     }
@@ -121,7 +121,7 @@ public class UsersDO {
      * 获取性别
      * @return 性别
      */
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender", nullable = false, columnDefinition = "tinyint(4) default '0'")
     public int getGender() {
         return gender;
     }
@@ -138,7 +138,7 @@ public class UsersDO {
      * 获取头像路径
      * @return 头像路径
      */
-    @Column(name = "avatar_path", length = 256)
+    @Column(name = "avatar_path", length = 512, columnDefinition = "varchar(512) default ''")
     public String getAvatarPath() {
         return avatarPath;
     }
@@ -155,7 +155,7 @@ public class UsersDO {
      * 获取居住位置
      * @return 居住位置
      */
-    @Column(name = "location", length = 128)
+    @Column(name = "location", length = 128, columnDefinition = "varchar(128) default ''")
     public String getLocation() {
         return location;
     }
@@ -172,7 +172,7 @@ public class UsersDO {
      * 获取行业
      * @return 行业
      */
-    @Column(name = "business_id")
+    @Column(name = "business_id", columnDefinition = "int(11) default '0'")
     public int getBusinessId() {
         return businessId;
     }
@@ -189,7 +189,7 @@ public class UsersDO {
      * 获取公司或组织名称
      * @return 公司或组织名称
      */
-    @Column(name = "employment", length = 128)
+    @Column(name = "employment", length = 128, columnDefinition = "varchar(128) default ''")
     public String getEmployment() {
         return employment;
     }
@@ -206,7 +206,7 @@ public class UsersDO {
      * 获取职位
      * @return 职位
      */
-    @Column(name = "position", length = 128)
+    @Column(name = "position", length = 128, columnDefinition = "varchar(128) default ''")
     public String getPosition() {
         return position;
     }
@@ -223,7 +223,7 @@ public class UsersDO {
      * 学校或教育机构
      * @return 学校或教育机构
      */
-    @Column(name = "education", length = 128)
+    @Column(name = "education", length = 128, columnDefinition = "varchar(128) default ''")
     public String getEducation() {
         return education;
     }
@@ -240,7 +240,7 @@ public class UsersDO {
      * 获取专业
      * @return 专业
      */
-    @Column(name = "major", length = 128)
+    @Column(name = "major", length = 128, columnDefinition = "varchar(128) default ''")
     public String getMajor() {
         return major;
     }
@@ -257,7 +257,7 @@ public class UsersDO {
      * 获取个人描述
      * @return 个人描述
      */
-    @Column(name = "description", length = 128)
+    @Column(name = "description", length = 256, columnDefinition = "varchar(256) default ''")
     public String getDescription() {
         return description;
     }
@@ -274,7 +274,7 @@ public class UsersDO {
      * 获取签名
      * @return 签名
      */
-    @Column(name = "autograph", length = 128)
+    @Column(name = "autograph", length = 128, columnDefinition = "varchar(128) default ''")
     public String getAutograph() {
         return autograph;
     }
@@ -291,7 +291,7 @@ public class UsersDO {
      * 获取赞同数
      * @return 赞同数
      */
-    @Column(name = "approve_count", nullable = false)
+    @Column(name = "approval_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getApprovalCount() {
         return approvalCount;
     }
@@ -308,7 +308,7 @@ public class UsersDO {
      * 获取获得的感谢数
      * @return  获得的感谢数
      */
-    @Column(name = "thank_count", nullable = false)
+    @Column(name = "thank_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getThankCount() {
         return thankCount;
     }
@@ -325,7 +325,7 @@ public class UsersDO {
      * 获取提问数
      * @return 提问数
      */
-    @Column(name = "question_count", nullable = false)
+    @Column(name = "question_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getQuestionCount() {
         return questionCount;
     }
@@ -342,7 +342,7 @@ public class UsersDO {
      * 获取回答数
      * @return 回答数
      */
-    @Column(name = "answer_count", nullable = false)
+    @Column(name = "answer_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswerCount() {
         return answerCount;
     }
@@ -359,7 +359,7 @@ public class UsersDO {
      * 获取收藏夹数
      * @return 收藏夹数
      */
-    @Column(name = "collect_count", nullable = false)
+    @Column(name = "collect_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getCollectCount() {
         return collectCount;
     }
@@ -376,7 +376,7 @@ public class UsersDO {
      * 获取个性网址
      * @return 个性网址
      */
-    @Column(name = "personality_url", length = 64)
+    @Column(name = "personality_url", length = 64, columnDefinition = "varchar(64) default ''")
     public String getPersonalityURL() {
         return personalityURL;
     }
@@ -393,24 +393,24 @@ public class UsersDO {
      * 获取邮箱是否激活
      * @return 邮箱是否激活
      */
-    @Column(name = "is_email_active", nullable = false, columnDefinition = "tinyint")
-    public byte getIsEmailActive() {
-        return isEmailActive;
+    @Column(name = "email_active", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getEmailActive() {
+        return emailActive;
     }
 
     /**
      * 设置邮箱是否激活
-     * @param isEmailActive 邮箱是否激活
+     * @param emailActive 邮箱是否激活
      */
-    public void setIsEmailActive(byte isEmailActive) {
-        this.isEmailActive = isEmailActive;
+    public void setEmailActive(byte emailActive) {
+        this.emailActive = emailActive;
     }
 
     /**
      * 获取邀请回答数量
      * @return 邀请回答数量
      */
-    @Column(name = "invite_count", nullable = false)
+    @Column(name = "invite_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getInviteCount() {
         return inviteCount;
     }
@@ -427,7 +427,7 @@ public class UsersDO {
      * 获取主页浏览数量
      * @return 主页浏览数量
      */
-    @Column(name = "profile_view_count", nullable = false)
+    @Column(name = "profile_view_count", nullable = false, columnDefinition = "int(11) default '0'")
     public int getProfileViewCount() {
         return profileViewCount;
     }
@@ -444,24 +444,24 @@ public class UsersDO {
      * 手机是否激活
      * @return 是否激活
      */
-    @Column(name = "is_phone_active", nullable = false, columnDefinition = "tinyint")
-    public byte getIsPhoneActive() {
-        return isPhoneActive;
+    @Column(name = "phone_active", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getPhoneActive() {
+        return phoneActive;
     }
 
     /**
      * 设置手机是否激活
-     * @param isPhoneActive 手机是否激活
+     * @param phoneActive 手机是否激活
      */
-    public void setIsPhoneActive(byte isPhoneActive) {
-        this.isPhoneActive = isPhoneActive;
+    public void setPhoneActive(byte phoneActive) {
+        this.phoneActive = phoneActive;
     }
 
     /**
      * 获取验证用户 id
      * @return 验证用户 id
      */
-    @Column(name = "auth_user_id", nullable = false)
+    @Column(name = "auth_user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAuthUserId() {
         return authUserId;
     }

@@ -58,7 +58,7 @@ public class RelationshipsDO {
      * 获取用户 id
      * @return 用户 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }
@@ -75,7 +75,7 @@ public class RelationshipsDO {
      * 获取被当前用户关注者 id
      * @return 被当前用户关注者 id
      */
-    @Column(name = "followed_id", nullable = false)
+    @Column(name = "followed_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getFollowedId() {
         return followedId;
     }

@@ -41,7 +41,7 @@ public class BusinessDO {
      * 获取行业名称
      * @return 行业名称
      */
-    @Column(name = "job_name", nullable = false, length = 64)
+    @Column(name = "job_name", nullable = false, length = 64, columnDefinition = "varchar(64)")
     public String getJobName() {
         return jobName;
     }

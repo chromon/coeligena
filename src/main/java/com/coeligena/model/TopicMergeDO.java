@@ -51,7 +51,7 @@ public class TopicMergeDO {
      * 获取合并到话题的 id
      * @return 合并到话题的 id
      */
-    @Column(name = "merged_to_id", nullable = false)
+    @Column(name = "merged_to_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getMergedToId() {
         return mergedToId;
     }
@@ -85,7 +85,7 @@ public class TopicMergeDO {
      * 获取话题 id
      * @return 话题 id
      */
-    @Column(name = "topic_id", nullable = false)
+    @Column(name = "topic_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getTopicId() {
         return topicId;
     }

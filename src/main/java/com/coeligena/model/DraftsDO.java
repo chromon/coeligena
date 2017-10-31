@@ -26,7 +26,7 @@ public class DraftsDO {
     private Timestamp lastUpdate;
 
     /** 是否匿名 */
-    private byte isAnonymous;
+    private byte anonymous;
 
     /** 作者 id */
     private int userId;
@@ -54,7 +54,7 @@ public class DraftsDO {
      * 获取草稿所在问题 id
      * @return 草稿所在问题 id
      */
-    @Column(name = "question_id", nullable = false)
+    @Column(name = "question_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getQuestionId() {
         return questionId;
     }
@@ -105,24 +105,24 @@ public class DraftsDO {
      * 判断草稿是否匿名
      * @return 草稿是否匿名
      */
-    @Column(name = "is_anonymous", nullable = false, columnDefinition = "tinyint")
-    public byte getIsAnonymous() {
-        return isAnonymous;
+    @Column(name = "anonymous", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getAnonymous() {
+        return anonymous;
     }
 
     /**
      * 设置草稿是否匿名
-     * @param isAnonymous 草稿是否匿名
+     * @param anonymous 草稿是否匿名
      */
-    public void setIsAnonymous(byte isAnonymous) {
-        this.isAnonymous = isAnonymous;
+    public void setAnonymous(byte anonymous) {
+        this.anonymous = anonymous;
     }
 
     /**
      * 获取草稿作者 id
      * @return 草稿作者 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }

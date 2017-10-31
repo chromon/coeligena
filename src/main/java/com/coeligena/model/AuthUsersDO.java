@@ -38,13 +38,13 @@ public class AuthUsersDO {
     private String lastLoginIP;
 
     /** 是否是禁言状态 */
-    private byte isMutedStatus;
+    private byte mutedStatus;
 
     /** 禁言截止时间 */
     private Timestamp mutedTime;
 
     /** 是否是禁用账户 */
-    private byte isBanned;
+    private byte banned;
 
     /** 备注信息 */
     private String remark;
@@ -72,7 +72,7 @@ public class AuthUsersDO {
      * 获取邮箱
      * @return 邮箱地址
      */
-    @Column(name = "email", nullable = false, length = 128)
+    @Column(name = "email", nullable = false, length = 128, columnDefinition = "varchar(128)")
     public String getEmail() {
         return email;
     }
@@ -89,7 +89,7 @@ public class AuthUsersDO {
      * 获取手机号
      * @return 手机号码
      */
-    @Column(name = "phone", nullable = false, length = 16)
+    @Column(name = "phone", length = 16, columnDefinition = "varchar(16) default ''")
     public String getPhone() {
         return phone;
     }
@@ -106,7 +106,7 @@ public class AuthUsersDO {
      * 获取密码
      * @return 密码
      */
-    @Column(name = "password", nullable = false, length = 256)
+    @Column(name = "password", nullable = false, length = 256, columnDefinition = "varchar(256)")
     public String getPassword() {
         return password;
     }
@@ -123,7 +123,7 @@ public class AuthUsersDO {
      * 获取密码盐
      * @return 密码盐
      */
-    @Column(name = "salt", nullable = false, length = 128)
+    @Column(name = "salt", nullable = false, length = 128, columnDefinition = "varchar(128)")
     public String getSalt() {
         return salt;
     }
@@ -174,7 +174,7 @@ public class AuthUsersDO {
      * 获取最近登录的 ip 地址
      * @return 最后登录 ip
      */
-    @Column(name = "last_login_ip", nullable = false, length = 15)
+    @Column(name = "last_login_ip", nullable = false, length = 15, columnDefinition = "varchar(15)")
     public String getLastLoginIP() {
         return lastLoginIP;
     }
@@ -191,24 +191,24 @@ public class AuthUsersDO {
      * 判断是否是禁言状态
      * @return 禁言状态
      */
-    @Column(name = "is_muted_status", nullable = false, columnDefinition="tinyint")
-    public byte getIsMutedStatus() {
-        return isMutedStatus;
+    @Column(name = "muted_status", nullable = false, columnDefinition="tinyint(4) default '0'")
+    public byte getMutedStatus() {
+        return mutedStatus;
     }
 
     /**
      * 设置禁言状态
-     * @param isMutedStatus 是否是禁言状态
+     * @param mutedStatus 是否是禁言状态
      */
-    public void setIsMutedStatus(byte isMutedStatus) {
-        this.isMutedStatus = isMutedStatus;
+    public void setMutedStatus(byte mutedStatus) {
+        this.mutedStatus = mutedStatus;
     }
 
     /**
      * 获取禁言截止时间
      * @return 截止时间
      */
-    @Column(name = "muted_time")
+    @Column(name = "muted_time", columnDefinition="timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     public Timestamp getMutedTime() {
         return mutedTime;
     }
@@ -225,24 +225,24 @@ public class AuthUsersDO {
      * 判断是否禁用状态
      * @return 是否禁用状态
      */
-    @Column(name = "is_banned", nullable = false, columnDefinition="tinyint")
-    public byte getIsBanned() {
-        return isBanned;
+    @Column(name = "banned", nullable = false, columnDefinition="tinyint(4) default '0'")
+    public byte getBanned() {
+        return banned;
     }
 
     /**
      * 设置禁用状态
-     * @param isBanned 禁用状态
+     * @param banned 禁用状态
      */
-    public void setIsBanned(byte isBanned) {
-        this.isBanned = isBanned;
+    public void setBanned(byte banned) {
+        this.banned = banned;
     }
 
     /**
      * 获取备注信息
      * @return 备注信息
      */
-    @Column(name = "remark", nullable = false, length = 256)
+    @Column(name = "remark", length = 256, columnDefinition = "varchar(256) default ''")
     public String getRemark() {
         return remark;
     }

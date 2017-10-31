@@ -19,7 +19,7 @@ public class ReportTypeDO {
     private String reportTypeContent;
 
     /** 是否是通用类型（即回答评论类型） */
-    private byte isCommon;
+    private byte common;
 
     /**
      * 获取举报类型 id
@@ -44,7 +44,7 @@ public class ReportTypeDO {
      * 获取举报类型
      * @return 举报类型
      */
-    @Column(name = "report_type_content", nullable = false, length = 64)
+    @Column(name = "report_type_content", nullable = false, length = 64, columnDefinition = "varchar(64)")
     public String getReportTypeContent() {
         return reportTypeContent;
     }
@@ -61,16 +61,16 @@ public class ReportTypeDO {
      * 判断是否是通用类型
      * @return 是否是通用类型
      */
-    @Column(name = "is_common", nullable = false, columnDefinition = "tinyint")
-    public byte getIsCommon() {
-        return isCommon;
+    @Column(name = "common", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getCommon() {
+        return common;
     }
 
     /**
      * 设置是否是通用类型
-     * @param isCommon 是否是通用类型
+     * @param common 是否是通用类型
      */
-    public void setIsCommon(byte isCommon) {
-        this.isCommon = isCommon;
+    public void setCommon(byte common) {
+        this.common = common;
     }
 }

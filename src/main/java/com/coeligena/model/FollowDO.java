@@ -48,7 +48,7 @@ public class FollowDO {
      * 获取被关注的问题 id
      * @return 被关注的问题 id
      */
-    @Column(name = "question_id", nullable = false)
+    @Column(name = "question_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getQuestionId() {
         return questionId;
     }
@@ -65,7 +65,7 @@ public class FollowDO {
      * 获取问题关注人的 id
      * @return 问题关注人的 id
      */
-    @Column(name = "follower_id", nullable = false)
+    @Column(name = "follower_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getFollowerId() {
         return followerId;
     }
@@ -82,7 +82,7 @@ public class FollowDO {
      * 获取关注时间
      * @return 关注时间
      */
-    @Column(name = "follow_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "follow_time", nullable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP")
     public Timestamp getFollowTime() {
         return followTime;
     }

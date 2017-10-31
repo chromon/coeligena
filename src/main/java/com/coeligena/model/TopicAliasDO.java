@@ -44,7 +44,7 @@ public class TopicAliasDO {
      * 获取话题别名
      * @return 话题别名
      */
-    @Column(name = "topic_alias", nullable = false, length = 256)
+    @Column(name = "topic_alias", nullable = false, length = 256, columnDefinition = "varchar(256)")
     public String getTopicAlias() {
         return topicAlias;
     }
@@ -61,7 +61,7 @@ public class TopicAliasDO {
      * 获取话题 id
      * @return 话题 id
      */
-    @Column(name = "topic_id", nullable = false)
+    @Column(name = "topic_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getTopicId() {
         return topicId;
     }

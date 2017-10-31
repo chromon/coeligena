@@ -102,7 +102,7 @@ public class MessageGroupsDO {
      * 获取触发用户
      * @return 触发用户 id
      */
-    @Column(name = "trigger_id", nullable = false)
+    @Column(name = "trigger_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getTriggerId() {
         return triggerId;
     }
@@ -119,7 +119,7 @@ public class MessageGroupsDO {
      * 获取问题
      * @return 问题 id
      */
-    @Column(name = "question_id", nullable = false)
+    @Column(name = "question_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getQuestionId() {
         return questionId;
     }
@@ -136,7 +136,7 @@ public class MessageGroupsDO {
      * 获取专栏文章
      * @return 专栏文章 id
      */
-    @Column(name = "article_id", nullable = false)
+    @Column(name = "article_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getArticleId() {
         return articleId;
     }
@@ -153,7 +153,7 @@ public class MessageGroupsDO {
      * 获取回答
      * @return 回答 id
      */
-    @Column(name = "answer_id", nullable = false)
+    @Column(name = "answer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswerId() {
         return answerId;
     }
@@ -170,7 +170,7 @@ public class MessageGroupsDO {
      * 获取回答用户
      * @return 回答用户 id
      */
-    @Column(name = "answerer_id", nullable = false)
+    @Column(name = "answerer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getAnswererId() {
         return answererId;
     }
@@ -187,7 +187,7 @@ public class MessageGroupsDO {
      * 获取评论
      * @return 评论 id
      */
-    @Column(name = "comment_id", nullable = false)
+    @Column(name = "comment_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getCommentId() {
         return commentId;
     }
@@ -204,7 +204,7 @@ public class MessageGroupsDO {
      * 获取用户
      * @return 用户 id
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getUserId() {
         return userId;
     }
