@@ -15,3 +15,4 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/webui-popover/jquery.webui-popover.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/jquery-labelauty/jquery-labelauty.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/summernote/summernote.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.css">

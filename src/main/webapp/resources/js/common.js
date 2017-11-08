@@ -1,6 +1,14 @@
 /**
+ * 通用 js
+ *
  * Created by Ellery on 2017/8/8.
  */
+
+$(document).ready(function() {
+    NProgress.start();
+    NProgress.inc(0.1);
+    NProgress.done();
+});
 
 // user info hover card
 $('#user-avatar').webuiPopover({
