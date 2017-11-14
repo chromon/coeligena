@@ -23,11 +23,13 @@ import java.io.IOException;
 public class CaptchaUtils {
 
     private ConfigurableCaptchaService configurableCaptchaService = null;
-    private ColorFactory colorFactory = null;
-    private RandomFontFactory fontFactory = null;
-    private RandomWordFactory wordFactory = null;
 
     public CaptchaUtils() {
+
+        ColorFactory colorFactory = null;
+        RandomFontFactory fontFactory = null;
+        RandomWordFactory wordFactory = null;
+
         configurableCaptchaService = new ConfigurableCaptchaService();
 
         // 颜色创建工厂
@@ -44,7 +46,7 @@ public class CaptchaUtils {
         // CustomBackgroundFactory backgroundFactory = new CustomBackgroundFactory();
         // configurableCaptchaService.setBackgroundFactory(backgroundFactory);
 
-        // 随机字符生成器,去除掉容易混淆的字母和数字,如o和0等
+        // 随机字符生成器,去除掉容易混淆的字母和数字,如 o 和 0 等
         wordFactory = new RandomWordFactory();
         wordFactory.setCharacters("abcdefghkmnpqstwxyz23456789");
         wordFactory.setMaxLength(6);

@@ -9,6 +9,11 @@ body {
     font-family:  'Helvetica Neue', Helvetica, 'Microsoft YaHei',Arial,sans-serif;
 }
 
+a {
+    color: #0f88eb;
+    text-decoration: none;
+}
+
 canvas {
     position: absolute;
     z-index: -1;
@@ -143,7 +148,7 @@ canvas {
 }
 
 .button {
-    margin-top:18px; 
+    margin-top:18px;
 }
 
 ._btn {
@@ -237,4 +242,96 @@ canvas {
 .footer a {
     color: #999;
     text-decoration: none;
+}
+
+
+label.error.is-visible {
+    visibility: visible;
+    opacity: 1;
+    -ms-filter: "alpha(Opacity=100)";
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+}
+label.error {
+    position: absolute;
+    top: 1px;
+    right: 8px;
+    padding: 0 8px;
+    line-height: 45px;
+    font-size: 13.333px;
+    color: #c33;
+    cursor: text;
+    background: #fff;
+    background: -webkit-linear-gradient(left,rgba(255,255,255,0),#fff 8px);
+    background: linear-gradient(to right,rgba(255,255,255,0),#fff 8px);
+    visibility: hidden;
+    opacity: 0;
+    -ms-filter: "alpha(Opacity=0)";
+    -webkit-transform: translate(20px,0);
+    -ms-transform: translate(20px,0);
+    transform: translate(20px,0);
+    -webkit-transition: .25s ease-out;
+    transition: .25s ease-out;
+}
+
+.agreement-tip {
+    margin-top: 21px;
+    font-size: 13px;
+    text-align: center;
+    color: #999;
+}
+
+.signup-entry-org {
+    display: inline-block;
+    margin-top: 11px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    color: #0f88eb;
+}
+
+.app-download {
+    margin-top: 21px;
+    position: relative;
+    z-index: 11;
+}
+
+.app-toggleButton {
+    display: block;
+    padding: 0;
+    width: 100%;
+    height: 41px;
+    line-height: 39px;
+    color: #5fa6e5;
+    background: 0 0;
+    border: 1px solid #96c2e9;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: 0;
+}
+
+.app-toggleButtonText {
+    margin-left: 2px;
+}
+
+.signin-misc-wrapper {
+    margin-top: 18px;
+}
+
+.signin-switch-button {
+    padding: 0;
+    font-size: 14px;
+    color: #5ca5e8;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+}
+
+.unable-login {
+    float: right;
+    font-size: 14px;
+    color: #555;
 }

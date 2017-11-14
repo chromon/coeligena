@@ -1,6 +1,12 @@
 
 'use strict';
 
+$(document).ready(function() {
+    NProgress.start();
+    NProgress.inc(0.1);
+    NProgress.done();
+});
+
 // 显示注册
 $('#signUp_tab').on('click', function () {
     // 显示 tab 标签样式

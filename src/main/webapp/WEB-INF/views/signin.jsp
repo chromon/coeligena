@@ -15,6 +15,7 @@
     <title>编乎 - 与世界分享你编的知识、经验和见解</title>
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/signin.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.css">
 </head>
 <body>
 <div>
@@ -42,8 +43,9 @@
                     <div class="group-ipt password">
                         <input type="password" name="password" id="signIn_password" class="ipt" placeholder="密码">
                     </div>
-                    <div class="group-ipt captcha hide">
+                    <div class="group-ipt captcha">
                         <input type="text" name="captcha" id="signIn_captcha" class="ipt" placeholder="验证码">
+                        <label class="error is-visible">请输入正确的手机号</label>
                     </div>
                 </div>
 
@@ -51,16 +53,16 @@
                     <button type="submit" class="_btn">登录</button>
                 </div>
 
-                <div class="remember clearfix">
-                    <label class="remember-me">
-                        <span class="icon">
-                            <span class="selected"></span>
-                        </span>
-                        <input type="checkbox" name="remember-me" id="signIn_RememberMe" class="remember-me-check" checked>记住我
-                    </label>
-                    <label class="forgot-password">
-                        <a href="#">出现问题？</a>
-                    </label>
+                <div class="signin-misc-wrapper clearfix">
+                    <button type="button" class="signin-switch-button">手机验证码登录</button>
+                    <a class="unable-login" href="#" style="display: block;">无法登录？</a>
+                </div>
+
+                <div class="app-download">
+                    <button class="app-toggleButton">
+                        <span class="sprite-global-icon-app"></span>
+                        <span class="app-toggleButtonText ">下载编乎 App</span>
+                    </button>
                 </div>
             </div>
 
@@ -84,16 +86,16 @@
                     <button type="submit" class="_btn">注册</button>
                 </div>
 
-                <div class="remember clearfix">
-                    <label class="remember-me">
-                        <span class="icon">
-                            <span class="selected"></span>
-                        </span>
-                        <input type="checkbox" name="remember-me" id="signUp_RememberMe" class="remember-me-check" checked>记住我
-                    </label>
-                    <label class="forgot-password">
-                        <a href="#">出现问题？</a>
-                    </label>
+                <div>
+                    <p class="agreement-tip">点击「注册」按钮，即代表你同意<a href="/terms" target="_blank">《编乎协议》</a></p>
+                    <a class="signup-entry-org" href="/org/signup">注册机构号</a>
+                </div>
+
+                <div class="app-download">
+                    <button class="app-toggleButton">
+                        <span class="sprite-global-icon-app"></span>
+                        <span class="app-toggleButtonText ">下载编乎 App</span>
+                    </button>
                 </div>
 
             </div>
@@ -119,8 +121,9 @@
     </div>
 </div>
 
-<script type="text/javascript" src='<%=request.getContextPath()%>/resources/js/jquery-3.2.1.min.js'></script>
-<script type="text/javascript" src='<%=request.getContextPath()%>/resources/js/canvas.js'></script>
-<script type="text/javascript" src='<%=request.getContextPath()%>/resources/js/signin.js'></script>
+<script src='<%=request.getContextPath()%>/resources/js/jquery-3.2.1.min.js' type="text/javascript"></script>
+<script src='<%=request.getContextPath()%>/resources/js/canvas.js' type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.js" type="text/javascript"></script>
+<script src='<%=request.getContextPath()%>/resources/js/signin.js' type="text/javascript"></script>
 </body>
 </html>
