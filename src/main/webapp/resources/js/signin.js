@@ -30,23 +30,26 @@ $('#signIn_tab').on('click', function () {
     // $('#_btn').text('登录');
 });
 
-// 修改复选框样式
-$('#signIn_RememberMe').on('click', function () {
-    if (!$('#signIn_RememberMe').is(':checked')) {
-        $('.selected').css('display', 'none');
-        $('#signIn_RememberMe').removeAttr("checked");
+// 显示手机验证码登录
+var signin_flag = false;
+$('.signin-switch-button').on('click', function () {
+    if (signin_flag) {
+        // 邮箱登录
+        $('#account').attr('placeholder', '手机号或邮箱');
+        $('#signIn_password_wrapper').removeClass('hide');
+        $('#signIn_captcha_wrapper').removeClass('hide');
+        $('#signIn_sms_wrapper').addClass('hide');
+        $('.signin-switch-button').text('手机验证码登录');
+        $('.unable-login').removeClass('hide');
+        signin_flag = false;
     } else {
-        $('.selected').css('display', 'block');
-        $('#signIn_RememberMe').attr('checked','true');
-    }
-});
-
-$('#signUp_RememberMe').on('click', function () {
-    if (!$('#signUpn_RememberMe').is(':checked')) {
-        $('.selected').css('display', 'none');
-        $('#signUp_RememberMe').removeAttr("checked");
-    } else {
-        $('.selected').css('display', 'block');
-        $('#signUp_RememberMe').attr('checked','true');
+        // 手机验证码登录
+        $('#account').attr('placeholder', '手机号');
+        $('#signIn_password_wrapper').addClass('hide');
+        $('#signIn_captcha_wrapper').addClass('hide');
+        $('#signIn_sms_wrapper').removeClass('hide');
+        $('.signin-switch-button').text('密码登录（手机号或邮箱）');
+        $('.unable-login').addClass('hide');
+        signin_flag = true;
     }
 });

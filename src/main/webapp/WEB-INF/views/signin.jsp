@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>编乎 - 与世界分享你编的知识、经验和见解</title>
+    <title>编乎 - 发现更大的世界</title>
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/signin.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.css">
@@ -40,12 +40,16 @@
                     <div class="group-ipt account">
                         <input type="text" name="account" id="account" class="ipt" placeholder="手机号或邮箱">
                     </div>
-                    <div class="group-ipt password">
+                    <div id="signIn_password_wrapper" class="group-ipt password">
                         <input type="password" name="password" id="signIn_password" class="ipt" placeholder="密码">
                     </div>
-                    <div class="group-ipt captcha">
+                    <div id="signIn_sms_wrapper" class="group-ipt sms-verification hide">
+                        <input name="sms-code" placeholder="短信验证码" maxlength="6" type="number">
+                        <button type="button" class="send-code">获取验证码</button>
+                    </div>
+                    <div id="signIn_captcha_wrapper" class="group-ipt captcha">
                         <input type="text" name="captcha" id="signIn_captcha" class="ipt" placeholder="验证码">
-                        <label class="error is-visible">请输入正确的手机号</label>
+                        <%--<label class="error is-visible">请输入正确的手机号</label>--%>
                     </div>
                 </div>
 
@@ -55,7 +59,7 @@
 
                 <div class="signin-misc-wrapper clearfix">
                     <button type="button" class="signin-switch-button">手机验证码登录</button>
-                    <a class="unable-login" href="#" style="display: block;">无法登录？</a>
+                    <a class="unable-login" href="#">无法登录？</a>
                 </div>
 
                 <div class="app-download">

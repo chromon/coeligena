@@ -335,3 +335,29 @@ label.error {
     font-size: 14px;
     color: #555;
 }
+
+.sms-verification {
+    border-top: 1px solid #e8e8e8;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[name="sms-code"] {
+    width: 200px !important;
+}
+
+.send-code {
+    float: right;
+    width: 98px;
+    padding: 1em 8px;
+    line-height: 19px;
+    color: #5ca5eb;
+    /*background: #fff;*/
+    background: rgba(255,255,255,0.5);
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+    border-left: 1px solid #e8e8e8;
+}
