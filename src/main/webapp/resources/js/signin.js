@@ -1,10 +1,13 @@
 
 'use strict';
 
-$(document).ready(function() {
+$(function(){
+
+    // 进度条
     NProgress.start();
     NProgress.inc(0.1);
     NProgress.done();
+
 });
 
 // 显示注册
@@ -53,3 +56,25 @@ $('.signin-switch-button').on('click', function () {
         signin_flag = true;
     }
 });
+
+function getCaptcha() {
+
+    // 获取 base path
+    var localObj = window.location;
+    var contextPath = localObj.pathname.split("/")[1];
+    var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+
+    $.ajax({
+        url: basePath + '/captcha?' + Math.random(),
+        type: 'GET',
+        async: true,
+        cache: false,
+        timeout: 5000,
+        success: function() {
+            $('#signIn_captcha_img')[0].src = basePath + '/captcha?' + Math.random();
+        },
+        error: function() {
+            console.log('[ERROR] get captcha image error.')
+        }
+    })
+}

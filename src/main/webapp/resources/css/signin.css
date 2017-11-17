@@ -245,7 +245,7 @@ canvas {
 }
 
 
-label.error.is-visible {
+label.error.is-visible, label.captcha-error.is-visible {
     visibility: visible;
     opacity: 1;
     -ms-filter: "alpha(Opacity=100)";
@@ -253,10 +253,33 @@ label.error.is-visible {
     -ms-transform: translate(0,0);
     transform: translate(0,0);
 }
+
 label.error {
     position: absolute;
     top: 1px;
     right: 8px;
+    padding: 0 8px;
+    line-height: 45px;
+    font-size: 13.333px;
+    color: #c33;
+    cursor: text;
+    background: #fff;
+    background: -webkit-linear-gradient(left,rgba(255,255,255,0),#fff 8px);
+    background: linear-gradient(to right,rgba(255,255,255,0),#fff 8px);
+    visibility: hidden;
+    opacity: 0;
+    -ms-filter: "alpha(Opacity=0)";
+    -webkit-transform: translate(20px,0);
+    -ms-transform: translate(20px,0);
+    transform: translate(20px,0);
+    -webkit-transition: .25s ease-out;
+    transition: .25s ease-out;
+}
+
+label.captcha-error {
+    position: absolute;
+    top: 1px;
+    right: 108px;
     padding: 0 8px;
     line-height: 45px;
     font-size: 13.333px;
@@ -344,7 +367,7 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-input[name="sms-code"] {
+input[name="sms-code"], #captcha-code {
     width: 200px !important;
 }
 
@@ -360,4 +383,19 @@ input[name="sms-code"] {
     cursor: pointer;
     outline: 0;
     border-left: 1px solid #e8e8e8;
+}
+
+.captcha-img-wrapper {
+    float: right;
+    width: 97px;
+    height: 44px;
+    background: rgba(255,255,255,0.5);
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+    border-left: 1px solid #e8e8e8;
+}
+
+.captcha-img {
+    margin: 5px 8px;
 }

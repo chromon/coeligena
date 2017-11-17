@@ -42,14 +42,19 @@
                     </div>
                     <div id="signIn_password_wrapper" class="group-ipt password">
                         <input type="password" name="password" id="signIn_password" class="ipt" placeholder="密码">
+                        <label class="error is-visible">请输入正确的密码</label>
                     </div>
                     <div id="signIn_sms_wrapper" class="group-ipt sms-verification hide">
                         <input name="sms-code" placeholder="短信验证码" maxlength="6" type="number">
                         <button type="button" class="send-code">获取验证码</button>
                     </div>
-                    <div id="signIn_captcha_wrapper" class="group-ipt captcha">
-                        <input type="text" name="captcha" id="signIn_captcha" class="ipt" placeholder="验证码">
-                        <%--<label class="error is-visible">请输入正确的手机号</label>--%>
+                    <div id="signIn_captcha_wrapper" class="group-ipt sms-verification">
+                        <input id="captcha-code" placeholder="验证码" class="ipt" maxlength="4" type="text">
+                        <span class="captcha-img-wrapper">
+                            <img id="signIn_captcha_img" class="captcha-img" alt="点击刷新"
+                                 src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha()">
+                        </span>
+                        <label class="captcha-error is-visible">请输入正确的验证码</label>
                     </div>
                 </div>
 

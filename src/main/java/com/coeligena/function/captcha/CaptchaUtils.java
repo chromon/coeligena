@@ -7,6 +7,7 @@ import com.github.bingoohuang.patchca.filter.predefined.CurvesRippleFilterFactor
 import com.github.bingoohuang.patchca.font.RandomFontFactory;
 import com.github.bingoohuang.patchca.service.Captcha;
 import com.github.bingoohuang.patchca.word.RandomWordFactory;
+import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -20,15 +21,16 @@ import java.io.IOException;
  * <p>
  * Created by Ellery on 2017/11/11.
  */
+@Component
 public class CaptchaUtils {
 
     private ConfigurableCaptchaService configurableCaptchaService = null;
 
     public CaptchaUtils() {
 
-        ColorFactory colorFactory = null;
-        RandomFontFactory fontFactory = null;
-        RandomWordFactory wordFactory = null;
+        ColorFactory colorFactory;
+        RandomFontFactory fontFactory;
+        RandomWordFactory wordFactory;
 
         configurableCaptchaService = new ConfigurableCaptchaService();
 
@@ -49,8 +51,8 @@ public class CaptchaUtils {
         // 随机字符生成器,去除掉容易混淆的字母和数字,如 o 和 0 等
         wordFactory = new RandomWordFactory();
         wordFactory.setCharacters("abcdefghkmnpqstwxyz23456789");
-        wordFactory.setMaxLength(6);
-        wordFactory.setMinLength(6);
+        wordFactory.setMaxLength(4);
+        wordFactory.setMinLength(4);
         configurableCaptchaService.setWordFactory(wordFactory);
 
         // 图片滤镜设置
@@ -59,8 +61,12 @@ public class CaptchaUtils {
         configurableCaptchaService.setFilterFactory(filterFactory);
 
         // 验证码图片的大小
-        configurableCaptchaService.setWidth(128);
-        configurableCaptchaService.setHeight(66);
+        configurableCaptchaService.setWidth(81);
+        configurableCaptchaService.setHeight(34);
+    }
+
+    public ConfigurableCaptchaService getCCS() {
+        return configurableCaptchaService;
     }
 
     public void getCaptchaAndImage() {
@@ -73,7 +79,7 @@ public class CaptchaUtils {
 
         // 取得验证码图片并输出
         try {
-            FileOutputStream fos = new FileOutputStream("patcha_demo.png");
+            FileOutputStream fos = new FileOutputStream("captcha.png");
             BufferedImage bufferedImage = captcha.getImage();
             ImageIO.write(bufferedImage, "png", fos);
         } catch(IOException e) {
