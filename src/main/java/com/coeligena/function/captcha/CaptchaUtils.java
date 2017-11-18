@@ -87,8 +87,4 @@ public class CaptchaUtils {
         }
     }
 
-    public static void main(String[] args) {
-        CaptchaUtils c = new CaptchaUtils();
-        c.getCaptchaAndImage();
-    }
 }

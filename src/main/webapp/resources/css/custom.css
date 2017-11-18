@@ -2,11 +2,19 @@
  *自定义样式
  */
 
- body {
+body {
     font-family: 'Helvetica Neue','Helvetica','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','WenQuanYi Micro Hei','Arial,sans-serif';
     background: #f7f8fa;
     font-size: 15px;
- }
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #2196f3;
+}
 
 a:visited { 
     text-decoration: none;
@@ -204,7 +212,7 @@ a:hover {
 
 .custom-votebar .custom-up, .custom-votebar .custom-down {
     display: block;
-    color: #2d84cc;
+    color: #2196f3;
     height: 24px;
     line-height: 24px;
     width: 38px;
@@ -229,7 +237,7 @@ a:hover {
     left: 50%;
     margin-left: -6px;
     border-top-width: 0;
-    border-bottom-color: #2d84cc;
+    border-bottom-color: #2196f3;
     border-top-style: solid;
 }
 
@@ -239,7 +247,7 @@ a:hover {
 
 .custom-votebar .custom-down .custom-vote-arrow {
     border-bottom-width: 0;
-    border-top-color: #2d84cc;
+    border-top-color: #2196f3;
 }
 
 .custom-votebar .custom-vote-arrow {
@@ -927,7 +935,7 @@ ins {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    word-break: break-word;
+    word-break: break-all;
 }
 
 .custom-card-header {
@@ -976,4 +984,10 @@ ins {
     font-size: 14px;
     line-height: 16px;
     color: #262626;
+}
+
+.navbar {
+    border: none;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
