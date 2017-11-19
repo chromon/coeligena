@@ -57,6 +57,7 @@
                 <!-- question detail -->
                 <div class="custom-question-rich-text">
                     当你迷茫的时候，你应该做些什么？
+                    <a href="">显示全部 <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -64,14 +65,26 @@
 
             <!-- question header right-->
             <div class="custom-number-board col-sm-3">
-                <a href="#" class="custom-button custom-number-board-item custom-button-plain">
-                    <div class="custom-number-board-name">关注者</div>
-                    <div class="custom-number-board-value">125</div>
-                </a>
-                <a href="#" class="custom-button custom-number-board-item custom-button-plain">
-                    <div class="custom-number-board-name">被浏览</div>
-                    <div class="custom-number-board-value">25125</div>
-                </a>
+                <%--<a href="#" class="custom-button custom-number-board-item custom-button-plain">--%>
+                    <%--<div class="custom-number-board-name">关注者</div>--%>
+                    <%--<div class="custom-number-board-value">125</div>--%>
+                <%--</a>--%>
+                <%--<a href="#" class="custom-button custom-number-board-item custom-button-plain">--%>
+                    <%--<div class="custom-number-board-name">被浏览</div>--%>
+                    <%--<div class="custom-number-board-value">25125</div>--%>
+                <%--</a>--%>
+
+                <div class="NumberBoard QuestionFollowStatus-counts" data-reactid="94">
+                    <button class="Button NumberBoard-item Button--plain" type="button" data-reactid="95">
+                        <span class="NumberBoard-name" data-reactid="96">关注者</span>
+                        <span class="NumberBoard-value" data-reactid="97">738</span>
+                    </button>
+                    <div class="NumberBoard-divider" data-reactid="98"></div>
+                    <div class="NumberBoard-item" data-reactid="99">
+                        <div class="NumberBoard-name" data-reactid="100">被浏览</div>
+                        <div class="NumberBoard-value" data-reactid="101">264945</div>
+                    </div>
+                </div>
             </div>
             <!-- end question header right -->
         </div>
@@ -80,7 +93,14 @@
         <div class="row custom-question-footer">
 
             <!-- question feed meta -->
-            <div class="custom-meta-panel col-sm-9">
+            <div class="custom-meta-panel">
+                <a href="#" class="btn btn-primary custom-margin-right10">
+                    关注问题
+                </a>
+                <a href="#" class="btn btn-default custom-margin-right10">
+                    <i class="fa fa-pencil"></i>
+                    写答案
+                </a>
                 <a href="#" class="custom-meta-item">
                     <i class="fa fa-comment"></i>
                     9条评论
@@ -114,16 +134,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="col-sm-3 custom-question-footer-right">
-                <a href="#" class="btn btn-primary">
-                    关注问题
-                </a>
-                <a href="#" class="btn btn-default">
-                    <i class="fa fa-pencil"></i>
-                    写答案
-                </a>
             </div>
         </div>
     </div>
@@ -387,7 +397,7 @@
         </div>
 
         <!-- sidebar -->
-        <div class="col-sm-3">
+        <div class="col-sm-3 custom-sidebar-padding">
 
             <div class="media custom-card custom-story-item">
 

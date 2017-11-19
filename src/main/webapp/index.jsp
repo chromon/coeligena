@@ -293,8 +293,8 @@
 
                         <div class="custom-meta-panel">
                             <a href="#" class="custom-meta-item">
-                                <i class="fa fa-plus"></i>
-                                关注问题
+                                <button type="button" class="custom-btn btn-outline-primary">关注问题</button>
+
                             </a>
                             <a href="#" class="custom-meta-item">
                                 <i class="fa fa-comment"></i>

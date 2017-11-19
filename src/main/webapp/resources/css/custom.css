@@ -45,7 +45,7 @@ a:hover {
 }
 
 .custom-content-margin {
-    margin-top: 80px;
+    margin-top: 70px;
 }
 
 .custom-content-margin60 {
@@ -482,13 +482,15 @@ a:hover {
 
 .custom-backtotop .custom-btn-action {
     display: block;
-    width: 38px;
-    height: 38px;
-    background-color: #ddd;
-    border-radius: 3px;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 4px;
     border: 0;
     cursor: pointer;
     position: relative;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
 }
 
 .custom-backtotop .custom-arrow {
@@ -563,6 +565,7 @@ a:hover {
 }
 
 .custom-similar-question a {
+    font-size: 14px;
     display: inline;
     color: #175199;
 }
@@ -815,7 +818,7 @@ a:hover {
 }
 
 .custom-question-footer {
-    margin: 0 20px 20px;
+    margin: 10px 0 10px;
 }
 
 .custom-question-footer-right {
@@ -990,4 +993,132 @@ ins {
     border: none;
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+
+
+
+.custom-btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.custom-btn:focus, .custom-btn:hover {
+    text-decoration: none;
+}
+
+.custom-btn:focus, .custom-btn.focus {
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
+}
+
+.custom-btn.disabled, .custom-btn:disabled {
+    opacity: .65;
+}
+
+.custom-btn:not([disabled]):not(.disabled):active, .btn:not([disabled]):not(.disabled).active {
+    background-image: none;
+}
+
+
+
+
+.btn-outline-primary {
+    color: #2FA4E7;
+    background-color: transparent;
+    background-image: none;
+    border-color: #2FA4E7;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #2FA4E7;
+    border-color: #2FA4E7;
+}
+
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.5);
+}
+
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+    color: #2FA4E7;
+    background-color: transparent;
+}
+
+.btn-outline-primary:not([disabled]):not(.disabled):active, .btn-outline-primary:not([disabled]):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #2FA4E7;
+    border-color: #2FA4E7;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.5);
+}
+
+
+.QuestionFollowStatus-counts {
+    width: 200px;
+    margin-left: auto;
+}
+
+.NumberBoard {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+}
+.NumberBoard-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.Button--link, .Button--plain {
+    height: auto;
+    padding: 0;
+    line-height: inherit;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+.NumberBoard-name {
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    color: #8590a6;
+}
+.NumberBoard-value {
+    margin-top: 4px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #262626;
+}
+.NumberBoard-divider {
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    border-right: 1px solid #f0f2f7;
+}
+
+.custom-sidebar-padding {
+    padding-left: 0;
 }
