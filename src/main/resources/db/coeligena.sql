@@ -30,13 +30,14 @@ CREATE TABLE IF NOT EXISTS auth_users (
  * 一定数量的权限的集合，权限的载体
  */
 CREATE TABLE IF NOT EXISTS roles (
-    id          INT(11)     NOT NULL AUTO_INCREMENT, /* 角色 ID（唯一标识） */
-    rolename    VARCHAR(32) NOT NULL, /* 角色名 */
-    pid         INT(11)              DEFAULT '0', /* 父角色 ID */
-    status      TINYINT(4)  NOT NULL DEFAULT '1', /* 启用状态：0-表示禁用，1-表示启用 */
-    create_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 创建时间（时间戳） */
-    update_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 更改时间（时间戳）*/
-    remark      VARCHAR(256)         DEFAULT '', /* 备注信息 */
+    id           INT(11)     NOT NULL AUTO_INCREMENT, /* 角色 ID（唯一标识） */
+    rolename     VARCHAR(32) NOT NULL, /* 角色名 */
+    role_content VARCHAR(32) NOT NULL, /* 角色内容 */
+    pid          INT(11)              DEFAULT '0', /* 父角色 ID */
+    status       TINYINT(4)  NOT NULL DEFAULT '1', /* 启用状态：0-表示禁用，1-表示启用 */
+    create_time  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 创建时间（时间戳） */
+    update_time  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 更改时间（时间戳）*/
+    remark       VARCHAR(256)         DEFAULT '', /* 备注信息 */
     PRIMARY KEY (id),
     INDEX (rolename),
     INDEX (pid)
@@ -212,7 +213,7 @@ CREATE TABLE IF NOT EXISTS question_comments (
     INDEX (question_id),
     INDEX (reviewer_id),
     INDEX (parent_comment_id),
-    INDEX (is_featured_comments),
+    INDEX (featured_comments),
     INDEX (approval_count)
 );
 

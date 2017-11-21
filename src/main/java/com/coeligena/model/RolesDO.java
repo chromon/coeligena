@@ -21,6 +21,9 @@ public class RolesDO {
     /** 角色名称 */
     private String roleName;
 
+    /** 角色内容 */
+    private String roleContent;
+
     /** 父角色 id */
     private int pid;
 
@@ -70,6 +73,23 @@ public class RolesDO {
      */
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    /**
+     * 获取角色内容
+     * @return 角色内容名称
+     */
+    @Column(name = "role_content", nullable = false, length = 32)
+    public String getRoleContent() {
+        return roleContent;
+    }
+
+    /**
+     * 设置角色内容
+     * @param roleContent 角色内容名称
+     */
+    public void setRoleContent(String roleContent) {
+        this.roleContent = roleContent;
     }
 
     /**

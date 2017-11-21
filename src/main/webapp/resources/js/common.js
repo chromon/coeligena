@@ -8,6 +8,7 @@ $(document).ready(function() {
     NProgress.start();
     NProgress.inc(0.1);
     NProgress.done();
+
 });
 
 // user info hover card

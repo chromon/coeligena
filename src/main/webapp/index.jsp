@@ -30,8 +30,8 @@
 
 <!-- main content -->
 <div class="container">
-    <div class="row custom-content-margin">
-        <div class="col-sm-9">
+    <div class="pageContent row custom-content-margin">
+        <div id="centerContent" class="col-sm-9">
 
             <div class="custom-top-header custom-card">
                 <div class="custom-top-header-nav">
@@ -120,7 +120,38 @@
                         </div>
 
                         <!-- answer content -->
-                        <div>Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                        <div>
+                            Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
+                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
+                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
                             Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
                             Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979
                         </div>
@@ -345,58 +376,61 @@
         </div>
 
         <!-- sidebar -->
-        <div class="col-sm-3">
+        <div id="rightSidebar" class="col-sm-3">
 
-            <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
-                <a href="${pageContext.request.contextPath}/collections" class="list-group-item custom-group-item">
-                    <span class="badge custom-badge">8</span>
-                    <i class="fa fa-star"></i> 我的收藏
-                </a>
-                <a href="${pageContext.request.contextPath}/people/123/following/questions" class="list-group-item custom-group-item">
-                    <i class="fa fa-check-circle-o"></i> 我的关注
-                </a>
-                <a href="${pageContext.request.contextPath}/question/invited" class="list-group-item custom-group-item">
-                    <span class="badge custom-badge">13</span>
-                    <i class="fa fa-user-plus"></i> 我的邀请
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-home"></i> 社区服务中心
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-copyright"></i> 版权服务中心
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-pencil-square"></i> 公共编辑动态
-                </a>
-            </div>
+            <div class="sidebar_inner">
 
-            <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-flash"></i> Live
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-book"></i> 书店
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-futbol-o"></i> 圆桌
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-pencil"></i> 专栏
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-btc"></i> 付费编辑
-                </a>
-            </div>
+                <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
+                    <a href="${pageContext.request.contextPath}/collections" class="list-group-item custom-group-item">
+                        <span class="badge custom-badge">8</span>
+                        <i class="fa fa-star"></i> 我的收藏
+                    </a>
+                    <a href="${pageContext.request.contextPath}/people/123/following/questions" class="list-group-item custom-group-item">
+                        <i class="fa fa-check-circle-o"></i> 我的关注
+                    </a>
+                    <a href="${pageContext.request.contextPath}/question/invited" class="list-group-item custom-group-item">
+                        <span class="badge custom-badge">13</span>
+                        <i class="fa fa-user-plus"></i> 我的邀请
+                    </a>
+                    <a href="#" class="list-group-item custom-group-item">
+                        <i class="fa fa-home"></i> 社区服务中心
+                    </a>
+                    <a href="#" class="list-group-item custom-group-item">
+                        <i class="fa fa-copyright"></i> 版权服务中心
+                    </a>
+                    <a href="#" class="list-group-item custom-group-item">
+                        <i class="fa fa-pencil-square"></i> 公共编辑动态
+                    </a>
+                </div>
 
-            <div class="custom-footer">
-                <a href="#" target="_blank">编乎指南 • </a>
-                <a href="#" target="_blank">建议反馈 • </a>
-                <a href="#" target="_blank">移动应用 • </a>
-                <a href="#" target="_blank">加入编乎</a>
-                <a href="#" target="_blank">编乎协议 • </a>
-                <a href="#" target="_blank">举报投诉 • </a>
-                <a href="#" target="_blank">联系我们</a><br/>
-                <a href="#" target="_blank">&copy;2017</a>
+                <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
+                    <a href="#" class="list-group-item custom-group-item">
+                        <i class="fa fa-flash"></i> Live
+                    </a>
+                    <a href="#" class="list-group-item custom-group-item">
+                        <i class="fa fa-book"></i> 书店
+                    </a>
+                    <a href="#" class="list-group-item custom-group-item">
+                        <i class="fa fa-futbol-o"></i> 圆桌
+                    </a>
+                    <a href="#" class="list-group-item custom-group-item">
+                        <i class="fa fa-pencil"></i> 专栏
+                    </a>
+                    <a href="#" class="list-group-item custom-group-item">
+                        <i class="fa fa-btc"></i> 付费编辑
+                    </a>
+                </div>
+
+                <div class="custom-footer">
+                    <a href="#" target="_blank">编乎指南 • </a>
+                    <a href="#" target="_blank">建议反馈 • </a>
+                    <a href="#" target="_blank">移动应用 • </a>
+                    <a href="#" target="_blank">加入编乎</a>
+                    <a href="#" target="_blank">编乎协议 • </a>
+                    <a href="#" target="_blank">举报投诉 • </a>
+                    <a href="#" target="_blank">联系我们</a><br/>
+                    <a href="#" target="_blank">&copy;2017</a>
+                </div>
             </div>
         </div><!-- end sidebar -->
     </div>
