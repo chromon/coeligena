@@ -29,30 +29,32 @@
         <div class="cont-main clearfix">
             <div class="index-tab">
                 <div class="index-slide-nav">
-                    <a id="signIn_tab" href="#" class="active">登录</a>
-                    <a id="signUp_tab" href="#">注册</a>
+                    <a id="signIn_tab" href="#">登录</a>
+                    <a id="signUp_tab" href="#" class="active">注册</a>
                     <div class="slide-bar"></div>
                 </div>
             </div>
 
-            <div class="form" id="signInForm">
+            <!-- sign in -->
+            <div class="form hide" id="signInForm">
                 <div class="group">
                     <div class="group-ipt account">
                         <input type="text" name="account" id="account" class="ipt" placeholder="手机号或邮箱">
+                        <label class="error is-visible">email对应的账户不存在</label>
                     </div>
                     <div id="signIn_password_wrapper" class="group-ipt password">
                         <input type="password" name="password" id="signIn_password" class="ipt" placeholder="密码">
-                        <label class="error is-visible">请输入正确的密码</label>
+                        <label class="error is-visible">请输入6-128位的密码</label>
                     </div>
                     <div id="signIn_sms_wrapper" class="group-ipt sms-verification hide">
                         <input name="sms-code" placeholder="短信验证码" maxlength="6" type="number">
                         <button type="button" class="send-code">获取验证码</button>
                     </div>
                     <div id="signIn_captcha_wrapper" class="group-ipt sms-verification">
-                        <input id="captcha-code" placeholder="验证码" class="ipt" maxlength="4" type="text">
+                        <input id="signIn-captcha-code" placeholder="验证码" class="ipt" maxlength="4" type="text">
                         <span class="captcha-img-wrapper">
                             <img id="signIn_captcha_img" class="captcha-img" alt="点击刷新"
-                                 src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha()">
+                                 src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha(this.id)">
                         </span>
                         <label class="captcha-error is-visible">请输入正确的验证码</label>
                     </div>
@@ -73,21 +75,31 @@
                         <span class="app-toggleButtonText ">下载编乎 App</span>
                     </button>
                 </div>
-            </div>
+            </div><!-- end sign in -->
 
-            <div class="form hide" id="signUpForm">
+            <!-- sign up -->
+            <div class="form" id="signUpForm">
                 <div class="group">
                     <div class="group-ipt fullName">
                         <input type="text" name="fullName" id="fullName" class="ipt" placeholder="姓名">
+                        <label class="error is-visible">姓名最短为2个汉字或3个英文字符</label>
+                        <%--<label class="error is-visible">姓名最长为10个汉字或20个英文字符</label>--%>
                     </div>
                     <div class="group-ipt email">
                         <input type="text" name="email" id="email" class="ipt" placeholder="邮箱">
+                        <label class="error is-visible">请输入正确的邮箱地址</label>
                     </div>
                     <div class="group-ipt password">
                         <input type="password" name="password" id="signUp_password" class="ipt" placeholder="密码（不少于6位）">
+                        <label class="error is-visible">请输入6-128位的密码</label>
                     </div>
-                    <div class="group-ipt captcha hide">
-                        <input type="text" name="captcha" id="signUp_captcha" class="ipt" placeholder="验证码">
+                    <div id="signUp_captcha_wrapper" class="group-ipt sms-verification">
+                        <input id="signUp-captcha-code" placeholder="验证码" class="ipt" maxlength="4" type="text">
+                        <span class="captcha-img-wrapper">
+                            <img id="signUp_captcha_img" class="captcha-img" alt="点击刷新"
+                                 src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha(this.id)">
+                        </span>
+                        <label class="captcha-error is-visible">请输入正确的验证码</label>
                     </div>
                 </div>
 
@@ -106,8 +118,8 @@
                         <span class="app-toggleButtonText ">下载编乎 App</span>
                     </button>
                 </div>
-
             </div>
+            <!-- end sign up -->
         </div>
     </div>
 

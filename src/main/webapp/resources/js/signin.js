@@ -19,7 +19,6 @@ $('#signUp_tab').on('click', function () {
     $('#signUpForm').removeClass('hide');
     $('#signInForm').addClass('hide');
 
-    // $('#_btn').text('注册');
 });
 
 // 显示登录
@@ -30,7 +29,7 @@ $('#signIn_tab').on('click', function () {
     // 显示登录 tab
     $('#signUpForm').addClass('hide');
     $('#signInForm').removeClass('hide');
-    // $('#_btn').text('登录');
+
 });
 
 // 显示手机验证码登录
@@ -57,24 +56,12 @@ $('.signin-switch-button').on('click', function () {
     }
 });
 
-function getCaptcha() {
+function getCaptcha(id) {
 
     // 获取 base path
     var localObj = window.location;
     var contextPath = localObj.pathname.split("/")[1];
     var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
 
-    $.ajax({
-        url: basePath + '/captcha?' + Math.random(),
-        type: 'GET',
-        async: true,
-        cache: false,
-        timeout: 5000,
-        success: function() {
-            $('#signIn_captcha_img')[0].src = basePath + '/captcha?' + Math.random();
-        },
-        error: function() {
-            console.log('[ERROR] get captcha image error.')
-        }
-    })
+    $('#' + id)[0].src = basePath + '/captcha?' + Math.random();
 }

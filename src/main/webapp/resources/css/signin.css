@@ -367,7 +367,7 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-input[name="sms-code"], #captcha-code {
+input[name="sms-code"], #signIn-captcha-code, #signUp-captcha-code {
     width: 200px !important;
 }
 
