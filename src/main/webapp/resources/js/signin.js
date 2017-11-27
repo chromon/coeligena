@@ -11,51 +11,65 @@ $(function(){
 });
 
 // 显示注册
-$('#signUp_tab').on('click', function () {
+var signUp_tab = $('#signUp_tab');
+var signIn_tab = $('#signIn_tab');
+var slide_bar = $('.slide-bar');
+var signUpForm = $('#signUpForm');
+var signInForm = $('#signInForm');
+
+signUp_tab.on('click', function () {
     // 显示 tab 标签样式
-    $('#signUp_tab').addClass('active');
-    $('.slide-bar').addClass('slide-bar-left');
+    signUp_tab.addClass('active');
+    slide_bar.addClass('slide-bar-left');
     // 显示注册 tab
-    $('#signUpForm').removeClass('hide');
-    $('#signInForm').addClass('hide');
+    signUpForm.removeClass('hide');
+    signInForm.addClass('hide');
 
 });
 
 // 显示登录
-$('#signIn_tab').on('click', function () {
+signIn_tab.on('click', function () {
     // 显示 tab 标签样式
-    $('#signIn_tab').addClass('active');
-    $('.slide-bar').removeClass('slide-bar-left');
+    signIn_tab.addClass('active');
+    slide_bar.removeClass('slide-bar-left');
     // 显示登录 tab
-    $('#signUpForm').addClass('hide');
-    $('#signInForm').removeClass('hide');
+    signUpForm.addClass('hide');
+    signInForm.removeClass('hide');
 
 });
 
 // 显示手机验证码登录
-var signin_flag = false;
-$('.signin-switch-button').on('click', function () {
-    if (signin_flag) {
+var signIn_flag = false;
+var signIn_switch_button = $('.signin-switch-button');
+var account = $('#account');
+var signIn_password_wrapper = $('#signIn_password_wrapper');
+var signIn_captcha_wrapper = $('#signIn_captcha_wrapper');
+var signIn_sms_wrapper = $('#signIn_sms_wrapper');
+var unable_login = $('.unable-login');
+
+signIn_switch_button.on('click', function () {
+    if (signIn_flag) {
         // 邮箱登录
-        $('#account').attr('placeholder', '手机号或邮箱');
-        $('#signIn_password_wrapper').removeClass('hide');
-        $('#signIn_captcha_wrapper').removeClass('hide');
-        $('#signIn_sms_wrapper').addClass('hide');
-        $('.signin-switch-button').text('手机验证码登录');
-        $('.unable-login').removeClass('hide');
-        signin_flag = false;
+        account.attr('placeholder', '手机号或邮箱');
+        signIn_password_wrapper.removeClass('hide');
+        signIn_captcha_wrapper.removeClass('hide');
+        signIn_sms_wrapper.addClass('hide');
+        signIn_switch_button.text('手机验证码登录');
+        unable_login.removeClass('hide');
+        signIn_flag = false;
     } else {
         // 手机验证码登录
-        $('#account').attr('placeholder', '手机号');
-        $('#signIn_password_wrapper').addClass('hide');
-        $('#signIn_captcha_wrapper').addClass('hide');
-        $('#signIn_sms_wrapper').removeClass('hide');
-        $('.signin-switch-button').text('密码登录（手机号或邮箱）');
-        $('.unable-login').addClass('hide');
-        signin_flag = true;
+        account.attr('placeholder', '手机号');
+        signIn_password_wrapper.addClass('hide');
+        signIn_captcha_wrapper.addClass('hide');
+        signIn_sms_wrapper.removeClass('hide');
+        signIn_switch_button.text('密码登录（手机号或邮箱）');
+        unable_login.addClass('hide');
+        signIn_flag = true;
     }
 });
 
+// 刷新验证码
 function getCaptcha(id) {
 
     // 获取 base path
@@ -64,4 +78,65 @@ function getCaptcha(id) {
     var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
 
     $('#' + id)[0].src = basePath + '/captcha?' + Math.random();
+}
+
+// 校验 fullName
+function checkFullName() {
+
+    var fullNameSel = $('#fullName');
+    var fullName = fullNameSel.val().trim();
+
+    var len_en = 0;
+    var len_cn = 0;
+
+    // 获取字符串长度，中文算两个字符
+    for (var i = 0; i < fullName.length; i ++) {
+        var a = fullName.charAt(i);
+        if (a.match(/[^\x00-\xff]/ig) != null) {
+            len_cn += 2;
+        } else {
+            len_en += 1;
+        }
+    }
+
+    console.log('len_en:' + len_en);
+    console.log('len_cn:' + len_cn);
+
+    if (len_cn < 1) {
+        if (len_en < 3) {
+            // 全英文少于 3 个字母
+            fullNameSel.after('<label class="error is-visible">姓名最短为2个汉字或3个英文字符</label>');
+            return false;
+        } else if (20 < len_en) {
+            // 全英文大于 20 个字母
+            fullNameSel.after(function() {
+                return '<label class="error is-visible">姓名最长为10个汉字或20个英文字符</label>';
+            });
+            return false;
+        }
+    }
+
+    if (len_en < 1) {
+        if (len_cn < 4) {
+            // 全中文少于 2 个汉字
+            fullNameSel.after(function() {
+                return '<label class="error is-visible">姓名最短为2个汉字或3个英文字符</label>';
+            });
+            return false;
+        } else if (20 < len_cn) {
+            // 全中文大于 10 个汉字
+            fullNameSel.after(function() {
+                return '<label class="error is-visible">姓名最长为10个汉字或20个英文字符</label>';
+            });
+            return false;
+        }
+    }
+
+    if ((2 < len_cn) && (1 < len_en) && (20 < len_cn + len_en)) {
+        // 中英文混合，且长度大于 20
+        fullNameSel.after(function() {
+            return '<label class="error is-visible">姓名最长为10个汉字或20个英文字符</label>';
+        });
+        return false;
+    }
 }

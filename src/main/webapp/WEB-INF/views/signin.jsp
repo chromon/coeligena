@@ -81,8 +81,8 @@
             <div class="form" id="signUpForm">
                 <div class="group">
                     <div class="group-ipt fullName">
-                        <input type="text" name="fullName" id="fullName" class="ipt" placeholder="姓名">
-                        <label class="error is-visible">姓名最短为2个汉字或3个英文字符</label>
+                        <input type="text" name="fullName" id="fullName" onblur="checkFullName()" class="ipt" placeholder="姓名">
+                        <%--<label class="error is-visible">姓名最短为2个汉字或3个英文字符</label>--%>
                         <%--<label class="error is-visible">姓名最长为10个汉字或20个英文字符</label>--%>
                     </div>
                     <div class="group-ipt email">
