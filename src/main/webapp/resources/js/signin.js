@@ -80,10 +80,10 @@ function getCaptcha(id) {
     $('#' + id)[0].src = basePath + '/captcha?' + Math.random();
 }
 
-// 校验 fullName
-function checkFullName() {
-
-    var fullNameSel = $('#fullName');
+// 校验注册 fullName
+var fullNameSel = $('#fullName');
+var fullNameError = $('#fullNameError');
+fullNameSel.on('blur', function () {
     var fullName = fullNameSel.val().trim();
 
     var len_en = 0;
@@ -99,19 +99,17 @@ function checkFullName() {
         }
     }
 
-    console.log('len_en:' + len_en);
-    console.log('len_cn:' + len_cn);
+    var label_text1 = '姓名最短为2个汉字或3个英文字符';
+    var label_text2 = '姓名最长为10个汉字或20个英文字符';
 
     if (len_cn < 1) {
         if (len_en < 3) {
             // 全英文少于 3 个字母
-            fullNameSel.after('<label class="error is-visible">姓名最短为2个汉字或3个英文字符</label>');
+            fullNameError.text(label_text1);
             return false;
         } else if (20 < len_en) {
             // 全英文大于 20 个字母
-            fullNameSel.after(function() {
-                return '<label class="error is-visible">姓名最长为10个汉字或20个英文字符</label>';
-            });
+            fullNameError.text(label_text2);
             return false;
         }
     }
@@ -119,24 +117,66 @@ function checkFullName() {
     if (len_en < 1) {
         if (len_cn < 4) {
             // 全中文少于 2 个汉字
-            fullNameSel.after(function() {
-                return '<label class="error is-visible">姓名最短为2个汉字或3个英文字符</label>';
-            });
+            fullNameError.text(label_text1);
             return false;
         } else if (20 < len_cn) {
             // 全中文大于 10 个汉字
-            fullNameSel.after(function() {
-                return '<label class="error is-visible">姓名最长为10个汉字或20个英文字符</label>';
-            });
+            fullNameError.text(label_text2);
             return false;
         }
     }
 
     if ((2 < len_cn) && (1 < len_en) && (20 < len_cn + len_en)) {
         // 中英文混合，且长度大于 20
-        fullNameSel.after(function() {
-            return '<label class="error is-visible">姓名最长为10个汉字或20个英文字符</label>';
-        });
+        fullNameError.text(label_text2);
         return false;
     }
-}
+
+    fullNameError.text('');
+    return true;
+});
+
+// 校验注册邮箱地址
+var emailSel = $('#email');
+var emailError = $('#emailError');
+emailSel.on('blur', function () {
+    var email = emailSel.val().trim();
+    var reg = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
+    if (!reg.test(email)) {
+        emailError.text('请输入正确的邮箱地址');
+        return false;
+    }
+
+    emailError.text('');
+    return true;
+});
+
+// 校验注册密码
+var passwordSel = $('#signUp_password');
+var passwordError = $('#passwordError');
+passwordSel.on('blur', function () {
+    var password = passwordSel.val().trim();
+    var reg = /^[a-zA-Z][a-zA-Z0-9_]{5,127}$/;
+    if (!reg.test(password)) {
+        passwordError.text('请输入6-128位的密码');
+        return false;
+    }
+
+    passwordError.text('');
+    return true;
+});
+
+// 校验注册验证码
+var signUpCaptcha = $('#signUp_captcha_code');
+var signUpCaptchaErr = $('#signUpCaptchaErr');
+signUpCaptcha.on('blur', function () {
+    var captchaCode = signUpCaptcha.val().trim();
+    var reg = /^[a-zA-Z0-9]{4}$/;
+    if (!reg.test(captchaCode)) {
+        signUpCaptchaErr.text('请输入正确的验证码');
+        return false;
+    }
+
+    signUpCaptchaErr.text('');
+    return true;
+});

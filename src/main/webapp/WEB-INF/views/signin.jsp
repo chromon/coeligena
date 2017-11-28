@@ -81,25 +81,24 @@
             <div class="form" id="signUpForm">
                 <div class="group">
                     <div class="group-ipt fullName">
-                        <input type="text" name="fullName" id="fullName" onblur="checkFullName()" class="ipt" placeholder="姓名">
-                        <%--<label class="error is-visible">姓名最短为2个汉字或3个英文字符</label>--%>
-                        <%--<label class="error is-visible">姓名最长为10个汉字或20个英文字符</label>--%>
+                        <input type="text" name="fullName" id="fullName" class="ipt" placeholder="姓名">
+                        <label id="fullNameError" class="error is-visible"></label>
                     </div>
                     <div class="group-ipt email">
                         <input type="text" name="email" id="email" class="ipt" placeholder="邮箱">
-                        <label class="error is-visible">请输入正确的邮箱地址</label>
+                        <label id="emailError" class="error is-visible"></label>
                     </div>
                     <div class="group-ipt password">
                         <input type="password" name="password" id="signUp_password" class="ipt" placeholder="密码（不少于6位）">
-                        <label class="error is-visible">请输入6-128位的密码</label>
+                        <label id="passwordError" class="error is-visible"></label>
                     </div>
                     <div id="signUp_captcha_wrapper" class="group-ipt sms-verification">
-                        <input id="signUp-captcha-code" placeholder="验证码" class="ipt" maxlength="4" type="text">
+                        <input id="signUp_captcha_code" type="text" placeholder="验证码" class="ipt" maxlength="4">
                         <span class="captcha-img-wrapper">
                             <img id="signUp_captcha_img" class="captcha-img" alt="点击刷新"
                                  src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha(this.id)">
                         </span>
-                        <label class="captcha-error is-visible">请输入正确的验证码</label>
+                        <label id="signUpCaptchaErr" class="captcha-error is-visible"></label>
                     </div>
                 </div>
 
