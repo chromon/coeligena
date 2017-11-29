@@ -14,16 +14,16 @@ $(function(){
 var signUp_tab = $('#signUp_tab');
 var signIn_tab = $('#signIn_tab');
 var slide_bar = $('.slide-bar');
-var signUpForm = $('#signUpForm');
-var signInForm = $('#signInForm');
+var signUpFormWrapper = $('#signUpFormWrapper');
+var signInFormWrapper = $('#signInFormWrapper');
 
 signUp_tab.on('click', function () {
     // 显示 tab 标签样式
     signUp_tab.addClass('active');
     slide_bar.addClass('slide-bar-left');
     // 显示注册 tab
-    signUpForm.removeClass('hide');
-    signInForm.addClass('hide');
+    signUpFormWrapper.removeClass('hide');
+    signInFormWrapper.addClass('hide');
 
 });
 
@@ -33,8 +33,8 @@ signIn_tab.on('click', function () {
     signIn_tab.addClass('active');
     slide_bar.removeClass('slide-bar-left');
     // 显示登录 tab
-    signUpForm.addClass('hide');
-    signInForm.removeClass('hide');
+    signUpFormWrapper.addClass('hide');
+    signInFormWrapper.removeClass('hide');
 
 });
 
@@ -75,7 +75,7 @@ function getCaptcha(id) {
     // 获取 base path
     var localObj = window.location;
     var contextPath = localObj.pathname.split("/")[1];
-    var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+    var basePath = localObj.protocol + "//" + localObj.host + "/" + contextPath;
 
     $('#' + id)[0].src = basePath + '/captcha?' + Math.random();
 }
@@ -83,7 +83,7 @@ function getCaptcha(id) {
 // 校验注册 fullName
 var fullNameSel = $('#fullName');
 var fullNameError = $('#fullNameError');
-fullNameSel.on('blur', function () {
+function checkFullName() {
     var fullName = fullNameSel.val().trim();
 
     var len_en = 0;
@@ -134,12 +134,13 @@ fullNameSel.on('blur', function () {
 
     fullNameError.text('');
     return true;
-});
+}
+fullNameSel.on('blur', checkFullName);
 
 // 校验注册邮箱地址
 var emailSel = $('#email');
 var emailError = $('#emailError');
-emailSel.on('blur', function () {
+function checkSignUpEmail() {
     var email = emailSel.val().trim();
     var reg = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
     if (!reg.test(email)) {
@@ -149,12 +150,13 @@ emailSel.on('blur', function () {
 
     emailError.text('');
     return true;
-});
+}
+emailSel.on('blur', checkSignUpEmail);
 
 // 校验注册密码
 var passwordSel = $('#signUp_password');
 var passwordError = $('#passwordError');
-passwordSel.on('blur', function () {
+function checkSignUpPWD() {
     var password = passwordSel.val().trim();
     var reg = /^[a-zA-Z][a-zA-Z0-9_]{5,127}$/;
     if (!reg.test(password)) {
@@ -164,12 +166,13 @@ passwordSel.on('blur', function () {
 
     passwordError.text('');
     return true;
-});
+}
+passwordSel.on('blur', checkSignUpPWD);
 
 // 校验注册验证码
 var signUpCaptcha = $('#signUp_captcha_code');
 var signUpCaptchaErr = $('#signUpCaptchaErr');
-signUpCaptcha.on('blur', function () {
+function checkSignUpCaptcha() {
     var captchaCode = signUpCaptcha.val().trim();
     var reg = /^[a-zA-Z0-9]{4}$/;
     if (!reg.test(captchaCode)) {
@@ -179,4 +182,55 @@ signUpCaptcha.on('blur', function () {
 
     signUpCaptchaErr.text('');
     return true;
+}
+signUpCaptcha.on('blur', checkSignUpCaptcha);
+
+// 注册提交
+var signUpSubmit = $('#signUpSubmit');
+var signUpForm = $('#signUpForm');
+signUpSubmit.on('click', function () {
+    if(checkFullName() & checkSignUpEmail() & checkSignUpPWD() & checkSignUpCaptcha()) {
+        signUpForm.submit();
+    }
+});
+
+// 校验登录密码
+var signInPasswordSel = $('#signIn_password');
+var signInPasswordError = $('#signInPasswordErr');
+function checkSignInPWD() {
+    var password = signInPasswordSel.val().trim();
+    var reg = /^[a-zA-Z][a-zA-Z0-9_]{5,127}$/;
+    if (!reg.test(password)) {
+        signInPasswordError.text('请输入6-128位的密码');
+        return false;
+    }
+
+    signInPasswordError.text('');
+    return true;
+}
+signInPasswordSel.on('blur', checkSignInPWD);
+
+// 校验登录验证码
+var signInCaptcha = $('#signIn_captcha_code');
+var signInCaptchaErr = $('#signInCaptchaErr');
+function checkSignInCaptcha() {
+    var captchaCode = signInCaptcha.val().trim();
+    var reg = /^[a-zA-Z0-9]{4}$/;
+    if (!reg.test(captchaCode)) {
+        signInCaptchaErr.text('请输入正确的验证码');
+        return false;
+    }
+
+    signInCaptchaErr.text('');
+    return true;
+}
+signInCaptcha.on('blur', checkSignInCaptcha);
+
+// 登录提交
+var signInSubmit = $('#signInSubmit');
+var signInForm = $('#signInForm');
+signInSubmit.on('click', function () {
+    if(checkSignInPWD() & checkSignInCaptcha()) {
+        signInForm.submit();
+    }
 });

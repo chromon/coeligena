@@ -60,4 +60,16 @@ public class WelcomeController {
         outputStream.flush();
         outputStream.close();
     }
+
+    @RequestMapping(value = "signup", method = RequestMethod.POST)
+    public String signUp() {
+        System.out.println("[INFO] signup info");
+        return "redirect:/index";
+    }
+
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public String login() {
+        System.out.println("[INFO] login info");
+        return "redirect:/index";
+    }
 }
