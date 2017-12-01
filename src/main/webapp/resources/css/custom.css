@@ -1122,3 +1122,30 @@ ins {
 .custom-sidebar-padding {
     padding-left: 0;
 }
+
+.error-wrapper {
+    margin: 169px auto 0;
+    width: 404px;
+}
+
+.error-title {
+    color: #444;
+    font-weight: bold;
+    font-family: "YouYuan";
+    font-size: 32px;
+}
+
+.error-header {
+    overflow: hidden;
+    font-size: 1.2em;
+    line-height: 1.2;
+    margin: 0 0 .33em .33em;
+}
+
+.error-content {
+    padding: 2em 1.25em;
+    border: 1px solid #babbbc;
+    border-radius: 5px;
+    background: #f7f7f7;
+    text-align: center;
+}
