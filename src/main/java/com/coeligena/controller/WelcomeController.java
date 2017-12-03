@@ -1,5 +1,7 @@
 package com.coeligena.controller;
 
+import com.coeligena.annotation.csrf.RefreshCSRFToken;
+import com.coeligena.annotation.csrf.VerifyCSRFToken;
 import com.coeligena.function.captcha.CaptchaUtils;
 import com.github.bingoohuang.patchca.service.Captcha;
 import org.springframework.stereotype.Controller;
@@ -27,8 +29,10 @@ public class WelcomeController {
     @Resource
     private CaptchaUtils captchaUtils;
 
+    @RefreshCSRFToken
     @RequestMapping(value = "signin", method = RequestMethod.GET)
     public String signIn() {
+        System.out.println("test controller");
         return "signin";
     }
 

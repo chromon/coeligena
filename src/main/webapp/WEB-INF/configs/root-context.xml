@@ -70,5 +70,17 @@
 		<property name="prefix" value="/WEB-INF/views/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
-	
+
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <!-- csrf攻击防御 -->
+        <mvc:interceptor>
+            <!-- 需拦截的地址 -->
+            <mvc:mapping path="/**" />
+            <!-- 需排除拦截的地址 -->
+            <mvc:exclude-mapping path="/resources/**" />
+            <bean class="com.coeligena.interceptor.CSRFInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>
