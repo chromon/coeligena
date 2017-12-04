@@ -71,6 +71,7 @@ public class WelcomeController {
         return "redirect:/index";
     }
 
+    @VerifyCSRFToken
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login() {
         System.out.println("[INFO] login info");

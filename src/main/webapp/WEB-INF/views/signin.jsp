@@ -38,7 +38,7 @@
             <!-- sign in -->
             <div class="form" id="signInFormWrapper">
                 <form id="signInForm" action="${pageContext.request.contextPath}/login" method="POST">
-                    <input type='hidden' value='${CSRFToken}' id='csrftoken'>
+                    <input type="hidden" value="${CSRFToken}" name="CSRFToken">
                     <div class="group">
                         <div class="group-ipt account">
                             <input type="text" name="account" id="account" class="ipt" placeholder="手机号或邮箱">
@@ -83,7 +83,7 @@
             <!-- sign up -->
             <div class="form hide" id="signUpFormWrapper">
                 <form id="signUpForm" action="${pageContext.request.contextPath}/signup" method="POST">
-                    <input type='hidden' value='${CSRFToken}' id='csrftoken2'>
+                    <input type="hidden" value="${CSRFToken}" name="CSRFToken">
                     <div class="group">
                         <div class="group-ipt fullName">
                             <input type="text" name="fullName" id="fullName" class="ipt" placeholder="姓名">

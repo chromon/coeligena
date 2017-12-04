@@ -6,7 +6,7 @@ import java.lang.annotation.Target;
 
 /**
  * <p>
- * 跨站请求伪造注解 验证跨站请求
+ *      跨站请求伪造注解 验证跨站请求
  * </p>
  *
  * Created by Ellery on 2017/12/2.
@@ -19,6 +19,6 @@ public @interface VerifyCSRFToken {
      * 需要验证防跨站请求
      * @return
      */
-    public abstract boolean verify() default true;
+    boolean verify() default true;
 
 }
