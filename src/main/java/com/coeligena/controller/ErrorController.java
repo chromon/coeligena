@@ -23,4 +23,9 @@ public class ErrorController {
         return "error404";
     }
 
+    @RequestMapping(value = "illegalrequest", method = RequestMethod.GET)
+    public String errorRequest() {
+        return "errorRequest";
+    }
+
 }

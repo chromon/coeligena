@@ -62,10 +62,11 @@ public class CSRFInterceptor extends HandlerInterceptorAdapter {
                     // 传统同步请求方式，刷新 csrfToken 并跳转提示页面
                     String csrfToken = CSRFToken.generate(request);
                     request.getSession().setAttribute("CSRFToken", csrfToken);
-                    response.setContentType("application/json;charset=UTF-8");
-                    PrintWriter out = response.getWriter();
-                    out.print("非法请求");
-                    response.flushBuffer();
+//                    response.setContentType("application/json;charset=UTF-8");
+//                    PrintWriter out = response.getWriter();
+//                    out.print("非法请求");
+//                    response.flushBuffer();
+                    response.sendRedirect(request.getContextPath() + "/illegalrequest");
                     return false;
                 } else {
 
