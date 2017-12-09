@@ -69,14 +69,14 @@ signIn_switch_button.on('click', function () {
     }
 });
 
+
+// 获取 base path
+var localObj = window.location;
+var contextPath = localObj.pathname.split("/")[1];
+var basePath = localObj.protocol + "//" + localObj.host + "/" + contextPath;
+
 // 刷新验证码
 function getCaptcha(id) {
-
-    // 获取 base path
-    var localObj = window.location;
-    var contextPath = localObj.pathname.split("/")[1];
-    var basePath = localObj.protocol + "//" + localObj.host + "/" + contextPath;
-
     $('#' + id)[0].src = basePath + '/captcha?' + Math.random();
 }
 
@@ -145,6 +145,28 @@ function checkSignUpEmail() {
     var reg = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
     if (!reg.test(email)) {
         emailError.text('请输入正确的邮箱地址');
+        return false;
+    }
+
+    // 检查邮箱地址是否已存在
+    var exists = false;
+    $.ajax({
+        url: basePath + '/checkEmail',
+        type: 'post',
+        dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+        async:true,
+        timeout: 1000,
+        success: function (data, status) {
+            exists = true;
+            console.log(data);
+        },
+        error: function (err, status) {
+            console.log(err);
+        }
+    });
+
+    if(exists) {
+        emailError.text('邮件地址已注册');
         return false;
     }
 

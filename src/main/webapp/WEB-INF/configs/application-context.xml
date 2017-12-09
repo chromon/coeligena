@@ -66,10 +66,11 @@
     <!-- 事务 advice -->
     <tx:advice id="txAdvice" transaction-manager="txManager">
         <tx:attributes>
-            <tx:method name="get*" read-only="true" propagation="REQUIRED"/>
-            <tx:method name="query*" read-only="true" propagation="REQUIRED"/>
-            <tx:method name="find*" read-only="true" propagation="REQUIRED"/>
-            <tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="delete*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="modify*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="query*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED" rollback-for="Exception" read-only="true"/>
         </tx:attributes>
     </tx:advice>
 
