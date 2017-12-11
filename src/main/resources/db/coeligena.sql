@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS auth_users (
     last_login_time TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 最近一次登录时间（时间戳）*/
     last_login_ip   VARCHAR(15)  NOT NULL, /* 最近登录的IP地址 */
     muted_status    TINYINT(4)   NOT NULL DEFAULT '0', /* 是否禁言状态：1-表示禁言，0-表示正常 */
-    muted_time      TIMESTAMP             DEFAULT NULL, /* 禁言截止日期 */
+    muted_time      TIMESTAMP             DEFAULT CURRENT_TIMESTAMP, /* 禁言截止日期 */
     banned          TINYINT(4)   NOT NULL DEFAULT '0', /* 是否禁用账户 */
     remark          VARCHAR(256)          DEFAULT '', /* 备注信息 */
     PRIMARY KEY (id),
@@ -127,9 +127,9 @@ CREATE TABLE IF NOT EXISTS activations (
     activation_code      VARCHAR(32) NOT NULL, /* 账户激活码 */
     activation_type_code VARCHAR(16) NOT NULL, /* 账户激活码类型：email url 或 phone code */
     create_time          TIMESTAMP            DEFAULT CURRENT_TIMESTAMP, /* 激活码创建时间 */
-    expire_time          TIMESTAMP            DEFAULT NULL, /* 激活码过期时间 */
+    expire_time          TIMESTAMP            DEFAULT CURRENT_TIMESTAMP, /* 激活码过期时间 */
     create_ip            VARCHAR(15) NOT NULL, /* 激活码创建时 IP */
-    activation_time      TIMESTAMP            DEFAULT NULL, /* 触发激活时间 */
+    activation_time      TIMESTAMP            DEFAULT CURRENT_TIMESTAMP, /* 触发激活时间 */
     activation_ip        VARCHAR(15)          DEFAULT '', /* 激活时 IP */
     user_id              INT(11)     NOT NULL DEFAULT '0', /* 用户 ID */
     PRIMARY KEY (id),
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS relationships (
 CREATE TABLE IF NOT EXISTS questions (
     id               INT(11)      NOT NULL AUTO_INCREMENT, /* 问题ID（唯一标识） */
     question_content VARCHAR(255) NOT NULL, /* 问题标题 */
-    question_detail  TEXT         NOT NULL DEFAULT '', /* 问题内容 */
+    question_detail  TEXT         NOT NULL, /* 问题内容 */
     question_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 提问时间 */
     update_time      TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 问题更新时间 */
     answer_count     INT(11)      NOT NULL DEFAULT '0', /* 回答数 */
@@ -223,7 +223,7 @@ CREATE TABLE IF NOT EXISTS question_comments (
 CREATE TABLE IF NOT EXISTS topic_nodes (
     id                 INT(11)      NOT NULL AUTO_INCREMENT, /* 话题节点 ID（唯一标识） */
     topic_name         VARCHAR(256) NOT NULL, /* 话题名称 */
-    topic_introduction TEXT         NOT NULL DEFAULT '', /* 话题描述 */
+    topic_introduction TEXT         NOT NULL, /* 话题描述 */
     image_path         VARCHAR(512) NOT NULL DEFAULT '', /* 话题图片路径 */
     follow_count       INT(11)      NOT NULL DEFAULT '0', /* 话题关注者数量 */
     create_time        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 话题创建时间 */

@@ -74,7 +74,7 @@ public class TopicNodesDO {
      * 获取话题描述
      * @return 话题描述
      */
-    @Column(name = "topic_introduction", nullable = false, columnDefinition = "text default ''")
+    @Column(name = "topic_introduction", nullable = false, columnDefinition = "text")
     public String getTopicIntroduction() {
         return topicIntroduction;
     }

@@ -7,6 +7,7 @@ import com.github.bingoohuang.patchca.service.Captcha;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
@@ -63,6 +64,11 @@ public class WelcomeController {
 
         outputStream.flush();
         outputStream.close();
+    }
+
+    @RequestMapping(value = "checkEmail", method = RequestMethod.POST)
+    public @ResponseBody String checkEmail() {
+        return "true";
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.POST)

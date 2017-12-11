@@ -95,7 +95,7 @@ public class QuestionsDO {
      * 获取问题详情
      * @return 问题详情
      */
-    @Column(name = "question_detail", nullable = false, columnDefinition = "text default ''")
+    @Column(name = "question_detail", nullable = false, columnDefinition = "text")
     public String getQuestionDetail() {
         return questionDetail;
     }
