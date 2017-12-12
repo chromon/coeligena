@@ -3,20 +3,19 @@ package com.coeligena.controller;
 import com.coeligena.annotation.csrf.RefreshCSRFToken;
 import com.coeligena.annotation.csrf.VerifyCSRFToken;
 import com.coeligena.function.captcha.CaptchaUtils;
-import com.github.bingoohuang.patchca.service.Captcha;
+import com.coeligena.model.AuthUsersDO;
+import com.coeligena.service.AuthUsersService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.OutputStream;
 
 /**
  * welcome(signIn signUp) controller
@@ -30,6 +29,13 @@ public class WelcomeController {
     @Resource
     private CaptchaUtils captchaUtils;
 
+    private AuthUsersService authUsersService;
+
+    @Autowired
+    public void setAuthUsersService(AuthUsersService authUsersService) {
+        this.authUsersService = authUsersService;
+    }
+
     @RefreshCSRFToken
     @RequestMapping(value = "signin", method = RequestMethod.GET)
     public String signIn() {
@@ -40,35 +46,13 @@ public class WelcomeController {
     @RequestMapping(value = "captcha", method = RequestMethod.GET)
     public void captcha(HttpServletRequest request,
                         HttpServletResponse response) throws IOException {
-        // 禁止图像缓存
-        response.setHeader("Pragma", "no-cache");
-        response.setHeader("Cache-Control", "no-cache");
-        response.setDateHeader("Expires", 0);
-
-        response.setContentType("image/png");
-        HttpSession session = request.getSession(true);
-        OutputStream outputStream = response.getOutputStream();
-
-        // 得到验证码对象,有验证码图片和验证码字符串
-        Captcha captcha = captchaUtils.getCCS().getCaptcha();
-
-        // 取得验证码字符串放入Session
-        String captchaCode = captcha.getChallenge();
-        System.out.println("[INFO] captcha word: " + captchaCode);
-
-        session.setAttribute("captchaCode", captchaCode);
-
-        // 取得验证码图片并输出
-        BufferedImage bufferedImage = captcha.getImage();
-        ImageIO.write(bufferedImage, "png", outputStream);
-
-        outputStream.flush();
-        outputStream.close();
+        // 得到验证码
+        captchaUtils.getCaptchaCode(request, response);
     }
 
     @RequestMapping(value = "checkEmail", method = RequestMethod.POST)
-    public @ResponseBody String checkEmail() {
-        return "true";
+    public @ResponseBody boolean checkEmail(@ModelAttribute AuthUsersDO authUsersDO) {
+        return authUsersService.checkUserEmailExists(authUsersDO.getEmail());
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.POST)

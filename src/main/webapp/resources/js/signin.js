@@ -154,14 +154,15 @@ function checkSignUpEmail() {
         url: basePath + '/checkEmail',
         type: 'post',
         dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
-        async:true,
+        async: false,
         timeout: 1000,
         success: function (data, status) {
-            exists = true;
-            console.log(data);
+            console.log(status, data);
+            console.log(typeof(data));
+            exists = data;
         },
         error: function (err, status) {
-            console.log(err);
+            console.log(status, err);
         }
     });
 
