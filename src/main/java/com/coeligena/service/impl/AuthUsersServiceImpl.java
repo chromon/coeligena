@@ -26,6 +26,11 @@ public class AuthUsersServiceImpl implements AuthUsersService {
         return authUsersDO != null;
     }
 
+    @Override
+    public void saveUserForSignUp(AuthUsersDO authUsersDO) {
+        this.authUsersDAO.saveAuthUser(authUsersDO);
+    }
+
     @Autowired
     public void setAuthUsersDAO(AuthUsersDAO authUsersDAO) {
         this.authUsersDAO = authUsersDAO;

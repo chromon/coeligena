@@ -1,4 +1,4 @@
-package com.coeligena.security;
+package com.coeligena.function.security;
 
 import org.springframework.stereotype.Component;
 
@@ -22,7 +22,7 @@ public class Encrypt {
      * @param text 待加密消息字符串
      * @return 生成的摘要字节数组
      */
-    private byte[] generateDigest(String type, String text) {
+    private static byte[] generateDigest(String type, String text) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance(type);
@@ -40,8 +40,8 @@ public class Encrypt {
      * @param text 待加密消息字符串
      * @return 生成的摘要字符串
      */
-    String getDigest(String type, String text) {
-        return toHex(this.generateDigest(type, text));
+    public static String getDigest(String type, String text) {
+        return toHex(generateDigest(type, text));
     }
 
     /**
@@ -50,7 +50,7 @@ public class Encrypt {
      * @param array 待转换的字节数组
      * @return 字节数组编码成的十六进制字符串
      */
-    private static String toHex(byte[] array) {
+    public static String toHex(byte[] array) {
         BigInteger bi = new BigInteger(1, array);
         String hex = bi.toString(16);
         int paddingLength = (array.length * 2) - hex.length();

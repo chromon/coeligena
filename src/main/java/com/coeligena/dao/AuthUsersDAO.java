@@ -17,4 +17,11 @@ public interface AuthUsersDAO {
      * @return 验证用户实体
      */
     AuthUsersDO queryAuthUserByEmail(String email);
+
+
+    /**
+     * 存储用户
+     * @param authUsersDO
+     */
+    void saveAuthUser(AuthUsersDO authUsersDO);
 }

@@ -32,4 +32,9 @@ public class AuthUsersDAOImpl implements AuthUsersDAO {
                 .setParameter("email", email).uniqueResult();
         return authUsersDO;
     }
+
+    @Override
+    public void saveAuthUser(AuthUsersDO authUsersDO) {
+        this.getSession().save(authUsersDO);
+    }
 }

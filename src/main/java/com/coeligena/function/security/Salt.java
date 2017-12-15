@@ -1,4 +1,4 @@
-package com.coeligena.security;
+package com.coeligena.function.security;
 
 import org.springframework.stereotype.Component;
 
@@ -54,7 +54,7 @@ public class Salt {
      *
      * @return 密码加密盐字符串
      */
-    byte[] getSalt() {
+    public byte[] getSalt() {
         return this.generateSalt();
     }
 

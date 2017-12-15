@@ -1,5 +1,7 @@
 package com.coeligena.service;
 
+import com.coeligena.model.AuthUsersDO;
+
 /**
  * <p>
  *     验证用户业务逻辑接口
@@ -15,4 +17,6 @@ public interface AuthUsersService {
      * @return 是否存在
      */
     boolean checkUserEmailExists(String email);
+
+    void saveUserForSignUp(AuthUsersDO authUsersDO);
 }
