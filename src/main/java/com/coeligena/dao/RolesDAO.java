@@ -4,7 +4,7 @@ import com.coeligena.model.RolesDO;
 
 /**
  * <p>
- *     角色数据对象
+ *     角色数据访问
  * </p>
  *
  * Created by Ellery on 2017/12/15.

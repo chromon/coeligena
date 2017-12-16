@@ -98,7 +98,7 @@
                             <label id="passwordError" class="error is-visible"></label>
                         </div>
                         <div id="signUp_captcha_wrapper" class="group-ipt sms-verification">
-                            <input id="signUp_captcha_code" type="text" placeholder="验证码" class="ipt" maxlength="4">
+                            <input name="signUpCaptcha" id="signUp_captcha_code" type="text" placeholder="验证码" class="ipt" maxlength="4">
                             <span class="captcha-img-wrapper">
                                 <img id="signUp_captcha_img" class="captcha-img" alt="点击刷新"
                                      src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha(this.id)">

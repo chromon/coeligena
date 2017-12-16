@@ -142,7 +142,7 @@ var emailSel = $('#email');
 var emailError = $('#emailError');
 function checkSignUpEmail() {
     var email = emailSel.val().trim();
-    var reg = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
+    var reg = /^[A-Za-z]+([-_.][A-Za-z0-9]+)*@([A-Za-z]+[-.])+[A-Za-z]{2,5}$/;
     if (!reg.test(email)) {
         emailError.text('请输入正确的邮箱地址');
         return false;
