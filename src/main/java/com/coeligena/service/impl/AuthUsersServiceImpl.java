@@ -31,6 +31,12 @@ public class AuthUsersServiceImpl implements AuthUsersService {
         this.authUsersDAO.saveAuthUser(authUsersDO);
     }
 
+    @Override
+    public AuthUsersDO queryUserByEmail(String email) {
+        AuthUsersDO authUsersDO = this.authUsersDAO.queryAuthUserByEmail(email);
+        return authUsersDO;
+    }
+
     @Autowired
     public void setAuthUsersDAO(AuthUsersDAO authUsersDAO) {
         this.authUsersDAO = authUsersDAO;

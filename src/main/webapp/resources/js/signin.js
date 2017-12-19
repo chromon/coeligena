@@ -257,3 +257,10 @@ signInSubmit.on('click', function () {
         signInForm.submit();
     }
 });
+
+var accountError = $('#accountError');
+account.on('blur', function() {
+    if(account.val().length > 0) {
+        accountError.text('');
+    }
+});

@@ -8,6 +8,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,24 +43,37 @@
                     <div class="group">
                         <div class="group-ipt account">
                             <input type="text" name="account" id="account" class="ipt" placeholder="手机号或邮箱">
-                            <label class="error is-visible">email对应的账户不存在</label>
+                            <label id="accountError" class="error is-visible">
+                                <c:if test="${accountNotExist}">
+                                    email 对应的账户不存在
+                                </c:if>
+                                <c:if test="${accountError}">
+                                    用户名或密码错误
+                                </c:if>
+                            </label>
                         </div>
                         <div id="signIn_password_wrapper" class="group-ipt password">
                             <input type="password" name="signInPassword" id="signIn_password" class="ipt" placeholder="密码">
                             <label id="signInPasswordErr" class="error is-visible"></label>
                         </div>
                         <div id="signIn_sms_wrapper" class="group-ipt sms-verification hide">
-                            <input name="sms-code" placeholder="短信验证码" maxlength="6" type="number">
+                            <input name="smsCode" placeholder="短信验证码" maxlength="6" type="number">
                             <button type="button" class="send-code">获取验证码</button>
                         </div>
-                        <div id="signIn_captcha_wrapper" class="group-ipt sms-verification">
-                            <input id="signIn_captcha_code" placeholder="验证码" class="ipt" maxlength="4" type="text">
-                            <span class="captcha-img-wrapper">
-                                <img id="signIn_captcha_img" class="captcha-img" alt="点击刷新"
-                                     src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha(this.id)">
-                            </span>
-                            <label id="signInCaptchaErr" class="captcha-error is-visible"></label>
-                        </div>
+                        <c:if test="${checkCaptcha}">
+                            <div id="signIn_captcha_wrapper" class="group-ipt sms-verification">
+                                <input name="signInCaptcha" id="signIn_captcha_code" placeholder="验证码" class="ipt" maxlength="4" type="text">
+                                <span class="captcha-img-wrapper">
+                                    <img id="signIn_captcha_img" class="captcha-img" alt="点击刷新"
+                                         src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha(this.id)">
+                                </span>
+                                <label id="signInCaptchaErr" class="captcha-error is-visible">
+                                    <c:if test="${captchaError}">
+                                        验证码错误
+                                    </c:if>
+                                </label>
+                            </div>
+                        </c:if>
                     </div>
 
                     <div class="button">
@@ -97,14 +111,17 @@
                             <input type="password" name="signUpPassword" id="signUp_password" class="ipt" placeholder="密码（不少于6位）">
                             <label id="passwordError" class="error is-visible"></label>
                         </div>
-                        <div id="signUp_captcha_wrapper" class="group-ipt sms-verification">
-                            <input name="signUpCaptcha" id="signUp_captcha_code" type="text" placeholder="验证码" class="ipt" maxlength="4">
-                            <span class="captcha-img-wrapper">
-                                <img id="signUp_captcha_img" class="captcha-img" alt="点击刷新"
-                                     src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha(this.id)">
-                            </span>
-                            <label id="signUpCaptchaErr" class="captcha-error is-visible"></label>
-                        </div>
+
+                        <c:if test="${checkCaptcha}">
+                            <div id="signUp_captcha_wrapper" class="group-ipt sms-verification">
+                                <input name="signUpCaptcha" id="signUp_captcha_code" type="text" placeholder="验证码" class="ipt" maxlength="4">
+                                <span class="captcha-img-wrapper">
+                                    <img id="signUp_captcha_img" class="captcha-img" alt="点击刷新"
+                                         src="${pageContext.request.contextPath}/captcha" onclick="getCaptcha(this.id)">
+                                </span>
+                                <label id="signUpCaptchaErr" class="captcha-error is-visible"></label>
+                            </div>
+                        </c:if>
                     </div>
 
                     <div class="button">

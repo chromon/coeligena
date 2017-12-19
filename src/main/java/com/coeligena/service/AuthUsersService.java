@@ -19,4 +19,6 @@ public interface AuthUsersService {
     boolean checkUserEmailExists(String email);
 
     void saveUserForSignUp(AuthUsersDO authUsersDO);
+
+    AuthUsersDO queryUserByEmail(String email);
 }
