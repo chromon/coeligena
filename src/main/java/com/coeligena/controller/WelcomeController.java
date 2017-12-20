@@ -4,17 +4,19 @@ import com.coeligena.annotation.csrf.RefreshCSRFToken;
 import com.coeligena.annotation.csrf.VerifyCSRFToken;
 import com.coeligena.dto.SignInFormDTO;
 import com.coeligena.dto.SignUpFormDTO;
+import com.coeligena.function.cookie.CookieUtils;
 import com.coeligena.function.captcha.CaptchaUtils;
 import com.coeligena.function.ip.IPAddress;
 import com.coeligena.function.security.Encrypt;
 import com.coeligena.function.security.PasswordUtils;
-import com.coeligena.function.security.Salt;
 import com.coeligena.model.AuthUsersDO;
 import com.coeligena.model.RoleAuthUserDO;
 import com.coeligena.model.RolesDO;
+import com.coeligena.model.UsersDO;
 import com.coeligena.service.AuthUsersService;
 import com.coeligena.service.RoleAuthUserService;
 import com.coeligena.service.RolesService;
+import com.coeligena.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,10 +48,13 @@ public class WelcomeController {
     private CaptchaUtils captchaUtils;
     @Resource
     private PasswordUtils passwordUtils;
+    @Resource
+    private CookieUtils cookieUtils;
 
     private AuthUsersService authUsersService;
     private RolesService rolesService;
     private RoleAuthUserService roleAuthUserService;
+    private UsersService usersService;
 
     private boolean checkCaptcha = false;
 
@@ -70,7 +75,7 @@ public class WelcomeController {
 
     @RequestMapping(value = "checkEmail", method = RequestMethod.POST)
     public @ResponseBody boolean checkEmail(@ModelAttribute AuthUsersDO authUsersDO) {
-        return authUsersService.checkUserEmailExists(authUsersDO.getEmail());
+        return authUsersService.queryUserEmailExists(authUsersDO.getEmail());
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.POST)
@@ -113,13 +118,18 @@ public class WelcomeController {
 
         roleAuthUserService.saveRoleAuthUser(roleAuthUserDO);
 
-        System.out.println("[INFO] signup info");
+        // 创建用户信息数据
+        UsersDO usersDO = new UsersDO();
+        usersDO.setAuthUserId(authUsersDO.getId());
+        usersDO.setFullname(signUpFormDTO.getFullName());
+        usersService.saveUsersForSignUp(usersDO);
+
         return "redirect:/signin";
     }
 
     @VerifyCSRFToken
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login(HttpServletRequest request,
+    public String login(HttpServletRequest request, HttpServletResponse response,
                         @ModelAttribute SignInFormDTO signInFormDTO, Model model) {
         // 登录
         HttpSession session = request.getSession(true);
@@ -145,11 +155,20 @@ public class WelcomeController {
             String password = passwordUtils.checkPassword(salt, signInPassword);
             if(password.equals(authUsersDO.getPassword())) {
                 // 验证成功
-
-
-
                 // 设置 cookie
+                int maxAge = 30*24*60*60;
+                cookieUtils.addCookie(response,
+                        cookieUtils.getEncryptName("CoeligenaCookieName" + authUsersDO.getId()),
+                        cookieUtils.getEncryptValue(authUsersDO.getEmail()), maxAge);
+                cookieUtils.addCookie(response,
+                        cookieUtils.getEncryptName("CoeligenaCookiePass" + authUsersDO.getId()),
+                        cookieUtils.getEncryptValue(authUsersDO.getPassword()), maxAge);
 
+                // 传输用户信息到前台
+//                UserInfoDTO  userInfoDTO = new UserInfoDTO();
+//                userInfoDTO.setAuthUsersDO(authUsersDO);
+//                userInfoDTO.setUsersDO(usersDO);
+//                session.setAttribute("userInfoDTO", userInfoDTO);
 
                 return "redirect:/index";
             } else {
@@ -177,5 +196,10 @@ public class WelcomeController {
     @Autowired
     public void setRoleAuthUserService(RoleAuthUserService roleAuthUserService) {
         this.roleAuthUserService = roleAuthUserService;
+    }
+
+    @Autowired
+    public void setUsersService(UsersService usersService) {
+        this.usersService = usersService;
     }
 }

@@ -19,7 +19,7 @@ public class AuthUsersServiceImpl implements AuthUsersService {
     private AuthUsersDAO authUsersDAO;
 
     @Override
-    public boolean checkUserEmailExists(String email) {
+    public boolean queryUserEmailExists(String email) {
 
         AuthUsersDO authUsersDO = this.authUsersDAO.queryAuthUserByEmail(email);
 

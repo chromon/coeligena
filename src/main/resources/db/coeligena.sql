@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS auth_users (
     muted_time      TIMESTAMP             DEFAULT CURRENT_TIMESTAMP, /* 禁言截止日期 */
     banned          TINYINT(4)   NOT NULL DEFAULT '0', /* 是否禁用账户 */
     remark          VARCHAR(256)          DEFAULT '', /* 备注信息 */
+    email_active    TINYINT(4)   NOT NULL DEFAULT '0', /* 邮箱是否激活 0：否， 1：是 */
+    phone_active    TINYINT(4)   NOT NULL DEFAULT '0', /* 手机是否激活 0：否， 1：是 */
     PRIMARY KEY (id),
     INDEX (email),
     INDEX (phone),
@@ -110,7 +112,6 @@ CREATE TABLE IF NOT EXISTS users (
     invite_count       INT(11)     NOT NULL DEFAULT '0', /* 邀请回答数 */
     profile_view_count INT(11)     NOT NULL DEFAULT '0', /* 主页浏览数 */
     personality_url    VARCHAR(64)          DEFAULT '', /* 个性网址 */
-    email_active       TINYINT(4)  NOT NULL DEFAULT '0', /* 邮箱是否激活 0：否， 1：是 */
     auth_user_id       INT(11)     NOT NULL DEFAULT '0', /* 用户ID */
     PRIMARY KEY (id),
     INDEX (fullname),

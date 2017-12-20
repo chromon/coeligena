@@ -49,6 +49,12 @@ public class AuthUsersDO {
     /** 备注信息 */
     private String remark;
 
+    /** 邮箱地址是否激活 */
+    private byte emailActive;
+
+    /** 手机是否激活 */
+    private byte phoneActive;
+
     /**
      * 获取用户验证 id
      * @return 用户验证 id
@@ -253,5 +259,39 @@ public class AuthUsersDO {
      */
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    /**
+     * 获取邮箱是否激活
+     * @return 邮箱是否激活
+     */
+    @Column(name = "email_active", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getEmailActive() {
+        return emailActive;
+    }
+
+    /**
+     * 设置邮箱是否激活
+     * @param emailActive 邮箱是否激活
+     */
+    public void setEmailActive(byte emailActive) {
+        this.emailActive = emailActive;
+    }
+
+    /**
+     * 手机是否激活
+     * @return 是否激活
+     */
+    @Column(name = "phone_active", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getPhoneActive() {
+        return phoneActive;
+    }
+
+    /**
+     * 设置手机是否激活
+     * @param phoneActive 手机是否激活
+     */
+    public void setPhoneActive(byte phoneActive) {
+        this.phoneActive = phoneActive;
     }
 }

@@ -9,7 +9,7 @@ import javax.persistence.*;
  * Created by Ellery on 2017/9/21.
  */
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class UsersDO {
 
     /** 用户信息 id */
@@ -71,12 +71,6 @@ public class UsersDO {
 
     /** 个性网址 */
     private String personalityURL;
-
-    /** 邮箱地址是否激活 */
-    private byte emailActive;
-
-    /** 手机是否激活 */
-    private byte phoneActive;
 
     /** 验证用户 id */
     private int authUserId;
@@ -390,23 +384,6 @@ public class UsersDO {
     }
 
     /**
-     * 获取邮箱是否激活
-     * @return 邮箱是否激活
-     */
-    @Column(name = "email_active", nullable = false, columnDefinition = "tinyint(4) default '0'")
-    public byte getEmailActive() {
-        return emailActive;
-    }
-
-    /**
-     * 设置邮箱是否激活
-     * @param emailActive 邮箱是否激活
-     */
-    public void setEmailActive(byte emailActive) {
-        this.emailActive = emailActive;
-    }
-
-    /**
      * 获取邀请回答数量
      * @return 邀请回答数量
      */
@@ -438,23 +415,6 @@ public class UsersDO {
      */
     public void setProfileViewCount(int profileViewCount) {
         this.profileViewCount = profileViewCount;
-    }
-
-    /**
-     * 手机是否激活
-     * @return 是否激活
-     */
-    @Column(name = "phone_active", nullable = false, columnDefinition = "tinyint(4) default '0'")
-    public byte getPhoneActive() {
-        return phoneActive;
-    }
-
-    /**
-     * 设置手机是否激活
-     * @param phoneActive 手机是否激活
-     */
-    public void setPhoneActive(byte phoneActive) {
-        this.phoneActive = phoneActive;
     }
 
     /**

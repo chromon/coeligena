@@ -16,7 +16,7 @@ public interface AuthUsersService {
      * @param email 用户邮件
      * @return 是否存在
      */
-    boolean checkUserEmailExists(String email);
+    boolean queryUserEmailExists(String email);
 
     void saveUserForSignUp(AuthUsersDO authUsersDO);
 
