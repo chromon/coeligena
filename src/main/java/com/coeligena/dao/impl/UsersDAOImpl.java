@@ -1,6 +1,7 @@
 package com.coeligena.dao.impl;
 
 import com.coeligena.dao.UsersDAO;
+import com.coeligena.model.AuthUsersDO;
 import com.coeligena.model.UsersDO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,5 +28,13 @@ public class UsersDAOImpl implements UsersDAO {
     @Override
     public void saveUsers(UsersDO usersDO) {
         this.getSession().save(usersDO);
+    }
+
+    @Override
+    public UsersDO queryUsersByAuthId(int authUserId) {
+        String sql = "select u from UsersDO u where u.authUserId = :authUserId";
+        UsersDO usersDO = (UsersDO) this.getSession().createQuery(sql)
+                .setParameter("authUserId", authUserId).uniqueResult();
+        return usersDO;
     }
 }

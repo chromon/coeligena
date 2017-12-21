@@ -12,4 +12,6 @@ import com.coeligena.model.UsersDO;
 public interface UsersDAO {
 
     void saveUsers(UsersDO usersDO);
+
+    UsersDO queryUsersByAuthId(int authUserId);
 }

@@ -27,13 +27,12 @@ canvas {
     height: 420px;
     vertical-align: middle;
     white-space: normal;
-    margin: 0 auto;
     position: absolute;
-    z-index: 2;
-    left: 50%;
-    top: 40%;
-    margin-left: -150px;
-    margin-top: -220px;
+    left:0;
+    top:-20%;
+    right:0;
+    bottom: 0;
+    margin: auto;
 }
 
 .cent-box-header {

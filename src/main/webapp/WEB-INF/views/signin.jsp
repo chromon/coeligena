@@ -17,6 +17,7 @@
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/signin.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/jquery-toast/jquery.toast.css">
 </head>
 <body>
 <div>
@@ -167,6 +168,14 @@
 <script src='<%=request.getContextPath()%>/resources/js/jquery-3.2.1.min.js' type="text/javascript"></script>
 <script src='<%=request.getContextPath()%>/resources/js/canvas.js' type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/plugin/jquery-toast/jquery.toast.min.js" type="text/javascript"></script>
 <script src='<%=request.getContextPath()%>/resources/js/signin.js' type="text/javascript"></script>
+
+    <script>
+        var signUpSuccess = "${signUpSuccess}";
+        if(signUpSuccess) {
+            showNotify();
+        }
+    </script>
 </body>
 </html>

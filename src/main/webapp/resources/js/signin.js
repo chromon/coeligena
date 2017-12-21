@@ -142,7 +142,7 @@ var emailSel = $('#email');
 var emailError = $('#emailError');
 function checkSignUpEmail() {
     var email = emailSel.val().trim();
-    var reg = /^[A-Za-z]+([-_.][A-Za-z0-9]+)*@([A-Za-z]+[-.])+[A-Za-z]{2,5}$/;
+    var reg = /^[a-zA-Z_0-9.-]{1,64}@([a-zA-Z0-9-]{1,200}.){1,5}[a-zA-Z]{1,6}$/;
     if (!reg.test(email)) {
         emailError.text('请输入正确的邮箱地址');
         return false;
@@ -158,7 +158,6 @@ function checkSignUpEmail() {
         timeout: 1000,
         success: function (data, status) {
             console.log(status, data);
-            console.log(typeof(data));
             exists = data;
         },
         error: function (err, status) {
@@ -264,3 +263,14 @@ account.on('blur', function() {
         accountError.text('');
     }
 });
+
+function showNotify() {
+    $.toast({
+        heading: '',
+        text: '注册成功，请重新登录',
+        icon: 'success',
+        position: 'top-right',
+        loader: true,        // Change it to false to disable loader
+        loaderBg: '#9EC600'  // To change the background
+    });
+}

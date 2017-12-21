@@ -22,6 +22,11 @@ public class UsersServiceImpl implements UsersService {
         this.usersDAO.saveUsers(usersDO);
     }
 
+    @Override
+    public UsersDO queryUsersByAuthUserId(int authUserId) {
+        return this.usersDAO.queryUsersByAuthId(authUserId);
+    }
+
     @Autowired
     public void setUsersDAO(UsersDAO usersDAO) {
         this.usersDAO = usersDAO;

@@ -4,10 +4,10 @@ import com.coeligena.annotation.csrf.RefreshCSRFToken;
 import com.coeligena.annotation.csrf.VerifyCSRFToken;
 import com.coeligena.dto.SignInFormDTO;
 import com.coeligena.dto.SignUpFormDTO;
+import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.cookie.CookieUtils;
 import com.coeligena.function.captcha.CaptchaUtils;
 import com.coeligena.function.ip.IPAddress;
-import com.coeligena.function.security.Encrypt;
 import com.coeligena.function.security.PasswordUtils;
 import com.coeligena.model.AuthUsersDO;
 import com.coeligena.model.RoleAuthUserDO;
@@ -80,49 +80,54 @@ public class WelcomeController {
 
     @RequestMapping(value = "signup", method = RequestMethod.POST)
     public String signUp(HttpServletRequest request,
-                         @ModelAttribute SignUpFormDTO signUpFormDTO) {
+                         @ModelAttribute SignUpFormDTO signUpFormDTO, Model model) {
 
-        // 查询 “未验证用户” 角色信息
-        RolesDO rolesDO = rolesService.queryRolesForSignUp("UnauthenticatedUser");
+//        // 查询 “未验证用户” 角色信息
+//        RolesDO rolesDO = rolesService.queryRolesForSignUp("UnauthenticatedUser");
+//
+//        AuthUsersDO authUsersDO = new AuthUsersDO();
+//
+//        // email
+//        authUsersDO.setEmail(signUpFormDTO.getEmail());
+//
+//        // 获取密码盐以及加密后密码
+//        Map<String, String> passMap = passwordUtils.getEncryptPassword(
+//                signUpFormDTO.getSignUpPassword());
+//        authUsersDO.setSalt(passMap.get("salt"));
+//        authUsersDO.setPassword(passMap.get("password"));
+//
+//        // 默认 ip
+//        authUsersDO.setLastLoginIP(IPAddress.getIpAdrress(request));
+//
+//        // 日期
+//        Date date = new Date();
+//        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+//        Timestamp now = Timestamp.valueOf(dateFormat);
+//
+//        authUsersDO.setCreateTime(now);
+//        authUsersDO.setLastLoginTime(now);
+//        authUsersDO.setMutedTime(now);
+//
+//        // 存储用户
+//        authUsersService.saveUserForSignUp(authUsersDO);
+//
+//        // 存储用户角色对应信息
+//        RoleAuthUserDO roleAuthUserDO = new RoleAuthUserDO();
+//        roleAuthUserDO.setAuthUserId(authUsersDO.getId());
+//        roleAuthUserDO.setRoleId(rolesDO.getId());
+//
+//        roleAuthUserService.saveRoleAuthUser(roleAuthUserDO);
+//
+//        // 创建用户信息数据
+//        UsersDO usersDO = new UsersDO();
+//        usersDO.setAuthUserId(authUsersDO.getId());
+//        usersDO.setFullname(signUpFormDTO.getFullName());
+//        usersService.saveUsersForSignUp(usersDO);
 
-        AuthUsersDO authUsersDO = new AuthUsersDO();
+        // 跳转页面发送注册成功通知消息
+        request.getSession().setAttribute("signUpSuccess", true);
 
-        // email
-        authUsersDO.setEmail(signUpFormDTO.getEmail());
-
-        // 获取密码盐以及加密后密码
-        Map<String, String> passMap = passwordUtils.getEncryptPassword(
-                signUpFormDTO.getSignUpPassword());
-        authUsersDO.setSalt(passMap.get("salt"));
-        authUsersDO.setPassword(passMap.get("password"));
-
-        // 默认 ip
-        authUsersDO.setLastLoginIP(IPAddress.getIpAdrress(request));
-
-        // 日期
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
-
-        authUsersDO.setCreateTime(now);
-        authUsersDO.setLastLoginTime(now);
-        authUsersDO.setMutedTime(now);
-
-        // 存储用户
-        authUsersService.saveUserForSignUp(authUsersDO);
-
-        // 存储用户角色对应信息
-        RoleAuthUserDO roleAuthUserDO = new RoleAuthUserDO();
-        roleAuthUserDO.setAuthUserId(authUsersDO.getId());
-        roleAuthUserDO.setRoleId(rolesDO.getId());
-
-        roleAuthUserService.saveRoleAuthUser(roleAuthUserDO);
-
-        // 创建用户信息数据
-        UsersDO usersDO = new UsersDO();
-        usersDO.setAuthUserId(authUsersDO.getId());
-        usersDO.setFullname(signUpFormDTO.getFullName());
-        usersService.saveUsersForSignUp(usersDO);
+        // TODO 发送验证邮件
 
         return "redirect:/signin";
     }
@@ -148,7 +153,6 @@ public class WelcomeController {
                 signInFormDTO.getAccount());
         if(authUsersDO != null) {
             // 账户存在
-            String account = signInFormDTO.getAccount();
             String signInPassword = signInFormDTO.getSignInPassword();
 
             String salt = authUsersDO.getSalt();
@@ -165,10 +169,15 @@ public class WelcomeController {
                         cookieUtils.getEncryptValue(authUsersDO.getPassword()), maxAge);
 
                 // 传输用户信息到前台
-//                UserInfoDTO  userInfoDTO = new UserInfoDTO();
-//                userInfoDTO.setAuthUsersDO(authUsersDO);
-//                userInfoDTO.setUsersDO(usersDO);
-//                session.setAttribute("userInfoDTO", userInfoDTO);
+                UsersDO usersDO = this.usersService.queryUsersByAuthUserId(authUsersDO.getId());
+
+                if(usersDO == null) {
+                    return "error";
+                }
+                UserInfoDTO userInfoDTO = new UserInfoDTO();
+                userInfoDTO.setAuthUsersDO(authUsersDO);
+                userInfoDTO.setUsersDO(usersDO);
+                session.setAttribute("userInfoDTO", userInfoDTO);
 
                 return "redirect:/index";
             } else {

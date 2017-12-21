@@ -12,4 +12,6 @@ import com.coeligena.model.UsersDO;
 public interface UsersService {
 
     void saveUsersForSignUp(UsersDO usersDO);
+
+    UsersDO queryUsersByAuthUserId(int authUserId);
 }
