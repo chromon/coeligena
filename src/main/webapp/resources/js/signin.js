@@ -264,11 +264,11 @@ account.on('blur', function() {
     }
 });
 
-function showNotify() {
+function showNotify(text, icon) {
     $.toast({
         heading: '',
-        text: '注册成功，请重新登录',
-        icon: 'success',
+        text: text,
+        icon: icon, // info, error, warning, success
         position: 'top-right',
         loader: true,        // Change it to false to disable loader
         loaderBg: '#9EC600'  // To change the background

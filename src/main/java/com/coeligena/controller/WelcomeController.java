@@ -82,47 +82,47 @@ public class WelcomeController {
     public String signUp(HttpServletRequest request,
                          @ModelAttribute SignUpFormDTO signUpFormDTO, Model model) {
 
-//        // 查询 “未验证用户” 角色信息
-//        RolesDO rolesDO = rolesService.queryRolesForSignUp("UnauthenticatedUser");
-//
-//        AuthUsersDO authUsersDO = new AuthUsersDO();
-//
-//        // email
-//        authUsersDO.setEmail(signUpFormDTO.getEmail());
-//
-//        // 获取密码盐以及加密后密码
-//        Map<String, String> passMap = passwordUtils.getEncryptPassword(
-//                signUpFormDTO.getSignUpPassword());
-//        authUsersDO.setSalt(passMap.get("salt"));
-//        authUsersDO.setPassword(passMap.get("password"));
-//
-//        // 默认 ip
-//        authUsersDO.setLastLoginIP(IPAddress.getIpAdrress(request));
-//
-//        // 日期
-//        Date date = new Date();
-//        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-//        Timestamp now = Timestamp.valueOf(dateFormat);
-//
-//        authUsersDO.setCreateTime(now);
-//        authUsersDO.setLastLoginTime(now);
-//        authUsersDO.setMutedTime(now);
-//
-//        // 存储用户
-//        authUsersService.saveUserForSignUp(authUsersDO);
-//
-//        // 存储用户角色对应信息
-//        RoleAuthUserDO roleAuthUserDO = new RoleAuthUserDO();
-//        roleAuthUserDO.setAuthUserId(authUsersDO.getId());
-//        roleAuthUserDO.setRoleId(rolesDO.getId());
-//
-//        roleAuthUserService.saveRoleAuthUser(roleAuthUserDO);
-//
-//        // 创建用户信息数据
-//        UsersDO usersDO = new UsersDO();
-//        usersDO.setAuthUserId(authUsersDO.getId());
-//        usersDO.setFullname(signUpFormDTO.getFullName());
-//        usersService.saveUsersForSignUp(usersDO);
+        // 查询 “未验证用户” 角色信息
+        RolesDO rolesDO = rolesService.queryRolesForSignUp("UnauthenticatedUser");
+
+        AuthUsersDO authUsersDO = new AuthUsersDO();
+
+        // email
+        authUsersDO.setEmail(signUpFormDTO.getEmail());
+
+        // 获取密码盐以及加密后密码
+        Map<String, String> passMap = passwordUtils.getEncryptPassword(
+                signUpFormDTO.getSignUpPassword());
+        authUsersDO.setSalt(passMap.get("salt"));
+        authUsersDO.setPassword(passMap.get("password"));
+
+        // 默认 ip
+        authUsersDO.setLastLoginIP(IPAddress.getIpAdrress(request));
+
+        // 日期
+        Date date = new Date();
+        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        Timestamp now = Timestamp.valueOf(dateFormat);
+
+        authUsersDO.setCreateTime(now);
+        authUsersDO.setLastLoginTime(now);
+        authUsersDO.setMutedTime(now);
+
+        // 存储用户
+        authUsersService.saveUserForSignUp(authUsersDO);
+
+        // 存储用户角色对应信息
+        RoleAuthUserDO roleAuthUserDO = new RoleAuthUserDO();
+        roleAuthUserDO.setAuthUserId(authUsersDO.getId());
+        roleAuthUserDO.setRoleId(rolesDO.getId());
+
+        roleAuthUserService.saveRoleAuthUser(roleAuthUserDO);
+
+        // 创建用户信息数据
+        UsersDO usersDO = new UsersDO();
+        usersDO.setAuthUserId(authUsersDO.getId());
+        usersDO.setFullname(signUpFormDTO.getFullName());
+        usersService.saveUsersForSignUp(usersDO);
 
         // 跳转页面发送注册成功通知消息
         request.getSession().setAttribute("signUpSuccess", true);
@@ -162,10 +162,10 @@ public class WelcomeController {
                 // 设置 cookie
                 int maxAge = 30*24*60*60;
                 cookieUtils.addCookie(response,
-                        cookieUtils.getEncryptName("CoeligenaCookieName" + authUsersDO.getId()),
-                        cookieUtils.getEncryptValue(authUsersDO.getEmail()), maxAge);
+                        cookieUtils.getEncryptName("CoeligenaCookieName"),
+                        authUsersDO.getEmail(), maxAge);
                 cookieUtils.addCookie(response,
-                        cookieUtils.getEncryptName("CoeligenaCookiePass" + authUsersDO.getId()),
+                        cookieUtils.getEncryptName("CoeligenaCookiePass"),
                         cookieUtils.getEncryptValue(authUsersDO.getPassword()), maxAge);
 
                 // 传输用户信息到前台

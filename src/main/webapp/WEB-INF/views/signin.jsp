@@ -174,7 +174,7 @@
     <script>
         var signUpSuccess = "${signUpSuccess}";
         if(signUpSuccess) {
-            showNotify();
+            showNotify('注册成功，请重新登录', 'success');
         }
     </script>
 </body>

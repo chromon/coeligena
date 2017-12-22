@@ -79,7 +79,18 @@
             <mvc:mapping path="/**" />
             <!-- 需排除拦截的地址 -->
             <mvc:exclude-mapping path="/resources/**" />
+            <!-- CSRF 拦截器 -->
             <bean class="com.coeligena.interceptor.CSRFInterceptor" />
+        </mvc:interceptor>
+
+        <!-- 自动登陆拦截器 -->
+        <mvc:interceptor>
+            <!-- 需拦截的地址 -->
+            <mvc:mapping path="/**" />
+            <!-- 需排除拦截的地址 -->
+            <mvc:exclude-mapping path="/resources/**" />
+            <!-- 自动登陆拦截器 -->
+            <bean class="com.coeligena.interceptor.AuthorizedInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
