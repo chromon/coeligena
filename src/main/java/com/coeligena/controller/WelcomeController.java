@@ -160,13 +160,15 @@ public class WelcomeController {
             if(password.equals(authUsersDO.getPassword())) {
                 // 验证成功
                 // 设置 cookie
-                int maxAge = 30*24*60*60;
+                int maxAge = 30 * 24 * 60 * 60;
                 cookieUtils.addCookie(response,
                         cookieUtils.getEncryptName("CoeligenaCookieName"),
                         authUsersDO.getEmail(), maxAge);
                 cookieUtils.addCookie(response,
                         cookieUtils.getEncryptName("CoeligenaCookiePass"),
                         cookieUtils.getEncryptValue(authUsersDO.getPassword()), maxAge);
+
+                System.out.println("hehe");
 
                 // 传输用户信息到前台
                 UsersDO usersDO = this.usersService.queryUsersByAuthUserId(authUsersDO.getId());

@@ -34,62 +34,61 @@ public class AuthorizedInterceptor implements HandlerInterceptor {
                              HttpServletResponse response,
                              Object o) throws Exception {
 
-        String basePath = request.getScheme() + "://"+
-                request.getServerName() + ":" +
-                request.getServerPort()+ request.getContextPath() + "/";
+        UserInfoDTO userInfoDTOGlobal = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
-        // 加密后用户名和密码的 cookie 名称
-        String cookieNameEncrypt = cookieUtils.getEncryptName("CoeligenaCookieName");
-        String cookiePassEncrypt = cookieUtils.getEncryptName("CoeligenaCookiePass");
+        if(userInfoDTOGlobal == null) {
 
-        Cookie cookieName = cookieUtils.getCookieByName(request, cookieNameEncrypt);
-        Cookie cookiePass = cookieUtils.getCookieByName(request, cookiePassEncrypt);
+            // 加密后用户名和密码的 cookie 名称
+            String cookieNameEncrypt = cookieUtils.getEncryptName("CoeligenaCookieName");
+            String cookiePassEncrypt = cookieUtils.getEncryptName("CoeligenaCookiePass");
 
-        if(cookieName != null && cookiePass != null &&
-                "".equals(cookieName.getValue()) && "".equals(cookiePass.getValue())) {
-            // cookie 存在
-            String email = cookieName.getValue();
-            String passwordEncrypted = cookiePass.getValue();
+            Cookie cookieName = cookieUtils.getCookieByName(request, cookieNameEncrypt);
+            Cookie cookiePass = cookieUtils.getCookieByName(request, cookiePassEncrypt);
 
-            AuthUsersDO authUsersDO = authUsersService.queryUserByEmail(email);
+            if(cookieName != null && cookiePass != null &&
+                    !"".equals(cookieName.getValue()) && !"".equals(cookiePass.getValue())) {
+                // cookie 存在
+                String email = cookieName.getValue();
+                String passwordEncrypted = cookiePass.getValue();
 
-            if(authUsersDO != null) {
-                String password = cookieUtils.getEncryptValue(authUsersDO.getPassword());
-                if(passwordEncrypted.equals(password)) {
-                    // cookie 正确，自动登陆
-                    UsersDO usersDO = usersService.queryUsersByAuthUserId(authUsersDO.getId());
-                    if(usersDO == null) {
-                        response.sendRedirect(request.getContextPath() + "/error");
+                AuthUsersDO authUsersDO = authUsersService.queryUserByEmail(email);
+
+                if(authUsersDO != null) {
+                    String password = cookieUtils.getEncryptValue(authUsersDO.getPassword());
+                    if(passwordEncrypted.equals(password)) {
+                        // cookie 正确，自动登陆
+                        UsersDO usersDO = usersService.queryUsersByAuthUserId(authUsersDO.getId());
+                        if(usersDO == null) {
+                            response.sendRedirect(request.getContextPath() + "/error");
+                        }
+                        UserInfoDTO userInfoDTO = new UserInfoDTO();
+                        userInfoDTO.setAuthUsersDO(authUsersDO);
+                        userInfoDTO.setUsersDO(usersDO);
+                        request.getSession().setAttribute("userInfoDTO", userInfoDTO);
+
+                        return true;
+
+                    } else {
+                        // cookie 中的账号存在，但密码不正确，需重新登陆
+                        System.out.println("[error] cookie 中的账号存在，但密码不正确，需重新登陆");
+                        response.sendRedirect(request.getContextPath() + "/signin");
+                        return false;
                     }
-                    UserInfoDTO userInfoDTO = new UserInfoDTO();
-                    userInfoDTO.setAuthUsersDO(authUsersDO);
-                    userInfoDTO.setUsersDO(usersDO);
-                    request.getSession().setAttribute("userInfoDTO", userInfoDTO);
-
-                    response.sendRedirect(request.getContextPath() + "/index");
-                    return true;
-
                 } else {
-                    // cookie 中的账号存在，但密码不正确，需重新登陆
-                    System.out.println("1");
-//                    response.sendRedirect(request.getContextPath() + "/signin");
+                    // cookie 中的账号不存在，需重新登陆
+                    System.out.println("[error] cookie 中的账号不存在，需重新登陆");
+                    response.sendRedirect(request.getContextPath() + "/signin");
                     return false;
                 }
+
             } else {
-                // cookie 中的账号不存在，需重新登陆
-                System.out.println("2");
-//                response.sendRedirect(request.getContextPath() + "/signin");
+                // cookie 不存在，重新登陆
+                System.out.println("[error] cookie 不存在，重新登陆");
+                response.sendRedirect(request.getContextPath() + "/signin");
                 return false;
             }
-
-        } else {
-            // cookie 不存在，重新登陆
-            System.out.println("3");
-            System.out.println(basePath + "signin");
-//            response.sendRedirect(request.getContextPath() + "/signin");
-            response.sendRedirect(basePath + "signin");
-            return false;
         }
+        return true;
     }
 
     @Override
