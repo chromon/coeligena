@@ -17,6 +17,7 @@ import com.coeligena.service.AuthUsersService;
 import com.coeligena.service.RoleAuthUserService;
 import com.coeligena.service.RolesService;
 import com.coeligena.service.UsersService;
+import jdk.nashorn.internal.runtime.GlobalConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +34,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.Map;
 
 /**
@@ -168,8 +170,6 @@ public class WelcomeController {
                         cookieUtils.getEncryptName("CoeligenaCookiePass"),
                         cookieUtils.getEncryptValue(authUsersDO.getPassword()), maxAge);
 
-                System.out.println("hehe");
-
                 // 传输用户信息到前台
                 UsersDO usersDO = this.usersService.queryUsersByAuthUserId(authUsersDO.getId());
 
@@ -192,6 +192,23 @@ public class WelcomeController {
             model.addAttribute("accountNotExist", true);
             return "signin";
         }
+    }
+
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request) {
+
+        // 清空 session
+        Enumeration<String> em = request.getSession().getAttributeNames();
+        while(em.hasMoreElements()) {
+            request.getSession().removeAttribute(em.nextElement());
+        }
+        request.getSession().invalidate();
+
+        // 清空 cookie
+        cookieUtils.removeCookie(cookieUtils.getEncryptName("CoeligenaCookieName"));
+        cookieUtils.removeCookie(cookieUtils.getEncryptName("CoeligenaCookiePass"));
+
+        return "redirect:/signin";
     }
 
     @Autowired

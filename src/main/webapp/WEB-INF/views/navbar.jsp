@@ -88,7 +88,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/logout">
                                 <i class="fa fa-power-off custom-menu-mright"></i> 退出
                             </a>
                         </li>

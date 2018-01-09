@@ -68,6 +68,17 @@ public class CookieUtils {
         }
     }
 
+    /**
+     * 删除 cookie
+     * @param key cookie key
+     */
+    public void removeCookie(HttpServletResponse response, String key) {
+        Cookie cookie = new Cookie(key, null);
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+    }
+
     public String getEncryptName(String cookieName) {
         return Encrypt.getDigest("MD5", cookieName);
     }
