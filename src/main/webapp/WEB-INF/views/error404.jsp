@@ -9,7 +9,7 @@
          pageEncoding="UTF-8"%>
 <html>
 <head>
-    <title>编乎 - 404~</title>
+    <title>${siteInfoDO.siteName} - 404~</title>
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
 
     <!-- css -->
@@ -18,7 +18,7 @@
 <body>
     <div class="error-wrapper">
         <h1 class="error-header">
-            <a href="" class="error-title">编乎</a>
+            <a href="" class="error-title">${siteInfoDO.siteName}</a>
             — 404
         </h1>
         <div class="error-content">

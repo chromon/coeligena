@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>私信 - 编乎</title>
+    <title>私信 - ${siteInfoDO.siteName}</title>
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +34,7 @@
                 <a href=""><i class="fa fa-arrow-left" aria-hidden="true"></i> 返回</a>
                 <div>
                     <span class="custom-grey">发私信给</span>
-                    <span class="custom-darker">编乎团队：</span>
+                    <span class="custom-darker">${siteInfoDO.siteName}团队：</span>
                 </div>
                 <form class="form-horizontal">
                     <textarea class="form-control" rows="3" id="textArea"></textarea>

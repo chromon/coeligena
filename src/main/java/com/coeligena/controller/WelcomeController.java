@@ -9,15 +9,8 @@ import com.coeligena.function.cookie.CookieUtils;
 import com.coeligena.function.captcha.CaptchaUtils;
 import com.coeligena.function.ip.IPAddress;
 import com.coeligena.function.security.PasswordUtils;
-import com.coeligena.model.AuthUsersDO;
-import com.coeligena.model.RoleAuthUserDO;
-import com.coeligena.model.RolesDO;
-import com.coeligena.model.UsersDO;
-import com.coeligena.service.AuthUsersService;
-import com.coeligena.service.RoleAuthUserService;
-import com.coeligena.service.RolesService;
-import com.coeligena.service.UsersService;
-import jdk.nashorn.internal.runtime.GlobalConstants;
+import com.coeligena.model.*;
+import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -195,7 +188,7 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.GET)
-    public String logout(HttpServletRequest request) {
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
 
         // 清空 session
         Enumeration<String> em = request.getSession().getAttributeNames();
@@ -205,8 +198,8 @@ public class WelcomeController {
         request.getSession().invalidate();
 
         // 清空 cookie
-        cookieUtils.removeCookie(cookieUtils.getEncryptName("CoeligenaCookieName"));
-        cookieUtils.removeCookie(cookieUtils.getEncryptName("CoeligenaCookiePass"));
+        cookieUtils.removeCookie(response, cookieUtils.getEncryptName("CoeligenaCookieName"));
+        cookieUtils.removeCookie(response, cookieUtils.getEncryptName("CoeligenaCookiePass"));
 
         return "redirect:/signin";
     }

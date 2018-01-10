@@ -812,4 +812,16 @@ CREATE TABLE IF NOT EXISTS pages (
     PRIMARY KEY (id),
     UNIQUE KEY (url_token),
     INDEX (url_token)
-)
+);
+
+/*
+ * 站点信息表
+ */
+CREATE TABLE IF NOT EXISTS site_info (
+    id          INT(11)     NOT NULL AUTO_INCREMENT, /* 站点信息 ID */
+    site_name   VARCHAR(32) NOT NULL, /* 站点名称 */
+    logo_large  VARCHAR(256) NOT NULL, /* 站点首页 logo 路径 */
+    logo_navbar VARCHAR(256) NOT NULL, /* 站点导航栏 logo 路径 */
+    copyright   VARCHAR(32) NOT NULL, /* 站点版权信息 */
+    PRIMARY KEY (id)
+);

@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>账号设置 - 编乎</title>
+    <title>账号设置 - ${siteInfoDO.siteName}</title>
     <meta name="description" content="一个真实的网络现编社区，帮助你寻找答案，分享知识。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -414,9 +414,9 @@
                         </div>
 
                         <h5>邮件设置</h5>
-                        <p>你可以在这里设置是否接收来自编乎的邮件。</p>
+                        <p>你可以在这里设置是否接收来自${siteInfoDO.siteName}的邮件。</p>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">编乎每周精选</label>
+                            <label class="col-lg-3 control-label">${siteInfoDO.siteName}每周精选</label>
                             <div class="col-lg-9">
                                 <div class="checkbox">
                                     <label>
@@ -460,10 +460,10 @@
 
                         <h5>受限话题</h5>
                         <p>除非主动关注，来自以下话题和它们的部分子话题的内容不会出现在你的首页动态中。</p>
-                        <p>详情参见 <a href="">编乎上的哪些内容需要主动关注才会出现在首页动态中？</a></p>
+                        <p>详情参见 <a href="">${siteInfoDO.siteName}上的哪些内容需要主动关注才会出现在首页动态中？</a></p>
 
                         <div class="custom-tag custom-question-topic">
-                            <a href="">编乎社区</a>
+                            <a href="">${siteInfoDO.siteName}社区</a>
                         </div>
                         <div class="custom-tag custom-question-topic">
                             <a href="">成人内容</a>

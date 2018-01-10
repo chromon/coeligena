@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>编乎 - 发现更大的世界</title>
+    <title>${siteInfoDO.siteName} - 发现更大的世界</title>
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/signin.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.css">
@@ -89,7 +89,7 @@
                     <div class="app-download">
                         <button class="app-toggleButton">
                             <span class="sprite-global-icon-app"></span>
-                            <span class="app-toggleButtonText ">下载编乎 App</span>
+                            <span class="app-toggleButtonText ">下载${siteInfoDO.siteName} App</span>
                         </button>
                     </div>
                 </form>
@@ -130,14 +130,14 @@
                     </div>
 
                     <div>
-                        <p class="agreement-tip">点击「注册」按钮，即代表你同意<a href="/terms" target="_blank">《编乎协议》</a></p>
+                        <p class="agreement-tip">点击「注册」按钮，即代表你同意<a href="/terms" target="_blank">《${siteInfoDO.siteName}协议》</a></p>
                         <a class="signup-entry-org" href="/org/signup">注册机构号</a>
                     </div>
 
                     <div class="app-download">
                         <button class="app-toggleButton">
                             <span class="sprite-global-icon-app"></span>
-                            <span class="app-toggleButtonText ">下载编乎 App</span>
+                            <span class="app-toggleButtonText ">下载${siteInfoDO.siteName} App</span>
                         </button>
                     </div>
                 </form>
@@ -147,11 +147,11 @@
     </div>
 
     <div class="footer">
-        <span>© 2017 编乎</span>
+        <span>© ${siteInfoDO.copyRight} ${siteInfoDO.siteName}</span>
         <span class="dot">·</span>
-        <a target="_blank" href="#">编乎专栏</a>
+        <a target="_blank" href="#">${siteInfoDO.siteName}专栏</a>
         <span class="dot">·</span>
-        <a target="_blank" href="/roundtable">编乎圆桌</a>
+        <a target="_blank" href="/roundtable">${siteInfoDO.siteName}圆桌</a>
         <span class="dot">·</span>
         <a target="_blank" href="/explore">发现</a>
         <span class="dot">·</span>
@@ -161,7 +161,7 @@
         <span class="dot footer-mobile-show">·</span>
         <a href="/contact" class="footer-mobile-show">联系我们</a>
         <span class="dot">·</span>
-        <a target="_blank" href="/careers">来编乎工作</a>
+        <a target="_blank" href="/careers">来${siteInfoDO.siteName}工作</a>
     </div>
 </div>
 

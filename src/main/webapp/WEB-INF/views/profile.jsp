@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Bone - 编乎</title>
+    <title>Bone - ${siteInfoDO.siteName}</title>
     <meta name="description" content="一个真实的网络现编社区，帮助你寻找答案，分享知识。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -337,14 +337,14 @@
                 <a href="#">个人主页被浏览 2254 次</a>
             </div>
             <div class="custom-footer custom-padding-top10 custom-padding-left5">
-                <a href="#">编乎指南 • </a>
+                <a href="#">${siteInfoDO.siteName}指南 • </a>
                 <a href="#">建议反馈 • </a>
                 <a href="#">移动应用 • </a>
-                <a href="#">加入编乎</a>
-                <a href="#">编乎协议 • </a>
+                <a href="#">加入${siteInfoDO.siteName}</a>
+                <a href="#">${siteInfoDO.siteName}协议 • </a>
                 <a href="#">举报投诉 • </a>
                 <a href="#">联系我们</a><br/>
-                <a href="#">&copy;2017</a>
+                <a href="#">&copy;${siteInfoDO.copyRight}</a>
             </div>
         </div><!-- end sidebar -->
     </div>

@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>我的收藏 - 编乎</title>
+    <title>我的收藏 - ${siteInfoDO.siteName}</title>
     <meta name="description" content="一个真实的网络瞎编社区，帮助你寻找答案，分享知识。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -135,14 +135,14 @@
             </div>
 
             <div class="custom-footer">
-                <a href="#" target="_blank">编乎指南 • </a>
+                <a href="#" target="_blank">${siteInfoDO.siteName}指南 • </a>
                 <a href="#" target="_blank">建议反馈 • </a>
                 <a href="#" target="_blank">移动应用 • </a>
-                <a href="#" target="_blank">加入编乎</a>
-                <a href="#" target="_blank">编乎协议 • </a>
+                <a href="#" target="_blank">加入${siteInfoDO.siteName}</a>
+                <a href="#" target="_blank">${siteInfoDO.siteName}协议 • </a>
                 <a href="#" target="_blank">举报投诉 • </a>
                 <a href="#" target="_blank">联系我们</a><br/>
-                <a href="#" target="_blank">&copy;2017</a>
+                <a href="#" target="_blank">&copy;${siteInfoDO.copyRight}</a>
             </div>
         </div><!-- end sidebar -->
     </div>
