@@ -20,4 +20,6 @@
 
 <script src="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.js" type="text/javascript"></script>
 
+<script src="<%=request.getContextPath()%>/resources/plugin/selectizejs/selectize.js" type="text/javascript"></script>
+
 <script src="<%=request.getContextPath()%>/resources/js/common.js" type="text/javascript"></script>

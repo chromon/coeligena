@@ -146,7 +146,8 @@
                     </div>
                     <div class="form-group">
                         <label for="textArea" class="control-label">选择话题</label>
-                        <input class="form-control input-sm" type="text" placeholder="搜索话题">
+                        <%--<input class="form-control input-sm" type="text">--%>
+                        <select class="form-control" id="inputtags"></select>
                         <span class="help-block custom-right">话题越精准，越容易让相关领域专业人士看到你的问题</span>
                     </div>
                 </form>
@@ -179,7 +180,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">验证身份</h4>
+                <h4 class="modal-title" id="myModalLabel2">验证身份</h4>
             </div>
             <div class="modal-body">
                 <form class="form">

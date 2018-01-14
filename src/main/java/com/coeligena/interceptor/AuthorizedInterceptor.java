@@ -76,14 +76,14 @@ public class AuthorizedInterceptor implements HandlerInterceptor {
                     }
                 } else {
                     // cookie 中的账号不存在，需重新登陆
-                    System.out.println("[error] cookie 中的账号不存在，需重新登陆");
+                    System.out.println("[info] cookie 中的账号不存在，需重新登陆");
                     response.sendRedirect(request.getContextPath() + "/signin");
                     return false;
                 }
 
             } else {
                 // cookie 不存在，重新登陆
-                System.out.println("[error] cookie 不存在，重新登陆");
+                System.out.println("[info] cookie 不存在，重新登陆");
                 response.sendRedirect(request.getContextPath() + "/signin");
                 return false;
             }

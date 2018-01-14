@@ -35,7 +35,7 @@
 
             <div class="custom-top-header custom-card">
                 <div class="custom-top-header-nav">
-                    <a href="" class="custom-top-header-navItem">
+                    <a href="" class="custom-top-header-navItem" data-toggle="modal" data-target="#askModal">
                         <i class="fa fa-question-circle-o custom-color-9f custom-margin-right5" aria-hidden="true"></i>
                         提问
                     </a>
