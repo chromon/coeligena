@@ -89,7 +89,7 @@
   vertical-align: middle;
   display: inline-block;
   padding: 2px 0 0 0;
-  border-left: 1px solid #d0d0d0;
+  /*border-left: 1px solid #d0d0d0;*/
   -webkit-border-radius: 0 2px 2px 0;
   -moz-border-radius: 0 2px 2px 0;
   border-radius: 0 2px 2px 0;
@@ -180,13 +180,14 @@
   cursor: pointer;
   margin: 0 3px 3px 0;
   padding: 2px 6px;
-  background: #f2f2f2;
-  color: #303030;
+  background: #eef4fa;
+  color: #3e7ac2;
   border: 0 solid #d0d0d0;
+    border-radius: 3px;
 }
 .selectize-control.multi .selectize-input > div.active {
-  background: #e8e8e8;
-  color: #303030;
+  background: #eef4fa;
+  color: #3e7ac2;
   border: 0 solid #cacaca;
 }
 .selectize-control.multi .selectize-input.disabled > div,

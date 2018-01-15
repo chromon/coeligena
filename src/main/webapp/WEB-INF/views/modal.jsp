@@ -147,7 +147,8 @@
                     <div class="form-group">
                         <label for="textArea" class="control-label">选择话题</label>
                         <%--<input class="form-control input-sm" type="text">--%>
-                        <select class="form-control" id="inputtags"></select>
+                        <%--<select class="form-control" id="inputtags"></select>--%>
+                        <input class="repositories" type="text" id="inputtags" placeholder="添加话题（最多 5 个）">
                         <span class="help-block custom-right">话题越精准，越容易让相关领域专业人士看到你的问题</span>
                     </div>
                 </form>

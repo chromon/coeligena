@@ -167,12 +167,12 @@ $('#summernote').summernote({
 // tags input
 $('#inputtags').selectize({
     plugins: ['remove_button'],
-    maxItems: 3,
+    maxItems: 5,
     valueField: 'url',
     labelField: 'name',
     searchField: 'name',
     options: [],
-    create: false,
+    create: true,
     render: {
         option: function(item, escape) {
             return '<div>' +
