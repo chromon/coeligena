@@ -232,6 +232,7 @@ CREATE TABLE IF NOT EXISTS topic_nodes (
     PRIMARY KEY (id),
     INDEX (topic_name)
 );
+alter table topic_nodes AUTO_INCREMENT=21000000;
 
 /*
  * 问题话题关系表
