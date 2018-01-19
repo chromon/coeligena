@@ -39,10 +39,19 @@ import java.util.Map;
 @Controller
 public class WelcomeController {
 
+    /**
+     * 验证码工具类
+     */
     @Resource
     private CaptchaUtils captchaUtils;
+    /**
+     * 密码加密工具类
+     */
     @Resource
     private PasswordUtils passwordUtils;
+    /**
+     * cookie 工具类
+     */
     @Resource
     private CookieUtils cookieUtils;
 
@@ -53,6 +62,13 @@ public class WelcomeController {
 
     private boolean checkCaptcha = false;
 
+    /**
+     * 登陆页面跳转预处理
+     *      刷新 csrf token
+     *      是否显示验证码
+     * @param model model
+     * @return 登陆页面
+     */
     @RefreshCSRFToken
     @RequestMapping(value = "signin", method = RequestMethod.GET)
     public String signIn(Model model) {
@@ -61,6 +77,12 @@ public class WelcomeController {
         return "signin";
     }
 
+    /**
+     * 获取验证码
+     * @param request httpservletrequest
+     * @param response httpservletresponse
+     * @throws IOException
+     */
     @RequestMapping(value = "captcha", method = RequestMethod.GET)
     public void captcha(HttpServletRequest request,
                         HttpServletResponse response) throws IOException {
@@ -68,11 +90,23 @@ public class WelcomeController {
         captchaUtils.getCaptchaCode(request, response);
     }
 
-    @RequestMapping(value = "checkEmail", method = RequestMethod.POST)
+    /**
+     * 验证邮件地址是否唯一
+     * @param authUsersDO authUsersDO
+     * @return 验证码
+     */
+    @RequestMapping(value = "check-email", method = RequestMethod.POST)
     public @ResponseBody boolean checkEmail(@ModelAttribute AuthUsersDO authUsersDO) {
         return authUsersService.queryUserEmailExists(authUsersDO.getEmail());
     }
 
+    /**
+     * 注册处理
+     * @param request httpservletrequest
+     * @param signUpFormDTO 注册数据传输
+     * @param model model
+     * @return 跳转到登陆页面
+     */
     @RequestMapping(value = "signup", method = RequestMethod.POST)
     public String signUp(HttpServletRequest request,
                          @ModelAttribute SignUpFormDTO signUpFormDTO, Model model) {
@@ -127,6 +161,14 @@ public class WelcomeController {
         return "redirect:/signin";
     }
 
+    /**
+     * 登陆处理
+     * @param request httpservletrequest
+     * @param response httpservletresponse
+     * @param signInFormDTO 登陆数据传输对象
+     * @param model model
+     * @return 主页
+     */
     @VerifyCSRFToken
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, HttpServletResponse response,
@@ -187,6 +229,12 @@ public class WelcomeController {
         }
     }
 
+    /**
+     * 登出处理
+     * @param request httpservletrequest
+     * @param response httpservletresponse
+     * @return 登陆页面
+     */
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
 

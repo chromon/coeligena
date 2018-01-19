@@ -151,7 +151,7 @@ function checkSignUpEmail() {
     // 检查邮箱地址是否已存在
     var exists = false;
     $.ajax({
-        url: basePath + '/checkEmail',
+        url: basePath + '/check-email',
         type: 'post',
         dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
         async: false,
