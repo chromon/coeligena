@@ -4,6 +4,11 @@
  * Created by Ellery on 2017/8/8.
  */
 
+// 获取 base path
+var localObj = window.location;
+var contextPath = localObj.pathname.split("/")[1];
+var basePath = localObj.protocol + "//" + localObj.host + "/" + contextPath;
+
 $(document).ready(function() {
     NProgress.start();
     NProgress.inc(0.1);
@@ -198,7 +203,7 @@ $('#inputtags').selectize({
     load: function(query, callback) {
         if (!query.length) return callback();
         $.ajax({
-            url: 'https://api.github.com/legacy/repos/search/' + encodeURIComponent(query),
+            url: basePath + '/topic-search/' + encodeURIComponent(query),
             type: 'GET',
             error: function() {
                 callback();

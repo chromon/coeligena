@@ -69,7 +69,6 @@ signIn_switch_button.on('click', function () {
     }
 });
 
-
 // 获取 base path
 var localObj = window.location;
 var contextPath = localObj.pathname.split("/")[1];

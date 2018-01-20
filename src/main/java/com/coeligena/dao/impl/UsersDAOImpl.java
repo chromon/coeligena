@@ -1,7 +1,6 @@
 package com.coeligena.dao.impl;
 
 import com.coeligena.dao.UsersDAO;
-import com.coeligena.model.AuthUsersDO;
 import com.coeligena.model.UsersDO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
