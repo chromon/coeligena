@@ -16,4 +16,5 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/jquery-labelauty/jquery-labelauty.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/summernote/summernote.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/selectizejs/selectize.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/select2/select2.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/select2/select2-bootstrap.css">

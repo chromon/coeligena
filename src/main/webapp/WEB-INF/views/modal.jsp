@@ -148,7 +148,16 @@
                         <label for="textArea" class="control-label">选择话题</label>
                         <%--<input class="form-control input-sm" type="text">--%>
                         <%--<select class="form-control" id="inputtags"></select>--%>
-                        <input class="repositories" type="text" id="inputtags" placeholder="添加话题（最多 5 个）">
+                        <%--<input class="form-control input-sm" type="text" name="topic_name" id="inputtags" placeholder="添加话题（最多 5 个）">--%>
+                        <select class="form-control js-example-basic-multiple" name="states[]" multiple="multiple">
+                            <option value="AL">basssssssssssssssma</option>
+                            <option value="WY">Wing2</option>
+                            <option value="WY">Wing3</option>
+                            <option value="WY">Wing4</option>
+                            <option value="WY">Wing5</option>
+                            <option value="WY">Wing6</option>
+                            <option value="WY">Wing7</option>
+                        </select>
                         <span class="help-block custom-right">话题越精准，越容易让相关领域专业人士看到你的问题</span>
                     </div>
                 </form>

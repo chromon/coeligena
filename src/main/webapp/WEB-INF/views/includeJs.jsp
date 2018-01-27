@@ -20,6 +20,7 @@
 
 <script src="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.js" type="text/javascript"></script>
 
-<script src="<%=request.getContextPath()%>/resources/plugin/selectizejs/selectize.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/plugin/select2/select2.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/plugin/select2/i18n/zh-CN.js" type="text/javascript"></script>
 
 <script src="<%=request.getContextPath()%>/resources/js/common.js" type="text/javascript"></script>

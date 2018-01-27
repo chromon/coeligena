@@ -4,10 +4,7 @@ import com.coeligena.model.TopicNodesDO;
 import com.coeligena.service.TopicNodesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,8 +23,9 @@ public class AskController {
      * 提问时话题自动补全
      * @param topicName 话题名称
      */
-    @RequestMapping(value = "/topic-search/{topicName}", method = RequestMethod.GET)
-    public void topicAutoComplete(@PathVariable("topicName") String topicName) {
+    @RequestMapping(value = "/topic-search", method = RequestMethod.GET)
+    @ResponseBody
+    public List<TopicNodesDO> topicAutoComplete(@RequestParam("topicName") String topicName) {
 
         System.out.println(topicName);
         List<TopicNodesDO> topicNodesDOList = topicNodesService.queryTopicNodesByName(topicName);
@@ -38,6 +36,7 @@ public class AskController {
             }
         }
 
+        return topicNodesDOList;
     }
 
     @Autowired

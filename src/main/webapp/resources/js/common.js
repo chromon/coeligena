@@ -14,7 +14,39 @@ $(document).ready(function() {
     NProgress.inc(0.1);
     NProgress.done();
 
+    $('.js-example-basic-multiple').select2({
+        theme: "bootstrap",
+        width: '100%',
+        multiple: true,
+        maximumSelectionLength: 5,
+        minimumInputLength: 2,
+        language: "zh-CN",
+        placeholder: '添加话题',
+        ajax: {
+            url: basePath + '/topic-search',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    topicName: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        escapeMarkup: function (markup) { return markup; },
+        templateResult: formatRepo,
+        templateSelection: formatRepoSelection
+    });
+
 });
+
+function formatRepo(repo){return repo.topicName}
+function formatRepoSelection(repo){return repo.topicName}
 
 // user info hover card
 $('#user-avatar').webuiPopover({
@@ -170,48 +202,105 @@ $('#summernote').summernote({
 });
 
 // tags input
-$('#inputtags').selectize({
-    plugins: ['remove_button'],
-    maxItems: 5,
-    valueField: 'url',
-    labelField: 'name',
-    searchField: 'name',
-    options: [],
-    create: true,
-    render: {
-        option: function(item, escape) {
-            return '<div>' +
-                '<span class="title">' +
-                '<span class="name"><i class="icon ' + (item.fork ? 'fork' : 'source') + '"></i>' + escape(item.name) + '</span>' +
-                '<span class="by">' + escape(item.username) + '</span>' +
-                '</span>' +
-                '<span class="description">' + escape(item.description) + '</span>' +
-                '<ul class="meta">' +
-                (item.language ? '<li class="language">' + escape(item.language) + '</li>' : '') +
-                '<li class="watchers"><span>' + escape(item.watchers) + '</span> watchers</li>' +
-                '<li class="forks"><span>' + escape(item.forks) + '</span> forks</li>' +
-                '</ul>' +
-                '</div>';
-        }
-    },
-    score: function(search) {
-        var score = this.getScoreFunction(search);
-        return function(item) {
-            return score(item) * (1 + Math.min(item.watchers / 100, 1));
-        };
-    },
-    load: function(query, callback) {
-        if (!query.length) return callback();
-        $.ajax({
-            url: basePath + '/topic-search/' + encodeURIComponent(query),
-            type: 'GET',
-            error: function() {
-                callback();
-            },
-            success: function(res) {
-                callback(res.repositories.slice(0, 10));
-            }
-        });
-    }
-});
+// $('#inputtags').selectize({
+//     plugins: ['remove_button'],
+//     maxItems: 5,
+//     valueField: 'topic_name',
+//     labelField: 'topic_name',
+//     searchField: 'topic_name',
+//     options: [],
+// create: false,
+//     render: {
+//         option: function(item, escape) {
+//             console.log(item);
+//             console.log(escape(item.id));
+//             return 'hehehehehehe';
+//             // return '<div>' + escape(item) + '</div>' +
+//             //     '<div>' + escape(item.topicName) + '</div>' +
+//             //     '<div>' + item + '</div>' +
+//             //     '<div>' + item.id + '</div>';
+//             // return '<div>' +
+//             //     '<span class="title">' +
+//             //     '<span class="name"><i class="icon ' + (item.fork ? 'fork' : 'source') + '"></i>' + escape(item.name) + '</span>' +
+//             //     '<span class="by">' + escape(item.username) + '</span>' +
+//             //     '</span>' +
+//             //     '<span class="description">' + escape(item.description) + '</span>' +
+//             //     '<ul class="meta">' +
+//             //     (item.language ? '<li class="language">' + escape(item.language) + '</li>' : '') +
+//             //     '<li class="watchers"><span>' + escape(item.watchers) + '</span> watchers</li>' +
+//             //     '<li class="forks"><span>' + escape(item.forks) + '</span> forks</li>' +
+//             //     '</ul>' +
+//             //     '</div>';
+//         }
+//     },
+//     // score: function(search) {
+//     //     var score = this.getScoreFunction(search);
+//     //     return function(item) {
+//     //         return score(item) * (1 + Math.min(item.watchers / 100, 1));
+//     //     };
+//     // },
+//     load: function(query, callback) {
+//         if (!query.length) return callback();
+//         $.ajax({
+//             url: basePath + '/topic-search/' + encodeURIComponent(query),
+//             type: 'GET',
+//             error: function() {
+//                 callback();
+//             },
+//             success: function(res) {
+//                 console.log(res);
+//                 callback(res);
+//             }
+//         });
+//     }
+// });
 
+// $('#inputtags').selectize({
+//     plugins: ['remove_button'],
+//     maxItems: 3,
+//     valueField: 'url',
+//     labelField: 'name',
+//     searchField: 'name',
+//     options: [],
+//     create: false,
+//     render: {
+//         option: function(item, escape) {
+//             console.log('--x--'+item);
+//             // console.log(escape(item.id));
+//             return '<div>-----------ddd</div>';
+//             // return '<div>' +
+//             //     '<span class="title">' +
+//             //     '<span class="name"><i class="icon ' + (item.fork ? 'fork' : 'source') + '"></i>' + escape(item.name) + '</span>' +
+//             //     '<span class="by">' + escape(item.username) + '</span>' +
+//             //     '</span>' +
+//             //     '<span class="description">' + escape(item.description) + '</span>' +
+//             //     '<ul class="meta">' +
+//             //     (item.language ? '<li class="language">' + escape(item.language) + '</li>' : '') +
+//             //     '<li class="watchers"><span>' + escape(item.watchers) + '</span> watchers</li>' +
+//             //     '<li class="forks"><span>' + escape(item.forks) + '</span> forks</li>' +
+//             //     '</ul>' +
+//             //     '</div>';
+//         }
+//     },
+//     score: function(search) {
+//         var score = this.getScoreFunction(search);
+//         return function(item) {
+//             return score(item) * (1 + Math.min(item.watchers / 100, 1));
+//         };
+//     },
+//     load: function(query, callback) {
+//         if (!query.length) return callback();
+//         $.ajax({
+//             url: basePath + '/topic-search/' + encodeURIComponent(query),
+//             type: 'GET',
+//             error: function() {
+//                 callback();
+//             },
+//             success: function(res) {
+//                 console.log(res);
+//                 console.log(res.slice(0, 10));
+//                 callback(res.slice(0, 10));
+//             }
+//         });
+//     }
+// });
