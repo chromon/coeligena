@@ -28,7 +28,7 @@ $(document).ready(function() {
             delay: 250,
             data: function (params) {
                 return {
-                    topicName: params.term
+                    topicName: encodeURIComponent(params.term)
                 };
             },
             processResults: function (data) {
@@ -45,8 +45,8 @@ $(document).ready(function() {
 
 });
 
-function formatRepo(repo){return repo.topicName}
-function formatRepoSelection(repo){return repo.topicName}
+function formatRepo(repo) {return repo.topicName}
+function formatRepoSelection(repo) {return repo.topicName}
 
 // user info hover card
 $('#user-avatar').webuiPopover({

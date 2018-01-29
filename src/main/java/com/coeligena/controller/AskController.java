@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 /**
@@ -27,7 +29,13 @@ public class AskController {
     @ResponseBody
     public List<TopicNodesDO> topicAutoComplete(@RequestParam("topicName") String topicName) {
 
-        System.out.println(topicName);
+        // URL 解码
+        try {
+            topicName = URLDecoder.decode(topicName,"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         List<TopicNodesDO> topicNodesDOList = topicNodesService.queryTopicNodesByName(topicName);
 
         if(topicNodesDOList != null) {
