@@ -124,36 +124,7 @@
                             Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
                             Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
                             Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks，Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979
+                            Automatorks， P. Cousot & R. Cousot 1979
                         </div>
 
                         <!-- answer date -->
