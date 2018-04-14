@@ -390,7 +390,7 @@
                 </li>
 
                 <li class="media custom-card">
-                    <div id="summernote">Hello Summernote</div>
+                    <div id="summernote">写回答……</div>
                 </li>
 
             </ul><!-- end left main feed -->
