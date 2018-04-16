@@ -97,7 +97,7 @@
                 <a href="#" class="btn btn-primary custom-margin-right10">
                     关注问题
                 </a>
-                <a href="#" class="btn btn-default custom-margin-right10">
+                <a id="write_answer_top" href="#" class="btn btn-default custom-margin-right10">
                     <i class="fa fa-pencil"></i>
                     写答案
                 </a>
@@ -141,6 +141,57 @@
     <!-- answer main -->
     <div class="row custom-margin-top20">
         <div class="col-sm-9">
+
+            <div id="answer_wrap" class="custom-card custom-editor hide">
+                <div class="custom-editor-header">
+                    <div class="custom-author-info">
+                        <span class="custom-author-avatar">
+                            <a href="#">
+                                <img class="media-object custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
+                            </a>
+                        </span>
+                        <div class="custom-author-content">
+                            <div class="custom-author-content-head">
+                                <span class="custom-author-name">Bone</span>
+                            </div>
+                            <div class="custom-author-content-detail">
+                                <div class="custom-author-badge">
+                                    <span class="custom-author-bio">。</span>
+                                    <a href="#" class="custom-topic-bios">编辑话题经验</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="custom-toggle-anonymous">使用匿名身份回答</a>
+                </div>
+
+                <div id="answer_note"></div>
+
+                <div class="custom-answer-footer">
+                    <div class="custom-answer-status">
+                        <a class="custom-answer-delete" href=""><i class="fa fa-trash-o"></i></a>
+                        草稿以保存（11分钟前）
+                    </div>
+                    <div class="custom-answer-right">
+                        <div class="custom-drop-option">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="fa fa-cog"></i> 设置
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </div>
+
+                        <a href="#" class="btn btn-primary">提交答案</a>
+                    </div>
+                </div>
+            </div>
 
             <div class="custom-card">
                 <a href="" class="custom-question-more">查看全部3287个回答</a>
@@ -361,36 +412,19 @@
                     </div>
                 </li>
 
-                <li class="media">
+                <li class="media custom-card">
                     <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
                     <a href="#" class="btn btn-default btn-md btn-block">
                         <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                     </a>
                 </li>
 
-                <!-- author info -->
-                <li class="media custom-card custom-story-item">
-                    <div class="media-left media-top">
-                        <!-- avatar image -->
-                        <a href="#">
-                            <img class="media-object custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
+                <li>
+                    <div class="media custom-card">
+                        <a id="write_answer_bottom" href="" class="custom-question-more">
+                            <i class="fa fa-pencil"></i> 写答案
                         </a>
                     </div>
-
-                    <div class="media-body">
-                        <!-- author info -->
-                        <div class="custom-name">
-                            <a href="#" class="">Ellery</a>
-                            <span class="custom-right">
-                                    使用匿名身份回答
-                                </span><br/>
-                            <span class="custom-bio">中央处理器 (CPU)</span>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="media custom-card">
-                    <div id="summernote">写回答……</div>
                 </li>
 
             </ul><!-- end left main feed -->

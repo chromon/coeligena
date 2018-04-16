@@ -152,7 +152,7 @@ var dialog = renderer.create('<div class="modal" aria-hidden="false" tabindex="-
         'aria-label': options.title
     });
     $node.html([
-        '<div class="modal-dialog">',
+        '<div class="modal-dialog modal-sm">',
         '  <div class="modal-content">',
         (options.title
             ? '    <div class="modal-header">' +
@@ -212,7 +212,7 @@ var ui = {
     icon: icon,
     options: {},
     button: function ($node, options) {
-        return renderer.create('<button type="button" class="note-btn btn btn-default btn-sm" role="button" tabindex="-1">', function ($node, options) {
+        return renderer.create('<button type="button" class="note-btn btn btn-default btn-sm" role="button" tabindex="-1" style="color: #8590a6;">', function ($node, options) {
             if (options && options.tooltip) {
                 $node.attr({
                     title: options.tooltip,

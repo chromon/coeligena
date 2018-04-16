@@ -141,11 +141,13 @@
                         <input class="form-control input-sm" type="text" placeholder="写下你的问题">
                     </div>
                     <div class="form-group">
-                        <label for="textArea" class="control-label">问题说明（可选）：</label>
-                        <textarea class="form-control input-sm" rows="4" id="textArea" placeholder="问题背景、条件等详细信息"></textarea>
+                        <label class="control-label">问题说明（可选）：</label>
+                        <%--<textarea class="form-control input-sm" rows="4" id="textArea" placeholder="问题背景、条件等详细信息"></textarea>--%>
+
+                        <div id="ask_note"></div>
                     </div>
                     <div class="form-group">
-                        <label for="textArea" class="control-label">选择话题</label>
+                        <label class="control-label">选择话题</label>
                         <%--<input class="form-control input-sm" type="text">--%>
                         <%--<select class="form-control" id="inputtags"></select>--%>
                         <%--<input class="form-control input-sm" type="text" name="topic_name" id="inputtags" placeholder="添加话题（最多 5 个）">--%>

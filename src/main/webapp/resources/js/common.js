@@ -178,18 +178,42 @@ $("#feed-item-1").hover(function () {
     $(".custom-collapse-item").hide();
 });
 
-// editor
-$('#summernote').summernote({
-    height: 200,                 // set editor height
+// write answer editor
+function write_answer() {
+    $('#answer_wrap').removeClass('hide');
+    $('#answer_note').summernote({
+        placeholder: '写回答…',
+        height: 110,                 // set editor height
+        lang: 'zh-CN',
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: false,
+        codemirror: { // codemirror options
+            theme: 'monokai'
+        },
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview']]
+        ]
+    });
+}
+$('#write_answer_top').click(write_answer);
+$('#write_answer_bottom').click(write_answer);
+
+// ask editor
+$('#ask_note').summernote({
+    placeholder: '问题背景、条件等详细信息',
+    height: 110,                 // set editor height
     lang: 'zh-CN',
-    // airMode: true,
     minHeight: null,             // set minimum height of editor
     maxHeight: null,             // set maximum height of editor
     focus: false,
     codemirror: { // codemirror options
         theme: 'monokai'
-    }
-    ,
+    },
     toolbar: [
         ['style', ['style']],
         ['font', ['bold', 'underline', 'clear']],

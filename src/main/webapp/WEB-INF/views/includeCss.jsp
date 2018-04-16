@@ -11,7 +11,7 @@
 <!-- css -->
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/summernote/summernote.css">
-<%--<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/summernote/summernote-lite.css">--%>
+<%--<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/summernote/summernote-bs4.css">--%>
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-paper.min.css" media="screen">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/custom.css">
