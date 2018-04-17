@@ -28,3 +28,4 @@
 <script src="<%=request.getContextPath()%>/resources/plugin/select2/i18n/zh-CN.js" type="text/javascript"></script>
 
 <script src="<%=request.getContextPath()%>/resources/js/common.js" type="text/javascript"></script>
+

@@ -57,7 +57,7 @@
                 <!-- question detail -->
                 <div class="custom-question-rich-text">
                     当你迷茫的时候，你应该做些什么？
-                    <a href="">显示全部 <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                    <a href="javascript: void(0);">显示全部 <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -65,14 +65,6 @@
 
             <!-- question header right-->
             <div class="custom-number-board col-sm-3">
-                <%--<a href="#" class="custom-button custom-number-board-item custom-button-plain">--%>
-                    <%--<div class="custom-number-board-name">关注者</div>--%>
-                    <%--<div class="custom-number-board-value">125</div>--%>
-                <%--</a>--%>
-                <%--<a href="#" class="custom-button custom-number-board-item custom-button-plain">--%>
-                    <%--<div class="custom-number-board-name">被浏览</div>--%>
-                    <%--<div class="custom-number-board-value">25125</div>--%>
-                <%--</a>--%>
 
                 <div class="NumberBoard QuestionFollowStatus-counts" data-reactid="94">
                     <button class="Button NumberBoard-item Button--plain" type="button" data-reactid="95">
@@ -97,7 +89,7 @@
                 <a href="#" class="btn btn-primary custom-margin-right10">
                     关注问题
                 </a>
-                <a id="write_answer_top" href="#" class="btn btn-default custom-margin-right10">
+                <a id="write_answer_top" href="javascript: void(0);" class="btn btn-default custom-margin-right10">
                     <i class="fa fa-pencil"></i>
                     写答案
                 </a>
@@ -178,13 +170,14 @@
                                 <i class="fa fa-cog"></i> 设置
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">允许规范转载</a></li>
+                                <li><a href="#">允许付费范转载</a></li>
+                                <li><a href="#">禁止转载</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li><a href="#">允许任何人评论</a></li>
+                                <li><a href="#">评论由我筛选后显示</a></li>
+                                <li><a href="">允许我关注的人评论</a></li>
+                                <li><a href="#">禁止评论</a></li>
                             </ul>
                         </div>
 
@@ -421,7 +414,7 @@
 
                 <li>
                     <div class="media custom-card">
-                        <a id="write_answer_bottom" href="" class="custom-question-more">
+                        <a id="write_answer_bottom" href="javascript:void(0);" class="custom-question-more">
                             <i class="fa fa-pencil"></i> 写答案
                         </a>
                     </div>
@@ -479,11 +472,11 @@
                     </a>
                 </div>
                 <div class="custom-hovercard-btn2">
-                    <a href="#" class="btn btn-primary custom-margin-right5">
+                    <a href="#" class="btn btn-primary custom-left">
                         <i class="fa fa-plus"></i>
                         关注TA
                     </a>
-                    <a href="#" class="btn btn-default">
+                    <a href="#" class="btn btn-default custom-right">
                         <i class="fa fa-comments"></i>
                         发私信
                     </a>

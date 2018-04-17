@@ -183,10 +183,10 @@ function write_answer() {
     $('#answer_wrap').removeClass('hide');
     $('#answer_note').summernote({
         placeholder: '写回答…',
-        height: 110,                 // set editor height
+        height: 110,
         lang: 'zh-CN',
-        minHeight: null,             // set minimum height of editor
-        maxHeight: null,             // set maximum height of editor
+        minHeight: null,
+        maxHeight: null,
         focus: false,
         codemirror: { // codemirror options
             theme: 'monokai'
@@ -206,10 +206,10 @@ $('#write_answer_bottom').click(write_answer);
 // ask editor
 $('#ask_note').summernote({
     placeholder: '问题背景、条件等详细信息',
-    height: 110,                 // set editor height
+    height: 110,
     lang: 'zh-CN',
-    minHeight: null,             // set minimum height of editor
-    maxHeight: null,             // set maximum height of editor
+    minHeight: null,
+    maxHeight: null,
     focus: false,
     codemirror: { // codemirror options
         theme: 'monokai'
