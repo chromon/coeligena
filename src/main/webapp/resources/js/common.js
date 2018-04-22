@@ -129,7 +129,7 @@ var tree = [{
         expanded: false
     }
 }, {
-    text: "对编乎社区有害的内容",
+    text: "对编之社区有害的内容",
     nodes: [{
         text: "垃圾广告信息"
     }, {
@@ -187,7 +187,7 @@ function write_answer() {
         lang: 'zh-CN',
         minHeight: null,
         maxHeight: null,
-        focus: false,
+        focus: true,
         codemirror: { // codemirror options
             theme: 'monokai'
         },
@@ -210,7 +210,7 @@ $('#ask_note').summernote({
     lang: 'zh-CN',
     minHeight: null,
     maxHeight: null,
-    focus: false,
+    focus: true,
     codemirror: { // codemirror options
         theme: 'monokai'
     },

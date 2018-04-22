@@ -103,6 +103,10 @@ CREATE TABLE IF NOT EXISTS users (
     education          VARCHAR(128)         DEFAULT '', /* 学校或教育机构 */
     major              VARCHAR(128)         DEFAULT '', /* 专业 */
     description        VARCHAR(256)         DEFAULT '', /* 个人描述 */
+    /*
+        认证信息
+        xxx,xxx话题的优秀回答者(表)
+    */
     autograph          VARCHAR(128)         DEFAULT '', /* 签名 */
     approval_count     INT(11)     NOT NULL DEFAULT '0', /* 获得赞同数 */
     thank_count        INT(11)     NOT NULL DEFAULT '0', /* 获得感谢数 */

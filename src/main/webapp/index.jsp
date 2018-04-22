@@ -53,6 +53,7 @@
 
             <!-- left main feed -->
             <div>
+                <!-- feed item -->
                 <div class="custom-card custom-feed-item">
                     <a href="" class="custom-feed-item-right">
                         <i class="fa fa-times"></i>
@@ -346,7 +347,7 @@
                         </div><!-- feed detail -->
                     </div>
                     <!-- end feed -->
-                </div>
+                </div><!-- feed item -->
                 <div class="custom-card custom-feed-item">
                     <a href="" class="custom-feed-item-right">
                         <i class="fa fa-times"></i>
@@ -439,14 +440,14 @@
             </div><!-- end left main feed -->
 
             <div class="custom-card">
-                <a id="write_answer_bottom" href="javascript:void(0);" class="custom-question-more">
+                <a href="javascript:void(0);" class="custom-question-more">
                     <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
 
         <!-- sidebar -->
-        <div id="rightSidebar" class="col-sm-3">
+        <div id="rightSidebar" class="col-sm-3 custom-sidebar-padding">
 
             <div class="sidebar_inner">
 
