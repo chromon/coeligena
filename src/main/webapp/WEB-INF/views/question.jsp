@@ -592,13 +592,13 @@
                     <div class="custom-member-btn-group custom-answer-author-btns">
                         <button class="btn btn-primary" type="button">
                             <span style="display: inline-flex; align-items: center;">
-                                <i class="fa fa-plus"></i>
+                                <i class="fa fa-plus" style="margin-right: 8px;"></i>
                                 关注TA
                             </span>
                         </button>
-                        <button class="btn btn-default custom-contentItem-right" type="button">
+                        <button class="btn btn-default btn--grey custom-contentItem-right" type="button">
                             <span style="display: inline-flex; align-items: center;">
-                                <i class="fa fa-comments"></i>
+                                <i class="fa fa-comments" style="margin-right: 8px;"></i>
                                 发私信
                             </span>
                         </button>
