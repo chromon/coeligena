@@ -29,316 +29,295 @@
 <div class="container">
     <div class="row custom-content-margin">
         <div class="col-sm-9">
-            <!-- media list title -->
-            <div class="custom-list-title custom-story-item custom-card">
-                <i class="fa fa-list-ul"></i> 编辑推荐
-                <span class="custom-cleaner-setting custom-right">
-                        <a href="#">
-                            更多推荐 <i class="fa fa-angle-double-right"></i>
-                        </a>
-                    </span>
-            </div>
 
-            <!-- left main feed -->
-            <ul class="media-list">
-                <li class="media custom-story-item custom-card">
-                    <div class="media-left media-top">
-
-                        <!-- avatar image -->
-                        <a href="#" id="user-avatar">
-                            <img class="media-object custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
-                        </a>
+            <div class="custom-card">
+                <div class="custom-list-header">
+                    <h6 class="custom-list-headerText">
+                        <i class="fa fa-list-ul"></i> 编辑推荐
+                    </h6>
+                    <div class="custom-list-headerOptions">
+                        <button class="custom-btn-plain custom-contentItem-right" type="button" style="display: inline-block">
+                                <span style="align-items: center;">
+                                    更多推荐 <i class="fa fa-angle-double-right"></i>
+                                </span>
+                        </button>
                     </div>
-                    <div class="media-body">
-
-                        <!-- question title -->
-                        <a href="#">
-                            <h4 class="media-heading custom-media-heading">
-                                当你迷茫的时候，你应该做些什么？
-                            </h4>
-                        </a>
-
-                        <!-- author info -->
-                        <div class="custom-name">
-                            <a href="#" class="">Ellery</a>
-                            ，
-                            <span class="custom-bio">中央处理器 (CPU)</span>
-                        </div>
-
-                        <!-- answer content -->
-                        <div>Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                            Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                            Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979
-                        </div>
-
-                    </div>
-                </li>
-                <li class="media custom-story-item custom-card">
-                    <!-- question title -->
-                    <a href="#">
-                            <span class="custom-media-heading">
-                                当你迷茫的时候，你应该做些什么？
-                            </span>
-                    </a>
-                    <span class="custom-right">问答</span>
-                </li>
-                <li class="media custom-story-item custom-card">
-                    <!-- question title -->
-                    <a href="#">
-                            <span class="custom-media-heading">
-                                当你迷茫的时候，你应该做些什么？
-                            </span>
-                    </a>
-                    <span class="custom-right">问答</span>
-                </li>
-                <li class="media custom-story-item custom-card">
-                    <!-- question title -->
-                    <a href="#">
-                            <span class="custom-media-heading">
-                                当你迷茫的时候，你应该做些什么？
-                            </span>
-                    </a>
-                    <span class="custom-right">问答</span>
-                </li>
-                <li class="media custom-story-item custom-card">
-                    <!-- question title -->
-                    <a href="#">
-                            <span class="custom-media-heading">
-                                当你迷茫的时候，你应该做些什么？
-                            </span>
-                    </a>
-                    <span class="custom-right">问答</span>
-                </li>
-                <li class="media custom-story-item custom-card">
-                    <!-- question title -->
-                    <a href="#">
-                            <span class="custom-media-heading">
-                                当你迷茫的时候，你应该做些什么？
-                            </span>
-                    </a>
-                    <span class="custom-right">问答</span>
-                </li>
-
-            </ul><!-- end left main feed -->
-
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#daily_hot" data-toggle="tab">今日最热</a></li>
-                <li><a href="#monthly_hot" data-toggle="tab">本月最热</a></li>
-            </ul>
-            <div id="myTabContent" class="tab-content">
-
-                <!--  daily hot tab -->
-                <div class="tab-pane fade active in" id="daily_hot">
-                    <ul class="media-list">
-                        <li id="feed-item-1" class="media custom-story-item custom-card">
-                            <div class="media-left media-top">
-
-                                <!-- votebar -->
-                                <div class="custom-item-vote custom-margin-top5">
-                                    <a class="custom-item-vote-count js-expand js-vote-count" href="javascript:;">100</a>
-                                </div>
-                            </div>
-                            <div class="media-body">
-
-                                <!-- question title -->
-                                <a href="#">
-                                    <h4 class="media-heading custom-media-heading">
-                                        当你迷茫的时候，你应该做些什么？
-                                    </h4>
-                                </a>
-
-                                <!-- author info -->
-                                <div class="custom-name">
-                                    <a href="#" class="">Ellery</a>
-                                    ，
-                                    <span class="custom-bio">中央处理器 (CPU)</span>
-                                </div>
-
-                                <!-- answer content -->
-                                <div>Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
-                                    Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
-                                    Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979
-                                </div>
-
-                                <!-- feed meta -->
-                                <div class="custom-meta-panel">
-                                    <a href="#" class="custom-meta-item">
-                                        <i class="fa fa-plus"></i>
-                                        关注问题
-                                    </a>
-                                    <a href="#comment" data-toggle="collapse" class="custom-meta-item">
-                                        <i class="fa fa-comment"></i>
-                                        添加评论
-                                    </a>
-
-                                    <!-- collapse meta item -->
-                                    <div class="custom-collapse-item">
-                                        <a href="#" class="custom-meta-item">
-                                            <i class="fa fa-heart"></i>
-                                            感谢
-                                        </a>
-                                        <a href="#" class="custom-meta-item">
-                                            <i class="fa fa-paper-plane"></i>
-                                            分享
-                                        </a>
-                                        <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#collectModal">
-                                            <i class="fa fa-star"></i>
-                                            收藏
-                                        </a>
-                                        <span class="custom-bull">•</span>
-                                        <a href="#" class="custom-meta-item">
-                                            没有帮助
-                                        </a>
-                                        <span class="custom-bull">•</span>
-                                        <a href="#" class="custom-meta-item" data-toggle="modal" data-target="#reportModal">
-                                            举报
-                                        </a>
-                                    </div>
-
-                                    <span class="custom-bull">•</span>
-                                    <a href="#" class="custom-meta-item">
-                                        作者保留权利
-                                    </a>
-                                    <a href="#" class="custom-meta-item custom-right">
-                                        <i class="fa fa-chevron-circle-up"></i>
-                                        收起
-                                    </a>
-                                </div>
-
-                                <!-- comment -->
-                                <div id="comment" class="panel panel-default custom-panel collapse">
-                                    <div class="panel-body custom-panel-body">
-                                        <ul class="media-list">
-                                            <li class="media custom-bottom-border">
-                                                <div class="media-left">
-                                                    <a href="#">
-                                                        <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <a href="#" class="custom-comment-name">
-                                                        Ellery
-                                                    </a>
-                                                    <span class="custom-time custom-right">4小时前</span>
-                                                    <div>
-                                                        Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，
-                                                    </div>
-
-                                                    <!-- feed meta -->
-                                                    <div class="custom-meta-panel custom-bottom-border">
-                                                        <a href="#" class="custom-meta-item">
-                                                            <i class="fa fa-thumbs-up"></i>
-                                                            赞
-                                                        </a>
-                                                        <a href="#" class="custom-meta-item">
-                                                            <i class="fa fa-share"></i>
-                                                            回复
-                                                        </a>
-                                                        <a href="#" class="custom-meta-item">
-                                                            <i class="fa fa-thumbs-down"></i>
-                                                            踩
-                                                        </a>
-                                                        <a href="#" class="custom-meta-item">
-                                                            <i class="fa fa-flag"></i>
-                                                            举报
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="media">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="写下你的评论……">
-                                                    <span class="input-group-btn">
-                                                            <button class="btn btn-primary" type="button">回复</button>
-                                                        </span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div><!-- end comment -->
-                            </div>
-                        </li>
-                    </ul>
                 </div>
-                <!-- daily hot tab -->
+                <!-- feed items -->
+                <div>
+                    <!-- feed item -->
+                    <div class="custom-feed-item">
+                        <!-- feed -->
+                        <div>
+                            <h2 class="custom-contentItem-title">
+                                <a href="${pageContext.request.contextPath}/question/123">
+                                    JVM符号引用转换直接引用的过程?
+                                </a>
+                            </h2>
+                            <!-- feed author info -->
+                            <div class="custom-feed-author-info">
+                                <!-- avatar image -->
+                                <a href="#" id="">
+                                    <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                </a>
+                                <div class="custom-author-info-content">
+                                    <div class="custom-author-info-head">
+                                        <a href="#">Ellery</a>
+                                    </div>
+                                    <div class="custom-author-info-detail">
+                                        <div class="custom-author-badge">
+                                            <div class="custom-author-badge-text">
+                                                Microsoft Cortana Engineer Oracle Kernel Engineer.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end feed author info -->
 
-                <div class="tab-pane fade" id="monthly_hot">
-                    <p>monthly_hot</p>
+                            <!-- feed detail -->
+                            <div>
+                                <!-- feed content -->
+                                <div class="custom-rich-content">
+                                    <div class="custom-rich-content-inner">
+                                        符号引用是只包含语义信息，不涉及具体实现的；而解析（resolve）过后的直接引用则是与具体实现息息相关的。
+                                        所以当谈及某个符号引用被resolve成怎样的直接引用时，必须要结合某个具体实现来讨论才行。
+                                    </div>
+                                </div><!-- end feed content -->
+                            </div><!-- feed detail -->
+                        </div>
+                        <!-- end feed -->
+                    </div><!-- end feed item -->
+                    <div class="custom-feed-item">
+                        <h2 class="custom-contentItem-title">
+                            <a href="${pageContext.request.contextPath}/question/123">
+                                JVM符号引用转换直接引用的过程?
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="custom-feed-item">
+                        <h2 class="custom-contentItem-title">
+                            <a href="${pageContext.request.contextPath}/question/123">
+                                JVM符号引用转换直接引用的过程?
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="custom-feed-item">
+                        <h2 class="custom-contentItem-title">
+                            <a href="${pageContext.request.contextPath}/question/123">
+                                JVM符号引用转换直接引用的过程?
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="custom-feed-item">
+                        <h2 class="custom-contentItem-title">
+                            <a href="${pageContext.request.contextPath}/question/123">
+                                JVM符号引用转换直接引用的过程?
+                            </a>
+                        </h2>
+                    </div>
+                </div><!-- end feed items -->
+            </div>
+            <div class="custom-feed-item custom-card">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#daily_hot" data-toggle="tab">今日最热</a></li>
+                    <li><a href="#monthly_hot" data-toggle="tab">本月最热</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <!--  daily hot tab -->
+                    <div class="tab-pane fade active in" id="daily_hot">
+                        <!-- feed item -->
+                        <div class="custom-feed-item">
+                            <!-- feed -->
+                            <div>
+                                <!-- feed author info -->
+                                <div class="custom-feed-src-info custom-feed-author-info">
+                                    <!-- avatar image -->
+                                    <a href="#" id="user-avatar">
+                                        <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                    </a>
+                                    <div class="custom-author-info-content">
+                                        <div class="custom-author-info-head">
+                                            <a href="#">Ellery</a>
+                                        </div>
+                                        <div class="custom-author-info-detail">
+                                            <div class="custom-author-badge">
+                                                <div class="custom-author-badge-text">
+                                                    Microsoft Cortana Engineer Oracle Kernel Engineer.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end feed author info -->
+
+                                <!-- feed detail -->
+                                <div>
+                                    <h2 class="custom-contentItem-title">
+                                        <a href="${pageContext.request.contextPath}/question/123">
+                                            JVM符号引用转换直接引用的过程?
+                                        </a>
+                                    </h2>
+                                    <!-- feed content -->
+                                    <div class="custom-rich-content">
+                                        <div class="custom-rich-content-inner">
+                                            符号引用是只包含语义信息，不涉及具体实现的；而解析（resolve）过后的直接引用则是与具体实现息息相关的。
+                                            所以当谈及某个符号引用被resolve成怎样的直接引用时，必须要结合某个具体实现来讨论才行。
+                                            <button class="custom-contentItem-more custom-btn-plain" type="button">
+                                                <span class="custom-margin-right5">阅读全文</span>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </button>
+                                        </div>
+                                        <div class="custom-contentItem-time">
+                                            <a href="#">编辑于 12:23</a>
+                                        </div>
+                                        <div>
+                                            <div class="custom-contentItem-actions">
+                                                <span>
+                                                    <button class="custom-vote-btn" aria-label="赞同" type="button">
+                                                        <i class="fa fa-caret-up"></i> 651
+                                                    </button>
+                                                    <button class="custom-vote-btn" aria-label="反对" type="button">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                </span>
+                                                <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-comment custom-margin-right5"></i>
+                                                        8 条评论
+                                                    </span>
+                                                </button>
+                                                <div class="custom-drop-option2">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                        <i class="fa fa-paper-plane"></i> 分享
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#">复制链接</a></li>
+                                                        <li><a href="#">新浪微博</a></li>
+                                                        <li><a href="#">扫一扫</a></li>
+                                                    </ul>
+                                                </div>
+                                                <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-star custom-margin-right5"></i>
+                                                        收藏
+                                                    </span>
+                                                </button>
+                                                <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-heart custom-margin-right5"></i>
+                                                        感谢
+                                                    </span>
+                                                </button>
+                                                <div class="custom-drop-option2">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                        •••
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#">没有帮助</a></li>
+                                                        <li><a href="#">举报</a></li>
+                                                    </ul>
+                                                </div>
+                                                <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <span class="custom-margin-right5">收起</span>
+                                                        <i class="fa fa-chevron-up"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div><!-- end feed content -->
+                                </div><!-- feed detail -->
+                            </div>
+                            <!-- end feed -->
+                        </div><!-- feed item -->
+                    </div><!-- end daily hot tab -->
+                    <!-- monthly hot tab -->
+                    <div class="tab-pane fade" id="monthly_hot">
+                        <p>monthly_hot</p>
+                    </div><!-- end monthly hot tab -->
                 </div>
             </div>
         </div>
 
         <!-- sidebar -->
-        <div class="col-sm-3">
-
-            <div class="list-group custom-story-item custom-card">
-                <div class="custom-list-group-title custom-color-9f">
-                    热门话题
+        <div class="col-sm-3 custom-sidebar-padding">
+            <!-- hot topic -->
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    <div class="custom-card-headerText">热门话题</div>
                     <span class="custom-right">
-                            <a href="#" class="custom-item-link">
-                                更多话题 <i class="fa fa-angle-double-right"></i>
+                        <a href="#" class="custom-item-link">
+                            更多话题 <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </span>
+                </div>
+                <div class="custom-card-section">
+                    <div class="custom-answer-author">
+                        <div class="custom-answer-author-avatar">
+                            <a href="#">
+                                <img class="custom-avatar48" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
                             </a>
-                        </span>
-                </div>
-                <div class="media">
-                    <div class="media-left media-top">
-                        <a href="#">
-                            <img class="media-object custom-avatar48" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <a href="#">
-                            <h4 class="media-heading custom-media-heading">
-                                WWDC17
-                            </h4>
-                            <div class="custom-item-link">
-                                2837 人关注
-                            </div>
-                        </a>
+                        </div>
+                        <div class="custom-answer-author-content">
+                            <div class="custom-answer-author-name custom-font-size15">机器学习</div>
+                            <div class="custom-answer-author-headline">724473人关注</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="list-group custom-list-group custom-story-item custom-card">
-
-                <div class="custom-list-group-title custom-color-9f">
-                    热门收藏
+                <div class="custom-card-section">
+                    <div class="custom-answer-author">
+                        <div class="custom-answer-author-avatar">
+                            <a href="#">
+                                <img class="custom-avatar48" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
+                            </a>
+                        </div>
+                        <div class="custom-answer-author-content">
+                            <div class="custom-answer-author-name custom-font-size15">励学自行</div>
+                            <div class="custom-answer-author-headline">3473人关注</div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end hot topic -->
+            <!-- hot collect -->
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    <div class="custom-card-headerText">热门收藏</div>
                     <span class="custom-right">
-                            <a href="#" class="custom-item-link">
-                                换一换 <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </span>
+                        <a href="#" class="custom-item-link">
+                            换一换 <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </span>
                 </div>
-
-                <div class="custom-hot-collect custom-bottom-border">
-                    <a href="" class="custom-meta-item custom-meta-link">我的收藏</a>
-                    <div class="custom-item-link">
-                        <span>32 人关注</span>
-                        <span> • </span>
-                        <span>37 条内容</span>
+                <div class="custom-card-section">
+                    <div class="custom-answer-author">
+                        <div class="custom-answer-author-content">
+                            <div class="custom-answer-author-name custom-font-size15">机器学习</div>
+                            <div class="custom-answer-author-headline">724473人关注 • 123条内容</div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="custom-hot-collect">
-                    <a href="" class="custom-meta-item custom-meta-link">我的收藏</a>
-                    <div class="custom-item-link">
-                        <span>32 人关注</span>
-                        <span> • </span>
-                        <span>37 条内容</span>
+                <div class="custom-card-section">
+                    <div class="custom-answer-author">
+                        <div class="custom-answer-author-content">
+                            <div class="custom-answer-author-name custom-font-size15">励学自行</div>
+                            <div class="custom-answer-author-headline">3473人关注 • 123条内容</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            </div><!-- end hot collect -->
+            <!-- sidebar footer -->
             <div class="custom-footer">
                 <a href="#" target="_blank">${siteInfoDO.siteName}指南 • </a>
-                <a href="#" target="_blank">建议反馈 • </a>
-                <a href="#" target="_blank">移动应用 • </a>
-                <a href="#" target="_blank">加入${siteInfoDO.siteName}</a>
                 <a href="#" target="_blank">${siteInfoDO.siteName}协议 • </a>
-                <a href="#" target="_blank">举报投诉 • </a>
-                <a href="#" target="_blank">联系我们</a><br/>
+                <a href="#" target="_blank">隐私政策 • </a>
+                <a href="#" target="_blank">移动应用 • </a>
+                <a href="#" target="_blank">工作 • </a>
+                <a href="#" target="_blank">申请开通${siteInfoDO.siteName}机构账号</a><br/>
+                <a href="#" target="_blank">侵权举报 • </a>
+                <a href="#" target="_blank">网上有害信息举报专区</a><br/>
+                <a href="#" target="_blank">儿童色情信息举报专区</a><br/>
+                <a href="#" target="_blank">联系我们</a>
                 <a href="#" target="_blank">&copy;${siteInfoDO.copyRight}</a>
-            </div>
+            </div><!-- end sidebar footer -->
         </div><!-- end sidebar -->
     </div>
 </div>

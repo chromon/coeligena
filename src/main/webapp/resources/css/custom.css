@@ -2095,3 +2095,11 @@ ins {
 .custom-center {
     margin: 0 auto;
 }
+
+.custom-feed-item+.custom-feed-item {
+    border-top: 1px solid #eee;
+}
+
+.custom-font-size15 {
+    font-size: 15px;
+}

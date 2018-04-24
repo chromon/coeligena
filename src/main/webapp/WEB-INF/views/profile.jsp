@@ -150,18 +150,18 @@
                             <div>
                                 <!-- feed status -->
                                 <div class="custom-feed-src-status">
-                            <span>
-                                <a href="#">Ellery</a>
-                                赞同了回答
-                                <!-- collect article -->
-                                <!-- 关注了问题 -->
-                                <!-- collect article -->
-                                <!-- 关注了问题 -->
-                                <!-- collect answer -->
-                                <!-- 收藏了回答 -->
-                                <!-- collect article -->
-                                <!-- 收藏了文章 -->
-                            </span>
+                                    <span>
+                                        <a href="#">Ellery</a>
+                                        赞同了回答
+                                        <!-- collect article -->
+                                        <!-- 关注了问题 -->
+                                        <!-- collect article -->
+                                        <!-- 关注了问题 -->
+                                        <!-- collect answer -->
+                                        <!-- 收藏了回答 -->
+                                        <!-- collect article -->
+                                        <!-- 收藏了文章 -->
+                                    </span>
                                     <span> · </span>
                                     1 小时前
                                 </div><!-- end feed status -->
@@ -198,9 +198,9 @@
                                     <!-- feed content -->
                                     <div class="custom-rich-content">
                                         <div class="custom-answerItem-extraInfo">
-                                    <span class="custom-voters">
-                                        <a href="">1 人赞同了该回答</a>
-                                    </span>
+                                            <span class="custom-voters">
+                                                <a href="">1 人赞同了该回答</a>
+                                            </span>
                                         </div>
                                         <div class="custom-rich-content-inner">
                                             符号引用是只包含语义信息，不涉及具体实现的；而解析（resolve）过后的直接引用则是与具体实现息息相关的。
@@ -215,19 +215,19 @@
                                         </div>
                                         <div>
                                             <div class="custom-contentItem-actions">
-                                        <span>
-                                            <button class="custom-vote-btn" aria-label="赞同" type="button">
-                                                <i class="fa fa-caret-up"></i> 651
-                                            </button>
-                                            <button class="custom-vote-btn" aria-label="反对" type="button">
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                        </span>
+                                                <span>
+                                                    <button class="custom-vote-btn" aria-label="赞同" type="button">
+                                                        <i class="fa fa-caret-up"></i> 651
+                                                    </button>
+                                                    <button class="custom-vote-btn" aria-label="反对" type="button">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                </span>
                                                 <button class="custom-contentItem-action custom-btn-plain" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-comment custom-margin-right5"></i>
-                                                8 条评论
-                                            </span>
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-comment custom-margin-right5"></i>
+                                                        8 条评论
+                                                    </span>
                                                 </button>
                                                 <div class="custom-drop-option2">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -240,16 +240,16 @@
                                                     </ul>
                                                 </div>
                                                 <button class="custom-contentItem-action custom-btn-plain" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-star custom-margin-right5"></i>
-                                                收藏
-                                            </span>
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-star custom-margin-right5"></i>
+                                                        收藏
+                                                    </span>
                                                 </button>
                                                 <button class="custom-contentItem-action custom-btn-plain" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-heart custom-margin-right5"></i>
-                                                感谢
-                                            </span>
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-heart custom-margin-right5"></i>
+                                                        感谢
+                                                    </span>
                                                 </button>
                                                 <div class="custom-drop-option2">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -261,10 +261,10 @@
                                                     </ul>
                                                 </div>
                                                 <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <span class="custom-margin-right5">收起</span>
-                                                <i class="fa fa-chevron-up"></i>
-                                            </span>
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <span class="custom-margin-right5">收起</span>
+                                                        <i class="fa fa-chevron-up"></i>
+                                                    </span>
                                                 </button>
                                             </div>
                                         </div>
