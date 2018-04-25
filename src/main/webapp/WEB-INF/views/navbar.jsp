@@ -28,10 +28,10 @@
                     <a href="${pageContext.request.contextPath}/index">首页</a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/explore">话题</a>
+                    <a href="${pageContext.request.contextPath}/topic">话题</a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/topic">发现</a>
+                    <a href="${pageContext.request.contextPath}/explore">发现</a>
                 </li>
                 <li>
                     <form class="navbar-form navbar-left" role="search">

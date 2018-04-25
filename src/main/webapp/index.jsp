@@ -47,6 +47,10 @@
                         <i class="fa fa-pencil-square-o custom-color-9f custom-margin-right5" aria-hidden="true"></i>
                         写文章
                     </a>
+                    <a href="" class="custom-top-header-navItem">
+                        <i class="fa fa-lightbulb-o custom-color-9f custom-margin-right5" aria-hidden="true"></i>
+                        写想法
+                    </a>
                 </div>
                 <a href="" class="custom-top-header-navItem-right">草稿</a>
             </div>
