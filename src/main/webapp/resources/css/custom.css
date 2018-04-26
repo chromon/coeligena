@@ -871,6 +871,10 @@ ins {
     width: 100%;
 }
 
+.custom-tab-width3 {
+    width: 14.28%;
+}
+
 .custom-tab-width a {
     text-align: center;
     color: #c2cfde;
@@ -2037,10 +2041,6 @@ ins {
     border-color: #8590a6;
 }
 
-.nav-tabs>li {
-    width: 14.28%;
-}
-
 .nav-tabs>li>a, .nav-tabs>li>a:focus {
     color: #c2cfde;
     text-align: center;
@@ -2119,4 +2119,8 @@ ins {
 
 .custom-font-size15 {
     font-size: 15px;
+}
+
+.custom-font-size14 {
+    font-size: 14px;
 }

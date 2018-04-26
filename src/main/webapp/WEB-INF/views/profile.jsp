@@ -109,13 +109,13 @@
         <div class="col-sm-9">
             <div class="custom-story-item custom-card">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#activities" data-toggle="tab">动态</a></li>
-                    <li><a href="#answers" data-toggle="tab">回答 25</a></li>
-                    <li><a href="#asks" data-toggle="tab">提问 15</a></li>
-                    <li><a href="#posts" data-toggle="tab">文章 8</a></li>
-                    <li><a href="#columns" data-toggle="tab">专栏 4</a></li>
-                    <li><a href="#pins" data-toggle="tab">想法 158</a></li>
-                    <li class="dropdown">
+                    <li class="active custom-tab-width3"><a href="#activities" data-toggle="tab">动态</a></li>
+                    <li class="custom-tab-width3"><a href="#answers" data-toggle="tab">回答 25</a></li>
+                    <li class="custom-tab-width3"><a href="#asks" data-toggle="tab">提问 15</a></li>
+                    <li class="custom-tab-width3"><a href="#posts" data-toggle="tab">文章 8</a></li>
+                    <li class="custom-tab-width3"><a href="#columns" data-toggle="tab">专栏 4</a></li>
+                    <li class="custom-tab-width3"><a href="#pins" data-toggle="tab">想法 158</a></li>
+                    <li class="dropdown custom-tab-width3">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             更多 <span class="caret"></span>
                         </a>

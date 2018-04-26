@@ -495,7 +495,7 @@
                         <i class="fa fa-btc"></i> 付费编辑
                     </a>
                 </div>
-
+                <!-- sidebar footer -->
                 <div class="custom-footer">
                     <a href="#" target="_blank">${siteInfoDO.siteName}指南 • </a>
                     <a href="#" target="_blank">${siteInfoDO.siteName}协议 • </a>
@@ -508,7 +508,7 @@
                     <a href="#" target="_blank">儿童色情信息举报专区</a><br/>
                     <a href="#" target="_blank">联系我们</a>
                     <a href="#" target="_blank">&copy;${siteInfoDO.copyRight}</a>
-                </div>
+                </div><!-- end sidebar footer -->
             </div>
         </div><!-- end sidebar -->
     </div>

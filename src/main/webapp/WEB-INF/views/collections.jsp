@@ -37,32 +37,36 @@
 
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade active in" id="followedCollections">
-                    <div class="custom-story-item custom-card">
-                        <a href="${pageContext.request.contextPath}/collection/123">
-                            <h4 class="custom-media-heading">
-                                机器学习
-                                <span class="badge custom-badge">123 new</span>
-                            </h4>
-                        </a>
-                        <div class="custom-meta-panel">
-                                <span>
-                                由 <a href="#" class="custom-meta-item">Ellery</a> 创建
-                                </span>
-                            <span class="custom-bull">•</span>
-                            <span>564条内容</span>
-                            <span class="custom-bull">•</span>
-                            <a href="#" class="custom-meta-item">
-                                5265人关注
+                    <div class="custom-card">
+                        <!-- collections list -->
+                        <div class="custom-feed-item">
+                            <a href="${pageContext.request.contextPath}/collection/123">
+                                <h4 class="custom-media-heading">
+                                    机器学习
+                                    <span class="badge custom-badge">123 new</span>
+                                </h4>
                             </a>
-                            <span class="custom-bull">•</span>
-                            <a href="#" class="custom-meta-item">
-                                取消关注
-                            </a>
-                        </div>
+                            <div class="custom-meta-panel">
+                                    <span>
+                                    由 <a href="#" class="custom-meta-item">Ellery</a> 创建
+                                    </span>
+                                <span class="custom-bull">•</span>
+                                <span>564条内容</span>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item">
+                                    5265人关注
+                                </a>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item">
+                                    取消关注
+                                </a>
+                            </div>
+                        </div><!-- end collections list -->
                     </div>
                 </div>
                 <div class="tab-pane fade" id="myCollections">
-                    <div class="custom-story-item custom-card">
+                    <!-- my collections list -->
+                    <div class="custom-feed-item custom-card">
                         <a href="#">
                             <h4 class="custom-media-heading">
                                 tech
@@ -75,23 +79,18 @@
                                 5265人关注
                             </a>
                         </div>
-                    </div>
+                    </div><!-- end my collections list -->
                 </div>
             </div>
-
-            <!-- left main feed -->
-            <ul class="media-list">
-                <li class="media">
-                    <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
-                    <a href="#" class="btn btn-default btn-lg btn-block">
-                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
-                    </a>
-                </li>
-            </ul><!-- end left main feed -->
+            <div class="custom-card">
+                <a href="javascript:void(0);" class="custom-question-more">
+                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
 
         <!-- sidebar -->
-        <div class="col-sm-3">
+        <div class="col-sm-3 custom-sidebar-padding">
 
             <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
                 <a href="#" class="list-group-item custom-group-item">
@@ -133,17 +132,20 @@
                     <i class="fa fa-btc"></i> 付费编辑
                 </a>
             </div>
-
+            <!-- sidebar footer -->
             <div class="custom-footer">
                 <a href="#" target="_blank">${siteInfoDO.siteName}指南 • </a>
-                <a href="#" target="_blank">建议反馈 • </a>
-                <a href="#" target="_blank">移动应用 • </a>
-                <a href="#" target="_blank">加入${siteInfoDO.siteName}</a>
                 <a href="#" target="_blank">${siteInfoDO.siteName}协议 • </a>
-                <a href="#" target="_blank">举报投诉 • </a>
-                <a href="#" target="_blank">联系我们</a><br/>
+                <a href="#" target="_blank">隐私政策 • </a>
+                <a href="#" target="_blank">移动应用 • </a>
+                <a href="#" target="_blank">工作 • </a>
+                <a href="#" target="_blank">申请开通${siteInfoDO.siteName}机构账号</a><br/>
+                <a href="#" target="_blank">侵权举报 • </a>
+                <a href="#" target="_blank">网上有害信息举报专区</a><br/>
+                <a href="#" target="_blank">儿童色情信息举报专区</a><br/>
+                <a href="#" target="_blank">联系我们</a>
                 <a href="#" target="_blank">&copy;${siteInfoDO.copyRight}</a>
-            </div>
+            </div><!-- end sidebar footer -->
         </div><!-- end sidebar -->
     </div>
 </div>

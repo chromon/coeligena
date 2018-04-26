@@ -49,100 +49,99 @@
                 <span> • </span>
                 <span>2017-07-03 14:42:38</span>
             </div>
-
-            <!-- left main feed -->
-            <ul class="media-list">
-                <li class="media">
-                    <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
-                    <a href="#" class="btn btn-default btn-lg btn-block">
-                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
-                    </a>
-                </li>
-            </ul><!-- end left main feed -->
+            <div class="custom-card">
+                <a href="javascript:void(0);" class="custom-question-more">
+                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
 
         <!-- sidebar -->
-        <div class="col-sm-3">
-
-            <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
+        <div class="col-sm-3 custom-sidebar-padding">
+            <div class="list-group custom-feed-item custom-card custom-color-9f">
                 <a href="#" class="list-group-item custom-group-item">
                     取消关注
                 </a>
             </div>
-
-            <div class="list-group custom-story-item custom-card">
-                <div class="custom-list-group-title custom-color-9f">
-                    关于创建者
+            <!-- creator info -->
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    <div class="custom-card-headerText">关于创建者</div>
                 </div>
-                <div class="media-list custom-other-topic">
-                    <div class="media">
-                        <div class="media-left media-top">
+                <div class="custom-card-section">
+                    <div class="custom-answer-author">
+                        <div class="custom-answer-author-avatar">
                             <a href="#">
-                                <img class="media-object custom-avatar48" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
+                                <img class="custom-avatar48" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
                             </a>
                         </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <h4 class="media-heading custom-media-heading">
-                                    WWDC17
-                                </h4>
-                            </a>
-                            <a href="#">
-                                <div class="custom-item-link">
-                                    <i class="fa fa-plus custom-topic-item"></i> 关注TA
-                                </div>
-                            </a>
+                        <div class="custom-answer-author-content">
+                            <div class="custom-answer-author-name custom-font-size15">机器学习</div>
+                            <div class="custom-answer-author-headline">724473人关注</div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="list-group custom-story-item custom-card">
-                <div class="custom-list-group-title custom-color-9f">
-                    收藏夹状态
+            </div><!-- end creator info -->
+            <!-- collection info -->
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    <div class="custom-card-headerText">收藏夹状态</div>
                 </div>
-                <div class="custom-color-9f">
-                    最近活动于
-                    <a href=""> 10:49 </a> • 查看收藏夹日志 <a href=""> 1991 </a> 人关注了该收藏夹
+                <div class="custom-card-section">
+                    <div class="custom-color-9f custom-font-size14">
+                        最近活动于
+                        <a href=""> 10:49 </a> •
+                        <a href="${pageContext.request.contextPath}/collection/123/log">查看收藏夹日志</a>
+                        <a href=""> 1991 </a> 人关注了该收藏夹
+                    </div>
                 </div>
-            </div>
-
+            </div><!-- end collection info -->
             <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
                 <a href="#" class="list-group-item custom-group-item">
                     举报收藏夹
                 </a>
             </div>
-
-            <div class="list-group custom-list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
-                <div class="custom-list-title custom-color-9f">
-                    热门收藏
+            <!-- hot collect -->
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    <div class="custom-card-headerText">热门收藏</div>
                     <span class="custom-right">
-                            <a href="#" class="custom-item-link">
-                                换一换 <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </span>
+                        <a href="#" class="custom-item-link">
+                            换一换 <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </span>
                 </div>
-
-                <div class="custom-hot-collect">
-                    <a href="" class="custom-meta-item custom-meta-link">我的收藏</a>
-                    <div class="custom-item-link">
-                        <span>32 人关注</span>
-                        <span> • </span>
-                        <span>37 条内容</span>
+                <div class="custom-card-section">
+                    <div class="custom-answer-author">
+                        <div class="custom-answer-author-content">
+                            <div class="custom-answer-author-name custom-font-size15">机器学习</div>
+                            <div class="custom-answer-author-headline">724473人关注 • 123条内容</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+                <div class="custom-card-section">
+                    <div class="custom-answer-author">
+                        <div class="custom-answer-author-content">
+                            <div class="custom-answer-author-name custom-font-size15">励学自行</div>
+                            <div class="custom-answer-author-headline">3473人关注 • 123条内容</div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end hot collect -->
+            <!-- sidebar footer -->
             <div class="custom-footer">
                 <a href="#" target="_blank">${siteInfoDO.siteName}指南 • </a>
-                <a href="#" target="_blank">建议反馈 • </a>
-                <a href="#" target="_blank">移动应用 • </a>
-                <a href="#" target="_blank">加入${siteInfoDO.siteName}</a>
                 <a href="#" target="_blank">${siteInfoDO.siteName}协议 • </a>
-                <a href="#" target="_blank">举报投诉 • </a>
-                <a href="#" target="_blank">联系我们</a><br/>
+                <a href="#" target="_blank">隐私政策 • </a>
+                <a href="#" target="_blank">移动应用 • </a>
+                <a href="#" target="_blank">工作 • </a>
+                <a href="#" target="_blank">申请开通${siteInfoDO.siteName}机构账号</a><br/>
+                <a href="#" target="_blank">侵权举报 • </a>
+                <a href="#" target="_blank">网上有害信息举报专区</a><br/>
+                <a href="#" target="_blank">儿童色情信息举报专区</a><br/>
+                <a href="#" target="_blank">联系我们</a>
                 <a href="#" target="_blank">&copy;${siteInfoDO.copyRight}</a>
-            </div>
+            </div><!-- end sidebar footer -->
         </div><!-- end sidebar -->
     </div>
 </div>
