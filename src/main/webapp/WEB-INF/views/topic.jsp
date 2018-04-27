@@ -44,8 +44,8 @@
                     </div>
                 </div><!-- end tab list header -->
                 <!-- tag list -->
-                <div class=" custom-story-item">
-                    <div class="custom-tag custom-question-topic ">
+                <div class=" custom-feed-item">
+                    <div class="custom-tag custom-question-topic">
                         <a href="">标签</a>
                     </div>
                     <div class="custom-tag custom-question-topic">
@@ -64,8 +64,8 @@
                 </div><!-- end tag list -->
             </div><!-- end tag -->
 
-            <div class="custom-feed-item custom-card">
-                <div>
+            <div class="custom-card">
+                <div class="custom-feed-item">
                     <a href="#">
                         <img class="custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="">
                     </a>

@@ -30,7 +30,7 @@
     <div class="row custom-content-margin">
         <div class="col-sm-8">
             <!-- media list title -->
-            <div class="custom-list-title custom-story-item custom-card">
+            <div class="custom-list-title custom-feed-item custom-card">
                 <a href=""><i class="fa fa-arrow-left" aria-hidden="true"></i> 返回</a>
                 <div>
                     <span class="custom-grey">发私信给</span>
@@ -44,11 +44,10 @@
                         发送
                     </a>
                 </div>
-            </div>
-
+            </div><!-- end media list title -->
             <!-- left main feed -->
-            <ul class="media-list">
-                <li id="feed-item-1" class="media custom-story-item custom-card">
+            <ul class="media-list custom-card">
+                <li id="feed-item-1" class="media custom-feed-item">
                     <div class="media-left media-top">
 
                         <!-- avatar image -->
@@ -57,17 +56,15 @@
                         </a>
                     </div>
                     <div class="media-body">
-
                         <!-- author info -->
                         <div class="custom-name">
                             <a href="#" class="">Ellery</a>：
-                        </div>
-
+                        </div><!-- end author info -->
                         <!-- answer content -->
                         <div>Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints，P. Cousot & R. Cousot 1977
                             Automatic discovery of linear restraints among variables of a program，P. Cousot & N. Halbwachs 1978
                             Systematic design of program analysis frameworks， P. Cousot & R. Cousot 1979
-                        </div>
+                        </div><!-- end answer content -->
                         <!-- feed meta -->
                         <div class="custom-meta-panel">
                             <a href="#" class="custom-meta-item">
@@ -77,24 +74,23 @@
                                 <a href="#" class="custom-meta-item">
                                     回复
                                 </a>
-
                                 <span class="custom-bull">•</span>
                                 <a href="#" class="custom-meta-item">
                                     删除
                                 </a>
                             </span>
-                        </div>
-
+                        </div><!-- end feed meta -->
                     </div>
                 </li>
-
             </ul><!-- end left main feed -->
+            <!-- more -->
+            <div class="custom-card">
+                <a href="javascript:void(0);" class="custom-question-more">
+                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                </a>
+            </div><!-- end more -->
         </div>
 
-        <!-- sidebar -->
-        <div class="col-sm-3 col-sm-offset-1">
-
-        </div><!-- end sidebar -->
     </div>
 </div>
 

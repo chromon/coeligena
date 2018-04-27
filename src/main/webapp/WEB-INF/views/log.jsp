@@ -31,89 +31,95 @@
         <div class="col-sm-9">
 
             <!-- tag -->
-            <div class="custom-story-item custom-card">
-                <div class="custom-tag custom-question-topic">
-                    <a href="">标签</a>
+            <div class="custom-feed-item custom-card">
+                <div class="custom-margin-bottom20">
+                    <div class="custom-tag custom-question-topic">
+                        <a href="">标签</a>
+                    </div>
+                    <div class="custom-tag custom-question-topic">
+                        <a href="">标签</a>
+                    </div>
+                    <div class="custom-tag custom-question-topic">
+                        <a href="">标签</a>
+                    </div>
+                    <div class="custom-tag custom-question-topic">
+                        <a href="">标签</a>
+                    </div>
                 </div>
-                <div class="custom-tag custom-question-topic">
-                    <a href="">标签</a>
-                </div>
-                <div class="custom-tag custom-question-topic">
-                    <a href="">标签</a>
-                </div>
-                <div class="custom-tag custom-question-topic">
-                    <a href="">标签</a>
-                </div>
-
                 <!-- question title -->
-                <div class="custom-question-title">
-                    如何判断比较PixelCNN与DCGAN两种Image generation方法？
-                </div>
-            </div>
-
-            <div class="custom-story-item custom-card">
-                <a href="">Ellery</a> 编辑了问题
-                <!--
-                添加问题
-                添加话题
-                编辑了补充说明
-                移除话题 -->
-
-                <div class="custom-log-detail">
-                    如何<del>判断</del><ins>比较</ins>PixelCNN与DCGAN两种Image generation方法？
-                </div>
-
-                <div>
-                    修改理由：改进标点或格式
-                </div>
-
-                <div>
-                    #682053542
-                    <span> • </span>
-                    <span>2017-07-03 14:42:38</span>
-                </div>
-            </div>
-
-            <!-- left main feed -->
-            <ul class="media-list">
-                <li class="media">
-                    <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
-                    <a href="#" class="btn btn-default btn-lg btn-block">
-                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                <h2 class="custom-contentItem-title2">
+                    <a href="/coeligena/question/123">
+                        如何判断比较PixelCNN与DCGAN两种Image generation方法？
                     </a>
-                </li>
-            </ul><!-- end left main feed -->
+                </h2>
+            </div>
+            <!-- log details -->
+            <div class="custom-card">
+                <!-- log item -->
+                <div class="custom-feed-item">
+                    <a href="">Ellery</a> 编辑了问题
+                    <!--
+                    添加问题
+                    添加话题
+                    编辑了补充说明
+                    移除话题 -->
+                    <div class="custom-log-detail">
+                        如何<del>判断</del><ins>比较</ins>PixelCNN与DCGAN两种Image generation方法？
+                    </div>
+                    <div>
+                        修改理由：改进标点或格式
+                    </div>
+                    <div>
+                        #682053542
+                        <span> • </span>
+                        <span>2017-07-03 14:42:38</span>
+                    </div>
+                </div><!-- end log item -->
+            </div><!-- end log details -->
+            <!-- more -->
+            <div class="custom-card">
+                <a href="javascript:void(0);" class="custom-question-more">
+                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                </a>
+            </div><!-- end more -->
         </div>
 
         <!-- sidebar -->
-        <div class="col-sm-3">
-
+        <div class="col-sm-3 custom-sidebar-padding">
             <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
                 <a href="#" class="list-group-item custom-group-item">
                     关注问题
                 </a>
-                <span class="custom-padding-left5">2304人关注该问题</span>
+                <span class="custom-padding-left5">2304 人关注该问题</span>
             </div>
-
-            <div class="list-group custom-story-item custom-card">
-                <div class="custom-list-group-title custom-color-9f">
-                    收藏夹状态
+            <!-- collection info -->
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    <div class="custom-card-headerText">收藏夹状态</div>
                 </div>
-                <div class="custom-color-9f">
-                    最近活动于 10:49 • <a href=""> 查看问题日志 </a>，被浏览 167107 次，相关话题关注者 319071 人
+                <div class="custom-card-section">
+                    <div class="custom-color-9f custom-font-size14">
+                        最近活动于
+                        <a href=""> 10:49 </a> •
+                        <a href="${pageContext.request.contextPath}/collection/123/log">查看收藏夹日志</a>
+                        <a href=""> 1991 </a> 人关注了该收藏夹
+                    </div>
                 </div>
-            </div>
-
+            </div><!-- end collection info -->
+            <!-- sidebar footer -->
             <div class="custom-footer">
                 <a href="#" target="_blank">${siteInfoDO.siteName}指南 • </a>
-                <a href="#" target="_blank">建议反馈 • </a>
-                <a href="#" target="_blank">移动应用 • </a>
-                <a href="#" target="_blank">加入${siteInfoDO.siteName}</a>
                 <a href="#" target="_blank">${siteInfoDO.siteName}协议 • </a>
-                <a href="#" target="_blank">举报投诉 • </a>
-                <a href="#" target="_blank">联系我们</a><br/>
+                <a href="#" target="_blank">隐私政策 • </a>
+                <a href="#" target="_blank">移动应用 • </a>
+                <a href="#" target="_blank">工作 • </a>
+                <a href="#" target="_blank">申请开通${siteInfoDO.siteName}机构账号</a><br/>
+                <a href="#" target="_blank">侵权举报 • </a>
+                <a href="#" target="_blank">网上有害信息举报专区</a><br/>
+                <a href="#" target="_blank">儿童色情信息举报专区</a><br/>
+                <a href="#" target="_blank">联系我们</a>
                 <a href="#" target="_blank">&copy;${siteInfoDO.copyRight}</a>
-            </div>
+            </div><!-- end sidebar footer -->
         </div><!-- end sidebar -->
     </div>
 </div>

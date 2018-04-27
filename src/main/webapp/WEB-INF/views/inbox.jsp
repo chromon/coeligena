@@ -31,7 +31,7 @@
     <div class="row custom-content-margin">
         <div class="col-sm-9">
             <!-- media list title -->
-            <div class="custom-list-title custom-story-item custom-card custom-color-9f">
+            <div class="custom-list-title custom-feed-item custom-card custom-color-9f">
                 <i class="fa fa-list-ul"></i> 最近联系
                 <span class="custom-right">
                     <a href="#" class="btn btn-primary btn-sm">
@@ -42,7 +42,7 @@
 
             <!-- left main feed -->
             <ul class="media-list">
-                <li id="feed-item-1" class="media custom-story-item custom-card">
+                <li id="feed-item-1" class="media custom-feed-item custom-card">
                     <div class="media-left media-top">
 
                         <!-- avatar image -->
@@ -68,7 +68,7 @@
                                 6月13日 21:18
                             </a>
                             <span class="custom-right">
-                                <a href="/inbox/123" class="custom-meta-item">
+                                <a href="${pageContext.request.contextPath}/inbox/123" class="custom-meta-item">
                                     查看对话
                                 </a>
 
@@ -81,18 +81,17 @@
 
                     </div>
                 </li>
-
-                <li class="media">
-                    <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
-                    <a href="#" class="btn btn-default btn-lg btn-block">
+                <!-- more -->
+                <li class="media custom-card">
+                    <a href="javascript:void(0);" class="custom-question-more">
                         <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                     </a>
-                </li>
+                </li><!-- end more -->
             </ul><!-- end left main feed -->
         </div>
 
         <!-- sidebar -->
-        <div class="col-sm-3">
+        <div class="col-sm-3 custom-sidebar-padding">
 
             <div class="alert alert-dismissible alert-success">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>

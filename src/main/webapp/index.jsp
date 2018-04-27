@@ -442,19 +442,17 @@
                     <!-- end feed -->
                 </div>
             </div><!-- end left main feed -->
-
+            <!-- more -->
             <div class="custom-card">
                 <a href="javascript:void(0);" class="custom-question-more">
                     <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                 </a>
-            </div>
+            </div><!-- end more -->
         </div>
 
         <!-- sidebar -->
         <div id="rightSidebar" class="col-sm-3 custom-sidebar-padding">
-
             <div class="sidebar_inner">
-
                 <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
                     <a href="${pageContext.request.contextPath}/collections" class="list-group-item custom-group-item">
                         <span class="badge custom-badge">8</span>
@@ -477,7 +475,6 @@
                         <i class="fa fa-pencil-square"></i> 公共编辑动态
                     </a>
                 </div>
-
                 <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
                     <a href="#" class="list-group-item custom-group-item">
                         <i class="fa fa-flash"></i> Live
