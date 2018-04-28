@@ -38,7 +38,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control input-sm" size="40" placeholder="搜索你感兴趣的内容...">
                             <span class="input-group-btn">
-                                <button class="btn btn-primary btn-sm" type="button">
+                                <button onclick="window.location.href='${pageContext.request.contextPath}/search?type=content&q=dddd'" class="btn btn-primary btn-sm" type="button">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>

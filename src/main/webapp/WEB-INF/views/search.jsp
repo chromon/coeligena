@@ -29,60 +29,72 @@
 <div class="container">
     <div class="row custom-content-margin">
         <div class="col-sm-9">
+            <div class="custom-card">
+                <ul class="nav nav-tabs custom-feed-item" style="width: 70%;display: inline-block;">
+                    <li class="active"><a href="#content" data-toggle="tab">综合</a></li>
+                    <li><a href="#people" data-toggle="tab">用户</a></li>
+                    <li><a href="#topic" data-toggle="tab">话题</a></li>
+                    <li><a href="#column" data-toggle="tab">专栏</a></li>
+                </ul>
+                <div class="custom-result-sort">
 
-            <ul class="nav nav-tabs custom-story-item custom-card">
-                <li class="active"><a href="#content" data-toggle="tab">内容</a></li>
-                <li><a href="#people" data-toggle="tab">用户</a></li>
-                <li><a href="#topic" data-toggle="tab">话题</a></li>
-            </ul>
-
-            <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade active in" id="content">
-                    <div class="custom-story-item custom-card">
-                        <a href="#">
-                            <h4 class="custom-media-heading">
-                                机器学习
-                                <span class="badge custom-badge">123 new</span>
-                            </h4>
-                        </a>
-                        <div class="custom-meta-panel">
+                    <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
+                    <span style="display: inline-flex;align-items: center;">
+                        <span class="custom-margin-right5">收起</span>
+                        <i class="fa fa-chevron-up"></i>
+                    </span>
+                    </button>
+                </div>
+            </div>
+            <div class="custom-card">
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="content">
+                        <div class="custom-story-item">
+                            <a href="#">
+                                <h4 class="custom-media-heading">
+                                    机器学习
+                                    <span class="badge custom-badge">123 new</span>
+                                </h4>
+                            </a>
+                            <div class="custom-meta-panel">
                                 <span>
                                 由 <a href="#" class="custom-meta-item">Ellery</a> 创建
                                 </span>
-                            <span class="custom-bull">•</span>
-                            <span>564条内容</span>
-                            <span class="custom-bull">•</span>
-                            <a href="#" class="custom-meta-item">
-                                5265人关注
-                            </a>
-                            <span class="custom-bull">•</span>
-                            <a href="#" class="custom-meta-item">
-                                取消关注
-                            </a>
+                                <span class="custom-bull">•</span>
+                                <span>564条内容</span>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item">
+                                    5265人关注
+                                </a>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item">
+                                    取消关注
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="people">
+                        <div class="custom-story-item custom-card">
+                            people
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="topic">
+                        <div class="custom-story-item custom-card">
+                            topic
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="people">
-                    <div class="custom-story-item custom-card">
-                        people
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="topic">
-                    <div class="custom-story-item custom-card">
-                        topic
-                    </div>
-                </div>
-            </div>
 
-            <!-- left main feed -->
-            <ul class="media-list">
-                <li class="media">
-                    <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
-                    <a href="#" class="btn btn-default btn-lg btn-block">
-                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
-                    </a>
-                </li>
-            </ul><!-- end left main feed -->
+                <!-- left main feed -->
+                <ul class="media-list">
+                    <li class="media">
+                        <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
+                        <a href="#" class="btn btn-default btn-lg btn-block">
+                            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul><!-- end left main feed -->
+            </div>
         </div>
 
     </div>

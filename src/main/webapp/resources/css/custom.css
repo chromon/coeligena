@@ -960,22 +960,21 @@ ins {
 }
 
 .custom-notification-item {
-    border-top: 1px solid #eee;
-}
-
-.custom-notification-content {
     position: relative;
-    padding: 10px;
-    font-size: 14px;
+    padding: 10px 0 10px;
+    font-size: 15px;
     line-height: 16px;
     color: #262626;
-    border-bottom: 1px dashed #ebeef5;
+}
+
+.custom-notification-item+.custom-notification-item {
+    border-top: 1px dashed #ebeef5;
 }
 
 .custom-notification-more {
     position: relative;
-    padding: 10px;
-    font-size: 14px;
+    padding: 10px 0 10px;
+    font-size: 15px;
     line-height: 16px;
     color: #262626;
 }
@@ -985,9 +984,6 @@ ins {
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
-
-
-
 
 .custom-btn {
     display: inline-block;
@@ -2123,4 +2119,9 @@ ins {
 
 .custom-font-size14 {
     font-size: 14px;
+}
+
+.custom-result-sort {
+    position: relative;
+    display: inline-block;
 }
