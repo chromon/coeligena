@@ -30,6 +30,47 @@
     <div class="row custom-content-margin">
         <div class="col-sm-9">
             <div class="custom-card">
+                <div>
+                    <div class="custom-search-actions">
+                        <ul class="nav nav-tabs custom-feed-item" style="width: 70%;display: inline-block;">
+                            <li class="active"><a href="#content" data-toggle="tab">综合</a></li>
+                            <li><a href="#people" data-toggle="tab">用户</a></li>
+                            <li><a href="#topic" data-toggle="tab">话题</a></li>
+                            <li><a href="#column" data-toggle="tab">专栏</a></li>
+                        </ul>
+
+                        <button class="custom-btn-plain Select-plainButton Select-button custom-right" type="button">
+                            <span style="display: inline-flex;align-items: center;">
+                                <span class="custom-margin-right5">时间不限</span>
+                                <i class="fa fa-sort" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-card">
+                <!-- list item -->
+                <div class="custom-list-item">
+                    <!-- content item main -->
+                    <div class="custom-contentItem-main">
+                        <!-- content item image -->
+                        <div class="custom-contentItem-image">
+                            <!-- avatar image -->
+                            <a href="#" id="user-avatar">
+                                <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                            </a>
+                        </div><!-- end content item image -->
+                        <div class="custom-contentItem-head">
+                            <h2 class="custom-contentItem-title">
+                                <a href="">ABC</a>
+                            </h2>
+                        </div>
+                    </div><!-- end content item main -->
+                </div><!-- end list item -->
+            </div>
+
+            <div class="custom-card">
                 <ul class="nav nav-tabs custom-feed-item" style="width: 70%;display: inline-block;">
                     <li class="active"><a href="#content" data-toggle="tab">综合</a></li>
                     <li><a href="#people" data-toggle="tab">用户</a></li>
