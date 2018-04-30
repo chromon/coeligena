@@ -57,62 +57,140 @@
                         <!-- content item image -->
                         <div class="custom-contentItem-image">
                             <!-- avatar image -->
-                            <a href="#" id="user-avatar">
-                                <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                            <a href="#">
+                                <img class="media-object custom-avatar60" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
                             </a>
                         </div><!-- end content item image -->
                         <div class="custom-contentItem-head">
                             <h2 class="custom-contentItem-title">
-                                <a href="">ABC</a>
+                                <a href="">Java 虚拟机（JVM）</a>
+                                <span class="custom-searchItem-type">
+                                    话题
+                                </span>
                             </h2>
+                            <div class="custom-contentItem-meta">
+                                <div class="custom-searchItem-meta">
+                                    Java 虚拟机（Java Virtual Machine）是一个虚构出来的计算机，通过在实际的计算机上仿真模拟各种计算机功能来实现的。
+                                </div>
+                                <div class="custom-contentItem-status">
+                                    <a href="" class="custom-searchItem-statusLink">20528关注</a> ·
+                                    <a href="" class="custom-searchItem-statusLink">1283问题</a> ·
+                                    <a href="" class="custom-searchItem-statusLink">999精华内容</a>
+                                </div>
+                                <div class="custom-search-more">
+                                    <a href="">
+                                        查看更多「话题」搜索结果
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-contentItem-extra">
+                            <button class="btn btn-primary" type="button">关注话题</button>
+                        </div>
+                    </div><!-- end content item main -->
+                </div><!-- end list item -->
+                <!-- list item -->
+                <div class="custom-list-item">
+                    <!-- content item main -->
+                    <div class="custom-contentItem-main">
+                        <!-- content item image -->
+                        <div class="custom-contentItem-image">
+                            <!-- avatar image -->
+                            <a href="#">
+                                <img class="media-object custom-avatar60" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                            </a>
+                        </div><!-- end content item image -->
+                        <div class="custom-contentItem-head">
+                            <h2 class="custom-contentItem-title">
+                                <a href="">JVM 进阶之路</a>
+                                <span class="custom-searchItem-type">
+                                    专栏
+                                </span>
+                            </h2>
+                            <div class="custom-contentItem-meta">
+                                <div class="custom-contentItem-status">
+                                    创建者：<a href="" class="custom-searchItem-statusLink">Ellery</a> ·
+                                    <a href="" class="custom-searchItem-statusLink">1283关注</a> ·
+                                    <a href="" class="custom-searchItem-statusLink">999文章</a>
+                                </div>
+                                <div class="custom-search-more">
+                                    <a href="">
+                                        查看更多「专栏」搜索结果
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-contentItem-extra">
+                            <button class="btn btn-primary" type="button">关注专栏</button>
                         </div>
                     </div><!-- end content item main -->
                 </div><!-- end list item -->
             </div>
 
             <div class="custom-card">
-                <ul class="nav nav-tabs custom-feed-item" style="width: 70%;display: inline-block;">
-                    <li class="active"><a href="#content" data-toggle="tab">综合</a></li>
-                    <li><a href="#people" data-toggle="tab">用户</a></li>
-                    <li><a href="#topic" data-toggle="tab">话题</a></li>
-                    <li><a href="#column" data-toggle="tab">专栏</a></li>
-                </ul>
-                <div class="custom-result-sort">
-
-                    <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
-                    <span style="display: inline-flex;align-items: center;">
-                        <span class="custom-margin-right5">收起</span>
-                        <i class="fa fa-chevron-up"></i>
-                    </span>
-                    </button>
-                </div>
-            </div>
-            <div class="custom-card">
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade active in" id="content">
-                        <div class="custom-story-item">
-                            <a href="#">
-                                <h4 class="custom-media-heading">
-                                    机器学习
-                                    <span class="badge custom-badge">123 new</span>
-                                </h4>
-                            </a>
-                            <div class="custom-meta-panel">
-                                <span>
-                                由 <a href="#" class="custom-meta-item">Ellery</a> 创建
-                                </span>
-                                <span class="custom-bull">•</span>
-                                <span>564条内容</span>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item">
-                                    5265人关注
-                                </a>
-                                <span class="custom-bull">•</span>
-                                <a href="#" class="custom-meta-item">
-                                    取消关注
-                                </a>
-                            </div>
-                        </div>
+                        <!-- feed item -->
+                        <div class="custom-feed-item">
+                            <!-- feed -->
+                            <div>
+                                <h2 class="custom-contentItem-title2">
+                                    <a href="${pageContext.request.contextPath}/question/123">
+                                        JVM符号引用转换直接引用的过程?
+                                    </a>
+                                </h2>
+                                <!-- feed author info -->
+                                <div class="custom-feed-src-info custom-feed-author-info">
+                                    <div class="custom-author-info-content" style="margin-left: 0px;">
+                                        <div class="custom-author-info-head">
+                                            <a href="#">Ellery</a>
+                                        </div>
+                                        <div class="custom-author-info-detail">
+                                            <div class="custom-author-badge">
+                                                <div class="custom-author-badge-text">
+                                                    Microsoft Cortana Engineer Oracle Kernel Engineer.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end feed author info -->
+
+                                <!-- feed detail -->
+                                <div>
+                                    <!-- feed content -->
+                                    <div class="custom-rich-content">
+                                        <div class="custom-rich-content-inner">
+                                            符号引用是只包含语义信息，而解析（resolve）过后的直接引用则是与具体实现息息相关的。
+                                            所以当谈及某个符号引用被resolve成怎样的直接引用时，必须要结合某个具体实现来讨论才行。
+                                            <button class="custom-contentItem-more custom-btn-plain" type="button">
+                                                <span class="custom-margin-right5">阅读全文</span>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <div class="custom-contentItem-actions">
+                                            <span>
+                                                <button class="custom-vote-btn" aria-label="赞同" type="button">
+                                                    <i class="fa fa-caret-up"></i> 651
+                                                </button>
+                                                <button class="custom-vote-btn" aria-label="反对" type="button">
+                                                    <i class="fa fa-caret-down"></i>
+                                                </button>
+                                            </span>
+                                                <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-comment custom-margin-right5"></i>
+                                                    8 条评论
+                                                </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div><!-- end feed content -->
+                                </div><!-- feed detail -->
+                            </div><!-- end feed -->
+                        </div><!-- end feed item -->
                     </div>
                     <div class="tab-pane fade" id="people">
                         <div class="custom-story-item custom-card">
@@ -124,20 +202,55 @@
                             topic
                         </div>
                     </div>
+                    <div class="tab-pane fade" id="column">
+                        <div class="custom-story-item custom-card">
+                            topic
+                        </div>
+                    </div>
                 </div>
-
-                <!-- left main feed -->
-                <ul class="media-list">
-                    <li class="media">
-                        <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
-                        <a href="#" class="btn btn-default btn-lg btn-block">
-                            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                </ul><!-- end left main feed -->
             </div>
         </div>
 
+        <!-- sidebar -->
+        <div class="col-sm-3 custom-sidebar-padding">
+            <!-- hot collect -->
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    <div class="custom-card-headerText">${siteInfoDO.siteName}热搜</div>
+                </div>
+                <div class="custom-topSearch-items">
+                    <div class="custom-topSearch-item">
+                        <a href="" class="custom-topSearch-itemLink">机器学习</a>
+                    </div>
+                    <div class="custom-topSearch-item">
+                        <a href="" class="custom-topSearch-itemLink">机器学习</a>
+                    </div>
+                    <div class="custom-topSearch-item">
+                        <a href="" class="custom-topSearch-itemLink">机器学习</a>
+                    </div>
+                    <div class="custom-topSearch-item">
+                        <a href="" class="custom-topSearch-itemLink">机器学习</a>
+                    </div>
+                    <div class="custom-topSearch-item">
+                        <a href="" class="custom-topSearch-itemLink">机器学习</a>
+                    </div>
+                </div>
+            </div><!-- end hot collect -->
+            <!-- sidebar footer -->
+            <div class="custom-footer">
+                <a href="#" target="_blank">${siteInfoDO.siteName}指南 • </a>
+                <a href="#" target="_blank">${siteInfoDO.siteName}协议 • </a>
+                <a href="#" target="_blank">隐私政策 • </a>
+                <a href="#" target="_blank">移动应用 • </a>
+                <a href="#" target="_blank">工作 • </a>
+                <a href="#" target="_blank">申请开通${siteInfoDO.siteName}机构账号</a><br/>
+                <a href="#" target="_blank">侵权举报 • </a>
+                <a href="#" target="_blank">网上有害信息举报专区</a><br/>
+                <a href="#" target="_blank">儿童色情信息举报专区</a><br/>
+                <a href="#" target="_blank">联系我们</a>
+                <a href="#" target="_blank">&copy;${siteInfoDO.copyRight}</a>
+            </div><!-- end sidebar footer -->
+        </div><!-- end sidebar -->
     </div>
 </div>
 
