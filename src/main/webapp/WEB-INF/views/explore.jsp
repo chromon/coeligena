@@ -37,9 +37,9 @@
                     </h6>
                     <div class="custom-list-headerOptions">
                         <button class="custom-btn-plain custom-contentItem-right" type="button" style="display: inline-block">
-                                <span style="align-items: center;">
-                                    更多推荐 <i class="fa fa-angle-double-right"></i>
-                                </span>
+                            <span style="align-items: center;">
+                                更多推荐 <i class="fa fa-angle-double-right"></i>
+                            </span>
                         </button>
                     </div>
                 </div>

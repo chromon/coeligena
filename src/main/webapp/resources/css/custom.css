@@ -2280,3 +2280,47 @@ ins {
     width: 100%;
     overflow: hidden;
 }
+
+.custom-setting-section {
+    /*margin-top: 10px;*/
+    border-bottom: 1px solid #eee;
+}
+
+.custom-setting-item {
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.custom-settings-item-title {
+    width: 65px;
+    text-align: left;
+    float: left;
+}
+
+.custom-align-bottom {
+    margin-bottom: 0;
+    padding-top: 7px;
+}
+
+.custom-edit-btn {
+    color: #999;
+    display: inline-block;
+    font-size: 11px;
+    -webkit-text-size-adjust: none;
+    font-weight: 400;
+    padding: 0 5px 0 2px;
+    margin: 0 0 0 5px;
+}
+
+.custom-margin-right2 {
+    margin-right: 2px;
+}
+
+.custom-input-width {
+    width: 250px;
+    display: inline-block;
+}
+
+.custom-margin-left20 {
+    margin-left: 20px;
+}
