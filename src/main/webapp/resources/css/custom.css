@@ -2324,3 +2324,29 @@ ins {
 .custom-margin-left20 {
     margin-left: 20px;
 }
+
+.custom-margin-bottom30 {
+    margin-bottom: 30px;
+}
+
+.custom-settings-section-desc {
+    color: #999;
+    margin: 5px 0 0;
+}
+
+.custom-setting-tag {
+    margin: 15px 8px 15px 0;
+}
+
+.custom-filter-item {
+    width: 26%;
+    display: inline-block;
+    margin: 10px 5px 10px;
+}
+
+.custom-filter-section {
+    padding: 16px 20px;
+    position: relative;
+    border: 1px solid #f6f6f6;
+    border-radius: 4px;
+}
