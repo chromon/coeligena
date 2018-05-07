@@ -11,9 +11,7 @@
 <!-- js -->
 <script src="<%=request.getContextPath()%>/resources/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 
-
 <script src="<%=request.getContextPath()%>/resources/plugin/summernote/summernote.js" type="text/javascript"></script>
-<%--<script src="<%=request.getContextPath()%>/resources/plugin/summernote/summernote-bs4.js" type="text/javascript"></script>--%>
 <script src="<%=request.getContextPath()%>/resources/plugin/summernote/lang/summernote-zh-CN.js" type="text/javascript"></script>
 
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js" type="text/javascript"></script>
@@ -27,5 +25,12 @@
 <script src="<%=request.getContextPath()%>/resources/plugin/select2/select2.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/plugin/select2/i18n/zh-CN.js" type="text/javascript"></script>
 
-<script src="<%=request.getContextPath()%>/resources/js/common.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/loading_bar.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/hover_card.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/multiple_select.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/collect.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/report_tree.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/back_to_top.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/editor.js" type="text/javascript"></script>
+
 

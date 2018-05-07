@@ -65,7 +65,7 @@
 
 <!-- collection modal -->
 <div class="modal fade" id="collectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog custom-modal-size" role="document">
+    <div class="modal-dialog" role="document">
         <div id="add_favorite" class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -135,38 +135,34 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">提问</h4>
             </div>
-            <div class="modal-body">
-                <form class="form">
+
+            <form class="form" action="${pageContext.request.contextPath}/ask-question" method="post">
+                <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control input-sm" type="text" placeholder="写下你的问题">
+                        <input name="questionContent" class="form-control input-sm" type="text" placeholder="写下你的问题">
                     </div>
                     <div class="form-group">
                         <label class="control-label">问题说明（可选）：</label>
-                        <div id="ask_note"></div>
+                        <%--<div id="ask_note"></div>--%>
+                        <textarea id="ask_note" name="questionDetail"></textarea>
                     </div>
                     <div class="form-group">
                         <label class="control-label">选择话题</label>
-                        <select class="form-control js-example-basic-multiple" name="states[]" multiple="multiple">
-                            <option value="AL">basssssssssssssssma</option>
-                            <option value="WY">Wing2</option>
-                            <option value="WY">Wing3</option>
-                            <option value="WY">Wing4</option>
-                            <option value="WY">Wing5</option>
-                            <option value="WY">Wing6</option>
-                            <option value="WY">Wing7</option>
+                        <select name="topics[]" class="form-control js-example-basic-multiple" multiple="multiple">
+
                         </select>
                         <span class="help-block custom-right">话题越精准，越容易让相关领域专业人士看到你的问题</span>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <div class="checkbox custom-left">
-                    <label>
-                        <input type="checkbox"> 匿名提问
-                    </label>
                 </div>
-                <button type="button" class="btn btn-primary">提交问题</button>
-            </div>
+                <div class="modal-footer">
+                    <div class="checkbox custom-left">
+                        <label>
+                            <input name="anonymous" type="checkbox" value="1"> 匿名提问
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">提交问题</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
