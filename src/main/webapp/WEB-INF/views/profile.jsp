@@ -396,9 +396,6 @@
     <!-- end profile main -->
 </div>
 
-<!-- modal -->
-<%@include file="modal.jsp"%>
-
 <!-- js -->
 <%@include file="includeJs.jsp"%>
 </body>

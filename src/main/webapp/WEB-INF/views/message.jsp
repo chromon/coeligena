@@ -94,9 +94,6 @@
     </div>
 </div>
 
-<!-- modal -->
-<%@include file="modal.jsp"%>
-
 <!-- js -->
 <%@include file="includeJs.jsp"%>
 </body>

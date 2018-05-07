@@ -3,6 +3,11 @@
  * multiple select with select2
  */
 
+// 获取 base path
+var localObj = window.location;
+var contextPath = localObj.pathname.split("/")[1];
+var basePath = localObj.protocol + "//" + localObj.host + "/" + contextPath;
+
 $(document).ready(function() {
     // multi-select
     $('.js-example-basic-multiple').select2({

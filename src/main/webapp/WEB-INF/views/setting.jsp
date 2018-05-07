@@ -665,43 +665,7 @@
             </div>
         </div>
     </div>
-
-
-
-                <%--<!-- lab tab -->--%>
-                <%--<div class="col-sm-9 tab-pane fade custom-story-item custom-card" id="lab2">--%>
-                    <%--<form class="form-horizontal">--%>
-                        <%--<h5>首页动态</h5>--%>
-                        <%--<div class="form-group">--%>
-                            <%--<div class="col-lg-9">--%>
-                                <%--<div class="checkbox">--%>
-                                    <%--<label>--%>
-                                        <%--<input type="checkbox">--%>
-                                        <%--开启新版首页动态体验 （可随时在设置页开启或者关闭。）--%>
-                                    <%--</label>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <%--<a href="">新首页动态包含哪些改进？</a>--%>
-
-                        <%--<div class="form-group">--%>
-                            <%--<div class="col-sm-10">--%>
-                                <%--<button type="submit" class="btn btn-primary">保存</button>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</form>--%>
-                <%--</div>--%>
-                <%--<!-- end lab tab -->--%>
-            <%--</div>--%>
-
-        <%--</div>--%>
-    <%--</div>--%>
-    <!-- end home header -->
-
 </div>
-
-<!-- modal -->
-<%@include file="modal.jsp"%>
 
 <!-- js -->
 <%@include file="includeJs.jsp"%>

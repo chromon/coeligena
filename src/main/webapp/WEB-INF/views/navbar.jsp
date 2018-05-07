@@ -294,3 +294,18 @@
     </div>
 </div>
 <!-- end private message click card -->
+
+<!-- modal -->
+<%@include file="userModal.jsp"%>
+<%@include file="collectionModal.jsp"%>
+<%@include file="reportModal.jsp"%>
+<%@include file="askModal.jsp"%>
+<%@include file="emailModal.jsp"%>
+
+<!-- back to top -->
+<div class="custom-backtotop" id="back_to_top">
+    <a class="custom-btn-action" href="">
+        <div class="custom-arrow"></div>
+        <div class="custom-stick"></div>
+    </a>
+</div><!-- end back to top -->

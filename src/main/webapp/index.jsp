@@ -511,9 +511,6 @@
     </div>
 </div>
 
-<!-- modal -->
-<%@include file="WEB-INF/views/modal.jsp"%>
-
 <!-- js -->
 <%@include file="WEB-INF/views/includeJs.jsp"%>
 </body>

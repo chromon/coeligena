@@ -31,6 +31,6 @@
 <script src="<%=request.getContextPath()%>/resources/js/collect.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/js/report_tree.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/js/back_to_top.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/resources/js/editor.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/rich_editor.js" type="text/javascript"></script>
 
 
