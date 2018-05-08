@@ -5,37 +5,49 @@
 
 // report tree
 var tree = [{
-    text: "侵犯我的权益",
+    text: "垃圾广告信息"
+}, {
+    text: "不友善行为",
     nodes: [{
-        text: "骚扰我"
+        text: "辱骂、歧视、挑衅等"
     }, {
-        text: "抄袭了我的内容"
-    }, {
-        text: "侵犯了我企业的权益"
-    }, {
-        text: "侵犯了我个人的权益"
+        text: "其他不友善行为"
     }],
     state: {
         expanded: false
     }
 }, {
-    text: "对编之社区有害的内容",
+    text: "有害信息",
     nodes: [{
-        text: "垃圾广告信息"
+        text: "政治敏感垃圾广告信息"
     }, {
         text: "色情、暴力、血腥等违反法律法规的内容"
     }, {
-        text: "政治敏感"
+        text: "不实信息"
     }, {
-        text: "不规范转载"
+        text: "有人意图自杀或自残"
     }, {
-        text: "诱导投票"
+        text: "违法违规"
     }],
     state: {
         expanded: false
     }
 }, {
-    text: "辱骂、歧视、挑衅等（不友善）"
+    text: "涉嫌侵权",
+    nodes: [{
+        text: "不规范转载"
+    }, {
+        text: "个人侵权"
+    }, {
+        text: "企业侵权"
+    }],
+    state: {
+        expanded: false
+    }
+}, {
+    text: "诱导投票"
+}, {
+    text: "其他"
 }];
 $('#reportTree').treeview({
     data: tree,

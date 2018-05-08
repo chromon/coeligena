@@ -29,6 +29,19 @@ a:hover {
     text-decoration: none;
 }
 
+button:focus {
+    outline: none;
+    text-decoration:none;
+}
+
+button:visited {
+    text-decoration: none;
+}
+
+button:hover {
+    text-decoration: none;
+}
+
 .custom-title {
     color: rgb(15, 136, 235) !important;
     font-weight: bold;
@@ -1796,7 +1809,10 @@ ins {
 .custom-card-section {
     padding: 16px 20px;
     position: relative;
-    border-bottom: 1px solid #f6f6f6;
+}
+
+.custom-card-section+.custom-card-section {
+    border-top: 1px solid #f6f6f6;
 }
 
 .custom-answer-author {
@@ -2354,4 +2370,17 @@ ins {
     position: relative;
     border: 1px solid #f6f6f6;
     border-radius: 4px;
+}
+
+#favorite_list label{
+    width: 100%;
+}
+
+.custom-favor-list {
+    margin: 0 20px 0;
+}
+
+.custom-email-modal {
+    width: 80%;
+    margin: auto;
 }

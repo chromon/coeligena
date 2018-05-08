@@ -20,19 +20,19 @@
                 <h4 id="modalCreateLabel" class="modal-title hidden">创建新收藏夹</h4>
             </div>
             <div class="modal-body">
-                <div id="favorite_list" class="custom-margin-left45">
-                    <input id="collect_list" type="checkbox" data-labelauty="Don't delete my files|Delete my files"/>
+                <div id="favorite_list" class="custom-favor-list">
+                    <input id="collect_list" type="checkbox" data-labelauty="tech（选择收藏夹）|tech（取消选择）"/>
                 </div>
                 <div id="create_favorite" class="hidden">
                     <form>
                         <input type="text" class="form-control custom-margin-bottom10" placeholder="收藏标题">
                         <textarea class="form-control custom-margin-bottom10" rows="3" placeholder="收藏描述（可选）"></textarea>
                         <div class="custom-margin-bottom10">
-                            <input class="" type="radio" value="option1" checked="">
+                            <input name="privacy" type="radio" value="option1" checked="">
                             公开 有其他人关注此收藏夹时不可设置为私密
                         </div>
                         <div class="custom-margin-bottom10">
-                            <input type="radio" value="option2" checked="">
+                            <input name="privacy" type="radio" value="option2">
                             私密 只有你自己可以查看这个收藏夹
                         </div>
                     </form>

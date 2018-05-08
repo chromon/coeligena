@@ -18,20 +18,20 @@
             </div>
             <div class="modal-body">
                 <form class="form">
-                    <div class="form-group">
-                        <label class="control-label">为了保证帐号安全，请验证身份。验证成功后进行下一步操作</label>
-                    </div>
-                    <div class="form-group custom-input-size">
-                        <select class="form-control input-sm" id="select">
-                            <option>使用邮箱a***y@msn.com验证</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="form-group custom-input-size">
-                        <input class="form-control input-sm" type="text" placeholder="输入6位数验证码">
+                    <div class="custom-email-modal">
+                        <div class="form-group">
+                            <label class="control-label">为了保证帐号安全，请验证身份</label>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control input-sm" id="select">
+                                <option>使用邮箱 a***y@msn.com 验证</option>
+                                <option>使用手机 138****1234 验证</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control input-sm" type="text" placeholder="输入6位数验证码">
+                        </div>
+
                     </div>
                 </form>
             </div>
