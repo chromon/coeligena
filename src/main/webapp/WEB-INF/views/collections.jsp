@@ -47,9 +47,9 @@
                                 </h4>
                             </a>
                             <div class="custom-meta-panel">
-                                    <span>
+                                <span>
                                     由 <a href="#" class="custom-meta-item">Ellery</a> 创建
-                                    </span>
+                                </span>
                                 <span class="custom-bull">•</span>
                                 <span>564条内容</span>
                                 <span class="custom-bull">•</span>

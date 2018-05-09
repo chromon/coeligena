@@ -18,7 +18,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-        </div>
+        </div><!-- end navbar title -->
 
         <!-- navbar component auto collapse -->
         <div class="navbar-collapse collapse" id="navbar-main">
@@ -52,7 +52,7 @@
                         </div>
                     </form>
                 </li>
-            </ul>
+            </ul><!-- end navbar left -->
 
             <!-- navbar right -->
             <ul class="nav navbar-nav navbar-right">
@@ -190,7 +190,7 @@
                 <a href="" class="custom-footer-item">
                     <i class="fa fa-cog"></i> 设置
                 </a>
-                <a href="" class="custom-right custom-footer-item">
+                <a href="${pageContext.request.contextPath}/notifications" class="custom-right custom-footer-item">
                     查看全部提醒
                 </a>
             </div>

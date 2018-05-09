@@ -30,105 +30,44 @@
     <div class="row custom-content-margin">
         <div class="col-sm-9">
 
-            <div class="custom-top-header custom-card">
-                我关注的问题（1256）
-            </div>
-
-            <!-- left main feed -->
-            <ul class="media-list">
-                <li id="feed-item-2" class="media custom-story-item custom-card">
-                    <div class="media-left media-top">
-                        <div class="custom-item-scan">
-                            <div class="custom-item-vote-count">23K</div>
-                            <div class="custom-item-vote-count">浏览</div>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <a href="#">
-                            <h4 class="media-heading custom-media-heading">
-                                什么是机器学习？
-                            </h4>
-                        </a>
-
-                        <div class="custom-meta-panel">
-                            <a href="#" class="custom-meta-item">
-                                取消关注
-                            </a>
-                            <span class="custom-bull">•</span>
-                            <span class="custom-meta-item">
-                                    45个回答
-                                </span>
-                            <span class="custom-bull">•</span>
-                            <span class="custom-meta-item">
-                                    5415人关注
-                                </span>
-                        </div>
-                    </div>
-                </li>
-                <li class="media">
-                    <!-- <a href="#" class="btn btn-default btn-md btn-block">加载更多</a> -->
-                    <a href="#" class="btn btn-default btn-lg btn-block">
-                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+            <div class="custom-card">
+                <!-- following header -->
+                <div class="custom-list-header">
+                    <h6 class="custom-list-headerText">我关注的问题</h6>
+                </div><!-- end following header -->
+                <!-- question item -->
+                <div class="custom-feed-item">
+                    <a href="#">
+                        <h4 class="custom-media-heading">
+                            什么是机器学习？
+                        </h4>
                     </a>
-                </li>
-            </ul><!-- end left main feed -->
+                    <div class="custom-meta-panel">
+                        <span>2018-05-08</span>
+                        <span class="custom-bull">•</span>
+                        <span>564个答案</span>
+                        <span class="custom-bull">•</span>
+                        <a href="#" class="custom-meta-item">
+                            5265人关注
+                        </a>
+                    </div>
+                </div><!-- end question item -->
+                <!-- comment pagination -->
+                <div class="custom-pagination">
+                    <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
+                    <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
+                    <button class="custom-pagination-btn custom-btn-plain" type="button">2</button>
+                    <button class="custom-pagination-btn custom-btn-plain" type="button">3</button>
+                    <button class="custom-pagination-btn custom-btn-plain" type="button">4</button>
+                    <span class="custom-pagination-btn">•••</span>
+                    <button class="custom-pagination-btn custom-btn-plain" type="button">12</button>
+                    <button class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
+                </div><!-- end comment pagination -->
+            </div>
         </div>
 
         <!-- sidebar -->
-        <div class="col-sm-3">
-
-            <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
-                <a href="#" class="list-group-item custom-group-item">
-                    <span class="badge custom-badge">8</span>
-                    <i class="fa fa-star"></i> 我的收藏
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-check-circle-o"></i> 我的关注
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <span class="badge custom-badge">13</span>
-                    <i class="fa fa-user-plus"></i> 我的邀请
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-home"></i> 社区服务中心
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-copyright"></i> 版权服务中心
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-pencil-square"></i> 公共编辑动态
-                </a>
-            </div>
-
-            <div class="list-group custom-margin-bottom10 custom-story-item custom-card custom-color-9f">
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-flash"></i> Live
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-book"></i> 书店
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-futbol-o"></i> 圆桌
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-pencil"></i> 专栏
-                </a>
-                <a href="#" class="list-group-item custom-group-item">
-                    <i class="fa fa-btc"></i> 付费编辑
-                </a>
-            </div>
-
-            <div class="custom-footer">
-                <a href="#" target="_blank">${siteInfoDO.siteName}指南 • </a>
-                <a href="#" target="_blank">建议反馈 • </a>
-                <a href="#" target="_blank">移动应用 • </a>
-                <a href="#" target="_blank">加入${siteInfoDO.siteName}</a>
-                <a href="#" target="_blank">${siteInfoDO.siteName}协议 • </a>
-                <a href="#" target="_blank">举报投诉 • </a>
-                <a href="#" target="_blank">联系我们</a><br/>
-                <a href="#" target="_blank">&copy;${siteInfoDO.copyRight}</a>
-            </div>
-        </div><!-- end sidebar -->
+        <%@include file="sidebar.jsp"%>
     </div>
 </div>
 

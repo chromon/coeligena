@@ -361,7 +361,7 @@
                     <span class="badge custom-badge">8</span>
                     关注的话题
                 </a>
-                <a href="" class="list-group-item custom-group-item">
+                <a href="${pageContext.request.contextPath}/column/123" class="list-group-item custom-group-item">
                     <span class="badge custom-badge">33</span>
                     关注的专栏
                 </a>

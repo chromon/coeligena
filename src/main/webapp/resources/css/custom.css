@@ -136,6 +136,13 @@ button:hover {
     border-radius: 3px;
 }
 
+.custom-avatar94 {
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
 .custom-avatar160 {
     height: 160px;
     width: 160px;
@@ -2383,4 +2390,17 @@ ins {
 .custom-email-modal {
     width: 80%;
     margin: auto;
+}
+
+.custom-column-info {
+    padding-top: 15px !important;
+    padding-bottom: 20px !important;
+}
+
+.custom-column-sectionTitle {
+    font-weight: 600;
+    font-synthesis: style;
+    font-size: 16px;
+    line-height: 1.375;
+    padding: 13px 20px;
 }

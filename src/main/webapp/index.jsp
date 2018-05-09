@@ -326,8 +326,7 @@
                                         <span class="custom-pagination-btn">•••</span>
                                         <button class="custom-pagination-btn custom-btn-plain" type="button">12</button>
                                         <button class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
-                                    </div>
-                                    <!-- end comment pagination -->
+                                    </div><!-- end comment pagination -->
                                     <!-- collapse comment -->
                                     <div class="custom-comment-list-action">
                                         <div class="custom-comment-list-collapse">
