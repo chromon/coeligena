@@ -88,7 +88,7 @@
                                 </a>
                             </h2>
                             <!-- feed author info -->
-                            <div class="custom-feed-src-info custom-feed-author-info">
+                            <div class="custom-feed-author-info">
                                 <div class="custom-author-info-content" style="margin-left: 0px;">
                                     <div class="custom-author-info-head">
                                         <a href="#">Ellery</a>
@@ -185,7 +185,7 @@
                                 </a>
                             </h2>
                             <!-- feed author info -->
-                            <div class="custom-feed-src-info custom-feed-author-info">
+                            <div class="custom-feed-author-info">
                                 <div class="custom-author-info-content" style="margin-left: 0px;">
                                     <div class="custom-author-info-head">
                                         <a href="#">Ellery</a>

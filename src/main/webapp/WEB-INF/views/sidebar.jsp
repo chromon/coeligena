@@ -16,7 +16,7 @@
                 <span class="badge custom-badge">8</span>
                 <i class="fa fa-star"></i> 我的收藏
             </a>
-            <a href="${pageContext.request.contextPath}/people/123/following/questions" class="list-group-item custom-group-item">
+            <a href="${pageContext.request.contextPath}/following/questions" class="list-group-item custom-group-item">
                 <i class="fa fa-check-circle-o"></i> 我的关注
             </a>
             <a href="${pageContext.request.contextPath}/question/invited" class="list-group-item custom-group-item">

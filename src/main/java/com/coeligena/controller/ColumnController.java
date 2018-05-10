@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ColumnController {
 
+    @RequestMapping(value = "/following/columns", method = RequestMethod.GET)
+    public String followingColumns(Model model) {
+        return "followingColumns";
+    }
+
     @RequestMapping(value = "/column/{columnId}", method = RequestMethod.GET)
     public String column(@PathVariable int columnId, Model model) {
         return "columns";

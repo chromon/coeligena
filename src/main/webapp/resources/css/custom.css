@@ -2218,6 +2218,12 @@ ins {
     margin-bottom: -4px;
 }
 
+.custom-columnItem-meta {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .custom-searchItem-type {
     display: inline-block;
     white-space: nowrap;

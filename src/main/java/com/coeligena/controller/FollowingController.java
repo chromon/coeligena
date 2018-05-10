@@ -2,7 +2,6 @@ package com.coeligena.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class FollowingController {
 
-    @RequestMapping(value = "/people/{userId}/following/questions", method = RequestMethod.GET)
-    public String following(@PathVariable int userId, Model model) {
+    @RequestMapping(value = "/following/questions", method = RequestMethod.GET)
+    public String following(Model model) {
         return "following";
     }
 }
