@@ -141,7 +141,7 @@
                     <!-- feed -->
                     <div>
                         <h2 class="custom-contentItem-title2">
-                            <a href="${pageContext.request.contextPath}/question/123">
+                            <a href="${pageContext.request.contextPath}/post/123">
                                 JVM符号引用转换直接引用的过程?
                             </a>
                         </h2>

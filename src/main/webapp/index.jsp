@@ -86,7 +86,7 @@
                         <div class="custom-feed-src-info custom-feed-author-info">
                             <!-- avatar image -->
                             <a href="#" id="user-avatar">
-                                <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                <img class="custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
                             </a>
 
                             <div class="custom-author-info-content">

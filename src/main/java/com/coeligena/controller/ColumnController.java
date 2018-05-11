@@ -22,6 +22,11 @@ public class ColumnController {
 
     @RequestMapping(value = "/column/{columnId}", method = RequestMethod.GET)
     public String column(@PathVariable int columnId, Model model) {
-        return "columns";
+        return "column";
+    }
+
+    @RequestMapping(value = "/post/{postId}", method = RequestMethod.GET)
+    public String article(@PathVariable int postId, Model model) {
+        return "post";
     }
 }
