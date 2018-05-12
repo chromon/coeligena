@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-primary custom-margin-right10">
+                        <a href="#" class="btn btn-primary">
                             关注专栏
                         </a>
                     </div>
@@ -183,6 +183,197 @@
                         </div>
                     </div>
                 </div><!-- end post action -->
+                <!-- post index -->
+                <div class="custom-post-index">
+                    <div class="custom-block-title">文章被以下专栏收录</div>
+                    <!-- post header -->
+                    <div class="custom-post-header custom-margin-top20">
+                        <div class="custom-post-author">
+                            <div class="custom-post-authorInfo">
+                                <span>
+                                    <a href="#">
+                                        <img class="custom-avatar38 custom-authorInfo-avatar" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                    </a>
+                                </span>
+                                <div class="custom-post-authorInfo-content">
+                                    <div class="custom-post-authorInfo-head">
+                                        <span class="custom-post-authorInfo-name">深度碎片</span>
+                                    </div>
+                                    <div class="custom-post-authorInfo-detail">
+                                        <div class="custom-authorInfo-badge">
+                                            <div class="custom-authorInfo-badgeText">
+                                                探索深度学习的Intuition
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary">
+                                关注专栏
+                            </a>
+                        </div>
+                    </div><!-- end post header -->
+                </div><!-- end post index -->
+                <!-- post comments -->
+                <div class="custom-comments-container2">
+                    <div class="custom-comments custom-comments-withPagination">
+                        <!-- comment top bar -->
+                        <div class="custom-comments-topbar">
+                            <div class="custom-comments-topbar-title">
+                                <h2>1 条评论</h2>
+                            </div>
+                            <div class="custom-comments-topbar-option">
+                                <button class="custom-btn-plain custom-contentItem-right" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-exchange custom-margin-right5"></i>
+                                        <span>切换为时间排序</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div><!-- end comment top bar -->
+                        <!-- comment list -->
+                        <div class="custom-comment-list">
+                            <!-- comment item -->
+                            <div class="custom-comment-item">
+                                <div>
+                                    <div class="custom-commentItem-meta">
+                                        <span>
+                                            <a href="#">
+                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                            </a>
+                                        </span>
+                                        <span>
+                                            <a class="custom-comment-userLink" href="#">Ellery</a>
+                                        </span>
+                                        <span class="custom-commentItem-time">13 分钟前</span>
+                                    </div>
+                                    <div class="custom-commentItem-content">
+                                        这不是前端日常么。
+                                    </div>
+                                    <div class="custom-commentItem-footer">
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-thumbs-up custom-margin-right5"></i>
+                                                <span>赞</span>
+                                            </span>
+                                        </button>
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-comment custom-margin-right5"></i>
+                                                <span>查看对话</span>
+                                            </span>
+                                        </button>
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-share custom-margin-right5"></i>
+                                                <span>回复</span>
+                                            </span>
+                                        </button>
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-thumbs-down custom-margin-right5"></i>
+                                                <span>踩</span>
+                                            </span>
+                                        </button>
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-flag custom-margin-right5"></i>
+                                                <span>举报</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div><!-- end comment item -->
+                            <!-- comment item divider -->
+                            <div class="custom-comment-list-divider">
+                                <div class="custom-comment-list-dividerLine"></div>
+                                <div class="custom-comment-list-dividerText">
+                                    以上为精选评论
+                                    <i class="fa fa-question-circle"></i>
+                                </div>
+                            </div><!-- end comment item divider -->
+                            <div class="custom-comment-item">
+                                <div>
+                                    <div class="custom-commentItem-meta">
+                                        <span>
+                                            <a href="#">
+                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                            </a>
+                                        </span>
+                                        <span>
+                                            <a class="custom-comment-userLink" href="#">Ellery</a>
+                                        </span>
+                                        <span class="custom-commentItem-time">13 分钟前</span>
+                                    </div>
+                                    <div class="custom-commentItem-content">
+                                        这不是前端日常么。
+                                    </div>
+                                    <div class="custom-commentItem-footer">
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-thumbs-up custom-margin-right5"></i>
+                                                <span>赞</span>
+                                            </span>
+                                        </button>
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-comment custom-margin-right5"></i>
+                                                <span>查看对话</span>
+                                            </span>
+                                        </button>
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-share custom-margin-right5"></i>
+                                                <span>回复</span>
+                                            </span>
+                                        </button>
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-thumbs-down custom-margin-right5"></i>
+                                                <span>踩</span>
+                                            </span>
+                                        </button>
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-flag custom-margin-right5"></i>
+                                                <span>举报</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end comment list -->
+                        <!-- comment pagination -->
+                        <div class="custom-pagination">
+                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
+                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
+                            <button class="custom-pagination-btn custom-btn-plain" type="button">2</button>
+                            <button class="custom-pagination-btn custom-btn-plain" type="button">3</button>
+                            <button class="custom-pagination-btn custom-btn-plain" type="button">4</button>
+                            <span class="custom-pagination-btn">•••</span>
+                            <button class="custom-pagination-btn custom-btn-plain" type="button">12</button>
+                            <button class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
+                        </div><!-- end comment pagination -->
+                        <!-- collapse comment -->
+                        <div class="custom-comment-list-action">
+                            <div class="custom-comment-list-collapse">
+                                <span>1 条评论被折叠</span>
+                                （<a href="">为什么？</a>）
+                            </div>
+                        </div><!-- end collapse comment -->
+                        <!-- comment footer -->
+                        <div class="custom-comments-footer custom-comments-editor">
+                            <div class="form-group" style="margin-bottom: 0px;">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="评论由作者筛选后显示">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button">评论</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div><!-- end comment footer -->
+                    </div>
+                </div><!-- end post comments -->
             </div><!-- end post -->
         </div>
     </div>

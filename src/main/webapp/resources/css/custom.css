@@ -1577,7 +1577,11 @@ ins {
     flex-shrink: 0;
     padding: 12px 20px 10px;
     font-size: 15px;
-    border-bottom: 1px solid #f6f6f6;
+    /*border-bottom: 1px solid #f6f6f6;*/
+}
+
+.custom-comment-item+.custom-comment-item {
+    border-top: 1px solid #f6f6f6;
 }
 
 .custom-commentItem-meta {
@@ -1654,7 +1658,7 @@ ins {
 .custom-comments-footer {
     padding: 12px 20px;
     background: #fff;
-    border-top: 1px solid #ebebeb;
+    border-top: 1px solid #f6f6f6;
 }
 
 .custom-comments-editor {
@@ -1666,6 +1670,7 @@ ins {
     position: relative;
     padding: 16px 0;
     text-align: center;
+    border-top: 1px solid #f6f6f6;
 }
 
 .custom-comment-list-collapse {
@@ -1678,7 +1683,7 @@ ins {
     padding: 16px 20px;
     text-align: center;
     margin: 0 auto;
-    border-bottom: 1px solid #ebebeb;
+    border-top: 1px solid #f6f6f6;
 }
 
 .custom-pagination-btn {
@@ -2576,4 +2581,24 @@ ins {
 
 .custom-topicList .custom-topic:not(:last-child) {
     margin-right: 5px;
+}
+
+.custom-post-index {
+    padding-top: 30px;
+    overflow: hidden;
+}
+
+.custom-block-title {
+    font-weight: 600;
+    font-synthesis: style;
+    line-height: 1.375;
+    font-size: 16px;
+    color: #1a1a1a;
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 12px;
+    margin-top: 40px;
+}
+
+.custom-comments-container2 {
+    margin: 20px 0 30px;
 }
