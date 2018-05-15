@@ -43,7 +43,7 @@
             <a href="#" class="list-group-item custom-group-item">
                 <i class="fa fa-futbol-o"></i> 圆桌
             </a>
-            <a href="#" class="list-group-item custom-group-item">
+            <a href="${pageContext.request.contextPath}/following/columns" class="list-group-item custom-group-item">
                 <i class="fa fa-pencil"></i> 专栏
             </a>
             <a href="#" class="list-group-item custom-group-item">

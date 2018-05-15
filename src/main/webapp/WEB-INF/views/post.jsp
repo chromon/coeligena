@@ -27,7 +27,7 @@
     <div class="container">
         <!-- navbar title -->
         <div class="navbar-header">
-            <a href="#" class="navbar-brand custom-title">${siteInfoDO.siteName}</a>
+            <a href="${pageContext.request.contextPath}/index" class="navbar-brand custom-title">${siteInfoDO.siteName}</a>
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
