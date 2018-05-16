@@ -52,7 +52,7 @@
                         写想法
                     </a>
                 </div>
-                <a href="" class="custom-top-header-navItem-right">草稿</a>
+                <a href="${pageContext.request.contextPath}/draft" class="custom-top-header-navItem-right">草稿</a>
             </div>
 
             <!-- left main feed -->

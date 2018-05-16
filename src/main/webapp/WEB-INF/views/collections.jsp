@@ -30,14 +30,14 @@
     <div class="row custom-content-margin">
         <div class="col-sm-9">
 
-            <ul class="nav nav-tabs custom-story-item custom-card">
-                <li class="active"><a href="#followedCollections" data-toggle="tab">我关注的收藏夹</a></li>
-                <li><a href="#myCollections" data-toggle="tab">我创建的收藏夹</a></li>
-            </ul>
+            <div class="custom-card">
+                <ul class="nav nav-tabs custom-story-item">
+                    <li class="active"><a href="#followedCollections" data-toggle="tab">我关注的收藏夹</a></li>
+                    <li><a href="#myCollections" data-toggle="tab">我创建的收藏夹</a></li>
+                </ul>
 
-            <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade active in" id="followedCollections">
-                    <div class="custom-card">
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="followedCollections">
                         <!-- collections list -->
                         <div class="custom-feed-item">
                             <a href="${pageContext.request.contextPath}/collection/123">
@@ -63,23 +63,23 @@
                             </div>
                         </div><!-- end collections list -->
                     </div>
-                </div>
-                <div class="tab-pane fade" id="myCollections">
-                    <!-- my collections list -->
-                    <div class="custom-feed-item custom-card">
-                        <a href="#">
-                            <h4 class="custom-media-heading">
-                                tech
-                            </h4>
-                        </a>
-                        <div class="custom-meta-panel">
-                            <span>564条内容</span>
-                            <span class="custom-bull">•</span>
-                            <a href="#" class="custom-meta-item">
-                                5265人关注
+                    <div class="tab-pane fade" id="myCollections">
+                        <!-- my collections list -->
+                        <div class="custom-feed-item">
+                            <a href="#">
+                                <h4 class="custom-media-heading">
+                                    tech
+                                </h4>
                             </a>
-                        </div>
-                    </div><!-- end my collections list -->
+                            <div class="custom-meta-panel">
+                                <span>564条内容</span>
+                                <span class="custom-bull">•</span>
+                                <a href="#" class="custom-meta-item">
+                                    5265人关注
+                                </a>
+                            </div>
+                        </div><!-- end my collections list -->
+                    </div>
                 </div>
             </div>
             <div class="custom-card">

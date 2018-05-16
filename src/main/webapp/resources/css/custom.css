@@ -2602,3 +2602,9 @@ ins {
 .custom-comments-container2 {
     margin: 20px 0 30px;
 }
+
+.custom-text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
