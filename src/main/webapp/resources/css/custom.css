@@ -2608,3 +2608,34 @@ ins {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.custom-writeCover-wrapper {
+    background: #f7f8f9;
+    line-height: 192px;
+    color: gray;
+    min-height: 192px;
+    text-align: center;
+}
+
+.custom-writeCover-previewWrapper {
+    height: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+}
+
+.custom-writeCover-uploadInput {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}

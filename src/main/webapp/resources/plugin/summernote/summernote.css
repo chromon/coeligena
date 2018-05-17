@@ -673,7 +673,7 @@
 .note-placeholder {
     position: absolute;
     display: none;
-    color: gray
+    color: #999999;
 }
 
 .note-handle .note-control-selection {

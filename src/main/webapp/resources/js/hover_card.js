@@ -33,3 +33,13 @@ $('#message_bar').webuiPopover({
     arrow: true,
     animation: 'pop'
 });
+
+// publish-panel click card
+$('#publish-btn').webuiPopover({
+    url: '#publish-panel',
+    placement: 'bottom',
+    width: '320',
+    trigger: 'click',
+    arrow: true,
+    animation: 'pop'
+});

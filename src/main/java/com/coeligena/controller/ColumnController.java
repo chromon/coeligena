@@ -29,4 +29,9 @@ public class ColumnController {
     public String article(@PathVariable int postId, Model model) {
         return "post";
     }
+
+    @RequestMapping(value = "/write", method = RequestMethod.GET)
+    public String writeColumns(Model model) {
+        return "write";
+    }
 }

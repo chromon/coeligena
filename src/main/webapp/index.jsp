@@ -43,7 +43,7 @@
                         <i class="fa fa-file-text-o custom-color-9f custom-margin-right5" aria-hidden="true"></i>
                         回答
                     </a>
-                    <a href="" class="custom-top-header-navItem">
+                    <a href="${pageContext.request.contextPath}/write" class="custom-top-header-navItem">
                         <i class="fa fa-pencil-square-o custom-color-9f custom-margin-right5" aria-hidden="true"></i>
                         写文章
                     </a>
@@ -52,7 +52,7 @@
                         写想法
                     </a>
                 </div>
-                <a href="${pageContext.request.contextPath}/draft" class="custom-top-header-navItem-right">草稿</a>
+                <a href="${pageContext.request.contextPath}/draft" class="custom-top-header-navItem-right">草稿（13）</a>
             </div>
 
             <!-- left main feed -->

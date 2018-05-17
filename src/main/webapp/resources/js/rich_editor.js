@@ -47,3 +47,23 @@ $('#ask_note').summernote({
         ['view', ['fullscreen', 'codeview']]
     ]
 });
+
+// write column editor
+$('#write_column').summernote({
+    placeholder: '请输入正文',
+    height: 300,
+    lang: 'zh-CN',
+    minHeight: null,
+    maxHeight: null,
+    focus: true,
+    codemirror: { // codemirror options
+        theme: 'monokai'
+    },
+    toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview']]
+    ]
+});
