@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">选择话题</label>
-                        <select name="topics[]" class="form-control js-example-basic-multiple" multiple="multiple">
+                        <select name="topics" class="form-control js-example-basic-multiple" multiple="multiple">
 
                         </select>
                         <span class="help-block custom-right">话题越精准，越容易让相关领域专业人士看到你的问题</span>

@@ -17,14 +17,32 @@ public class UsersServiceImpl implements UsersService {
 
     private UsersDAO usersDAO;
 
+    /**
+     * 添加用户
+     * @param usersDO 用户对象
+     */
     @Override
     public void saveUsersForSignUp(UsersDO usersDO) {
         this.usersDAO.saveUsers(usersDO);
     }
 
+    /**
+     * 由验证用户 id 查询用户详细信息
+     * @param authUserId 验证用户 id
+     * @return 用户详细信息
+     */
     @Override
     public UsersDO queryUsersByAuthUserId(int authUserId) {
         return this.usersDAO.queryUsersByAuthId(authUserId);
+    }
+
+    /**
+     * 更新用户信息
+     * @param usersDO 用户信息
+     */
+    @Override
+    public void modifyUsers(UsersDO usersDO) {
+        this.usersDAO.updateUsers(usersDO);
     }
 
     @Autowired

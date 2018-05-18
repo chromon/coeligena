@@ -44,7 +44,6 @@ $(document).ready(function() {
 
 function formatRepo(repo) {
     return repo.topicName;
-    // return '<option value="' + repo.id + '" selected>' + repo.topicName + '</option>'
 }
 function formatRepoSelection(repo) {
     return repo.topicName;

@@ -162,7 +162,7 @@ public class WelcomeController {
     }
 
     /**
-     * 登陆处理
+     * 登录处理
      * @param request httpservletrequest
      * @param response httpservletresponse
      * @param signInFormDTO 登陆数据传输对象
@@ -177,9 +177,9 @@ public class WelcomeController {
         HttpSession session = request.getSession(true);
 
         // 存在验证码错误
-        if(this.checkCaptcha) {
+        if (this.checkCaptcha) {
             String captchaCode = (String) session.getAttribute("captchaCode");
-            if(! captchaCode.equals(signInFormDTO.getSignInCaptcha())) {
+            if (! captchaCode.equals(signInFormDTO.getSignInCaptcha())) {
                 model.addAttribute("captchaError", true);
                 return "signin";
             }
@@ -188,13 +188,13 @@ public class WelcomeController {
         // 不存在验证码，无需验证；或存在验证码，同时验证码正确
         AuthUsersDO authUsersDO = authUsersService.queryUserByEmail(
                 signInFormDTO.getAccount());
-        if(authUsersDO != null) {
+        if (authUsersDO != null) {
             // 账户存在
             String signInPassword = signInFormDTO.getSignInPassword();
 
             String salt = authUsersDO.getSalt();
             String password = passwordUtils.checkPassword(salt, signInPassword);
-            if(password.equals(authUsersDO.getPassword())) {
+            if (password.equals(authUsersDO.getPassword())) {
                 // 验证成功
                 // 设置 cookie
                 int maxAge = 30 * 24 * 60 * 60;
@@ -208,7 +208,7 @@ public class WelcomeController {
                 // 传输用户信息到前台
                 UsersDO usersDO = this.usersService.queryUsersByAuthUserId(authUsersDO.getId());
 
-                if(usersDO == null) {
+                if (usersDO == null) {
                     return "error";
                 }
                 UserInfoDTO userInfoDTO = new UserInfoDTO();
@@ -240,7 +240,7 @@ public class WelcomeController {
 
         // 清空 session
         Enumeration<String> em = request.getSession().getAttributeNames();
-        while(em.hasMoreElements()) {
+        while (em.hasMoreElements()) {
             request.getSession().removeAttribute(em.nextElement());
         }
         request.getSession().invalidate();

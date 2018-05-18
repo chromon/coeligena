@@ -24,16 +24,34 @@ public class UsersDAOImpl implements UsersDAO {
         return sessionFactory.getCurrentSession();
     }
 
+    /**
+     * 添加用户
+     * @param usersDO 用户对象
+     */
     @Override
     public void saveUsers(UsersDO usersDO) {
         this.getSession().save(usersDO);
     }
 
+    /**
+     * 由验证用户 id 查询用户详细信息
+     * @param authUserId 验证用户 id
+     * @return 用户详细信息
+     */
     @Override
     public UsersDO queryUsersByAuthId(int authUserId) {
         String sql = "select u from UsersDO u where u.authUserId = :authUserId";
         UsersDO usersDO = (UsersDO) this.getSession().createQuery(sql)
                 .setParameter("authUserId", authUserId).uniqueResult();
         return usersDO;
+    }
+
+    /**
+     * 更新用户信息
+     * @param usersDO 用户信息
+     */
+    @Override
+    public void updateUsers(UsersDO usersDO) {
+        this.getSession().update(usersDO);
     }
 }
