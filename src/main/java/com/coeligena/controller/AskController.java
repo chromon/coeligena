@@ -3,13 +3,8 @@ package com.coeligena.controller;
 import com.coeligena.dto.CreateQuestionDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.ip.IPAddress;
-import com.coeligena.model.AuthUsersDO;
-import com.coeligena.model.QuestionsDO;
-import com.coeligena.model.TopicNodesDO;
-import com.coeligena.model.UsersDO;
-import com.coeligena.service.QuestionsService;
-import com.coeligena.service.TopicNodesService;
-import com.coeligena.service.UsersService;
+import com.coeligena.model.*;
+import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +30,8 @@ public class AskController {
     private TopicNodesService topicNodesService;
     private UsersService usersService;
     private QuestionsService questionsService;
+    private QuestionTagsService questionTagsService;
+    private FeedsService feedsService;
 
     /**
      * 提问时话题自动补全
@@ -65,10 +62,6 @@ public class AskController {
                              @ModelAttribute CreateQuestionDTO cqDTO) {
 
         // 提问 业务操作，数据库持久化
-        System.out.println(cqDTO.getQuestionContent());
-        System.out.println(cqDTO.getQuestionDetail());
-//        System.out.println(cqDTO.getTopics()[0] + "=" +cqDTO.getTopics()[1] + "=" +cqDTO.getTopics()[2]);
-        System.out.println(cqDTO.getAnonymous());
 
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
@@ -93,18 +86,40 @@ public class AskController {
         questionsDO.setQuestionTime(now);
         questionsDO.setUpdateTime(now);
         questionsDO.setQuestionIP(IPAddress.getIpAdrress(request));
+        if (cqDTO.getAnonymous() == null || cqDTO.getAnonymous().equals("")) {
+            cqDTO.setAnonymous("0");
+        }
         questionsDO.setAnonymous(Byte.parseByte(cqDTO.getAnonymous()));
         questionsDO.setUserId(usersDO.getId());
         questionsService.saveQuestion(questionsDO);
 
         // 添加问题标签
+        for (int i = 0; i < cqDTO.getTopics().length; i ++) {
+            QuestionTagsDO  questionTagsDO = new QuestionTagsDO();
+            questionTagsDO.setQuestionId(questionsDO.getId());
+            questionTagsDO.setQuestionTopicId(Integer.parseInt(cqDTO.getTopics()[i]));
+            questionTagsService.saveQuestionTag(questionTagsDO);
+        }
 
         // 添加问题日志
+        // TODO
 
         // 添加动态
+        FeedsDO feedsDO = new FeedsDO();
+        // 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同回答和回答问题对应的是回答ID
+        feedsDO.setFeedsId(questionsDO.getId());
+        // 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题
+        byte feedsType = 1;
+        feedsDO.setFeedsType(feedsType);
+        feedsDO.setFeedsTime(now);
+        feedsDO.setFeedsUserId(usersDO.getId());
+        feedsService.saveFeeds(feedsDO);
+
+        // 跳转到问题页信息
 
         // 更新全局用户信息
         userInfoDTO.setUsersDO(usersDO);
+        request.getSession().setAttribute("userInfoDTO", userInfoDTO);
 
         return "question";
     }
@@ -122,5 +137,15 @@ public class AskController {
     @Autowired
     public void setQuestionsService(QuestionsService questionsService) {
         this.questionsService = questionsService;
+    }
+
+    @Autowired
+    public void setQuestionTagsService(QuestionTagsService questionTagsService) {
+        this.questionTagsService = questionTagsService;
+    }
+
+    @Autowired
+    public void setFeedsService(FeedsService feedsService) {
+        this.feedsService = feedsService;
     }
 }
