@@ -17,6 +17,9 @@ public class QuestionController {
 
     @RequestMapping(value = "/question/{questionId}", method = RequestMethod.GET)
     public String question(@PathVariable int questionId, Model model) {
+
+
+
         return "question";
     }
 

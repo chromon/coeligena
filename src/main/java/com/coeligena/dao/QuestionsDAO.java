@@ -16,4 +16,11 @@ public interface QuestionsDAO {
      * @param questionsDO 问题对象
      */
     void addQuestion(QuestionsDO questionsDO);
+
+    /**
+     * 由问题 id 查询问题详情
+     * @param questionId 问题 id
+     * @return 问题
+     */
+    QuestionsDO queryQuestionById(int questionId);
 }

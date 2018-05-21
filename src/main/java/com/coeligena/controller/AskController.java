@@ -115,13 +115,11 @@ public class AskController {
         feedsDO.setFeedsUserId(usersDO.getId());
         feedsService.saveFeeds(feedsDO);
 
-        // 跳转到问题页信息
-
         // 更新全局用户信息
         userInfoDTO.setUsersDO(usersDO);
         request.getSession().setAttribute("userInfoDTO", userInfoDTO);
 
-        return "question";
+        return "redirect:/question/" + questionsDO.getId();
     }
 
     @Autowired

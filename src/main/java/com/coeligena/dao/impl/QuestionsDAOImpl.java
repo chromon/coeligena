@@ -32,4 +32,12 @@ public class QuestionsDAOImpl implements QuestionsDAO{
     public void addQuestion(QuestionsDO questionsDO) {
         this.getSession().save(questionsDO);
     }
+
+    @Override
+    public QuestionsDO queryQuestionById(int questionId) {
+        String sql = "select q from QuestionsDO q where q.id = :questionId";
+        QuestionsDO questionsDO = (QuestionsDO) this.getSession().createQuery(sql)
+                .setParameter("questionId", questionId).uniqueResult();
+        return questionsDO;
+    }
 }
