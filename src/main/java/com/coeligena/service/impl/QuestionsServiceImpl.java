@@ -26,6 +26,11 @@ public class QuestionsServiceImpl implements QuestionsService {
         this.questionsDAO.addQuestion(questionsDO);
     }
 
+    @Override
+    public QuestionsDO queryQuestionById(int questionId) {
+        return questionsDAO.queryQuestionById(questionId);
+    }
+
     @Autowired
     public void setQuestionsDAO(QuestionsDAO questionsDAO) {
         this.questionsDAO = questionsDAO;

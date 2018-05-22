@@ -55,12 +55,13 @@
                             </div>
                         </div><!-- end question header tags -->
                         <h1 class="custom-question-header-title">
-                            JVM符号引用转换直接引用的过程?
+                            <%--JVM符号引用转换直接引用的过程?--%>
+                            ${questionsDO.questionContent}
                         </h1>
                         <!-- question header details -->
                         <div class="custom-question-header-detail">
                             <div class="custom-question-rich-text">
-                                <span>Sun从SPARC处理器、Solaris系统到服务器包办；IBM从PowerPC处理器、(系统?)到服务器也是包办，两个在市场角度现在看来都失败了。同样是包办的苹果从处理器(A系列)，操作系统(ios、osx)到设备(iphone、mac)，为什么苹果如此成功？</span>
+                                <span>${questionsDO.questionDetail}</span>
                                 <button class="custom-contentItem-more custom-btn-plain" type="button">
                                     <span class="custom-margin-right5">显示全部</span>
                                     <i class="fa fa-chevron-down"></i>

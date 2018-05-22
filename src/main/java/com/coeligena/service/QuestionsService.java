@@ -15,4 +15,6 @@ public interface QuestionsService {
      * @param questionsDO 问题对象
      */
     void saveQuestion(QuestionsDO questionsDO);
+
+    QuestionsDO queryQuestionById(int questionId);
 }
