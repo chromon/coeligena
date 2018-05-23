@@ -21,3 +21,5 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/select2/select2.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/skeleton_screen.css">
+

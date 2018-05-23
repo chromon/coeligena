@@ -1,0 +1,63 @@
+.skeleton {
+    padding: 10px 0 10px;
+}
+
+.skeleton .skeleton-head,
+.skeleton .skeleton-title,
+.skeleton .skeleton-content,
+.skeleton .skeleton-detail,
+.skeleton .skeleton-detail2 {
+
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #f6f6f6 18%, #eeeeee 33%);
+    background-size: 20rem 20rem;
+    animation: skeleton-stripes 1s linear infinite;
+}
+
+@keyframes skeleton-stripes {
+    from {
+        background-position: 0 0 ;
+    }
+    to {
+        background-position: 20rem 0;
+    }
+}
+
+.skeleton-head {
+    width: 40px;
+    height: 40px;
+    float: left;
+    border-radius: 3px;
+}
+
+.skeleton-body {
+    margin-left: 50px;
+}
+
+.skeleton-title {
+    margin-top: 5px;
+    max-width: 50%;
+    height: 10px;
+    border-radius: 3px;
+}
+
+.skeleton-content {
+    width: 35%;
+    height: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+.skeleton-detail {
+    width: 75%;
+    height: 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.skeleton-detail2 {
+    width: 55%;
+    height: 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+}

@@ -28,6 +28,74 @@
 <!-- navbar -->
 <%@include file="WEB-INF/views/navbar.jsp"%>
 
+<!-- skeleton screen -->
+<div class="container" style="display: none;">
+    <div class="pageContent row custom-content-margin">
+        <div class="col-sm-9">
+            <div class="custom-card custom-feed-item">
+                <div class="skeleton">
+                    <div class="skeleton-head"></div>
+                    <div class="skeleton-body">
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-content"></div>
+                    </div>
+                    <div class="skeleton-detail"></div>
+                    <div class="skeleton-detail2"></div>
+                </div>
+            </div>
+            <div class="custom-card custom-feed-item">
+                <div class="skeleton">
+                    <div class="skeleton-head"></div>
+                    <div class="skeleton-body">
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-content"></div>
+                    </div>
+                    <div class="skeleton-detail"></div>
+                    <div class="skeleton-detail2"></div>
+                </div>
+            </div>
+            <div class="custom-card custom-feed-item">
+                <div class="skeleton">
+                    <div class="skeleton-head"></div>
+                    <div class="skeleton-body">
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-content"></div>
+                    </div>
+                    <div class="skeleton-detail"></div>
+                    <div class="skeleton-detail2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- skeleton scree sidebar -->
+        <div class="col-sm-3 custom-sidebar-padding">
+            <div class="sidebar_inner">
+                <div class="custom-margin-bottom10 custom-feed-item custom-card custom-color-9f">
+                    <div class="skeleton">
+                        <div class="skeleton-detail" style="margin-top: 10px;"></div>
+                        <div class="skeleton-detail" style="width: 55%"></div>
+                        <div class="skeleton-detail"></div>
+                        <div class="skeleton-detail" style="width: 55%"></div>
+                        <div class="skeleton-detail"></div>
+                        <div class="skeleton-detail" style="width: 55%"></div>
+                    </div>
+                </div>
+                <div class="custom-margin-bottom10 custom-feed-item custom-card custom-color-9f">
+                    <div class="skeleton">
+                        <div class="skeleton-detail" style="margin-top: 10px;"></div>
+                        <div class="skeleton-detail" style="width: 55%"></div>
+                        <div class="skeleton-detail"></div>
+                        <div class="skeleton-detail" style="width: 55%"></div>
+                        <div class="skeleton-detail"></div>
+                        <div class="skeleton-detail" style="width: 55%"></div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end skeleton scree sidebar -->
+    </div>
+</div>
+
+
 <!-- main content -->
 <div class="container">
     <div class="pageContent row custom-content-margin">
