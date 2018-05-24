@@ -13,5 +13,10 @@ import java.util.List;
  */
 public interface TopicNodesDAO {
 
+    /**
+     * 由标签名称查询标签
+     * @param topicName 标签名称
+     * @return 查找到的标签列表
+     */
     List<TopicNodesDO> queryTopicNodes(String topicName);
 }

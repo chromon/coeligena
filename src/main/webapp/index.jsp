@@ -29,7 +29,7 @@
 <%@include file="WEB-INF/views/navbar.jsp"%>
 
 <!-- skeleton screen -->
-<div class="container" style="display: none;">
+<div class="container" id="skeleton_screen">
     <div class="pageContent row custom-content-margin">
         <div class="col-sm-9">
             <div class="custom-card custom-feed-item">
@@ -93,11 +93,11 @@
             </div>
         </div><!-- end skeleton scree sidebar -->
     </div>
-</div>
+</div><!-- end skeleton screen -->
 
 
 <!-- main content -->
-<div class="container">
+<div class="container" id="original_page" style="display: none;">
     <div class="pageContent row custom-content-margin">
         <div id="centerContent" class="col-sm-9">
 

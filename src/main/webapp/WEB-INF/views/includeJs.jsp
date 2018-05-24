@@ -32,5 +32,6 @@
 <script src="<%=request.getContextPath()%>/resources/js/report_tree.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/js/back_to_top.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/js/rich_editor.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/skeleton_screen.js" type="text/javascript"></script>
 
 

@@ -2,9 +2,12 @@ package com.coeligena.service.impl;
 
 import com.coeligena.dao.QuestionTagsDAO;
 import com.coeligena.model.QuestionTagsDO;
+import com.coeligena.model.TopicNodesDO;
 import com.coeligena.service.QuestionTagsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -20,6 +23,11 @@ public class QuestionTagsServiceImpl implements QuestionTagsService {
     @Override
     public void saveQuestionTag(QuestionTagsDO questionTagsDO) {
         this.questionTagsDAO.addQuestionTag(questionTagsDO);
+    }
+
+    @Override
+    public List<TopicNodesDO> queryQuestionTagByQid(int questionId) {
+        return this.questionTagsDAO.queryQuestionTagsByQid(questionId);
     }
 
     @Autowired

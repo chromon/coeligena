@@ -25,6 +25,11 @@ public class TopicNodesDAOImpl implements TopicNodesDAO {
         return sessionFactory.getCurrentSession();
     }
 
+    /**
+     * 由标签名称查询标签
+     * @param topicName 标签名称
+     * @return 查找到的标签列表
+     */
     @Override
     @SuppressWarnings("unchecked")
     public List<TopicNodesDO> queryTopicNodes(String topicName) {

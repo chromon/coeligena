@@ -1,6 +1,9 @@
 package com.coeligena.service;
 
 import com.coeligena.model.QuestionTagsDO;
+import com.coeligena.model.TopicNodesDO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,11 @@ public interface QuestionTagsService {
      * @param questionTagsDO 问题标签
      */
     void saveQuestionTag(QuestionTagsDO questionTagsDO);
+
+    /**
+     * 由问题 id 查询问题标签
+     * @param questionId 待查询问题 id
+     * @return 问题标签列表
+     */
+    List<TopicNodesDO> queryQuestionTagByQid(int questionId);
 }

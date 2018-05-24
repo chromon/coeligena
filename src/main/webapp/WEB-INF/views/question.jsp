@@ -37,21 +37,24 @@
                         <!-- question header tags -->
                         <div class="custom-question-header-tags">
                             <div class="custom-question-header-topics">
+
+                                <c:forEach var="questionTag" items="${questionTagsList}">
                                 <div class="custom-question-topic custom-tag">
-                                    <a href="">人工智能</a>
+                                    <a href="">${questionTag.topicName}</a>
                                 </div>
-                                <div class="custom-question-topic custom-tag">
-                                    <a href="">CPU</a>
-                                </div>
-                                <div class="custom-question-topic custom-tag">
-                                    <a href="">AI芯片</a>
-                                </div>
-                                <div class="custom-question-topic custom-tag">
-                                    <a href="">Java</a>
-                                </div>
-                                <div class="custom-question-topic custom-tag">
-                                    <a href="">JVM</a>
-                                </div>
+                                </c:forEach>
+                                <%--<div class="custom-question-topic custom-tag">--%>
+                                    <%--<a href="">CPU</a>--%>
+                                <%--</div>--%>
+                                <%--<div class="custom-question-topic custom-tag">--%>
+                                    <%--<a href="">AI芯片</a>--%>
+                                <%--</div>--%>
+                                <%--<div class="custom-question-topic custom-tag">--%>
+                                    <%--<a href="">Java</a>--%>
+                                <%--</div>--%>
+                                <%--<div class="custom-question-topic custom-tag">--%>
+                                    <%--<a href="">JVM</a>--%>
+                                <%--</div>--%>
                             </div>
                         </div><!-- end question header tags -->
                         <h1 class="custom-question-header-title">
