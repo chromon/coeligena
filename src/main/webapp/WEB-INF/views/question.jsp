@@ -79,14 +79,14 @@
                                 <button class="Button NumberBoard-item Button--plain" type="button" data-reactid="95">
                                     <div class="NumberBoard-itemInner">
                                         <span class="NumberBoard-name" data-reactid="96">关注者</span>
-                                        <span class="NumberBoard-value" data-reactid="97">738</span>
+                                        <span class="NumberBoard-value" data-reactid="97">${questionsDO.followerCount}</span>
                                     </div>
                                 </button>
                                 <div class="NumberBoard-divider" data-reactid="98"></div>
                                 <div class="NumberBoard-item" data-reactid="99">
                                     <div class="NumberBoard-itemInner">
                                         <div class="NumberBoard-name" data-reactid="100">被浏览</div>
-                                        <div class="NumberBoard-value" data-reactid="101">264945</div>
+                                        <div class="NumberBoard-value" data-reactid="101">${questionsDO.viewCount}</div>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                 <button class="custom-contentItem-action custom-btn-plain" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-comment custom-margin-right5"></i>
-                                        8 条评论
+                                        ${questionsDO.commentCount} 条评论
                                     </span>
                                 </button>
                                 <div class="custom-drop-option2">
