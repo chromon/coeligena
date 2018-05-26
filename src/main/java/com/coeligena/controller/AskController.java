@@ -109,7 +109,7 @@ public class AskController {
         // 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同回答和回答问题对应的是回答ID
         feedsDO.setFeedsId(questionsDO.getId());
         // 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题
-        byte feedsType = 1;
+        byte feedsType = 4;
         feedsDO.setFeedsType(feedsType);
         feedsDO.setFeedsTime(now);
         feedsDO.setFeedsUserId(usersDO.getId());

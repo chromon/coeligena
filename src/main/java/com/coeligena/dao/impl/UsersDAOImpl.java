@@ -54,4 +54,16 @@ public class UsersDAOImpl implements UsersDAO {
     public void updateUsers(UsersDO usersDO) {
         this.getSession().update(usersDO);
     }
+
+    /**
+     * 由用户 id 查询用户详细信息
+     * @param userId 用户 ic
+     * @return 用户信息
+     */
+    public UsersDO queryUserByUserId(int userId) {
+        String sql = "select u from UsersDO u where u.id = :userId";
+        UsersDO usersDO = (UsersDO) this.getSession().createQuery(sql)
+                .setParameter("userId", userId).uniqueResult();
+        return usersDO;
+    }
 }

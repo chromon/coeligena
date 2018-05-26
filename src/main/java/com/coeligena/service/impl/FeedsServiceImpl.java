@@ -6,6 +6,8 @@ import com.coeligena.service.FeedsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *     动态信息业务实现类
@@ -24,6 +26,11 @@ public class FeedsServiceImpl implements FeedsService {
     @Override
     public void saveFeeds(FeedsDO feedsDO) {
         this.feedsDAO.addFeeds(feedsDO);
+    }
+
+    @Override
+    public List<FeedsDO> queryAllFeeds() {
+        return feedsDAO.queryFeeds();
     }
 
     @Autowired

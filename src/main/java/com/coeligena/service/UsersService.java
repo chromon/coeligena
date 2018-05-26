@@ -29,4 +29,11 @@ public interface UsersService {
      * @param usersDO 用户信息
      */
     void modifyUsers(UsersDO usersDO);
+
+    /**
+     * 由用户 id 查询用户详细信息
+     * @param userId 用户 ic
+     * @return 用户信息
+     */
+    UsersDO queryUserByUserId(int userId);
 }

@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -31,5 +32,16 @@ public class FeedsDAOImpl implements FeedsDAO {
     @Override
     public void addFeeds(FeedsDO feedsDO) {
         this.getSession().save(feedsDO);
+    }
+
+    /**
+     * 查询全部动态
+     * @return 动态列表
+     */
+    @Override
+    public List<FeedsDO> queryFeeds() {
+        String sql = "from FeedsDO";
+        List<FeedsDO> feedsList =  this.getSession().createQuery(sql).list();
+        return feedsList;
     }
 }

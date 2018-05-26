@@ -125,6 +125,81 @@
 
             <!-- left main feed -->
             <div>
+                <c:forEach var="feedsDTO" items="${feedsDTOList}">
+                <div class="custom-card custom-feed-item">
+                    <a href="" class="custom-feed-item-right">
+                        <i class="fa fa-times"></i>
+                    </a>
+                    <!-- feed -->
+                    <div>
+                        <!-- feed status -->
+                        <div class="custom-feed-src-status">
+                            <span>
+                                <a href="#">Ellery</a>
+                                添加了问题
+                                <!-- collect article -->
+                                <!-- 关注了问题 -->
+                                <!-- collect article -->
+                                <!-- 关注了问题 -->
+                                <!-- collect answer -->
+                                <!-- 收藏了回答 -->
+                                <!-- collect article -->
+                                <!-- 收藏了文章 -->
+                            </span>
+                            <span> · </span>
+                            ${feedsDTO.questionsDO.questionTime}
+                        </div><!-- end feed status -->
+
+                        <!-- feed detail -->
+                        <div>
+                            <h2 class="custom-contentItem-title">
+                                <a href="">${feedsDTO.questionsDO.questionContent}</a>
+                            </h2>
+
+                            <!-- feed content -->
+                            <div class="custom-rich-content">
+                                <div>
+                                    <div class="custom-contentItem-actions">
+                                        <span>
+                                            <button type="button" class="custom-btn btn-outline-primary">关注问题</button>
+                                        </span>
+                                        <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-comment custom-margin-right5"></i>
+                                                ${feedsDTO.questionsDO.commentCount} 条评论
+                                            </span>
+                                        </button>
+                                        <div class="custom-drop-option2">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                <i class="fa fa-paper-plane"></i> 分享
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">复制链接</a></li>
+                                                <li><a href="#">新浪微博</a></li>
+                                                <li><a href="#">扫一扫</a></li>
+                                            </ul>
+                                        </div>
+                                        <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-align-left custom-margin-right5"></i>
+                                                ${feedsDTO.questionsDO.answerCount} 个回答
+                                            </span>
+                                        </button>
+                                        <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <span class="custom-margin-right5">收起</span>
+                                                <i class="fa fa-chevron-up"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div><!-- end feed content -->
+
+                        </div><!-- feed detail -->
+                    </div>
+                    <!-- end feed -->
+                </div>
+                </c:forEach>
                 <!-- feed item -->
                 <div class="custom-card custom-feed-item">
                     <a href="" class="custom-feed-item-right">
@@ -451,22 +526,6 @@
 
                             <!-- feed content -->
                             <div class="custom-rich-content">
-                                <div class="custom-answerItem-extraInfo">
-                                    <span class="custom-voters">
-                                        <a href="">1 人赞同了该回答</a>
-                                    </span>
-                                </div>
-                                <div class="custom-rich-content-inner">
-                                    符号引用是只包含语义信息，不涉及具体实现的；而解析（resolve）过后的直接引用则是与具体实现息息相关的。
-                                    所以当谈及某个符号引用被resolve成怎样的直接引用时，必须要结合某个具体实现来讨论才行。
-                                    <button class="custom-contentItem-more custom-btn-plain" type="button">
-                                        <span class="custom-margin-right5">阅读全文</span>
-                                        <i class="fa fa-chevron-down"></i>
-                                    </button>
-                                </div>
-                                <div class="custom-contentItem-time">
-                                    <a href="#">编辑于 12:23</a>
-                                </div>
                                 <div>
                                     <div class="custom-contentItem-actions">
                                         <span>

@@ -45,6 +45,11 @@ public class UsersServiceImpl implements UsersService {
         this.usersDAO.updateUsers(usersDO);
     }
 
+    @Override
+    public UsersDO queryUserByUserId(int userId) {
+        return this.usersDAO.queryUserByUserId(userId);
+    }
+
     @Autowired
     public void setUsersDAO(UsersDAO usersDAO) {
         this.usersDAO = usersDAO;

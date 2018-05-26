@@ -2,6 +2,8 @@ package com.coeligena.dao;
 
 import com.coeligena.model.FeedsDO;
 
+import java.util.List;
+
 /**
  * <p>
  *     动态信息接口
@@ -15,4 +17,10 @@ public interface FeedsDAO {
      * @param feedsDO 动态
      */
     void addFeeds(FeedsDO feedsDO);
+
+    /**
+     * 查询全部动态
+     * @return 动态列表
+     */
+    List<FeedsDO> queryFeeds();
 }
