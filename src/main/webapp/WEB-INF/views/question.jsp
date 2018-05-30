@@ -37,28 +37,14 @@
                         <!-- question header tags -->
                         <div class="custom-question-header-tags">
                             <div class="custom-question-header-topics">
-
                                 <c:forEach var="questionTag" items="${questionTagsList}">
                                 <div class="custom-question-topic custom-tag">
                                     <a href="">${questionTag.topicName}</a>
                                 </div>
                                 </c:forEach>
-                                <%--<div class="custom-question-topic custom-tag">--%>
-                                    <%--<a href="">CPU</a>--%>
-                                <%--</div>--%>
-                                <%--<div class="custom-question-topic custom-tag">--%>
-                                    <%--<a href="">AI芯片</a>--%>
-                                <%--</div>--%>
-                                <%--<div class="custom-question-topic custom-tag">--%>
-                                    <%--<a href="">Java</a>--%>
-                                <%--</div>--%>
-                                <%--<div class="custom-question-topic custom-tag">--%>
-                                    <%--<a href="">JVM</a>--%>
-                                <%--</div>--%>
                             </div>
                         </div><!-- end question header tags -->
                         <h1 class="custom-question-header-title">
-                            <%--JVM符号引用转换直接引用的过程?--%>
                             ${questionsDO.questionContent}
                         </h1>
                         <!-- question header details -->
@@ -209,9 +195,11 @@
                 </div><!-- end editor footer -->
             </div><!-- end editor -->
 
+            <c:if test="${fromAnswer}">
             <div class="custom-card">
                 <a href="" class="custom-question-more">查看全部3287个回答</a>
             </div>
+            </c:if>
 
             <!-- left main feed -->
             <div>
@@ -527,6 +515,8 @@
 
         <!-- sidebar -->
         <div class="col-sm-3 custom-sidebar-padding">
+
+            <c:if test="${fromAnswer}">
             <!-- answer author -->
             <div class="custom-card">
                 <div class="custom-card-header">
@@ -609,6 +599,8 @@
                     </div>
                 </div>
             </div><!-- end answer author -->
+            </c:if>
+
             <!-- similar question -->
             <div class="custom-card">
                 <div class="custom-card-header">

@@ -36,6 +36,7 @@ public class QuestionController {
 
         model.addAttribute("questionsDO", questionsDO);
         model.addAttribute("questionTagsList", questionTagsList);
+        model.addAttribute("fromAnswer", false);
         return "question";
     }
 

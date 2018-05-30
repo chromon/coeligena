@@ -153,7 +153,9 @@
                         <!-- feed detail -->
                         <div>
                             <h2 class="custom-contentItem-title">
-                                <a href="">${feedsDTO.questionsDO.questionContent}</a>
+                                <a href="${pageContext.request.contextPath}/question/${feedsDTO.questionsDO.id}">
+                                    ${feedsDTO.questionsDO.questionContent}
+                                </a>
                             </h2>
 
                             <!-- feed content -->
