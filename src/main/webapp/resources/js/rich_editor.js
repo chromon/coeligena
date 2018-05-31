@@ -5,7 +5,6 @@
 
 // write answer editor
 function write_answer() {
-    $('#answer_wrap').removeClass('hide');
     $('#answer_note').summernote({
         placeholder: '写回答…',
         height: 110,
@@ -24,9 +23,11 @@ function write_answer() {
             ['view', ['fullscreen', 'codeview']]
         ]
     });
+    $('#answer_wrap').fadeIn('3000');
 }
 $('#write_answer_top').click(write_answer);
 $('#write_answer_bottom').click(write_answer);
+$('#write_answers_none').click(write_answer);
 
 // ask editor
 $('#ask_note').summernote({

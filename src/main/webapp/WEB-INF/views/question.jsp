@@ -142,7 +142,7 @@
     <div class="row">
         <div class="col-sm-9">
             <!-- editor -->
-            <div id="answer_wrap" class="custom-card custom-editor hide">
+            <div id="answer_wrap" class="custom-card custom-editor" style="display: none">
                 <!-- end editor header -->
                 <div class="custom-editor-header">
                     <div class="custom-author-info">
@@ -203,6 +203,18 @@
 
             <!-- left main feed -->
             <div>
+                <!-- no answers -->
+                <div class="custom-card custom-feed-item custom-answers-none">
+                    <div class="custom-empty-state">
+                        <div class="custom-empty-state-inner">
+                            <i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
+                            <div>
+                                暂时还没有回答，开始
+                                <a id="write_answers_none" href="javascript: void(0);">写第一个回答</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- no answers -->
                 <!-- feed item -->
                 <div class="custom-card custom-feed-item">
                     <a href="" class="custom-feed-item-right">
