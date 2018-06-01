@@ -203,6 +203,29 @@
 
             <!-- left main feed -->
             <div>
+                <!-- question invitation -->
+                <div class="custom-card custom-question-invitation">
+                    <div class="custom-top-bar">
+                        <div class="custom-top-bar-title">
+                            <div class="custom-invitation-title">
+                                <span>你可以邀请下面用户，快速获得回答</span>
+                            </div>
+                        </div>
+                        <div class="custom-top-bar-options">
+                            <div class="custom-invitation-input">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-sm" size="40" placeholder="搜索你感兴趣的内容...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-sm" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-invitation-content"></div>
+                </div><!-- end question invitation -->
                 <!-- no answers -->
                 <div class="custom-card custom-feed-item custom-answers-none">
                     <div class="custom-empty-state">
@@ -214,7 +237,7 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- no answers -->
+                </div><!-- end no answers -->
                 <!-- feed item -->
                 <div class="custom-card custom-feed-item">
                     <a href="" class="custom-feed-item-right">

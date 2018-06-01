@@ -2665,3 +2665,66 @@ ins {
     color: #8590a6;
     text-align: center;
 }
+
+.custom-question-invitation {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+}
+
+.custom-top-bar {
+    background: #fff;
+    border-bottom: 1px solid #f6f6f6;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+}
+
+.custom-top-bar-title {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.custom-invitation-title {
+    font-size: 16px;
+    font-weight: 600;
+    font-synthesis: style;
+}
+
+.custom-invitation-input {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 180px;
+    height: 34px;
+    padding: 4px 10px;
+    font-size: 14px;
+    background: #fff;
+    /*border: 1px solid #ebebeb;*/
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: background .2s,border .2s;
+}
+
+.custom-invitation-content {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
