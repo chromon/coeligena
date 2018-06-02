@@ -213,18 +213,49 @@
                         </div>
                         <div class="custom-top-bar-options">
                             <div class="custom-invitation-input">
-                                <div class="input-group">
-                                    <input type="text" class="form-control input-sm" size="40" placeholder="搜索你感兴趣的内容...">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default btn-sm" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                </div>
+                                <input type="text" class="form-control input-sm" size="40" placeholder="搜索你感兴趣的内容...">
                             </div>
                         </div>
                     </div>
-                    <div class="custom-invitation-content"></div>
+                    <div class="custom-invitation-content">
+                        <div>
+                            <!-- invitation list item -->
+                            <div class="custom-feed-item">
+                                <div class="custom-contentItem-main">
+                                    <div class="custom-contentItem-image">
+                                        <a href="">
+                                            <img class="custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                        </a>
+                                    </div>
+                                    <div class="custom-contentItem-head">
+                                        <h2 class="custom-contentItem-title">
+                                            <a href="${pageContext.request.contextPath}/column/123">
+                                                机器学习算法与自然语言处理
+                                            </a>
+                                        </h2>
+                                        <div class="custom-contentItem-meta">
+                                            <div class="custom-columnItem-meta">
+                                                <div class="custom-contentItem-status">
+                                                    <span>在话题 </span>
+                                                    <a href="">世界贸易组织（WTO）</a>
+                                                    <span>下有</span>
+                                                    <a href="">3</a>
+                                                    <span>个回答</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-contentItem-extra">
+                                        <button class="custom-btn btn-outline-primary" type="button">邀请回答</button>
+                                    </div>
+                                </div>
+                            </div><!-- end invitation list item -->
+                            <!-- more invitation -->
+                            <div class="custom-feed-item custom-invitation-more">
+                                <a href="">更多推荐结果</a>
+                            </div><!-- end more invitation -->
+                        </div>
+                    </div>
                 </div><!-- end question invitation -->
                 <!-- no answers -->
                 <div class="custom-card custom-feed-item custom-answers-none">

@@ -2262,6 +2262,12 @@ ins {
     font-size: 14px;
 }
 
+.custom-contentItem-status a {
+    margin-top: 5px;
+    color: #8590a6;
+    font-size: 14px;
+}
+
 .custom-searchItem-statusLink, .custom-searchItem-statusLink a {
     font-size: 14px;
     color: #8590a6;
@@ -2727,4 +2733,20 @@ ins {
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.custom-invitation-content .custom-contentItem-title a {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.custom-invitation-more {
+    width: 100%;
+    text-align: center;
+}
+
+.custom-invitation-more a {
+    font-size: 15px;
+    color: #8590a6;
+    text-align: center;
 }
