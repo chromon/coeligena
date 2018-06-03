@@ -190,7 +190,7 @@
                             </ul>
                         </div>
 
-                        <a href="#" class="btn btn-primary">提交答案</a>
+                        <a id="post_answer_btn" href="javascript: void(0);" class="btn btn-primary">提交答案</a>
                     </div>
                 </div><!-- end editor footer -->
             </div><!-- end editor -->

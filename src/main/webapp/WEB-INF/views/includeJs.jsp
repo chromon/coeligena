@@ -33,5 +33,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/back_to_top.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/js/rich_editor.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/js/skeleton_screen.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/post_answer.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/console.js" type="text/javascript"></script>
 
 

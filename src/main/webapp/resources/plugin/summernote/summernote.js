@@ -71,7 +71,7 @@ var renderer = {
 };
 
 var editor = renderer.create('<div class="note-editor note-frame panel" style="margin-bottom: 0px"/>');
-var toolbar = renderer.create('<div class="note-toolbar-wrapper panel-default"><div class="note-toolbar panel-heading" role="toolbar" style="background-color: white;"></div></div>');
+var toolbar = renderer.create('<div class="note-toolbar-wrapper panel-default" style="border-top: 1px solid #ddd;"><div class="note-toolbar panel-heading" role="toolbar" style="background-color: white;"></div></div>');
 var editingArea = renderer.create('<div class="note-editing-area"/>');
 var codable = renderer.create('<textarea class="note-codable" role="textbox" aria-multiline="true"/>');
 var editable = renderer.create('<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"/>');
