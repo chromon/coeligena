@@ -143,19 +143,20 @@
         <div class="col-sm-9">
             <!-- editor -->
             <div id="answer_wrap" class="custom-card custom-editor" style="display: none">
+
                 <!-- end editor header -->
                 <div class="custom-editor-header">
                     <div class="custom-author-info">
                         <span class="custom-author-avatar">
                             <a href="#">
-                                <img class="media-object custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
+                                <img id="answer_img" class="media-object custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
                             </a>
                         </span>
                         <div class="custom-author-content">
                             <div class="custom-author-content-head">
-                                <span class="custom-author-name">Bone</span>
+                                <span id="answer_fullname" class="custom-author-name">Bone</span>
                             </div>
-                            <div class="custom-author-content-detail">
+                            <div id="autograph_wrap" class="custom-author-content-detail">
                                 <div class="custom-author-badge">
                                     <span class="custom-author-bio">。</span>
                                     <a href="#" class="custom-topic-bios">编辑话题经验</a>
@@ -163,7 +164,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="custom-toggle-anonymous">使用匿名身份回答</a>
+                    <a id="anonymous_btn" data-toggle="modal" data-target="#anonymousModal" href="" class="custom-toggle-anonymous">使用匿名身份回答</a>
                 </div><!-- end editor header -->
                 <!-- editor note -->
                 <div id="answer_note"></div><!-- end editor note -->
@@ -702,6 +703,8 @@
     </div>
     <!-- end answer main -->
 </div>
+<!-- modal -->
+<%@include file="anonymousModal.jsp"%>
 
 <!-- js -->
 <%@include file="includeJs.jsp"%>
