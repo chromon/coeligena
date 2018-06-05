@@ -25,6 +25,8 @@
 <!-- navbar -->
 <%@include file="navbar.jsp"%>
 
+<input id="usersDO" type="hidden" value="${userInfoDTO.usersDO}">
+
 <!-- main content -->
 <div class="container">
     <div class="row custom-content-margin">
@@ -143,28 +145,33 @@
         <div class="col-sm-9">
             <!-- editor -->
             <div id="answer_wrap" class="custom-card custom-editor" style="display: none">
+                <input id="is_anonymous" type="hidden" name="anonymous" value="0">
 
                 <!-- end editor header -->
                 <div class="custom-editor-header">
                     <div class="custom-author-info">
                         <span class="custom-author-avatar">
                             <a href="#">
-                                <img id="answer_img" class="media-object custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="...">
+                                <img id="answer_img" class="media-object custom-avatar38" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="${userInfoDTO.usersDO.fullname}">
                             </a>
                         </span>
                         <div class="custom-author-content">
                             <div class="custom-author-content-head">
-                                <span id="answer_fullname" class="custom-author-name">Bone</span>
+                                <span id="answer_fullname" class="custom-author-name">${userInfoDTO.usersDO.fullname}</span>
                             </div>
                             <div id="autograph_wrap" class="custom-author-content-detail">
                                 <div class="custom-author-badge">
-                                    <span class="custom-author-bio">。</span>
-                                    <a href="#" class="custom-topic-bios">编辑话题经验</a>
+                                    <span id="answer_autograph" class="custom-author-bio">${userInfoDTO.usersDO.autograph}</span>
+                                    <a id="edit_topic_bios" href="#" class="custom-topic-bios">
+                                        <i class="fa fa-pencil"></i>
+                                        编辑话题经验
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <a id="anonymous_btn" data-toggle="modal" data-target="#anonymousModal" href="" class="custom-toggle-anonymous">使用匿名身份回答</a>
+                    <a id="realname_btn" data-toggle="modal" data-target="#realNameModal" href="" class="custom-toggle-anonymous" style="display: none;">使用实名身份回答</a>
                 </div><!-- end editor header -->
                 <!-- editor note -->
                 <div id="answer_note"></div><!-- end editor note -->

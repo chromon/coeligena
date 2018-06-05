@@ -35,3 +35,25 @@
     </div>
 </div>
 <!-- end anonymous modal -->
+
+<!-- real name modal -->
+<div class="modal fade" id="realNameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog custom-modal-size" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">确认取消匿名身份？</h4>
+            </div>
+            <div class="modal-body">
+                <div class="Anonymous-confirm">
+                    <p>取消匿名身份后， 提问、回答、赞同和关注将以实名显示。</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" type="button" class="btn btn-default">取消</button>
+                <button id="realname_confirm" type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end real name modal -->
