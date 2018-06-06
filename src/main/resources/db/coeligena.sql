@@ -236,7 +236,8 @@ CREATE TABLE IF NOT EXISTS topic_nodes (
     PRIMARY KEY (id),
     INDEX (topic_name)
 );
-alter table topic_nodes AUTO_INCREMENT=21000000;
+ALTER TABLE topic_nodes
+    AUTO_INCREMENT = 21000000;
 
 /*
  * 问题话题关系表
@@ -248,6 +249,16 @@ CREATE TABLE IF NOT EXISTS topic_relations (
     PRIMARY KEY (id),
     INDEX (parent_topic_id),
     INDEX (child_topic_id)
+);
+
+/*
+ * 话题经验
+ */
+CREATE TABLE IF NOT EXISTS topic_bio (
+    id       INT(11) NOT NULL AUTO_INCREMENT, /* 话题经验 ID（唯一标识） */
+    topic_id INT(11) NOT NULL DEFAULT '0', /* 话题 ID */
+    user_id  INT(11) NOT NULL DEFAULT '0', /* 话题经验用户 */
+    PRIMARY KEY (id)
 );
 
 /*
@@ -823,10 +834,10 @@ CREATE TABLE IF NOT EXISTS pages (
  * 站点信息表
  */
 CREATE TABLE IF NOT EXISTS site_info (
-    id          INT(11)     NOT NULL AUTO_INCREMENT, /* 站点信息 ID */
-    site_name   VARCHAR(32) NOT NULL, /* 站点名称 */
+    id          INT(11)      NOT NULL AUTO_INCREMENT, /* 站点信息 ID */
+    site_name   VARCHAR(32)  NOT NULL, /* 站点名称 */
     logo_large  VARCHAR(256) NOT NULL, /* 站点首页 logo 路径 */
     logo_navbar VARCHAR(256) NOT NULL, /* 站点导航栏 logo 路径 */
-    copyright   VARCHAR(32) NOT NULL, /* 站点版权信息 */
+    copyright   VARCHAR(32)  NOT NULL, /* 站点版权信息 */
     PRIMARY KEY (id)
 );
