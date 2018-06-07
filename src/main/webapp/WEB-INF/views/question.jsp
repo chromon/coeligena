@@ -162,7 +162,7 @@
                             <div id="autograph_wrap" class="custom-author-content-detail">
                                 <div class="custom-author-badge">
                                     <span id="answer_autograph" class="custom-author-bio">${userInfoDTO.usersDO.autograph}</span>
-                                    <a id="edit_topic_bios" href="#" class="custom-topic-bios">
+                                    <a id="edit_topic_bios" data-toggle="modal" data-target="#topicBioModal" href="" class="custom-topic-bios">
                                         <i class="fa fa-pencil"></i>
                                         编辑话题经验
                                     </a>
@@ -712,6 +712,7 @@
 </div>
 <!-- modal -->
 <%@include file="anonymousModal.jsp"%>
+<%@include file="topicBioModal.jsp"%>
 
 <!-- js -->
 <%@include file="includeJs.jsp"%>

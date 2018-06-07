@@ -2750,3 +2750,96 @@ ins {
     color: #8590a6;
     text-align: center;
 }
+
+.custom-topicBio-title {
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.custom-topicBio-subtitle {
+    padding: 0 38px;
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #8590a6;
+    text-align: center;
+}
+
+.custom-topicBio-items {
+    padding: 16px 20px;
+}
+
+.custom-topicBioItems-title {
+    margin-bottom: 8px;
+    color: #8590a6;
+}
+
+.custom-checkItem-box {
+    position: relative;
+    padding: 12px;
+    border: 1px solid #2196f3;
+    border-radius: 3px;
+    transition: border-color .2s ease-out;
+}
+
+.custom-checkItem-inner {
+    max-width: calc(100% - 28px);
+}
+
+.custom-topicBio-itemText {
+    word-break: normal;
+    line-height: 1.6;
+    margin-right: 5px;
+}
+
+.custom-author-info-content2 {
+    align-items: center;
+    margin-left: 10px;
+    -webkit-box-flex: 1;
+    flex: 1;
+    overflow: hidden;
+}
+
+.custom-author-info-detail2 {
+    overflow: hidden;
+}
+
+.custom-check-icon {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    color: #0084ff;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.custom-topicBio-addBtn {
+    height: 48px;
+    padding: 0 12px;
+    text-align: left;
+    border: 1px solid #2196f3;
+    border-radius: 3px;
+}
+
+.custom-btn-spread {
+    width: 100%;
+}
+
+.custom-topicBio-btn {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.custom-topicBio-item:not(:first-child) {
+    margin-top: 16px;
+}
+
+.custom-center-btn {
+    width: 220px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.custom-align-center {
+    text-align: center;
+}
