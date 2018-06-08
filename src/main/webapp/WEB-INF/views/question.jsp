@@ -182,22 +182,9 @@
                         草稿以保存（11分钟前）
                     </div>
                     <div class="custom-answer-right">
-                        <div class="custom-drop-option">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <i class="fa fa-cog"></i> 设置
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">允许规范转载</a></li>
-                                <li><a href="#">允许付费范转载</a></li>
-                                <li><a href="#">禁止转载</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">允许任何人评论</a></li>
-                                <li><a href="#">评论由我筛选后显示</a></li>
-                                <li><a href="">允许我关注的人评论</a></li>
-                                <li><a href="#">禁止评论</a></li>
-                            </ul>
-                        </div>
-
+                        <a id="answer_setting_btn" href="#" class="custom-answer-setting">
+                            <i class="fa fa-cog"></i> 设置
+                        </a>
                         <a id="post_answer_btn" href="javascript: void(0);" class="btn btn-primary">提交答案</a>
                     </div>
                 </div><!-- end editor footer -->
@@ -710,6 +697,38 @@
     </div>
     <!-- end answer main -->
 </div>
+
+<!-- answer setting click card -->
+<div class="custom-display-none" id="answer_setting_panel">
+    <div class="custom-answerItem-menu">
+        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+            允许规范转载
+            <i class="fa fa-check custom-right" aria-hidden="true"></i>
+        </button>
+        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+            允许付费转载
+        </button>
+        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+            禁止转载
+        </button>
+        <i class="custom-menu-divider"></i>
+        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+            允许任何人评论
+        </button>
+        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            评论由我筛选后显示
+        </button>
+        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+            允许我关注的人评论
+        </button>
+        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+            关闭评论
+        </button>
+    </div>
+</div>
+<!-- end private message click card -->
+
 <!-- modal -->
 <%@include file="anonymousModal.jsp"%>
 <%@include file="topicBioModal.jsp"%>

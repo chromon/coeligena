@@ -2843,3 +2843,37 @@ ins {
 .custom-align-center {
     text-align: center;
 }
+
+.custom-answer-setting {
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #8590a6;
+    text-align: center;
+    cursor: pointer;
+}
+
+.custom-answerItem-menu {
+    font-size: 14px;
+    color: #8590a6;
+}
+
+.custom-answerItem-selectMenuItem {
+    position: relative;
+    padding-left: 44px;
+    line-height: 40px;
+}
+
+.custom-menu-item {
+    display: block;
+    width: 100%;
+    padding: 0 20px;
+    text-align: left;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.custom-menu-divider {
+    margin: 8px 0;
+    border-bottom: 1px solid #ebebeb;
+}
