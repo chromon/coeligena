@@ -2860,14 +2860,14 @@ ins {
 
 .custom-answerItem-selectMenuItem {
     position: relative;
-    padding-left: 44px;
+    /*padding-left: 44px;*/
     line-height: 40px;
 }
 
 .custom-menu-item {
     display: block;
     width: 100%;
-    padding: 0 20px;
+    /*padding: 0 20px;*/
     text-align: left;
     cursor: pointer;
     box-sizing: border-box;
@@ -2876,4 +2876,9 @@ ins {
 .custom-menu-divider {
     margin: 8px 0;
     border-bottom: 1px solid #ebebeb;
+    list-style-type: none;
+}
+
+.custom-check-margin {
+    margin-top: 13px;
 }

@@ -48,7 +48,7 @@ $('#publish-btn').webuiPopover({
 $('#answer_setting_btn').webuiPopover({
     url: '#answer_setting_panel',
     placement: 'bottom',
-    width: '200',
+    width: '190',
     trigger: 'click',
     arrow: true,
     animation: 'pop'

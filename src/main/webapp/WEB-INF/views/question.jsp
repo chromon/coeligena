@@ -703,7 +703,7 @@
     <div class="custom-answerItem-menu">
         <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             允许规范转载
-            <i class="fa fa-check custom-right" aria-hidden="true"></i>
+            <i class="fa fa-check custom-right custom-check-margin" aria-hidden="true"></i>
         </button>
         <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             允许付费转载
@@ -711,13 +711,13 @@
         <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             禁止转载
         </button>
-        <i class="custom-menu-divider"></i>
+        <li class="custom-menu-divider"></li>
         <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             允许任何人评论
         </button>
         <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
-            <i class="fa fa-check" aria-hidden="true"></i>
             评论由我筛选后显示
+            <i class="fa fa-check custom-right custom-check-margin" aria-hidden="true"></i>
         </button>
         <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             允许我关注的人评论
