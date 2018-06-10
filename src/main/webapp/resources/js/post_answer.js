@@ -52,6 +52,25 @@ $('#realname_confirm').on('click', function () {
     $('#realNameModal').modal('hide');
 });
 
+// 转载、评论类型
+$('#answer_setting_list').on('click','button',function() {
+    // 转载
+    // 1 允许规范转载 2 允许付费转载 3 禁止转载
+    if (this.value == 1 || this.value == 2 || this.value == 3) {
+        $('#reprint_check').remove();
+        $(this).append($('<i id="reprint_check" class="fa fa-check custom-right custom-check-margin" aria-hidden="true"></i>'));
+        $('#reprint_type').val(this.value);
+    }
+
+    // 评论
+    // 4 允许任何人评论 5 评论由我筛选后显示 6 允许我关注的人评论 7 关闭评论
+    if (this.value == 4 || this.value == 5 || this.value == 6 || this.value == 7) {
+        $('#comment_check').remove();
+        $(this).append($('<i id="comment_check" class="fa fa-check custom-right custom-check-margin" aria-hidden="true"></i>'));
+        $('#comment_type').val(this.value);
+    }
+});
+
 $('#post_answer_btn').on('click', function () {
     var markupStr = $('#answer_note').summernote('code');
     alert(markupStr);

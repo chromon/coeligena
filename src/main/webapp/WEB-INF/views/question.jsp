@@ -700,29 +700,31 @@
 
 <!-- answer setting click card -->
 <div class="custom-display-none" id="answer_setting_panel">
-    <div class="custom-answerItem-menu">
-        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+    <input type="hidden" id="reprint_type" value="1">
+    <input type="hidden" id="comment_type" value="4">
+    <div id="answer_setting_list" class="custom-answerItem-menu">
+        <button value="1" type="button" class="custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             允许规范转载
-            <i class="fa fa-check custom-right custom-check-margin" aria-hidden="true"></i>
+            <i id="reprint_check" class="fa fa-check custom-right custom-check-margin" aria-hidden="true"></i>
         </button>
-        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+        <button value="2" type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             允许付费转载
         </button>
-        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+        <button value="3" type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             禁止转载
         </button>
         <li class="custom-menu-divider"></li>
-        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+        <button value="4" type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             允许任何人评论
+            <i id="comment_check" class="fa fa-check custom-right custom-check-margin" aria-hidden="true"></i>
         </button>
-        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+        <button value="5" type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             评论由我筛选后显示
-            <i class="fa fa-check custom-right custom-check-margin" aria-hidden="true"></i>
-        </button>
-        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+            </button>
+        <button value="6" type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             允许我关注的人评论
         </button>
-        <button type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
+        <button value="7" type="button" class=" custom-btn-plain custom-menu-item custom-answerItem-selectMenuItem">
             关闭评论
         </button>
     </div>
