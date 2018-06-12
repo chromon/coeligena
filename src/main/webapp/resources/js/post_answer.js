@@ -73,5 +73,6 @@ $('#answer_setting_list').on('click','button',function() {
 
 $('#post_answer_btn').on('click', function () {
     var markupStr = $('#answer_note').summernote('code');
-    alert(markupStr);
+    alert(markupStr + $('#is_anonymous').val() + $('#reprint_type').val() + $('#comment_type').val());
+
 });
