@@ -40,7 +40,7 @@ public class FeedsDAOImpl implements FeedsDAO {
      */
     @Override
     public List<FeedsDO> queryFeeds() {
-        String sql = "from FeedsDO";
+        String sql = "FROM FeedsDO";
         List<FeedsDO> feedsList =  this.getSession().createQuery(sql).list();
         return feedsList;
     }

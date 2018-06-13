@@ -75,4 +75,18 @@ $('#post_answer_btn').on('click', function () {
     var markupStr = $('#answer_note').summernote('code');
     alert(markupStr + $('#is_anonymous').val() + $('#reprint_type').val() + $('#comment_type').val());
 
+    $.ajax({
+        type: "POST",
+        url: basePath + "/answer-the-question",
+        data: {
+            anonymous: $('#is_anonymous').val(),
+            answerContent: markupStr,
+            reprintType: $('#reprint_type').val(),
+            commentType: $('#comment_type').val()
+        },
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+        }
+    });
 });
