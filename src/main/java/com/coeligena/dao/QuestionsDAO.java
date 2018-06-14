@@ -23,4 +23,10 @@ public interface QuestionsDAO {
      * @return 问题
      */
     QuestionsDO queryQuestionById(int questionId);
+
+    /**
+     * 更新问题信息
+     * @param questionsDO 问题
+     */
+    void updateQuestion(QuestionsDO questionsDO);
 }

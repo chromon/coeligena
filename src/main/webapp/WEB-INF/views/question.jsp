@@ -53,6 +53,7 @@
                         <div class="custom-question-header-detail">
                             <div class="custom-question-rich-text">
                                 <span>${questionsDO.questionDetail}</span>
+                                <input type="hidden" id="question_id" value="${questionsDO.id}">
                                 <button class="custom-contentItem-more custom-btn-plain" type="button">
                                     <span class="custom-margin-right5">显示全部</span>
                                     <i class="fa fa-chevron-down"></i>

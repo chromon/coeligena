@@ -55,6 +55,12 @@ public class AnswersDO {
     /** 是否强制折叠 0：否，1：是 */
     private byte forceFold;
 
+    /** 转载类型 1 允许规范转载 2 允许付费转载 3 禁止转载  */
+    private byte reprintType;
+
+    /** 评论类型 4 允许任何人评论 5 评论由我筛选后显示 6 允许我关注的人评论 7 关闭评论 */
+    private byte commentType;
+
     /**
      * 获取回答 id
      * @return 回答 id
@@ -293,5 +299,39 @@ public class AnswersDO {
      */
     public void setForceFold(byte forceFold) {
         this.forceFold = forceFold;
+    }
+
+    /**
+     * 获取转载类型
+     * @return 转载类型
+     */
+    @Column(name = "reprint_type", nullable = false, columnDefinition = "tinyint(4) default '1'")
+    public byte getReprintType() {
+        return reprintType;
+    }
+
+    /**
+     * 设置转载类型
+     * @param reprintType 转载类型
+     */
+    public void setReprintType(byte reprintType) {
+        this.reprintType = reprintType;
+    }
+
+    /**
+     * 获取评论类型
+     * @return 评论类型
+     */
+    @Column(name = "comment_type", nullable = false, columnDefinition = "tinyint(4) default '4'")
+    public byte getCommentType() {
+        return commentType;
+    }
+
+    /**
+     * 设置评论类型
+     * @param commentType 评论类型
+     */
+    public void setCommentType(byte commentType) {
+        this.commentType = commentType;
     }
 }

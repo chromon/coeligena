@@ -17,6 +17,8 @@ public class AnswerDTO {
 
     private String commentType;
 
+    private String questionId;
+
     public String getAnonymous() {
         return anonymous;
     }
@@ -47,5 +49,13 @@ public class AnswerDTO {
 
     public void setCommentType(String commentType) {
         this.commentType = commentType;
+    }
+
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
     }
 }

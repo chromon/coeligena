@@ -26,9 +26,23 @@ public class QuestionsServiceImpl implements QuestionsService {
         this.questionsDAO.addQuestion(questionsDO);
     }
 
+    /**
+     * 由问题 id 查询问题信息
+     * @param questionId 问题 id
+     * @return 问题信息
+     */
     @Override
     public QuestionsDO queryQuestionById(int questionId) {
         return questionsDAO.queryQuestionById(questionId);
+    }
+
+    /**
+     * 更新问题信息
+     * @param questionsDO 问题信息
+     */
+    @Override
+    public void modifyQuestion(QuestionsDO questionsDO) {
+        this.questionsDAO.updateQuestion(questionsDO);
     }
 
     @Autowired

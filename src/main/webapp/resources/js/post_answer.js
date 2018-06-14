@@ -73,7 +73,8 @@ $('#answer_setting_list').on('click','button',function() {
 
 $('#post_answer_btn').on('click', function () {
     var markupStr = $('#answer_note').summernote('code');
-    alert(markupStr + $('#is_anonymous').val() + $('#reprint_type').val() + $('#comment_type').val());
+    alert(markupStr + $('#is_anonymous').val()
+        + $('#reprint_type').val() + $('#comment_type').val() + $('#question_id').val());
 
     $.ajax({
         type: "POST",
@@ -82,7 +83,8 @@ $('#post_answer_btn').on('click', function () {
             anonymous: $('#is_anonymous').val(),
             answerContent: markupStr,
             reprintType: $('#reprint_type').val(),
-            commentType: $('#comment_type').val()
+            commentType: $('#comment_type').val(),
+            questionId: $('#question_id').val()
         },
         dataType: "json",
         success: function(data){

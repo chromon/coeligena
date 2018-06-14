@@ -33,11 +33,25 @@ public class QuestionsDAOImpl implements QuestionsDAO{
         this.getSession().save(questionsDO);
     }
 
+    /**
+     * 由问题 id 查询问题信息
+     * @param questionId 问题 id
+     * @return 问题信息
+     */
     @Override
     public QuestionsDO queryQuestionById(int questionId) {
         String sql = "select q from QuestionsDO q where q.id = :questionId";
         QuestionsDO questionsDO = (QuestionsDO) this.getSession().createQuery(sql)
                 .setParameter("questionId", questionId).uniqueResult();
         return questionsDO;
+    }
+
+    /**
+     * 更新问题信息
+     * @param questionsDO 问题信息
+     */
+    @Override
+    public void updateQuestion(QuestionsDO questionsDO) {
+        this.getSession().update(questionsDO);
     }
 }
