@@ -50,6 +50,20 @@
             </div>
 
             <div class="custom-card">
+                <div class="custom-searchNoContent-wrapper">
+                    <div class="custom-searchNoContent-content">
+                        <div class="custom-searchNoContent-title">没有想要的内容？</div>
+                        <div class="custom-searchNoContent-input">
+                            <input type="text" class="form-control" size="40" style="padding: 0 10px;">
+                        </div>
+                        <a href="#" class="btn btn-primary">
+                            我要提问
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-card">
                 <!-- list item -->
                 <div class="custom-list-item">
                     <!-- content item main -->

@@ -2882,3 +2882,49 @@ ins {
 .custom-check-margin {
     margin-top: 13px;
 }
+
+.custom-searchNoContent-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.custom-searchNoContent-content {
+    height: 400px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.custom-searchNoContent-title {
+    margin-top: 70px;
+    font-size: 24px;
+    margin-bottom: 32px;
+}
+
+.custom-searchNoContent-input {
+    height: 40px;
+    background-color: #f6f6f6;
+    margin-bottom: 32px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
