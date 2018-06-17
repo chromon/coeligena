@@ -73,8 +73,7 @@ $('#answer_setting_list').on('click','button',function() {
 
 $('#post_answer_btn').on('click', function () {
     var markupStr = $('#answer_note').summernote('code');
-    alert(markupStr + $('#is_anonymous').val()
-        + $('#reprint_type').val() + $('#comment_type').val() + $('#question_id').val());
+    $('#answer_wrap').fadeOut('2000');
 
     $.ajax({
         type: "POST",
@@ -89,6 +88,15 @@ $('#post_answer_btn').on('click', function () {
         dataType: "json",
         success: function(data){
             console.log(data);
+
+            // 使用 handlebars 获取模板
+            var tpl = $("#post_answer_template").html();
+            // 预编译模板
+            var template = Handlebars.compile(tpl);
+            // 匹配 json 内容
+            var html = template(data);
+            // 输入模板
+            $('#post_answer_wrapper').html(html);
         }
     });
 });

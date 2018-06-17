@@ -267,6 +267,120 @@
                 </div><!-- end no answers -->
                 <!-- feed list -->
                 <div>
+                    <!-- post answer template -->
+                    <script type="text/template" id="post_answer_template">
+
+                        <!-- feed item -->
+                        <div class="custom-card custom-feed-item">
+                            <a href="" class="custom-feed-item-right">
+                                <i class="fa fa-times"></i>
+                            </a>
+                            <!-- feed -->
+                            <div>
+                                <!-- feed author info -->
+                                <div class="custom-feed-src-info custom-feed-author-info">
+                                    <!-- avatar image -->
+                                    <a href="#">
+                                        <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>${userInfoDTO.usersDO.avatarPath}" alt="${userInfoDTO.usersDO.fullname} avatar">
+                                    </a>
+
+                                    <div class="custom-author-info-content">
+                                        <div class="custom-author-info-head">
+                                            <a href="#">${userInfoDTO.usersDO.fullname}</a>
+                                        </div>
+                                        <div class="custom-author-info-detail">
+                                            <div class="custom-author-badge">
+                                                <div class="custom-author-badge-text">
+                                                    ${userInfoDTO.usersDO.autograph}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end feed author info -->
+
+                                <!-- feed detail -->
+                                <div>
+                                    <!-- feed content -->
+                                    <div class="custom-rich-content">
+                                        <div class="custom-answerItem-extraInfo">
+                                    <span class="custom-voters">
+                                        <a href="">{{approvalCount}} 人赞同了该回答</a>
+                                    </span>
+                                        </div>
+                                        <div class="custom-rich-content-inner">
+                                            {{{answerContent}}}
+                                            <button class="custom-contentItem-more custom-btn-plain" type="button">
+                                                <span class="custom-margin-right5">阅读全文</span>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </button>
+                                        </div>
+                                        <div class="custom-contentItem-time">
+                                            <a href="#">编辑于 {{answerTime}}</a>
+                                        </div>
+                                        <div>
+                                            <div class="custom-contentItem-actions">
+                                        <span>
+                                            <button class="custom-vote-btn" aria-label="赞同" type="button">
+                                                <i class="fa fa-caret-up"></i> {{approvalCount}}
+                                            </button>
+                                            <button class="custom-vote-btn" aria-label="反对" type="button">
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                        </span>
+                                                <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-comment custom-margin-right5"></i>
+                                                {{commentCount}} 条评论
+                                            </span>
+                                                </button>
+                                                <div class="custom-drop-option2">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                        <i class="fa fa-paper-plane"></i> 分享
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#">复制链接</a></li>
+                                                        <li><a href="#">新浪微博</a></li>
+                                                        <li><a href="#">扫一扫</a></li>
+                                                    </ul>
+                                                </div>
+                                                <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-star custom-margin-right5"></i>
+                                                收藏
+                                            </span>
+                                                </button>
+                                                <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-heart custom-margin-right5"></i>
+                                                感谢
+                                            </span>
+                                                </button>
+                                                <div class="custom-drop-option2">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                        •••
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#">没有帮助</a></li>
+                                                        <li><a href="#">举报</a></li>
+                                                    </ul>
+                                                </div>
+                                                <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <span class="custom-margin-right5">收起</span>
+                                                <i class="fa fa-chevron-up"></i>
+                                            </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div><!-- end feed content -->
+                                </div><!-- feed detail -->
+                            </div><!-- end feed -->
+                        </div><!-- feed item -->
+
+                    </script><!-- end post answer template -->
+
+                    <div id="post_answer_wrapper"></div>
+
                     <!-- feed item -->
                     <div class="custom-card custom-feed-item">
                         <a href="" class="custom-feed-item-right">
@@ -297,12 +411,6 @@
 
                             <!-- feed detail -->
                             <div>
-                                <h2 class="custom-contentItem-title">
-                                    <a href="${pageContext.request.contextPath}/question/123">
-                                        JVM符号引用转换直接引用的过程?
-                                    </a>
-                                </h2>
-
                                 <!-- feed content -->
                                 <div class="custom-rich-content">
                                     <div class="custom-answerItem-extraInfo">
@@ -575,12 +683,6 @@
 
                             <!-- feed detail -->
                             <div>
-                                <h2 class="custom-contentItem-title">
-                                    <a href="${pageContext.request.contextPath}/question/123">
-                                        JVM符号引用转换直接引用的过程?
-                                    </a>
-                                </h2>
-
                                 <!-- feed content -->
                                 <div class="custom-rich-content">
                                     <div class="custom-answerItem-extraInfo">
