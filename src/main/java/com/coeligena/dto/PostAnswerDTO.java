@@ -7,7 +7,7 @@ package com.coeligena.dto;
  * Created by Ellery on 2018/6/12.
  */
 
-public class AnswerDTO {
+public class PostAnswerDTO {
 
     private String anonymous;
 

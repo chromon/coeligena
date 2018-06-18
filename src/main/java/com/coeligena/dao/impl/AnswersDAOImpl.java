@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -31,5 +32,17 @@ public class AnswersDAOImpl implements AnswersDAO {
     @Override
     public void addAnswer(AnswersDO answersDO) {
         this.getSession().save(answersDO);
+    }
+
+    /**
+     * 由问题 id 查询回答列表
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    @Override
+    public List<AnswersDO> queryAnswersByQuestionId(int questionId) {
+        String sql = "FROM AnswersDO";
+        List<AnswersDO> answersList = this.getSession().createQuery(sql).list();
+        return answersList;
     }
 }

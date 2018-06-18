@@ -1,6 +1,6 @@
 package com.coeligena.controller;
 
-import com.coeligena.dto.AnswerDTO;
+import com.coeligena.dto.PostAnswerDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.model.AnswersDO;
 import com.coeligena.model.QuestionsDO;
@@ -35,11 +35,11 @@ public class AnswerController {
 
     @RequestMapping(value="/answer-the-question", method = RequestMethod.POST)
     @ResponseBody
-    public AnswersDO AnswerQuestion(HttpServletRequest request,
-                                    @ModelAttribute AnswerDTO answerDTO) {
+    public AnswersDO answerQuestion(HttpServletRequest request,
+                                    @ModelAttribute PostAnswerDTO postAnswerDTO) {
 
-        System.out.println(answerDTO.getAnonymous() + answerDTO.getAnswerContent()
-                + answerDTO.getReprintType() + answerDTO.getQuestionId());
+        System.out.println(postAnswerDTO.getAnonymous() + postAnswerDTO.getAnswerContent()
+                + postAnswerDTO.getReprintType() + postAnswerDTO.getQuestionId());
 
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
@@ -56,19 +56,19 @@ public class AnswerController {
 
         // 更新问题回答数
         QuestionsDO questionsDO = questionsService.queryQuestionById(
-                Integer.parseInt(answerDTO.getQuestionId()));
+                Integer.parseInt(postAnswerDTO.getQuestionId()));
         questionsDO.setAnswerCount(questionsDO.getAnswerCount() + 1);
         questionsService.modifyQuestion(questionsDO);
 
         // 添加回答
         AnswersDO answersDO = new AnswersDO();
-        answersDO.setQuestionId(Integer.parseInt(answerDTO.getQuestionId()));
+        answersDO.setQuestionId(Integer.parseInt(postAnswerDTO.getQuestionId()));
         answersDO.setAuthorId(usersDO.getId());
-        answersDO.setAnswerContent(answerDTO.getAnswerContent());
+        answersDO.setAnswerContent(postAnswerDTO.getAnswerContent());
         answersDO.setAnswerTime(now);
-        answersDO.setAnonymous(Byte.parseByte(answerDTO.getAnonymous()));
-        answersDO.setReprintType(Byte.parseByte(answerDTO.getReprintType()));
-        answersDO.setCommentType(Byte.parseByte(answerDTO.getCommentType()));
+        answersDO.setAnonymous(Byte.parseByte(postAnswerDTO.getAnonymous()));
+        answersDO.setReprintType(Byte.parseByte(postAnswerDTO.getReprintType()));
+        answersDO.setCommentType(Byte.parseByte(postAnswerDTO.getCommentType()));
         answersService.saveAnswer(answersDO);
 
         return answersDO;
