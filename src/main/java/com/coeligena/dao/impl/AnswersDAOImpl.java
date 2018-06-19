@@ -40,9 +40,10 @@ public class AnswersDAOImpl implements AnswersDAO {
      * @return 回答列表
      */
     @Override
+    @SuppressWarnings("unchecked")
     public List<AnswersDO> queryAnswersByQuestionId(int questionId) {
-        String sql = "FROM AnswersDO";
-        List<AnswersDO> answersList = this.getSession().createQuery(sql).list();
-        return answersList;
+        String sql = "select a from AnswersDO a where a.questionId=:questionId";
+        return this.getSession().createQuery(sql)
+                .setParameter("questionId", questionId).list();
     }
 }

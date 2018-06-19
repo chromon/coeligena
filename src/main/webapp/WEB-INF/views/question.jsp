@@ -253,6 +253,8 @@
                         </div>
                     </div>
                 </div><!-- end question invitation -->
+
+                <c:if test="${empty answersDTOList}">
                 <!-- no answers -->
                 <div class="custom-card custom-feed-item custom-answers-none">
                     <div class="custom-empty-state">
@@ -265,6 +267,8 @@
                         </div>
                     </div>
                 </div><!-- end no answers -->
+                </c:if>
+
                 <!-- feed list -->
                 <div>
                     <!-- post answer template -->
@@ -309,10 +313,6 @@
                                         </div>
                                         <div class="custom-rich-content-inner">
                                             {{{answerContent}}}
-                                            <button class="custom-contentItem-more custom-btn-plain" type="button">
-                                                <span class="custom-margin-right5">阅读全文</span>
-                                                <i class="fa fa-chevron-down"></i>
-                                            </button>
                                         </div>
                                         <div class="custom-contentItem-time">
                                             <a href="#">编辑于 {{answerTime}}</a>
@@ -382,14 +382,25 @@
                     <div id="post_answer_wrapper"></div>
 
 
-                    <c:forEach var="answersDTOList" items="${answersDTOList}">
                     <!-- feed item -->
-                    <div class="custom-card custom-feed-item">
-                        <a href="" class="custom-feed-item-right">
-                            <i class="fa fa-times"></i>
-                        </a>
+                    <div class="custom-card ">
+
+                        <div class="custom-list-header">
+                            <h6 class="custom-list-headerText">
+                                <c:out value="${fn:length(answersDTOList)}"/>
+                                个回答
+                            </h6>
+                            <div class="custom-list-headerOptions">
+                                <span class="custom-switcher custom-right">
+                                    <a href="" class="custom-current">默认排序</a> |
+                                    <a href="">时间排序</a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <c:forEach var="answersDTOList" items="${answersDTOList}">
                         <!-- feed -->
-                        <div>
+                        <div class="custom-feed-item">
                             <!-- feed author info -->
                             <div class="custom-feed-src-info custom-feed-author-info">
                                 <!-- avatar image -->
@@ -422,10 +433,6 @@
                                     </div>
                                     <div class="custom-rich-content-inner">
                                         ${answersDTOList.answersDO.answerContent}
-                                        <button class="custom-contentItem-more custom-btn-plain" type="button">
-                                            <span class="custom-margin-right5">阅读全文</span>
-                                            <i class="fa fa-chevron-down"></i>
-                                        </button>
                                     </div>
                                     <div class="custom-contentItem-time">
                                         <a href="#">编辑于 ${answersDTOList.answersDO.answerTime}</a>
@@ -654,8 +661,8 @@
 
                             </div><!-- feed detail -->
                         </div><!-- end feed -->
+                        </c:forEach>
                     </div><!-- feed item -->
-                    </c:forEach>
 
                 </div>
                 <!-- end feed list -->
