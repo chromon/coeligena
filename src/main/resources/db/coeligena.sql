@@ -372,6 +372,8 @@ CREATE TABLE IF NOT EXISTS answers (
     id             INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 回答ID（唯一标识） */
     question_id    INT(11)          NOT NULL DEFAULT '0', /* 问题ID（唯一标识） */
     author_id      INT(11)          NOT NULL DEFAULT '0', /* 作者ID（唯一标识） */
+    cover          VARCHAR(512)     DEFAULT '', /* 回答封面图片路径 */
+    answer_digest  VARCHAR(128)     DEFAULT '', /* 回答摘要，默认 75 字符 */
     answer_content MEDIUMTEXT       NOT NULL, /* 回答 */
     answer_time    TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 回答或更新时间 */
     against_count  INT(11)          NOT NULL DEFAULT '0', /* 反对数 */

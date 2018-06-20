@@ -22,6 +22,12 @@ public class AnswersDO {
     /** 作者 id */
     private int authorId;
 
+    /** 回答封面图片路径 */
+    private String cover;
+
+    /** 回答摘要，默认 75 字符 */
+    private String answer_digest;
+
     /** 回答 */
     private String answerContent;
 
@@ -112,6 +118,40 @@ public class AnswersDO {
      */
     public void setAuthorId(int authorId) {
         this.authorId = authorId;
+    }
+
+    /**
+     * 获取回答封面图片地址
+     * @return 图片地址
+     */
+    @Column(name = "cover", columnDefinition = "varchar(512) default ''")
+    public String getCover() {
+        return cover;
+    }
+
+    /**
+     * 设置回答封面图片地址
+     * @param cover 图片地址
+     */
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    /**
+     * 获取回答摘要
+     * @return 回答摘要
+     */
+    @Column(name = "answer_digest", columnDefinition = "varchar(128) default ''")
+    public String getAnswer_digest() {
+        return answer_digest;
+    }
+
+    /**
+     * 设置回答摘要
+     * @param answer_digest 回答摘要
+     */
+    public void setAnswer_digest(String answer_digest) {
+        this.answer_digest = answer_digest;
     }
 
     /**
