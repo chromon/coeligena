@@ -307,12 +307,12 @@
                                     <!-- feed content -->
                                     <div class="custom-rich-content">
                                         <div class="custom-answerItem-extraInfo">
-                                    <span class="custom-voters">
-                                        <a href="">{{approvalCount}} 人赞同了该回答</a>
-                                    </span>
+                                            <span class="custom-voters">
+                                                <a href="">{{approvalCount}} 人赞同了该回答</a>
+                                            </span>
                                         </div>
                                         <div class="custom-rich-content-inner">
-                                            {{{answerContent}}}
+                                            <span>{{{answerContent}}}</span>
                                         </div>
                                         <div class="custom-contentItem-time">
                                             <a href="#">编辑于 {{answerTime}}</a>
@@ -431,9 +431,13 @@
                                         <a href="">1 人赞同了该回答</a>
                                     </span>
                                     </div>
-                                    <div class="custom-rich-content-inner">
-                                        ${answersDTOList.answersDO.answerContent}
+                                    <div class="custom-rich-content-inner" style="max-height: 400px;">
+                                        <span>${answersDTOList.answersDO.answerContent}</span>
                                     </div>
+                                    <button class="custom-contentItem-rightBtn custom-btn-plain" type="button">
+                                        <span class="custom-margin-right5">展开阅读全文</span>
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
                                     <div class="custom-contentItem-time">
                                         <a href="#">编辑于 ${answersDTOList.answersDO.answerTime}</a>
                                     </div>
