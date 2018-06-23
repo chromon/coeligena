@@ -431,8 +431,8 @@
                                         <a href="">1 人赞同了该回答</a>
                                     </span>
                                     </div>
-                                    <div class="custom-rich-content-inner" style="max-height: 400px;">
-                                        <span>${answersDTOList.answersDO.answerContent}</span>
+                                    <div class="custom-rich-content-inner">
+                                        <span class="ans-inner-${answersDTOList.answersDO.id}">${answersDTOList.answersDO.answerContent}</span>
                                     </div>
                                     <button class="custom-contentItem-rightBtn custom-btn-plain" type="button">
                                         <span class="custom-margin-right5">展开阅读全文</span>
