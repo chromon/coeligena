@@ -2950,3 +2950,10 @@ ins {
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
 }
+
+.custom-sticky .custom-is-fixed {
+    position: fixed;
+    z-index: 2;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+}

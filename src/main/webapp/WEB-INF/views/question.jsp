@@ -442,15 +442,15 @@
                                         <a href="#">编辑于 ${answersDTOList.answersDO.answerTime}</a>
                                     </div>
                                     <div>
-                                        <div class="custom-contentItem-actions">
-                                        <span>
-                                            <button class="custom-vote-btn" aria-label="赞同" type="button">
-                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
-                                            </button>
-                                            <button class="custom-vote-btn" aria-label="反对" type="button">
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                        </span>
+                                        <div class="custom-contentItem-actions custom-sticky custom-is-fixed">
+                                            <span>
+                                                <button class="custom-vote-btn" aria-label="赞同" type="button">
+                                                    <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
+                                                </button>
+                                                <button class="custom-vote-btn" aria-label="反对" type="button">
+                                                    <i class="fa fa-caret-down"></i>
+                                                </button>
+                                            </span>
                                             <button class="custom-contentItem-action custom-btn-plain" type="button">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <i class="fa fa-comment custom-margin-right5"></i>
