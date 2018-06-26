@@ -2940,7 +2940,7 @@ ins {
     margin-left: auto;
 }
 
-.custom-rich-content .custom-rich-content-inner {
+.custom-rich-content .custom-is-collapsed {
     position: relative;
     transition: max-height .32s cubic-bezier(.95,.05,.795,.035),-webkit-mask-size .22s cubic-bezier(.95,.05,.795,.035);
     transition: mask-size .22s cubic-bezier(.95,.05,.795,.035),max-height .32s cubic-bezier(.95,.05,.795,.035);

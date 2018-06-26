@@ -22,7 +22,7 @@ package com.coeligena.function.vote;
  * Created by Ellery on 2018/6/25.
  */
 public class WilsonScoreInterval {
-    
+
     public static double getWSI(int u, int v) {
 
         double z = 2.2;

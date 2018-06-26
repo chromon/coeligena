@@ -431,10 +431,11 @@
                                         <a href="">1 人赞同了该回答</a>
                                     </span>
                                     </div>
-                                    <div class="custom-rich-content-inner">
-                                        <span class="ans-inner-${answersDTOList.answersDO.id}">${answersDTOList.answersDO.answerContent}</span>
+                                    <!-- custom-is-collapsed -->
+                                    <div class="custom-rich-content-inner" id="ans-inner-${answersDTOList.answersDO.id}">
+                                        <span>${answersDTOList.answersDO.answerContent}</span>
                                     </div>
-                                    <button class="custom-contentItem-rightBtn custom-btn-plain" type="button">
+                                    <button id="ans-unfold-${answersDTOList.answersDO.id}" onclick="unfoldAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-rightBtn custom-btn-plain hide" type="button">
                                         <span class="custom-margin-right5">展开阅读全文</span>
                                         <i class="fa fa-chevron-down"></i>
                                     </button>
@@ -488,11 +489,11 @@
                                                     <li><a href="#">举报</a></li>
                                                 </ul>
                                             </div>
-                                            <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <span class="custom-margin-right5">收起</span>
-                                                <i class="fa fa-chevron-up"></i>
-                                            </span>
+                                            <button id="tuck-up-${answersDTOList.answersDO.id}" onclick="tuckUpAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <span class="custom-margin-right5">收起</span>
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </span>
                                             </button>
                                         </div>
                                     </div>
