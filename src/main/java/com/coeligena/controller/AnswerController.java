@@ -33,6 +33,12 @@ public class AnswerController {
     private AnswersService answersService;
     private QuestionsService questionsService;
 
+    /**
+     * 回答问题 Ajax 请求
+     * @param request request
+     * @param postAnswerDTO 回答 dto
+     * @return 回答详细信息
+     */
     @RequestMapping(value="/answer-the-question", method = RequestMethod.POST)
     @ResponseBody
     public AnswersDO answerQuestion(HttpServletRequest request,

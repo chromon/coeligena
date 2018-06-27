@@ -81,7 +81,7 @@ public class WelcomeController {
      * 获取验证码
      * @param request httpservletrequest
      * @param response httpservletresponse
-     * @throws IOException
+     * @throws IOException exception
      */
     @RequestMapping(value = "captcha", method = RequestMethod.GET)
     public void captcha(HttpServletRequest request,

@@ -13,6 +13,8 @@ function tuckUpAnswer(id) {
     $('#ans-inner-' + id).css('max-height', '400px');
     $('#ans-unfold-' + id).removeClass('hide');
     $('#tuck-up-' + id).addClass('hide');
+
+    window.location.hash = '#ans-inner-' + id;
 }
 
 // 展开全部回答

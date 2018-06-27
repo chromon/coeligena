@@ -1,6 +1,5 @@
 package com.coeligena.controller;
 
-import com.coeligena.dao.QuestionsDAO;
 import com.coeligena.dto.AnswersDTO;
 import com.coeligena.model.AnswersDO;
 import com.coeligena.model.QuestionsDO;
@@ -34,6 +33,12 @@ public class QuestionController {
     private AnswersService answersService;
     private UsersService usersService;
 
+    /**
+     * 问题页面
+     * @param questionId 问题 id
+     * @param model model
+     * @return 问题页
+     */
     @RequestMapping(value = "/question/{questionId}", method = RequestMethod.GET)
     public String question(@PathVariable int questionId, Model model) {
         // 查询问题信息
@@ -62,6 +67,13 @@ public class QuestionController {
         return "question";
     }
 
+    /**
+     * 问题页特定回答
+     * @param questionId 问题 id
+     * @param answerId 问题回答
+     * @param model model
+     * @return 问题页
+     */
     @RequestMapping(value = "/question/{questionId}/answer/{answerId}", method = RequestMethod.GET)
     public String questionAnswer(@PathVariable int questionId,
                                  @PathVariable int answerId, Model model) {

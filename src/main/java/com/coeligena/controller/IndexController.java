@@ -29,6 +29,11 @@ public class IndexController {
     private QuestionsService questionsService;
     private UsersService usersService;
 
+    /**
+     * 首页内容
+     * @param model model
+     * @return 首页
+     */
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public String index(Model model) {
 
