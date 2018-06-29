@@ -100,7 +100,7 @@ public class AnswerDigest {
 
     public static void main(String[] args) {
         String str = "<p>我认为社交类的产品估值主<body>要基于</body>以<i>下几点：</p><p>1、活跃用户人数，这个是最核心的。</p><p>2、日均用户增长量，这个反应产品的市场反响。</p><p>3、与已被估值的社交平台作对比分析。</p>";
-        String slice = getDigest(str, 110, "..#.");
+        String slice = getDigest(str, 110, "...");
         System.out.println(slice);
     }
 }

@@ -22,6 +22,9 @@ public class QuestionsDO {
     /** 问题内容 */
     private String questionDetail;
 
+    /** 问题内容摘要 */
+    private String questionDigest;
+
     /** 提问时间 */
     private Timestamp questionTime;
 
@@ -106,6 +109,23 @@ public class QuestionsDO {
      */
     public void setQuestionDetail(String questionDetail) {
         this.questionDetail = questionDetail;
+    }
+
+    /**
+     * 获取问题摘要
+     * @return 问题摘要详情
+     */
+    @Column(name = "question_digest", nullable = false, columnDefinition = "text")
+    public String getQuestionDigest() {
+        return questionDigest;
+    }
+
+    /**
+     * 设置问题摘要
+     * @param questionDigest 问题摘要
+     */
+    public void setQuestionDigest(String questionDigest) {
+        this.questionDigest = questionDigest;
     }
 
     /**

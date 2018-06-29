@@ -172,6 +172,7 @@ CREATE TABLE IF NOT EXISTS questions (
     id               INT(11)      NOT NULL AUTO_INCREMENT, /* 问题ID（唯一标识） */
     question_content VARCHAR(255) NOT NULL, /* 问题标题 */
     question_detail  TEXT         NOT NULL, /* 问题内容 */
+    question_digest  TEXT         NOT NULL, /* 问题内容摘要 */
     question_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 提问时间 */
     update_time      TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 问题更新时间 */
     answer_count     INT(11)      NOT NULL DEFAULT '0', /* 回答数 */

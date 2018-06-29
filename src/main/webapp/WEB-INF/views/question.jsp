@@ -52,9 +52,10 @@
                         <!-- question header details -->
                         <div class="custom-question-header-detail">
                             <div class="custom-question-rich-text">
-                                <span>${questionsDO.questionDetail}</span>
+                                <span id="question-digest">${questionsDO.questionDigest} ……</span>
+                                <span id="question-detail" class="hide">${questionsDO.questionDetail}</span>
                                 <input type="hidden" id="question_id" value="${questionsDO.id}">
-                                <button class="custom-contentItem-more custom-btn-plain" type="button">
+                                <button id="unfold-question" class="custom-contentItem-more custom-btn-plain" type="button">
                                     <span class="custom-margin-right5">显示全部</span>
                                     <i class="fa fa-chevron-down"></i>
                                 </button>
@@ -133,6 +134,13 @@
                                         <li><a href="#">查看问题日志</a></li>
                                     </ul>
                                 </div>
+
+                                <button id="tuck-up-question" class="custom-contentItem-action custom-btn-plain custom-right hide" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <span class="custom-margin-right5">收起</span>
+                                        <i class="fa fa-chevron-up"></i>
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -319,19 +327,19 @@
                                         </div>
                                         <div>
                                             <div class="custom-contentItem-actions">
-                                        <span>
-                                            <button class="custom-vote-btn" aria-label="赞同" type="button">
-                                                <i class="fa fa-caret-up"></i> {{approvalCount}}
-                                            </button>
-                                            <button class="custom-vote-btn" aria-label="反对" type="button">
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                        </span>
+                                                <span>
+                                                    <button class="custom-vote-btn" aria-label="赞同" type="button">
+                                                        <i class="fa fa-caret-up"></i> {{approvalCount}}
+                                                    </button>
+                                                    <button class="custom-vote-btn" aria-label="反对" type="button">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                </span>
                                                 <button class="custom-contentItem-action custom-btn-plain" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-comment custom-margin-right5"></i>
-                                                {{commentCount}} 条评论
-                                            </span>
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-comment custom-margin-right5"></i>
+                                                        {{commentCount}} 条评论
+                                                    </span>
                                                 </button>
                                                 <div class="custom-drop-option2">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -344,16 +352,16 @@
                                                     </ul>
                                                 </div>
                                                 <button class="custom-contentItem-action custom-btn-plain" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-star custom-margin-right5"></i>
-                                                收藏
-                                            </span>
-                                                </button>
-                                                <button class="custom-contentItem-action custom-btn-plain" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-heart custom-margin-right5"></i>
-                                                感谢
-                                            </span>
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-star custom-margin-right5"></i>
+                                                        收藏
+                                                    </span>
+                                                        </button>
+                                                        <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-heart custom-margin-right5"></i>
+                                                        感谢
+                                                    </span>
                                                 </button>
                                                 <div class="custom-drop-option2">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -365,10 +373,10 @@
                                                     </ul>
                                                 </div>
                                                 <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <span class="custom-margin-right5">收起</span>
-                                                <i class="fa fa-chevron-up"></i>
-                                            </span>
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <span class="custom-margin-right5">收起</span>
+                                                        <i class="fa fa-chevron-up"></i>
+                                                    </span>
                                                 </button>
                                             </div>
                                         </div>

@@ -37,6 +37,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/skeleton_screen.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/js/post_answer.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/js/console.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/resources/js/answer_collapse.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/answer_func.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/question_func.js" type="text/javascript"></script>
 
 
