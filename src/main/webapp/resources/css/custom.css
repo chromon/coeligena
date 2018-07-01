@@ -2957,3 +2957,9 @@ ins {
     box-sizing: border-box;
     -webkit-font-smoothing: subpixel-antialiased;
 }
+
+.custom-question-comment {
+    width: 90%;
+    display: inline;
+    float: left;
+}

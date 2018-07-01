@@ -20,3 +20,13 @@ $('#tuck-up-question').on('click', function() {
     $('#question-digest').removeClass('hide');
     $('#question-detail').addClass('hide');
 });
+
+// 问题评论高度自适应
+$('#question-comment').on('input',function(){
+    if (this.scrollHeight < 150) {
+        this.style.height='auto';
+        this.style.height = this.scrollHeight + 'px';
+    }
+});
+
+
