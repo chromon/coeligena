@@ -163,10 +163,11 @@
                         <!-- comment footer -->
                         <div class="custom-comments-footer custom-comments-editor">
                             <div class="form-group" style="margin-bottom: 0px;">
+                                <input type="hidden" id="parent-comment-id" value="0">
+                                <input type="hidden" id="reviewer-id" value="0">
                                 <textarea id="question-comment" class="form-control custom-question-comment" rows="1"></textarea>
-                                <button class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
+                                <button id="comment-question-btn" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
                             </div>
-
                         </div><!-- end comment footer -->
                     </div>
                 </div><!-- feed comment -->

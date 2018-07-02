@@ -4,7 +4,7 @@
  */
 
 $(document).ready(function () {
-    console.log($('.custom-rich-content-inner').height());
+    // console.log($('.custom-rich-content-inner').height());
 });
 
 // 收起回答

@@ -26,7 +26,7 @@ public class AnswersDO {
     private String cover;
 
     /** 回答摘要，默认 75 字符 */
-    private String answer_digest;
+    private String answerDigest;
 
     /** 回答 */
     private String answerContent;
@@ -142,16 +142,16 @@ public class AnswersDO {
      * @return 回答摘要
      */
     @Column(name = "answer_digest", columnDefinition = "varchar(128) default ''")
-    public String getAnswer_digest() {
-        return answer_digest;
+    public String getAnswerDigest() {
+        return answerDigest;
     }
 
     /**
      * 设置回答摘要
-     * @param answer_digest 回答摘要
+     * @param answerDigest 回答摘要
      */
-    public void setAnswer_digest(String answer_digest) {
-        this.answer_digest = answer_digest;
+    public void setAnswerDigest(String answerDigest) {
+        this.answerDigest = answerDigest;
     }
 
     /**

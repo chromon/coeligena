@@ -1,22 +1,21 @@
 package com.coeligena.controller;
 
 import com.coeligena.dto.AnswersDTO;
-import com.coeligena.model.AnswersDO;
-import com.coeligena.model.QuestionsDO;
-import com.coeligena.model.TopicNodesDO;
-import com.coeligena.model.UsersDO;
-import com.coeligena.service.AnswersService;
-import com.coeligena.service.QuestionTagsService;
-import com.coeligena.service.QuestionsService;
-import com.coeligena.service.UsersService;
+import com.coeligena.dto.CommentDTO;
+import com.coeligena.dto.QuestionCommentDTO;
+import com.coeligena.dto.UserInfoDTO;
+import com.coeligena.model.*;
+import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +31,7 @@ public class QuestionController {
     private QuestionTagsService questionTagsService;
     private AnswersService answersService;
     private UsersService usersService;
+    private QuestionCommentService questionCommentService;
 
     /**
      * 问题页面
@@ -84,6 +84,47 @@ public class QuestionController {
         return "question";
     }
 
+    /**
+     * 提交问题评论 ajax 请求
+     * @param request httpservletrequest
+     * @param questionCommentDTO 问题评论信息
+     * @return 问题评论相关信息 dto
+     */
+    @RequestMapping(value = "/question-comment", method = RequestMethod.POST)
+    @ResponseBody
+    public CommentDTO questionComment(HttpServletRequest request,
+                                      @ModelAttribute QuestionCommentDTO questionCommentDTO) {
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        // 日期
+        Date date = new Date();
+        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        Timestamp now = Timestamp.valueOf(dateFormat);
+
+        // 保存问题评论信息
+        QuestionCommentsDO questionCommentsDO = new QuestionCommentsDO();
+        questionCommentsDO.setQuestionId(questionCommentDTO.getQuestionId());
+        questionCommentsDO.setReviewerId(questionCommentDTO.getReviewerId());
+        questionCommentsDO.setParentCommentId(questionCommentDTO.getParentCommentId());
+        questionCommentsDO.setCommentContent(questionCommentDTO.getCommentContent());
+        questionCommentsDO.setCommentTime(now);
+        questionCommentsDO.setUserId(userInfoDTO.getUsersDO().getId());
+        questionCommentService.saveQuestionComment(questionCommentsDO);
+
+        // 查询被评论者信息
+        UsersDO reviewer = usersService.queryUserByUserId(questionCommentDTO.getReviewerId());
+
+        // 返回信息
+        CommentDTO commentDTO = new CommentDTO();
+        commentDTO.setQuestionId(questionCommentDTO.getQuestionId());
+        commentDTO.setQuestionCommentsDO(questionCommentsDO);
+        commentDTO.setReviewer(reviewer);
+        commentDTO.setUser(userInfoDTO.getUsersDO());
+
+        return commentDTO;
+    }
+
     @RequestMapping(value = "/question/invited", method = RequestMethod.GET)
     public String questionInvited() {
         return "invited";
@@ -112,5 +153,10 @@ public class QuestionController {
     @Autowired
     public void setUsersService(UsersService usersService) {
         this.usersService = usersService;
+    }
+
+    @Autowired
+    public void setQuestionCommentService(QuestionCommentService questionCommentService) {
+        this.questionCommentService = questionCommentService;
     }
 }

@@ -209,12 +209,13 @@ CREATE TABLE IF NOT EXISTS follow (
 CREATE TABLE IF NOT EXISTS question_comments (
     id                INT(11)    NOT NULL AUTO_INCREMENT, /* 评论ID（唯一标识） */
     question_id       INT(11)    NOT NULL DEFAULT '0', /* 被评论的问题ID（唯一标识） */
-    reviewer_id       INT(11)    NOT NULL DEFAULT '0', /* 评论用户ID（唯一标识） */
+    reviewer_id       INT(11)    NOT NULL DEFAULT '0', /* 被评论用户ID（唯一标识） */
     parent_comment_id INT(11)    NOT NULL DEFAULT '0', /* 被回复评论的ID（唯一标识） */
     comment_content   TEXT       NOT NULL, /* 评论内容 */
     comment_time      TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
     featured_comments TINYINT(4) NOT NULL DEFAULT '0', /* 是否是精选评论 0：否，1：是 */
     approval_count    INT(11)    NOT NULL DEFAULT '0', /* 赞同数量 */
+    user_id          INT(11)      NOT NULL DEFAULT '0', /* 提问用户 */
     PRIMARY KEY (id),
     INDEX (question_id),
     INDEX (reviewer_id),
@@ -373,8 +374,8 @@ CREATE TABLE IF NOT EXISTS answers (
     id             INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, /* 回答ID（唯一标识） */
     question_id    INT(11)          NOT NULL DEFAULT '0', /* 问题ID（唯一标识） */
     author_id      INT(11)          NOT NULL DEFAULT '0', /* 作者ID（唯一标识） */
-    cover          VARCHAR(512)     DEFAULT '', /* 回答封面图片路径 */
-    answer_digest  VARCHAR(128)     DEFAULT '', /* 回答摘要，默认 75 字符 */
+    cover          VARCHAR(512)     NOT NULL DEFAULT '', /* 回答封面图片路径 */
+    answerDigest   VARCHAR(128)     NOT NULL DEFAULT '', /* 回答摘要，默认 75 字符 */
     answer_content MEDIUMTEXT       NOT NULL, /* 回答 */
     answer_time    TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 回答或更新时间 */
     against_count  INT(11)          NOT NULL DEFAULT '0', /* 反对数 */

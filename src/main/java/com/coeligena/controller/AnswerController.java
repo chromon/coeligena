@@ -2,6 +2,7 @@ package com.coeligena.controller;
 
 import com.coeligena.dto.PostAnswerDTO;
 import com.coeligena.dto.UserInfoDTO;
+import com.coeligena.function.digest.AnswerDigest;
 import com.coeligena.model.AnswersDO;
 import com.coeligena.model.QuestionsDO;
 import com.coeligena.model.UsersDO;
@@ -44,9 +45,6 @@ public class AnswerController {
     public AnswersDO answerQuestion(HttpServletRequest request,
                                     @ModelAttribute PostAnswerDTO postAnswerDTO) {
 
-        System.out.println(postAnswerDTO.getAnonymous() + postAnswerDTO.getAnswerContent()
-                + postAnswerDTO.getReprintType() + postAnswerDTO.getQuestionId());
-
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
@@ -70,6 +68,8 @@ public class AnswerController {
         AnswersDO answersDO = new AnswersDO();
         answersDO.setQuestionId(Integer.parseInt(postAnswerDTO.getQuestionId()));
         answersDO.setAuthorId(usersDO.getId());
+        answersDO.setCover("");
+        answersDO.setAnswerDigest(AnswerDigest.getDigest(postAnswerDTO.getAnswerContent(), 100, "..."));
         answersDO.setAnswerContent(postAnswerDTO.getAnswerContent());
         answersDO.setAnswerTime(now);
         answersDO.setAnonymous(Byte.parseByte(postAnswerDTO.getAnonymous()));

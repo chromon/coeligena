@@ -19,7 +19,7 @@ public class QuestionCommentsDO {
     /** 被评论的问题 id */
     private int questionId;
 
-    /** 发表评论用户 id */
+    /** 被评论用户 id */
     private int reviewerId;
 
     /** 被回复评论的 id */
@@ -36,6 +36,9 @@ public class QuestionCommentsDO {
 
     /** 评论赞同数 */
     private int approvalCount;
+
+    /** 发表评论用户 id */
+    private int userId;
 
     /**
      * 获取评论 id
@@ -74,8 +77,8 @@ public class QuestionCommentsDO {
     }
 
     /**
-     * 获取发表评论的用户 id
-     * @return 发表评论的用户 id
+     * 获取被评论用户 id
+     * @return 被评论用户 id
      */
     @Column(name = "reviewer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getReviewerId() {
@@ -83,8 +86,8 @@ public class QuestionCommentsDO {
     }
 
     /**
-     * 设置发表评论的用户 id
-     * @param reviewerId 发表评论的用户 id
+     * 设置被评论用户 id
+     * @param reviewerId 被评论用户 id
      */
     public void setReviewerId(int reviewerId) {
         this.reviewerId = reviewerId;
@@ -173,5 +176,22 @@ public class QuestionCommentsDO {
      */
     public void setApprovalCount(int approvalCount) {
         this.approvalCount = approvalCount;
+    }
+
+    /**
+     * 获取发表评论用户 id
+     * @return 发表评论用户 id
+     */
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
+    public int getUserId() {
+        return userId;
+    }
+
+    /**
+     * 设置发表评论用户id
+     * @param userId 发表评论用户 id
+     */
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
