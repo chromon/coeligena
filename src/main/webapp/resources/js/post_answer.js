@@ -89,6 +89,9 @@ $('#post_answer_btn').on('click', function () {
         success: function(data){
             console.log(data);
 
+            // json 时间数据格式化
+            data['answerTime'] = getLocalTime(data['answerTime']);
+
             // 使用 handlebars 获取模板
             var tpl = $("#post_answer_template").html();
             // 预编译模板

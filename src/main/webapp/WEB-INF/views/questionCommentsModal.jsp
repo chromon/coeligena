@@ -30,24 +30,24 @@
                             </div>
                         </div><!-- end comment top bar -->
 
-                        <!-- comment list -->
-                        <div class="custom-comment-list">
+                        <!-- question comments template -->
+                        <script type="text/x-handlebars-template" id="question_comment_template">
                             <!-- comment item -->
                             <div class="custom-comment-item">
                                 <div>
                                     <div class="custom-commentItem-meta">
                                         <span>
                                             <a href="#">
-                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>{{user.avatarPath}}" alt="{{user.fullname}}">
                                             </a>
                                         </span>
                                         <span>
-                                            <a class="custom-comment-userLink" href="#">Ellery</a>
+                                            <a class="custom-comment-userLink" href="#">{{user.fullname}}</a>
                                         </span>
-                                        <span class="custom-commentItem-time">13 分钟前</span>
+                                        <span class="custom-commentItem-time">{{questionCommentsDO.commentTime}}</span>
                                     </div>
                                     <div class="custom-commentItem-content">
-                                        这不是前端日常么。
+                                        {{questionCommentsDO.commentContent}}
                                     </div>
                                     <div class="custom-commentItem-footer">
                                         <button class="custom-btn-plain custom-margin-right20" type="button">
@@ -83,6 +83,11 @@
                                     </div>
                                 </div>
                             </div><!-- end comment item -->
+                        </script><!-- end question comments template -->
+
+                        <!-- comment list -->
+                        <div class="custom-comment-list" id="question_comment_wrapper">
+
                             <%--<!-- comment item divider -->--%>
                             <%--<div class="custom-comment-list-divider">--%>
                             <%--<div class="custom-comment-list-dividerLine"></div>--%>
