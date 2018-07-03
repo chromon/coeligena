@@ -49,7 +49,7 @@ $('#comment-question-btn').on('click', function() {
         },
         dataType: "json",
         success: function(data){
-            console.log(data);
+            // console.log(data);
 
             // json 时间数据格式化
             data['questionCommentsDO']['commentTime'] = getLocalTime(data['questionCommentsDO']['commentTime']);
