@@ -6,6 +6,8 @@ import com.coeligena.service.QuestionCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 问题评论业务实现类
  * Created by Ellery on 2018/7/2.
@@ -22,6 +24,11 @@ public class QuestionCommentServiceImpl implements QuestionCommentService {
     @Override
     public void saveQuestionComment(QuestionCommentsDO questionCommentsDO) {
         this.questionCommentDAO.addQuestionComment(questionCommentsDO);
+    }
+
+    @Override
+    public List<QuestionCommentsDO> queryQuestionComments() {
+        return this.questionCommentDAO.queryQuestionComments();
     }
 
     @Autowired

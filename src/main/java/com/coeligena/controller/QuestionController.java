@@ -125,6 +125,41 @@ public class QuestionController {
         return commentDTO;
     }
 
+    /**
+     * 查询问题评论列表
+     * @return 问题评论列表
+     */
+    @RequestMapping(value = "/question-comment-list", method = RequestMethod.GET)
+    @ResponseBody
+    public List<CommentDTO> questionCommentList() {
+
+        List<CommentDTO> commentDTOList = new ArrayList<>();
+
+        // 查询全部评论
+        List<QuestionCommentsDO> questionCommentsDOList = this.questionCommentService.queryQuestionComments();
+        for (QuestionCommentsDO questionCommentsDO: questionCommentsDOList) {
+
+            CommentDTO commentDTO = new CommentDTO();
+
+            // 查询被评论用户信息
+            UsersDO reviewer = null;
+            if (questionCommentsDO.getReviewerId() != 0) {
+                reviewer = this.usersService.queryUserByUserId(questionCommentsDO.getReviewerId());
+            }
+
+            // 查询评论用户信息
+            UsersDO user = this.usersService.queryUserByUserId(questionCommentsDO.getUserId());
+
+            commentDTO.setReviewer(reviewer);
+            commentDTO.setQuestionCommentsDO(questionCommentsDO);
+            commentDTO.setUser(user);
+
+            commentDTOList.add(commentDTO);
+        }
+
+        return commentDTOList;
+    }
+
     @RequestMapping(value = "/question/invited", method = RequestMethod.GET)
     public String questionInvited() {
         return "invited";

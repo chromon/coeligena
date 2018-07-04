@@ -97,7 +97,7 @@
                                 </a>
                             </div>
                             <div class="custom-question-header-actions">
-                                <button id="question-comments" data-toggle="modal" data-target="#questionCommentsModal" class="custom-contentItem-action custom-btn-plain" type="button">
+                                <button id="question-comments" class="custom-contentItem-action custom-btn-plain" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-comment custom-margin-right5"></i>
                                         ${questionsDO.commentCount} 条评论

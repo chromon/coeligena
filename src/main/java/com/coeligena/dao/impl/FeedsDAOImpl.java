@@ -39,6 +39,7 @@ public class FeedsDAOImpl implements FeedsDAO {
      * @return 动态列表
      */
     @Override
+    @SuppressWarnings("unchecked")
     public List<FeedsDO> queryFeeds() {
         String sql = "FROM FeedsDO";
         List<FeedsDO> feedsList =  this.getSession().createQuery(sql).list();

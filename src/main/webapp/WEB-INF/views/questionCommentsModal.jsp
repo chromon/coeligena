@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
-<!-- anonymous modal -->
+<!-- question comment modal -->
 <div class="modal fade" id="questionCommentsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -32,6 +32,7 @@
 
                         <!-- question comments template -->
                         <script type="text/x-handlebars-template" id="question_comment_template">
+                            {{#each this}}
                             <!-- comment item -->
                             <div class="custom-comment-item">
                                 <div>
@@ -83,6 +84,7 @@
                                     </div>
                                 </div>
                             </div><!-- end comment item -->
+                            {{/each}}
                         </script><!-- end question comments template -->
 
                         <!-- comment list -->
@@ -96,56 +98,7 @@
                             <%--<i class="fa fa-question-circle"></i>--%>
                             <%--</div>--%>
                             <%--</div><!-- end comment item divider -->--%>
-                            <div class="custom-comment-item">
-                                <div>
-                                    <div class="custom-commentItem-meta">
-                                        <span>
-                                            <a href="#">
-                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
-                                            </a>
-                                        </span>
-                                        <span>
-                                            <a class="custom-comment-userLink" href="#">Ellery</a>
-                                        </span>
-                                        <span class="custom-commentItem-time">13 分钟前</span>
-                                    </div>
-                                    <div class="custom-commentItem-content">
-                                        这不是前端日常么。
-                                    </div>
-                                    <div class="custom-commentItem-footer">
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-thumbs-up custom-margin-right5"></i>
-                                                <span>赞</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-comment custom-margin-right5"></i>
-                                                <span>查看对话</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-share custom-margin-right5"></i>
-                                                <span>回复</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-thumbs-down custom-margin-right5"></i>
-                                                <span>踩</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-flag custom-margin-right5"></i>
-                                                <span>举报</span>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div><!-- end comment list -->
                         <!-- comment pagination -->
                         <div class="custom-pagination">
@@ -180,26 +133,4 @@
         </div>
     </div>
 </div>
-<!-- end anonymous modal -->
-
-<!-- real name modal -->
-<div class="modal fade" id="realNameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog custom-modal-size" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">确认取消匿名身份？</h4>
-            </div>
-            <div class="modal-body">
-                <div class="Anonymous-confirm">
-                    <p>取消匿名身份后， 提问、回答、赞同和关注将以实名显示。</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button data-dismiss="modal" type="button" class="btn btn-default">取消</button>
-                <button id="realname_confirm" type="button" class="btn btn-primary">确认</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end real name modal -->
+<!-- end question comment modal -->
