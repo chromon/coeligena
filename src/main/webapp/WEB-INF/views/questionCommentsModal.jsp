@@ -35,7 +35,7 @@
                             {{#each this}}
                             <!-- comment item -->
                             <div class="custom-comment-item">
-                                <div>
+                                <div id="question_comment_item_{{questionCommentsDO.id}}" onmouseover="showElement('{{questionCommentsDO.id}}');" onmouseout="hideElement('{{questionCommentsDO.id}}');">
                                     <div class="custom-commentItem-meta">
                                         <span>
                                             <a href="#">
@@ -57,30 +57,32 @@
                                                 <span>赞</span>
                                             </span>
                                         </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-comment custom-margin-right5"></i>
-                                                <span>查看对话</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-share custom-margin-right5"></i>
-                                                <span>回复</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-thumbs-down custom-margin-right5"></i>
-                                                <span>踩</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-flag custom-margin-right5"></i>
-                                                <span>举报</span>
-                                            </span>
-                                        </button>
+                                        <span id="comment_hide_btn_{{questionCommentsDO.id}}" class="hide">
+                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-comment custom-margin-right5"></i>
+                                                    <span>查看对话</span>
+                                                </span>
+                                            </button>
+                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-share custom-margin-right5"></i>
+                                                    <span>回复</span>
+                                                </span>
+                                            </button>
+                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-thumbs-down custom-margin-right5"></i>
+                                                    <span>踩</span>
+                                                </span>
+                                            </button>
+                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-flag custom-margin-right5"></i>
+                                                    <span>举报</span>
+                                                </span>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </div><!-- end comment item -->

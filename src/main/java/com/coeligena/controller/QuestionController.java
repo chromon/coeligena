@@ -112,6 +112,11 @@ public class QuestionController {
         questionCommentsDO.setUserId(userInfoDTO.getUsersDO().getId());
         questionCommentService.saveQuestionComment(questionCommentsDO);
 
+        // 更新问题评论数
+
+
+
+
         // 查询被评论者信息
         UsersDO reviewer = usersService.queryUserByUserId(questionCommentDTO.getReviewerId());
 

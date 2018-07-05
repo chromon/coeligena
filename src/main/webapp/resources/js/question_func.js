@@ -98,3 +98,13 @@ $('#question-comments').on('click', function() {
         }
     });
 });
+
+// 显示评论相关功能
+function showElement(id) {
+    $('#comment_hide_btn_' + id).removeClass('hide');
+}
+
+// 隐藏评论相关功能
+function hideElement(id) {
+    $('#comment_hide_btn_' + id).addClass('hide');
+}
