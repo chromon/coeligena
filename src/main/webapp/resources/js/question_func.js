@@ -52,6 +52,9 @@ $('#comment-question-btn').on('click', function() {
         success: function(data){
             // console.log(data);
 
+            // 判断是否是添加评论模板
+            data['isPost'] = true;
+
             // json 时间数据格式化
             data['questionCommentsDO']['commentTime'] = getLocalTime(data['questionCommentsDO']['commentTime']);
 
@@ -62,7 +65,7 @@ $('#comment-question-btn').on('click', function() {
             // 匹配 json 内容
             var html = template(data);
             // 输入模板
-            $('#question_comment_wrapper').html(html);
+            $('#question_comment_wrapper').append(html);
 
         }
     });
@@ -79,10 +82,13 @@ $('#question-comments').on('click', function() {
         url: basePath + "/question-comment-list",
         dataType: "json",
         success: function(data){
-            // console.log(data);
+            console.log(data);
+
+            // 判断是否是添加评论模板
+            data['isPost'] = false;
 
             // // json 时间数据格式化
-            for (var c in data) {
+            for (var c = 0; c < data.length; c ++) {
                 data[c]['questionCommentsDO']['commentTime'] = getLocalTime(data[c]['questionCommentsDO']['commentTime']);
             }
 

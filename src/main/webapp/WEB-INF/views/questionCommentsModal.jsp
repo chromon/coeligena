@@ -32,10 +32,10 @@
 
                         <!-- question comments template -->
                         <script type="text/x-handlebars-template" id="question_comment_template">
-                            {{#each this}}
-                            <!-- comment item -->
+                            {{#if isPost}}
+                            <!-- comment item (post comment) -->
                             <div class="custom-comment-item">
-                                <div id="question_comment_item_{{questionCommentsDO.id}}" onmouseover="showElement('{{questionCommentsDO.id}}');" onmouseout="hideElement('{{questionCommentsDO.id}}');">
+                                <div onmouseover="showElement('{{questionCommentsDO.id}}');" onmouseout="hideElement('{{questionCommentsDO.id}}');">
                                     <div class="custom-commentItem-meta">
                                         <span>
                                             <a href="#">
@@ -58,7 +58,7 @@
                                             </span>
                                         </button>
                                         <span id="comment_hide_btn_{{questionCommentsDO.id}}" class="hide">
-                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <button class="custom-btn-plain custom-margin-right20 hide" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-comment custom-margin-right5"></i>
                                                     <span>查看对话</span>
@@ -86,7 +86,65 @@
                                     </div>
                                 </div>
                             </div><!-- end comment item -->
+                            {{else}}
+                            {{#each this}}
+                            <!-- comment item (list comment) -->
+                            <div class="custom-comment-item">
+                                <div id="question_comment_item_{{questionCommentsDO.id}}" onmouseover="showElement('{{questionCommentsDO.id}}');" onmouseout="hideElement('{{questionCommentsDO.id}}');">
+                                    <div class="custom-commentItem-meta">
+                                        <span>
+                                            <a href="#">
+                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>{{user.avatarPath}}" alt="{{user.fullname}}">
+                                            </a>
+                                        </span>
+                                        <span>
+                                            <a class="custom-comment-userLink" href="#">{{user.fullname}}</a>
+                                        </span>
+                                        <span class="custom-commentItem-time">{{questionCommentsDO.commentTime}}</span>
+                                    </div>
+                                    <div class="custom-commentItem-content">
+                                        {{questionCommentsDO.commentContent}}
+                                    </div>
+                                    <div class="custom-commentItem-footer">
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-thumbs-up custom-margin-right5"></i>
+                                                <span>赞</span>
+                                            </span>
+                                        </button>
+                                        <span id="comment_hide_btn_{{questionCommentsDO.id}}" class="hide comment-hide">
+                                            {{#if reviewer}}
+                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-comment custom-margin-right5"></i>
+                                                    <span>查看对话</span>
+                                                </span>
+                                            </button>
+                                            {{/if}}
+                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-share custom-margin-right5"></i>
+                                                    <span>回复</span>
+                                                </span>
+                                            </button>
+                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-thumbs-down custom-margin-right5"></i>
+                                                    <span>踩</span>
+                                                </span>
+                                            </button>
+                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-flag custom-margin-right5"></i>
+                                                    <span>举报</span>
+                                                </span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div><!-- end comment item -->
                             {{/each}}
+                            {{/if}}
                         </script><!-- end question comments template -->
 
                         <!-- comment list -->
