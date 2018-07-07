@@ -2963,3 +2963,20 @@ ins {
     display: inline;
     float: left;
 }
+
+.question-comments-disableText {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 14px 12px;
+    color: #8590a6;
+    background-color: #f6f6f6;
+    border-top: 1px solid #f6f6f6;
+    box-sizing: border-box;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}

@@ -490,6 +490,10 @@
                                             </div>
                                         </div>
                                     </div><!-- end comment footer -->
+                                    <!-- disable comments -->
+                                    <div class="question-comments-disableText">
+                                        <div>因作者设置，评论已关闭</div>
+                                    </div><!-- end disable comments -->
                                 </div>
                             </div><!-- feed comment -->
                         </div><!-- feed detail -->

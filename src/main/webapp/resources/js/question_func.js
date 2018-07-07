@@ -76,7 +76,6 @@ $('#question-comments').on('click', function() {
     $('#questionCommentsModal').modal({
         keyboard: false
     });
-
     $.ajax({
         type: "GET",
         url: basePath + "/question-comment-list",
@@ -100,17 +99,28 @@ $('#question-comments').on('click', function() {
             var html = template(data);
             // 输入模板
             $('#question_comment_wrapper').html(html);
-
         }
     });
 });
 
 // 显示评论相关功能
-function showElement(id) {
-    $('#comment_hide_btn_' + id).removeClass('hide');
+function showElement(obj) {
+    $(obj).find('.comment-hide').removeClass('hide');
 }
 
 // 隐藏评论相关功能
-function hideElement(id) {
-    $('#comment_hide_btn_' + id).addClass('hide');
+function hideElement(obj) {
+    $(obj).find('.comment-hide').addClass('hide');
+}
+
+// 显示回复组件
+function replyContent(id) {
+    $('#commentItem-footer-' + id).addClass('hide');
+    $('#reply-content-' + id).removeClass('hide');
+}
+
+// 隐藏回复组件
+function hideReplyContent(id) {
+    $('#commentItem-footer-' + id).removeClass('hide');
+    $('#reply-content-' + id).addClass('hide');
 }

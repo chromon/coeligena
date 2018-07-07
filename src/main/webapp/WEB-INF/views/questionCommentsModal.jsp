@@ -35,7 +35,7 @@
                             {{#if isPost}}
                             <!-- comment item (post comment) -->
                             <div class="custom-comment-item">
-                                <div onmouseover="showElement('{{questionCommentsDO.id}}');" onmouseout="hideElement('{{questionCommentsDO.id}}');">
+                                <div onmouseover="showElement(this);" onmouseout="hideElement(this);">
                                     <div class="custom-commentItem-meta">
                                         <span>
                                             <a href="#">
@@ -57,7 +57,7 @@
                                                 <span>赞</span>
                                             </span>
                                         </button>
-                                        <span id="comment_hide_btn_{{questionCommentsDO.id}}" class="hide">
+                                        <span class="hide comment-hide">
                                             <button class="custom-btn-plain custom-margin-right20 hide" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-comment custom-margin-right5"></i>
@@ -90,7 +90,10 @@
                             {{#each this}}
                             <!-- comment item (list comment) -->
                             <div class="custom-comment-item">
-                                <div id="question_comment_item_{{questionCommentsDO.id}}" onmouseover="showElement('{{questionCommentsDO.id}}');" onmouseout="hideElement('{{questionCommentsDO.id}}');">
+
+                                <input type="hidden" id="question_comment_id" value="{{questionCommentsDO.id}}">
+
+                                <div class="question_comment_item" id="question_comment_item_{{questionCommentsDO.id}}" onmouseover="showElement(this);" onmouseout="hideElement(this);">
                                     <div class="custom-commentItem-meta">
                                         <span>
                                             <a href="#">
@@ -105,14 +108,24 @@
                                     <div class="custom-commentItem-content">
                                         {{questionCommentsDO.commentContent}}
                                     </div>
-                                    <div class="custom-commentItem-footer">
+                                    <!-- reply comment -->
+                                    <div id="reply-content-{{questionCommentsDO.id}}" class="hide" style="padding-bottom: 30px;">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="1" placeholder="回复：xxx"></textarea>
+                                            <div class="custom-right" style="padding-top: 15px;">
+                                                <button id="cancel-reply-{{questionCommentsDO.id}}" onclick="hideReplyContent('{{questionCommentsDO.id}}');" class="btn btn-default btn-sm">取消</button>
+                                                <button type="button" class="btn btn-primary btn-sm">评论</button>
+                                            </div>
+                                        </div>
+                                    </div><!-- end reply comment -->
+                                    <div class="custom-commentItem-footer" id="commentItem-footer-{{questionCommentsDO.id}}">
                                         <button class="custom-btn-plain custom-margin-right20" type="button">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <i class="fa fa-thumbs-up custom-margin-right5"></i>
                                                 <span>赞</span>
                                             </span>
                                         </button>
-                                        <span id="comment_hide_btn_{{questionCommentsDO.id}}" class="hide comment-hide">
+                                        <span class="hide comment-hide">
                                             {{#if reviewer}}
                                             <button class="custom-btn-plain custom-margin-right20" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
@@ -121,7 +134,7 @@
                                                 </span>
                                             </button>
                                             {{/if}}
-                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <button onclick="replyContent('{{questionCommentsDO.id}}')" class="custom-btn-plain custom-margin-right20" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-share custom-margin-right5"></i>
                                                     <span>回复</span>
@@ -149,6 +162,15 @@
 
                         <!-- comment list -->
                         <div class="custom-comment-list" id="question_comment_wrapper">
+
+                            <%--<div class="skeleton">--%>
+                                <%--<div class="skeleton-head"></div>--%>
+                                <%--<div class="skeleton-body">--%>
+                                    <%--<div class="skeleton-title"></div>--%>
+                                    <%--<div class="skeleton-content"></div>--%>
+                                <%--</div>--%>
+                                <%--<div class="skeleton-detail"></div>--%>
+                            <%--</div>--%>
 
                             <%--<!-- comment item divider -->--%>
                             <%--<div class="custom-comment-list-divider">--%>
