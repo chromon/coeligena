@@ -2980,3 +2980,9 @@ ins {
     -ms-flex-pack: center;
     justify-content: center;
 }
+
+.custom-commentItem-reply {
+    margin-right: 8px;
+    margin-left: 8px;
+    color: #8590a6;
+}

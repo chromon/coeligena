@@ -81,7 +81,7 @@ $('#question-comments').on('click', function() {
         url: basePath + "/question-comment-list",
         dataType: "json",
         success: function(data){
-            console.log(data);
+            // console.log(data);
 
             // 判断是否是添加评论模板
             data['isPost'] = false;
@@ -123,4 +123,43 @@ function replyContent(id) {
 function hideReplyContent(id) {
     $('#commentItem-footer-' + id).removeClass('hide');
     $('#reply-content-' + id).addClass('hide');
+}
+
+// 问题回复评论
+function postReply(id) {
+    var content = $('#question-comment-r-' + id).val();
+
+    $.ajax({
+        type: "POST",
+        url: basePath + "/question-comment-reply",
+        data: {
+            questionId: $('#question_id').val(),
+            reviewerId: $('#reviewer-id-r-' + id).val(),
+            parentCommentId: id,
+            commentContent: content
+        },
+        dataType: "json",
+        success: function (data) {
+            // console.log(data);
+
+            $('#commentItem-footer-' + id).removeClass('hide');
+            $('#reply-content-' + id).addClass('hide');
+
+            // 判断是否是添加评论模板
+            data['isPost'] = true;
+
+            // json 时间数据格式化
+            data['questionCommentsDO']['commentTime'] = getLocalTime(data['questionCommentsDO']['commentTime']);
+
+            // 使用 handlebars 获取模板
+            var tpl = $("#question_comment_template").html();
+            // 预编译模板
+            var template = Handlebars.compile(tpl);
+            // 匹配 json 内容
+            var html = template(data);
+            // 输入模板
+            $('#question_comment_wrapper').append(html);
+
+        }
+    });
 }

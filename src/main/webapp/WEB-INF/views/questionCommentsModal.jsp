@@ -45,6 +45,12 @@
                                         <span>
                                             <a class="custom-comment-userLink" href="#">{{user.fullname}}</a>
                                         </span>
+                                        {{#if reviewer}}
+                                        <span>
+                                            <span class="custom-commentItem-reply">回复</span>
+                                            <a class="custom-comment-userLink" href="#">{{reviewer.fullname}}</a>
+                                        </span>
+                                        {{/if}}
                                         <span class="custom-commentItem-time">{{questionCommentsDO.commentTime}}</span>
                                     </div>
                                     <div class="custom-commentItem-content">
@@ -57,13 +63,15 @@
                                                 <span>赞</span>
                                             </span>
                                         </button>
+                                        {{#if reviewer}}
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-comment custom-margin-right5"></i>
+                                                <span>查看对话</span>
+                                            </span>
+                                        </button>
+                                        {{/if}}
                                         <span class="hide comment-hide">
-                                            <button class="custom-btn-plain custom-margin-right20 hide" type="button">
-                                                <span style="display: inline-flex;align-items: center;">
-                                                    <i class="fa fa-comment custom-margin-right5"></i>
-                                                    <span>查看对话</span>
-                                                </span>
-                                            </button>
                                             <button class="custom-btn-plain custom-margin-right20" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-share custom-margin-right5"></i>
@@ -103,6 +111,12 @@
                                         <span>
                                             <a class="custom-comment-userLink" href="#">{{user.fullname}}</a>
                                         </span>
+                                        {{#if reviewer}}
+                                        <span>
+                                            <span class="custom-commentItem-reply">回复</span>
+                                            <a class="custom-comment-userLink" href="#">{{reviewer.fullname}}</a>
+                                        </span>
+                                        {{/if}}
                                         <span class="custom-commentItem-time">{{questionCommentsDO.commentTime}}</span>
                                     </div>
                                     <div class="custom-commentItem-content">
@@ -111,10 +125,12 @@
                                     <!-- reply comment -->
                                     <div id="reply-content-{{questionCommentsDO.id}}" class="hide" style="padding-bottom: 30px;">
                                         <div class="form-group">
-                                            <textarea class="form-control" rows="1" placeholder="回复：xxx"></textarea>
+                                            <input type="hidden" id="parent-comment-id-r-{{questionCommentsDO.id}}" value="{{questionCommentsDO.id}}">
+                                            <input type="hidden" id="reviewer-id-r-{{questionCommentsDO.id}}" value="{{user.id}}">
+                                            <textarea id="question-comment-r-{{questionCommentsDO.id}}" class="form-control" rows="1" placeholder="回复：{{user.fullname}}" style="font-size: 14px;"></textarea>
                                             <div class="custom-right" style="padding-top: 15px;">
                                                 <button id="cancel-reply-{{questionCommentsDO.id}}" onclick="hideReplyContent('{{questionCommentsDO.id}}');" class="btn btn-default btn-sm">取消</button>
-                                                <button type="button" class="btn btn-primary btn-sm">评论</button>
+                                                <button id="question-comment-btn-{{questionCommentsDO.id}}" onclick="postReply('{{questionCommentsDO.id}}');" type="button" class="btn btn-primary btn-sm">评论</button>
                                             </div>
                                         </div>
                                     </div><!-- end reply comment -->
@@ -125,15 +141,15 @@
                                                 <span>赞</span>
                                             </span>
                                         </button>
+                                        {{#if reviewer}}
+                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-comment custom-margin-right5"></i>
+                                                <span>查看对话</span>
+                                            </span>
+                                        </button>
+                                        {{/if}}
                                         <span class="hide comment-hide">
-                                            {{#if reviewer}}
-                                            <button class="custom-btn-plain custom-margin-right20" type="button">
-                                                <span style="display: inline-flex;align-items: center;">
-                                                    <i class="fa fa-comment custom-margin-right5"></i>
-                                                    <span>查看对话</span>
-                                                </span>
-                                            </button>
-                                            {{/if}}
                                             <button onclick="replyContent('{{questionCommentsDO.id}}')" class="custom-btn-plain custom-margin-right20" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-share custom-margin-right5"></i>

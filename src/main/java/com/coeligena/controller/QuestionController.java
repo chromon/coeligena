@@ -94,40 +94,7 @@ public class QuestionController {
     @ResponseBody
     public CommentDTO questionComment(HttpServletRequest request,
                                       @ModelAttribute QuestionCommentDTO questionCommentDTO) {
-        // 查询用户信息
-        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
-
-        // 日期
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
-
-        // 保存问题评论信息
-        QuestionCommentsDO questionCommentsDO = new QuestionCommentsDO();
-        questionCommentsDO.setQuestionId(questionCommentDTO.getQuestionId());
-        questionCommentsDO.setReviewerId(questionCommentDTO.getReviewerId());
-        questionCommentsDO.setParentCommentId(questionCommentDTO.getParentCommentId());
-        questionCommentsDO.setCommentContent(questionCommentDTO.getCommentContent());
-        questionCommentsDO.setCommentTime(now);
-        questionCommentsDO.setUserId(userInfoDTO.getUsersDO().getId());
-        questionCommentService.saveQuestionComment(questionCommentsDO);
-
-        // 更新问题评论数
-        QuestionsDO questionsDO = questionsService.queryQuestionById(questionCommentDTO.getQuestionId());
-        questionsDO.setCommentCount(questionsDO.getCommentCount() + 1);
-        questionsService.modifyQuestion(questionsDO);
-
-        // 查询被评论者信息
-        UsersDO reviewer = usersService.queryUserByUserId(questionCommentDTO.getReviewerId());
-
-        // 返回信息
-        CommentDTO commentDTO = new CommentDTO();
-        commentDTO.setQuestionId(questionCommentDTO.getQuestionId());
-        commentDTO.setQuestionCommentsDO(questionCommentsDO);
-        commentDTO.setReviewer(reviewer);
-        commentDTO.setUser(userInfoDTO.getUsersDO());
-
-        return commentDTO;
+        return this.questionCommentFunc(request, questionCommentDTO);
     }
 
     /**
@@ -163,6 +130,63 @@ public class QuestionController {
         }
 
         return commentDTOList;
+    }
+
+    /**
+     * 问题评论回复
+     * @param request httpservletrequest
+     * @param questionCommentDTO 问题评论信息
+     * @return 问题评论相关信息
+     */
+    @RequestMapping(value = "/question-comment-reply", method = RequestMethod.POST)
+    @ResponseBody
+    public CommentDTO questionCommentReply(HttpServletRequest request,
+                                      @ModelAttribute QuestionCommentDTO questionCommentDTO) {
+        return this.questionCommentFunc(request, questionCommentDTO);
+    }
+
+    /**
+     * 问题评论处理方法
+     * @param request httpservletrequest
+     * @param questionCommentDTO 问题评论信息
+     * @return 问题评论相关信息
+     */
+    private CommentDTO questionCommentFunc(HttpServletRequest request,
+                                          QuestionCommentDTO questionCommentDTO) {
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        // 日期
+        Date date = new Date();
+        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        Timestamp now = Timestamp.valueOf(dateFormat);
+
+        // 保存问题评论信息
+        QuestionCommentsDO questionCommentsDO = new QuestionCommentsDO();
+        questionCommentsDO.setQuestionId(questionCommentDTO.getQuestionId());
+        questionCommentsDO.setReviewerId(questionCommentDTO.getReviewerId());
+        questionCommentsDO.setParentCommentId(questionCommentDTO.getParentCommentId());
+        questionCommentsDO.setCommentContent(questionCommentDTO.getCommentContent());
+        questionCommentsDO.setCommentTime(now);
+        questionCommentsDO.setUserId(userInfoDTO.getUsersDO().getId());
+        questionCommentService.saveQuestionComment(questionCommentsDO);
+
+        // 更新问题评论数
+        QuestionsDO questionsDO = questionsService.queryQuestionById(questionCommentDTO.getQuestionId());
+        questionsDO.setCommentCount(questionsDO.getCommentCount() + 1);
+        questionsService.modifyQuestion(questionsDO);
+
+        // 查询被评论者信息
+        UsersDO reviewer = usersService.queryUserByUserId(questionCommentDTO.getReviewerId());
+
+        // 返回信息
+        CommentDTO commentDTO = new CommentDTO();
+        commentDTO.setQuestionId(questionCommentDTO.getQuestionId());
+        commentDTO.setQuestionCommentsDO(questionCommentsDO);
+        commentDTO.setReviewer(reviewer);
+        commentDTO.setUser(userInfoDTO.getUsersDO());
+
+        return commentDTO;
     }
 
     @RequestMapping(value = "/question/invited", method = RequestMethod.GET)
