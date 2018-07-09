@@ -34,8 +34,14 @@ public class QuestionCommentsDO {
     /** 是否是精选评论 */
     private byte featuredComments;
 
+    /** 是否是被折叠评论 */
+    private byte collapseComments;
+
     /** 评论赞同数 */
     private int approvalCount;
+
+    /** 评论反对数 */
+    private int opposeCount;
 
     /** 发表评论用户 id */
     private int userId;
@@ -162,6 +168,23 @@ public class QuestionCommentsDO {
     }
 
     /**
+     * 判断是否是被折叠评论
+     * @return 是否是被折叠评论
+     */
+    @Column(name = "collapse_comments", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getCollapseComments() {
+        return collapseComments;
+    }
+
+    /**
+     * 设置是否是被折叠评论
+     * @param collapseComments 是否
+     */
+    public void setCollapseComments(byte collapseComments) {
+        this.collapseComments = collapseComments;
+    }
+
+    /**
      * 获取评论赞同数
      * @return 评论赞同数
      */
@@ -176,6 +199,23 @@ public class QuestionCommentsDO {
      */
     public void setApprovalCount(int approvalCount) {
         this.approvalCount = approvalCount;
+    }
+
+    /**
+     * 获取评论反对数
+     * @return 评论反对数
+     */
+    @Column(name = "oppose_count", nullable = false, columnDefinition = "int(11) default '0'")
+    public int getOpposeCount() {
+        return opposeCount;
+    }
+
+    /**
+     * 设置评论反对数
+     * @param opposeCount 评论反对数
+     */
+    public void setOpposeCount(int opposeCount) {
+        this.opposeCount = opposeCount;
     }
 
     /**

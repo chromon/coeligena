@@ -214,7 +214,9 @@ CREATE TABLE IF NOT EXISTS question_comments (
     comment_content   TEXT       NOT NULL, /* 评论内容 */
     comment_time      TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
     featured_comments TINYINT(4) NOT NULL DEFAULT '0', /* 是否是精选评论 0：否，1：是 */
-    approval_count    INT(11)    NOT NULL DEFAULT '0', /* 赞同数量 */
+    collapse_comments TINYINT(4) NOT NULL DEFAULT '0', /* 是否为被折叠评论 0：否，1：是 */
+    approval_count    INT(11)    NOT NULL DEFAULT '0', /* 赞同（顶）数量 */
+    oppose_count      INT(11)    NOT NULL DEFAULT '0', /* 反对（踩）数量 */
     user_id          INT(11)      NOT NULL DEFAULT '0', /* 提问用户 */
     PRIMARY KEY (id),
     INDEX (question_id),
