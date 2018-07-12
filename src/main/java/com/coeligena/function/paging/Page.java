@@ -16,7 +16,6 @@ public class Page {
     // 总记录数
     private int size;
 
-    // 可以在页面中"显示startRow到endRow 共size条数据"
     // 当前页面第一个元素在数据库中的行号
     private int startRow;
     // 当前页面最后一个元素在数据库中的行号
@@ -37,7 +36,7 @@ public class Page {
     private boolean hasNextPage = false;
 
     // 导航页码数
-    private int navigatePages;
+    private int navigatePages = 5;
     // 所有导航页号
     private int[] navigatePageNums;
     // 导航条上的第一页
@@ -55,6 +54,7 @@ public class Page {
         calcPages();
         calcPreNextPage();
         calcPageBoundary();
+        calcNavigatePageNums();
 
         this.startRow = (this.pageNum - 1) * this.pageSize;
     }
@@ -121,16 +121,16 @@ public class Page {
                 for (int i = 0; i < navigatePages; i++) {
                     navigatePageNums[i] = startNum++;
                 }
-            } else if (endNum > pages) {
-                endNum = pages;
+            } else if (endNum > this.pages) {
+                endNum = this.pages;
                 //最后navigatePages页
-                for (int i = navigatePages - 1; i >= 0; i--) {
-                    navigatePageNums[i] = endNum--;
+                for (int i = this.navigatePages - 1; i >= 0; i--) {
+                    this.navigatePageNums[i] = endNum--;
                 }
             } else {
                 //所有中间页
-                for (int i = 0; i < navigatePages; i++) {
-                    navigatePageNums[i] = startNum++;
+                for (int i = 0; i < this.navigatePages; i++) {
+                    this.navigatePageNums[i] = startNum++;
                 }
             }
         }

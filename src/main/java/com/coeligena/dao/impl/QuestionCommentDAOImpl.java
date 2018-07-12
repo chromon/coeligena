@@ -4,6 +4,7 @@ import com.coeligena.dao.QuestionCommentDAO;
 import com.coeligena.model.QuestionCommentsDO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -41,5 +42,16 @@ public class QuestionCommentDAOImpl implements QuestionCommentDAO {
     public List<QuestionCommentsDO> queryQuestionComments() {
         String sql = "from QuestionCommentsDO";
         return this.getSession().createQuery(sql).list();
+    }
+
+    /**
+     * 查询记录数
+     * @return 问题评论数量
+     */
+    @Override
+    public int queryQuestionCommentsCount() {
+        String sql = "select count(*) from QuestionCommentsDO";
+        Query query = this.getSession().createQuery(sql);
+        return ((Number)query.uniqueResult()).intValue();
     }
 }

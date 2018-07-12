@@ -26,9 +26,22 @@ public class QuestionCommentServiceImpl implements QuestionCommentService {
         this.questionCommentDAO.addQuestionComment(questionCommentsDO);
     }
 
+    /**
+     * 查询全部问题评论
+     * @return 问题评论列表
+     */
     @Override
     public List<QuestionCommentsDO> queryQuestionComments() {
         return this.questionCommentDAO.queryQuestionComments();
+    }
+
+    /**
+     * 查询记录数
+     * @return 问题评论数量
+     */
+    @Override
+    public int queryQuestionCommentsCount() {
+        return this.questionCommentDAO.queryQuestionCommentsCount();
     }
 
     @Autowired

@@ -21,4 +21,10 @@ public interface QuestionCommentDAO {
      * @return 问题评论列表
      */
     List<QuestionCommentsDO> queryQuestionComments();
+
+    /**
+     * 查询记录数
+     * @return 记录数
+     */
+    int queryQuestionCommentsCount();
 }
