@@ -825,7 +825,7 @@ CREATE TABLE IF NOT EXISTS business (
 /*
  * 页面信息表
  */
-CREATE TABLE IF NOT EXISTS pages (
+CREATE TABLE IF NOT EXISTS totalPages (
     id          INT(11)     NOT NULL AUTO_INCREMENT, /* 页面信息 ID */
     url_token   VARCHAR(32) NOT NULL, /* 页面 URL */
     title       VARCHAR(256)         DEFAULT '', /* 页面 title */

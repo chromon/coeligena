@@ -3,6 +3,7 @@ package com.coeligena.controller;
 import com.coeligena.dto.CommentDTO;
 import com.coeligena.dto.QuestionCommentDTO;
 import com.coeligena.dto.UserInfoDTO;
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.QuestionCommentsDO;
 import com.coeligena.model.QuestionsDO;
 import com.coeligena.model.UsersDO;
@@ -61,6 +62,11 @@ public class QuestionCommentController {
         int count = this.questionCommentService.queryQuestionCommentsCount();
         System.out.println(count+"================================");
 
+        Page page = new Page(1, 2);
+        page.setSize(count);
+        page.setNavigatePages(3);
+        page.init();
+        System.out.println(page.toString());
 
         List<QuestionCommentsDO> questionCommentsDOList = this.questionCommentService.queryQuestionComments();
         for (QuestionCommentsDO questionCommentsDO: questionCommentsDOList) {
