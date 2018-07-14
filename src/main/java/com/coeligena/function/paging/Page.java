@@ -61,8 +61,6 @@ public class Page {
      * 初始方法
      */
     public void init() {
-        // 计算起始位置
-        calcStartPos();
         // 计算总页数
         calcPages();
         // 计算导航页
@@ -213,6 +211,8 @@ public class Page {
     }
 
     public int getStartPos() {
+        // 计算起始位置
+        calcStartPos();
         return startPos;
     }
 

@@ -1,5 +1,6 @@
 package com.coeligena.service;
 
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.QuestionCommentsDO;
 
 import java.util.List;
@@ -18,9 +19,10 @@ public interface QuestionCommentService {
 
     /**
      * 查询全部问题评论
+     * @param page 分页
      * @return 问题评论列表
      */
-    List<QuestionCommentsDO> queryQuestionComments();
+    List<QuestionCommentsDO> queryQuestionComments(Page page);
 
     /**
      * 用于分页，查询全部数量

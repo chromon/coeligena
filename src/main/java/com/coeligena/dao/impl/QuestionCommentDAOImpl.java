@@ -1,6 +1,7 @@
 package com.coeligena.dao.impl;
 
 import com.coeligena.dao.QuestionCommentDAO;
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.QuestionCommentsDO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -39,9 +40,12 @@ public class QuestionCommentDAOImpl implements QuestionCommentDAO {
      */
     @Override
     @SuppressWarnings("unchecked")
-    public List<QuestionCommentsDO> queryQuestionComments() {
+    public List<QuestionCommentsDO> queryQuestionComments(Page page) {
         String sql = "from QuestionCommentsDO";
-        return this.getSession().createQuery(sql).list();
+        Query query = this.getSession().createQuery(sql);
+        query.setFirstResult(page.getStartPos());
+        query.setMaxResults(page.getPageSize());
+        return query.list();
     }
 
     /**

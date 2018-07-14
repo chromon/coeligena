@@ -1,6 +1,7 @@
 package com.coeligena.service.impl;
 
 import com.coeligena.dao.QuestionCommentDAO;
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.QuestionCommentsDO;
 import com.coeligena.service.QuestionCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,12 @@ public class QuestionCommentServiceImpl implements QuestionCommentService {
 
     /**
      * 查询全部问题评论
+     * @param page 分页
      * @return 问题评论列表
      */
     @Override
-    public List<QuestionCommentsDO> queryQuestionComments() {
-        return this.questionCommentDAO.queryQuestionComments();
+    public List<QuestionCommentsDO> queryQuestionComments(Page page) {
+        return this.questionCommentDAO.queryQuestionComments(page);
     }
 
     /**

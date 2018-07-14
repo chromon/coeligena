@@ -95,7 +95,7 @@
                                 </div>
                             </div><!-- end comment item -->
                             {{else}}
-                            {{#each this}}
+                            {{#each this.list}}
                             <!-- comment item (list comment) -->
                             <div class="custom-comment-item">
 
@@ -198,17 +198,36 @@
                             <%--</div><!-- end comment item divider -->--%>
 
                         </div><!-- end comment list -->
-                        <!-- comment pagination -->
-                        <div class="custom-pagination">
-                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
-                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">2</button>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">3</button>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">4</button>
-                            <span class="custom-pagination-btn">•••</span>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">12</button>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
-                        </div><!-- end comment pagination -->
+                        <script type="text/x-handlebars-template" id="question-comments-paging-template">
+
+                            <!-- comment pagination -->
+                            <div class="custom-pagination">
+                                {{#if hasPreviousPage}}
+                                <button class="custom-pagination-btn custom-btn-plain" type="button">上一页</button>
+                                {{else}}
+                                <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
+                                {{/if}}
+                                <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
+                                {{#if showFirstEllipsis}}
+                                <span class="custom-pagination-btn">•••</span>
+                                {{/if}}
+                                {{#each navigatePageNums}}
+                                <button class="custom-pagination-btn custom-btn-plain" type="button">{{this}}</button>
+                                {{/each}}
+                                {{#if showLastEllipsis}}
+                                <span class="custom-pagination-btn">•••</span>
+                                {{/if}}
+                                <button class="custom-pagination-btn custom-btn-plain" type="button">{{totalPages}}</button>
+                                {{#if hasNextPage}}
+                                <button class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
+                                {{else}}
+                                <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">下一页</button>
+                                {{/if}}
+                            </div><!-- end comment pagination -->
+                        </script>
+                        <div id="question-comments-paging-wrapper">
+
+                        </div>
                         <!-- collapse comment -->
                         <div class="custom-comment-list-action">
                             <div class="custom-comment-list-collapse">

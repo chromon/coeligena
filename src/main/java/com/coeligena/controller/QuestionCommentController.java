@@ -1,6 +1,7 @@
 package com.coeligena.controller;
 
 import com.coeligena.dto.CommentDTO;
+import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.QuestionCommentDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.paging.Page;
@@ -54,21 +55,19 @@ public class QuestionCommentController {
      */
     @RequestMapping(value = "/question-comment-list", method = RequestMethod.GET)
     @ResponseBody
-    public List<CommentDTO> questionCommentList() {
+    public PagingListDTO<CommentDTO> questionCommentList() {
 
         List<CommentDTO> commentDTOList = new ArrayList<>();
 
         // 查询全部评论
         int count = this.questionCommentService.queryQuestionCommentsCount();
-        System.out.println(count+"================================");
 
         Page page = new Page(1, 2);
         page.setSize(count);
         page.setNavigatePages(3);
         page.init();
-        System.out.println(page.toString());
 
-        List<QuestionCommentsDO> questionCommentsDOList = this.questionCommentService.queryQuestionComments();
+        List<QuestionCommentsDO> questionCommentsDOList = this.questionCommentService.queryQuestionComments(page);
         for (QuestionCommentsDO questionCommentsDO: questionCommentsDOList) {
 
             CommentDTO commentDTO = new CommentDTO();
@@ -89,7 +88,10 @@ public class QuestionCommentController {
             commentDTOList.add(commentDTO);
         }
 
-        return commentDTOList;
+        // return commentDTOList;
+
+        PagingListDTO<CommentDTO> pagingListDTO = new PagingListDTO<>(commentDTOList, page);
+        return pagingListDTO;
     }
 
     /**
