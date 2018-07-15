@@ -1,9 +1,26 @@
 package com.coeligena.function.paging;
 
+import org.apache.commons.lang.ArrayUtils;
+
 import java.util.Arrays;
 
 /**
- * paging
+ * <p>paging</p>
+ *
+ * <p>
+ * demo:
+ *      navigatePages = 3
+ *      (pageNum: 1 ~ 3)  上一页  1  2  3  •••  7  下一页
+ *      (pageNum: 2 ~ 4)  上一页  1  2  3  4  •••  7  下一页
+ *      (pageNum: 3 ~ 5)  上一页  1  •••  3  4  5  •••  7  下一页
+ *      (pageNum: 4 ~ 6)  上一页  1  •••  4  5  6  7  下一页
+ *      (pageNum: 5 ~ 7)  上一页  1  •••  5  6  7  下一页
+ * </p>
+ * 
+ * <p>
+ *     the first page and last page always display fixed.
+ * </p>
+ *
  * Created by Ellery on 2018/7/10.
  */
 public class Page {
@@ -71,6 +88,8 @@ public class Page {
         calcPageBoundary();
         // 计算是否额外显示首尾页省略号
         calcFirstLastEllipsis();
+        // 计算导航条边界
+        calcNavigateBoundary();
     }
 
     /**
@@ -171,6 +190,14 @@ public class Page {
         }
         if (this.totalPages - this.navigateLastPage >= 2) {
             this.isShowLastEllipsis = true;
+        }
+    }
+
+    private void calcNavigateBoundary() {
+        if (this.navigatePageNums[0] == 1) {
+            this.navigatePageNums = ArrayUtils.remove(this.navigatePageNums, 0);
+        } else if (this.navigatePageNums[this.navigatePages - 1] == this.totalPages) {
+            this.navigatePageNums = ArrayUtils.remove(this.navigatePageNums, this.navigatePages - 1);
         }
     }
 
@@ -353,6 +380,18 @@ public class Page {
         System.out.println(page.toString());
 
         page = new Page(4, 2);
+        page.setSize(11);
+        page.setNavigatePages(3);
+        page.init();
+        System.out.println(page.toString());
+
+        page = new Page(5, 2);
+        page.setSize(11);
+        page.setNavigatePages(3);
+        page.init();
+        System.out.println(page.toString());
+
+        page = new Page(6, 2);
         page.setSize(11);
         page.setNavigatePages(3);
         page.init();

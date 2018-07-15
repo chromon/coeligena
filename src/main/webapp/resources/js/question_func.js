@@ -86,7 +86,7 @@ $('#question-comments').on('click', function() {
             // 判断是否是添加评论模板
             data['isPost'] = false;
 
-            // // json 时间数据格式化
+            // json 时间数据格式化
             for (var c = 0; c < data['list'].length; c ++) {
                 data['list'][c]['questionCommentsDO']['commentTime'] = getLocalTime(data['list'][c]['questionCommentsDO']['commentTime']);
             }
