@@ -202,27 +202,49 @@
 
                             <!-- comment pagination -->
                             <div class="custom-pagination">
+                                <!-- previous page -->
                                 {{#if hasPreviousPage}}
-                                <button class="custom-pagination-btn custom-btn-plain" type="button">上一页</button>
+                                <a href="javascript: void(0);" onclick="questionCommentsWithPage('{{minusOne this}}');" class="custom-pagination-btn custom-btn-plain">上一页</a>
                                 {{else}}
-                                <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
-                                {{/if}}
-                                <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
+                                <a href="javascript: void(0);" onclick="questionCommentsWithPage('{{minusOne this}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">上一页</a>
+                                {{/if}}<!-- end previous page -->
+
+                                <!-- first page -->
+                                {{#compare pageNum 1}}
+                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">1</a>
+                                {{else}}
+                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain">1</a>
+                                {{/compare}}<!-- end first page -->
+
+                                <!-- navigate page -->
                                 {{#if showFirstEllipsis}}
                                 <span class="custom-pagination-btn">•••</span>
                                 {{/if}}
                                 {{#each navigatePageNums}}
-                                <button class="custom-pagination-btn custom-btn-plain" type="button">{{this}}</button>
+                                {{#compare ../pageNum this}}
+                                <a href="javascript: void(0);" onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">{{this}}</a>
+                                {{else}}
+                                <a href="javascript: void(0);" onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain">{{this}}</a>
+                                {{/compare}}
                                 {{/each}}
                                 {{#if showLastEllipsis}}
                                 <span class="custom-pagination-btn">•••</span>
-                                {{/if}}
-                                <button class="custom-pagination-btn custom-btn-plain" type="button">{{totalPages}}</button>
-                                {{#if hasNextPage}}
-                                <button class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
+                                {{/if}}<!-- end navigate page -->
+
+                                <!-- last page -->
+                                {{#compare pageNum totalPages}}
+                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">{{totalPages}}</a>
                                 {{else}}
-                                <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">下一页</button>
-                                {{/if}}
+                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain">{{totalPages}}</a>
+                                {{/compare}}
+                                <!-- end last page -->
+
+                                <!-- next page -->
+                                {{#if hasNextPage}}
+                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain">下一页</a>
+                                {{else}}
+                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">下一页</a>
+                                {{/if}}<!-- end next page -->
                             </div><!-- end comment pagination -->
                         </script>
                         <div id="question-comments-paging-wrapper">

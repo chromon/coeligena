@@ -13,10 +13,7 @@ import com.coeligena.service.QuestionsService;
 import com.coeligena.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -46,7 +43,7 @@ public class QuestionCommentController {
     @ResponseBody
     public CommentDTO questionComment(HttpServletRequest request,
                                       @ModelAttribute QuestionCommentDTO questionCommentDTO) {
-        return this.questionCommentFunc(request, questionCommentDTO);
+        return this.postQuestionCommentFunc(request, questionCommentDTO);
     }
 
     /**
@@ -56,42 +53,7 @@ public class QuestionCommentController {
     @RequestMapping(value = "/question-comment-list", method = RequestMethod.GET)
     @ResponseBody
     public PagingListDTO<CommentDTO> questionCommentList() {
-
-        List<CommentDTO> commentDTOList = new ArrayList<>();
-
-        // 查询全部评论
-        int count = this.questionCommentService.queryQuestionCommentsCount();
-
-        Page page = new Page(1, 2);
-        page.setSize(count);
-        page.setNavigatePages(3);
-        page.init();
-
-        List<QuestionCommentsDO> questionCommentsDOList = this.questionCommentService.queryQuestionComments(page);
-        for (QuestionCommentsDO questionCommentsDO: questionCommentsDOList) {
-
-            CommentDTO commentDTO = new CommentDTO();
-
-            // 查询被评论用户信息
-            UsersDO reviewer = null;
-            if (questionCommentsDO.getReviewerId() != 0) {
-                reviewer = this.usersService.queryUserByUserId(questionCommentsDO.getReviewerId());
-            }
-
-            // 查询评论用户信息
-            UsersDO user = this.usersService.queryUserByUserId(questionCommentsDO.getUserId());
-
-            commentDTO.setReviewer(reviewer);
-            commentDTO.setQuestionCommentsDO(questionCommentsDO);
-            commentDTO.setUser(user);
-
-            commentDTOList.add(commentDTO);
-        }
-
-        // return commentDTOList;
-
-        PagingListDTO<CommentDTO> pagingListDTO = new PagingListDTO<>(commentDTOList, page);
-        return pagingListDTO;
+        return questionCommentsPagingList(1);
     }
 
     /**
@@ -104,7 +66,18 @@ public class QuestionCommentController {
     @ResponseBody
     public CommentDTO questionCommentReply(HttpServletRequest request,
                                            @ModelAttribute QuestionCommentDTO questionCommentDTO) {
-        return this.questionCommentFunc(request, questionCommentDTO);
+        return this.postQuestionCommentFunc(request, questionCommentDTO);
+    }
+
+    /**
+     * 问题评论分页请求
+     * @param pageNum 页数
+     * @return 问题评论列表
+     */
+    @RequestMapping(value = "/question-comments-with-page", method = RequestMethod.GET)
+    @ResponseBody
+    public PagingListDTO<CommentDTO> questionCommentsWithPage(@RequestParam("pageNum") int pageNum) {
+        return questionCommentsPagingList(pageNum);
     }
 
     /**
@@ -113,8 +86,8 @@ public class QuestionCommentController {
      * @param questionCommentDTO 问题评论信息
      * @return 问题评论相关信息
      */
-    private CommentDTO questionCommentFunc(HttpServletRequest request,
-                                           QuestionCommentDTO questionCommentDTO) {
+    private CommentDTO postQuestionCommentFunc(HttpServletRequest request,
+                                               QuestionCommentDTO questionCommentDTO) {
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
@@ -149,6 +122,47 @@ public class QuestionCommentController {
         commentDTO.setUser(userInfoDTO.getUsersDO());
 
         return commentDTO;
+    }
+
+    /**
+     * 分页查询问题评论
+     * @param pageNum 页码
+     * @return 问题评论列表
+     */
+    private PagingListDTO<CommentDTO> questionCommentsPagingList(int pageNum) {
+
+        List<CommentDTO> commentDTOList = new ArrayList<>();
+
+        // 查询全部评论
+        int count = this.questionCommentService.queryQuestionCommentsCount();
+
+        Page page = new Page(pageNum, 2);
+        page.setSize(count);
+        page.setNavigatePages(3);
+        page.init();
+
+        List<QuestionCommentsDO> questionCommentsDOList = this.questionCommentService.queryQuestionComments(page);
+        for (QuestionCommentsDO questionCommentsDO: questionCommentsDOList) {
+
+            CommentDTO commentDTO = new CommentDTO();
+
+            // 查询被评论用户信息
+            UsersDO reviewer = null;
+            if (questionCommentsDO.getReviewerId() != 0) {
+                reviewer = this.usersService.queryUserByUserId(questionCommentsDO.getReviewerId());
+            }
+
+            // 查询评论用户信息
+            UsersDO user = this.usersService.queryUserByUserId(questionCommentsDO.getUserId());
+
+            commentDTO.setReviewer(reviewer);
+            commentDTO.setQuestionCommentsDO(questionCommentsDO);
+            commentDTO.setUser(user);
+
+            commentDTOList.add(commentDTO);
+        }
+
+        return new PagingListDTO<>(commentDTOList, page);
     }
 
     @Autowired

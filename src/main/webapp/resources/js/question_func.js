@@ -8,6 +8,26 @@ var localObj = window.location;
 var contextPath = localObj.pathname.split("/")[1];
 var basePath = localObj.protocol + "//" + localObj.host + "/" + contextPath;
 
+// handlerbars 注册一个比较大小的 Helper, 判断 v1 是否等于 v2
+Handlebars.registerHelper('compare', function (v1, v2, options) {
+    if (v1 == v2) {
+        // 相等
+        return options.fn(this);
+    } else {
+        // 不满足条件执行 {{else}} 部分
+        return options.inverse(this);
+    }
+});
+
+Handlebars.registerHelper({
+    addOne: function(index) {
+        return index + 1;
+    },
+    minusOne: function(index) {
+        return index - 1;
+    }
+});
+
 // 显示全部问题内容
 $('#unfold-question').on('click', function() {
     $('#unfold-question').addClass('hide');
@@ -166,6 +186,44 @@ function postReply(id) {
             // 输入模板
             $('#question_comment_wrapper').append(html);
 
+        }
+    });
+}
+
+// 问题评论分页请求
+function questionCommentsWithPage(pageNum) {
+    $.ajax({
+        type: "GET",
+        url: basePath + "/question-comments-with-page",
+        data: {
+            pageNum: pageNum
+        },
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+
+            // 判断是否是添加评论模板
+            data['isPost'] = false;
+
+            // json 时间数据格式化
+            for (var c = 0; c < data['list'].length; c ++) {
+                data['list'][c]['questionCommentsDO']['commentTime'] = getLocalTime(data['list'][c]['questionCommentsDO']['commentTime']);
+            }
+
+            // 使用 handlebars 获取模板
+            var tpl = $('#question_comment_template').html();
+            // 预编译模板
+            var template = Handlebars.compile(tpl);
+            // 匹配 json 内容
+            var html = template(data);
+            // 输入模板
+            $('#question_comment_wrapper').html(html);
+
+            // 分页模板
+            var pagingTpl = $('#question-comments-paging-template').html();
+            var pagingTemplate = Handlebars.compile(pagingTpl);
+            var pagingHtml = pagingTemplate(data['page']);
+            $('#question-comments-paging-wrapper').html(pagingHtml);
         }
     });
 }

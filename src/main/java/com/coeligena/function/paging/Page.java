@@ -16,7 +16,7 @@ import java.util.Arrays;
  *      (pageNum: 4 ~ 6)  上一页  1  •••  4  5  6  7  下一页
  *      (pageNum: 5 ~ 7)  上一页  1  •••  5  6  7  下一页
  * </p>
- * 
+ *
  * <p>
  *     the first page and last page always display fixed.
  * </p>
