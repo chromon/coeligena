@@ -204,16 +204,16 @@
                             <div class="custom-pagination">
                                 <!-- previous page -->
                                 {{#if hasPreviousPage}}
-                                <a href="javascript: void(0);" onclick="questionCommentsWithPage('{{minusOne this}}');" class="custom-pagination-btn custom-btn-plain">上一页</a>
+                                <button onclick="questionCommentsWithPage('{{prePage}}');" class="custom-pagination-btn custom-btn-plain" type="button">上一页</button>
                                 {{else}}
-                                <a href="javascript: void(0);" onclick="questionCommentsWithPage('{{minusOne this}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">上一页</a>
+                                <button onclick="questionCommentsWithPage('{{prePage}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
                                 {{/if}}<!-- end previous page -->
 
                                 <!-- first page -->
                                 {{#compare pageNum 1}}
-                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">1</a>
+                                <button onclick="questionCommentsWithPage(1);" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
                                 {{else}}
-                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain">1</a>
+                                <button onclick="questionCommentsWithPage(1);" class="custom-pagination-btn custom-btn-plain" type="button">1</button>
                                 {{/compare}}<!-- end first page -->
 
                                 <!-- navigate page -->
@@ -222,9 +222,9 @@
                                 {{/if}}
                                 {{#each navigatePageNums}}
                                 {{#compare ../pageNum this}}
-                                <a href="javascript: void(0);" onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">{{this}}</a>
+                                <button onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">{{this}}</button>
                                 {{else}}
-                                <a href="javascript: void(0);" onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain">{{this}}</a>
+                                <button onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain" type="button">{{this}}</button>
                                 {{/compare}}
                                 {{/each}}
                                 {{#if showLastEllipsis}}
@@ -233,17 +233,17 @@
 
                                 <!-- last page -->
                                 {{#compare pageNum totalPages}}
-                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">{{totalPages}}</a>
+                                <button onclick="questionCommentsWithPage('{{totalPages}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">{{totalPages}}</button>
                                 {{else}}
-                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain">{{totalPages}}</a>
+                                <button onclick="questionCommentsWithPage('{{totalPages}}');" class="custom-pagination-btn custom-btn-plain" type="button">{{totalPages}}</button>
                                 {{/compare}}
                                 <!-- end last page -->
 
                                 <!-- next page -->
                                 {{#if hasNextPage}}
-                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain">下一页</a>
+                                <button onclick="questionCommentsWithPage('{{nextPage}}');" class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
                                 {{else}}
-                                <a href="javascript: void(0);" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current">下一页</a>
+                                <button onclick="questionCommentsWithPage('{{nextPage}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">下一页</button>
                                 {{/if}}<!-- end next page -->
                             </div><!-- end comment pagination -->
                         </script>

@@ -19,15 +19,6 @@ Handlebars.registerHelper('compare', function (v1, v2, options) {
     }
 });
 
-Handlebars.registerHelper({
-    addOne: function(index) {
-        return index + 1;
-    },
-    minusOne: function(index) {
-        return index - 1;
-    }
-});
-
 // 显示全部问题内容
 $('#unfold-question').on('click', function() {
     $('#unfold-question').addClass('hide');
