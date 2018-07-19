@@ -209,9 +209,19 @@ signUpCaptcha.on('blur', checkSignUpCaptcha);
 // 注册提交
 var signUpSubmit = $('#signUpSubmit');
 var signUpForm = $('#signUpForm');
+var checkCaptcha = $('#checkCaptcha').val();
 signUpSubmit.on('click', function () {
-    if(checkFullName() & checkSignUpEmail() & checkSignUpPWD() & checkSignUpCaptcha()) {
-        signUpForm.submit();
+    alert(checkCaptcha);
+    if (checkCaptcha === 'true') {
+        alert(typeof checkCaptcha +'-------');
+        if(checkFullName() & checkSignUpEmail() & checkSignUpPWD() & checkSignUpCaptcha()) {
+            signUpForm.submit();
+        }
+    } else {
+        alert(checkCaptcha +'cccccccc');
+        if(checkFullName() & checkSignUpEmail() & checkSignUpPWD()) {
+            signUpForm.submit();
+        }
     }
 });
 

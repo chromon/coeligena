@@ -37,6 +37,8 @@
                 </div>
             </div>
 
+            <input type="hidden" id="checkCaptcha" value="${checkCaptcha}">
+
             <!-- sign in -->
             <div class="form" id="signInFormWrapper">
                 <form id="signInForm" action="${pageContext.request.contextPath}/login" method="POST">

@@ -73,6 +73,7 @@ public class WelcomeController {
     @RequestMapping(value = "signin", method = RequestMethod.GET)
     public String signIn(Model model) {
         // 是否使用验证码
+        // this.checkCaptcha = true;
         model.addAttribute("checkCaptcha", this.checkCaptcha);
         return "signin";
     }
@@ -110,6 +111,8 @@ public class WelcomeController {
     @RequestMapping(value = "signup", method = RequestMethod.POST)
     public String signUp(HttpServletRequest request,
                          @ModelAttribute SignUpFormDTO signUpFormDTO, Model model) {
+
+        System.out.println(signUpFormDTO.getEmail() + signUpFormDTO.getFullName() + signUpFormDTO.getSignUpPassword());
 
         // 查询 “未验证用户” 角色信息
         RolesDO rolesDO = rolesService.queryRolesForSignUp("UnauthenticatedUser");
