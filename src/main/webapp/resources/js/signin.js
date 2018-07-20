@@ -211,14 +211,11 @@ var signUpSubmit = $('#signUpSubmit');
 var signUpForm = $('#signUpForm');
 var checkCaptcha = $('#checkCaptcha').val();
 signUpSubmit.on('click', function () {
-    alert(checkCaptcha);
     if (checkCaptcha === 'true') {
-        alert(typeof checkCaptcha +'-------');
         if(checkFullName() & checkSignUpEmail() & checkSignUpPWD() & checkSignUpCaptcha()) {
             signUpForm.submit();
         }
     } else {
-        alert(checkCaptcha +'cccccccc');
         if(checkFullName() & checkSignUpEmail() & checkSignUpPWD()) {
             signUpForm.submit();
         }

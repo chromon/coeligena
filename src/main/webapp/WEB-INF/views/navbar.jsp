@@ -71,7 +71,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle custom-user-info" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <img class="custom-avatar30" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="${userInfoDTO.usersDO.fullname}">
+                        <img class="custom-avatar30" src="<%=request.getContextPath()%>${userInfoDTO.usersDO.avatarPath}" alt="${userInfoDTO.usersDO.fullname}">
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>

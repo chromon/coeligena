@@ -135,7 +135,7 @@
                                         </div>
                                     </div><!-- end reply comment -->
                                     <div class="custom-commentItem-footer" id="commentItem-footer-{{questionCommentsDO.id}}">
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
+                                        <button id="commentItem-like-{{questionCommentsDO.id}}" onclick="likeComment('{{questionCommentsDO.id}}');" class="custom-btn-plain custom-margin-right20" type="button">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <i class="fa fa-thumbs-up custom-margin-right5"></i>
                                                 <span>赞</span>
@@ -156,10 +156,10 @@
                                                     <span>回复</span>
                                                 </span>
                                             </button>
-                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <button id="commentItem-unlike-{{questionCommentsDO.id}}" onclick="unlikeComment('{{questionCommentsDO.id}}');" class="custom-btn-plain custom-margin-right20" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-thumbs-down custom-margin-right5"></i>
-                                                    <span>踩</span>
+                                                    <span id="commentItem-unlike-text-{{questionCommentsDO.id}}">踩</span>
                                                 </span>
                                             </button>
                                             <button class="custom-btn-plain custom-margin-right20" type="button">

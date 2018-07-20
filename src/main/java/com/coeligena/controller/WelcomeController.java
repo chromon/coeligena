@@ -112,8 +112,6 @@ public class WelcomeController {
     public String signUp(HttpServletRequest request,
                          @ModelAttribute SignUpFormDTO signUpFormDTO, Model model) {
 
-        System.out.println(signUpFormDTO.getEmail() + signUpFormDTO.getFullName() + signUpFormDTO.getSignUpPassword());
-
         // 查询 “未验证用户” 角色信息
         RolesDO rolesDO = rolesService.queryRolesForSignUp("UnauthenticatedUser");
 

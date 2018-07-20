@@ -218,3 +218,44 @@ function questionCommentsWithPage(pageNum) {
         }
     });
 }
+
+// 问题评论点赞
+function likeComment(id) {
+    var like_btn = $('#commentItem-like-' + id);
+    var unlike_btn = $('#commentItem-unlike-' + id);
+
+    if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike'))  {
+        // 没攒没踩
+        like_btn.addClass('custom-is-liked');
+    } else if (! like_btn.hasClass('custom-is-liked') & unlike_btn.hasClass('custom-unlike')) {
+        // 没赞有踩
+        unlike_btn.removeClass('custom-unlike');
+        like_btn.addClass('custom-is-liked');
+    } else if (like_btn.hasClass('custom-is-liked')) {
+        // 已赞
+        like_btn.removeClass('custom-is-liked');
+    }
+}
+
+// 问题评论踩
+function unlikeComment(id) {
+    var like_btn = $('#commentItem-like-' + id);
+    var unlike_btn = $('#commentItem-unlike-' + id);
+    var unlike_text = $('#commentItem-unlike-text-' + id);
+
+    if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike')) {
+        // 没攒没踩
+        unlike_text.text('取消踩');
+    } else if (like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike')) {
+        // 已赞没踩
+        like_btn.removeClass('custom-is-liked');
+        unlike_btn.addClass('custom-unlike');
+        unlike_text.text('取消踩');
+    } else if (unlike_btn.hasClass('custom-unlike')) {
+        // 已踩
+        unlike_btn.removeClass('custom-unlike');
+        unlike_text.text('踩');
+    }
+
+
+}
