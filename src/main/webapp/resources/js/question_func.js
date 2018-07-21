@@ -91,7 +91,7 @@ $('#question-comments').on('click', function() {
         type: "GET",
         url: basePath + "/question-comment-list",
         dataType: "json",
-        success: function(data){
+        success: function(data) {
             console.log(data);
 
             // 判断是否是添加评论模板
@@ -190,7 +190,7 @@ function questionCommentsWithPage(pageNum) {
             pageNum: pageNum
         },
         dataType: "json",
-        success: function(data){
+        success: function(data) {
             console.log(data);
 
             // 判断是否是添加评论模板
@@ -223,6 +223,12 @@ function questionCommentsWithPage(pageNum) {
 function likeComment(id) {
     var like_btn = $('#commentItem-like-' + id);
     var unlike_btn = $('#commentItem-unlike-' + id);
+    var unlike_text = $('#commentItem-unlike-text-' + id);
+
+    var data = {
+        commentId: id,
+        commentAction: 0
+    };
 
     if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike'))  {
         // 没攒没踩
@@ -230,11 +236,14 @@ function likeComment(id) {
     } else if (! like_btn.hasClass('custom-is-liked') & unlike_btn.hasClass('custom-unlike')) {
         // 没赞有踩
         unlike_btn.removeClass('custom-unlike');
+        unlike_text.text('踩');
         like_btn.addClass('custom-is-liked');
     } else if (like_btn.hasClass('custom-is-liked')) {
         // 已赞
         like_btn.removeClass('custom-is-liked');
     }
+
+    likeUnlikeFunc(data);
 }
 
 // 问题评论踩
@@ -243,8 +252,14 @@ function unlikeComment(id) {
     var unlike_btn = $('#commentItem-unlike-' + id);
     var unlike_text = $('#commentItem-unlike-text-' + id);
 
+    var data = {
+        commentId: id,
+        commentAction: 1
+    };
+
     if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike')) {
         // 没攒没踩
+        unlike_btn.addClass('custom-unlike');
         unlike_text.text('取消踩');
     } else if (like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike')) {
         // 已赞没踩
@@ -253,9 +268,26 @@ function unlikeComment(id) {
         unlike_text.text('取消踩');
     } else if (unlike_btn.hasClass('custom-unlike')) {
         // 已踩
+        console.log('heh');
         unlike_btn.removeClass('custom-unlike');
         unlike_text.text('踩');
     }
 
+    likeUnlikeFunc(data);
+}
 
+// 点赞实现
+function likeUnlikeFunc(data) {
+    $.ajax({
+        type: "POST",
+        url: basePath + "/question-comments-like",
+        data: data,
+        dataType: "json",
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(data) {
+            console.log('error data: ' +data);
+        }
+    });
 }

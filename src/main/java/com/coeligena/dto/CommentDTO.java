@@ -17,6 +17,8 @@ public class CommentDTO {
 
     private UsersDO user;
 
+    private int commentAction;
+
     public int getQuestionId() {
         return questionId;
     }
@@ -47,5 +49,13 @@ public class CommentDTO {
 
     public void setUser(UsersDO user) {
         this.user = user;
+    }
+
+    public int getCommentAction() {
+        return commentAction;
+    }
+
+    public void setCommentAction(int commentAction) {
+        this.commentAction = commentAction;
     }
 }

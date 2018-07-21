@@ -19,6 +19,9 @@ public class CommentApprovalsDO {
     /** 被赞同评论 id */
     private int commentId;
 
+    /** 评论赞同类型，1：问题评论，2：回答评论  */
+    private byte commentType;
+
     /** 评论点赞时间 */
     private Timestamp approvalTime;
 
@@ -59,6 +62,23 @@ public class CommentApprovalsDO {
      */
     public void setCommentId(int commentId) {
         this.commentId = commentId;
+    }
+
+    /**
+     * 评论类型
+     * @return 评论类型
+     */
+    @Column(name = "comment_type", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getCommentType() {
+        return commentType;
+    }
+
+    /**
+     * 评论类型
+     * @param commentType 评论类型
+     */
+    public void setCommentType(byte commentType) {
+        this.commentType = commentType;
     }
 
     /**

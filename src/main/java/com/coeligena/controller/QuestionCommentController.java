@@ -81,6 +81,21 @@ public class QuestionCommentController {
     }
 
     /**
+     * 问题评论点赞
+     * @param commentDTO 评论 dto
+     * @return success or not
+     */
+    @RequestMapping(value = "/question-comments-like", method = RequestMethod.POST)
+    @ResponseBody
+    public String questionCommentsLike(@ModelAttribute CommentDTO commentDTO) {
+
+        int commentAction = commentDTO.getCommentAction();
+        System.out.println(commentAction);
+
+        return "success";
+    }
+
+    /**
      * 问题评论处理方法
      * @param request httpservletrequest
      * @param questionCommentDTO 问题评论信息
