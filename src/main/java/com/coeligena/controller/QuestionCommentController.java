@@ -1,13 +1,16 @@
 package com.coeligena.controller;
 
+import com.coeligena.dao.CommentApprovalsDAO;
 import com.coeligena.dto.CommentDTO;
 import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.QuestionCommentDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.paging.Page;
+import com.coeligena.model.CommentApprovalsDO;
 import com.coeligena.model.QuestionCommentsDO;
 import com.coeligena.model.QuestionsDO;
 import com.coeligena.model.UsersDO;
+import com.coeligena.service.CommentApprovalsService;
 import com.coeligena.service.QuestionCommentService;
 import com.coeligena.service.QuestionsService;
 import com.coeligena.service.UsersService;
@@ -32,6 +35,7 @@ public class QuestionCommentController {
     private UsersService usersService;
     private QuestionsService questionsService;
     private QuestionCommentService questionCommentService;
+    private CommentApprovalsService commentApprovalsService;
 
     /**
      * 提交问题评论 ajax 请求
@@ -87,10 +91,28 @@ public class QuestionCommentController {
      */
     @RequestMapping(value = "/question-comments-like", method = RequestMethod.POST)
     @ResponseBody
-    public String questionCommentsLike(@ModelAttribute CommentDTO commentDTO) {
+    public String questionCommentsLike(HttpServletRequest request, @ModelAttribute CommentDTO commentDTO) {
 
+        // 赞：0，踩：1
         int commentAction = commentDTO.getCommentAction();
-        System.out.println(commentAction);
+        int commentId = commentDTO.getCommentId();
+
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        // 日期
+        Date date = new Date();
+        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        Timestamp now = Timestamp.valueOf(dateFormat);
+
+        // 保存评论赞同信息
+        CommentApprovalsDO commentApprovalsDO = new CommentApprovalsDO();
+        commentApprovalsDO.setCommentId(commentId);
+        commentApprovalsDO.setCommentType((byte) 1);
+        commentApprovalsDO.setApprovalTime(now);
+        commentApprovalsDO.setUserId(userInfoDTO.getUsersDO().getId());
+
+        commentApprovalsService.saveCommentApprovals(commentApprovalsDO);
 
         return "success";
     }
@@ -193,5 +215,10 @@ public class QuestionCommentController {
     @Autowired
     public void setQuestionCommentService(QuestionCommentService questionCommentService) {
         this.questionCommentService = questionCommentService;
+    }
+
+    @Autowired
+    public void setCommentApprovalsService(CommentApprovalsService commentApprovalsService) {
+        this.commentApprovalsService = commentApprovalsService;
     }
 }

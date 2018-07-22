@@ -19,6 +19,8 @@ public class CommentDTO {
 
     private int commentAction;
 
+    private int commentId;
+
     public int getQuestionId() {
         return questionId;
     }
@@ -57,5 +59,13 @@ public class CommentDTO {
 
     public void setCommentAction(int commentAction) {
         this.commentAction = commentAction;
+    }
+
+    public int getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(int commentId) {
+        this.commentId = commentId;
     }
 }
