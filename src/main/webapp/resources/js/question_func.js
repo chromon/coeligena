@@ -268,7 +268,6 @@ function unlikeComment(id) {
         unlike_text.text('取消踩');
     } else if (unlike_btn.hasClass('custom-unlike')) {
         // 已踩
-        console.log('heh');
         unlike_btn.removeClass('custom-unlike');
         unlike_text.text('踩');
     }

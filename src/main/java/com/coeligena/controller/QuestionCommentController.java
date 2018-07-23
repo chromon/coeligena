@@ -100,6 +100,24 @@ public class QuestionCommentController {
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
+        if (commentAction == 0) {
+
+            CommentApprovalsDO caDO = this.commentApprovalsService
+                    .queryCommentApprByCommentIdAndUserId(commentId, userInfoDTO.getUsersDO().getId());
+
+            // 评论赞同不存在（没攒没踩）
+            if (caDO == null) {
+
+            } else {
+                // 评论赞同存在
+                //（已赞）
+                
+                // （已踩）
+            }
+
+
+        }
+
         // 日期
         Date date = new Date();
         String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);

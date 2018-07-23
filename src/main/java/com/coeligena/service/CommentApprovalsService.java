@@ -15,4 +15,12 @@ public interface CommentApprovalsService {
      * @param commentApprovalsDO 评论赞同
      */
     void saveCommentApprovals(CommentApprovalsDO commentApprovalsDO);
+
+    /**
+     * 由评论 id 和用户 id 查询是否由评论赞同
+     * @param commentId 评论 id
+     * @param userId 用户 id
+     * @return 评论赞同信息
+     */
+    CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, int userId);
 }
