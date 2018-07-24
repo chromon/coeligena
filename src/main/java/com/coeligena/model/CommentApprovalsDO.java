@@ -22,6 +22,9 @@ public class CommentApprovalsDO {
     /** 评论赞同类型，1：问题评论，2：回答评论  */
     private byte commentType;
 
+    /** 评论动作类型，1：赞，2：踩  */
+    private byte commentAction;
+
     /** 评论点赞时间 */
     private Timestamp approvalTime;
 
@@ -79,6 +82,23 @@ public class CommentApprovalsDO {
      */
     public void setCommentType(byte commentType) {
         this.commentType = commentType;
+    }
+
+    /**
+     * 评论动作类型
+     * @return 赞踩
+     */
+    @Column(name = "comment_action", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getCommentAction() {
+        return commentAction;
+    }
+
+    /**
+     * 设置评论动作类型
+     * @param commentAction 赞踩
+     */
+    public void setCommentAction(byte commentAction) {
+        this.commentAction = commentAction;
     }
 
     /**

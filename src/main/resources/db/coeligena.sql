@@ -444,6 +444,7 @@ CREATE TABLE IF NOT EXISTS comment_approvals (
     id            INT(11)   NOT NULL AUTO_INCREMENT, /* 赞同ID（唯一标识） */
     comment_id    INT(11)   NOT NULL DEFAULT '0', /* 被赞同评论ID（唯一标识） */
     comment_type  TINYINT(4) NOT NULL DEFAULT '0', /* 评论赞同类型，1：问题评论，2：回答评论 */
+    comment_action TINYINT(4) NOT NULL DEFAULT '0', /* 评论动作类型，1：赞，2：踩 */
     approval_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 评论点赞时间 */
     user_id       INT(11)   NOT NULL DEFAULT '0', /* 点赞用户ID（唯一标识） */
     PRIMARY KEY (id),
