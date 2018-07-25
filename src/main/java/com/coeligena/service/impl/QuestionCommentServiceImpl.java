@@ -46,6 +46,25 @@ public class QuestionCommentServiceImpl implements QuestionCommentService {
         return this.questionCommentDAO.queryQuestionCommentsCount();
     }
 
+    /**
+     * 更新问题评论信息
+     * @param questionCommentsDO 问题评论信息
+     */
+    @Override
+    public void updateQuestionComments(QuestionCommentsDO questionCommentsDO) {
+        this.questionCommentDAO.updateQuestionComments(questionCommentsDO);
+    }
+
+    /**
+     * 由问题评论 id 查询问题评论
+     * @param commentId 问题
+     * @return 问题评论信息
+     */
+    @Override
+    public QuestionCommentsDO queryQuestionCommentById(int commentId) {
+        return this.questionCommentDAO.queryQuestionCommentById(commentId);
+    }
+
     @Autowired
     public void setQuestionCommentDAO(QuestionCommentDAO questionCommentDAO) {
         this.questionCommentDAO = questionCommentDAO;

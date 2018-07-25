@@ -47,4 +47,22 @@ public class CommentApprovalsDAOImpl implements CommentApprovalsDAO {
 
         return (CommentApprovalsDO) query.uniqueResult();
     }
+
+    /**
+     * 更新评论赞同信息
+     * @param commentApprovalsDO 评论赞同信息
+     */
+    @Override
+    public void updateCommentApprovals(CommentApprovalsDO commentApprovalsDO) {
+        this.getSession().update(commentApprovalsDO);
+    }
+
+    /**
+     * 删除评论赞同信息
+     * @param commentApprovalsDO 评论赞同信息
+     */
+    @Override
+    public void deleteCommentApprovals(CommentApprovalsDO commentApprovalsDO) {
+        this.getSession().delete(commentApprovalsDO);
+    }
 }

@@ -37,6 +37,24 @@ public class CommentApprovalsServiceImpl implements CommentApprovalsService {
         return this.commentApprovalsDAO.queryCommentApprByCommentIdAndUserId(commentId, userId);
     }
 
+    /**
+     * 更新评论赞同信息
+     * @param commentApprovalsDO 评论赞同信息
+     */
+    @Override
+    public void updateCommentApprovals(CommentApprovalsDO commentApprovalsDO) {
+        this.commentApprovalsDAO.updateCommentApprovals(commentApprovalsDO);
+    }
+
+    /**
+     * 删除评论赞同信息
+     * @param commentApprovalsDO 评论赞同信息
+     */
+    @Override
+    public void deleteCommentApprovals(CommentApprovalsDO commentApprovalsDO) {
+        this.commentApprovalsDAO.deleteCommentApprovals(commentApprovalsDO);
+    }
+
     @Autowired
     public void setCommentApprovalsDAO(CommentApprovalsDAO commentApprovalsDAO) {
         this.commentApprovalsDAO = commentApprovalsDAO;

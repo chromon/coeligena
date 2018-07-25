@@ -23,4 +23,17 @@ public interface CommentApprovalsService {
      * @return 评论赞同信息
      */
     CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, int userId);
+
+
+    /**
+     * 更新评论赞同信息
+     * @param commentApprovalsDO 评论赞同信息
+     */
+    void updateCommentApprovals(CommentApprovalsDO commentApprovalsDO);
+
+    /**
+     * 删除评论赞同信息
+     * @param commentApprovalsDO 评论赞同信息
+     */
+    void deleteCommentApprovals(CommentApprovalsDO commentApprovalsDO);
 }

@@ -58,4 +58,25 @@ public class QuestionCommentDAOImpl implements QuestionCommentDAO {
         Query query = this.getSession().createQuery(sql);
         return ((Number)query.uniqueResult()).intValue();
     }
+
+    /**
+     * 更新问题评论信息
+     * @param questionCommentsDO 问题评论信息
+     */
+    @Override
+    public void updateQuestionComments(QuestionCommentsDO questionCommentsDO) {
+        this.getSession().update(questionCommentsDO);
+    }
+
+    /**
+     * 由问题评论 id 查询问题评论
+     * @param commentId 问题
+     * @return 问题评论信息
+     */
+    @Override
+    public QuestionCommentsDO queryQuestionCommentById(int commentId) {
+        String sql = "select qc from QuestionCommentsDO qc where qc.id = : commentId";
+        return (QuestionCommentsDO) this.getSession().createQuery(sql)
+                .setParameter("commentId", commentId).uniqueResult();
+    }
 }

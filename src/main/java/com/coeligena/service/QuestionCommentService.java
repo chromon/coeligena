@@ -29,4 +29,17 @@ public interface QuestionCommentService {
      * @return 评论数量
      */
     int queryQuestionCommentsCount();
+
+    /**
+     * 更新问题评论信息
+     * @param questionCommentsDO 问题评论信息
+     */
+    void updateQuestionComments(QuestionCommentsDO questionCommentsDO);
+
+    /**
+     * 由问题评论 id 查询问题评论
+     * @param commentId 问题
+     * @return 问题评论信息
+     */
+    QuestionCommentsDO queryQuestionCommentById(int commentId);
 }

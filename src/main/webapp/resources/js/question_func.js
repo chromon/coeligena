@@ -227,7 +227,7 @@ function likeComment(id) {
 
     var data = {
         commentId: id,
-        commentAction: 0
+        commentAction: 1 // 赞
     };
 
     if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike'))  {
@@ -254,7 +254,7 @@ function unlikeComment(id) {
 
     var data = {
         commentId: id,
-        commentAction: 1
+        commentAction: 2 // 踩
     };
 
     if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike')) {

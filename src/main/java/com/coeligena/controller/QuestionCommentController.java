@@ -14,6 +14,7 @@ import com.coeligena.service.CommentApprovalsService;
 import com.coeligena.service.QuestionCommentService;
 import com.coeligena.service.QuestionsService;
 import com.coeligena.service.UsersService;
+import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -93,44 +94,67 @@ public class QuestionCommentController {
     @ResponseBody
     public String questionCommentsLike(HttpServletRequest request, @ModelAttribute CommentDTO commentDTO) {
 
-        // 赞：0，踩：1
+        // 赞：1，踩：2
         int commentAction = commentDTO.getCommentAction();
         int commentId = commentDTO.getCommentId();
 
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
-        if (commentAction == 0) {
-
-            CommentApprovalsDO caDO = this.commentApprovalsService
-                    .queryCommentApprByCommentIdAndUserId(commentId, userInfoDTO.getUsersDO().getId());
-
-            // 评论赞同不存在（没攒没踩）
-            if (caDO == null) {
-
-            } else {
-                // 评论赞同存在
-                //（已赞）
-
-                // （已踩）
-            }
-
-
-        }
-
         // 日期
         Date date = new Date();
         String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         Timestamp now = Timestamp.valueOf(dateFormat);
 
-        // 保存评论赞同信息
-        CommentApprovalsDO commentApprovalsDO = new CommentApprovalsDO();
-        commentApprovalsDO.setCommentId(commentId);
-        commentApprovalsDO.setCommentType((byte) 1);
-        commentApprovalsDO.setApprovalTime(now);
-        commentApprovalsDO.setUserId(userInfoDTO.getUsersDO().getId());
+        // 查询问题评论
+        QuestionCommentsDO questionCommentsDO = this.questionCommentService.queryQuestionCommentById(commentId);
 
-        commentApprovalsService.saveCommentApprovals(commentApprovalsDO);
+        // 由评论 id 和用户 id 查询是否由评论赞同内容
+        CommentApprovalsDO caDO = this.commentApprovalsService
+                .queryCommentApprByCommentIdAndUserId(commentId, userInfoDTO.getUsersDO().getId());
+
+        if (commentAction == 0) {
+            // 赞
+            if (caDO == null) {
+                // 评论赞同不存在（没攒没踩）
+                // 保存评论赞同信息
+                CommentApprovalsDO commentApprovalsDO = new CommentApprovalsDO();
+                commentApprovalsDO.setCommentId(commentId);
+                commentApprovalsDO.setCommentType((byte) 1);
+                commentApprovalsDO.setCommentAction((byte) 1);
+                commentApprovalsDO.setApprovalTime(now);
+                commentApprovalsDO.setUserId(userInfoDTO.getUsersDO().getId());
+                commentApprovalsService.saveCommentApprovals(commentApprovalsDO);
+
+                // 更新问题评论赞同数量
+                questionCommentsDO.setApprovalCount(1);
+                this.questionCommentService.updateQuestionComments(questionCommentsDO);
+            } else {
+                // 评论赞同存在
+                if (caDO.getCommentAction() == 1) {
+                    //（已赞）直接删除赞
+                    this.commentApprovalsService.deleteCommentApprovals(caDO);
+                    // 更新问题评论赞同数量
+                    questionCommentsDO.setApprovalCount(questionCommentsDO.getApprovalCount() - 1);
+                    this.questionCommentService.updateQuestionComments(questionCommentsDO);
+                } else if (caDO.getCommentAction() == 2) {
+                    // （已踩）更新动作
+                    caDO.setCommentAction((byte) 1);
+                    this.commentApprovalsService.updateCommentApprovals(caDO);
+
+                    // 更新问题评论赞同数量
+                    questionCommentsDO.setOpposeCount(questionCommentsDO.getOpposeCount() - 1);
+                    questionCommentsDO.setApprovalCount(questionCommentsDO.getApprovalCount() + 1);
+                    this.questionCommentService.updateQuestionComments(questionCommentsDO);
+                }
+
+            }
+
+
+        } else if (commentAction == 1) {
+            // 踩
+        }
+
 
         return "success";
     }
