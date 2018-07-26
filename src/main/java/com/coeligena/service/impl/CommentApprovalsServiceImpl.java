@@ -42,7 +42,7 @@ public class CommentApprovalsServiceImpl implements CommentApprovalsService {
      * @param commentApprovalsDO 评论赞同信息
      */
     @Override
-    public void updateCommentApprovals(CommentApprovalsDO commentApprovalsDO) {
+    public void modifyCommentApprovals(CommentApprovalsDO commentApprovalsDO) {
         this.commentApprovalsDAO.updateCommentApprovals(commentApprovalsDO);
     }
 

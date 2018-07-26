@@ -75,7 +75,7 @@ public class QuestionCommentDAOImpl implements QuestionCommentDAO {
      */
     @Override
     public QuestionCommentsDO queryQuestionCommentById(int commentId) {
-        String sql = "select qc from QuestionCommentsDO qc where qc.id = : commentId";
+        String sql = "select qc from QuestionCommentsDO qc where qc.id = :commentId";
         return (QuestionCommentsDO) this.getSession().createQuery(sql)
                 .setParameter("commentId", commentId).uniqueResult();
     }

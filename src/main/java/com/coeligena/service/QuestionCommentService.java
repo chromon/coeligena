@@ -34,7 +34,7 @@ public interface QuestionCommentService {
      * 更新问题评论信息
      * @param questionCommentsDO 问题评论信息
      */
-    void updateQuestionComments(QuestionCommentsDO questionCommentsDO);
+    void modifyQuestionComments(QuestionCommentsDO questionCommentsDO);
 
     /**
      * 由问题评论 id 查询问题评论

@@ -29,7 +29,7 @@ public interface CommentApprovalsService {
      * 更新评论赞同信息
      * @param commentApprovalsDO 评论赞同信息
      */
-    void updateCommentApprovals(CommentApprovalsDO commentApprovalsDO);
+    void modifyCommentApprovals(CommentApprovalsDO commentApprovalsDO);
 
     /**
      * 删除评论赞同信息

@@ -51,7 +51,7 @@ public class QuestionCommentServiceImpl implements QuestionCommentService {
      * @param questionCommentsDO 问题评论信息
      */
     @Override
-    public void updateQuestionComments(QuestionCommentsDO questionCommentsDO) {
+    public void modifyQuestionComments(QuestionCommentsDO questionCommentsDO) {
         this.questionCommentDAO.updateQuestionComments(questionCommentsDO);
     }
 

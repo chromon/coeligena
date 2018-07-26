@@ -1,6 +1,5 @@
 package com.coeligena.controller;
 
-import com.coeligena.dao.CommentApprovalsDAO;
 import com.coeligena.dto.CommentDTO;
 import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.QuestionCommentDTO;
@@ -14,7 +13,6 @@ import com.coeligena.service.CommentApprovalsService;
 import com.coeligena.service.QuestionCommentService;
 import com.coeligena.service.QuestionsService;
 import com.coeligena.service.UsersService;
-import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -112,49 +110,81 @@ public class QuestionCommentController {
         // 由评论 id 和用户 id 查询是否由评论赞同内容
         CommentApprovalsDO caDO = this.commentApprovalsService
                 .queryCommentApprByCommentIdAndUserId(commentId, userInfoDTO.getUsersDO().getId());
+        if (caDO != null) {
+            System.out.println("cado==================" + caDO.getCommentAction());
+        }
 
-        if (commentAction == 0) {
-            // 赞
-            if (caDO == null) {
-                // 评论赞同不存在（没攒没踩）
-                // 保存评论赞同信息
-                CommentApprovalsDO commentApprovalsDO = new CommentApprovalsDO();
-                commentApprovalsDO.setCommentId(commentId);
-                commentApprovalsDO.setCommentType((byte) 1);
+        // 赞
+        if (caDO == null) {
+            // 评论赞同反对不存在（没攒没踩）
+            // 保存评论赞同反对信息
+            CommentApprovalsDO commentApprovalsDO = new CommentApprovalsDO();
+            commentApprovalsDO.setCommentId(commentId);
+            commentApprovalsDO.setCommentType((byte) 1);
+            if (commentAction == 1) {
                 commentApprovalsDO.setCommentAction((byte) 1);
-                commentApprovalsDO.setApprovalTime(now);
-                commentApprovalsDO.setUserId(userInfoDTO.getUsersDO().getId());
-                commentApprovalsService.saveCommentApprovals(commentApprovalsDO);
+                System.out.println("0zan");
+            } else if (commentAction == 2) {
+                commentApprovalsDO.setCommentAction((byte) 2);
+                System.out.println("0cai");
+            }
+            commentApprovalsDO.setApprovalTime(now);
+            commentApprovalsDO.setUserId(userInfoDTO.getUsersDO().getId());
+            this.commentApprovalsService.saveCommentApprovals(commentApprovalsDO);
 
-                // 更新问题评论赞同数量
+            // 更新问题评论赞同反对数量
+            if (commentAction == 1) {
                 questionCommentsDO.setApprovalCount(1);
-                this.questionCommentService.updateQuestionComments(questionCommentsDO);
-            } else {
+            } else if (commentAction == 2) {
+                questionCommentsDO.setOpposeCount(1);
+            }
+            this.questionCommentService.modifyQuestionComments(questionCommentsDO);
+        } else {
+            // 评论已投票
+            if (commentAction == 1) {
                 // 评论赞同存在
                 if (caDO.getCommentAction() == 1) {
                     //（已赞）直接删除赞
                     this.commentApprovalsService.deleteCommentApprovals(caDO);
+                    System.out.println("zanzan");
+
                     // 更新问题评论赞同数量
                     questionCommentsDO.setApprovalCount(questionCommentsDO.getApprovalCount() - 1);
-                    this.questionCommentService.updateQuestionComments(questionCommentsDO);
+                    this.questionCommentService.modifyQuestionComments(questionCommentsDO);
                 } else if (caDO.getCommentAction() == 2) {
                     // （已踩）更新动作
                     caDO.setCommentAction((byte) 1);
-                    this.commentApprovalsService.updateCommentApprovals(caDO);
+                    this.commentApprovalsService.modifyCommentApprovals(caDO);
+                    System.out.println("caizan");
 
                     // 更新问题评论赞同数量
                     questionCommentsDO.setOpposeCount(questionCommentsDO.getOpposeCount() - 1);
                     questionCommentsDO.setApprovalCount(questionCommentsDO.getApprovalCount() + 1);
-                    this.questionCommentService.updateQuestionComments(questionCommentsDO);
+                    this.questionCommentService.modifyQuestionComments(questionCommentsDO);
                 }
+            } else if (commentAction == 2) {
+                // 评论反对
+                if (caDO.getCommentAction() == 1) {
+                    // （已赞）更新动作
+                    caDO.setCommentAction((byte) 2);
+                    this.commentApprovalsService.modifyCommentApprovals(caDO);
+                    System.out.println("zancai");
 
+                    // 更新问题踩数量
+                    questionCommentsDO.setApprovalCount(questionCommentsDO.getApprovalCount() - 1);
+                    questionCommentsDO.setOpposeCount(questionCommentsDO.getOpposeCount() + 1);
+                    this.questionCommentService.modifyQuestionComments(questionCommentsDO);
+                } else if (caDO.getCommentAction() == 2) {
+                    // （已踩）直接删除
+                    this.commentApprovalsService.deleteCommentApprovals(caDO);
+                    System.out.println("caicai");
+
+                    // 更新问题踩数量
+                    questionCommentsDO.setOpposeCount(questionCommentsDO.getOpposeCount() - 1);
+                    this.questionCommentService.modifyQuestionComments(questionCommentsDO);
+                }
             }
-
-
-        } else if (commentAction == 1) {
-            // 踩
         }
-
 
         return "success";
     }
