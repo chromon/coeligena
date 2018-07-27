@@ -55,8 +55,8 @@ public class QuestionCommentController {
      */
     @RequestMapping(value = "/question-comment-list", method = RequestMethod.GET)
     @ResponseBody
-    public PagingListDTO<CommentDTO> questionCommentList() {
-        return questionCommentsPagingList(1);
+    public PagingListDTO<CommentDTO> questionCommentList(HttpServletRequest request) {
+        return questionCommentsPagingList(request, 1);
     }
 
     /**
@@ -79,8 +79,9 @@ public class QuestionCommentController {
      */
     @RequestMapping(value = "/question-comments-with-page", method = RequestMethod.GET)
     @ResponseBody
-    public PagingListDTO<CommentDTO> questionCommentsWithPage(@RequestParam("pageNum") int pageNum) {
-        return questionCommentsPagingList(pageNum);
+    public PagingListDTO<CommentDTO> questionCommentsWithPage(HttpServletRequest request,
+                                                              @RequestParam("pageNum") int pageNum) {
+        return questionCommentsPagingList(request, pageNum);
     }
 
     /**
@@ -110,9 +111,6 @@ public class QuestionCommentController {
         // 由评论 id 和用户 id 查询是否由评论赞同内容
         CommentApprovalsDO caDO = this.commentApprovalsService
                 .queryCommentApprByCommentIdAndUserId(commentId, userInfoDTO.getUsersDO().getId());
-        if (caDO != null) {
-            System.out.println("cado==================" + caDO.getCommentAction());
-        }
 
         // 赞
         if (caDO == null) {
@@ -123,10 +121,8 @@ public class QuestionCommentController {
             commentApprovalsDO.setCommentType((byte) 1);
             if (commentAction == 1) {
                 commentApprovalsDO.setCommentAction((byte) 1);
-                System.out.println("0zan");
             } else if (commentAction == 2) {
                 commentApprovalsDO.setCommentAction((byte) 2);
-                System.out.println("0cai");
             }
             commentApprovalsDO.setApprovalTime(now);
             commentApprovalsDO.setUserId(userInfoDTO.getUsersDO().getId());
@@ -146,7 +142,6 @@ public class QuestionCommentController {
                 if (caDO.getCommentAction() == 1) {
                     //（已赞）直接删除赞
                     this.commentApprovalsService.deleteCommentApprovals(caDO);
-                    System.out.println("zanzan");
 
                     // 更新问题评论赞同数量
                     questionCommentsDO.setApprovalCount(questionCommentsDO.getApprovalCount() - 1);
@@ -155,7 +150,6 @@ public class QuestionCommentController {
                     // （已踩）更新动作
                     caDO.setCommentAction((byte) 1);
                     this.commentApprovalsService.modifyCommentApprovals(caDO);
-                    System.out.println("caizan");
 
                     // 更新问题评论赞同数量
                     questionCommentsDO.setOpposeCount(questionCommentsDO.getOpposeCount() - 1);
@@ -168,7 +162,6 @@ public class QuestionCommentController {
                     // （已赞）更新动作
                     caDO.setCommentAction((byte) 2);
                     this.commentApprovalsService.modifyCommentApprovals(caDO);
-                    System.out.println("zancai");
 
                     // 更新问题踩数量
                     questionCommentsDO.setApprovalCount(questionCommentsDO.getApprovalCount() - 1);
@@ -177,7 +170,6 @@ public class QuestionCommentController {
                 } else if (caDO.getCommentAction() == 2) {
                     // （已踩）直接删除
                     this.commentApprovalsService.deleteCommentApprovals(caDO);
-                    System.out.println("caicai");
 
                     // 更新问题踩数量
                     questionCommentsDO.setOpposeCount(questionCommentsDO.getOpposeCount() - 1);
@@ -238,7 +230,10 @@ public class QuestionCommentController {
      * @param pageNum 页码
      * @return 问题评论列表
      */
-    private PagingListDTO<CommentDTO> questionCommentsPagingList(int pageNum) {
+    private PagingListDTO<CommentDTO> questionCommentsPagingList(HttpServletRequest request, int pageNum) {
+
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
         List<CommentDTO> commentDTOList = new ArrayList<>();
 
@@ -263,6 +258,17 @@ public class QuestionCommentController {
 
             // 查询评论用户信息
             UsersDO user = this.usersService.queryUserByUserId(questionCommentsDO.getUserId());
+
+            // 查询是否赞踩
+            CommentApprovalsDO commentApprovalsDO = this.commentApprovalsService
+                    .queryCommentApprByCommentIdAndUserId(questionCommentsDO.getId(), userInfoDTO.getUsersDO().getId());
+            if (commentApprovalsDO != null) {
+                if (commentApprovalsDO.getCommentAction() == 1) {
+                    commentDTO.setLike(true);
+                } else if (commentApprovalsDO.getCommentAction() == 2) {
+                    commentDTO.setUnlike(true);
+                }
+            }
 
             commentDTO.setReviewer(reviewer);
             commentDTO.setQuestionCommentsDO(questionCommentsDO);

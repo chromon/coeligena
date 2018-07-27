@@ -21,6 +21,10 @@ public class CommentDTO {
 
     private int commentId;
 
+    private boolean like;
+
+    private boolean unlike;
+
     public int getQuestionId() {
         return questionId;
     }
@@ -67,5 +71,21 @@ public class CommentDTO {
 
     public void setCommentId(int commentId) {
         this.commentId = commentId;
+    }
+
+    public boolean isLike() {
+        return like;
+    }
+
+    public void setLike(boolean like) {
+        this.like = like;
+    }
+
+    public boolean isUnlike() {
+        return unlike;
+    }
+
+    public void setUnlike(boolean unlike) {
+        this.unlike = unlike;
     }
 }
