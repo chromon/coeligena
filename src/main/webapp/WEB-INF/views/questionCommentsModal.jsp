@@ -180,7 +180,7 @@
                                                 </span>
                                             </button>
                                             {{/if}}
-                                            <button class="custom-btn-plain custom-margin-right20" type="button">
+                                            <button class="custom-btn-plain custom-margin-right20" type="button"  data-toggle="modal" data-target="#reportModal">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-flag custom-margin-right5"></i>
                                                     <span>举报</span>

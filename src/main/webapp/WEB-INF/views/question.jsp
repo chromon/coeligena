@@ -453,7 +453,7 @@
                                     <div>
                                         <div class="custom-contentItem-actions custom-sticky custom-is-fixed">
                                             <span>
-                                                <button class="custom-vote-btn" aria-label="赞同" type="button">
+                                                <button class="custom-vote-btn is-active" aria-label="赞同" type="button">
                                                     <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
                                                 </button>
                                                 <button class="custom-vote-btn" aria-label="反对" type="button">
@@ -850,6 +850,16 @@
     </div>
 </div>
 <!-- end private message click card -->
+
+<script >
+    $(document).ready(function () {
+        // 通过该方法来为每次弹出的模态框设置最新的zIndex值，从而使最新的modal显示在最前面
+        $(document).on('show.bs.modal', '.modal', function (event) {
+            var zIndex = 1040 + (10 * $('.modal:visible').length);
+            $(this).css('z-index', zIndex);
+        });
+    });
+</script>
 
 <!-- modal -->
 <%@include file="anonymousModal.jsp"%>

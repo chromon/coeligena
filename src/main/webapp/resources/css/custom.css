@@ -1458,6 +1458,11 @@ ins {
     border-color: transparent;
 }
 
+.custom-vote-btn.is-active {
+    color: #fff;
+    background: #0084ff;
+}
+
 .custom-contentItem-action {
     margin-left: 24px;
     font-size: 14px;
