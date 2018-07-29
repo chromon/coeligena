@@ -119,3 +119,36 @@ function unfoldAnswer(id) {
     $('#ans-unfold-' + id).addClass('hide');
     $('#tuck-up-' + id).removeClass('hide');
 }
+
+// 回答赞同
+function voteUp(obj, id) {
+
+    if (!$(obj).hasClass('is-active') && !$(obj).next().hasClass('is-active')) {
+        // 没攒没踩
+        $(obj).addClass('is-active');
+    } else if ($(obj).hasClass('is-active') && !$(obj).next().hasClass('is-active')) {
+        // 有赞没踩
+        $(obj).removeClass('is-active');
+    } else if ($(obj).next().hasClass('is-active')) {
+        // 已踩
+        $(obj).next().removeClass('is-active');
+        $(obj).addClass('is-active');
+    }
+}
+
+// 回答反对
+function voteDown(obj, id) {
+
+    if (!$(obj).prev().hasClass('is-active') && !$(obj).hasClass('is-active')) {
+        // 没攒没踩
+        $(obj).addClass('is-active');
+    } else if ($(obj).prev().hasClass('is-active') && !$(obj).hasClass('is-active')) {
+        // 有赞没踩
+        $(obj).prev().removeClass('is-active');
+        $(obj).addClass('is-active');
+    } else if ($(obj).hasClass('is-active')) {
+        // 已踩
+        $(obj).removeClass('is-active');
+    }
+
+}
