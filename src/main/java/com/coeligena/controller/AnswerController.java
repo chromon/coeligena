@@ -1,5 +1,6 @@
 package com.coeligena.controller;
 
+import com.coeligena.dto.AnswersDTO;
 import com.coeligena.dto.PostAnswerDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.digest.AnswerDigest;
@@ -78,6 +79,35 @@ public class AnswerController {
         answersService.saveAnswer(answersDO);
 
         return answersDO;
+    }
+
+    /**
+     * 回答投票 ajax 请求
+     * @param request httpservletrequest
+     * @param answersDTO 回答信息传输对象
+     * @return success or not
+     */
+    @RequestMapping(value = "/answer-vote", method = RequestMethod.POST)
+    @ResponseBody
+    public String answerVote(HttpServletRequest request,
+                             @ModelAttribute AnswersDTO answersDTO) {
+
+        int answerId = answersDTO.getAnswerId();
+        // 赞：1，踩：2
+        int voteAction = answersDTO.getVoteAction();
+
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        // 日期
+        Date date = new Date();
+        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        Timestamp now = Timestamp.valueOf(dateFormat);
+
+        // 查询是否投过票
+
+
+        return "success";
     }
 
     @Autowired

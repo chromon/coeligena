@@ -123,6 +123,11 @@ function unfoldAnswer(id) {
 // 回答赞同
 function voteUp(obj, id) {
 
+    var data = {
+        answerId: id,
+        voteAction: 1 // 赞
+    };
+
     if (!$(obj).hasClass('is-active') && !$(obj).next().hasClass('is-active')) {
         // 没攒没踩
         $(obj).addClass('is-active');
@@ -139,6 +144,11 @@ function voteUp(obj, id) {
 // 回答反对
 function voteDown(obj, id) {
 
+    var data = {
+        answerId: id,
+        voteAction: 2 // 踩
+    };
+
     if (!$(obj).prev().hasClass('is-active') && !$(obj).hasClass('is-active')) {
         // 没攒没踩
         $(obj).addClass('is-active');
@@ -150,5 +160,20 @@ function voteDown(obj, id) {
         // 已踩
         $(obj).removeClass('is-active');
     }
+}
 
+// 回答投票
+function voteFunc(data) {
+    $.ajax({
+        type: "POST",
+        url: basePath + "/answer-vote",
+        data: data,
+        dataType: "json",
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(data) {
+            console.log('error data: ' +data);
+        }
+    });
 }

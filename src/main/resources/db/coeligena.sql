@@ -411,7 +411,7 @@ CREATE TABLE IF NOT EXISTS votes (
     answer_id INT(11)    NOT NULL DEFAULT '0', /* 回答ID（唯一标识） */
     voter_id  INT(11)    NOT NULL DEFAULT '0', /* 投票用户ID */
     vote_time TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 回答投票时间 */
-    vote_type TINYINT(4) NOT NULL DEFAULT '0', /* 投票 1:up、2:down、3:unconcern */
+    vote_type TINYINT(4) NOT NULL DEFAULT '0', /* 投票 1:up、2:down、0:unconcern */
     PRIMARY KEY (id),
     INDEX (answer_id),
     INDEX (voter_id),
