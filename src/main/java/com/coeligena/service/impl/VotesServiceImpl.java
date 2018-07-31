@@ -37,6 +37,24 @@ public class VotesServiceImpl implements VotesService {
         return this.votesDAO.queryVotesByAnswerIdAndVoterId(answerId, voterId);
     }
 
+    /**
+     * 更新投票信息
+     * @param votesDO 投票信息
+     */
+    @Override
+    public void modifyVotes(VotesDO votesDO) {
+        this.votesDAO.updateVotes(votesDO);
+    }
+
+    /**
+     * 删除投票信息
+     * @param votesDO 投票信息
+     */
+    @Override
+    public void deleteVotes(VotesDO votesDO) {
+        this.votesDAO.deleteVotes(votesDO);
+    }
+
     @Autowired
     public void setVotesDAO(VotesDAO votesDAO) {
         this.votesDAO = votesDAO;

@@ -453,7 +453,7 @@
                                     <div>
                                         <div class="custom-contentItem-actions custom-sticky custom-is-fixed">
                                             <span>
-                                                <button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                                <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
                                                     <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
                                                 </button>
                                                 <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">

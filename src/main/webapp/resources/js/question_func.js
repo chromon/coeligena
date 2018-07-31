@@ -285,8 +285,14 @@ function likeUnlikeFunc(data) {
         success: function(data) {
             console.log(data);
         },
-        error: function(data) {
-            console.log('error data: ' +data);
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log('responseText: ' + jqXHR.responseText);
+            console.log('status: ' + jqXHR.status);
+            console.log('readyState: ' + jqXHR.readyState);
+            console.log('statusText: ' + jqXHR.statusText);
+
+            console.log('textStatus: ' + textStatus);
+            console.log('errorThrown: ' + errorThrown);
         }
     });
 }

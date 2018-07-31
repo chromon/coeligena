@@ -7,9 +7,11 @@ import com.coeligena.function.digest.AnswerDigest;
 import com.coeligena.model.AnswersDO;
 import com.coeligena.model.QuestionsDO;
 import com.coeligena.model.UsersDO;
+import com.coeligena.model.VotesDO;
 import com.coeligena.service.AnswersService;
 import com.coeligena.service.QuestionsService;
 import com.coeligena.service.UsersService;
+import com.coeligena.service.VotesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +36,7 @@ public class AnswerController {
     private UsersService usersService;
     private AnswersService answersService;
     private QuestionsService questionsService;
+    private VotesService votesService;
 
     /**
      * 回答问题 Ajax 请求
@@ -105,7 +108,47 @@ public class AnswerController {
         Timestamp now = Timestamp.valueOf(dateFormat);
 
         // 查询是否投过票
+        VotesDO votesDO = this.votesService.queryVotesByAnswerIdAndVoterId(answerId, userInfoDTO.getUsersDO().getId());
 
+        if (votesDO == null) {
+            // 赞同反对不存在
+            // 保存赞同信息
+            VotesDO votesDO1 = new VotesDO();
+            votesDO1.setAnswerId(answerId);
+            votesDO1.setVoterId(userInfoDTO.getUsersDO().getId());
+            votesDO1.setVoteTime(now);
+            if (voteAction == 1) {
+                // 赞同
+                votesDO1.setVoteType((byte) 1);
+            } else if (voteAction == 2) {
+                // 反对
+                votesDO1.setVoteType((byte) 2);
+            }
+            this.votesService.saveVotes(votesDO1);
+        } else {
+            // 已存在投票信息
+            if (votesDO.getVoteType() == 1) {
+                // 已赞
+                if (voteAction == 1) {
+                    // 点赞（取消赞，直接删除信息）
+                    this.votesService.deleteVotes(votesDO);
+                } else if (voteAction == 2) {
+                    // 反对（更新赞改踩）
+                    votesDO.setVoteType((byte) 2);
+                    this.votesService.modifyVotes(votesDO);
+                }
+            } else if (votesDO.getVoteType() == 2) {
+                // 已踩
+                if (voteAction == 1) {
+                    // 点赞（更新踩改赞）
+                    votesDO.setVoteType((byte) 1);
+                    this.votesService.modifyVotes(votesDO);
+                } else if (voteAction == 2) {
+                    // 反对（取消反对，删除信息）
+                    this.votesService.deleteVotes(votesDO);
+                }
+            }
+        }
 
         return "success";
     }
@@ -123,5 +166,10 @@ public class AnswerController {
     @Autowired
     public void setQuestionsService(QuestionsService questionsService) {
         this.questionsService = questionsService;
+    }
+
+    @Autowired
+    public void setVotesService(VotesService votesService) {
+        this.votesService = votesService;
     }
 }

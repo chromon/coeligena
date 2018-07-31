@@ -48,4 +48,22 @@ public class VotesDAOImpl implements VotesDAO {
         query.setParameter("voterId", voterId);
         return (VotesDO) query.uniqueResult();
     }
+
+    /**
+     * 更新投票信息
+     * @param votesDO 投票信息
+     */
+    @Override
+    public void updateVotes(VotesDO votesDO) {
+        this.getSession().update(votesDO);
+    }
+
+    /**
+     * 删除投票信息
+     * @param votesDO 投票信息
+     */
+    @Override
+    public void deleteVotes(VotesDO votesDO) {
+        this.getSession().delete(votesDO);
+    }
 }

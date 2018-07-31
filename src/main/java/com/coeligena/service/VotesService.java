@@ -23,4 +23,16 @@ public interface VotesService {
      * @return 投票信息
      */
     VotesDO queryVotesByAnswerIdAndVoterId(int answerId, int voterId);
+
+    /**
+     * 更新投票信息
+     * @param votesDO 投票信息
+     */
+    void modifyVotes(VotesDO votesDO);
+
+    /**
+     * 删除投票信息
+     * @param votesDO 投票信息
+     */
+    void deleteVotes(VotesDO votesDO);
 }
