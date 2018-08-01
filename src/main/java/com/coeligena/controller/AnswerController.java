@@ -110,6 +110,9 @@ public class AnswerController {
         // 查询是否投过票
         VotesDO votesDO = this.votesService.queryVotesByAnswerIdAndVoterId(answerId, userInfoDTO.getUsersDO().getId());
 
+        // 对应回答信息
+        AnswersDO answersDO = this.answersService.queryAnswersById(answerId);
+
         if (votesDO == null) {
             // 赞同反对不存在
             // 保存赞同信息
@@ -120,11 +123,16 @@ public class AnswerController {
             if (voteAction == 1) {
                 // 赞同
                 votesDO1.setVoteType((byte) 1);
+                // 更新回答赞同数
+                answersDO.setApprovalCount(answersDO.getApprovalCount() + 1);
             } else if (voteAction == 2) {
                 // 反对
                 votesDO1.setVoteType((byte) 2);
+                // 更新回答反对数
+                answersDO.setAgainstCount(answersDO.getAgainstCount() + 1);
             }
             this.votesService.saveVotes(votesDO1);
+            this.answersService.modifyAnswers(answersDO);
         } else {
             // 已存在投票信息
             if (votesDO.getVoteType() == 1) {
@@ -132,10 +140,17 @@ public class AnswerController {
                 if (voteAction == 1) {
                     // 点赞（取消赞，直接删除信息）
                     this.votesService.deleteVotes(votesDO);
+                    // 回答赞同数 - 1
+                    answersDO.setApprovalCount(answersDO.getApprovalCount() - 1);
+                    this.answersService.modifyAnswers(answersDO);
                 } else if (voteAction == 2) {
                     // 反对（更新赞改踩）
                     votesDO.setVoteType((byte) 2);
                     this.votesService.modifyVotes(votesDO);
+                    // 回答赞同数 - 1 反对数 + 1
+                    answersDO.setApprovalCount(answersDO.getApprovalCount() - 1);
+                    answersDO.setAgainstCount(answersDO.getAgainstCount() + 1);
+                    this.answersService.modifyAnswers(answersDO);
                 }
             } else if (votesDO.getVoteType() == 2) {
                 // 已踩
@@ -143,14 +158,21 @@ public class AnswerController {
                     // 点赞（更新踩改赞）
                     votesDO.setVoteType((byte) 1);
                     this.votesService.modifyVotes(votesDO);
+                    // 回答赞同数 + 1 反对数 - 1
+                    answersDO.setApprovalCount(answersDO.getApprovalCount() + 1);
+                    answersDO.setAgainstCount(answersDO.getAgainstCount() - 1);
+                    this.answersService.modifyAnswers(answersDO);
                 } else if (voteAction == 2) {
                     // 反对（取消反对，删除信息）
                     this.votesService.deleteVotes(votesDO);
+                    // 回答反对数 - 1
+                    answersDO.setAgainstCount(answersDO.getAgainstCount() - 1);
+                    this.answersService.modifyAnswers(answersDO);
                 }
             }
         }
 
-        return "success";
+        return "answer vote success.";
     }
 
     @Autowired

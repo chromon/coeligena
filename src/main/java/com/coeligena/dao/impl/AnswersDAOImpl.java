@@ -46,4 +46,25 @@ public class AnswersDAOImpl implements AnswersDAO {
         return this.getSession().createQuery(sql)
                 .setParameter("questionId", questionId).list();
     }
+
+    /**
+     * 由回答 id 查询回答
+     * @param answersId 回答 id
+     * @return 回答信息
+     */
+    @Override
+    public AnswersDO queryAnswersById(int answersId) {
+        String sql = "select a from AnswersDO a where a.id=:answersId";
+        return (AnswersDO) this.getSession().createQuery(sql)
+                .setParameter("answersId", answersId).uniqueResult();
+    }
+
+    /**
+     * 更新回答数据
+     * @param answersDO 回答数据
+     */
+    @Override
+    public void updateAnswers(AnswersDO answersDO) {
+        this.getSession().update(answersDO);
+    }
 }

@@ -178,7 +178,7 @@ public class QuestionCommentController {
             }
         }
 
-        return "success";
+        return "question comment vote success.";
     }
 
     /**

@@ -38,6 +38,25 @@ public class AnswersServiceImpl implements AnswersService {
         return answersDAO.queryAnswersByQuestionId(questionId);
     }
 
+    /**
+     * 更新回答数据
+     * @param answersDO 回答数据
+     */
+    @Override
+    public void modifyAnswers(AnswersDO answersDO) {
+       this.answersDAO.updateAnswers(answersDO);
+    }
+
+    /**
+     * 由回答 id 查询回答
+     * @param answersId 回答 id
+     * @return 回答信息
+     */
+    @Override
+    public AnswersDO queryAnswersById(int answersId) {
+        return this.answersDAO.queryAnswersById(answersId);
+    }
+
     @Autowired
     public void setAnswersDAO(AnswersDAO answersDAO) {
         this.answersDAO = answersDAO;

@@ -24,4 +24,17 @@ public interface AnswersDAO {
      * @return 回答列表
      */
     List<AnswersDO> queryAnswersByQuestionId(int questionId);
+
+    /**
+     * 由回答 id 查询回答
+     * @param answersId 回答 id
+     * @return 回答信息
+     */
+    AnswersDO queryAnswersById(int answersId);
+
+    /**
+     * 更新回答数据
+     * @param answersDO 回答数据
+     */
+    void updateAnswers(AnswersDO answersDO);
 }
