@@ -281,7 +281,7 @@ function likeUnlikeFunc(data) {
         type: "POST",
         url: basePath + "/question-comments-like",
         data: data,
-        dataType: "json",
+        dataType: "text",
         success: function(data) {
             console.log(data);
         },

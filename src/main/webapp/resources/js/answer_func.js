@@ -172,9 +172,9 @@ function voteFunc(data) {
         type: "POST",
         url: basePath + "/answer-vote",
         data: data,
-        dataType: "json",
+        dataType: "text",
         success: function(data) {
-            console.log(JSON.stringify(data));
+            console.log(data);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             /*
