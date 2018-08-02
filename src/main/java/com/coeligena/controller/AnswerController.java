@@ -4,14 +4,8 @@ import com.coeligena.dto.AnswersDTO;
 import com.coeligena.dto.PostAnswerDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.digest.AnswerDigest;
-import com.coeligena.model.AnswersDO;
-import com.coeligena.model.QuestionsDO;
-import com.coeligena.model.UsersDO;
-import com.coeligena.model.VotesDO;
-import com.coeligena.service.AnswersService;
-import com.coeligena.service.QuestionsService;
-import com.coeligena.service.UsersService;
-import com.coeligena.service.VotesService;
+import com.coeligena.model.*;
+import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,6 +31,7 @@ public class AnswerController {
     private AnswersService answersService;
     private QuestionsService questionsService;
     private VotesService votesService;
+    private FeedsService feedsService;
 
     /**
      * 回答问题 Ajax 请求
@@ -172,6 +167,19 @@ public class AnswerController {
             }
         }
 
+        if ((votesDO == null || votesDO.getVoteType() == 2) && voteAction == 1) {
+            // 添加动态
+            FeedsDO feedsDO = new FeedsDO();
+            // 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同回答和回答问题对应的是回答ID
+            feedsDO.setFeedsId(answersDO.getId());
+            // 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题
+            byte feedsType = 2;
+            feedsDO.setFeedsType(feedsType);
+            feedsDO.setFeedsTime(now);
+            feedsDO.setFeedsUserId(userInfoDTO.getUsersDO().getId());
+            feedsService.saveFeeds(feedsDO);
+        }
+
         return "answer vote success.";
     }
 
@@ -193,5 +201,10 @@ public class AnswerController {
     @Autowired
     public void setVotesService(VotesService votesService) {
         this.votesService = votesService;
+    }
+
+    @Autowired
+    public void setFeedsService(FeedsService feedsService) {
+        this.feedsService = feedsService;
     }
 }
