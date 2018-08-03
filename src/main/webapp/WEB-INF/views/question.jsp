@@ -453,12 +453,34 @@
                                     <div>
                                         <div class="custom-contentItem-actions custom-sticky custom-is-fixed">
                                             <span>
-                                                <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
-                                                    <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
-                                                </button>
-                                                <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
-                                                    <i class="fa fa-caret-down"></i>
-                                                </button>
+                                                <c:choose>
+                                                    <c:when test="${answersDTOList.votesDO != null}">
+                                                        <c:if test="${answersDTOList.votesDO.voteType == 1}">
+                                                            <button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
+                                                            </button>
+                                                            <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
+                                                                <i class="fa fa-caret-down"></i>
+                                                            </button>
+                                                        </c:if>
+                                                        <c:if test="${answersDTOList.votesDO.voteType == 2}">
+                                                            <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
+                                                            </button>
+                                                            <button class="custom-vote-btn is-active" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
+                                                                <i class="fa fa-caret-down"></i>
+                                                            </button>
+                                                        </c:if>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                                            <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
+                                                        </button>
+                                                        <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
+                                                            <i class="fa fa-caret-down"></i>
+                                                        </button>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </span>
                                             <button class="custom-contentItem-action custom-btn-plain" type="button">
                                             <span style="display: inline-flex;align-items: center;">

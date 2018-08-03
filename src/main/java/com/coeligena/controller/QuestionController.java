@@ -24,6 +24,7 @@ public class QuestionController {
     private QuestionTagsService questionTagsService;
     private AnswersService answersService;
     private UsersService usersService;
+    private VotesService votesService;
 
     /**
      * 问题页面
@@ -46,9 +47,14 @@ public class QuestionController {
             // 查询作者信息
             UsersDO usersDO = usersService.queryUserByUserId(answersDO.getAuthorId());
 
+            // 查询回答投票信息
+            VotesDO votesDO = this.votesService.queryVotesByAnswerIdAndVoterId(
+                    answersDO.getId(), usersDO.getId());
+
             AnswersDTO answersDTO = new AnswersDTO();
             answersDTO.setUsersDO(usersDO);
             answersDTO.setAnswersDO(answersDO);
+            answersDTO.setVotesDO(votesDO);
             answersDTOList.add(answersDTO);
         }
 
@@ -75,8 +81,6 @@ public class QuestionController {
         model.addAttribute("questionsDO", questionsDO);
         return "question";
     }
-
-
 
     @RequestMapping(value = "/question/invited", method = RequestMethod.GET)
     public String questionInvited() {
@@ -106,5 +110,10 @@ public class QuestionController {
     @Autowired
     public void setUsersService(UsersService usersService) {
         this.usersService = usersService;
+    }
+
+    @Autowired
+    public void setVotesService(VotesService votesService) {
+        this.votesService = votesService;
     }
 }

@@ -180,7 +180,7 @@ public class AnswerController {
             feedsService.saveFeeds(feedsDO);
         }
 
-        return "answer vote success.";
+        return answersDO.getApprovalCount() + "";
     }
 
     @Autowired

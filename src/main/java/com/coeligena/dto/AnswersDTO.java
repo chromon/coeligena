@@ -2,6 +2,7 @@ package com.coeligena.dto;
 
 import com.coeligena.model.AnswersDO;
 import com.coeligena.model.UsersDO;
+import com.coeligena.model.VotesDO;
 
 /**
  * <p>
@@ -18,6 +19,8 @@ public class AnswersDTO {
     private int answerId;
 
     private int voteAction;
+
+    private VotesDO votesDO;
 
     public AnswersDO getAnswersDO() {
         return answersDO;
@@ -49,5 +52,13 @@ public class AnswersDTO {
 
     public void setVoteAction(int voteAction) {
         this.voteAction = voteAction;
+    }
+
+    public VotesDO getVotesDO() {
+        return votesDO;
+    }
+
+    public void setVotesDO(VotesDO votesDO) {
+        this.votesDO = votesDO;
     }
 }
