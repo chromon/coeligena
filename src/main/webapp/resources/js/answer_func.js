@@ -202,3 +202,15 @@ function voteFunc(data) {
         }
     });
 }
+
+// 回答评论列表
+function commentsList(answerId) {
+    // 使用 handlebars 获取模板
+    var tpl = $("#answerCommentsTemplate").html();
+    // 预编译模板
+    var template = Handlebars.compile(tpl);
+    // 匹配 json 内容
+    var html = template(answerId);
+    // 输入模板
+    $('#comments-container-' + answerId).html(html);
+}
