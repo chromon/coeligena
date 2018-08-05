@@ -214,3 +214,40 @@ function commentsList(answerId) {
     // 输入模板
     $('#comments-container-' + answerId).html(html);
 }
+
+// 评论回答
+$('#comment-answer-btn').on('click', function() {
+    var content = $('#answer-comment').val();
+    $('#answer-comment').val('');
+
+    $.ajax({
+        type: "POST",
+        url: basePath + "/answer-comment",
+        data: {
+            answerId: $('#answer_id').val(),
+            reviewerId: $('#reviewer-id').val(),
+            parentCommentId: $('#parent-comment-id').val(),
+            commentContent: content
+        },
+        dataType: "json",
+        success: function(data){
+            // console.log(data);
+
+            // 判断是否是添加评论模板
+            data['isPost'] = true;
+
+            // json 时间数据格式化
+            data['questionCommentsDO']['commentTime'] = getLocalTime(data['questionCommentsDO']['commentTime']);
+
+            // 使用 handlebars 获取模板
+            var tpl = $("#question_comment_template").html();
+            // 预编译模板
+            var template = Handlebars.compile(tpl);
+            // 匹配 json 内容
+            var html = template(data);
+            // 输入模板
+            $('#question_comment_wrapper').append(html);
+
+        }
+    });
+});

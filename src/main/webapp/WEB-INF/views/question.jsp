@@ -694,12 +694,10 @@
                         <!-- comment footer -->
                         <div class="custom-comments-footer custom-comments-editor">
                             <div class="form-group" style="margin-bottom: 0px;">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="写下你的评论…">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="button">评论</button>
-                                    </span>
-                                </div>
+                                <input type="hidden" id="parent-comment-id" value="0">
+                                <input type="hidden" id="reviewer-id" value="0">
+                                <textarea id="answer-comment" class="form-control custom-question-comment" rows="1"></textarea>
+                                <button id="comment-answer-btn" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
                             </div>
                         </div><!-- end comment footer -->
                     </div>
