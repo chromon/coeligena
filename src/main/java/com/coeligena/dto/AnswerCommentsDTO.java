@@ -1,12 +1,12 @@
 package com.coeligena.dto;
 
 /**
- * question comments dto
- * Created by Ellery on 2018/7/2.
+ * answer comments dto
+ * Created by Ellery on 2018/8/6.
  */
-public class QuestionCommentDTO {
+public class AnswerCommentsDTO {
 
-    private int questionId;
+    private int answerId;
 
     private int reviewerId;
 
@@ -14,12 +14,12 @@ public class QuestionCommentDTO {
 
     private String commentContent;
 
-    public int getQuestionId() {
-        return questionId;
+    public int getAnswerId() {
+        return answerId;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setAnswerId(int answerId) {
+        this.answerId = answerId;
     }
 
     public int getReviewerId() {

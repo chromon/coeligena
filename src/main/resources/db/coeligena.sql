@@ -217,7 +217,7 @@ CREATE TABLE IF NOT EXISTS question_comments (
     collapse_comments TINYINT(4) NOT NULL DEFAULT '0', /* 是否为被折叠评论 0：否，1：是 */
     approval_count    INT(11)    NOT NULL DEFAULT '0', /* 赞同（顶）数量 */
     oppose_count      INT(11)    NOT NULL DEFAULT '0', /* 反对（踩）数量 */
-    user_id          INT(11)      NOT NULL DEFAULT '0', /* 提问用户 */
+    user_id          INT(11)      NOT NULL DEFAULT '0', /* 评论用户 */
     PRIMARY KEY (id),
     INDEX (question_id),
     INDEX (reviewer_id),
@@ -424,12 +424,15 @@ CREATE TABLE IF NOT EXISTS votes (
 CREATE TABLE IF NOT EXISTS answer_comments (
     id                INT(11)    NOT NULL AUTO_INCREMENT, /* 评论ID（唯一标识） */
     answer_id         INT(11)    NOT NULL DEFAULT '0', /* 被评论的回答ID（唯一标识） */
-    reviewer_id       INT(11)    NOT NULL DEFAULT '0', /* 评论用户ID（唯一标识） */
+    reviewer_id       INT(11)    NOT NULL DEFAULT '0', /* 被评论用户ID（唯一标识） */
     parent_comment_id INT(11)    NOT NULL DEFAULT '0', /* 被回复评论的ID（唯一标识） */
     comment_content   TEXT       NOT NULL, /* 评论内容 */
     comment_time      TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 评论时间 */
     approval_count    INT(11)    NOT NULL DEFAULT '0', /* 赞同数量 */
+    oppose_count      INT(11)    NOT NULL DEFAULT '0', /* 反对（踩）数量 */
     featured_comment  TINYINT(4) NOT NULL DEFAULT '0', /* 是否是精选评论 0：否，1：是 */
+    collapse_comment  TINYINT(4) NOT NULL DEFAULT '0', /* 是否为被折叠评论 0：否，1：是 */
+    user_id           INT(11)    NOT NULL DEFAULT '0', /* 评论用户ID（唯一标识） */
     PRIMARY KEY (id),
     INDEX (answer_id),
     INDEX (reviewer_id),

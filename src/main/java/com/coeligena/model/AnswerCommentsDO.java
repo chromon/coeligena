@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "answer_comments")
-public class AnswerCommnetsDO {
+public class AnswerCommentsDO {
 
     /** 评论 id */
     private int id;
@@ -19,7 +19,7 @@ public class AnswerCommnetsDO {
     /** 被评论回答 id */
     private int answerId;
 
-    /** 评论用户 id */
+    /** 被评论用户 id */
     private int reviewerId;
 
     /** 被回复评论 id */
@@ -34,8 +34,17 @@ public class AnswerCommnetsDO {
     /** 评论赞同数 */
     private int approvalCount;
 
+    /** 评论反对数 */
+    private int oppose_count;
+
     /** 是否是精选评论 0：否，1：是 */
     private byte featuredComment;
+
+    /** 是否是折叠评论 0：否， 1：是 */
+    private byte collapse_comment;
+
+    /** 提交评论用户 id */
+    private int userId;
 
     /**
      * 获取评论 id
@@ -74,8 +83,8 @@ public class AnswerCommnetsDO {
     }
 
     /**
-     * 获取评论用户 id
-     * @return 评论用户 id
+     * 获取被评论用户 id
+     * @return 被评论用户 id
      */
     @Column(name = "reviewer_id", nullable = false, columnDefinition = "int(11) default '0'")
     public int getReviewerId() {
@@ -83,8 +92,8 @@ public class AnswerCommnetsDO {
     }
 
     /**
-     * 设置评论用户 id
-     * @param reviewerId 评论用户 id
+     * 设置被评论用户 id
+     * @param reviewerId 被评论用户 id
      */
     public void setReviewerId(int reviewerId) {
         this.reviewerId = reviewerId;
@@ -173,5 +182,56 @@ public class AnswerCommnetsDO {
      */
     public void setFeaturedComment(byte featuredComment) {
         this.featuredComment = featuredComment;
+    }
+
+    /**
+     * 获取评论反对数
+     * @return 评论反对数
+     */
+    @Column(name = "oppose_count", nullable = false, columnDefinition = "int(11) default '0'")
+    public int getOppose_count() {
+        return oppose_count;
+    }
+
+    /**
+     * 设置评论反对数
+     * @param oppose_count 评论反对数
+     */
+    public void setOppose_count(int oppose_count) {
+        this.oppose_count = oppose_count;
+    }
+
+    /**
+     * 判断是否是折叠评论
+     * @return 是否是折叠评论
+     */
+    @Column(name = "collapse_comment", nullable = false, columnDefinition = "tinyint(4) default '0'")
+    public byte getCollapse_comment() {
+        return collapse_comment;
+    }
+
+    /**
+     * 设置是否是折叠评论
+     * @param collapse_comment 是否是折叠评论
+     */
+    public void setCollapse_comment(byte collapse_comment) {
+        this.collapse_comment = collapse_comment;
+    }
+
+    /**
+     * 获取评论用户 id
+     * @return 用户 id
+     */
+    @Column(name = "user_id", nullable = false, columnDefinition = "int(11) default '0'")
+    public int getUserId() {
+        return userId;
+    }
+
+    /**
+     * 设置评论用户 id
+     * @param userId 评论用户 id
+     */
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

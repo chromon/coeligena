@@ -1,5 +1,6 @@
 package com.coeligena.dto;
 
+import com.coeligena.model.AnswersDO;
 import com.coeligena.model.QuestionCommentsDO;
 import com.coeligena.model.UsersDO;
 
@@ -14,6 +15,8 @@ public class CommentDTO {
     private UsersDO reviewer;
 
     private QuestionCommentsDO questionCommentsDO;
+
+    private AnswersDO answersDO;
 
     private UsersDO user;
 
@@ -47,6 +50,14 @@ public class CommentDTO {
 
     public void setQuestionCommentsDO(QuestionCommentsDO questionCommentsDO) {
         this.questionCommentsDO = questionCommentsDO;
+    }
+
+    public AnswersDO getAnswersDO() {
+        return answersDO;
+    }
+
+    public void setAnswersDO(AnswersDO answersDO) {
+        this.answersDO = answersDO;
     }
 
     public UsersDO getUser() {
