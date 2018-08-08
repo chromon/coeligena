@@ -22,6 +22,8 @@ public class AnswersDTO {
 
     private VotesDO votesDO;
 
+    private Double answerWeight;
+
     public AnswersDO getAnswersDO() {
         return answersDO;
     }
@@ -60,5 +62,13 @@ public class AnswersDTO {
 
     public void setVotesDO(VotesDO votesDO) {
         this.votesDO = votesDO;
+    }
+
+    public Double getAnswerWeight() {
+        return answerWeight;
+    }
+
+    public void setAnswerWeight(Double answerWeight) {
+        this.answerWeight = answerWeight;
     }
 }
