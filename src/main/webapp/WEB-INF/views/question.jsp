@@ -440,15 +440,15 @@
                                     </span>
                                     </div>
                                     <!-- custom-is-collapsed -->
-                                    <div class="custom-rich-content-inner" id="ans-inner-${answersDTOList.answerCommentsDO.id}">
-                                        <span>${answersDTOList.answerCommentsDO.answerContent}</span>
+                                    <div class="custom-rich-content-inner" id="ans-inner-${answersDTOList.answersDO.id}">
+                                        <span>${answersDTOList.answersDO.answerContent}</span>
                                     </div>
-                                    <button id="ans-unfold-${answersDTOList.answerCommentsDO.id}" onclick="unfoldAnswer(${answersDTOList.answerCommentsDO.id});" class="custom-contentItem-rightBtn custom-btn-plain hide" type="button">
+                                    <button id="ans-unfold-${answersDTOList.answersDO.id}" onclick="unfoldAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-rightBtn custom-btn-plain hide" type="button">
                                         <span class="custom-margin-right5">展开阅读全文</span>
                                         <i class="fa fa-chevron-down"></i>
                                     </button>
                                     <div class="custom-contentItem-time">
-                                        <a href="#">编辑于 ${answersDTOList.answerCommentsDO.answerTime}</a>
+                                        <a href="#">编辑于 ${answersDTOList.answersDO.answerTime}</a>
                                     </div>
                                     <div>
                                         <div class="custom-contentItem-actions custom-sticky custom-is-fixed">
@@ -456,37 +456,37 @@
                                                 <c:choose>
                                                     <c:when test="${answersDTOList.votesDO != null}">
                                                         <c:if test="${answersDTOList.votesDO.voteType == 1}">
-                                                            <button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="赞同" type="button">
-                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answerCommentsDO.approvalCount}
+                                                            <button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
                                                             </button>
-                                                            <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="反对" type="button">
+                                                            <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
                                                                 <i class="fa fa-caret-down"></i>
                                                             </button>
                                                         </c:if>
                                                         <c:if test="${answersDTOList.votesDO.voteType == 2}">
-                                                            <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="赞同" type="button">
-                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answerCommentsDO.approvalCount}
+                                                            <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
                                                             </button>
-                                                            <button class="custom-vote-btn is-active" onclick="voteDown(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="反对" type="button">
+                                                            <button class="custom-vote-btn is-active" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
                                                                 <i class="fa fa-caret-down"></i>
                                                             </button>
                                                         </c:if>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="赞同" type="button">
-                                                            <i class="fa fa-caret-up"></i> ${answersDTOList.answerCommentsDO.approvalCount}
+                                                        <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                                            <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
                                                         </button>
-                                                        <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="反对" type="button">
+                                                        <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
                                                             <i class="fa fa-caret-down"></i>
                                                         </button>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </span>
-                                            <button onclick="commentsList(${answersDTOList.answerCommentsDO.id})" data-toggle="collapse" data-target="#comments-container-${answersDTOList.answerCommentsDO.id}"
+                                            <button onclick="commentsList(${answersDTOList.answersDO.id})" data-toggle="collapse" data-target="#comments-container-${answersDTOList.answersDO.id}"
                                                     aria-expanded="false" aria-controls="collapseExample" class="custom-contentItem-action custom-btn-plain" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-comment custom-margin-right5"></i>
-                                                    ${answersDTOList.answerCommentsDO.commentCount} 条评论
+                                                    ${answersDTOList.answersDO.commentCount} 条评论
                                                 </span>
                                             </button>
                                             <div class="custom-drop-option2">
@@ -520,7 +520,7 @@
                                                     <li><a href="#">举报</a></li>
                                                 </ul>
                                             </div>
-                                            <button id="tuck-up-${answersDTOList.answerCommentsDO.id}" onclick="tuckUpAnswer(${answersDTOList.answerCommentsDO.id});" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
+                                            <button id="tuck-up-${answersDTOList.answersDO.id}" onclick="tuckUpAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <span class="custom-margin-right5">收起</span>
                                                     <i class="fa fa-chevron-up"></i>
@@ -531,7 +531,7 @@
                                 </div><!-- end feed content -->
 
                                 <!-- feed comment -->
-                                <div id="comments-container-${answersDTOList.answerCommentsDO.id}" class="collapse custom-comments-container">
+                                <div id="comments-container-${answersDTOList.answersDO.id}" class="collapse custom-comments-container">
                                 </div><!-- end feed comment -->
 
                             </div><!-- feed detail -->
@@ -542,7 +542,7 @@
                 <!-- end feed list -->
 
                 <!-- answer comments template -->
-                <script type="text/template" id="answerCommentsTemplate">
+                <script type="text/template" id="answer-comments-template">
 
                     <div class="custom-comments custom-comments-withPagination">
                         <!-- comment top bar -->
@@ -562,22 +562,29 @@
 
                         <!-- comment list -->
                         <div class="custom-comment-list">
+                            {{#if isPost}}
                             <!-- comment item -->
                             <div class="custom-comment-item">
                                 <div>
                                     <div class="custom-commentItem-meta">
                                         <span>
                                             <a href="#">
-                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>{{user.avatarPath}}" alt="{{user.fullname}}">
                                             </a>
                                         </span>
                                         <span>
-                                            <a class="custom-comment-userLink" href="#">Ellery</a>
+                                            <a class="custom-comment-userLink" href="#">{{user.fullname}}</a>
                                         </span>
-                                        <span class="custom-commentItem-time">13 分钟前</span>
+                                        {{#if reviewer}}
+                                        <span>
+                                            <span class="custom-commentItem-reply">回复</span>
+                                            <a class="custom-comment-userLink" href="#">{{reviewer.fullname}}</a>
+                                        </span>
+                                        {{/if}}
+                                        <span class="custom-commentItem-time">{{questionCommentsDO.commentTime}}</span>
                                     </div>
                                     <div class="custom-commentItem-content">
-                                        这不是前端日常么。
+                                        {{answerCommentsDO.commentContent}}
                                     </div>
                                     <div class="custom-commentItem-footer">
                                         <button class="custom-btn-plain custom-margin-right20" type="button">
@@ -586,12 +593,14 @@
                                                 <span>赞</span>
                                             </span>
                                         </button>
+                                        {{#if reviewer}}
                                         <button class="custom-btn-plain custom-margin-right20" type="button">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <i class="fa fa-comment custom-margin-right5"></i>
                                                 <span>查看对话</span>
                                             </span>
                                         </button>
+                                        {{/if}}
                                         <button class="custom-btn-plain custom-margin-right20" type="button">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <i class="fa fa-share custom-margin-right5"></i>
@@ -671,6 +680,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{/if}}
                         </div><!-- end comment list -->
                         <!-- comment pagination -->
                         <div class="custom-pagination">

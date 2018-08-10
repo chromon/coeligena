@@ -206,7 +206,7 @@ function voteFunc(data) {
 // 回答评论列表
 function commentsList(answerId) {
     // 使用 handlebars 获取模板
-    var tpl = $("#answerCommentsTemplate").html();
+    var tpl = $("#answer-comments-template").html();
     // 预编译模板
     var template = Handlebars.compile(tpl);
     // 匹配 json 内容
@@ -235,22 +235,22 @@ function postAnswerComment(id) {
         },
         dataType: "json",
         success: function(data){
-            // console.log(data);
+            console.log(data);
 
             // 判断是否是添加评论模板
             data['isPost'] = true;
 
             // json 时间数据格式化
-            data['questionCommentsDO']['commentTime'] = getLocalTime(data['questionCommentsDO']['commentTime']);
+            data['answerCommentsDO']['commentTime'] = getLocalTime(data['answerCommentsDO']['commentTime']);
 
             // 使用 handlebars 获取模板
-            var tpl = $("#question_comment_template").html();
+            var tpl = $("#answer-comments-template").html();
             // 预编译模板
             var template = Handlebars.compile(tpl);
             // 匹配 json 内容
             var html = template(data);
             // 输入模板
-            $('#question_comment_wrapper').append(html);
+            $('#comments-container-' + id).html(html);
 
         }
     });

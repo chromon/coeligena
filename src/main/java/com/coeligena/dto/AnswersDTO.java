@@ -1,5 +1,6 @@
 package com.coeligena.dto;
 
+import com.coeligena.model.AnswerCommentsDO;
 import com.coeligena.model.AnswersDO;
 import com.coeligena.model.UsersDO;
 import com.coeligena.model.VotesDO;

@@ -196,7 +196,7 @@ public class AnswerController {
     }
 
     /**
-     * 问题评论处理方法
+     * 回答题评论处理方法
      * @param request http servlet request
      * @param answerCommentsDTO 回答评论 dto
      * @return 评论信息
@@ -221,10 +221,14 @@ public class AnswerController {
         answerCommentsDO.setUserId(userInfoDTO.getUsersDO().getId());
         this.answerCommentsService.saveAnswerComment(answerCommentsDO);
 
+        // 查询被评论者信息
+        UsersDO reviewer = usersService.queryUserByUserId(answerCommentsDTO.getReviewerId());
+
         // 返回信息
         CommentDTO commentDTO = new CommentDTO();
-//        commentDTO.setAnswerCommentsDO(answerCommentsDO);
-
+        commentDTO.setAnswerCommentsDO(answerCommentsDO);
+        commentDTO.setReviewer(reviewer);
+        commentDTO.setUser(userInfoDTO.getUsersDO());
         return commentDTO;
     }
 
