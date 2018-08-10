@@ -223,6 +223,8 @@ public class AnswerController {
 
         // 返回信息
         CommentDTO commentDTO = new CommentDTO();
+//        commentDTO.setAnswerCommentsDO(answerCommentsDO);
+
         return commentDTO;
     }
 

@@ -440,15 +440,15 @@
                                     </span>
                                     </div>
                                     <!-- custom-is-collapsed -->
-                                    <div class="custom-rich-content-inner" id="ans-inner-${answersDTOList.answersDO.id}">
-                                        <span>${answersDTOList.answersDO.answerContent}</span>
+                                    <div class="custom-rich-content-inner" id="ans-inner-${answersDTOList.answerCommentsDO.id}">
+                                        <span>${answersDTOList.answerCommentsDO.answerContent}</span>
                                     </div>
-                                    <button id="ans-unfold-${answersDTOList.answersDO.id}" onclick="unfoldAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-rightBtn custom-btn-plain hide" type="button">
+                                    <button id="ans-unfold-${answersDTOList.answerCommentsDO.id}" onclick="unfoldAnswer(${answersDTOList.answerCommentsDO.id});" class="custom-contentItem-rightBtn custom-btn-plain hide" type="button">
                                         <span class="custom-margin-right5">展开阅读全文</span>
                                         <i class="fa fa-chevron-down"></i>
                                     </button>
                                     <div class="custom-contentItem-time">
-                                        <a href="#">编辑于 ${answersDTOList.answersDO.answerTime}</a>
+                                        <a href="#">编辑于 ${answersDTOList.answerCommentsDO.answerTime}</a>
                                     </div>
                                     <div>
                                         <div class="custom-contentItem-actions custom-sticky custom-is-fixed">
@@ -456,37 +456,37 @@
                                                 <c:choose>
                                                     <c:when test="${answersDTOList.votesDO != null}">
                                                         <c:if test="${answersDTOList.votesDO.voteType == 1}">
-                                                            <button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
-                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
+                                                            <button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="赞同" type="button">
+                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answerCommentsDO.approvalCount}
                                                             </button>
-                                                            <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
+                                                            <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="反对" type="button">
                                                                 <i class="fa fa-caret-down"></i>
                                                             </button>
                                                         </c:if>
                                                         <c:if test="${answersDTOList.votesDO.voteType == 2}">
-                                                            <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
-                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
+                                                            <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="赞同" type="button">
+                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answerCommentsDO.approvalCount}
                                                             </button>
-                                                            <button class="custom-vote-btn is-active" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
+                                                            <button class="custom-vote-btn is-active" onclick="voteDown(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="反对" type="button">
                                                                 <i class="fa fa-caret-down"></i>
                                                             </button>
                                                         </c:if>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
-                                                            <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
+                                                        <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="赞同" type="button">
+                                                            <i class="fa fa-caret-up"></i> ${answersDTOList.answerCommentsDO.approvalCount}
                                                         </button>
-                                                        <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
+                                                        <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answerCommentsDO.id}');" aria-label="反对" type="button">
                                                             <i class="fa fa-caret-down"></i>
                                                         </button>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </span>
-                                            <button onclick="commentsList(${answersDTOList.answersDO.id})" data-toggle="collapse" data-target="#comments-container-${answersDTOList.answersDO.id}"
+                                            <button onclick="commentsList(${answersDTOList.answerCommentsDO.id})" data-toggle="collapse" data-target="#comments-container-${answersDTOList.answerCommentsDO.id}"
                                                     aria-expanded="false" aria-controls="collapseExample" class="custom-contentItem-action custom-btn-plain" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-comment custom-margin-right5"></i>
-                                                    ${answersDTOList.answersDO.commentCount} 条评论
+                                                    ${answersDTOList.answerCommentsDO.commentCount} 条评论
                                                 </span>
                                             </button>
                                             <div class="custom-drop-option2">
@@ -520,7 +520,7 @@
                                                     <li><a href="#">举报</a></li>
                                                 </ul>
                                             </div>
-                                            <button id="tuck-up-${answersDTOList.answersDO.id}" onclick="tuckUpAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
+                                            <button id="tuck-up-${answersDTOList.answerCommentsDO.id}" onclick="tuckUpAnswer(${answersDTOList.answerCommentsDO.id});" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <span class="custom-margin-right5">收起</span>
                                                     <i class="fa fa-chevron-up"></i>
@@ -531,7 +531,7 @@
                                 </div><!-- end feed content -->
 
                                 <!-- feed comment -->
-                                <div id="comments-container-${answersDTOList.answersDO.id}" class="collapse custom-comments-container">
+                                <div id="comments-container-${answersDTOList.answerCommentsDO.id}" class="collapse custom-comments-container">
                                 </div><!-- end feed comment -->
 
                             </div><!-- feed detail -->
@@ -694,10 +694,10 @@
                         <!-- comment footer -->
                         <div class="custom-comments-footer custom-comments-editor">
                             <div class="form-group" style="margin-bottom: 0px;">
-                                <input type="hidden" id="parent-comment-id" value="0">
-                                <input type="hidden" id="reviewer-id" value="0">
-                                <textarea id="answer-comment" class="form-control custom-question-comment" rows="1"></textarea>
-                                <button id="comment-answer-btn" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
+                                <input type="hidden" id="parent-comment-id-{{answerId}}" value="0">
+                                <input type="hidden" id="reviewer-id-{{answerId}}" value="0">
+                                <textarea id="answer-comment-{{answerId}}" class="form-control custom-question-comment" rows="1"></textarea>
+                                <button id="comment-answer-btn" onclick="postAnswerComment('{{answerId}}');" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
                             </div>
                         </div><!-- end comment footer -->
                     </div>

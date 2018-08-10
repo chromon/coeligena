@@ -210,21 +210,25 @@ function commentsList(answerId) {
     // 预编译模板
     var template = Handlebars.compile(tpl);
     // 匹配 json 内容
-    var html = template(answerId);
+    var data = {
+        answerId: answerId
+    };
+    var html = template(data);
     // 输入模板
     $('#comments-container-' + answerId).html(html);
 }
 
 // 评论回答
-$('#comment-answer-btn').on('click', function() {
-    var content = $('#answer-comment').val();
-    $('#answer-comment').val('');
+function postAnswerComment(id) {
+
+    var content = $('#answer-comment-' + id).val();
+    $('#answer-comment-' + id).val('');
 
     $.ajax({
         type: "POST",
         url: basePath + "/answer-comment",
         data: {
-            answerId: $('#answer_id').val(),
+            answerId: id,
             reviewerId: $('#reviewer-id').val(),
             parentCommentId: $('#parent-comment-id').val(),
             commentContent: content
@@ -250,4 +254,4 @@ $('#comment-answer-btn').on('click', function() {
 
         }
     });
-});
+}
