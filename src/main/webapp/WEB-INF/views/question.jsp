@@ -482,7 +482,7 @@
                                                     </c:otherwise>
                                                 </c:choose>
                                             </span>
-                                            <button onclick="commentsList(${answersDTOList.answersDO.id})" data-toggle="collapse" data-target="#comments-container-${answersDTOList.answersDO.id}"
+                                            <button onclick="commentsList(${answersDTOList.answersDO.id})" data-toggle="collapse" data-target="#answer-comments-wrapper-${answersDTOList.answersDO.id}"
                                                     aria-expanded="false" aria-controls="collapseExample" class="custom-contentItem-action custom-btn-plain" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-comment custom-margin-right5"></i>
@@ -531,9 +531,56 @@
                                 </div><!-- end feed content -->
 
                                 <!-- feed comment -->
-                                <div id="comments-container-${answersDTOList.answersDO.id}" class="collapse custom-comments-container">
-                                </div><!-- end feed comment -->
+                                <div id="answer-comments-wrapper-${answersDTOList.answersDO.id}" class="collapse">
+                                    <div class="custom-comments custom-comments-withPagination custom-comments-container">
+                                        <!-- comment top bar -->
+                                        <div class="custom-comments-topbar">
+                                            <div class="custom-comments-topbar-title">
+                                                <h2>${answersDTOList.answersDO.commentCount} 条评论</h2>
+                                            </div>
+                                            <div class="custom-comments-topbar-option">
+                                                <button class="custom-btn-plain custom-contentItem-right" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-exchange custom-margin-right5"></i>
+                                                    <span>切换为时间排序</span>
+                                                </span>
+                                                </button>
+                                            </div>
+                                        </div><!-- end comment top bar -->
 
+                                        <div id="comments-container-${answersDTOList.answersDO.id}" class="custom-comment-list">
+                                        </div>
+
+                                        <!-- comment pagination -->
+                                        <div class="custom-pagination">
+                                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
+                                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
+                                            <button class="custom-pagination-btn custom-btn-plain" type="button">2</button>
+                                            <button class="custom-pagination-btn custom-btn-plain" type="button">3</button>
+                                            <button class="custom-pagination-btn custom-btn-plain" type="button">4</button>
+                                            <span class="custom-pagination-btn">•••</span>
+                                            <button class="custom-pagination-btn custom-btn-plain" type="button">12</button>
+                                            <button class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
+                                        </div>
+                                        <!-- end comment pagination -->
+                                        <!-- collapse comment -->
+                                        <div class="custom-comment-list-action">
+                                            <div class="custom-comment-list-collapse">
+                                                <span>1 条评论被折叠</span>
+                                                （<a href="">为什么？</a>）
+                                            </div>
+                                        </div><!-- end collapse comment -->
+                                        <!-- comment footer -->
+                                        <div class="custom-comments-footer custom-comments-editor">
+                                            <div class="form-group" style="margin-bottom: 0px;">
+                                                <input type="hidden" id="parent-comment-id-{{answerId}}" value="0">
+                                                <input type="hidden" id="reviewer-id-{{answerId}}" value="0">
+                                                <textarea id="answer-comment-{{answerId}}" class="form-control custom-question-comment" rows="1"></textarea>
+                                                <button id="comment-answer-btn" onclick="postAnswerComment('{{answerId}}');" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
+                                            </div>
+                                        </div><!-- end comment footer -->
+                                    </div><!-- end feed comment -->
+                                </div>
                             </div><!-- feed detail -->
                         </div><!-- end feed -->
                         </c:forEach>
@@ -543,176 +590,126 @@
 
                 <!-- answer comments template -->
                 <script type="text/template" id="answer-comments-template">
-
-                    <div class="custom-comments custom-comments-withPagination">
-                        <!-- comment top bar -->
-                        <div class="custom-comments-topbar">
-                            <div class="custom-comments-topbar-title">
-                                <h2>1 条评论</h2>
+                    {{#if isPost}}
+                    <!-- comment item -->
+                    <div class="custom-comment-item">
+                        <div>
+                            <div class="custom-commentItem-meta">
+                                <span>
+                                    <a href="#">
+                                        <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>{{user.avatarPath}}" alt="{{user.fullname}}">
+                                    </a>
+                                </span>
+                                <span>
+                                    <a class="custom-comment-userLink" href="#">{{user.fullname}}</a>
+                                </span>
+                                {{#if reviewer}}
+                                <span>
+                                    <span class="custom-commentItem-reply">回复</span>
+                                    <a class="custom-comment-userLink" href="#">{{reviewer.fullname}}</a>
+                                </span>
+                                {{/if}}
+                                <span class="custom-commentItem-time">{{questionCommentsDO.commentTime}}</span>
                             </div>
-                            <div class="custom-comments-topbar-option">
-                                <button class="custom-btn-plain custom-contentItem-right" type="button">
+                            <div class="custom-commentItem-content">
+                                {{answerCommentsDO.commentContent}}
+                            </div>
+                            <div class="custom-commentItem-footer">
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
                                     <span style="display: inline-flex;align-items: center;">
-                                        <i class="fa fa-exchange custom-margin-right5"></i>
-                                        <span>切换为时间排序</span>
+                                        <i class="fa fa-thumbs-up custom-margin-right5"></i>
+                                        <span>赞</span>
+                                    </span>
+                                </button>
+                                {{#if reviewer}}
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-comment custom-margin-right5"></i>
+                                        <span>查看对话</span>
+                                    </span>
+                                </button>
+                                {{/if}}
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-share custom-margin-right5"></i>
+                                        <span>回复</span>
+                                    </span>
+                                </button>
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-thumbs-down custom-margin-right5"></i>
+                                        <span>踩</span>
+                                    </span>
+                                </button>
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-flag custom-margin-right5"></i>
+                                        <span>举报</span>
                                     </span>
                                 </button>
                             </div>
-                        </div><!-- end comment top bar -->
-
-                        <!-- comment list -->
-                        <div class="custom-comment-list">
-                            {{#if isPost}}
-                            <!-- comment item -->
-                            <div class="custom-comment-item">
-                                <div>
-                                    <div class="custom-commentItem-meta">
-                                        <span>
-                                            <a href="#">
-                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>{{user.avatarPath}}" alt="{{user.fullname}}">
-                                            </a>
-                                        </span>
-                                        <span>
-                                            <a class="custom-comment-userLink" href="#">{{user.fullname}}</a>
-                                        </span>
-                                        {{#if reviewer}}
-                                        <span>
-                                            <span class="custom-commentItem-reply">回复</span>
-                                            <a class="custom-comment-userLink" href="#">{{reviewer.fullname}}</a>
-                                        </span>
-                                        {{/if}}
-                                        <span class="custom-commentItem-time">{{questionCommentsDO.commentTime}}</span>
-                                    </div>
-                                    <div class="custom-commentItem-content">
-                                        {{answerCommentsDO.commentContent}}
-                                    </div>
-                                    <div class="custom-commentItem-footer">
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-thumbs-up custom-margin-right5"></i>
-                                                <span>赞</span>
-                                            </span>
-                                        </button>
-                                        {{#if reviewer}}
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-comment custom-margin-right5"></i>
-                                                <span>查看对话</span>
-                                            </span>
-                                        </button>
-                                        {{/if}}
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-share custom-margin-right5"></i>
-                                                <span>回复</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-thumbs-down custom-margin-right5"></i>
-                                                <span>踩</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-flag custom-margin-right5"></i>
-                                                <span>举报</span>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div><!-- end comment item -->
-                            <%--<!-- comment item divider -->--%>
-                            <%--<div class="custom-comment-list-divider">--%>
-                            <%--<div class="custom-comment-list-dividerLine"></div>--%>
-                            <%--<div class="custom-comment-list-dividerText">--%>
-                            <%--以上为精选评论--%>
-                            <%--<i class="fa fa-question-circle"></i>--%>
-                            <%--</div>--%>
-                            <%--</div><!-- end comment item divider -->--%>
-                            <div class="custom-comment-item">
-                                <div>
-                                    <div class="custom-commentItem-meta">
-                                        <span>
-                                            <a href="#">
-                                                <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
-                                            </a>
-                                        </span>
-                                        <span>
-                                            <a class="custom-comment-userLink" href="#">Ellery</a>
-                                        </span>
-                                        <span class="custom-commentItem-time">13 分钟前</span>
-                                    </div>
-                                    <div class="custom-commentItem-content">
-                                        这不是前端日常么。
-                                    </div>
-                                    <div class="custom-commentItem-footer">
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-thumbs-up custom-margin-right5"></i>
-                                                <span>赞</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-comment custom-margin-right5"></i>
-                                                <span>查看对话</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-share custom-margin-right5"></i>
-                                                <span>回复</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-thumbs-down custom-margin-right5"></i>
-                                                <span>踩</span>
-                                            </span>
-                                        </button>
-                                        <button class="custom-btn-plain custom-margin-right20" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-flag custom-margin-right5"></i>
-                                                <span>举报</span>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            {{/if}}
-                        </div><!-- end comment list -->
-                        <!-- comment pagination -->
-                        <div class="custom-pagination">
-                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
-                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">2</button>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">3</button>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">4</button>
-                            <span class="custom-pagination-btn">•••</span>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">12</button>
-                            <button class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
                         </div>
-                        <!-- end comment pagination -->
-                        <!-- collapse comment -->
-                        <div class="custom-comment-list-action">
-                            <div class="custom-comment-list-collapse">
-                                <span>1 条评论被折叠</span>
-                                （<a href="">为什么？</a>）
+                    </div><!-- end comment item -->
+                    <%--<!-- comment item divider -->--%>
+                    <%--<div class="custom-comment-list-divider">--%>
+                    <%--<div class="custom-comment-list-dividerLine"></div>--%>
+                    <%--<div class="custom-comment-list-dividerText">--%>
+                    <%--以上为精选评论--%>
+                    <%--<i class="fa fa-question-circle"></i>--%>
+                    <%--</div>--%>
+                    <%--</div><!-- end comment item divider -->--%>
+                    <div class="custom-comment-item">
+                        <div>
+                            <div class="custom-commentItem-meta">
+                                <span>
+                                    <a href="#">
+                                        <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                    </a>
+                                </span>
+                                <span>
+                                    <a class="custom-comment-userLink" href="#">Ellery</a>
+                                </span>
+                                <span class="custom-commentItem-time">13 分钟前</span>
                             </div>
-                        </div><!-- end collapse comment -->
-                        <!-- comment footer -->
-                        <div class="custom-comments-footer custom-comments-editor">
-                            <div class="form-group" style="margin-bottom: 0px;">
-                                <input type="hidden" id="parent-comment-id-{{answerId}}" value="0">
-                                <input type="hidden" id="reviewer-id-{{answerId}}" value="0">
-                                <textarea id="answer-comment-{{answerId}}" class="form-control custom-question-comment" rows="1"></textarea>
-                                <button id="comment-answer-btn" onclick="postAnswerComment('{{answerId}}');" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
+                            <div class="custom-commentItem-content">
+                                这不是前端日常么。
                             </div>
-                        </div><!-- end comment footer -->
+                            <div class="custom-commentItem-footer">
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-thumbs-up custom-margin-right5"></i>
+                                        <span>赞</span>
+                                    </span>
+                                </button>
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-comment custom-margin-right5"></i>
+                                        <span>查看对话</span>
+                                    </span>
+                                </button>
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-share custom-margin-right5"></i>
+                                        <span>回复</span>
+                                    </span>
+                                </button>
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-thumbs-down custom-margin-right5"></i>
+                                        <span>踩</span>
+                                    </span>
+                                </button>
+                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-flag custom-margin-right5"></i>
+                                        <span>举报</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
+                    {{/if}}
                 </script><!-- end answer comments template -->
-
 
                 <!-- more -->
                 <div class="custom-card">
