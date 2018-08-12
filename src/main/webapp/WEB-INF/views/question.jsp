@@ -575,8 +575,8 @@
                                             <div class="form-group" style="margin-bottom: 0px;">
                                                 <input type="hidden" id="parent-comment-id-{{answerId}}" value="0">
                                                 <input type="hidden" id="reviewer-id-{{answerId}}" value="0">
-                                                <textarea id="answer-comment-{{answerId}}" class="form-control custom-question-comment" rows="1"></textarea>
-                                                <button id="comment-answer-btn" onclick="postAnswerComment('{{answerId}}');" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
+                                                <textarea id="answer-comment-${answersDTOList.answersDO.id}" class="form-control custom-question-comment" rows="1"></textarea>
+                                                <button id="comment-answer-btn" onclick="postAnswerComment(${answersDTOList.answersDO.id});" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
                                             </div>
                                         </div><!-- end comment footer -->
                                     </div><!-- end feed comment -->

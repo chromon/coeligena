@@ -250,7 +250,7 @@ function postAnswerComment(id) {
             // 匹配 json 内容
             var html = template(data);
             // 输入模板
-            $('#comments-container-' + id).html(html);
+            $('#comments-container-' + id).append(html);
 
         }
     });
