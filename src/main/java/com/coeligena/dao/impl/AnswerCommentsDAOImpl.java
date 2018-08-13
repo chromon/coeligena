@@ -1,13 +1,16 @@
 package com.coeligena.dao.impl;
 
 import com.coeligena.dao.AnswerCommentsDAO;
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswerCommentsDO;
 import com.coeligena.model.AnswersDO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -32,5 +35,20 @@ public class AnswerCommentsDAOImpl implements AnswerCommentsDAO {
     @Override
     public void addAnswerComment(AnswerCommentsDO answerCommentsDO) {
         this.getSession().save(answerCommentsDO);
+    }
+
+    /**
+     * 分页查询回答评论
+     * @param page 分页
+     * @return 回答评论列表
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page) {
+        String sql = "from AnswerCommentsDO";
+        Query query = this.getSession().createQuery(sql);
+        query.setFirstResult(page.getStartPos());
+        query.setMaxResults(page.getPageSize());
+        return query.list();
     }
 }

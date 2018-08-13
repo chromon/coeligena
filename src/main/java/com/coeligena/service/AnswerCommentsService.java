@@ -1,6 +1,9 @@
 package com.coeligena.service;
 
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswerCommentsDO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,11 @@ public interface AnswerCommentsService {
      * @param answerCommentsDO 回答评论信息
      */
     void saveAnswerComment(AnswerCommentsDO answerCommentsDO);
+
+    /**
+     * 查询回答评论列表
+     * @param page 分页
+     * @return 回答评论信息
+     */
+    List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page);
 }

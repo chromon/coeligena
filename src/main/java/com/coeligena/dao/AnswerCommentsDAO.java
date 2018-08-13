@@ -1,6 +1,9 @@
 package com.coeligena.dao;
 
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswerCommentsDO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,11 @@ public interface AnswerCommentsDAO {
      * @param answerCommentsDO 回答评论信息
      */
     void addAnswerComment(AnswerCommentsDO answerCommentsDO);
+
+    /**
+     * 分页查询回答评论
+     * @param page 分页
+     * @return 回答评论列表
+     */
+    List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page);
 }
