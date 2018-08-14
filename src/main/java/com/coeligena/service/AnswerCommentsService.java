@@ -25,4 +25,10 @@ public interface AnswerCommentsService {
      * @return 回答评论信息
      */
     List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page);
+
+    /**
+     * 查询回答评论数
+     * @return 评论数
+     */
+    int queryAnswerCommentsCount();
 }

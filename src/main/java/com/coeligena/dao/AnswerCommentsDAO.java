@@ -25,4 +25,10 @@ public interface AnswerCommentsDAO {
      * @return 回答评论列表
      */
     List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page);
+
+    /**
+     * 查询记录数
+     * @return 记录数
+     */
+    int queryAnswerCommentsCount();
 }

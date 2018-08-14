@@ -205,17 +205,50 @@ function voteFunc(data) {
 
 // 回答评论列表
 function commentsList(answerId) {
+
+    $.ajax({
+        type: "GET",
+        url: basePath + "/answer-comment-list",
+        dataType: "json",
+        success: function(data) {
+            console.log(data);
+
+            // 判断是否是添加评论模板
+            data['isPost'] = false;
+
+            // json 时间数据格式化
+            for (var c = 0; c < data['list'].length; c ++) {
+                data['list'][c]['answerCommentsDO']['commentTime'] = getLocalTime(data['list'][c]['answerCommentsDO']['commentTime']);
+            }
+
+            // 使用 handlebars 获取模板
+            var tpl = $('#answer-comments-template').html();
+            // 预编译模板
+            var template = Handlebars.compile(tpl);
+            // 匹配 json 内容
+            var html = template(data);
+            // 输入模板
+            $('#question_comment_wrapper').html(html);
+
+            // 分页模板
+            var pagingTpl = $('#question-comments-paging-template').html();
+            var pagingTemplate = Handlebars.compile(pagingTpl);
+            var pagingHtml = pagingTemplate(data['page']);
+            $('#comments-container-' + answerId).html(pagingHtml);
+        }
+    });
+
     // 使用 handlebars 获取模板
-    var tpl = $("#answer-comments-template").html();
-    // 预编译模板
-    var template = Handlebars.compile(tpl);
-    // 匹配 json 内容
-    var data = {
-        answerId: answerId
-    };
-    var html = template(data);
-    // 输入模板
-    $('#comments-container-' + answerId).html(html);
+    // var tpl = $("#answer-comments-template").html();
+    // // 预编译模板
+    // var template = Handlebars.compile(tpl);
+    // // 匹配 json 内容
+    // var data = {
+    //     answerId: answerId
+    // };
+    // var html = template(data);
+    // // 输入模板
+    // $('#comments-container-' + answerId).html(html);
 }
 
 // 评论回答

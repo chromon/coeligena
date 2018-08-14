@@ -51,4 +51,15 @@ public class AnswerCommentsDAOImpl implements AnswerCommentsDAO {
         query.setMaxResults(page.getPageSize());
         return query.list();
     }
+
+    /**
+     * 查询记录数
+     * @return 记录数
+     */
+    @Override
+    public int queryAnswerCommentsCount() {
+        String sql = "select count(*) from AnswerCommentsDO";
+        Query query = this.getSession().createQuery(sql);
+        return ((Number)query.uniqueResult()).intValue();
+    }
 }

@@ -29,9 +29,23 @@ public class AnswerCommentsServiceImpl implements AnswerCommentsService {
         this.answerCommentsDAO.addAnswerComment(answerCommentsDO);
     }
 
+    /**
+     * 分页查询回答评论
+     * @param page 分页
+     * @return 回答评论详细信息
+     */
     @Override
     public List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page) {
         return this.answerCommentsDAO.queryAnswerCommentsByPage(page);
+    }
+
+    /**
+     * 回答评论数
+     * @return 回答评论数
+     */
+    @Override
+    public int queryAnswerCommentsCount() {
+        return this.answerCommentsDAO.queryAnswerCommentsCount();
     }
 
     @Autowired
