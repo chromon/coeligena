@@ -552,17 +552,9 @@
                                         </div>
 
                                         <!-- comment pagination -->
-                                        <div class="custom-pagination">
-                                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
-                                            <button class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
-                                            <button class="custom-pagination-btn custom-btn-plain" type="button">2</button>
-                                            <button class="custom-pagination-btn custom-btn-plain" type="button">3</button>
-                                            <button class="custom-pagination-btn custom-btn-plain" type="button">4</button>
-                                            <span class="custom-pagination-btn">•••</span>
-                                            <button class="custom-pagination-btn custom-btn-plain" type="button">12</button>
-                                            <button class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
-                                        </div>
-                                        <!-- end comment pagination -->
+                                        <div  id="answer-comments-paging-wrapper-${answersDTOList.answersDO.id}">
+                                        </div><!-- end comment pagination -->
+
                                         <!-- collapse comment -->
                                         <div class="custom-comment-list-action">
                                             <div class="custom-comment-list-collapse">
@@ -658,21 +650,30 @@
                     <%--<i class="fa fa-question-circle"></i>--%>
                     <%--</div>--%>
                     <%--</div><!-- end comment item divider -->--%>
+                    {{else}}
+                    {{#each this.list}}
+                    <!-- comment item -->
                     <div class="custom-comment-item">
                         <div>
                             <div class="custom-commentItem-meta">
                                 <span>
                                     <a href="#">
-                                        <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                                        <img class="custom-commentItem-avatar custom-avatar24" src="<%=request.getContextPath()%>{{user.avatarPath}}" alt="{{user.fullname}}">
                                     </a>
                                 </span>
                                 <span>
-                                    <a class="custom-comment-userLink" href="#">Ellery</a>
+                                    <a class="custom-comment-userLink" href="#">{{user.fullname}}</a>
                                 </span>
-                                <span class="custom-commentItem-time">13 分钟前</span>
+                                {{#if reviewer}}
+                                <span>
+                                    <span class="custom-commentItem-reply">回复</span>
+                                    <a class="custom-comment-userLink" href="#">{{reviewer.fullname}}</a>
+                                </span>
+                                {{/if}}
+                                <span class="custom-commentItem-time">{{questionCommentsDO.commentTime}}</span>
                             </div>
                             <div class="custom-commentItem-content">
-                                这不是前端日常么。
+                                {{answerCommentsDO.commentContent}}
                             </div>
                             <div class="custom-commentItem-footer">
                                 <button class="custom-btn-plain custom-margin-right20" type="button">
@@ -681,12 +682,14 @@
                                         <span>赞</span>
                                     </span>
                                 </button>
+                                {{#if reviewer}}
                                 <button class="custom-btn-plain custom-margin-right20" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-comment custom-margin-right5"></i>
                                         <span>查看对话</span>
                                     </span>
                                 </button>
+                                {{/if}}
                                 <button class="custom-btn-plain custom-margin-right20" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-share custom-margin-right5"></i>
@@ -707,9 +710,60 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </div><!-- end comment item -->
+                    {{/each}}
                     {{/if}}
                 </script><!-- end answer comments template -->
+
+                <script type="text/x-handlebars-template" id="answer-comments-paging-template">
+
+                    <!-- comment pagination -->
+                    <div class="custom-pagination">
+                        <!-- previous page -->
+                        {{#if hasPreviousPage}}
+                        <button onclick="questionCommentsWithPage('{{prePage}}');" class="custom-pagination-btn custom-btn-plain" type="button">上一页</button>
+                        {{else}}
+                        <button onclick="questionCommentsWithPage('{{prePage}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
+                        {{/if}}<!-- end previous page -->
+
+                        <!-- first page -->
+                        {{#compare pageNum 1}}
+                        <button onclick="questionCommentsWithPage(1);" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
+                        {{else}}
+                        <button onclick="questionCommentsWithPage(1);" class="custom-pagination-btn custom-btn-plain" type="button">1</button>
+                        {{/compare}}<!-- end first page -->
+
+                        <!-- navigate page -->
+                        {{#if showFirstEllipsis}}
+                        <span class="custom-pagination-btn">•••</span>
+                        {{/if}}
+                        {{#each navigatePageNums}}
+                        {{#compare ../pageNum this}}
+                        <button onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">{{this}}</button>
+                        {{else}}
+                        <button onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain" type="button">{{this}}</button>
+                        {{/compare}}
+                        {{/each}}
+                        {{#if showLastEllipsis}}
+                        <span class="custom-pagination-btn">•••</span>
+                        {{/if}}<!-- end navigate page -->
+
+                        <!-- last page -->
+                        {{#compare pageNum totalPages}}
+                        <button onclick="questionCommentsWithPage('{{totalPages}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">{{totalPages}}</button>
+                        {{else}}
+                        <button onclick="questionCommentsWithPage('{{totalPages}}');" class="custom-pagination-btn custom-btn-plain" type="button">{{totalPages}}</button>
+                        {{/compare}}
+                        <!-- end last page -->
+
+                        <!-- next page -->
+                        {{#if hasNextPage}}
+                        <button onclick="questionCommentsWithPage('{{nextPage}}');" class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
+                        {{else}}
+                        <button onclick="questionCommentsWithPage('{{nextPage}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">下一页</button>
+                        {{/if}}<!-- end next page -->
+                    </div><!-- end comment pagination -->
+                </script>
 
                 <!-- more -->
                 <div class="custom-card">

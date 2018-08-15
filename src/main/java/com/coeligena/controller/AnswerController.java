@@ -30,7 +30,6 @@ public class AnswerController {
     private QuestionsService questionsService;
     private VotesService votesService;
     private FeedsService feedsService;
-    private AnswerCommentsService answerCommentsService;
 
     /**
      * 回答问题 Ajax 请求
@@ -182,56 +181,6 @@ public class AnswerController {
         return answersDO.getApprovalCount() + "";
     }
 
-    /**
-     * 提交回答评论
-     * @param request http servlet request
-     * @param answerCommentsDTO 回答评论 dto
-     * @return 回答评论信息
-     */
-    @RequestMapping(value = "/answer-comment", method = RequestMethod.POST)
-    @ResponseBody
-    public CommentDTO answersComment(HttpServletRequest request,
-                                     @ModelAttribute AnswerCommentsDTO answerCommentsDTO) {
-        return this.postAnswerCommentsFunc(request, answerCommentsDTO);
-    }
-
-    /**
-     * 回答题评论处理方法
-     * @param request http servlet request
-     * @param answerCommentsDTO 回答评论 dto
-     * @return 评论信息
-     */
-    private CommentDTO postAnswerCommentsFunc(HttpServletRequest request,
-                                              AnswerCommentsDTO answerCommentsDTO) {
-        // 查询用户信息
-        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
-
-        // 日期
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
-
-        // 保存回答评论信息
-        AnswerCommentsDO answerCommentsDO = new AnswerCommentsDO();
-        answerCommentsDO.setAnswerId(answerCommentsDTO.getAnswerId());
-        answerCommentsDO.setReviewerId(answerCommentsDTO.getReviewerId());
-        answerCommentsDO.setParentCommentId(answerCommentsDTO.getParentCommentId());
-        answerCommentsDO.setCommentContent(answerCommentsDTO.getCommentContent());
-        answerCommentsDO.setCommentTime(now);
-        answerCommentsDO.setUserId(userInfoDTO.getUsersDO().getId());
-        this.answerCommentsService.saveAnswerComment(answerCommentsDO);
-
-        // 查询被评论者信息
-        UsersDO reviewer = usersService.queryUserByUserId(answerCommentsDTO.getReviewerId());
-
-        // 返回信息
-        CommentDTO commentDTO = new CommentDTO();
-        commentDTO.setAnswerCommentsDO(answerCommentsDO);
-        commentDTO.setReviewer(reviewer);
-        commentDTO.setUser(userInfoDTO.getUsersDO());
-        return commentDTO;
-    }
-
     @Autowired
     public void setUsersService(UsersService usersService) {
         this.usersService = usersService;
@@ -255,10 +204,5 @@ public class AnswerController {
     @Autowired
     public void setFeedsService(FeedsService feedsService) {
         this.feedsService = feedsService;
-    }
-
-    @Autowired
-    public void setAnswerCommentsService(AnswerCommentsService answerCommentsService) {
-        this.answerCommentsService = answerCommentsService;
     }
 }

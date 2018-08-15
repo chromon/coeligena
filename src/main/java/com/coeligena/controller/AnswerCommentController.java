@@ -1,5 +1,6 @@
 package com.coeligena.controller;
 
+import com.coeligena.dto.AnswerCommentsDTO;
 import com.coeligena.dto.CommentDTO;
 import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.UserInfoDTO;
@@ -12,12 +13,16 @@ import com.coeligena.service.CommentApprovalsService;
 import com.coeligena.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -96,6 +101,56 @@ public class AnswerCommentController {
         }
 
         return new PagingListDTO<>(commentDTOList, page);
+    }
+
+    /**
+     * 提交回答评论
+     * @param request http servlet request
+     * @param answerCommentsDTO 回答评论 dto
+     * @return 回答评论信息
+     */
+    @RequestMapping(value = "/answer-comment", method = RequestMethod.POST)
+    @ResponseBody
+    public CommentDTO answersComment(HttpServletRequest request,
+                                     @ModelAttribute AnswerCommentsDTO answerCommentsDTO) {
+        return this.postAnswerCommentsFunc(request, answerCommentsDTO);
+    }
+
+    /**
+     * 回答题评论处理方法
+     * @param request http servlet request
+     * @param answerCommentsDTO 回答评论 dto
+     * @return 评论信息
+     */
+    private CommentDTO postAnswerCommentsFunc(HttpServletRequest request,
+                                              AnswerCommentsDTO answerCommentsDTO) {
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        // 日期
+        Date date = new Date();
+        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        Timestamp now = Timestamp.valueOf(dateFormat);
+
+        // 保存回答评论信息
+        AnswerCommentsDO answerCommentsDO = new AnswerCommentsDO();
+        answerCommentsDO.setAnswerId(answerCommentsDTO.getAnswerId());
+        answerCommentsDO.setReviewerId(answerCommentsDTO.getReviewerId());
+        answerCommentsDO.setParentCommentId(answerCommentsDTO.getParentCommentId());
+        answerCommentsDO.setCommentContent(answerCommentsDTO.getCommentContent());
+        answerCommentsDO.setCommentTime(now);
+        answerCommentsDO.setUserId(userInfoDTO.getUsersDO().getId());
+        this.answerCommentsService.saveAnswerComment(answerCommentsDO);
+
+        // 查询被评论者信息
+        UsersDO reviewer = usersService.queryUserByUserId(answerCommentsDTO.getReviewerId());
+
+        // 返回信息
+        CommentDTO commentDTO = new CommentDTO();
+        commentDTO.setAnswerCommentsDO(answerCommentsDO);
+        commentDTO.setReviewer(reviewer);
+        commentDTO.setUser(userInfoDTO.getUsersDO());
+        return commentDTO;
     }
 
     @Autowired

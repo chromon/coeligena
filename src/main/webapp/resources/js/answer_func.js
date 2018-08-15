@@ -228,13 +228,13 @@ function commentsList(answerId) {
             // 匹配 json 内容
             var html = template(data);
             // 输入模板
-            $('#question_comment_wrapper').html(html);
+            $('#comments-container-' + answerId).html(html);
 
             // 分页模板
-            var pagingTpl = $('#question-comments-paging-template').html();
+            var pagingTpl = $('#answer-comments-paging-template').html();
             var pagingTemplate = Handlebars.compile(pagingTpl);
             var pagingHtml = pagingTemplate(data['page']);
-            $('#comments-container-' + answerId).html(pagingHtml);
+            $('#answer-comments-paging-wrapper-' + answerId).html(pagingHtml);
         }
     });
 
