@@ -1,11 +1,13 @@
 package com.coeligena.controller;
 
+import com.coeligena.dao.AnswersDAO;
 import com.coeligena.dto.AnswerCommentsDTO;
 import com.coeligena.dto.CommentDTO;
 import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswerCommentsDO;
+import com.coeligena.model.AnswersDO;
 import com.coeligena.model.CommentApprovalsDO;
 import com.coeligena.model.UsersDO;
 import com.coeligena.service.AnswerCommentsService;
@@ -35,6 +37,7 @@ public class AnswerCommentController {
     private AnswerCommentsService answerCommentsService;
     private UsersService usersService;
     private CommentApprovalsService commentApprovalsService;
+    private AnswersDAO answersDAO;
 
     /**
      * 回答评论列表
@@ -142,6 +145,11 @@ public class AnswerCommentController {
         answerCommentsDO.setUserId(userInfoDTO.getUsersDO().getId());
         this.answerCommentsService.saveAnswerComment(answerCommentsDO);
 
+        // 更新回答评论数
+        AnswersDO answersDO = this.answersDAO.queryAnswersById(answerCommentsDTO.getAnswerId());
+        answersDO.setCommentCount(answersDO.getCommentCount() + 1);
+        this.answersDAO.updateAnswers(answersDO);
+
         // 查询被评论者信息
         UsersDO reviewer = usersService.queryUserByUserId(answerCommentsDTO.getReviewerId());
 
@@ -166,5 +174,10 @@ public class AnswerCommentController {
     @Autowired
     public void setCommentApprovalsService(CommentApprovalsService commentApprovalsService) {
         this.commentApprovalsService = commentApprovalsService;
+    }
+
+    @Autowired
+    public void setAnswersDAO(AnswersDAO answersDAO) {
+        this.answersDAO = answersDAO;
     }
 }
