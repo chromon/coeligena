@@ -721,16 +721,16 @@
                     <div class="custom-pagination">
                         <!-- previous page -->
                         {{#if hasPreviousPage}}
-                        <button onclick="questionCommentsWithPage('{{prePage}}');" class="custom-pagination-btn custom-btn-plain" type="button">上一页</button>
+                        <button onclick="answerCommentsWithPage('{{prePage}}', '{{answerId}}');" class="custom-pagination-btn custom-btn-plain" type="button">上一页</button>
                         {{else}}
-                        <button onclick="questionCommentsWithPage('{{prePage}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
+                        <button onclick="answerCommentsWithPage('{{prePage}}', '{{answerId}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">上一页</button>
                         {{/if}}<!-- end previous page -->
 
                         <!-- first page -->
                         {{#compare pageNum 1}}
-                        <button onclick="questionCommentsWithPage(1);" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
+                        <button onclick="answerCommentsWithPage(1, '{{answerId}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">1</button>
                         {{else}}
-                        <button onclick="questionCommentsWithPage(1);" class="custom-pagination-btn custom-btn-plain" type="button">1</button>
+                        <button onclick="answerCommentsWithPage(1, '{{answerId}}');" class="custom-pagination-btn custom-btn-plain" type="button">1</button>
                         {{/compare}}<!-- end first page -->
 
                         <!-- navigate page -->
@@ -739,9 +739,9 @@
                         {{/if}}
                         {{#each navigatePageNums}}
                         {{#compare ../pageNum this}}
-                        <button onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">{{this}}</button>
+                        <button onclick="answerCommentsWithPage('{{this}}', '{{../answerId}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">{{this}}</button>
                         {{else}}
-                        <button onclick="questionCommentsWithPage('{{this}}');" class="custom-pagination-btn custom-btn-plain" type="button">{{this}}</button>
+                        <button onclick="answerCommentsWithPage('{{this}}', '{{../answerId}}');" class="custom-pagination-btn custom-btn-plain" type="button">{{this}}</button>
                         {{/compare}}
                         {{/each}}
                         {{#if showLastEllipsis}}
@@ -750,17 +750,17 @@
 
                         <!-- last page -->
                         {{#compare pageNum totalPages}}
-                        <button onclick="questionCommentsWithPage('{{totalPages}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">{{totalPages}}</button>
+                        <button onclick="answerCommentsWithPage('{{totalPages}}', '{{answerId}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">{{totalPages}}</button>
                         {{else}}
-                        <button onclick="questionCommentsWithPage('{{totalPages}}');" class="custom-pagination-btn custom-btn-plain" type="button">{{totalPages}}</button>
+                        <button onclick="answerCommentsWithPage('{{totalPages}}', '{{answerId}}');" class="custom-pagination-btn custom-btn-plain" type="button">{{totalPages}}</button>
                         {{/compare}}
                         <!-- end last page -->
 
                         <!-- next page -->
                         {{#if hasNextPage}}
-                        <button onclick="questionCommentsWithPage('{{nextPage}}');" class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
+                        <button onclick="answerCommentsWithPage('{{nextPage}}', '{{answerId}}');" class="custom-pagination-btn custom-btn-plain" type="button">下一页</button>
                         {{else}}
-                        <button onclick="questionCommentsWithPage('{{nextPage}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">下一页</button>
+                        <button onclick="answerCommentsWithPage('{{nextPage}}', '{{answerId}}');" class="custom-pagination-btn custom-btn-plain custom-pagination-btn-current" type="button">下一页</button>
                         {{/if}}<!-- end next page -->
                     </div><!-- end comment pagination -->
                 </script>

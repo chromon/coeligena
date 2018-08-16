@@ -15,10 +15,7 @@ import com.coeligena.service.CommentApprovalsService;
 import com.coeligena.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -48,6 +45,19 @@ public class AnswerCommentController {
     @ResponseBody
     public PagingListDTO<CommentDTO> answerCommentList(HttpServletRequest request) {
         return answerCommentsPagingList(request, 1);
+    }
+
+    /**
+     * 回答评论翻页
+     * @param request http servlet request
+     * @param pageNum 页数
+     * @return 回答评论列表
+     */
+    @RequestMapping(value = "/answer-comments-with-page", method = RequestMethod.GET)
+    @ResponseBody
+    public PagingListDTO<CommentDTO> answerCommentsWithPage(HttpServletRequest request,
+                                                              @RequestParam("pageNum") int pageNum) {
+        return answerCommentsPagingList(request, pageNum);
     }
 
     /**
@@ -120,7 +130,7 @@ public class AnswerCommentController {
     }
 
     /**
-     * 回答题评论处理方法
+     * 回答评论处理方法
      * @param request http servlet request
      * @param answerCommentsDTO 回答评论 dto
      * @return 评论信息
