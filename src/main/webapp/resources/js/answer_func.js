@@ -316,3 +316,15 @@ function postAnswerComment(id) {
         }
     });
 }
+
+// 回答评论回复
+function replyAnswerComment(id) {
+    $('#answerCommentItem-footer-' + id).addClass('hide');
+    $('#answerComment-reply-' + id).removeClass('hide');
+}
+
+// 隐藏回复组件
+function hideAnswerComment(id) {
+    $('#answerCommentItem-footer-' + id).removeClass('hide');
+    $('#answerComment-reply-' + id).addClass('hide');
+}

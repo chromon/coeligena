@@ -675,7 +675,19 @@
                             <div class="custom-commentItem-content">
                                 {{answerCommentsDO.commentContent}}
                             </div>
-                            <div class="custom-commentItem-footer">
+                            <!-- reply comment -->
+                            <div id="answerComment-reply-{{answerCommentsDO.id}}" class="hide" style="padding-bottom: 30px;">
+                                <div class="form-group">
+                                    <input type="hidden" id="parent-comment-id-r-{{answerCommentsDO.id}}" value="{{answerCommentsDO.id}}">
+                                    <input type="hidden" id="reviewer-id-r-{{answerCommentsDO.id}}" value="{{user.id}}">
+                                    <textarea id="answer-comment-r-{{answerCommentsDO.id}}" class="form-control" rows="1" placeholder="回复：{{user.fullname}}" style="font-size: 14px;"></textarea>
+                                    <div class="custom-right" style="padding-top: 15px;">
+                                        <button id="cancel-reply-{{answerCommentsDO.id}}" onclick="hideAnswerComment('{{answerCommentsDO.id}}');" class="btn btn-default btn-sm">取消</button>
+                                        <button id="question-comment-btn-{{answerCommentsDO.id}}" onclick="postReply('{{answerCommentsDO.id}}');" type="button" class="btn btn-primary btn-sm">评论</button>
+                                    </div>
+                                </div>
+                            </div><!-- end reply comment -->
+                            <div class="custom-commentItem-footer" id="answerCommentItem-footer-{{questionCommentsDO.id}}">
                                 <button class="custom-btn-plain custom-margin-right20" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-thumbs-up custom-margin-right5"></i>
@@ -690,7 +702,7 @@
                                     </span>
                                 </button>
                                 {{/if}}
-                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                <button onclick="replyAnswerComment('{{answerCommentsDO.id}}')" class="custom-btn-plain custom-margin-right20" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-share custom-margin-right5"></i>
                                         <span>回复</span>
