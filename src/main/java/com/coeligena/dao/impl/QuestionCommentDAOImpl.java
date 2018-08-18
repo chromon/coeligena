@@ -40,9 +40,10 @@ public class QuestionCommentDAOImpl implements QuestionCommentDAO {
      */
     @Override
     @SuppressWarnings("unchecked")
-    public List<QuestionCommentsDO> queryQuestionComments(Page page) {
-        String sql = "from QuestionCommentsDO";
+    public List<QuestionCommentsDO> queryQuestionComments(Page page, int questionId) {
+        String sql = "from QuestionCommentsDO qc where qc.questionId = :questionId";
         Query query = this.getSession().createQuery(sql);
+        query.setParameter("questionId", questionId);
         query.setFirstResult(page.getStartPos());
         query.setMaxResults(page.getPageSize());
         return query.list();
@@ -53,9 +54,10 @@ public class QuestionCommentDAOImpl implements QuestionCommentDAO {
      * @return 问题评论数量
      */
     @Override
-    public int queryQuestionCommentsCount() {
-        String sql = "select count(*) from QuestionCommentsDO";
+    public int queryQuestionCommentsCount(int questionId) {
+        String sql = "select count(*) from QuestionCommentsDO where qc.questionId = :questionId";
         Query query = this.getSession().createQuery(sql);
+        query.setParameter("questionId", questionId);
         return ((Number)query.uniqueResult()).intValue();
     }
 

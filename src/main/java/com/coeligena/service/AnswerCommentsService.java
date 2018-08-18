@@ -24,11 +24,11 @@ public interface AnswerCommentsService {
      * @param page 分页
      * @return 回答评论信息
      */
-    List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page);
+    List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page, int answerId);
 
     /**
      * 查询回答评论数
      * @return 评论数
      */
-    int queryAnswerCommentsCount();
+    int queryAnswerCommentsCount(int answerId);
 }

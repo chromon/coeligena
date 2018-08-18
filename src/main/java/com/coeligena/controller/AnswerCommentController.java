@@ -43,8 +43,9 @@ public class AnswerCommentController {
      */
     @RequestMapping(value = "/answer-comment-list", method = RequestMethod.GET)
     @ResponseBody
-    public PagingListDTO<CommentDTO> answerCommentList(HttpServletRequest request) {
-        return answerCommentsPagingList(request, 1);
+    public PagingListDTO<CommentDTO> answerCommentList(HttpServletRequest request,
+                                                       @RequestParam("answerId") int answerId) {
+        return answerCommentsPagingList(request, 1, answerId);
     }
 
     /**
@@ -56,8 +57,9 @@ public class AnswerCommentController {
     @RequestMapping(value = "/answer-comments-with-page", method = RequestMethod.GET)
     @ResponseBody
     public PagingListDTO<CommentDTO> answerCommentsWithPage(HttpServletRequest request,
-                                                              @RequestParam("pageNum") int pageNum) {
-        return answerCommentsPagingList(request, pageNum);
+                                                            @RequestParam("pageNum") int pageNum,
+                                                            @RequestParam("answerId") int answerId) {
+        return answerCommentsPagingList(request, pageNum, answerId);
     }
 
     /**
@@ -66,14 +68,14 @@ public class AnswerCommentController {
      * @param pageNum 页数
      * @return 回答评论列表
      */
-    private PagingListDTO<CommentDTO> answerCommentsPagingList(HttpServletRequest request, int pageNum) {
+    private PagingListDTO<CommentDTO> answerCommentsPagingList(HttpServletRequest request, int pageNum, int answerId) {
 
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
         List<CommentDTO> commentDTOList = new ArrayList<>();
 
-        int count = this.answerCommentsService.queryAnswerCommentsCount();
+        int count = this.answerCommentsService.queryAnswerCommentsCount(answerId);
 
         // 初始化分页信息
         Page page = new Page(pageNum, 2);
@@ -82,7 +84,7 @@ public class AnswerCommentController {
         page.init();
 
         List<AnswerCommentsDO> answerCommentsDOList = this.answerCommentsService
-                .queryAnswerCommentsByPage(page);
+                .queryAnswerCommentsByPage(page, answerId);
         for (AnswerCommentsDO answerCommentsDO: answerCommentsDOList) {
             CommentDTO commentDTO = new CommentDTO();
 

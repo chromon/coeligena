@@ -35,8 +35,8 @@ public class AnswerCommentsServiceImpl implements AnswerCommentsService {
      * @return 回答评论详细信息
      */
     @Override
-    public List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page) {
-        return this.answerCommentsDAO.queryAnswerCommentsByPage(page);
+    public List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page, int answerId) {
+        return this.answerCommentsDAO.queryAnswerCommentsByPage(page, answerId);
     }
 
     /**
@@ -44,8 +44,8 @@ public class AnswerCommentsServiceImpl implements AnswerCommentsService {
      * @return 回答评论数
      */
     @Override
-    public int queryAnswerCommentsCount() {
-        return this.answerCommentsDAO.queryAnswerCommentsCount();
+    public int queryAnswerCommentsCount(int answerId) {
+        return this.answerCommentsDAO.queryAnswerCommentsCount(answerId);
     }
 
     @Autowired

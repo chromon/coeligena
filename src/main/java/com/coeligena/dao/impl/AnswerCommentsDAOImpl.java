@@ -3,7 +3,6 @@ package com.coeligena.dao.impl;
 import com.coeligena.dao.AnswerCommentsDAO;
 import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswerCommentsDO;
-import com.coeligena.model.AnswersDO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -44,9 +43,10 @@ public class AnswerCommentsDAOImpl implements AnswerCommentsDAO {
      */
     @Override
     @SuppressWarnings("unchecked")
-    public List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page) {
-        String sql = "from AnswerCommentsDO";
+    public List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page, int answerId) {
+        String sql = "from AnswerCommentsDO ac where ac.answerId =:answerId";
         Query query = this.getSession().createQuery(sql);
+        query.setParameter("answerId", answerId);
         query.setFirstResult(page.getStartPos());
         query.setMaxResults(page.getPageSize());
         return query.list();
@@ -57,9 +57,10 @@ public class AnswerCommentsDAOImpl implements AnswerCommentsDAO {
      * @return 记录数
      */
     @Override
-    public int queryAnswerCommentsCount() {
-        String sql = "select count(*) from AnswerCommentsDO";
+    public int queryAnswerCommentsCount(int answerId) {
+        String sql = "select count(*) from AnswerCommentsDO ac where ac.answerId =:answerId";
         Query query = this.getSession().createQuery(sql);
+        query.setParameter("answerId", answerId);
         return ((Number)query.uniqueResult()).intValue();
     }
 }

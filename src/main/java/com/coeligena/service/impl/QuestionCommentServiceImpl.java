@@ -33,8 +33,8 @@ public class QuestionCommentServiceImpl implements QuestionCommentService {
      * @return 问题评论列表
      */
     @Override
-    public List<QuestionCommentsDO> queryQuestionComments(Page page) {
-        return this.questionCommentDAO.queryQuestionComments(page);
+    public List<QuestionCommentsDO> queryQuestionComments(Page page, int questionId) {
+        return this.questionCommentDAO.queryQuestionComments(page, questionId);
     }
 
     /**
@@ -42,8 +42,8 @@ public class QuestionCommentServiceImpl implements QuestionCommentService {
      * @return 问题评论数量
      */
     @Override
-    public int queryQuestionCommentsCount() {
-        return this.questionCommentDAO.queryQuestionCommentsCount();
+    public int queryQuestionCommentsCount(int questionId) {
+        return this.questionCommentDAO.queryQuestionCommentsCount(questionId);
     }
 
     /**

@@ -22,13 +22,13 @@ public interface QuestionCommentService {
      * @param page 分页
      * @return 问题评论列表
      */
-    List<QuestionCommentsDO> queryQuestionComments(Page page);
+    List<QuestionCommentsDO> queryQuestionComments(Page page, int questionId);
 
     /**
      * 用于分页，查询全部数量
      * @return 评论数量
      */
-    int queryQuestionCommentsCount();
+    int queryQuestionCommentsCount(int questionId);
 
     /**
      * 更新问题评论信息

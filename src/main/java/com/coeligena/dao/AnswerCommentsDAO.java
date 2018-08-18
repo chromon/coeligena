@@ -22,13 +22,14 @@ public interface AnswerCommentsDAO {
     /**
      * 分页查询回答评论
      * @param page 分页
+     * @param answerId 回答 id
      * @return 回答评论列表
      */
-    List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page);
+    List<AnswerCommentsDO> queryAnswerCommentsByPage(Page page, int answerId);
 
     /**
      * 查询记录数
      * @return 记录数
      */
-    int queryAnswerCommentsCount();
+    int queryAnswerCommentsCount(int answerId);
 }

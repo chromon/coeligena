@@ -670,7 +670,7 @@
                                     <a class="custom-comment-userLink" href="#">{{reviewer.fullname}}</a>
                                 </span>
                                 {{/if}}
-                                <span class="custom-commentItem-time">{{questionCommentsDO.commentTime}}</span>
+                                <span class="custom-commentItem-time">{{answerCommentsDO.commentTime}}</span>
                             </div>
                             <div class="custom-commentItem-content">
                                 {{answerCommentsDO.commentContent}}
@@ -683,7 +683,7 @@
                                     <textarea id="answer-comment-r-{{answerCommentsDO.id}}" class="form-control" rows="1" placeholder="回复：{{user.fullname}}" style="font-size: 14px;"></textarea>
                                     <div class="custom-right" style="padding-top: 15px;">
                                         <button id="cancel-reply-{{answerCommentsDO.id}}" onclick="hideAnswerComment('{{answerCommentsDO.id}}');" class="btn btn-default btn-sm">取消</button>
-                                        <button id="question-comment-btn-{{answerCommentsDO.id}}" onclick="postReply('{{answerCommentsDO.id}}');" type="button" class="btn btn-primary btn-sm">评论</button>
+                                        <button id="question-comment-btn-{{answerCommentsDO.id}}" onclick="postAnswerCommentReply('{{answerCommentsDO.id}}');" type="button" class="btn btn-primary btn-sm">评论</button>
                                     </div>
                                 </div>
                             </div><!-- end reply comment -->
