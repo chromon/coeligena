@@ -55,7 +55,7 @@ public class QuestionCommentDAOImpl implements QuestionCommentDAO {
      */
     @Override
     public int queryQuestionCommentsCount(int questionId) {
-        String sql = "select count(*) from QuestionCommentsDO where qc.questionId = :questionId";
+        String sql = "select count(*) from QuestionCommentsDO qc where qc.questionId = :questionId";
         Query query = this.getSession().createQuery(sql);
         query.setParameter("questionId", questionId);
         return ((Number)query.uniqueResult()).intValue();

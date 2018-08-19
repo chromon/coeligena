@@ -84,6 +84,9 @@ $('#comment-question-btn').on('click', function() {
 
 // 问题评论列表
 $('#question-comments').on('click', function() {
+
+    var questionId = $('#question_id').val();
+
     $('#questionCommentsModal').modal({
         keyboard: false
     });
@@ -91,6 +94,9 @@ $('#question-comments').on('click', function() {
         type: "GET",
         url: basePath + "/question-comment-list",
         dataType: "json",
+        data: {
+            questionId: questionId
+        },
         success: function(data) {
             console.log(data);
 
@@ -183,11 +189,15 @@ function postReply(id) {
 
 // 问题评论分页请求
 function questionCommentsWithPage(pageNum) {
+
+    var questionId = $('#question_id').val();
+
     $.ajax({
         type: "GET",
         url: basePath + "/question-comments-with-page",
         data: {
-            pageNum: pageNum
+            pageNum: pageNum,
+            questionId: questionId
         },
         dataType: "json",
         success: function(data) {

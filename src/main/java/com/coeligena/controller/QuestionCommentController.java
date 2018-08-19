@@ -55,8 +55,9 @@ public class QuestionCommentController {
      */
     @RequestMapping(value = "/question-comment-list", method = RequestMethod.GET)
     @ResponseBody
-    public PagingListDTO<CommentDTO> questionCommentList(HttpServletRequest request) {
-        return questionCommentsPagingList(request, 1);
+    public PagingListDTO<CommentDTO> questionCommentList(HttpServletRequest request,
+                                                         @RequestParam int questionId) {
+        return questionCommentsPagingList(request, 1, questionId);
     }
 
     /**
@@ -80,8 +81,9 @@ public class QuestionCommentController {
     @RequestMapping(value = "/question-comments-with-page", method = RequestMethod.GET)
     @ResponseBody
     public PagingListDTO<CommentDTO> questionCommentsWithPage(HttpServletRequest request,
-                                                              @RequestParam("pageNum") int pageNum) {
-        return questionCommentsPagingList(request, pageNum);
+                                                              @RequestParam("pageNum") int pageNum,
+                                                              @RequestParam int questionId) {
+        return questionCommentsPagingList(request, pageNum, questionId);
     }
 
     /**
@@ -230,7 +232,7 @@ public class QuestionCommentController {
      * @param pageNum 页码
      * @return 问题评论列表
      */
-    private PagingListDTO<CommentDTO> questionCommentsPagingList(HttpServletRequest request, int pageNum) {
+    private PagingListDTO<CommentDTO> questionCommentsPagingList(HttpServletRequest request, int pageNum, int questionId) {
 
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
@@ -238,14 +240,14 @@ public class QuestionCommentController {
         List<CommentDTO> commentDTOList = new ArrayList<>();
 
         // 查询全部评论
-        int count = this.questionCommentService.queryQuestionCommentsCount();
+        int count = this.questionCommentService.queryQuestionCommentsCount(questionId);
 
         Page page = new Page(pageNum, 2);
         page.setSize(count);
         page.setNavigatePages(3);
         page.init();
 
-        List<QuestionCommentsDO> questionCommentsDOList = this.questionCommentService.queryQuestionComments(page);
+        List<QuestionCommentsDO> questionCommentsDOList = this.questionCommentService.queryQuestionComments(page, questionId);
         for (QuestionCommentsDO questionCommentsDO: questionCommentsDOList) {
 
             CommentDTO commentDTO = new CommentDTO();
