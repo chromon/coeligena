@@ -552,7 +552,7 @@
                                         </div>
 
                                         <!-- comment pagination -->
-                                        <div  id="answer-comments-paging-wrapper-${answersDTOList.answersDO.id}">
+                                        <div id="answer-comments-paging-wrapper-${answersDTOList.answersDO.id}">
                                         </div><!-- end comment pagination -->
 
                                         <!-- collapse comment -->
@@ -683,7 +683,7 @@
                                     <textarea id="answer-comment-r-{{answerCommentsDO.id}}" class="form-control" rows="1" placeholder="回复：{{user.fullname}}" style="font-size: 14px;"></textarea>
                                     <div class="custom-right" style="padding-top: 15px;">
                                         <button id="cancel-reply-{{answerCommentsDO.id}}" onclick="hideAnswerComment('{{answerCommentsDO.id}}');" class="btn btn-default btn-sm">取消</button>
-                                        <button id="question-comment-btn-{{answerCommentsDO.id}}" onclick="postAnswerCommentReply('{{answerCommentsDO.id}}');" type="button" class="btn btn-primary btn-sm">评论</button>
+                                        <button id="question-comment-btn-{{answerCommentsDO.id}}" onclick="postAnswerCommentReply('{{answerId}}', '{{answerCommentsDO.id}}');" type="button" class="btn btn-primary btn-sm">评论</button>
                                     </div>
                                 </div>
                             </div><!-- end reply comment -->

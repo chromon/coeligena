@@ -108,6 +108,7 @@ public class AnswerCommentController {
                 }
             }
 
+            commentDTO.setAnswerId(answerId);
             commentDTO.setReviewer(reviewer);
             commentDTO.setAnswerCommentsDO(answerCommentsDO);
             commentDTO.setUser(user);
@@ -127,6 +128,19 @@ public class AnswerCommentController {
     @RequestMapping(value = "/answer-comment", method = RequestMethod.POST)
     @ResponseBody
     public CommentDTO answersComment(HttpServletRequest request,
+                                     @ModelAttribute AnswerCommentsDTO answerCommentsDTO) {
+        return this.postAnswerCommentsFunc(request, answerCommentsDTO);
+    }
+
+    /**
+     * 提交回答评论
+     * @param request http servlet request
+     * @param answerCommentsDTO 回答评论 dto
+     * @return 回答评论信息
+     */
+    @RequestMapping(value = "/answer-comment-reply", method = RequestMethod.POST)
+    @ResponseBody
+    public CommentDTO answersCommentReplay(HttpServletRequest request,
                                      @ModelAttribute AnswerCommentsDTO answerCommentsDTO) {
         return this.postAnswerCommentsFunc(request, answerCommentsDTO);
     }
