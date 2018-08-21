@@ -60,6 +60,7 @@ public class UsersDAOImpl implements UsersDAO {
      * @param userId 用户 ic
      * @return 用户信息
      */
+    @Override
     public UsersDO queryUserByUserId(int userId) {
         String sql = "select u from UsersDO u where u.id = :userId";
         UsersDO usersDO = (UsersDO) this.getSession().createQuery(sql)

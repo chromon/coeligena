@@ -687,7 +687,7 @@
                                     </div>
                                 </div>
                             </div><!-- end reply comment -->
-                            <div class="custom-commentItem-footer" id="answerCommentItem-footer-{{questionCommentsDO.id}}">
+                            <div class="custom-commentItem-footer" id="answerCommentItem-footer-{{answerCommentsDO.id}}">
                                 <button class="custom-btn-plain custom-margin-right20" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-thumbs-up custom-margin-right5"></i>
