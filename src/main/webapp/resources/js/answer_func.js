@@ -269,7 +269,6 @@ function answerCommentsWithPage(pageNum, answerId) {
             // 预编译模板
             var template = Handlebars.compile(tpl);
             // 匹配 json 内容
-            data['']
             var html = template(data);
             // 输入模板
             $('#comments-container-' + answerId).html(html);
@@ -349,7 +348,7 @@ function postAnswerCommentReply(answerId, id) {
         },
         dataType: "json",
         success: function (data) {
-            // console.log(data);
+            console.log(data);
 
             $('#answerCommentItem-footer-' + id).removeClass('hide');
             $('#answerComment-reply-' + id).addClass('hide');
