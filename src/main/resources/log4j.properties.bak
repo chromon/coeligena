@@ -6,15 +6,6 @@ log4j.rootLogger = debug,stdout,info,debug,warn,error
 log4j.appender.stdout = org.apache.log4j.ConsoleAppender
 log4j.appender.stdout.layout = org.apache.log4j.PatternLayout
 log4j.appender.stdout.layout.ConversionPattern = [%d{yyyy-MM-dd HH:mm:ss}] [%-5p] %l %m%n
-#info log
-log4j.logger.info = info
-log4j.appender.info = org.apache.log4j.DailyRollingFileAppender
-log4j.appender.info.DatePattern = '_'yyyy-MM-dd'.log'
-log4j.appender.info.File = ./logs/info.log
-log4j.appender.info.Append = true
-log4j.appender.info.Threshold = INFO
-log4j.appender.info.layout = org.apache.log4j.PatternLayout
-log4j.appender.info.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss} [%-5p] in thread "%t" at %l : %m%n
 #debug log
 log4j.logger.debug = debug
 log4j.appender.debug = org.apache.log4j.DailyRollingFileAppender
@@ -24,6 +15,15 @@ log4j.appender.debug.Append = true
 log4j.appender.debug.Threshold = DEBUG
 log4j.appender.debug.layout = org.apache.log4j.PatternLayout
 log4j.appender.debug.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss} [%-5p] in thread "%t" at %l : %m%n
+#info log
+log4j.logger.info = info
+log4j.appender.info = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.info.DatePattern = '_'yyyy-MM-dd'.log'
+log4j.appender.info.File = ./logs/info.log
+log4j.appender.info.Append = true
+log4j.appender.info.Threshold = INFO
+log4j.appender.info.layout = org.apache.log4j.PatternLayout
+log4j.appender.info.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss} [%-5p] in thread "%t" at %l : %m%n
 #warn log
 log4j.logger.warn = warn
 log4j.appender.warn = org.apache.log4j.DailyRollingFileAppender
