@@ -1,8 +1,6 @@
-package com.coeligena.function.captcha.security;
+package com.coeligena.function.security;
 
 import com.coeligena.base.UnitTestBase;
-import com.coeligena.function.security.Encrypt;
-import com.coeligena.function.security.Salt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;

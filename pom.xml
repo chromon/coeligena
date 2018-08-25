@@ -166,6 +166,13 @@
             <groupId>${spring.groupId}</groupId>
             <artifactId>spring-aspects</artifactId>
         </dependency>
+        <dependency>
+            <groupId>${spring.groupId}</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <!-- hibernate dependency -->
         <dependency>

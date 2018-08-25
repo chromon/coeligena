@@ -32,4 +32,11 @@ public interface AnswerCommentsDAO {
      * @return 记录数
      */
     int queryAnswerCommentsCount(int answerId);
+
+    /**
+     * 由回答评论 id 查询评论
+     * @param answerCommentId 评论 id
+     * @return 回答评论
+     */
+    AnswerCommentsDO queryAnswerCommentsById(int answerCommentId);
 }

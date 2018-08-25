@@ -63,4 +63,17 @@ public class AnswerCommentsDAOImpl implements AnswerCommentsDAO {
         query.setParameter("answerId", answerId);
         return ((Number)query.uniqueResult()).intValue();
     }
+
+    /**
+     * 由回答评论 id 查询评论
+     * @param answerCommentId 评论 id
+     * @return 回答评论
+     */
+    @Override
+    public AnswerCommentsDO queryAnswerCommentsById(int answerCommentId) {
+        String sql = "from AnswerCommentsDO ac where ac.id =:answerCommentId";
+        Query query = this.getSession().createQuery(sql);
+        query.setParameter("answerCommentId", answerCommentId);
+        return (AnswerCommentsDO) query.uniqueResult();
+    }
 }

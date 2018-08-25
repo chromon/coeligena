@@ -31,4 +31,11 @@ public interface AnswerCommentsService {
      * @return 评论数
      */
     int queryAnswerCommentsCount(int answerId);
+
+    /**
+     * 由回答评论 id 查询评论
+     * @param answerCommentId 评论 id
+     * @return 回答评论
+     */
+    AnswerCommentsDO queryAnswerCommentById(int answerCommentId);
 }

@@ -15,7 +15,7 @@ import java.util.List;
  * </p>
  * Created by Ellery on 2018/8/6.
  */
-@Service("answerComments")
+@Service("answerCommentsService")
 public class AnswerCommentsServiceImpl implements AnswerCommentsService {
 
     private AnswerCommentsDAO answerCommentsDAO;
@@ -46,6 +46,11 @@ public class AnswerCommentsServiceImpl implements AnswerCommentsService {
     @Override
     public int queryAnswerCommentsCount(int answerId) {
         return this.answerCommentsDAO.queryAnswerCommentsCount(answerId);
+    }
+
+    @Override
+    public AnswerCommentsDO queryAnswerCommentById(int answerCommentId) {
+        return this.answerCommentsDAO.queryAnswerCommentsById(answerCommentId);
     }
 
     @Autowired

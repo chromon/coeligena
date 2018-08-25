@@ -98,7 +98,12 @@
         <!-- 级别顺序（低到高）：TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
         <Root level="DEBUG" includeLocation="true">
             <!-- appender-ref 中的值必须是在前面定义的 appender -->
-            <AppenderRef ref="async"/>
+
+
+            <!-- 暂停日志，正式环境下开放 -->
+            <!--<AppenderRef ref="async"/>-->
+
+
         </Root>
     </Loggers>
 </Configuration>
