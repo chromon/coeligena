@@ -1,6 +1,7 @@
 package com.coeligena.service.impl;
 
 import com.coeligena.function.date.DateUtils;
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswerCommentsDO;
 import com.coeligena.service.AnswerCommentsService;
 import org.junit.Assert;
@@ -39,5 +40,29 @@ public class AnswerCommentsServiceImplTest {
 
         Assert.assertEquals(answerCommentsService.queryAnswerCommentById(
                 answerCommentsDO.getId()).getCommentContent(),"junit test");
+    }
+
+    @Test
+    public void testQueryAnswerCommentCount() {
+        Assert.assertEquals(answerCommentsService
+                .queryAnswerCommentsCount(2), 14);
+    }
+
+    @Test
+    public void testQueryAnswerCommentByPage() {
+        // 初始化分页信息
+        Page page = new Page(1, 2);
+        page.setSize(answerCommentsService.queryAnswerCommentsCount(2));
+        page.setNavigatePages(3);
+        page.init();
+
+        Assert.assertEquals(answerCommentsService
+                .queryAnswerCommentsByPage(page, 2).size(), 2);
+    }
+
+    @Test
+    public void testQueryAnswerCommentById() {
+        AnswerCommentsDO answerCommentsDO = answerCommentsService.queryAnswerCommentById(2);
+        Assert.assertEquals(answerCommentsDO.getId(), 2);
     }
 }
