@@ -1,5 +1,6 @@
 package com.coeligena.service.impl;
 
+import com.coeligena.function.date.DateUtils;
 import com.coeligena.model.AnswerCommentsDO;
 import com.coeligena.service.AnswerCommentsService;
 import org.junit.Assert;
@@ -12,8 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.test.annotation.Rollback;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * junit test AnswerCommentsServiceImpl
@@ -30,9 +29,7 @@ public class AnswerCommentsServiceImplTest {
 
     @Test
     public void testSaveAnswerComments() {
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
+        Timestamp now = DateUtils.currentTime();
 
         AnswerCommentsDO answerCommentsDO = new AnswerCommentsDO();
         answerCommentsDO.setAnswerId(2);

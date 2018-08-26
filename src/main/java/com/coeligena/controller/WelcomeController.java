@@ -7,6 +7,7 @@ import com.coeligena.dto.SignUpFormDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.cookie.CookieUtils;
 import com.coeligena.function.captcha.CaptchaUtils;
+import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.ip.IPAddress;
 import com.coeligena.function.security.PasswordUtils;
 import com.coeligena.model.*;
@@ -25,8 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.Map;
 
@@ -130,9 +129,7 @@ public class WelcomeController {
         authUsersDO.setLastLoginIP(IPAddress.getIpAdrress(request));
 
         // 日期
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
+        Timestamp now = DateUtils.currentTime();
 
         authUsersDO.setCreateTime(now);
         authUsersDO.setLastLoginTime(now);

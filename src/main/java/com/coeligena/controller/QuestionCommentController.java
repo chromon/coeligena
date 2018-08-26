@@ -4,6 +4,7 @@ import com.coeligena.dto.CommentDTO;
 import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.QuestionCommentDTO;
 import com.coeligena.dto.UserInfoDTO;
+import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.paging.Page;
 import com.coeligena.model.CommentApprovalsDO;
 import com.coeligena.model.QuestionCommentsDO;
@@ -19,9 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -103,9 +102,7 @@ public class QuestionCommentController {
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
         // 日期
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
+        Timestamp now = DateUtils.currentTime();
 
         // 查询问题评论
         QuestionCommentsDO questionCommentsDO = this.questionCommentService.queryQuestionCommentById(commentId);
@@ -195,9 +192,7 @@ public class QuestionCommentController {
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
         // 日期
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
+        Timestamp now = DateUtils.currentTime();
 
         // 保存问题评论信息
         QuestionCommentsDO questionCommentsDO = new QuestionCommentsDO();

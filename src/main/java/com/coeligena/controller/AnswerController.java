@@ -1,6 +1,7 @@
 package com.coeligena.controller;
 
 import com.coeligena.dto.*;
+import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.digest.AnswerDigest;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * <p>
@@ -46,9 +45,7 @@ public class AnswerController {
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
         // 日期
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
+        Timestamp now = DateUtils.currentTime();
 
         // 更新用户回答数
         UsersDO usersDO = userInfoDTO.getUsersDO();
@@ -96,9 +93,7 @@ public class AnswerController {
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
         // 日期
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
+        Timestamp now = DateUtils.currentTime();
 
         // 查询是否投过票
         VotesDO votesDO = this.votesService.queryVotesByAnswerIdAndVoterId(answerId, userInfoDTO.getUsersDO().getId());

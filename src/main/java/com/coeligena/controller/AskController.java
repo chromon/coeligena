@@ -2,6 +2,7 @@ package com.coeligena.controller;
 
 import com.coeligena.dto.CreateQuestionDTO;
 import com.coeligena.dto.UserInfoDTO;
+import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.ip.IPAddress;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
@@ -13,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -69,9 +68,7 @@ public class AskController {
         }
 
         // 日期
-        Date date = new Date();
-        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Timestamp now = Timestamp.valueOf(dateFormat);
+        Timestamp now = DateUtils.currentTime();
 
         // 更新用户提问数
         UsersDO usersDO = userInfoDTO.getUsersDO();
