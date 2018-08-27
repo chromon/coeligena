@@ -37,4 +37,11 @@ public interface AnswersService {
      * @return 回答信息
      */
     AnswersDO queryAnswersById(int answersId);
+
+    /**
+     * 由问题 id 查询回答数量
+     * @param questionId 问题 id
+     * @return 回答数量
+     */
+    int queryAnswersCountByQuestionId(int questionId);
 }

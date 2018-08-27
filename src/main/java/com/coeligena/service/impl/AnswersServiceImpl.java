@@ -57,6 +57,16 @@ public class AnswersServiceImpl implements AnswersService {
         return this.answersDAO.queryAnswersById(answersId);
     }
 
+    /**
+     * 由问题 id 查询回答数量
+     * @param questionId 问题 id
+     * @return 回答数量
+     */
+    @Override
+    public int queryAnswersCountByQuestionId(int questionId) {
+        return this.answersDAO.queryAnswersCountByQuestionId(questionId);
+    }
+
     @Autowired
     public void setAnswersDAO(AnswersDAO answersDAO) {
         this.answersDAO = answersDAO;

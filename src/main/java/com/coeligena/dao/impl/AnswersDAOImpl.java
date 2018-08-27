@@ -4,6 +4,7 @@ import com.coeligena.dao.AnswersDAO;
 import com.coeligena.model.AnswersDO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,5 +69,18 @@ public class AnswersDAOImpl implements AnswersDAO {
     @Override
     public void updateAnswers(AnswersDO answersDO) {
         this.getSession().update(answersDO);
+    }
+
+    /**
+     * 由问题 id 查询回答数量
+     * @param questionId 问题 id
+     * @return 回答数量
+     */
+    @Override
+    public int queryAnswersCountByQuestionId(int questionId) {
+        String sql = "select count(*) from AnswersDO ad where ad.questionId =:questionId";
+        Query query = this.getSession().createQuery(sql);
+        query.setParameter("questionId", questionId);
+        return ((Number)query.uniqueResult()).intValue();
     }
 }
