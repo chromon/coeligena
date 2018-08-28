@@ -23,7 +23,7 @@ import java.sql.Timestamp;
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/configs/application-context.xml"})
 @Transactional
 @Rollback
-public class AnswerCommentsServiceImplTest {
+public class AnswerCommentsServiceTest {
 
     @Autowired
     private AnswerCommentsService answerCommentsService;

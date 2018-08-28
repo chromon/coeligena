@@ -25,12 +25,20 @@ public class AuthUsersServiceImpl implements AuthUsersService {
 
         return authUsersDO != null;
     }
-
+    /**
+     * 存储用户
+     * @param authUsersDO 用户信息
+     */
     @Override
     public void saveUserForSignUp(AuthUsersDO authUsersDO) {
         this.authUsersDAO.saveAuthUser(authUsersDO);
     }
 
+    /**
+     * 由 email 地址查询验证用户
+     * @param email 待查询 email 地址
+     * @return 验证用户实体
+     */
     @Override
     public AuthUsersDO queryUserByEmail(String email) {
         AuthUsersDO authUsersDO = this.authUsersDAO.queryAuthUserByEmail(email);

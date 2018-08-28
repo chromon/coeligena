@@ -18,7 +18,16 @@ public interface AuthUsersService {
      */
     boolean queryUserEmailExists(String email);
 
+    /**
+     * 存储用户
+     * @param authUsersDO 用户信息
+     */
     void saveUserForSignUp(AuthUsersDO authUsersDO);
 
+    /**
+     * 由邮件地址查询用户
+     * @param email 邮件地址
+     * @return 用户信息
+     */
     AuthUsersDO queryUserByEmail(String email);
 }

@@ -25,6 +25,11 @@ public class AuthUsersDAOImpl implements AuthUsersDAO {
         return sessionFactory.getCurrentSession();
     }
 
+    /**
+     * 由 email 地址查询验证用户
+     * @param email 待查询 email 地址
+     * @return 验证用户实体
+     */
     @Override
     public AuthUsersDO queryAuthUserByEmail(String email) {
         String sql = "select au from AuthUsersDO au where au.email = :email";
@@ -32,7 +37,10 @@ public class AuthUsersDAOImpl implements AuthUsersDAO {
                 .setParameter("email", email).uniqueResult();
         return authUsersDO;
     }
-
+    /**
+     * 存储用户
+     * @param authUsersDO
+     */
     @Override
     public void saveAuthUser(AuthUsersDO authUsersDO) {
         this.getSession().save(authUsersDO);
