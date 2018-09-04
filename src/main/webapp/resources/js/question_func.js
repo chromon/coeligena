@@ -6,7 +6,7 @@
 // 获取 base path
 var localObj = window.location;
 var contextPath = localObj.pathname.split("/")[1];
-var basePath = localObj.protocol + "//" + localObj.host + "/" + contextPath;
+var basePath2 = localObj.protocol + "//" + localObj.host;
 
 // handlerbars 注册一个比较大小的 Helper, 判断 v1 是否等于 v2
 Handlebars.registerHelper('compare', function (v1, v2, options) {
@@ -52,7 +52,7 @@ $('#comment-question-btn').on('click', function() {
 
     $.ajax({
         type: "POST",
-        url: basePath + "/question-comment",
+        url: basePath2 + "/question-comment",
         data: {
             questionId: $('#question_id').val(),
             reviewerId: $('#reviewer-id').val(),
@@ -90,9 +90,10 @@ $('#question-comments').on('click', function() {
     $('#questionCommentsModal').modal({
         keyboard: false
     });
+    console.log(basePath2 + "/question-comment-list");
     $.ajax({
         type: "GET",
-        url: basePath + "/question-comment-list",
+        url: basePath2 + "/question-comment-list",
         dataType: "json",
         data: {
             questionId: questionId
@@ -154,7 +155,7 @@ function postReply(id) {
 
     $.ajax({
         type: "POST",
-        url: basePath + "/question-comment-reply",
+        url: basePath2 + "/question-comment-reply",
         data: {
             questionId: $('#question_id').val(),
             reviewerId: $('#reviewer-id-r-' + id).val(),
@@ -194,7 +195,7 @@ function questionCommentsWithPage(pageNum) {
 
     $.ajax({
         type: "GET",
-        url: basePath + "/question-comments-with-page",
+        url: basePath2 + "/question-comments-with-page",
         data: {
             pageNum: pageNum,
             questionId: questionId
@@ -289,7 +290,7 @@ function unlikeComment(id) {
 function likeUnlikeFunc(data) {
     $.ajax({
         type: "POST",
-        url: basePath + "/question-comments-like",
+        url: basePath2 + "/question-comments-like",
         data: data,
         dataType: "text",
         success: function(data) {

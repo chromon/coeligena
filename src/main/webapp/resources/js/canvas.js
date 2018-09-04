@@ -1,3 +1,4 @@
+"use strict";
 class Circle{
 
 	constructor(x, y) {
@@ -70,7 +71,7 @@ let draw = function(){
 	for(let i = 0; i < circles.length; i++) {
 		circles[i].move(w, h);
 		circles[i].drawCircle(ctx);
-		for(j = i + 1; j < circles.length; j++) {
+		for(let j = i + 1; j < circles.length; j++) {
 			circles[i].drawLine(ctx, circles[j])
 		}
 	}

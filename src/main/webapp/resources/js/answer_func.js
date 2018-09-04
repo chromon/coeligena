@@ -5,7 +5,7 @@
 // 获取 base path
 var localObj = window.location;
 var contextPath = localObj.pathname.split("/")[1];
-var basePath = localObj.protocol + "//" + localObj.host + "/" + contextPath;
+var basePath2 = localObj.protocol + "//" + localObj.host;
 
 // 匿名确认
 $('#anonymous_confirm').on('click', function () {
@@ -22,7 +22,7 @@ $('#anonymous_confirm').on('click', function () {
     answer_wrap.prepend($('<input id="fullname" type="hidden" name="fullname" value="' + fullname +'">'));
     answer_wrap.prepend($('<input id="avatar_path" type="hidden" name="avatar_path" value="' + avatar_path + '">'));
     answer_wrap.prepend($('<input id="autograph" type="hidden" name="autograph" value="' + autograph + '">'));
-    $('#answer_img').attr('src', basePath + '/resources/images/avatar/default_avatar.png');
+    $('#answer_img').attr('src', basePath2 + '/resources/images/avatar/default_avatar.png');
     $('#answer_fullname').text('匿名用户');
     $('#answer_autograph').css('display', 'none');
     $('#edit_topic_bios').css('display', 'none');
@@ -77,7 +77,7 @@ $('#post_answer_btn').on('click', function () {
 
     $.ajax({
         type: "POST",
-        url: basePath + "/answer-the-question",
+        url: basePath2 + "/answer-the-question",
         data: {
             anonymous: $('#is_anonymous').val(),
             answerContent: markupStr,
@@ -170,7 +170,7 @@ function voteDown(obj, id) {
 function voteFunc(data) {
     $.ajax({
         type: "POST",
-        url: basePath + "/answer-vote",
+        url: basePath2 + "/answer-vote",
         data: data,
         dataType: "text",
         success: function(data) {
@@ -206,9 +206,11 @@ function voteFunc(data) {
 // 回答评论列表
 function commentsList(answerId) {
 
+    console.log(basePath2);
+
     $.ajax({
         type: "GET",
-        url: basePath + "/answer-comment-list",
+        url: basePath2 + "/answer-comment-list",
         data: {
             answerId: answerId
         },
@@ -247,7 +249,7 @@ function commentsList(answerId) {
 function answerCommentsWithPage(pageNum, answerId) {
     $.ajax({
         type: "GET",
-        url: basePath + "/answer-comments-with-page",
+        url: basePath2 + "/answer-comments-with-page",
         data: {
             pageNum: pageNum,
             answerId: answerId
@@ -291,7 +293,7 @@ function postAnswerComment(id) {
 
     $.ajax({
         type: "POST",
-        url: basePath + "/answer-comment",
+        url: basePath2 + "/answer-comment",
         data: {
             answerId: id,
             reviewerId: $('#reviewer-id').val(),
@@ -339,7 +341,7 @@ function postAnswerCommentReply(answerId, id) {
     console.log(answerId);
     $.ajax({
         type: "POST",
-        url: basePath + "/answer-comment-reply",
+        url: basePath2 + "/answer-comment-reply",
         data: {
             answerId: answerId,
             reviewerId: $('#reviewer-id-r-' + id).val(),

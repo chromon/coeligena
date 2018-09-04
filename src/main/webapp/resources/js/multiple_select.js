@@ -6,7 +6,7 @@
 // 获取 base path
 var localObj = window.location;
 var contextPath = localObj.pathname.split("/")[1];
-var basePath = localObj.protocol + "//" + localObj.host + "/" + contextPath;
+var basePath2 = localObj.protocol + "//" + localObj.host;
 
 $(document).ready(function() {
     // multi-select
@@ -19,7 +19,7 @@ $(document).ready(function() {
         language: "zh-CN",
         placeholder: '添加话题',
         ajax: {
-            url: basePath + '/topic-search',
+            url: basePath2 + '/topic-search',
             dataType: 'json',
             delay: 250,
             data: function (params) {

@@ -3,7 +3,6 @@
  * hover card with webuiPopover
  */
 
-
 // user info hover card
 $('#user-avatar').webuiPopover({
     url: '#user_info',
