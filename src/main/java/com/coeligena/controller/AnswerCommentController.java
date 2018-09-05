@@ -99,7 +99,8 @@ public class AnswerCommentController {
             // 查询是否赞踩
             CommentApprovalsDO commentApprovalsDO = this.commentApprovalsService
                     .queryCommentApprByCommentIdAndUserId(answerCommentsDO.getId(), userInfoDTO.getUsersDO().getId());
-            if (commentApprovalsDO != null) {
+            // 指明是回答评论
+            if (commentApprovalsDO != null && commentApprovalsDO.getCommentType() == 2) {
                 if (commentApprovalsDO.getCommentAction() == 2) {
                     commentDTO.setUnlike(true);
                 } else if (commentApprovalsDO.getCommentAction() == 1) {

@@ -259,7 +259,8 @@ public class QuestionCommentController {
             // 查询是否赞踩
             CommentApprovalsDO commentApprovalsDO = this.commentApprovalsService
                     .queryCommentApprByCommentIdAndUserId(questionCommentsDO.getId(), userInfoDTO.getUsersDO().getId());
-            if (commentApprovalsDO != null) {
+            // 指明是问题评论
+            if (commentApprovalsDO != null && commentApprovalsDO.getCommentType() == 1) {
                 if (commentApprovalsDO.getCommentAction() == 1) {
                     commentDTO.setLike(true);
                 } else if (commentApprovalsDO.getCommentAction() == 2) {

@@ -256,7 +256,7 @@ function answerCommentsWithPage(pageNum, answerId) {
         },
         dataType: "json",
         success: function(data) {
-            // console.log(data);
+            console.log(data);
 
             // 判断是否是添加评论模板
             data['isPost'] = false;
@@ -372,4 +372,47 @@ function postAnswerCommentReply(answerId, id) {
 
         }
     });
+}
+
+// 回答评论点赞
+function likeAnswerComment(id) {
+    let like_btn = $('#answerComment-like-' + id);
+    let unlike_btn = $('#answerComment-unlike-' + id);
+    let unlike_text = $('#answerComment-unlike-text-' + id);
+
+    if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike'))  {
+        // 没攒没踩
+        like_btn.addClass('custom-is-liked');
+    } else if (! like_btn.hasClass('custom-is-liked') & unlike_btn.hasClass('custom-unlike')) {
+        // 没赞有踩
+        unlike_btn.removeClass('custom-unlike');
+        unlike_text.text('踩');
+        like_btn.addClass('custom-is-liked');
+    } else if (like_btn.hasClass('custom-is-liked')) {
+        // 已赞
+        like_btn.removeClass('custom-is-liked');
+    }
+}
+
+// 回答评论点踩
+function unlikeAnswerComment(id) {
+
+    let like_btn = $('#answerComment-like-' + id);
+    let unlike_btn = $('#answerComment-unlike-' + id);
+    let unlike_text = $('#answerComment-unlike-text-' + id);
+
+    if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike')) {
+        // 没攒没踩
+        unlike_btn.addClass('custom-unlike');
+        unlike_text.text('取消踩');
+    } else if (like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike')) {
+        // 已赞没踩
+        like_btn.removeClass('custom-is-liked');
+        unlike_btn.addClass('custom-unlike');
+        unlike_text.text('取消踩');
+    } else if (unlike_btn.hasClass('custom-unlike')) {
+        // 已踩
+        unlike_btn.removeClass('custom-unlike');
+        unlike_text.text('踩');
+    }
 }

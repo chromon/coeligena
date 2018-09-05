@@ -654,7 +654,7 @@
                     {{#each this.list}}
                     <!-- comment item -->
                     <div class="custom-comment-item">
-                        <div>
+                        <div  onmouseover="showElement(this);" onmouseout="hideElement(this);">
                             <div class="custom-commentItem-meta">
                                 <span>
                                     <a href="#">
@@ -688,7 +688,7 @@
                                 </div>
                             </div><!-- end reply comment -->
                             <div class="custom-commentItem-footer" id="answerCommentItem-footer-{{answerCommentsDO.id}}">
-                                <button class="custom-btn-plain custom-margin-right20" type="button">
+                                <button id="answerComment-like-{{answerCommentsDO.id}}" class="custom-btn-plain custom-margin-right20" onclick="likeAnswerComment('{{answerCommentsDO.id}}');" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-thumbs-up custom-margin-right5"></i>
                                         <span>赞</span>
@@ -702,24 +702,26 @@
                                     </span>
                                 </button>
                                 {{/if}}
-                                <button onclick="replyAnswerComment('{{answerCommentsDO.id}}')" class="custom-btn-plain custom-margin-right20" type="button">
-                                    <span style="display: inline-flex;align-items: center;">
-                                        <i class="fa fa-share custom-margin-right5"></i>
-                                        <span>回复</span>
-                                    </span>
-                                </button>
-                                <button class="custom-btn-plain custom-margin-right20" type="button">
-                                    <span style="display: inline-flex;align-items: center;">
-                                        <i class="fa fa-thumbs-down custom-margin-right5"></i>
-                                        <span>踩</span>
-                                    </span>
-                                </button>
-                                <button class="custom-btn-plain custom-margin-right20" type="button">
-                                    <span style="display: inline-flex;align-items: center;">
-                                        <i class="fa fa-flag custom-margin-right5"></i>
-                                        <span>举报</span>
-                                    </span>
-                                </button>
+                                <span class="hide comment-hide">
+                                    <button onclick="replyAnswerComment('{{answerCommentsDO.id}}')" class="custom-btn-plain custom-margin-right20" type="button">
+                                        <span style="display: inline-flex;align-items: center;">
+                                            <i class="fa fa-share custom-margin-right5"></i>
+                                            <span>回复</span>
+                                        </span>
+                                    </button>
+                                    <button id="answerComment-unlike-{{answerCommentsDO.id}}" class="custom-btn-plain custom-margin-right20" onclick="unlikeAnswerComment('{{answerCommentsDO.id}}');" type="button">
+                                        <span style="display: inline-flex;align-items: center;">
+                                            <i class="fa fa-thumbs-down custom-margin-right5"></i>
+                                            <span id="answerComment-unlike-text-{{answerCommentsDO.id}}">踩</span>
+                                        </span>
+                                    </button>
+                                    <button class="custom-btn-plain custom-margin-right20" type="button">
+                                        <span style="display: inline-flex;align-items: center;">
+                                            <i class="fa fa-flag custom-margin-right5"></i>
+                                            <span>举报</span>
+                                        </span>
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div><!-- end comment item -->
