@@ -146,6 +146,102 @@ public class AnswerCommentController {
     }
 
     /**
+     * 回答评论点赞
+     * @param request http servlet request
+     * @param commentDTO 评论 dto
+     * @return success or not
+     */
+    @RequestMapping(value = "/answer-comments-like", method = RequestMethod.POST)
+    @ResponseBody
+    public String questionCommentsLike(HttpServletRequest request, @ModelAttribute CommentDTO commentDTO) {
+
+        // 赞：1，踩：2
+        int commentAction = commentDTO.getCommentAction();
+        int commentId = commentDTO.getCommentId();
+
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        // 日期
+        Timestamp now = DateUtils.currentTime();
+
+        // 由评论 id 查询回答评论
+        AnswerCommentsDO answerCommentsDO = answerCommentsService.queryAnswerCommentById(commentId);
+
+        // 由评论 id 和用户 id 查询是否由评论赞同内容
+        CommentApprovalsDO caDO = this.commentApprovalsService
+                .queryCommentApprByCommentIdAndUserId(commentId, userInfoDTO.getUsersDO().getId());
+
+        // 赞
+        if (caDO == null) {
+            // 评论赞同反对不存在（没攒没踩）
+            // 保存评论赞同反对信息
+            CommentApprovalsDO commentApprovalsDO = new CommentApprovalsDO();
+            commentApprovalsDO.setCommentId(commentId);
+            commentApprovalsDO.setCommentType((byte) 2);
+            if (commentAction == 1) {
+                commentApprovalsDO.setCommentAction((byte) 1);
+            } else if (commentAction == 2) {
+                commentApprovalsDO.setCommentAction((byte) 2);
+            }
+            commentApprovalsDO.setApprovalTime(now);
+            commentApprovalsDO.setUserId(userInfoDTO.getUsersDO().getId());
+            this.commentApprovalsService.saveCommentApprovals(commentApprovalsDO);
+
+            // 更新回答评论赞同反对数量
+            if (commentAction == 1) {
+                answerCommentsDO.setApprovalCount(1);
+            } else if (commentAction == 2) {
+                answerCommentsDO.setOpposeCount(1);
+            }
+            this.answerCommentsService.modifyAnswerComment(answerCommentsDO);
+        } else {
+            // 评论已投票
+            if (commentAction == 1) {
+                // 评论赞同存在
+                if (caDO.getCommentAction() == 1) {
+                    //（已赞）直接删除赞
+                    this.commentApprovalsService.deleteCommentApprovals(caDO);
+
+                    // 更新回答评论赞同数量
+                    answerCommentsDO.setApprovalCount(answerCommentsDO.getApprovalCount() - 1);
+                    this.answerCommentsService.modifyAnswerComment(answerCommentsDO);
+                } else if (caDO.getCommentAction() == 2) {
+                    // （已踩）更新动作
+                    caDO.setCommentAction((byte) 1);
+                    this.commentApprovalsService.modifyCommentApprovals(caDO);
+
+                    // 更新回答评论赞同数量
+                    answerCommentsDO.setOpposeCount(answerCommentsDO.getOpposeCount() - 1);
+                    answerCommentsDO.setApprovalCount(answerCommentsDO.getApprovalCount() + 1);
+                    this.answerCommentsService.modifyAnswerComment(answerCommentsDO);
+                }
+            } else if (commentAction == 2) {
+                // 评论反对
+                if (caDO.getCommentAction() == 1) {
+                    // （已赞）更新动作
+                    caDO.setCommentAction((byte) 2);
+                    this.commentApprovalsService.modifyCommentApprovals(caDO);
+
+                    // 更新回答踩数量
+                    answerCommentsDO.setApprovalCount(answerCommentsDO.getApprovalCount() - 1);
+                    answerCommentsDO.setOpposeCount(answerCommentsDO.getOpposeCount() + 1);
+                    this.answerCommentsService.modifyAnswerComment(answerCommentsDO);
+                } else if (caDO.getCommentAction() == 2) {
+                    // （已踩）直接删除
+                    this.commentApprovalsService.deleteCommentApprovals(caDO);
+
+                    // 更新回答踩数量
+                    answerCommentsDO.setOpposeCount(answerCommentsDO.getOpposeCount() - 1);
+                    this.answerCommentsService.modifyAnswerComment(answerCommentsDO);
+                }
+            }
+        }
+
+        return "answer comment vote success.";
+    }
+
+    /**
      * 回答评论处理方法
      * @param request http servlet request
      * @param answerCommentsDTO 回答评论 dto

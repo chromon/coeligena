@@ -76,4 +76,13 @@ public class AnswerCommentsDAOImpl implements AnswerCommentsDAO {
         query.setParameter("answerCommentId", answerCommentId);
         return (AnswerCommentsDO) query.uniqueResult();
     }
+
+    /**
+     * 更新回答评论信息
+     * @param answerCommentsDO 回答评论信息
+     */
+    @Override
+    public void updateAnswerComments(AnswerCommentsDO answerCommentsDO) {
+       this.getSession().update(answerCommentsDO);
+    }
 }

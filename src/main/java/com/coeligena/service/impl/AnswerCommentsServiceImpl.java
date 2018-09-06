@@ -48,9 +48,23 @@ public class AnswerCommentsServiceImpl implements AnswerCommentsService {
         return this.answerCommentsDAO.queryAnswerCommentsCount(answerId);
     }
 
+    /**
+     * 由评论 id 查询评论
+     * @param answerCommentId 评论 id
+     * @return 评论详细信息
+     */
     @Override
     public AnswerCommentsDO queryAnswerCommentById(int answerCommentId) {
         return this.answerCommentsDAO.queryAnswerCommentsById(answerCommentId);
+    }
+
+    /**
+     * 更新回答评论信息
+     * @param answerCommentsDO 回答评论信息
+     */
+    @Override
+    public void modifyAnswerComment(AnswerCommentsDO answerCommentsDO) {
+       this.answerCommentsDAO.updateAnswerComments(answerCommentsDO);
     }
 
     @Autowired

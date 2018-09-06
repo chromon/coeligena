@@ -35,13 +35,13 @@ public class AnswerCommentsDO {
     private int approvalCount;
 
     /** 评论反对数 */
-    private int oppose_count;
+    private int opposeCount;
 
     /** 是否是精选评论 0：否，1：是 */
     private byte featuredComment;
 
     /** 是否是折叠评论 0：否， 1：是 */
-    private byte collapse_comment;
+    private byte collapseComment;
 
     /** 提交评论用户 id */
     private int userId;
@@ -189,16 +189,16 @@ public class AnswerCommentsDO {
      * @return 评论反对数
      */
     @Column(name = "oppose_count", nullable = false, columnDefinition = "int(11) default '0'")
-    public int getOppose_count() {
-        return oppose_count;
+    public int getOpposeCount() {
+        return opposeCount;
     }
 
     /**
      * 设置评论反对数
-     * @param oppose_count 评论反对数
+     * @param opposeCount 评论反对数
      */
-    public void setOppose_count(int oppose_count) {
-        this.oppose_count = oppose_count;
+    public void setOpposeCount(int opposeCount) {
+        this.opposeCount = opposeCount;
     }
 
     /**
@@ -206,16 +206,16 @@ public class AnswerCommentsDO {
      * @return 是否是折叠评论
      */
     @Column(name = "collapse_comment", nullable = false, columnDefinition = "tinyint(4) default '0'")
-    public byte getCollapse_comment() {
-        return collapse_comment;
+    public byte getCollapseComment() {
+        return collapseComment;
     }
 
     /**
      * 设置是否是折叠评论
-     * @param collapse_comment 是否是折叠评论
+     * @param collapseComment 是否是折叠评论
      */
-    public void setCollapse_comment(byte collapse_comment) {
-        this.collapse_comment = collapse_comment;
+    public void setCollapseCcomment(byte collapseComment) {
+        this.collapseComment = collapseComment;
     }
 
     /**

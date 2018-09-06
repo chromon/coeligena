@@ -39,4 +39,10 @@ public interface AnswerCommentsDAO {
      * @return 回答评论
      */
     AnswerCommentsDO queryAnswerCommentsById(int answerCommentId);
+
+    /**
+     * 更新回答评论信息
+     * @param answerCommentsDO 回答评论信息
+     */
+    void updateAnswerComments(AnswerCommentsDO answerCommentsDO);
 }

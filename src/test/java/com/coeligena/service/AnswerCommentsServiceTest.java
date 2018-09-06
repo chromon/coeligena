@@ -1,9 +1,8 @@
-package com.coeligena.service.impl;
+package com.coeligena.service;
 
 import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswerCommentsDO;
-import com.coeligena.service.AnswerCommentsService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,5 +63,20 @@ public class AnswerCommentsServiceTest {
     public void testQueryAnswerCommentById() {
         AnswerCommentsDO answerCommentsDO = answerCommentsService.queryAnswerCommentById(2);
         Assert.assertEquals(answerCommentsDO.getId(), 2);
+    }
+
+    @Test
+    public void testModifyAnswerComment() {
+        Timestamp now = DateUtils.currentTime();
+        AnswerCommentsDO answerCommentsDO = new AnswerCommentsDO();
+        answerCommentsDO.setAnswerId(2);
+        answerCommentsDO.setCommentContent("junit test");
+        answerCommentsDO.setCommentTime(now);
+        answerCommentsService.saveAnswerComment(answerCommentsDO);
+
+        answerCommentsDO.setCommentContent("junit test 2");
+        answerCommentsService.modifyAnswerComment(answerCommentsDO);
+
+        Assert.assertEquals(answerCommentsService.queryAnswerCommentById(answerCommentsDO.getId()).getCommentContent(), "junit test 2");
     }
 }

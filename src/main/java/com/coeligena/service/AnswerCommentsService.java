@@ -38,4 +38,10 @@ public interface AnswerCommentsService {
      * @return 回答评论
      */
     AnswerCommentsDO queryAnswerCommentById(int answerCommentId);
+
+    /**
+     * 更新回答评论信息
+     * @param answerCommentsDO 回答评论信息
+     */
+    void modifyAnswerComment(AnswerCommentsDO answerCommentsDO);
 }

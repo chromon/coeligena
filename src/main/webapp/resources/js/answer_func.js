@@ -206,8 +206,6 @@ function voteFunc(data) {
 // 回答评论列表
 function commentsList(answerId) {
 
-    console.log(basePath2);
-
     $.ajax({
         type: "GET",
         url: basePath2 + "/answer-comment-list",
@@ -380,6 +378,11 @@ function likeAnswerComment(id) {
     let unlike_btn = $('#answerComment-unlike-' + id);
     let unlike_text = $('#answerComment-unlike-text-' + id);
 
+    let data = {
+        commentId: id,
+        commentAction: 1 // 赞
+    };
+
     if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike'))  {
         // 没攒没踩
         like_btn.addClass('custom-is-liked');
@@ -392,6 +395,8 @@ function likeAnswerComment(id) {
         // 已赞
         like_btn.removeClass('custom-is-liked');
     }
+
+    likeUnlikeAnswerComment(data);
 }
 
 // 回答评论点踩
@@ -400,6 +405,11 @@ function unlikeAnswerComment(id) {
     let like_btn = $('#answerComment-like-' + id);
     let unlike_btn = $('#answerComment-unlike-' + id);
     let unlike_text = $('#answerComment-unlike-text-' + id);
+
+    let data = {
+        commentId: id,
+        commentAction: 2 // 踩
+    };
 
     if (!like_btn.hasClass('custom-is-liked') & !unlike_btn.hasClass('custom-unlike')) {
         // 没攒没踩
@@ -415,4 +425,28 @@ function unlikeAnswerComment(id) {
         unlike_btn.removeClass('custom-unlike');
         unlike_text.text('踩');
     }
+
+    likeUnlikeAnswerComment(data);
+}
+
+// 点赞实现
+function likeUnlikeAnswerComment(data) {
+    $.ajax({
+        type: "POST",
+        url: basePath2 + "/answer-comments-like",
+        data: data,
+        dataType: "text",
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log('responseText: ' + jqXHR.responseText);
+            console.log('status: ' + jqXHR.status);
+            console.log('readyState: ' + jqXHR.readyState);
+            console.log('statusText: ' + jqXHR.statusText);
+
+            console.log('textStatus: ' + textStatus);
+            console.log('errorThrown: ' + errorThrown);
+        }
+    });
 }
