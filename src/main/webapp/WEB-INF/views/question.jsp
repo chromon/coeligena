@@ -688,12 +688,21 @@
                                 </div>
                             </div><!-- end reply comment -->
                             <div class="custom-commentItem-footer" id="answerCommentItem-footer-{{answerCommentsDO.id}}">
+                                {{#if like}}
+                                <button id="answerComment-like-{{answerCommentsDO.id}}" class="custom-btn-plain custom-margin-right20 custom-is-liked" onclick="likeAnswerComment('{{answerCommentsDO.id}}');" type="button">
+                                    <span style="display: inline-flex;align-items: center;">
+                                        <i class="fa fa-thumbs-up custom-margin-right5"></i>
+                                        <span>赞</span>
+                                    </span>
+                                </button>
+                                {{else}}
                                 <button id="answerComment-like-{{answerCommentsDO.id}}" class="custom-btn-plain custom-margin-right20" onclick="likeAnswerComment('{{answerCommentsDO.id}}');" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-thumbs-up custom-margin-right5"></i>
                                         <span>赞</span>
                                     </span>
                                 </button>
+                                {{/if}}
                                 {{#if reviewer}}
                                 <button class="custom-btn-plain custom-margin-right20" type="button">
                                     <span style="display: inline-flex;align-items: center;">
@@ -709,12 +718,21 @@
                                             <span>回复</span>
                                         </span>
                                     </button>
+                                    {{#if unlike}}
+                                    <button id="answerComment-unlike-{{answerCommentsDO.id}}" class="custom-btn-plain custom-margin-right20 custom-unlike" onclick="unlikeAnswerComment('{{answerCommentsDO.id}}');" type="button">
+                                        <span style="display: inline-flex;align-items: center;">
+                                            <i class="fa fa-thumbs-down custom-margin-right5"></i>
+                                            <span id="answerComment-unlike-text-{{answerCommentsDO.id}}">取消踩</span>
+                                        </span>
+                                    </button>
+                                    {{else}}
                                     <button id="answerComment-unlike-{{answerCommentsDO.id}}" class="custom-btn-plain custom-margin-right20" onclick="unlikeAnswerComment('{{answerCommentsDO.id}}');" type="button">
                                         <span style="display: inline-flex;align-items: center;">
                                             <i class="fa fa-thumbs-down custom-margin-right5"></i>
                                             <span id="answerComment-unlike-text-{{answerCommentsDO.id}}">踩</span>
                                         </span>
                                     </button>
+                                    {{/if}}
                                     <button class="custom-btn-plain custom-margin-right20" type="button">
                                         <span style="display: inline-flex;align-items: center;">
                                             <i class="fa fa-flag custom-margin-right5"></i>
