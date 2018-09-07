@@ -214,7 +214,7 @@ public class AnswerCommentsDO {
      * 设置是否是折叠评论
      * @param collapseComment 是否是折叠评论
      */
-    public void setCollapseCcomment(byte collapseComment) {
+    public void setCollapseComment(byte collapseComment) {
         this.collapseComment = collapseComment;
     }
 

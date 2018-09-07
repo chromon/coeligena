@@ -40,7 +40,7 @@ public class CommentApprovalsServiceTest {
         commentApprovalsService.saveCommentApprovals(commentApprovalsDO);
 
         Assert.assertEquals(commentApprovalsService
-                .queryCommentApprByCommentIdAndUserId(0, 0).getCommentType(),
+                .queryCommentApprByCommentIdAndUserId(0, (byte) 0, 0).getCommentType(),
                 0);
     }
 
@@ -54,7 +54,7 @@ public class CommentApprovalsServiceTest {
         commentApprovalsService.modifyCommentApprovals(commentApprovalsDO);
 
         Assert.assertEquals(commentApprovalsService
-                .queryCommentApprByCommentIdAndUserId(0, 0).getCommentAction(), 2);
+                .queryCommentApprByCommentIdAndUserId(0, (byte) 0, 0).getCommentAction(), 2);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class CommentApprovalsServiceTest {
         commentApprovalsService.deleteCommentApprovals(commentApprovalsDO);
 
         Assert.assertEquals(commentApprovalsService
-                .queryCommentApprByCommentIdAndUserId(0, 0), null);
+                .queryCommentApprByCommentIdAndUserId(0, (byte) 0, 0), null);
     }
 
 

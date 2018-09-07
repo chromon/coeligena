@@ -39,10 +39,11 @@ public class CommentApprovalsDAOImpl implements CommentApprovalsDAO {
      * @return 评论赞同信息
      */
     @Override
-    public CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, int userId) {
-        String sql = "select ca from CommentApprovalsDO ca where ca.commentId = :commentId and ca.userId = :userId";
+    public CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, byte commentType, int userId) {
+        String sql = "select ca from CommentApprovalsDO ca where ca.commentId = :commentId and ca.commentType =:commentType and ca.userId = :userId";
         Query query = this.getSession().createQuery(sql);
         query.setParameter("commentId", commentId);
+        query.setParameter("commentType", commentType);
         query.setParameter("userId", userId);
 
         return (CommentApprovalsDO) query.uniqueResult();

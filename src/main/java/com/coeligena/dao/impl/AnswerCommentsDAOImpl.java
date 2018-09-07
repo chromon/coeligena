@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
  * Created by Ellery on 2018/8/6.
  */
 @Repository
+@Transactional
 public class AnswerCommentsDAOImpl implements AnswerCommentsDAO {
 
     @Resource

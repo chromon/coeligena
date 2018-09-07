@@ -24,7 +24,6 @@ import java.sql.Timestamp;
 @Rollback
 public class AnswerCommentsServiceTest {
 
-    @Autowired
     private AnswerCommentsService answerCommentsService;
 
     @Test
@@ -78,5 +77,10 @@ public class AnswerCommentsServiceTest {
         answerCommentsService.modifyAnswerComment(answerCommentsDO);
 
         Assert.assertEquals(answerCommentsService.queryAnswerCommentById(answerCommentsDO.getId()).getCommentContent(), "junit test 2");
+    }
+
+    @Autowired
+    public void setAnswerCommentsService(AnswerCommentsService answerCommentsService) {
+        this.answerCommentsService = answerCommentsService;
     }
 }

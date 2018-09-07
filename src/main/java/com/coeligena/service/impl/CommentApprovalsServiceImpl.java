@@ -33,8 +33,8 @@ public class CommentApprovalsServiceImpl implements CommentApprovalsService {
      * @return 评论赞同信息
      */
     @Override
-    public CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, int userId) {
-        return this.commentApprovalsDAO.queryCommentApprByCommentIdAndUserId(commentId, userId);
+    public CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, byte commentType, int userId) {
+        return this.commentApprovalsDAO.queryCommentApprByCommentIdAndUserId(commentId, commentType, userId);
     }
 
     /**

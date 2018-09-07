@@ -109,7 +109,7 @@ public class QuestionCommentController {
 
         // 由评论 id 和用户 id 查询是否由评论赞同内容
         CommentApprovalsDO caDO = this.commentApprovalsService
-                .queryCommentApprByCommentIdAndUserId(commentId, userInfoDTO.getUsersDO().getId());
+                .queryCommentApprByCommentIdAndUserId(commentId, (byte) 1, userInfoDTO.getUsersDO().getId());
 
         // 赞
         if (caDO == null) {
@@ -258,9 +258,9 @@ public class QuestionCommentController {
 
             // 查询是否赞踩
             CommentApprovalsDO commentApprovalsDO = this.commentApprovalsService
-                    .queryCommentApprByCommentIdAndUserId(questionCommentsDO.getId(), userInfoDTO.getUsersDO().getId());
+                    .queryCommentApprByCommentIdAndUserId(questionCommentsDO.getId(), (byte) 1, userInfoDTO.getUsersDO().getId());
             // 指明是问题评论
-            if (commentApprovalsDO != null && commentApprovalsDO.getCommentType() == 1) {
+            if (commentApprovalsDO != null) {
                 if (commentApprovalsDO.getCommentAction() == 1) {
                     commentDTO.setLike(true);
                 } else if (commentApprovalsDO.getCommentAction() == 2) {

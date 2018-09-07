@@ -22,7 +22,7 @@ public interface CommentApprovalsService {
      * @param userId 用户 id
      * @return 评论赞同信息
      */
-    CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, int userId);
+    CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, byte commentType, int userId);
 
 
     /**

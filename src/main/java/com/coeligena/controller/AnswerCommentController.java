@@ -98,9 +98,9 @@ public class AnswerCommentController {
 
             // 查询是否赞踩
             CommentApprovalsDO commentApprovalsDO = this.commentApprovalsService
-                    .queryCommentApprByCommentIdAndUserId(answerCommentsDO.getId(), userInfoDTO.getUsersDO().getId());
+                    .queryCommentApprByCommentIdAndUserId(answerCommentsDO.getId(), (byte) 2, userInfoDTO.getUsersDO().getId());
             // 指明是回答评论
-            if (commentApprovalsDO != null && commentApprovalsDO.getCommentType() == 2) {
+            if (commentApprovalsDO != null) {
                 if (commentApprovalsDO.getCommentAction() == 2) {
                     commentDTO.setUnlike(true);
                 } else if (commentApprovalsDO.getCommentAction() == 1) {
@@ -170,7 +170,7 @@ public class AnswerCommentController {
 
         // 由评论 id 和用户 id 查询是否由评论赞同内容
         CommentApprovalsDO caDO = this.commentApprovalsService
-                .queryCommentApprByCommentIdAndUserId(commentId, userInfoDTO.getUsersDO().getId());
+                .queryCommentApprByCommentIdAndUserId(commentId, (byte) 2, userInfoDTO.getUsersDO().getId());
 
         // 赞
         if (caDO == null) {
@@ -196,6 +196,7 @@ public class AnswerCommentController {
             }
             this.answerCommentsService.modifyAnswerComment(answerCommentsDO);
         } else {
+
             // 评论已投票
             if (commentAction == 1) {
                 // 评论赞同存在

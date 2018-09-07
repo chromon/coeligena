@@ -20,7 +20,7 @@ public interface CommentApprovalsDAO {
      * @param userId 用户 id
      * @return 评论赞同信息
      */
-    CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, int userId);
+    CommentApprovalsDO queryCommentApprByCommentIdAndUserId(int commentId, byte commentType, int userId);
 
     /**
      * 更新评论赞同信息
