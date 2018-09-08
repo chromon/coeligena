@@ -348,7 +348,7 @@ function postAnswerCommentReply(answerId, id) {
         },
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            // console.log(data);
 
             $('#answerCommentItem-footer-' + id).removeClass('hide');
             $('#answerComment-reply-' + id).addClass('hide');

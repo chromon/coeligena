@@ -11,7 +11,7 @@
 <!-- collection modal -->
 <div class="modal fade" id="collectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div id="add_favorite" class="modal-content">
+        <div id="add_favorite" class="modal-content custom-modal-padding">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -21,21 +21,49 @@
             </div>
             <div class="modal-body">
                 <div id="favorite_list" class="custom-favor-list">
-                    <input id="collect_list" type="checkbox" data-labelauty="tech（选择收藏夹）|tech（取消选择）"/>
+                    <%--<span>你可以创建多个收藏夹，将答案分类收藏</span>--%>
+                    <div class="custom-favlists-items">
+                        <div class="custom-favlists-item">
+                            <div class="custom-favlists-itemInner">
+                                <div class="custom-favlists-itemName">
+                                    <span class="custom-favlists-itemName-text">tech</span>
+                                </div>
+                                <div class="custom-favlists-itemContent">
+                                    5 条内容
+                                </div>
+                            </div>
+                            <button type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
+                                收藏
+                            </button>
+                        </div>
+                        <div class="custom-favlists-item">
+                            <div class="custom-favlists-itemInner">
+                                <div class="custom-favlists-itemName">
+                                    <span class="custom-favlists-itemName-text">tech</span>
+                                </div>
+                                <div class="custom-favlists-itemContent">
+                                    5 条内容
+                                </div>
+                            </div>
+                            <button type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
+                                收藏
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="create_favorite" class="hidden">
-                    <form>
-                        <input type="text" class="form-control custom-margin-bottom10" placeholder="收藏标题">
-                        <textarea class="form-control custom-margin-bottom10" rows="3" placeholder="收藏描述（可选）"></textarea>
+                    <div class="custom-create-collection">
+                        <input type="text" class="custom-collection-text form-control custom-margin-bottom10" placeholder="收藏标题">
+                        <textarea class="custom-collection-text form-control custom-margin-bottom10" rows="3" placeholder="收藏描述（可选）"></textarea>
                         <div class="custom-margin-bottom10">
                             <input name="privacy" type="radio" value="option1" checked="">
-                            公开 有其他人关注此收藏夹时不可设置为私密
+                            公开 <span class="custom-collection-text">有其他人关注此收藏夹时不可设置为私密</span>
                         </div>
                         <div class="custom-margin-bottom10">
                             <input name="privacy" type="radio" value="option2">
-                            私密 只有你自己可以查看这个收藏夹
+                            私密 <span class="custom-collection-text">只有你自己可以查看这个收藏夹</span>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div id="modalAddFooter" class="modal-footer">

@@ -3008,3 +3008,79 @@ ins {
 .custom-is-liked {
     color: #0084ff;
 }
+
+.custom-create-collection {
+    margin: 0 20px;
+}
+
+.custom-collection-text {
+    font-size: 13px;
+    color: #8590a6;
+}
+
+.custom-collection-text::-webkit-input-placeholder {
+    /* placeholder颜色  */
+    color: #8590a6;
+    /* placeholder字体大小  */
+    font-size: 13px;
+}
+
+.custom-modal-padding {
+    padding: 0 20px;
+}
+
+.custom-favlists-items {
+    max-height: 335px;
+    min-height: 140px;
+    margin-bottom: 40px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.custom-favlists-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.custom-favlists-itemInner {
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.custom-favlists-itemName {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.custom-favlists-itemName-text {
+    overflow: hidden;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.custom-favlists-itemContent {
+    font-size: 14px;
+    color: #8590a6;
+    margin-top: 4px;
+}
+
+.custom-favlists-btn {
+    padding-left: 0;
+    padding-right: 0;
+    width: 76px;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
