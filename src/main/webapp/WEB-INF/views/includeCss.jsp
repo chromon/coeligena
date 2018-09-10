@@ -17,7 +17,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/custom.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/webui-popover/jquery.webui-popover.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/jquery-labelauty/jquery-labelauty.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/nprogress/nprogress.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/select2/select2.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugin/select2/select2-bootstrap.css">

@@ -16,7 +16,6 @@
 
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/plugin/webui-popover/jquery.webui-popover.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/resources/plugin/jquery-labelauty/jquery-labelauty.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/plugin/bootstrap-treeview/bootstrap-treeview.min.js" type="text/javascript"></script>
 
 

@@ -3,39 +3,28 @@
  * answer/ article collect
  */
 
-// 获取 base path
-let localObj = window.location;
-let contextPath = localObj.pathname.split("/")[1];
-let basePath2 = localObj.protocol + "//" + localObj.host;
-
 // 展示收藏 modal
 function showCollectionsList() {
-    $('#modalCreateLabel').hide();
     $('#modalCreateLabel').addClass('hidden');
-    $('#modalAddLabel').show();
+    $('#modalAddLabel').removeClass('hidden');
 
-    $('#create_favorite').hide();
     $('#create_favorite').addClass('hidden');
-    $('#favorite_list').show()
+    $('#favorite_list').removeClass('hidden');
 
-    $('#modalCreateFooter').hide();
     $('#modalCreateFooter').addClass('hidden');
-    $('#modalAddFooter').show();
+    $('#modalAddFooter').removeClass('hidden');
 }
 
 // 展示创建收藏夹 modal
 function showCreateCollectionFolder() {
-    $('#modalAddLabel').hide();
+    $('#modalAddLabel').addClass('hidden');
     $('#modalCreateLabel').removeClass('hidden');
-    $('#modalCreateLabel').show();
 
-    $('#favorite_list').hide();
+    $('#favorite_list').addClass('hidden');
     $('#create_favorite').removeClass('hidden');
-    $('#create_favorite').show();
 
-    $('#modalAddFooter').hide();
+    $('#modalAddFooter').addClass('hidden');
     $('#modalCreateFooter').removeClass('hidden');
-    $('#modalCreateFooter').show();
 }
 
 // 展示创建收藏夹
@@ -59,10 +48,9 @@ $('#create_collection_folder').click(function () {
         type: "POST",
         url: basePath2 + "/create-collection-folder",
         data: {
-            answerId: answerId,
-            reviewerId: $('#reviewer-id-r-' + id).val(),
-            parentCommentId: id,
-            commentContent: content
+            folderName: collection_folder_name,
+            description: collection_description,
+            forPublic: folder_privacy
         },
         dataType: "json",
         success: function (data) {

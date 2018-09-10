@@ -60,7 +60,7 @@
                             公开 <span class="custom-collection-text">有其他人关注此收藏夹时不可设置为私密</span>
                         </div>
                         <div class="custom-margin-bottom10">
-                            <input name="folder_privacy" type="radio" value="2">
+                            <input name="folder_privacy" type="radio" value="0">
                             私密 <span class="custom-collection-text">只有你自己可以查看这个收藏夹</span>
                         </div>
                     </div>
