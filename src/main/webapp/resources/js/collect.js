@@ -3,6 +3,28 @@
  * answer/ article collect
  */
 
+$('#collectModal').on('shown.bs.modal', function () {
+    $.ajax({
+        type: "GET",
+        url: basePath2 + "/collection-folders-list",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+
+            // 使用 handlebars 获取模板
+            var tpl = $("#collection-folder-items-template").html();
+            // 预编译模板
+            var template = Handlebars.compile(tpl);
+            // 匹配 json 内容
+            var html = template(data);
+            // 输入模板
+            $('#favorite_list').html(html);
+
+            // $('#collection-folder-items').append();
+        }
+    });
+});
+
 // 展示收藏 modal
 function showCollectionsList() {
     $('#modalCreateLabel').addClass('hidden');
@@ -56,15 +78,16 @@ $('#create_collection_folder').click(function () {
         success: function (data) {
             // console.log(data);
 
-            // 使用 handlebars 获取模板
-            var tpl = $("#answer-comments-template").html();
-            // 预编译模板
-            var template = Handlebars.compile(tpl);
-            // 匹配 json 内容
-            var html = template(data);
-            // 输入模板
-            $('#comments-container-' + answerId).append(html);
+            // // 使用 handlebars 获取模板
+            // var tpl = $("#collection-folder-items-template").html();
+            // // 预编译模板
+            // var template = Handlebars.compile(tpl);
+            // // 匹配 json 内容
+            // var html = template(data);
+            // // 输入模板
+            // $('#favorite_list').append(html);
 
+            $('#collection-folder-items').append();
         }
     });
 

@@ -3084,3 +3084,9 @@ ins {
     -ms-flex-negative: 0;
     flex-shrink: 0;
 }
+
+.custom-collection-lock {
+    font-size: 14px;
+    margin-left: 5px;
+    color:#8590a6;
+}

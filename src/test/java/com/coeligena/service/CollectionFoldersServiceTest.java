@@ -32,6 +32,12 @@ public class CollectionFoldersServiceTest {
         Assert.assertEquals(collectionFoldersDO.getId(), 1);
     }
 
+    @Test
+    public void testQueryCollectionFoldersByOwnerId() {
+        Assert.assertEquals(collectionFoldersService
+                .queryCollectionFoldersByOwnerId(1).size(), 2);
+    }
+
     @Autowired
     public void setCollectionFoldersService(CollectionFoldersService collectionFoldersService) {
         this.collectionFoldersService = collectionFoldersService;

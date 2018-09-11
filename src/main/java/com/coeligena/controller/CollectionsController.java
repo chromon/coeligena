@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * collections controller
@@ -46,6 +48,26 @@ public class CollectionsController {
         collectionFoldersService.saveCollectionFolders(collectionFoldersDO);
 
         return "create collection folder success.";
+    }
+
+    /**
+     * 查询收藏夹列表 with ajax
+     * @param request http servlet request
+     * @return 收藏夹列表
+     */
+    @RequestMapping(value = "/collection-folders-list", method = RequestMethod.GET)
+    @ResponseBody
+    public List<CollectionFoldersDO> collectionFoldersList(HttpServletRequest request) {
+
+        List<CollectionFoldersDO> collectionFoldersDOList = new ArrayList<>();
+
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        collectionFoldersDOList = collectionFoldersService
+                .queryCollectionFoldersByOwnerId(userInfoDTO.getUsersDO().getId());
+
+        return collectionFoldersDOList;
     }
 
     @RequestMapping(value = "/collections", method = RequestMethod.GET)

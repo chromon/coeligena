@@ -9,7 +9,7 @@
          pageEncoding="UTF-8"%>
 
 <!-- collection modal -->
-<div class="modal fade" id="collectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="collectModal">
     <div class="modal-dialog" role="document">
         <div id="add_favorite" class="modal-content custom-modal-padding">
             <div class="modal-header">
@@ -21,35 +21,6 @@
             </div>
             <div class="modal-body">
                 <div id="favorite_list" class="custom-favor-list">
-                    <%--<span>你可以创建多个收藏夹，将答案分类收藏</span>--%>
-                    <div class="custom-favlists-items">
-                        <div class="custom-favlists-item">
-                            <div class="custom-favlists-itemInner">
-                                <div class="custom-favlists-itemName">
-                                    <span class="custom-favlists-itemName-text">tech</span>
-                                </div>
-                                <div class="custom-favlists-itemContent">
-                                    5 条内容
-                                </div>
-                            </div>
-                            <button type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
-                                收藏
-                            </button>
-                        </div>
-                        <div class="custom-favlists-item">
-                            <div class="custom-favlists-itemInner">
-                                <div class="custom-favlists-itemName">
-                                    <span class="custom-favlists-itemName-text">tech</span>
-                                </div>
-                                <div class="custom-favlists-itemContent">
-                                    5 条内容
-                                </div>
-                            </div>
-                            <button type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
-                                收藏
-                            </button>
-                        </div>
-                    </div>
                 </div>
                 <div id="create_favorite" class="hidden">
                     <div class="custom-create-collection">
@@ -80,3 +51,28 @@
     </div>
 </div>
 <!-- end collection modal -->
+
+<script type="text/template" id="collection-folder-items-template">
+    <%--<span>你可以创建多个收藏夹，将答案分类收藏</span>--%>
+    <div id="collection-folder-items" class="custom-favlists-items">
+        {{#each this}}
+        <div class="custom-favlists-item">
+            <div class="custom-favlists-itemInner">
+                <div class="custom-favlists-itemName">
+                    <span class="custom-favlists-itemName-text">{{folderName}}</span>
+                    {{#if forPublic}}
+                    {{else}}
+                    <span class="custom-collection-lock"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                    {{/if}}
+                </div>
+                <div class="custom-favlists-itemContent">
+                    {{answersCount}} 条内容
+                </div>
+            </div>
+            <button type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
+                收藏
+            </button>
+        </div>
+        {{/each}}
+    </div>
+</script>

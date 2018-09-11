@@ -6,6 +6,8 @@ import com.coeligena.service.CollectionFoldersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *     收藏夹信息实现类
@@ -24,6 +26,16 @@ public class CollectionFoldersServiceImpl implements CollectionFoldersService {
     @Override
     public void saveCollectionFolders(CollectionFoldersDO collectionFoldersDO) {
         this.collectionFoldersDAO.saveCollectionFolders(collectionFoldersDO);
+    }
+
+    /**
+     * 由创建用户 id 查询全部收藏夹信息
+     * @param ownerId 用户 id
+     * @return 收藏夹列表
+     */
+    @Override
+    public List<CollectionFoldersDO> queryCollectionFoldersByOwnerId(int ownerId) {
+        return this.collectionFoldersDAO.queryCollectionFoldersByOwnerId(ownerId);
     }
 
     @Autowired
