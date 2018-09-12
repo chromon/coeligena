@@ -3047,7 +3047,7 @@ ins {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 8px 0;
+    padding: 8px 20px;
     border-bottom: 1px solid #ebebeb;
 }
 

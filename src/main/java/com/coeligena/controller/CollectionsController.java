@@ -34,7 +34,7 @@ public class CollectionsController {
      */
     @RequestMapping(value = "/create-collection-folder", method = RequestMethod.POST)
     @ResponseBody
-    public String createCollectionFolder(HttpServletRequest request,
+    public CollectionFoldersDO createCollectionFolder(HttpServletRequest request,
                                          @ModelAttribute CollectionDTO collectionDTO) {
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
@@ -47,7 +47,7 @@ public class CollectionsController {
         collectionFoldersDO.setOwnerId(userInfoDTO.getUsersDO().getId());
         collectionFoldersService.saveCollectionFolders(collectionFoldersDO);
 
-        return "create collection folder success.";
+        return collectionFoldersDO;
     }
 
     /**

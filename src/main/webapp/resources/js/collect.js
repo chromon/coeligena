@@ -9,7 +9,7 @@ $('#collectModal').on('shown.bs.modal', function () {
         url: basePath2 + "/collection-folders-list",
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            // console.log(data);
 
             // 使用 handlebars 获取模板
             var tpl = $("#collection-folder-items-template").html();
@@ -19,8 +19,6 @@ $('#collectModal').on('shown.bs.modal', function () {
             var html = template(data);
             // 输入模板
             $('#favorite_list').html(html);
-
-            // $('#collection-folder-items').append();
         }
     });
 });
@@ -76,18 +74,16 @@ $('#create_collection_folder').click(function () {
         },
         dataType: "json",
         success: function (data) {
-            // console.log(data);
+            console.log(data);
 
-            // // 使用 handlebars 获取模板
-            // var tpl = $("#collection-folder-items-template").html();
-            // // 预编译模板
-            // var template = Handlebars.compile(tpl);
-            // // 匹配 json 内容
-            // var html = template(data);
-            // // 输入模板
-            // $('#favorite_list').append(html);
-
-            $('#collection-folder-items').append();
+            // 使用 handlebars 获取模板
+            var tpl = $("#collection-folder-item-template").html();
+            // 预编译模板
+            var template = Handlebars.compile(tpl);
+            // 匹配 json 内容
+            var html = template(data);
+            // 输入模板
+            $('#collection-folder-items').append(html);
         }
     });
 

@@ -53,7 +53,7 @@
 <!-- end collection modal -->
 
 <script type="text/template" id="collection-folder-items-template">
-    <%--<span>你可以创建多个收藏夹，将答案分类收藏</span>--%>
+    {{#if this}}
     <div id="collection-folder-items" class="custom-favlists-items">
         {{#each this}}
         <div class="custom-favlists-item">
@@ -74,5 +74,28 @@
             </button>
         </div>
         {{/each}}
+    </div>
+    {{else}}
+    <span>你可以创建多个收藏夹，将答案分类收藏</span>
+    {{/if}}
+</script>
+
+<script type="text/template" id="collection-folder-item-template">
+    <div class="custom-favlists-item">
+        <div class="custom-favlists-itemInner">
+            <div class="custom-favlists-itemName">
+                <span class="custom-favlists-itemName-text">{{folderName}}</span>
+                {{#if forPublic}}
+                {{else}}
+                <span class="custom-collection-lock"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                {{/if}}
+            </div>
+            <div class="custom-favlists-itemContent">
+                {{answersCount}} 条内容
+            </div>
+        </div>
+        <button type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
+            收藏
+        </button>
     </div>
 </script>
