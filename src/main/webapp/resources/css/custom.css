@@ -3090,3 +3090,8 @@ ins {
     margin-left: 5px;
     color:#8590a6;
 }
+
+.btn--grey {
+    color: #fff;
+    background-color: #8590a6;
+}

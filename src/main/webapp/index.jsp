@@ -300,7 +300,7 @@
                                                 <li><a href="#">扫一扫</a></li>
                                             </ul>
                                         </div>
-                                        <button class="custom-contentItem-action custom-btn-plain" type="button"  data-toggle="modal" data-target="#collectModal">
+                                        <button class="custom-contentItem-action custom-btn-plain" type="button" data-toggle="modal" data-target="#collectModal">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <i class="fa fa-star custom-margin-right5"></i>
                                                 收藏

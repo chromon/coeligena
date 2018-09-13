@@ -3,25 +3,36 @@
  * answer/ article collect
  */
 
-$('#collectModal').on('shown.bs.modal', function () {
-    $.ajax({
-        type: "GET",
-        url: basePath2 + "/collection-folders-list",
-        dataType: "json",
-        success: function (data) {
-            // console.log(data);
+function showCollectModal(id) {
+    $('#collectModal').modal('show');
 
-            // 使用 handlebars 获取模板
-            var tpl = $("#collection-folder-items-template").html();
-            // 预编译模板
-            var template = Handlebars.compile(tpl);
-            // 匹配 json 内容
-            var html = template(data);
-            // 输入模板
-            $('#favorite_list').html(html);
-        }
+    $('#collectModal').on('shown.bs.modal', function () {
+        $.ajax({
+            type: "GET",
+            url: basePath2 + "/collection-folders-list",
+            dataType: "json",
+            success: function (data) {
+                // console.log(data);
+
+                // 添加回答 id
+                for (let c = 0; c < data.length; c ++) {
+                    data[c]['answerId'] = id;
+                }
+
+                // 使用 handlebars 获取模板
+                let tpl = $("#collection-folder-items-template").html();
+                // 预编译模板
+                let template = Handlebars.compile(tpl);
+                // 匹配 json 内容
+                let html = template(data);
+                // 输入模板
+                $('#favorite_list').html(html);
+            }
+        });
     });
-});
+}
+
+
 
 // 展示收藏 modal
 function showCollectionsList() {
@@ -74,7 +85,12 @@ $('#create_collection_folder').click(function () {
         },
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            // console.log(data);
+
+            // 添加回答 id
+            for (let c = 0; c < data.length; c ++) {
+                data[c]['answerId'] = id;
+            }
 
             // 使用 handlebars 获取模板
             var tpl = $("#collection-folder-item-template").html();
@@ -90,3 +106,17 @@ $('#create_collection_folder').click(function () {
     // 返回收藏夹列表页
     showCollectionsList();
 });
+
+// 添加答案到收藏夹
+function toFolder(obj, id, answerId) {
+
+    if ($(obj).hasClass('btn-outline-primary')) {
+        $(obj).removeClass('btn-outline-primary');
+        $(obj).addClass('btn--grey');
+        $(obj).text('已收藏');
+    } else {
+        $(obj).removeClass('btn--grey');
+        $(obj).addClass('btn-outline-primary');
+        $(obj).text('收藏');
+    }
+}

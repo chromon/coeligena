@@ -69,7 +69,7 @@
                     {{answersCount}} 条内容
                 </div>
             </div>
-            <button type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
+            <button onclick="toFolder(this, '{{id}}', '{{answerId}}');" type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
                 收藏
             </button>
         </div>
@@ -94,7 +94,7 @@
                 {{answersCount}} 条内容
             </div>
         </div>
-        <button type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
+        <button type="button" onclick="toFolder(this, '{{id}}', '{{answerId}}');" class="custom-favlists-btn custom-btn btn-outline-primary">
             收藏
         </button>
     </div>

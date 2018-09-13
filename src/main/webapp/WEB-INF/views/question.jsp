@@ -356,8 +356,8 @@
                                                         <i class="fa fa-star custom-margin-right5"></i>
                                                         收藏
                                                     </span>
-                                                        </button>
-                                                        <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                                </button>
+                                                <button class="custom-contentItem-action custom-btn-plain" type="button">
                                                     <span style="display: inline-flex;align-items: center;">
                                                         <i class="fa fa-heart custom-margin-right5"></i>
                                                         感谢
@@ -499,17 +499,17 @@
                                                     <li><a href="#">扫一扫</a></li>
                                                 </ul>
                                             </div>
-                                            <button class="custom-contentItem-action custom-btn-plain" type="button" data-toggle="modal" data-target="#collectModal">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-star custom-margin-right5"></i>
-                                                收藏
-                                            </span>
+                                            <button onclick="showCollectModal('${answersDTOList.answersDO.id}')" class="custom-contentItem-action custom-btn-plain" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-star custom-margin-right5"></i>
+                                                    收藏
+                                                </span>
                                             </button>
                                             <button class="custom-contentItem-action custom-btn-plain" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-heart custom-margin-right5"></i>
-                                                感谢
-                                            </span>
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-heart custom-margin-right5"></i>
+                                                    感谢
+                                                </span>
                                             </button>
                                             <div class="custom-drop-option2">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
