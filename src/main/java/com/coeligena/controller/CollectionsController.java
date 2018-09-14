@@ -5,7 +5,9 @@ import com.coeligena.dto.CommentDTO;
 import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.model.CollectionFoldersDO;
+import com.coeligena.model.CollectionsDO;
 import com.coeligena.service.CollectionFoldersService;
+import com.coeligena.service.CollectionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,7 @@ import java.util.List;
 public class CollectionsController {
 
     private CollectionFoldersService collectionFoldersService;
+    private CollectionsService collectionsService;
 
     /**
      * 创建收藏夹 ajax controller
@@ -70,6 +73,35 @@ public class CollectionsController {
         return collectionFoldersDOList;
     }
 
+    /**
+     * 收藏回答到收藏夹 ajax
+     * @param request http servlet request
+     * @param collectionDTO collection dto
+     * @return success info
+     */
+    @RequestMapping(value = "/add-to-collection-folders", method = RequestMethod.POST)
+    @ResponseBody
+    public String addToCollectionFolder(HttpServletRequest request,
+                                                      @ModelAttribute CollectionDTO collectionDTO) {
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        // 创建收藏信息
+        CollectionsDO collectionsDO = new CollectionsDO();
+        collectionsDO.setAnswerId(collectionDTO.getAnswerId());
+        collectionsDO.setCollectionFolderId(collectionDTO.getFolderId());
+        collectionsDO.setOwnerId(userInfoDTO.getUsersDO().getId());
+        collectionsService.saveCollections(collectionsDO);
+
+        // 更新收藏夹回答数量
+        CollectionFoldersDO collectionFoldersDO = this.collectionFoldersService
+                .queryCollectionFolderById(collectionDTO.getFolderId());
+        collectionFoldersDO.setAnswersCount(collectionFoldersDO.getAnswersCount() + 1);
+        this.collectionFoldersService.modifyCollectionFolders(collectionFoldersDO);
+
+        return "success add to collection folders";
+    }
+
     @RequestMapping(value = "/collections", method = RequestMethod.GET)
     public String collections() {
         return "collections";
@@ -88,5 +120,10 @@ public class CollectionsController {
     @Autowired
     public void setCollectionFoldersService(CollectionFoldersService collectionFoldersService) {
         this.collectionFoldersService = collectionFoldersService;
+    }
+
+    @Autowired
+    public void setCollectionsService(CollectionsService collectionsService) {
+        this.collectionsService = collectionsService;
     }
 }

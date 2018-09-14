@@ -110,13 +110,45 @@ $('#create_collection_folder').click(function () {
 // 添加答案到收藏夹
 function toFolder(obj, id, answerId) {
 
+    let data =  {
+        folderId: id,
+        answerId: answerId,
+    };
+
     if ($(obj).hasClass('btn-outline-primary')) {
+        // 收藏
         $(obj).removeClass('btn-outline-primary');
         $(obj).addClass('btn--grey');
         $(obj).text('已收藏');
+
+        collect(data, "/add-to-collection-folders");
     } else {
+        // 取消收藏
         $(obj).removeClass('btn--grey');
         $(obj).addClass('btn-outline-primary');
         $(obj).text('收藏');
+
+        collect(data, "/remove-from-collection-folders");
     }
+}
+
+function collect(d, path) {
+    $.ajax({
+        type: "POST",
+        url: basePath2 + path,
+        data: d,
+        dataType: "json",
+        success: function (data) {
+            console.log(JSON.stringify(data));
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log('responseText: ' + jqXHR.responseText);
+            console.log('status: ' + jqXHR.status);
+            console.log('readyState: ' + jqXHR.readyState);
+            console.log('statusText: ' + jqXHR.statusText);
+
+            console.log('textStatus: ' + textStatus);
+            console.log('errorThrown: ' + errorThrown);
+        }
+    });
 }

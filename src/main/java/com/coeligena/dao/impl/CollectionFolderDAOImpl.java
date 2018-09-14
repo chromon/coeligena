@@ -46,4 +46,26 @@ public class CollectionFolderDAOImpl implements CollectionFoldersDAO {
         query.setParameter("ownerId", ownerId);
         return query.list();
     }
+
+    /**
+     * 更新收藏夹
+     * @param collectionFoldersDO 收藏夹信息
+     */
+    @Override
+    public void updateCollectionFolders(CollectionFoldersDO collectionFoldersDO) {
+        this.getSession().update(collectionFoldersDO);
+    }
+
+    /**
+     * 由收藏夹 id 查询收藏夹信息
+     * @param id 收藏夹 id
+     * @return 收藏夹信息
+     */
+    @Override
+    public CollectionFoldersDO queryCollectionFolderById(int id) {
+        String sql = "from CollectionFoldersDO cf where cf.id =:id";
+        Query query = this.getSession().createQuery(sql);
+        query.setParameter("id", id);
+        return (CollectionFoldersDO) query.uniqueResult();
+    }
 }

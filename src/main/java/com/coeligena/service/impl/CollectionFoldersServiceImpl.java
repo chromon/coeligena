@@ -38,6 +38,25 @@ public class CollectionFoldersServiceImpl implements CollectionFoldersService {
         return this.collectionFoldersDAO.queryCollectionFoldersByOwnerId(ownerId);
     }
 
+    /**
+     * 更新收藏夹
+     * @param collectionFoldersDO 收藏夹信息
+     */
+    @Override
+    public void modifyCollectionFolders(CollectionFoldersDO collectionFoldersDO) {
+        this.collectionFoldersDAO.updateCollectionFolders(collectionFoldersDO);
+    }
+
+    /**
+     * 由收藏夹 id 查询收藏夹信息
+     * @param id 收藏夹 id
+     * @return 收藏夹信息
+     */
+    @Override
+    public CollectionFoldersDO queryCollectionFolderById(int id) {
+        return this.collectionFoldersDAO.queryCollectionFolderById(id);
+    }
+
     @Autowired
     public void setCollectionFoldersDAO(CollectionFoldersDAO collectionFoldersDAO) {
         this.collectionFoldersDAO = collectionFoldersDAO;

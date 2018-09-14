@@ -24,4 +24,17 @@ public interface CollectionFoldersService {
      * @return 收藏夹列表
      */
     List<CollectionFoldersDO> queryCollectionFoldersByOwnerId(int ownerId);
+
+    /**
+     * 更新收藏夹
+     * @param collectionFoldersDO 收藏夹信息
+     */
+    void modifyCollectionFolders(CollectionFoldersDO collectionFoldersDO);
+
+    /**
+     * 由收藏夹 id 查询收藏夹信息
+     * @param id 收藏夹 id
+     * @return 收藏夹信息
+     */
+    CollectionFoldersDO queryCollectionFolderById(int id);
 }

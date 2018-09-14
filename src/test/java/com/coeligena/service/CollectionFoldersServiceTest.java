@@ -38,6 +38,31 @@ public class CollectionFoldersServiceTest {
                 .queryCollectionFoldersByOwnerId(1).size(), 2);
     }
 
+    @Test
+    public void testModifyCollectionFolders() {
+
+        CollectionFoldersDO collectionFoldersDO = new CollectionFoldersDO();
+        collectionFoldersDO.setFolderName("test");
+        collectionFoldersDO.setDescription("collection folder");
+        this.collectionFoldersService.saveCollectionFolders(collectionFoldersDO);
+
+        collectionFoldersDO.setFolderName("hehe");
+        this.collectionFoldersService.saveCollectionFolders(collectionFoldersDO);
+
+        Assert.assertEquals(collectionFoldersDO.getFolderName(), "hehe");
+    }
+
+    @Test
+    public void testQueryCollectionFolderById() {
+        CollectionFoldersDO collectionFoldersDO = new CollectionFoldersDO();
+        collectionFoldersDO.setFolderName("test");
+        collectionFoldersDO.setDescription("collection folder");
+        this.collectionFoldersService.saveCollectionFolders(collectionFoldersDO);
+
+        Assert.assertEquals(this.collectionFoldersService
+                .queryCollectionFolderById(collectionFoldersDO.getId()).getId(), collectionFoldersDO.getId());
+    }
+
     @Autowired
     public void setCollectionFoldersService(CollectionFoldersService collectionFoldersService) {
         this.collectionFoldersService = collectionFoldersService;

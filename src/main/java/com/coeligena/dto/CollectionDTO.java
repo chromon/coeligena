@@ -6,11 +6,15 @@ package com.coeligena.dto;
  */
 public class CollectionDTO {
 
+    private int folderId;
+
     private String folderName;
 
     private String description;
 
     private byte forPublic;
+
+    private int answerId;
 
     public String getFolderName() {
         return folderName;
@@ -34,5 +38,21 @@ public class CollectionDTO {
 
     public void setForPublic(byte forPublic) {
         this.forPublic = forPublic;
+    }
+
+    public int getFolderId() {
+        return folderId;
+    }
+
+    public void setFolderId(int folderId) {
+        this.folderId = folderId;
+    }
+
+    public int getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(int answerId) {
+        this.answerId = answerId;
     }
 }
