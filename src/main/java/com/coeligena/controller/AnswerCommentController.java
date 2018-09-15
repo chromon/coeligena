@@ -6,6 +6,7 @@ import com.coeligena.dto.CommentDTO;
 import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.date.DateUtils;
+import com.coeligena.function.info.Information;
 import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswerCommentsDO;
 import com.coeligena.model.AnswersDO;
@@ -14,6 +15,8 @@ import com.coeligena.model.UsersDO;
 import com.coeligena.service.AnswerCommentsService;
 import com.coeligena.service.CommentApprovalsService;
 import com.coeligena.service.UsersService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -153,7 +156,7 @@ public class AnswerCommentController {
      */
     @RequestMapping(value = "/answer-comments-like", method = RequestMethod.POST)
     @ResponseBody
-    public String questionCommentsLike(HttpServletRequest request, @ModelAttribute CommentDTO commentDTO) {
+    public String questionCommentsLike(HttpServletRequest request, @ModelAttribute CommentDTO commentDTO) throws JsonProcessingException {
 
         // 赞：1，踩：2
         int commentAction = commentDTO.getCommentAction();
@@ -239,7 +242,14 @@ public class AnswerCommentController {
             }
         }
 
-        return "answer comment vote success.";
+        // 返回消息
+        Information info = new Information();
+        info.setInfoType("success");
+        info.setInfoContent("answer comment vote success.");
+
+        // json 格式化
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(info);
     }
 
     /**

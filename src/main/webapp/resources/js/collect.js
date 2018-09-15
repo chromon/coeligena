@@ -139,7 +139,7 @@ function collect(d, path) {
         data: d,
         dataType: "json",
         success: function (data) {
-            console.log(JSON.stringify(data));
+            console.log(JSON.parse(JSON.stringify(data)));
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('responseText: ' + jqXHR.responseText);

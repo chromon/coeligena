@@ -5,6 +5,7 @@ import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.QuestionCommentDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.date.DateUtils;
+import com.coeligena.function.info.Information;
 import com.coeligena.function.paging.Page;
 import com.coeligena.model.CommentApprovalsDO;
 import com.coeligena.model.QuestionCommentsDO;
@@ -14,6 +15,8 @@ import com.coeligena.service.CommentApprovalsService;
 import com.coeligena.service.QuestionCommentService;
 import com.coeligena.service.QuestionsService;
 import com.coeligena.service.UsersService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +40,7 @@ public class QuestionCommentController {
 
     /**
      * 提交问题评论 ajax 请求
-     * @param request httpservletrequest
+     * @param request http servlet request
      * @param questionCommentDTO 问题评论信息
      * @return 问题评论相关信息 dto
      */
@@ -61,7 +64,7 @@ public class QuestionCommentController {
 
     /**
      * 问题评论回复
-     * @param request httpservletrequest
+     * @param request http servlet request
      * @param questionCommentDTO 问题评论信息
      * @return 问题评论相关信息
      */
@@ -92,7 +95,7 @@ public class QuestionCommentController {
      */
     @RequestMapping(value = "/question-comments-like", method = RequestMethod.POST)
     @ResponseBody
-    public String questionCommentsLike(HttpServletRequest request, @ModelAttribute CommentDTO commentDTO) {
+    public String questionCommentsLike(HttpServletRequest request, @ModelAttribute CommentDTO commentDTO) throws JsonProcessingException {
 
         // 赞：1，踩：2
         int commentAction = commentDTO.getCommentAction();
@@ -177,12 +180,19 @@ public class QuestionCommentController {
             }
         }
 
-        return "question comment vote success.";
+        // 返回消息
+        Information info = new Information();
+        info.setInfoType("success");
+        info.setInfoContent("question comment vote success.");
+
+        // json 格式化
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(info);
     }
 
     /**
      * 问题评论处理方法
-     * @param request httpservletrequest
+     * @param request http servlet request
      * @param questionCommentDTO 问题评论信息
      * @return 问题评论相关信息
      */

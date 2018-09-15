@@ -4,10 +4,13 @@ import com.coeligena.dto.CollectionDTO;
 import com.coeligena.dto.CommentDTO;
 import com.coeligena.dto.PagingListDTO;
 import com.coeligena.dto.UserInfoDTO;
+import com.coeligena.function.info.Information;
 import com.coeligena.model.CollectionFoldersDO;
 import com.coeligena.model.CollectionsDO;
 import com.coeligena.service.CollectionFoldersService;
 import com.coeligena.service.CollectionsService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,7 +85,7 @@ public class CollectionsController {
     @RequestMapping(value = "/add-to-collection-folders", method = RequestMethod.POST)
     @ResponseBody
     public String addToCollectionFolder(HttpServletRequest request,
-                                                      @ModelAttribute CollectionDTO collectionDTO) {
+                                        @ModelAttribute CollectionDTO collectionDTO) throws JsonProcessingException {
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
@@ -99,7 +102,14 @@ public class CollectionsController {
         collectionFoldersDO.setAnswersCount(collectionFoldersDO.getAnswersCount() + 1);
         this.collectionFoldersService.modifyCollectionFolders(collectionFoldersDO);
 
-        return "success add to collection folders";
+        // 返回消息
+        Information info = new Information();
+        info.setInfoType("success");
+        info.setInfoContent("success add to collection folders");
+
+        // json 格式化
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(info);
     }
 
     @RequestMapping(value = "/collections", method = RequestMethod.GET)
