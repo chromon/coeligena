@@ -15,4 +15,12 @@ public interface CollectionsDAO {
      * @param collectionsDO 收藏信息
      */
     void addCollections(CollectionsDO collectionsDO);
+
+    /**
+     * 由回答 id 和收藏夹 id 查询收藏信息
+     * @param answerId 回答 id
+     * @param folderId 收藏夹 id
+     * @return 收藏信息
+     */
+    CollectionsDO queryCollectionsByAnswerIdAndFolderId(int answerId, int folderId);
 }

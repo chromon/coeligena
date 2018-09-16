@@ -61,19 +61,24 @@ public class CollectionsController {
      * @param request http servlet request
      * @return 收藏夹列表
      */
-    @RequestMapping(value = "/collection-folders-list", method = RequestMethod.GET)
+    @RequestMapping(value = "/collection-folders-list", method = RequestMethod.POST)
     @ResponseBody
-    public List<CollectionFoldersDO> collectionFoldersList(HttpServletRequest request) {
-
-        List<CollectionFoldersDO> collectionFoldersDOList = new ArrayList<>();
+    public List<CollectionDTO> collectionFoldersList(HttpServletRequest request,
+                                                           @ModelAttribute CollectionDTO collectionDTO) {
+        List<CollectionDTO> collectionDTOList = new ArrayList<>();
 
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
-        collectionFoldersDOList = collectionFoldersService
+        // 收藏夹列表
+        List<CollectionFoldersDO> collectionFoldersDOList = collectionFoldersService
                 .queryCollectionFoldersByOwnerId(userInfoDTO.getUsersDO().getId());
+        for (CollectionFoldersDO cfd: collectionFoldersDOList) {
 
-        return collectionFoldersDOList;
+        }
+
+
+        return collectionDTOList;
     }
 
     /**

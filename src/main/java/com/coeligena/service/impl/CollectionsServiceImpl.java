@@ -24,6 +24,17 @@ public class CollectionsServiceImpl implements CollectionsService {
         this.collectionsDAO.addCollections(collectionsDO);
     }
 
+    /**
+     * 由回答 id 和收藏夹 id 查询收藏信息
+     * @param answerId 回答 id
+     * @param folderId 收藏夹 id
+     * @return 收藏信息
+     */
+    @Override
+    public CollectionsDO queryCollectionByAnswerIdAndFolderId(int answerId, int folderId) {
+        return this.collectionsDAO.queryCollectionsByAnswerIdAndFolderId(answerId, folderId);
+    }
+
     @Autowired
     public void setCollectionsDAO(CollectionsDAO collectionsDAO) {
         this.collectionsDAO = collectionsDAO;

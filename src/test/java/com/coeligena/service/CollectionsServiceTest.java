@@ -30,6 +30,14 @@ public class CollectionsServiceTest {
         Assert.assertEquals(collectionsDO.getId(), 1);
     }
 
+    @Test
+    public void testQueryCollectionByAnswerIdAndFolderId() {
+        CollectionsDO collectionsDO = new CollectionsDO();
+        collectionsService.saveCollections(collectionsDO);
+
+        Assert.assertEquals(collectionsService.queryCollectionByAnswerIdAndFolderId(0, 0).getOwnerId(), 0);
+    }
+
     @Autowired
     public void setCollectionsService(CollectionsService collectionsService) {
         this.collectionsService = collectionsService;

@@ -8,8 +8,11 @@ function showCollectModal(id) {
 
     $('#collectModal').on('shown.bs.modal', function () {
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: basePath2 + "/collection-folders-list",
+            data: {
+                answerId: id
+            },
             dataType: "json",
             success: function (data) {
                 // console.log(data);

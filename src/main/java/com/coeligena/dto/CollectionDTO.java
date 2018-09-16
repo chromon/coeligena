@@ -1,5 +1,7 @@
 package com.coeligena.dto;
 
+import com.coeligena.model.CollectionFoldersDO;
+
 /**
  * collection dto
  * Created by Ellery on 2018/9/10.
@@ -15,6 +17,10 @@ public class CollectionDTO {
     private byte forPublic;
 
     private int answerId;
+
+    private CollectionFoldersDO collectionFoldersDO;
+
+    private boolean isCollected;
 
     public String getFolderName() {
         return folderName;
@@ -54,5 +60,21 @@ public class CollectionDTO {
 
     public void setAnswerId(int answerId) {
         this.answerId = answerId;
+    }
+
+    public CollectionFoldersDO getCollectionFoldersDO() {
+        return collectionFoldersDO;
+    }
+
+    public void setCollectionFoldersDO(CollectionFoldersDO collectionFoldersDO) {
+        this.collectionFoldersDO = collectionFoldersDO;
+    }
+
+    public boolean isCollected() {
+        return isCollected;
+    }
+
+    public void setCollected(boolean collected) {
+        isCollected = collected;
     }
 }
