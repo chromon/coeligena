@@ -59,19 +59,25 @@
         <div class="custom-favlists-item">
             <div class="custom-favlists-itemInner">
                 <div class="custom-favlists-itemName">
-                    <span class="custom-favlists-itemName-text">{{folderName}}</span>
-                    {{#if forPublic}}
+                    <span class="custom-favlists-itemName-text">{{collectionFoldersDO.folderName}}</span>
+                    {{#if collectionFoldersDO.forPublic}}
                     {{else}}
                     <span class="custom-collection-lock"><i class="fa fa-lock" aria-hidden="true"></i></span>
                     {{/if}}
                 </div>
                 <div class="custom-favlists-itemContent">
-                    {{answersCount}} 条内容
+                    {{collectionFoldersDO.answersCount}} 条内容
                 </div>
             </div>
-            <button onclick="toFolder(this, '{{id}}', '{{answerId}}');" type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
+            {{#if collected}}
+            <button onclick="toFolder(this, '{{collectionFoldersDO.id}}', '{{answerId}}');" type="button" class="custom-favlists-btn custom-btn btn--grey">
+                已收藏
+            </button>
+            {{else}}
+            <button onclick="toFolder(this, '{{collectionFoldersDO.id}}', '{{answerId}}');" type="button" class="custom-favlists-btn custom-btn btn-outline-primary">
                 收藏
             </button>
+            {{/if}}
         </div>
         {{/each}}
     </div>

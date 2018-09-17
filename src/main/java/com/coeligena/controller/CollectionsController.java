@@ -74,9 +74,15 @@ public class CollectionsController {
         List<CollectionFoldersDO> collectionFoldersDOList = collectionFoldersService
                 .queryCollectionFoldersByOwnerId(userInfoDTO.getUsersDO().getId());
         for (CollectionFoldersDO cfd: collectionFoldersDOList) {
-
+            CollectionsDO collectionsDO = collectionsService.queryCollectionByAnswerIdAndFolderId(
+                    collectionDTO.getAnswerId(), cfd.getId());
+            CollectionDTO cdto = new CollectionDTO();
+            cdto.setCollectionFoldersDO(cfd);
+            if (collectionsDO != null) {
+                cdto.setCollected(true);
+            }
+            collectionDTOList.add(cdto);
         }
-
 
         return collectionDTOList;
     }
