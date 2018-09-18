@@ -505,10 +505,10 @@
                                                     收藏
                                                 </span>
                                             </button>
-                                            <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                            <button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain" type="button">
                                                 <span style="display: inline-flex;align-items: center;">
                                                     <i class="fa fa-heart custom-margin-right5"></i>
-                                                    感谢
+                                                    <span class="thanks-text">感谢</span>
                                                 </span>
                                             </button>
                                             <div class="custom-drop-option2">

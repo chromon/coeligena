@@ -450,3 +450,45 @@ function likeUnlikeAnswerComment(data) {
         }
     });
 }
+
+// 感谢
+function forThanks(obj, answerId) {
+
+    let data = {
+        answerId: answerId
+    };
+
+    if ($(obj).hasClass('already-thanks')) {
+        $(obj).removeClass('already-thanks');
+        $(obj).find('.thanks-text').text('感谢');
+
+        thanksAjax(data, '/cancel-answer-thanks');
+    } else {
+        $(obj).addClass('already-thanks');
+        $(obj).find('.thanks-text').text('取消感谢');
+
+        thanksAjax(data, '/answer-thanks');
+    }
+}
+
+// 感谢实现
+function thanksAjax(data, url) {
+    $.ajax({
+        type: "POST",
+        url: basePath2 + url,
+        data: data,
+        dataType: "text",
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log('responseText: ' + jqXHR.responseText);
+            console.log('status: ' + jqXHR.status);
+            console.log('readyState: ' + jqXHR.readyState);
+            console.log('statusText: ' + jqXHR.statusText);
+
+            console.log('textStatus: ' + textStatus);
+            console.log('errorThrown: ' + errorThrown);
+        }
+    });
+}

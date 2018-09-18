@@ -15,7 +15,7 @@ function showCollectModal(id) {
             },
             dataType: "json",
             success: function (data) {
-                console.log(data);
+                // console.log(data);
 
                 // 添加回答 id
                 for (let c = 0; c < data.length; c ++) {
