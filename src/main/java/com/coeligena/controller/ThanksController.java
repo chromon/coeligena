@@ -1,6 +1,7 @@
 package com.coeligena.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +20,7 @@ public class ThanksController {
      */
     @RequestMapping(value="/answer-thanks", method = RequestMethod.POST)
     @ResponseBody
-    public String addThanks(int answerId) {
+    public String addThanks(@ModelAttribute int answerId) {
 
         return "";
     }
@@ -31,7 +32,7 @@ public class ThanksController {
      */
     @RequestMapping(value="/cancel-answer-thanks", method = RequestMethod.POST)
     @ResponseBody
-    public String cancelThanks(int answerId) {
+    public String cancelThanks(@ModelAttribute int answerId) {
 
         return "";
     }

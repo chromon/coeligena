@@ -20,7 +20,7 @@ public class ThanksDO {
     private int answerId;
 
     /** 发出感谢用户 id */
-    private int thankerId;
+    private int thankUserId;
 
     /** 感谢回答时间 */
     private Timestamp thankTime;
@@ -65,17 +65,17 @@ public class ThanksDO {
      * 获取发出感谢用户 id
      * @return 发出感谢用户 id
      */
-    @Column(name = "thanker_id", nullable = false, columnDefinition = "int(11) default '0'")
-    public int getThankerId() {
-        return thankerId;
+    @Column(name = "thank_user_id", nullable = false, columnDefinition = "int(11) default '0'")
+    public int getThankUserId() {
+        return thankUserId;
     }
 
     /**
      * 设置发出感谢用户 id
-     * @param thankerId 发出感谢的用户 id
+     * @param thankUserId 发出感谢的用户 id
      */
-    public void setThankerId(int thankerId) {
-        this.thankerId = thankerId;
+    public void setThankUserId(int thankUserId) {
+        this.thankUserId = thankUserId;
     }
 
     /**

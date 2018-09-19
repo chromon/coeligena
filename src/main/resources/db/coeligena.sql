@@ -461,7 +461,7 @@ CREATE TABLE IF NOT EXISTS comment_approvals (
 CREATE TABLE IF NOT EXISTS thanks (
     id         INT(11)   NOT NULL AUTO_INCREMENT, /* 感谢ID（唯一标识） */
     answer_id  INT(11)   NOT NULL DEFAULT '0', /* 被感谢回答ID */
-    thanker_id INT(11)   NOT NULL DEFAULT '0', /* 感谢用户ID */
+    thank_user_id INT(11)   NOT NULL DEFAULT '0', /* 感谢用户ID */
     thank_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 感谢回答时间 */
     PRIMARY KEY (id),
     INDEX (answer_id),
