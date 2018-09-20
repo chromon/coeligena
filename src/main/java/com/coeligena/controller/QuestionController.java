@@ -1,6 +1,7 @@
 package com.coeligena.controller;
 
 import com.coeligena.dto.AnswersDTO;
+import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class QuestionController {
     private AnswersService answersService;
     private UsersService usersService;
     private VotesService votesService;
+    private ThanksService thanksService;
 
     /**
      * 问题页面
@@ -33,7 +36,11 @@ public class QuestionController {
      * @return 问题页
      */
     @RequestMapping(value = "/question/{questionId}", method = RequestMethod.GET)
-    public String question(@PathVariable int questionId, Model model) {
+    public String question(HttpServletRequest request,
+                           @PathVariable int questionId, Model model) {
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
         // 查询问题信息
         QuestionsDO questionsDO = questionsService.queryQuestionById(questionId);
 
@@ -51,10 +58,19 @@ public class QuestionController {
             VotesDO votesDO = this.votesService.queryVotesByAnswerIdAndVoterId(
                     answersDO.getId(), usersDO.getId());
 
+            // 查询感谢信息
+            ThanksDO thanksDO = thanksService.queryThanksByAnswerIdAndUId(answersDO.getId(), userInfoDTO.getUsersDO().getId());
+
             AnswersDTO answersDTO = new AnswersDTO();
             answersDTO.setUsersDO(usersDO);
             answersDTO.setAnswersDO(answersDO);
             answersDTO.setVotesDO(votesDO);
+            if (thanksDO != null) {
+                answersDTO.setThanked(true);
+            } else {
+                answersDTO.setThanked(false);
+            }
+
             answersDTOList.add(answersDTO);
         }
 
@@ -115,5 +131,10 @@ public class QuestionController {
     @Autowired
     public void setVotesService(VotesService votesService) {
         this.votesService = votesService;
+    }
+
+    @Autowired
+    public void setThanksService(ThanksService thanksService) {
+        this.thanksService = thanksService;
     }
 }

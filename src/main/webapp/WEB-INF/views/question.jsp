@@ -505,12 +505,24 @@
                                                     收藏
                                                 </span>
                                             </button>
-                                            <button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain" type="button">
-                                                <span style="display: inline-flex;align-items: center;">
-                                                    <i class="fa fa-heart custom-margin-right5"></i>
-                                                    <span class="thanks-text">感谢</span>
-                                                </span>
-                                            </button>
+                                            <c:choose>
+                                                <c:when test="${answersDTOList.thanked}">
+                                                <button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain already-thanks" type="button">
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-heart custom-margin-right5"></i>
+                                                        <span class="thanks-text">取消感谢</span>
+                                                    </span>
+                                                </button>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain" type="button">
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-heart custom-margin-right5"></i>
+                                                        <span class="thanks-text">感谢</span>
+                                                    </span>
+                                                    </button>
+                                                </c:otherwise>
+                                            </c:choose>
                                             <div class="custom-drop-option2">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                                     •••

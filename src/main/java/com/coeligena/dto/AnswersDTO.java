@@ -23,6 +23,8 @@ public class AnswersDTO {
 
     private VotesDO votesDO;
 
+    private boolean thanked;
+
     private Double answerWeight;
 
     public AnswersDO getAnswersDO() {
@@ -71,5 +73,13 @@ public class AnswersDTO {
 
     public void setAnswerWeight(Double answerWeight) {
         this.answerWeight = answerWeight;
+    }
+
+    public boolean isThanked() {
+        return thanked;
+    }
+
+    public void setThanked(boolean thanked) {
+        this.thanked = thanked;
     }
 }

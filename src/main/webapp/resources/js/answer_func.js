@@ -71,6 +71,7 @@ $('#answer_setting_list').on('click','button',function() {
     }
 });
 
+// 提交回答
 $('#post_answer_btn').on('click', function () {
     var markupStr = $('#answer_note').summernote('code');
     $('#answer_wrap').fadeOut('2000');
@@ -479,7 +480,7 @@ function thanksAjax(data, url) {
         data: data,
         dataType: "text",
         success: function(data) {
-            console.log(data);
+             // console.log(data);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('responseText: ' + jqXHR.responseText);

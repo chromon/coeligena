@@ -76,7 +76,7 @@ public class AnswerController {
 
     /**
      * 回答投票 ajax 请求
-     * @param request httpservletrequest
+     * @param request http servlet request
      * @param answersDTO 回答信息传输对象
      * @return success or not
      */
