@@ -528,8 +528,16 @@
                                                     •••
                                                 </a>
                                                 <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">没有帮助</a></li>
-                                                    <li><a href="#">举报</a></li>
+                                                    <c:choose>
+                                                        <c:when test="${answersDTOList.noHelp}">
+                                                            <li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');" class="no-help">撤销没有帮助</a></li>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');">没有帮助</a></li>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <li><a href="javascript:void(0);">举报</a></li>
+                                                    <li><a href="javascript:void(0);">不感兴趣</a></li>
                                                 </ul>
                                             </div>
                                             <button id="tuck-up-${answersDTOList.answersDO.id}" onclick="tuckUpAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">

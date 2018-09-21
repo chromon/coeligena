@@ -463,17 +463,37 @@ function forThanks(obj, answerId) {
         $(obj).removeClass('already-thanks');
         $(obj).find('.thanks-text').text('感谢');
 
-        thanksAjax(data, '/cancel-answer-thanks');
+        commonAjax(data, '/cancel-answer-thanks');
     } else {
         $(obj).addClass('already-thanks');
         $(obj).find('.thanks-text').text('取消感谢');
 
-        thanksAjax(data, '/answer-thanks');
+        commonAjax(data, '/answer-thanks');
+    }
+}
+
+// 没有帮助
+function noHelp(obj, answerId) {
+
+    let data = {
+        answerId: answerId
+    };
+
+    if ($(obj).hasClass('no-help')) {
+        $(obj).removeClass('no-help');
+        $(obj).text('没有帮助');
+
+        commonAjax(data, '/cancel-answer-nohelp');
+    } else {
+        $(obj).addClass('no-help');
+        $(obj).text('撤销没有帮助');
+
+        commonAjax(data, '/answer-nohelp');
     }
 }
 
 // 感谢实现
-function thanksAjax(data, url) {
+function commonAjax(data, url) {
     $.ajax({
         type: "POST",
         url: basePath2 + url,

@@ -28,6 +28,7 @@ public class QuestionController {
     private UsersService usersService;
     private VotesService votesService;
     private ThanksService thanksService;
+    private NoHelpsService noHelpsService;
 
     /**
      * 问题页面
@@ -61,14 +62,25 @@ public class QuestionController {
             // 查询感谢信息
             ThanksDO thanksDO = thanksService.queryThanksByAnswerIdAndUId(answersDO.getId(), userInfoDTO.getUsersDO().getId());
 
+            // 查询是否提交没有帮助
+            NoHelpsDO noHelpsDO = noHelpsService.queryNoHelpByAnswerIdAndUid(answersDO.getId(), userInfoDTO.getUsersDO().getId());
+
+            // 回答信息
             AnswersDTO answersDTO = new AnswersDTO();
             answersDTO.setUsersDO(usersDO);
             answersDTO.setAnswersDO(answersDO);
             answersDTO.setVotesDO(votesDO);
+
             if (thanksDO != null) {
                 answersDTO.setThanked(true);
             } else {
                 answersDTO.setThanked(false);
+            }
+
+            if (noHelpsDO != null) {
+                answersDTO.setNoHelp(true);
+            } else {
+                answersDTO.setNoHelp(false);
             }
 
             answersDTOList.add(answersDTO);
@@ -136,5 +148,10 @@ public class QuestionController {
     @Autowired
     public void setThanksService(ThanksService thanksService) {
         this.thanksService = thanksService;
+    }
+
+    @Autowired
+    public void setNoHelpsService(NoHelpsService noHelpsService) {
+        this.noHelpsService = noHelpsService;
     }
 }

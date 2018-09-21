@@ -1493,7 +1493,7 @@ ins {
     margin-left: 24px;
     font-size: 14px;
     line-height: 32px;
-    color: #8590a6;
+    color: #8590a6 !important;
     text-align: center;
 }
 
@@ -1502,7 +1502,7 @@ ins {
     display: inline-block;
     font-size: 14px;
     line-height: 32px;
-    color: #8590a6;
+    color: #8590a6 !important;
     text-align: center;
 }
 

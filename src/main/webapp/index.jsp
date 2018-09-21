@@ -319,6 +319,7 @@
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="#">没有帮助</a></li>
                                                 <li><a href="#" data-toggle="modal" data-target="#reportModal">举报</a></li>
+                                                <li><a href="#">不感兴趣</a></li>
                                             </ul>
                                         </div>
                                         <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">

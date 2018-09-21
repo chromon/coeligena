@@ -1,6 +1,5 @@
 package com.coeligena.dto;
 
-import com.coeligena.model.AnswerCommentsDO;
 import com.coeligena.model.AnswersDO;
 import com.coeligena.model.UsersDO;
 import com.coeligena.model.VotesDO;
@@ -24,6 +23,8 @@ public class AnswersDTO {
     private VotesDO votesDO;
 
     private boolean thanked;
+
+    private boolean noHelp;
 
     private Double answerWeight;
 
@@ -81,5 +82,13 @@ public class AnswersDTO {
 
     public void setThanked(boolean thanked) {
         this.thanked = thanked;
+    }
+
+    public boolean isNoHelp() {
+        return noHelp;
+    }
+
+    public void setNoHelp(boolean noHelp) {
+        this.noHelp = noHelp;
     }
 }
