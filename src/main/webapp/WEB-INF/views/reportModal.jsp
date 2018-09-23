@@ -17,9 +17,34 @@
                 <h4 class="modal-title">举报</h4>
             </div>
             <div class="modal-body">
-                <div id="reportTree"></div>
+                <div class="custom-reportMenu-inner">
+                    <div class="custom-reportMenu-item">
+                        <span class="custom-reportMenu-itemValue">垃圾广告信息</span>
+                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="custom-reportMenu-item">
+                        <span class="custom-reportMenu-itemValue">不友善行为</span>
+                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="custom-reportMenu-item">
+                        <span class="custom-reportMenu-itemValue">有害信息</span>
+                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="custom-reportMenu-item">
+                        <span class="custom-reportMenu-itemValue">涉嫌侵权</span>
+                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="custom-reportMenu-item">
+                        <span class="custom-reportMenu-itemValue">诱导投票</span>
+                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="custom-reportMenu-item">
+                        <span class="custom-reportMenu-itemValue">其他</span>
+                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer custom-modal-footer">
                 <button type="button" class="btn btn-primary">举报</button>
             </div>
         </div>

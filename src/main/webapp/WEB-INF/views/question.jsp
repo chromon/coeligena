@@ -536,7 +536,7 @@
                                                             <li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');">没有帮助</a></li>
                                                         </c:otherwise>
                                                     </c:choose>
-                                                    <li><a href="javascript:void(0);">举报</a></li>
+                                                    <li><a onclick="report('${answersDTOList.answersDO.id}');" href="javascript:void(0);">举报</a></li>
                                                     <li><a href="javascript:void(0);">不感兴趣</a></li>
                                                 </ul>
                                             </div>
