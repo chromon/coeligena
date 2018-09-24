@@ -7,3 +7,12 @@
 function report(id) {
     $('#reportModal').modal('show');
 }
+
+function reportFunc(msg, pid, id) {
+    let parentElement = $('#reportMenu-' + pid);
+    let currentElement = $('#reportMenu-' + id);
+
+    parentElement.addClass('hide');
+    currentElement.removeClass('hide');
+    currentElement.find('.modal-title').text(msg);
+}
