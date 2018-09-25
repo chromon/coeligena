@@ -3151,3 +3151,8 @@ ins {
 .custom-title-center {
     text-align: center;
 }
+
+.custom-reportMenu-itemCheckIcon {
+    color: #0084ff;
+    transition: opacity .2s;
+}
