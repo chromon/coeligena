@@ -793,9 +793,12 @@ CREATE TABLE IF NOT EXISTS message_groups (
  * 举报类型表
  */
 CREATE TABLE IF NOT EXISTS report_type (
-    id                  INT(11)     NOT NULL AUTO_INCREMENT, /* 举报类型主键 ID（唯一标识） */
-    report_type_content VARCHAR(64) NOT NULL, /* 举报类型 */
-    common              TINYINT(4)  NOT NULL DEFAULT '0', /* 判断是否是通用类型（即回答评论类型） */
+    id                      INT(11)     NOT NULL AUTO_INCREMENT, /* 举报类型主键 ID（唯一标识） */
+    report_type_content     VARCHAR(64) NOT NULL, /* 举报类型 */
+    parent_report_type_id   INT(11)     NOT NULL DEFAULT '0', /* 上级举报类型 */
+    require_details         TINYINT(4)  NOT NULL DEFAULT '0', /* 是否需要填写详细信息 0 否 1 是 */
+    sub_report_type         TINYINT(4)  NOT NULL DEFAULT '0', /* 是否有子类型 0 否 1 是 */
+    common                  TINYINT(4)  NOT NULL DEFAULT '0', /* 判断是否是通用类型（即回答评论类型） */
     PRIMARY KEY (id)
 );
 
