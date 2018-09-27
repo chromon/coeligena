@@ -13,42 +13,6 @@
     <div class="modal-dialog custom-modal-size" role="document">
         <!-- index menu -->
         <div id="reportMenu-index" class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title custom-title-center">举报</h4>
-                <div class="custom-modal-subtitle">请选择举报理由</div>
-            </div>
-            <div class="modal-body">
-                <div class="custom-reportMenu-inner">
-                    <div class="custom-reportMenu-item" onclick="reportFunc('垃圾广告信息', 'index', 'textarea');">
-                        <span class="custom-reportMenu-itemValue">垃圾广告信息</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('不友善行为', 'index', 'unfriendly');">
-                        <span class="custom-reportMenu-itemValue">不友善行为</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('有害信息', 'index', 'harmful-info');">
-                        <span class="custom-reportMenu-itemValue">有害信息</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('涉嫌侵权', 'index', 'infringement');">
-                        <span class="custom-reportMenu-itemValue">涉嫌侵权</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('诱导投票', 'index', 'textarea');">
-                        <span class="custom-reportMenu-itemValue">诱导投票</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('其他', 'index', 'textarea');">
-                        <span class="custom-reportMenu-itemValue">其他</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer custom-modal-footer">
-                <button type="button" class="btn btn-primary custom-report-btn">举报</button>
-            </div>
         </div><!-- end index menu -->
 
         <!-- text menu -->
@@ -167,4 +131,25 @@
 </div>
 <!-- end report modal -->
 
+<!-- report type template -->
+<script type="text/template" id="report-root-type-template">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title custom-title-center">举报</h4>
+        <div class="custom-modal-subtitle">请选择举报理由</div>
+    </div>
+    <div class="modal-body">
+        <div class="custom-reportMenu-inner">
+            {{#each this}}
+            <div class="custom-reportMenu-item" onclick="reportFunc('垃圾广告信息', 'index', 'textarea');">
+                <span class="custom-reportMenu-itemValue">{{reportTypeContent}}</span>
+                <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="modal-footer custom-modal-footer">
+        <button type="button" class="btn btn-primary custom-report-btn">举报</button>
+    </div>
+</script><!-- end report type template -->
 

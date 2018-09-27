@@ -6,6 +6,26 @@
 // report
 function report(id) {
     $('#reportModal').modal('show');
+
+    $('#reportModal').on('shown.bs.modal', function () {
+        $.ajax({
+            type: "GET",
+            url: basePath2 + "/report-type-list",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+
+                // 使用 handlebars 获取模板
+                let tpl = $("#report-root-type-template").html();
+                // 预编译模板
+                let template = Handlebars.compile(tpl);
+                // 匹配 json 内容
+                let html = template(data);
+                // 输入模板
+                $('#reportMenu-index').html(html);
+            }
+        });
+    });
 }
 
 // 举报
