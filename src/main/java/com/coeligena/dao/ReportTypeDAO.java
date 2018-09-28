@@ -14,5 +14,5 @@ public interface ReportTypeDAO {
      * 查询全部根举报类型
      * @return 根举报类型列表
      */
-    List<ReportTypeDO> queryRootReportType();
+    List<ReportTypeDO> queryRootReportType(int parentTypeId);
 }

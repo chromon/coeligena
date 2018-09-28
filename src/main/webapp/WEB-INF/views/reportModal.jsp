@@ -141,10 +141,23 @@
     <div class="modal-body">
         <div class="custom-reportMenu-inner">
             {{#each this}}
-            <div class="custom-reportMenu-item" onclick="reportFunc('垃圾广告信息', 'index', 'textarea');">
+            {{#if hasIcon}}
+                {{#if requireDetails}}
+                <div class="custom-reportMenu-item" onclick="reportTextArea('{{reportTypeContent}}', 'index', 'textarea');">
+                    <span class="custom-reportMenu-itemValue">{{reportTypeContent}}</span>
+                    <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
+                </div>
+                {{else}}
+                <div class="custom-reportMenu-item" onclick="nextReportType('{{id}}');">
+                    <span class="custom-reportMenu-itemValue">{{reportTypeContent}}</span>
+                    <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
+                </div>
+                {{/if}}
+            {{else}}
+            <div class="custom-reportMenu-item" onclick="reportFunc('{{reportTypeContent}}', 'index', 'textarea');">
                 <span class="custom-reportMenu-itemValue">{{reportTypeContent}}</span>
-                <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
             </div>
+            {{/if}}
             {{/each}}
         </div>
     </div>

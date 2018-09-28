@@ -25,10 +25,10 @@ public class ReportController {
      * 举报类型列表 ajax
      * @return 举报类型
      */
-    @RequestMapping(value = "/report-type-list", method = RequestMethod.GET)
+    @RequestMapping(value = "/report-type-list", method = RequestMethod.POST)
     @ResponseBody
-    public List<ReportTypeDO> allRootReportType() {
-        List<ReportTypeDO> reportTypeDOList = reportTypeService.queryRootReportType();
+    public List<ReportTypeDO> allRootReportType(int parentReportTypeId) {
+        List<ReportTypeDO> reportTypeDOList = reportTypeService.queryRootReportType(parentReportTypeId);
         return reportTypeDOList;
     }
 

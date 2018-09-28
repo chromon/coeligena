@@ -23,7 +23,7 @@ public class ReportTypeServiceTest {
 
     @Test
     public void testQueryRootReportType() {
-        Assert.assertEquals(this.reportTypeService.queryRootReportType().size(), 6);
+        Assert.assertEquals(this.reportTypeService.queryRootReportType(0).size(), 6);
     }
 
     @Autowired

@@ -22,8 +22,8 @@ public class ReportTypeServiceImpl implements ReportTypeService {
      * @return 根举报类型列表
      */
     @Override
-    public List<ReportTypeDO> queryRootReportType() {
-        return this.reportTypeDAO.queryRootReportType();
+    public List<ReportTypeDO> queryRootReportType(int parentTypeId) {
+        return this.reportTypeDAO.queryRootReportType(parentTypeId);
     }
 
     @Autowired

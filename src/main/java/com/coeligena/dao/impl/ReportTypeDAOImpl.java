@@ -29,9 +29,10 @@ public class ReportTypeDAOImpl implements ReportTypeDAO {
      * @return 根举报类型列表
      */
     @Override
-    public List<ReportTypeDO> queryRootReportType() {
-        String sql = "from ReportTypeDO r where r.parentReportTypeId = 0";
+    public List<ReportTypeDO> queryRootReportType(int parentTypeId) {
+        String sql = "from ReportTypeDO r where r.parentReportTypeId = :parentTypeId";
         Query query = this.getSession().createQuery(sql);
+        query.setParameter("parentTypeId", parentTypeId);
         return query.list();
     }
 }
