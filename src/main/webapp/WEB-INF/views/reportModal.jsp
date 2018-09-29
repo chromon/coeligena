@@ -143,7 +143,7 @@
             {{#each this}}
             {{#if hasIcon}}
                 {{#if requireDetails}}
-                <div class="custom-reportMenu-item" onclick="reportTextArea('{{reportTypeContent}}', 'index', 'textarea');">
+                <div class="custom-reportMenu-item" onclick="reportTextArea('{{reportTypeContent}}', '{{parentReportTypeId}}');">
                     <span class="custom-reportMenu-itemValue">{{reportTypeContent}}</span>
                     <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
                 </div>

@@ -24,11 +24,11 @@ function reportAJAX(id) {
             console.log(data);
 
             for (let c = 0; c < data.length; c ++) {
-                if (data[c]['parentReportTypeId'] == 1) {
-                    data[c]['parentReportTypeId'] = true;
-                } else {
-                    data[c]['parentReportTypeId'] = false;
-                }
+                // if (data[c]['parentReportTypeId'] == 1) {
+                //     data[c]['parentReportTypeId'] = true;
+                // } else {
+                //     data[c]['parentReportTypeId'] = false;
+                // }
 
                 if (data[c]['requireDetails'] == 1) {
                     data[c]['requireDetails'] = true;
@@ -61,40 +61,48 @@ function reportAJAX(id) {
     });
 }
 
-function reportTextArea(msg, pid, id) {
-    let parentElement = $('#reportMenu-' + pid);
-    let currentElement = $('#reportMenu-' + id);
+function reportTextArea(msg, id) {
+    let parentElement = $('#reportMenu-index');
+    let currentElement = $('#reportMenu-textarea');
 
     parentElement.addClass('hide');
     currentElement.removeClass('hide');
     currentElement.find('.modal-title').text(msg);
+    currentElement.find('.return-btn').attr('onclick', 'reportReturn("'+ id +'")');
 }
 
 function nextReportType(pid) {
     reportAJAX(pid);
 }
-// 举报
-function reportFunc(msg, pid, id) {
-    let parentElement = $('#reportMenu-' + pid);
-    let currentElement = $('#reportMenu-' + id);
 
-    if (parentElement.length <= 0) {
-        parentElement = $('#reportMenu-index')
-    }
-
-    parentElement.addClass('hide');
-    currentElement.removeClass('hide');
-    currentElement.find('.modal-title').text(msg);
-
-    currentElement.find('.return-btn').attr('onclick', 'reportReturn("'+ pid +'", "'+ id +'");');
-
+function reportReturn(pid) {
+    $('#reportMenu-textarea').addClass('hide');
+    $('#reportMenu-index').removeClass('hide');
+    reportAJAX(pid);
 }
 
-// 举报返回
-function reportReturn(pid, id) {
-    let parentElement = $('#reportMenu-' + pid);
-    let currentElement = $('#reportMenu-' + id);
-
-    parentElement.removeClass('hide');
-    currentElement.addClass('hide');
-}
+// // 举报
+// function reportFunc(msg, pid, id) {
+//     let parentElement = $('#reportMenu-' + pid);
+//     let currentElement = $('#reportMenu-' + id);
+//
+//     if (parentElement.length <= 0) {
+//         parentElement = $('#reportMenu-index')
+//     }
+//
+//     parentElement.addClass('hide');
+//     currentElement.removeClass('hide');
+//     currentElement.find('.modal-title').text(msg);
+//
+//     currentElement.find('.return-btn').attr('onclick', 'reportReturn("'+ pid +'", "'+ id +'");');
+//
+// }
+//
+// // 举报返回
+// function reportReturn(pid, id) {
+//     let parentElement = $('#reportMenu-' + pid);
+//     let currentElement = $('#reportMenu-' + id);
+//
+//     parentElement.removeClass('hide');
+//     currentElement.addClass('hide');
+// }
