@@ -26,6 +26,16 @@ public class ReportTypeServiceImpl implements ReportTypeService {
         return this.reportTypeDAO.queryRootReportType(parentTypeId);
     }
 
+    /**
+     * 由类型 id 查询举报类型
+     * @param id 类型 id
+     * @return 详细信息
+     */
+    @Override
+    public ReportTypeDO queryReportTypeById(int id) {
+        return this.reportTypeDAO.queryReportTypeById(id);
+    }
+
     @Autowired
     public void setReportTypeDAO(ReportTypeDAO reportTypeDAO) {
         this.reportTypeDAO = reportTypeDAO;

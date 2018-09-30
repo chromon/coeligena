@@ -26,6 +26,11 @@ public class ReportTypeServiceTest {
         Assert.assertEquals(this.reportTypeService.queryRootReportType(0).size(), 6);
     }
 
+    @Test
+    public void testQueryReportTypeById() {
+        Assert.assertEquals(reportTypeService.queryReportTypeById(1).getReportTypeContent(), "垃圾广告信息");
+    }
+
     @Autowired
     public void setReportTypeService(ReportTypeService reportTypeService) {
         this.reportTypeService = reportTypeService;

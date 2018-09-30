@@ -35,4 +35,17 @@ public class ReportTypeDAOImpl implements ReportTypeDAO {
         query.setParameter("parentTypeId", parentTypeId);
         return query.list();
     }
+
+    /**
+     * 由类型 id 查询举报类型
+     * @param id 类型 id
+     * @return 详细信息
+     */
+    @Override
+    public ReportTypeDO queryReportTypeById(int id) {
+        String sql = "from ReportTypeDO r where r.id = :id";
+        Query query = this.getSession().createQuery(sql);
+        query.setParameter("id", id);
+        return (ReportTypeDO) query.uniqueResult();
+    }
 }
