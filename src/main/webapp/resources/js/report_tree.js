@@ -10,6 +10,14 @@ function report(id) {
     $('#reportModal').on('shown.bs.modal', function () {
         reportAJAX(0);
     });
+
+    $("#reportModal").on("hidden.bs.modal", function() {
+        $(this).removeData("bs.modal");
+        // $(".modal-content").children().remove();
+        //
+        $('#reportMenu-index').removeClass('hide');
+        $('#reportMenu-textarea').addClass('hide');
+    });
 }
 
 function reportAJAX(id) {
@@ -23,29 +31,31 @@ function reportAJAX(id) {
         success: function (data) {
             console.log(data);
 
-            for (let c = 0; c < data.length; c ++) {
-                // if (data[c]['parentReportTypeId'] == 1) {
-                //     data[c]['parentReportTypeId'] = true;
-                // } else {
-                //     data[c]['parentReportTypeId'] = false;
-                // }
+            let hasReturn = false;
+            if (data['reportTypeDO']['id'] != 0) {
+                hasReturn = true;
+            }
+            data['hasReturn'] = hasReturn;
 
-                if (data[c]['requireDetails'] == 1) {
-                    data[c]['requireDetails'] = true;
+            let tmp = data['reportTypeDOList'];
+            for (let c = 0; c < tmp.length; c ++) {
+
+                if (tmp[c]['requireDetails'] == 1) {
+                    tmp[c]['requireDetails'] = true;
                 } else {
-                    data[c]['requireDetails'] = false;
+                    tmp[c]['requireDetails'] = false;
                 }
 
-                if (data[c]['subReportType'] == 1) {
-                    data[c]['subReportType'] = true;
+                if (tmp[c]['subReportType'] == 1) {
+                    tmp[c]['subReportType'] = true;
                 } else {
-                    data[c]['subReportType'] = false;
+                    tmp[c]['subReportType'] = false;
                 }
 
-                if (data[c]['requireDetails'] || data[c]['subReportType']) {
-                    data[c]['hasIcon'] = true;
+                if (tmp[c]['requireDetails'] || tmp[c]['subReportType']) {
+                    tmp[c]['hasIcon'] = true;
                 } else {
-                    data[c]['hasIcon'] = false;
+                    tmp[c]['hasIcon'] = false;
                 }
             }
 

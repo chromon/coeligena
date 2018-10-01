@@ -1,5 +1,6 @@
 package com.coeligena.controller;
 
+import com.coeligena.dto.ReportTypeDTO;
 import com.coeligena.model.ReportTypeDO;
 import com.coeligena.model.ReportsDO;
 import com.coeligena.service.ReportTypeService;
@@ -27,9 +28,17 @@ public class ReportController {
      */
     @RequestMapping(value = "/report-type-list", method = RequestMethod.POST)
     @ResponseBody
-    public List<ReportTypeDO> allRootReportType(int parentReportTypeId) {
-        List<ReportTypeDO> reportTypeDOList = reportTypeService.queryRootReportType(parentReportTypeId);
-        return reportTypeDOList;
+    public ReportTypeDTO allRootReportType(int parentReportTypeId) {
+        ReportTypeDTO reportTypeDTO = new ReportTypeDTO();
+        reportTypeDTO.setReportTypeDOList(reportTypeService.queryRootReportType(parentReportTypeId));
+        ReportTypeDO reportTypeDO = reportTypeService.queryReportTypeById(parentReportTypeId);
+        if (reportTypeDO == null) {
+            reportTypeDO = new ReportTypeDO();
+            reportTypeDO.setReportTypeContent("举报");
+        }
+        reportTypeDTO.setReportTypeDO(reportTypeDO);
+
+        return reportTypeDTO;
     }
 
     @Autowired

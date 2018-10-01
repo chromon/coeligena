@@ -135,12 +135,12 @@
 <script type="text/template" id="report-root-type-template">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title custom-title-center">举报</h4>
+        <h4 class="modal-title custom-title-center">{{reportTypeDO.reportTypeContent}}</h4>
         <div class="custom-modal-subtitle">请选择举报理由</div>
     </div>
     <div class="modal-body">
         <div class="custom-reportMenu-inner">
-            {{#each this}}
+            {{#each this.reportTypeDOList}}
             {{#if hasIcon}}
                 {{#if requireDetails}}
                 <div class="custom-reportMenu-item" onclick="reportTextArea('{{reportTypeContent}}', '{{parentReportTypeId}}');">
@@ -162,6 +162,9 @@
         </div>
     </div>
     <div class="modal-footer custom-modal-footer">
+        {{#if hasReturn}}
+        <button type="button" onclick="reportReturn('{{reportTypeDO.parentReportTypeId}}')" class="btn btn-default custom-report-btn">返回</button>
+        {{/if}}
         <button type="button" class="btn btn-primary custom-report-btn">举报</button>
     </div>
 </script><!-- end report type template -->
