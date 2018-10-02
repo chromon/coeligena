@@ -154,8 +154,9 @@
                 </div>
                 {{/if}}
             {{else}}
-            <div class="custom-reportMenu-item" onclick="reportFunc('{{reportTypeContent}}', 'index', 'textarea');">
+            <div class="custom-reportMenu-item" onclick="reportCheck(this);">
                 <span class="custom-reportMenu-itemValue">{{reportTypeContent}}</span>
+                <i class="fa fa-check-circle custom-right custom-reportMenu-itemCheckIcon hide" aria-hidden="true"></i>
             </div>
             {{/if}}
             {{/each}}

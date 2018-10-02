@@ -71,6 +71,7 @@ function reportAJAX(id) {
     });
 }
 
+// 举报详情
 function reportTextArea(msg, id) {
     let parentElement = $('#reportMenu-index');
     let currentElement = $('#reportMenu-textarea');
@@ -81,38 +82,19 @@ function reportTextArea(msg, id) {
     currentElement.find('.return-btn').attr('onclick', 'reportReturn("'+ id +'")');
 }
 
+// 次级举报
 function nextReportType(pid) {
     reportAJAX(pid);
 }
 
+// 举报返回
 function reportReturn(pid) {
     $('#reportMenu-textarea').addClass('hide');
     $('#reportMenu-index').removeClass('hide');
     reportAJAX(pid);
 }
 
-// // 举报
-// function reportFunc(msg, pid, id) {
-//     let parentElement = $('#reportMenu-' + pid);
-//     let currentElement = $('#reportMenu-' + id);
-//
-//     if (parentElement.length <= 0) {
-//         parentElement = $('#reportMenu-index')
-//     }
-//
-//     parentElement.addClass('hide');
-//     currentElement.removeClass('hide');
-//     currentElement.find('.modal-title').text(msg);
-//
-//     currentElement.find('.return-btn').attr('onclick', 'reportReturn("'+ pid +'", "'+ id +'");');
-//
-// }
-//
-// // 举报返回
-// function reportReturn(pid, id) {
-//     let parentElement = $('#reportMenu-' + pid);
-//     let currentElement = $('#reportMenu-' + id);
-//
-//     parentElement.removeClass('hide');
-//     currentElement.addClass('hide');
-// }
+// 举报选择
+function reportCheck(obj) {
+    $(obj).find('i').toggleClass('hide');
+}
