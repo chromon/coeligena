@@ -11,6 +11,11 @@
 <!-- report modal -->
 <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog custom-modal-size" role="document">
+
+        <input type="hidden" id="report_answer_id" value=""/>
+        <input type="hidden" id="report_category" value=""/>
+        <input type="hidden" id="report_type_id" value=""/>
+
         <!-- index menu -->
         <div id="reportMenu-index" class="modal-content">
         </div><!-- end index menu -->
@@ -29,110 +34,16 @@
             </div>
             <div class="modal-footer custom-modal-footer">
                 <button type="button" class="btn btn-default custom-report-btn return-btn">返回</button>
-                <button type="button" class="btn btn-primary custom-report-btn">举报</button>
+                <button type="button" onclick="textReport();" class="btn btn-primary custom-report-btn">举报</button>
             </div>
         </div><!-- end text menu -->
-
-        <!-- unfriendly menu -->
-        <div id="reportMenu-unfriendly" class="modal-content hide">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title custom-title-center">举报</h4>
-                <div class="custom-modal-subtitle">举报说明</div>
-            </div>
-            <div class="modal-body">
-                <div class="custom-reportMenu-inner" style="margin-bottom: 0">
-                    <div class="custom-reportMenu-item">
-                        <span class="custom-reportMenu-itemValue">骚扰、辱骂、歧视等</span>
-                        <i class="fa fa-check-circle custom-right custom-reportMenu-itemCheckIcon" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('其他不友善行为', 'unfriendly', 'textarea');">
-                        <span class="custom-reportMenu-itemValue">其他不友善行为</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer custom-modal-footer">
-                <button type="button" class="btn btn-default custom-report-btn return-btn">返回</button>
-                <button type="button" class="btn btn-primary custom-report-btn">举报</button>
-            </div>
-        </div><!-- unfriendly menu -->
-
-        <!-- harmful info menu -->
-        <div id="reportMenu-harmful-info" class="modal-content hide">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title custom-title-center">举报</h4>
-                <div class="custom-modal-subtitle">举报说明</div>
-            </div>
-            <div class="modal-body">
-                <div class="custom-reportMenu-inner" style="margin-bottom: 0">
-                    <div class="custom-reportMenu-item">
-                        <span class="custom-reportMenu-itemValue">政治敏感</span>
-                        <i class="fa fa-check-circle custom-right custom-reportMenu-itemCheckIcon" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item">
-                        <span class="custom-reportMenu-itemValue">色情低俗</span>
-                        <i class="fa fa-check-circle custom-right custom-reportMenu-itemCheckIcon" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('不实信息', 'harmful-info', 'textarea');">
-                        <span class="custom-reportMenu-itemValue">不实信息</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item">
-                        <span class="custom-reportMenu-itemValue">有人意图自杀或自残</span>
-                        <i class="fa fa-check-circle custom-right custom-reportMenu-itemCheckIcon" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('违法违规', 'harmful-info', 'textarea');">
-                        <span class="custom-reportMenu-itemValue">违法违规</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item">
-                        <span class="custom-reportMenu-itemValue">看相、算命、星盘等迷信活动</span>
-                        <i class="fa fa-check-circle custom-right custom-reportMenu-itemCheckIcon" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer custom-modal-footer">
-                <button type="button" class="btn btn-default custom-report-btn return-btn">返回</button>
-                <button type="button" class="btn btn-primary custom-report-btn">举报</button>
-            </div>
-        </div><!-- harmful info menu -->
-
-        <!-- infringement menu -->
-        <div id="reportMenu-infringement" class="modal-content hide">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title custom-title-center">举报</h4>
-                <div class="custom-modal-subtitle">举报说明</div>
-            </div>
-            <div class="modal-body">
-                <div class="custom-reportMenu-inner" style="margin-bottom: 0">
-                    <div class="custom-reportMenu-item" onclick="reportFunc('不规范转载', 'infringement', 'textarea');">
-                        <span class="custom-reportMenu-itemValue">不规范转载</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('个人侵权', 'infringement', 'textarea');">
-                        <span class="custom-reportMenu-itemValue">个人侵权</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="custom-reportMenu-item" onclick="reportFunc('企业侵权', 'infringement', 'textarea');">
-                        <span class="custom-reportMenu-itemValue">企业侵权</span>
-                        <i class="fa fa-angle-right custom-right" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer custom-modal-footer">
-                <button type="button" class="btn btn-default custom-report-btn return-btn">返回</button>
-                <button type="button" class="btn btn-primary custom-report-btn">举报</button>
-            </div>
-        </div><!-- unfriendly menu -->
     </div>
 </div>
 <!-- end report modal -->
 
 <!-- report type template -->
 <script type="text/template" id="report-root-type-template">
+
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title custom-title-center">{{reportTypeDO.reportTypeContent}}</h4>
@@ -154,7 +65,7 @@
                 </div>
                 {{/if}}
             {{else}}
-            <div class="custom-reportMenu-item" onclick="reportCheck(this);">
+            <div class="custom-reportMenu-item" onclick="reportCheck(this,'{{id}}');">
                 <span class="custom-reportMenu-itemValue">{{reportTypeContent}}</span>
                 <i class="fa fa-check-circle custom-right custom-reportMenu-itemCheckIcon hide" aria-hidden="true"></i>
             </div>
@@ -165,8 +76,10 @@
     <div class="modal-footer custom-modal-footer">
         {{#if hasReturn}}
         <button type="button" onclick="reportReturn('{{reportTypeDO.parentReportTypeId}}')" class="btn btn-default custom-report-btn">返回</button>
+        <button type="button" onclick="normalReport();" class="btn btn-primary custom-report-btn">举报</button>
+        {{else}}
+        <button type="button" class="btn btn-primary disabled custom-report-btn">举报</button>
         {{/if}}
-        <button type="button" class="btn btn-primary custom-report-btn">举报</button>
     </div>
 </script><!-- end report type template -->
 

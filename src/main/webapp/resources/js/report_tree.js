@@ -4,8 +4,12 @@
  */
 
 // report
-function report(id) {
+function report(answerId, category) {
     $('#reportModal').modal('show');
+
+    // 回答 id ， 举报分类
+    $('#report_answer_id').val(answerId);
+    $('#report_category').val(category);
 
     $('#reportModal').on('shown.bs.modal', function () {
         reportAJAX(0);
@@ -95,6 +99,20 @@ function reportReturn(pid) {
 }
 
 // 举报选择
-function reportCheck(obj) {
+function reportCheck(obj, id) {
     $(obj).find('i').toggleClass('hide');
+    $('#report_type_id').val(id);
+}
+
+// 不需要填写理由的举报
+function normalReport() {
+    let report_answer_id = $('#report_answer_id').val();
+    let report_category = $('#report_category').val();
+    let report_type_id = $('#report_type_id').val();
+
+}
+
+// 需要详细信息的举报
+function textReport() {
+
 }
