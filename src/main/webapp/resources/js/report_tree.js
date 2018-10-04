@@ -76,14 +76,16 @@ function reportAJAX(id) {
 }
 
 // 举报详情
-function reportTextArea(msg, id) {
+function reportTextArea(msg, pid, id) {
     let parentElement = $('#reportMenu-index');
     let currentElement = $('#reportMenu-textarea');
 
     parentElement.addClass('hide');
     currentElement.removeClass('hide');
     currentElement.find('.modal-title').text(msg);
-    currentElement.find('.return-btn').attr('onclick', 'reportReturn("'+ id +'")');
+    currentElement.find('.return-btn').attr('onclick', 'reportReturn("'+ pid +'")');
+
+    $('#report_type_id').val(id);
 }
 
 // 次级举报
@@ -110,9 +112,49 @@ function normalReport() {
     let report_category = $('#report_category').val();
     let report_type_id = $('#report_type_id').val();
 
+    let data = {
+        answerId: report_answer_id,
+        reportCategory: report_category,
+        reportTypeId: report_type_id
+    };
+
+    reportFunc(data);
 }
 
 // 需要详细信息的举报
 function textReport() {
+    let report_answer_id = $('#report_answer_id').val();
+    let report_category = $('#report_category').val();
+    let report_type_id = $('#report_type_id').val();
+    let reportText = $('#reportText').val();
 
+    let data = {
+        answerId: report_answer_id,
+        reportCategory: report_category,
+        reportTypeId: report_type_id,
+        reportText:reportText
+    };
+
+    reportFunc(data);
+}
+
+function reportFunc(data) {
+    $.ajax({
+        type: "POST",
+        url: basePath2 + "/report-answer",
+        data: data,
+        dataType: "text",
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log('responseText: ' + jqXHR.responseText);
+            console.log('status: ' + jqXHR.status);
+            console.log('readyState: ' + jqXHR.readyState);
+            console.log('statusText: ' + jqXHR.statusText);
+
+            console.log('textStatus: ' + textStatus);
+            console.log('errorThrown: ' + errorThrown);
+        }
+    });
 }
