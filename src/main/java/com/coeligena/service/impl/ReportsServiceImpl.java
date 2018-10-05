@@ -19,7 +19,7 @@ public class ReportsServiceImpl implements ReportsService {
      * @param reportsDO 举报信息
      */
     @Override
-    public void addReports(ReportsDO reportsDO) {
+    public void saveReports(ReportsDO reportsDO) {
         reportsDAO.addReports(reportsDO);
     }
 

@@ -12,5 +12,5 @@ public interface ReportsService {
      * 添加举报信息
      * @param reportsDO 举报信息
      */
-    void addReports(ReportsDO reportsDO);
+    void saveReports(ReportsDO reportsDO);
 }

@@ -113,7 +113,7 @@ function normalReport() {
     let report_type_id = $('#report_type_id').val();
 
     let data = {
-        answerId: report_answer_id,
+        categoryId: report_answer_id,
         reportCategory: report_category,
         reportTypeId: report_type_id
     };
@@ -129,7 +129,7 @@ function textReport() {
     let reportText = $('#reportText').val();
 
     let data = {
-        answerId: report_answer_id,
+        categoryId: report_answer_id,
         reportCategory: report_category,
         reportTypeId: report_type_id,
         reportText:reportText
@@ -146,6 +146,14 @@ function reportFunc(data) {
         dataType: "text",
         success: function(data) {
             console.log(data);
+            // 使用 handlebars 获取模板
+            let tpl = $("#report-success-template").html();
+            // 预编译模板
+            let template = Handlebars.compile(tpl);
+            // 匹配 json 内容
+            let html = template();
+            // 输入模板
+            $('#reportMenu-index').html(html);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('responseText: ' + jqXHR.responseText);

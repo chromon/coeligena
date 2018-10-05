@@ -6,27 +6,27 @@ package com.coeligena.dto;
  */
 public class ReportDTO {
 
-    private int answerId;
+    private int categoryId;
 
-    private int reportCategory;
+    private byte reportCategory;
 
     private int reportTypeId;
 
     private String reportText;
 
-    public int getAnswerId() {
-        return answerId;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setAnswerId(int answerId) {
-        this.answerId = answerId;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public int getReportCategory() {
+    public byte getReportCategory() {
         return reportCategory;
     }
 
-    public void setReportCategory(int reportCategory) {
+    public void setReportCategory(byte reportCategory) {
         this.reportCategory = reportCategory;
     }
 

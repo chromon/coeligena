@@ -83,3 +83,11 @@
     </div>
 </script><!-- end report type template -->
 
+<script type="text/template" id="report-success-template">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title custom-title-center">举报成功</h4>
+        <div class="custom-modal-subtitle">举报内容审核中，请稍后查看</div>
+    </div>
+</script>
+

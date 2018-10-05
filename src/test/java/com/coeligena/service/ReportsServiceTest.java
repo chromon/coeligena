@@ -29,7 +29,7 @@ public class ReportsServiceTest {
         reportsDO.setReportCategoryId(0);
         reportsDO.setReportTime(DateUtils.currentTime());
         reportsDO.setReportReason("");
-        reportsService.addReports(reportsDO);
+        reportsService.saveReports(reportsDO);
 
         Assert.assertEquals(reportsDO.getId(), 0);
     }

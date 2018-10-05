@@ -3,9 +3,14 @@ package com.coeligena.controller;
 import com.coeligena.dto.ReportDTO;
 import com.coeligena.dto.ReportTypeDTO;
 import com.coeligena.dto.UserInfoDTO;
+import com.coeligena.function.date.DateUtils;
+import com.coeligena.function.info.Information;
 import com.coeligena.model.ReportTypeDO;
 import com.coeligena.model.ReportsDO;
 import com.coeligena.service.ReportTypeService;
+import com.coeligena.service.ReportsService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * report controller
@@ -25,6 +28,7 @@ import java.util.List;
 public class ReportController {
 
     private ReportTypeService reportTypeService;
+    private ReportsService reportsService;
 
     /**
      * 举报类型列表 ajax
@@ -54,19 +58,40 @@ public class ReportController {
     @RequestMapping(value = "/report-answer", method = RequestMethod.POST)
     @ResponseBody
     public String reportAnswer(HttpServletRequest request,
-                               @ModelAttribute ReportDTO reportDTO) {
+                               @ModelAttribute ReportDTO reportDTO) throws JsonProcessingException {
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
         ReportsDO reportsDO = new ReportsDO();
+        reportsDO.setReportTypeId(reportDTO.getReportTypeId());
+        reportsDO.setReportCategory(reportDTO.getReportCategory());
+        reportsDO.setReportCategoryId(reportDTO.getCategoryId());
+        reportsDO.setReportTime(DateUtils.currentTime());
+        if (reportDTO.getReportText() != null) {
+            reportsDO.setReportReason(reportDTO.getReportText());
+        } else {
+            reportsDO.setReportReason("<空>");
+        }
+        reportsDO.setUserId(userInfoDTO.getUsersDO().getId());
+        reportsService.saveReports(reportsDO);
 
+        // 返回消息
+        Information info = new Information();
+        info.setInfoType("success");
+        info.setInfoContent("report success.");
 
-
-        return "";
+        // json 格式化
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(info);
     }
 
     @Autowired
     public void setReportTypeService(ReportTypeService reportTypeService) {
         this.reportTypeService = reportTypeService;
+    }
+
+    @Autowired
+    public void setReportsService(ReportsService reportsService) {
+        this.reportsService = reportsService;
     }
 }
