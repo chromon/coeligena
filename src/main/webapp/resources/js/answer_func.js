@@ -108,7 +108,7 @@ $('#post_answer_btn').on('click', function () {
 // 收起回答
 function tuckUpAnswer(id) {
     $('#ans-inner-' + id).addClass('custom-is-collapsed');
-    $('#ans-inner-' + id).css('max-height', '400px');
+    $('#ans-inner-' + id).css('max-height', '200px');
     $('#ans-unfold-' + id).removeClass('hide');
     $('#tuck-up-' + id).addClass('hide');
 }
