@@ -88,7 +88,7 @@
                     <div class="custom-question-header-footer-inner">
                         <div class="custom-question-header-main custom-question-header-footer-main">
                             <div class="custom-question-btn-group">
-                                <a href="#" class="btn btn-primary custom-margin-right10">
+                                <a href="#" onclick="followQuestion(this, '${questionsDO.id}')" class="btn btn-primary custom-margin-right10">
                                     关注问题
                                 </a>
                                 <a id="write_answer_top" href="javascript: void(0);" class="btn btn-default custom-margin-right10">

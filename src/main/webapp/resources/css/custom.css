@@ -3092,8 +3092,8 @@ ins {
 }
 
 .btn--grey {
-    color: #fff;
-    background-color: #8590a6;
+    color: #fff !important;
+    background-color: #8590a6 !important;
 }
 
 .custom-reportMenu-inner {

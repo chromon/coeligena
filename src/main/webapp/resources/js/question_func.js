@@ -307,3 +307,53 @@ function likeUnlikeFunc(data) {
         }
     });
 }
+
+function followQuestion(obj, id) {
+    if ($(obj).hasClass('btn-primary')) {
+        $(obj).removeClass('btn-primary');
+        $(obj).addClass('btn-default');
+        $(obj).addClass('btn--grey');
+        $(obj).text('已关注');
+    } else {
+        $(obj).removeClass('btn-default');
+        $(obj).removeClass('btn--grey');
+        $(obj).addClass('btn-primary');
+        $(obj).text('关注问题');
+    }
+
+    $.ajax({
+        type: "POST",
+        url: basePath2 + "/follow-question",
+        data: {
+            questionId: id
+        },
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            /*
+             弹出jqXHR对象的信息, 对象不仅包括XMLHttpRequest对象，
+             还包含其他更多的详细属性和信息。
+             这里主要有4个属性：
+             readyState :当前状态,0-未初始化，1-正在载入，2-已经载入，3-数据进行交互，4-完成。
+             status  ：返回的HTTP状态码，比如常见的404,500等错误代码。
+             statusText ：对应状态码的错误信息，比如404错误信息是not found,500是Internal Server Error。
+             responseText ：服务器响应返回的文本信息
+             */
+            console.log('responseText: ' + jqXHR.responseText);
+            console.log('status: ' + jqXHR.status);
+            console.log('readyState: ' + jqXHR.readyState);
+            console.log('statusText: ' + jqXHR.statusText);
+
+            /*
+             String textStatus：返回的是字符串类型，表示返回的状态，
+             根据服务器不同的错误可能返回下面这些信息："timeout"（超时）, "error"（错误）, "abort"(中止), "parsererror"（解析错误），还有可能返回空值。
+             第三个参数 String errorThrown：也是字符串类型，表示服务器抛出返回的错误信息，如果产生的是HTTP错误，那么返回的信息就是HTTP状态码对应的错误信息，
+             比如404的Not Found,500错误的Internal Server Error。
+             */
+            console.log('textStatus: ' + textStatus);
+            console.log('errorThrown: ' + errorThrown);
+        }
+    });
+}
