@@ -24,6 +24,26 @@ public class FollowServiceImpl implements FollowService {
         this.followDAO.addQuestionFollow(followDO);
     }
 
+    /**
+     * 由问题 id 和 用户 id 查询关注信息
+     * @param questionId 问题 id
+     * @param userId 用户 id
+     * @return 关注信息
+     */
+    @Override
+    public FollowDO queryFollowByQidAndUid(int questionId, int userId) {
+        return this.followDAO.queryFollowByQidAndUid(questionId, userId);
+    }
+
+    /**
+     * 删除问题关注
+     * @param followDO 问题关注信息
+     */
+    @Override
+    public void deleteFollow(FollowDO followDO) {
+        this.followDAO.deleteFollow(followDO);
+    }
+
     @Autowired
     public void setFollowDAO(FollowDAO followDAO) {
         this.followDAO = followDAO;

@@ -32,6 +32,20 @@ public class FollowServiceTest {
         Assert.assertEquals(followDO.getId(), 1);
     }
 
+    @Test
+    public void testQueryFollowByQidAndUid() {
+        Assert.assertEquals(this.followService.queryFollowByQidAndUid(1, 1).getId(), 2);
+    }
+
+    @Test
+    public void testDeleteFollow() {
+        FollowDO followDO = new FollowDO();
+        followDO.setFollowTime(DateUtils.currentTime());
+        this.followService.saveQuestionFollow(followDO);
+
+        this.followService.deleteFollow(followDO);
+    }
+
     @Autowired
     public void setFollowService(FollowService followService) {
         this.followService = followService;

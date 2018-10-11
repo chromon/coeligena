@@ -27,6 +27,13 @@ public class FollowingController {
 
     private FollowService followService;
 
+    /**
+     * 关注问题
+     * @param request http servlet request
+     * @param questionId 问题 id
+     * @return 信息
+     * @throws JsonProcessingException json exception
+     */
     @RequestMapping(value = "/follow-question", method = RequestMethod.POST)
     @ResponseBody
     public String followQuestion(HttpServletRequest request, int questionId) throws JsonProcessingException {
@@ -44,6 +51,33 @@ public class FollowingController {
         Information info = new Information();
         info.setInfoType("success");
         info.setInfoContent("follow question success.");
+
+        // json 格式化
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(info);
+    }
+
+    /**
+     * 取消关注问题
+     * @param request http servlet request
+     * @param questionId 问题 id
+     * @return 信息
+     * @throws JsonProcessingException json exception
+     */
+    @RequestMapping(value = "/cancel-follow-question", method = RequestMethod.POST)
+    @ResponseBody
+    public String cancelFollowQuestion(HttpServletRequest request, int questionId) throws JsonProcessingException {
+
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        // 取消关注问题
+        FollowDO followDO = this.followService.queryFollowByQidAndUid(questionId, userInfoDTO.getUsersDO().getId());
+        this.followService.deleteFollow(followDO);
+
+        // 返回消息
+        Information info = new Information();
+        info.setInfoType("success");
+        info.setInfoContent("cancel follow question success.");
 
         // json 格式化
         ObjectMapper mapper = new ObjectMapper();
