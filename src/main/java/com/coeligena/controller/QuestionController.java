@@ -29,6 +29,7 @@ public class QuestionController {
     private VotesService votesService;
     private ThanksService thanksService;
     private NoHelpsService noHelpsService;
+    private FollowService followService;
 
     /**
      * 问题页面
@@ -86,10 +87,18 @@ public class QuestionController {
             answersDTOList.add(answersDTO);
         }
 
+        // 是否已关注
+        FollowDO followDO = this.followService.queryFollowByQidAndUid(questionId, userInfoDTO.getUsersDO().getId());
+        boolean followed = false;
+        if (followDO != null) {
+            followed = true;
+        }
+
         model.addAttribute("questionsDO", questionsDO);
         model.addAttribute("questionTagsList", questionTagsList);
         model.addAttribute("fromAnswer", false);
         model.addAttribute("answersDTOList", answersDTOList);
+        model.addAttribute("followed", followed);
         return "question";
     }
 
@@ -153,5 +162,10 @@ public class QuestionController {
     @Autowired
     public void setNoHelpsService(NoHelpsService noHelpsService) {
         this.noHelpsService = noHelpsService;
+    }
+
+    @Autowired
+    public void setFollowService(FollowService followService) {
+        this.followService = followService;
     }
 }

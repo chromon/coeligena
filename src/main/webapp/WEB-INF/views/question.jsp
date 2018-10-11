@@ -88,9 +88,18 @@
                     <div class="custom-question-header-footer-inner">
                         <div class="custom-question-header-main custom-question-header-footer-main">
                             <div class="custom-question-btn-group">
-                                <a href="#" onclick="followQuestion(this, '${questionsDO.id}')" class="btn btn-primary custom-margin-right10">
-                                    关注问题
-                                </a>
+                                <c:choose>
+                                    <c:when test="${followed}">
+                                        <a href="#" onclick="followQuestion(this, '${questionsDO.id}')" class="btn btn-default btn--grey custom-margin-right10">
+                                            已关注
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="#" onclick="followQuestion(this, '${questionsDO.id}')" class="btn btn-primary custom-margin-right10">
+                                            关注问题
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
                                 <a id="write_answer_top" href="javascript: void(0);" class="btn btn-default custom-margin-right10">
                                     <i class="fa fa-pencil"></i>
                                     写答案
