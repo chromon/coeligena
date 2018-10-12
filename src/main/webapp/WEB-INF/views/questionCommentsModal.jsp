@@ -127,7 +127,7 @@
                                         <div class="form-group">
                                             <input type="hidden" id="parent-comment-id-r-{{questionCommentsDO.id}}" value="{{questionCommentsDO.id}}">
                                             <input type="hidden" id="reviewer-id-r-{{questionCommentsDO.id}}" value="{{user.id}}">
-                                            <textarea id="question-comment-r-{{questionCommentsDO.id}}" class="form-control" rows="1" placeholder="回复：{{user.fullname}}" style="font-size: 14px;"></textarea>
+                                            <textarea id="question-comment-r-{{questionCommentsDO.id}}" class="form-control custom-border-shadow" rows="1" placeholder="回复：{{user.fullname}}" style="font-size: 14px;"></textarea>
                                             <div class="custom-right" style="padding-top: 15px;">
                                                 <button id="cancel-reply-{{questionCommentsDO.id}}" onclick="hideReplyContent('{{questionCommentsDO.id}}');" class="btn btn-default btn-sm">取消</button>
                                                 <button id="question-comment-btn-{{questionCommentsDO.id}}" onclick="postReply('{{questionCommentsDO.id}}');" type="button" class="btn btn-primary btn-sm">评论</button>
@@ -280,7 +280,7 @@
                             <div class="form-group" style="margin-bottom: 0px;">
                                 <input type="hidden" id="parent-comment-id" value="0">
                                 <input type="hidden" id="reviewer-id" value="0">
-                                <textarea id="question-comment" class="form-control custom-question-comment" rows="1"></textarea>
+                                <textarea id="question-comment" class="form-control custom-border-shadow custom-question-comment" rows="1"></textarea>
                                 <button id="comment-question-btn" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
                             </div>
                         </div><!-- end comment footer -->

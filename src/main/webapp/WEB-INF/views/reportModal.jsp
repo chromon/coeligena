@@ -29,7 +29,7 @@
             </div>
             <div class="modal-body">
                 <div class="custom-reportMenu-inner" style="margin-bottom: 0">
-                    <textarea class="form-control custom-textarea" rows="5" id="reportText" placeholder="举报详细说明（选填）"></textarea>
+                    <textarea class="form-control custom-border-shadow custom-textarea" rows="5" id="reportText" placeholder="举报详细说明（选填）"></textarea>
                 </div>
             </div>
             <div class="modal-footer custom-modal-footer">

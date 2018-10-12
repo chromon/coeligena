@@ -3156,3 +3156,17 @@ ins {
     color: #0084ff;
     transition: opacity .2s;
 }
+
+.custom-border-shadow {
+    font-size: 14px !important;
+    resize:none;
+    padding: 0px 5px !important;
+    border-radius: 3px !important;
+    -webkit-box-shadow: 0 0 0 1px #ddd !important;
+    box-shadow: 0 0 0 1px #ddd !important;
+}
+
+.custom-border-shadow:focus {
+    -webkit-box-shadow: 0 0 0 2px #2196f3 !important;
+    box-shadow: 0 0 0 2px #2196f3 !important;
+}

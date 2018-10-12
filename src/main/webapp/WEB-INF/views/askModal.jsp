@@ -20,7 +20,7 @@
             <form class="form" action="${pageContext.request.contextPath}/ask-question" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input name="questionContent" class="form-control input-sm" type="text" placeholder="写下你的问题">
+                        <input name="questionContent" class="form-control custom-border-shadow input-sm" type="text" placeholder="写下你的问题">
                     </div>
                     <div class="form-group">
                         <label class="control-label">问题说明（可选）：</label>

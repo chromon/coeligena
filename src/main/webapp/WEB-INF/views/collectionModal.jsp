@@ -24,8 +24,8 @@
                 </div>
                 <div id="create_favorite" class="hidden">
                     <div class="custom-create-collection">
-                        <input id="collection_folder_name" type="text" class="custom-collection-text form-control custom-margin-bottom10" placeholder="收藏标题">
-                        <textarea id="collection_description" class="custom-collection-text form-control custom-margin-bottom10" rows="3" placeholder="收藏描述（可选）"></textarea>
+                        <input id="collection_folder_name" type="text" class="custom-collection-text custom-border-shadow form-control custom-margin-bottom10" placeholder="收藏标题">
+                        <textarea id="collection_description" class="custom-collection-text custom-border-shadow form-control custom-margin-bottom10" rows="3" placeholder="收藏描述（可选）"></textarea>
                         <div class="custom-margin-bottom10">
                             <input name="folder_privacy" type="radio" value="1" checked="">
                             公开 <span class="custom-collection-text">有其他人关注此收藏夹时不可设置为私密</span>

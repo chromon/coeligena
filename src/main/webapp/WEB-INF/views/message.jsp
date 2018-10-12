@@ -37,7 +37,7 @@
                     <span class="custom-darker">${siteInfoDO.siteName}团队：</span>
                 </div>
                 <form class="form-horizontal">
-                    <textarea class="form-control" rows="3" id="textArea"></textarea>
+                    <textarea class="form-control custom-border-shadow" rows="3" id="textArea"></textarea>
                 </form>
                 <div class="custom-msg-btn">
                     <a href="#" class="btn btn-primary btn-sm">

@@ -596,7 +596,7 @@
                                             <div class="form-group" style="margin-bottom: 0px;">
                                                 <input type="hidden" id="parent-comment-id-{{answerId}}" value="0">
                                                 <input type="hidden" id="reviewer-id-{{answerId}}" value="0">
-                                                <textarea id="answer-comment-${answersDTOList.answersDO.id}" class="form-control custom-question-comment" rows="1"></textarea>
+                                                <textarea id="answer-comment-${answersDTOList.answersDO.id}" class="form-control custom-border-shadow custom-question-comment" rows="1"></textarea>
                                                 <button id="comment-answer-btn" onclick="postAnswerComment(${answersDTOList.answersDO.id});" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
                                             </div>
                                         </div><!-- end comment footer -->
@@ -709,7 +709,7 @@
                                 <div class="form-group">
                                     <input type="hidden" id="parent-comment-id-r-{{answerCommentsDO.id}}" value="{{answerCommentsDO.id}}">
                                     <input type="hidden" id="reviewer-id-r-{{answerCommentsDO.id}}" value="{{user.id}}">
-                                    <textarea id="answer-comment-r-{{answerCommentsDO.id}}" class="form-control" rows="1" placeholder="回复：{{user.fullname}}" style="font-size: 14px;"></textarea>
+                                    <textarea id="answer-comment-r-{{answerCommentsDO.id}}" class="form-control custom-border-shadow" rows="1" placeholder="回复：{{user.fullname}}" style="font-size: 14px;"></textarea>
                                     <div class="custom-right" style="padding-top: 15px;">
                                         <button id="cancel-reply-{{answerCommentsDO.id}}" onclick="hideAnswerComment('{{answerCommentsDO.id}}');" class="btn btn-default btn-sm">取消</button>
                                         <button id="question-comment-btn-{{answerCommentsDO.id}}" onclick="postAnswerCommentReply('{{answerId}}', '{{answerCommentsDO.id}}');" type="button" class="btn btn-primary btn-sm">评论</button>
