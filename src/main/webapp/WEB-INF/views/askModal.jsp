@@ -23,12 +23,9 @@
                         <input name="questionContent" class="form-control custom-border-shadow input-sm" type="text" placeholder="写下你的问题">
                     </div>
                     <div class="form-group">
-                        <label class="control-label">问题说明（可选）：</label>
-                        <%--<div id="ask_note"></div>--%>
                         <textarea id="ask_note" name="questionDetail"></textarea>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">选择话题</label>
                         <select name="topics" class="form-control js-example-basic-multiple" multiple="multiple">
 
                         </select>
