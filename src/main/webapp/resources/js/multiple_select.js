@@ -11,7 +11,7 @@ var basePath2 = localObj.protocol + "//" + localObj.host;
 $(document).ready(function() {
     // multi-select
     $('.js-example-basic-multiple').select2({
-        theme: "bootstrap",
+        // theme: "bootstrap",
         width: '100%',
         multiple: true,
         maximumSelectionLength: 5,
