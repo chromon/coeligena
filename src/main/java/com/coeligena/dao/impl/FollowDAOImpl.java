@@ -55,4 +55,17 @@ public class FollowDAOImpl implements FollowDAO {
     public void deleteFollow(FollowDO followDO) {
         this.getSession().delete(followDO);
     }
+
+    /**
+     * 查询问题关注数量
+     * @param questionId 问题 id
+     * @return 关注数量
+     */
+    @Override
+    public int queryQuestionFollowerCount(int questionId) {
+        String sql = "select count(*) from FollowDO f where f.questionId = :questionId";
+        Query query = this.getSession().createQuery(sql);
+        query.setParameter("questionId", questionId);
+        return ((Number)query.uniqueResult()).intValue();
+    }
 }

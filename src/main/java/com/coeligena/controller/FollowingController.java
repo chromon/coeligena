@@ -4,7 +4,9 @@ import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.info.Information;
 import com.coeligena.model.FollowDO;
+import com.coeligena.model.QuestionsDO;
 import com.coeligena.service.FollowService;
+import com.coeligena.service.QuestionsService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 public class FollowingController {
 
     private FollowService followService;
+    private QuestionsService questionsService;
 
     /**
      * 关注问题
@@ -46,6 +49,11 @@ public class FollowingController {
         followDO.setFollowerId(userInfoDTO.getUsersDO().getId());
         followDO.setFollowTime(DateUtils.currentTime());
         followService.saveQuestionFollow(followDO);
+
+        // 修改问题关注数量
+        QuestionsDO questionsDO = this.questionsService.queryQuestionById(questionId);
+        questionsDO.setFollowerCount(questionsDO.getFollowerCount() + 1);
+        this.questionsService.modifyQuestion(questionsDO);
 
         // 返回消息
         Information info = new Information();
@@ -74,6 +82,11 @@ public class FollowingController {
         FollowDO followDO = this.followService.queryFollowByQidAndUid(questionId, userInfoDTO.getUsersDO().getId());
         this.followService.deleteFollow(followDO);
 
+        // 修改问题关注数量
+        QuestionsDO questionsDO = this.questionsService.queryQuestionById(questionId);
+        questionsDO.setFollowerCount(questionsDO.getFollowerCount() - 1);
+        this.questionsService.modifyQuestion(questionsDO);
+
         // 返回消息
         Information info = new Information();
         info.setInfoType("success");
@@ -92,5 +105,10 @@ public class FollowingController {
     @Autowired
     public void setFollowService(FollowService followService) {
         this.followService = followService;
+    }
+
+    @Autowired
+    public void setQuestionsService(QuestionsService questionsService) {
+        this.questionsService = questionsService;
     }
 }

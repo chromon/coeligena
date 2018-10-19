@@ -27,4 +27,11 @@ public interface FollowService {
      * @param followDO 问题关注信息
      */
     void deleteFollow(FollowDO followDO);
+
+    /**
+     * 查询问题关注数量
+     * @param questionId 问题 id
+     * @return 关注数量
+     */
+    int queryQuestionFollowerCount(int questionId);
 }

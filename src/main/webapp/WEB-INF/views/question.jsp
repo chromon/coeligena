@@ -122,13 +122,7 @@
                                         <li><a href="#">扫一扫</a></li>
                                     </ul>
                                 </div>
-                                <button class="custom-contentItem-action custom-btn-plain" type="button">
-                                    <span style="display: inline-flex;align-items: center;">
-                                        <i class="fa fa-star custom-margin-right5"></i>
-                                        收藏
-                                    </span>
-                                </button>
-                                <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                <button onclick="report('${questionsDO.id}', 1);" class="custom-contentItem-action custom-btn-plain" type="button">
                                     <span style="display: inline-flex;align-items: center;">
                                         <i class="fa fa-flag custom-margin-right5"></i>
                                         举报

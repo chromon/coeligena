@@ -46,6 +46,11 @@ public class FollowServiceTest {
         this.followService.deleteFollow(followDO);
     }
 
+    @Test
+    public void testQueryQuestionFollowerCount() {
+        Assert.assertEquals(followService.queryQuestionFollowerCount(1), 1);
+    }
+
     @Autowired
     public void setFollowService(FollowService followService) {
         this.followService = followService;

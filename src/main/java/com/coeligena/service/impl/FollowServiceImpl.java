@@ -44,6 +44,16 @@ public class FollowServiceImpl implements FollowService {
         this.followDAO.deleteFollow(followDO);
     }
 
+    /**
+     * 查询问题关注数量
+     * @param questionId 问题 id
+     * @return 关注数量
+     */
+    @Override
+    public int queryQuestionFollowerCount(int questionId) {
+        return this.followDAO.queryQuestionFollowerCount(questionId);
+    }
+
     @Autowired
     public void setFollowDAO(FollowDAO followDAO) {
         this.followDAO = followDAO;
