@@ -38,6 +38,11 @@ public class AnswersServiceImpl implements AnswersService {
         return answersDAO.queryAnswersByQuestionId(questionId);
     }
 
+    @Override
+    public List<AnswersDO> queryAnswersByQuestionIdSortedWSI(int questionId) {
+        return answersDAO.queryAnswersByQuestionIdSortedWSI(questionId);
+    }
+
     /**
      * 更新回答数据
      * @param answersDO 回答数据

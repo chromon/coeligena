@@ -391,6 +391,7 @@ CREATE TABLE IF NOT EXISTS answers (
     force_fold     TINYINT(4)       NOT NULL DEFAULT '0', /* 是否强制折叠 1：是， 0：否 */
     reprint_type   TINYINT(4)       NOT NULL DEFAULT '1', /* 转载类型 1 允许规范转载 2 允许付费转载 3 禁止转载 */
     comment_type   TINYINT(4)       NOT NULL DEFAULT '4', /* 评论类型 4 允许任何人评论 5 评论由我筛选后显示 6 允许我关注的人评论 7 关闭评论 */
+    wsi_score      DOUBLE(17, 16)   DEFAULT '0', /* 回答排序分数 */
     PRIMARY KEY (id),
     INDEX (question_id),
     INDEX (author_id),

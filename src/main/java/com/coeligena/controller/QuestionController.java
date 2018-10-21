@@ -50,7 +50,7 @@ public class QuestionController {
         List<TopicNodesDO> questionTagsList = questionTagsService.queryQuestionTagByQid(questionsDO.getId());
 
         // 查询回答列表
-        List<AnswersDO> answersList = answersService.queryAnswersByQuestionId(questionId);
+        List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSI(questionId);
         List<AnswersDTO> answersDTOList = new ArrayList<>();
         for (AnswersDO answersDO: answersList) {
             // 查询作者信息

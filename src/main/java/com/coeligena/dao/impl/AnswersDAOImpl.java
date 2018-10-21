@@ -50,6 +50,13 @@ public class AnswersDAOImpl implements AnswersDAO {
                 .setParameter("questionId", questionId).list();
     }
 
+    @Override
+    public List<AnswersDO> queryAnswersByQuestionIdSortedWSI(int questionId) {
+        String sql = "select a from AnswersDO a where a.questionId=:questionId order by a.wsiScore desc";
+        return this.getSession().createQuery(sql)
+                .setParameter("questionId", questionId).list();
+    }
+
     /**
      * 由回答 id 查询回答
      * @param answersId 回答 id

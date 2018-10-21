@@ -26,6 +26,13 @@ public interface AnswersService {
     List<AnswersDO> queryAnswersByQuestionId(int questionId);
 
     /**
+     * 由问题 id 查询回答列表，按排序分数降序排列
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    List<AnswersDO> queryAnswersByQuestionIdSortedWSI(int questionId);
+
+    /**
      * 更新回答数据
      * @param answersDO 回答数据
      */

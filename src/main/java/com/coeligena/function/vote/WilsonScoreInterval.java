@@ -39,7 +39,7 @@ public class WilsonScoreInterval {
         // 当z增大时，绝对赞同数起的作用就开始增大。
         // 两个回答，前者100赞30反对，后者70赞0反对，
         // 那么当z小于21时，后者排名靠前，当大于21时，前者排名靠前。
-        System.out.println(WilsonScoreInterval.getWSI(100, 30));
-        System.out.println(WilsonScoreInterval.getWSI(70, 0));
+        System.out.println(WilsonScoreInterval.getWSI(1, 0));
+        System.out.println(WilsonScoreInterval.getWSI(7000, 0));
     }
 }

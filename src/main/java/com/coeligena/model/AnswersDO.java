@@ -67,6 +67,9 @@ public class AnswersDO {
     /** 评论类型 4 允许任何人评论 5 评论由我筛选后显示 6 允许我关注的人评论 7 关闭评论 */
     private byte commentType;
 
+    /** 回答排序分数 */
+    private double wsiScore;
+
     /**
      * 获取回答 id
      * @return 回答 id
@@ -373,5 +376,22 @@ public class AnswersDO {
      */
     public void setCommentType(byte commentType) {
         this.commentType = commentType;
+    }
+
+    /**
+     * 获取回答排序分数
+     * @return 回答排序分数
+     */
+    @Column(name = "wsi_score", nullable = false, columnDefinition = "double(17, 16) default '0'")
+    public double getWsiScore() {
+        return wsiScore;
+    }
+
+    /**
+     * 设置回答排序分数
+     * @param wsiScore 回答排序分数
+     */
+    public void setWsiScore(double wsiScore) {
+        this.wsiScore = wsiScore;
     }
 }

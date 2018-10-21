@@ -3,6 +3,7 @@ package com.coeligena.controller;
 import com.coeligena.dto.*;
 import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.digest.AnswerDigest;
+import com.coeligena.function.vote.WilsonScoreInterval;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,11 +114,19 @@ public class AnswerController {
                 votesDO1.setVoteType((byte) 1);
                 // 更新回答赞同数
                 answersDO.setApprovalCount(answersDO.getApprovalCount() + 1);
+                // 更新排序分数
+                double wsiScore = WilsonScoreInterval.getWSI(
+                        answersDO.getApprovalCount(), answersDO.getAgainstCount());
+                answersDO.setWsiScore(wsiScore);
             } else if (voteAction == 2) {
                 // 反对
                 votesDO1.setVoteType((byte) 2);
                 // 更新回答反对数
                 answersDO.setAgainstCount(answersDO.getAgainstCount() + 1);
+                // 更新排序分数
+                double wsiScore = WilsonScoreInterval.getWSI(
+                        answersDO.getApprovalCount(), answersDO.getAgainstCount());
+                answersDO.setWsiScore(wsiScore);
             }
             this.votesService.saveVotes(votesDO1);
             this.answersService.modifyAnswers(answersDO);
@@ -130,6 +139,10 @@ public class AnswerController {
                     this.votesService.deleteVotes(votesDO);
                     // 回答赞同数 - 1
                     answersDO.setApprovalCount(answersDO.getApprovalCount() - 1);
+                    // 更新排序分数
+                    double wsiScore = WilsonScoreInterval.getWSI(
+                            answersDO.getApprovalCount(), answersDO.getAgainstCount());
+                    answersDO.setWsiScore(wsiScore);
                     this.answersService.modifyAnswers(answersDO);
                 } else if (voteAction == 2) {
                     // 反对（更新赞改踩）
@@ -138,6 +151,10 @@ public class AnswerController {
                     // 回答赞同数 - 1 反对数 + 1
                     answersDO.setApprovalCount(answersDO.getApprovalCount() - 1);
                     answersDO.setAgainstCount(answersDO.getAgainstCount() + 1);
+                    // 更新排序分数
+                    double wsiScore = WilsonScoreInterval.getWSI(
+                            answersDO.getApprovalCount(), answersDO.getAgainstCount());
+                    answersDO.setWsiScore(wsiScore);
                     this.answersService.modifyAnswers(answersDO);
                 }
             } else if (votesDO.getVoteType() == 2) {
@@ -149,12 +166,20 @@ public class AnswerController {
                     // 回答赞同数 + 1 反对数 - 1
                     answersDO.setApprovalCount(answersDO.getApprovalCount() + 1);
                     answersDO.setAgainstCount(answersDO.getAgainstCount() - 1);
+                    // 更新排序分数
+                    double wsiScore = WilsonScoreInterval.getWSI(
+                            answersDO.getApprovalCount(), answersDO.getAgainstCount());
+                    answersDO.setWsiScore(wsiScore);
                     this.answersService.modifyAnswers(answersDO);
                 } else if (voteAction == 2) {
                     // 反对（取消反对，删除信息）
                     this.votesService.deleteVotes(votesDO);
                     // 回答反对数 - 1
                     answersDO.setAgainstCount(answersDO.getAgainstCount() - 1);
+                    // 更新排序分数
+                    double wsiScore = WilsonScoreInterval.getWSI(
+                            answersDO.getApprovalCount(), answersDO.getAgainstCount());
+                    answersDO.setWsiScore(wsiScore);
                     this.answersService.modifyAnswers(answersDO);
                 }
             }
