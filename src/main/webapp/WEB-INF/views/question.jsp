@@ -394,7 +394,7 @@
 
 
                     <!-- feed item -->
-                    <div class="custom-card ">
+                    <div class="custom-card">
 
                         <div class="custom-list-header">
                             <h6 class="custom-list-headerText">
@@ -403,19 +403,19 @@
                             </h6>
                             <div class="custom-list-headerOptions">
                                 <span class="custom-switcher custom-right">
-                                    <a href="" class="custom-current">默认排序</a> |
-                                    <a href="">时间排序</a>
+                                    <a id="default-sort" onclick="sortAnswer(${questionsDO.id}, 0);" href="javascript: void(0)" class="custom-current">默认排序</a> |
+                                    <a id="time-sort" onclick="sortAnswer(${questionsDO.id}, 1);" href="javascript: void(0)">时间排序</a>
                                 </span>
                             </div>
                         </div>
 
                         <c:forEach var="answersDTOList" items="${answersDTOList}">
                         <!-- feed -->
-                        <div class="custom-feed-item">
+                        <div class="custom-feed-item" id="answers-wrapper">
                             <!-- feed author info -->
                             <div class="custom-feed-src-info custom-feed-author-info">
                                 <!-- avatar image -->
-                                <a href="#" id="user-avatar">
+                                <a href="#" id="user-avatar-${answersDTOList.usersDO.id}">
                                     <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>${answersDTOList.usersDO.avatarPath}" alt="Ellery">
                                 </a>
 
@@ -588,10 +588,10 @@
                                         <!-- comment footer -->
                                         <div class="custom-comments-footer custom-comments-editor">
                                             <div class="form-group" style="margin-bottom: 0px;">
-                                                <input type="hidden" id="parent-comment-id-{{answerId}}" value="0">
-                                                <input type="hidden" id="reviewer-id-{{answerId}}" value="0">
+                                                <input type="hidden" id="parent-comment-id" value="0">
+                                                <input type="hidden" id="reviewer-id" value="0">
                                                 <textarea id="answer-comment-${answersDTOList.answersDO.id}" class="form-control custom-border-shadow custom-question-comment" rows="1"></textarea>
-                                                <button id="comment-answer-btn" onclick="postAnswerComment(${answersDTOList.answersDO.id});" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
+                                                <button id="comment-answer-btn-${answersDTOList.answersDO.id}" onclick="postAnswerComment(${answersDTOList.answersDO.id});" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
                                             </div>
                                         </div><!-- end comment footer -->
                                     </div><!-- end feed comment -->
@@ -602,6 +602,10 @@
                     </div><!-- feed item -->
                 </div>
                 <!-- end feed list -->
+
+                <script type="text/template" id="answers-template">
+
+                </script>
 
                 <!-- answer comments template -->
                 <script type="text/template" id="answer-comments-template">

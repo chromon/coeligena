@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -30,6 +32,8 @@ public class AnswerController {
     private QuestionsService questionsService;
     private VotesService votesService;
     private FeedsService feedsService;
+    private ThanksService thanksService;
+    private NoHelpsService noHelpsService;
 
     /**
      * 回答问题 Ajax 请求
@@ -201,6 +205,82 @@ public class AnswerController {
         return answersDO.getApprovalCount() + "";
     }
 
+    /**
+     * 回答默认排序
+     * @param questionId 问题 id
+     * @return 回答信息列表
+     */
+    @RequestMapping(value="/default-sort", method = RequestMethod.POST)
+    @ResponseBody
+    public List<AnswersDTO> defaultSortAnswer(HttpServletRequest request, int questionId) {
+        // 查询回答列表
+        List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSI(questionId);
+        return sortAnswerFunc(request, answersList);
+    }
+
+    /**
+     * 按时间排序回答
+     * @param questionId 问题 id
+     * @return 回答信息列表
+     */
+    @RequestMapping(value="/time-sort", method = RequestMethod.POST)
+    @ResponseBody
+    public List<AnswersDTO> timeSortAnswer(HttpServletRequest request, int questionId) {
+
+        // 查询回答列表
+        List<AnswersDO> answersList = answersService.queryAnswersByQuestionId(questionId);
+        return sortAnswerFunc(request, answersList);
+    }
+
+    /**
+     * 排序方法
+     * @param request http servlet request
+     * @param answersList 回答列表
+     * @return 回答信息列表
+     */
+    private List<AnswersDTO> sortAnswerFunc(HttpServletRequest request, List<AnswersDO> answersList) {
+
+        // 查询用户信息
+        UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
+
+        List<AnswersDTO> answersDTOList = new ArrayList<>();
+        for (AnswersDO answersDO: answersList) {
+            // 查询作者信息
+            UsersDO usersDO = usersService.queryUserByUserId(answersDO.getAuthorId());
+
+            // 查询回答投票信息
+            VotesDO votesDO = votesService.queryVotesByAnswerIdAndVoterId(
+                    answersDO.getId(), usersDO.getId());
+
+            // 查询感谢信息
+            ThanksDO thanksDO = thanksService.queryThanksByAnswerIdAndUId(answersDO.getId(), userInfoDTO.getUsersDO().getId());
+
+            // 查询是否提交没有帮助
+            NoHelpsDO noHelpsDO = noHelpsService.queryNoHelpByAnswerIdAndUid(answersDO.getId(), userInfoDTO.getUsersDO().getId());
+
+            // 回答信息
+            AnswersDTO answersDTO = new AnswersDTO();
+            answersDTO.setUsersDO(usersDO);
+            answersDTO.setAnswersDO(answersDO);
+            answersDTO.setVotesDO(votesDO);
+
+            if (thanksDO != null) {
+                answersDTO.setThanked(true);
+            } else {
+                answersDTO.setThanked(false);
+            }
+
+            if (noHelpsDO != null) {
+                answersDTO.setNoHelp(true);
+            } else {
+                answersDTO.setNoHelp(false);
+            }
+
+            answersDTOList.add(answersDTO);
+        }
+        return answersDTOList;
+    }
+
     @Autowired
     public void setUsersService(UsersService usersService) {
         this.usersService = usersService;
@@ -224,5 +304,15 @@ public class AnswerController {
     @Autowired
     public void setFeedsService(FeedsService feedsService) {
         this.feedsService = feedsService;
+    }
+
+    @Autowired
+    public void setThanksService(ThanksService thanksService) {
+        this.thanksService = thanksService;
+    }
+
+    @Autowired
+    public void setNoHelpsService(NoHelpsService noHelpsService) {
+        this.noHelpsService = noHelpsService;
     }
 }

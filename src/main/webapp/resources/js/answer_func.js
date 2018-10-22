@@ -240,6 +240,15 @@ function commentsList(answerId) {
             data['page']['answerId'] = answerId;
             var pagingHtml = pagingTemplate(data['page']);
             $('#answer-comments-paging-wrapper-' + answerId).html(pagingHtml);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log('responseText: ' + jqXHR.responseText);
+            console.log('status: ' + jqXHR.status);
+            console.log('readyState: ' + jqXHR.readyState);
+            console.log('statusText: ' + jqXHR.statusText);
+
+            console.log('textStatus: ' + textStatus);
+            console.log('errorThrown: ' + errorThrown);
         }
     });
 }
@@ -501,6 +510,47 @@ function commonAjax(data, url) {
         dataType: "text",
         success: function(data) {
              // console.log(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log('responseText: ' + jqXHR.responseText);
+            console.log('status: ' + jqXHR.status);
+            console.log('readyState: ' + jqXHR.readyState);
+            console.log('statusText: ' + jqXHR.statusText);
+
+            console.log('textStatus: ' + textStatus);
+            console.log('errorThrown: ' + errorThrown);
+        }
+    });
+}
+
+// 回答排序
+function sortAnswer(questionId, sortType) {
+
+    let data = {
+        questionId: questionId
+    };
+
+    if (sortType == 0) {
+        $('#default-sort').addClass('custom-current');
+        $('#time-sort').removeClass('custom-current');
+
+        sortAJAX(data, '/default-sort');
+    } else if (sortType == 1) {
+        $('#default-sort').removeClass('custom-current');
+        $('#time-sort').addClass('custom-current');
+
+        sortAJAX(data, '/time-sort');
+    }
+}
+
+function sortAJAX(data, url) {
+    $.ajax({
+        type: "POST",
+        url: basePath2 + url,
+        data: data,
+        dataType: "text",
+        success: function(data) {
+            console.log(data);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('responseText: ' + jqXHR.responseText);
