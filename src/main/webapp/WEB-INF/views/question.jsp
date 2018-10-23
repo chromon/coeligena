@@ -392,9 +392,8 @@
 
                     <div id="post_answer_wrapper"></div>
 
-
                     <!-- feed item -->
-                    <div class="custom-card">
+                    <div class="custom-card" id="answers-wrapper">
 
                         <div class="custom-list-header">
                             <h6 class="custom-list-headerText">
@@ -411,7 +410,7 @@
 
                         <c:forEach var="answersDTOList" items="${answersDTOList}">
                         <!-- feed -->
-                        <div class="custom-feed-item" id="answers-wrapper">
+                        <div class="custom-feed-item">
                             <!-- feed author info -->
                             <div class="custom-feed-src-info custom-feed-author-info">
                                 <!-- avatar image -->
@@ -603,8 +602,10 @@
                 </div>
                 <!-- end feed list -->
 
-                <script type="text/template" id="answers-template">
-
+                <script type="text/html" id="answers-template">
+                    {{each data}}
+                    <div>KEY:{{$value}}</div>
+                    {{/each}}
                 </script>
 
                 <!-- answer comments template -->

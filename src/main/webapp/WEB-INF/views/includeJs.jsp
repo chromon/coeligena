@@ -23,6 +23,7 @@
 <script src="<%=request.getContextPath()%>/resources/plugin/select2/i18n/zh-CN.js" type="text/javascript"></script>
 
 <script src="<%=request.getContextPath()%>/resources/plugin/handlebars/handlebars-v4.0.11.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/plugin/art-template/template-web.js" type="text/javascript"></script>
 
 <script src="<%=request.getContextPath()%>/resources/js/loading_bar.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/resources/js/hover_card.js" type="text/javascript"></script>

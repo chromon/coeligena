@@ -551,6 +551,27 @@ function sortAJAX(data, url) {
         dataType: "text",
         success: function(data) {
             console.log(data);
+
+            let data2 = [
+                {
+                    "name":"huochai",
+                    "age":29,
+                    "school":{
+                        "name":"diankeyuan",
+                        "location":"beijing"
+                    }
+                },
+                {
+                    "name":"huochai2",
+                    "age":292,
+                    "school":{
+                        "name":"diankeyuan2",
+                        "location":"beijing2"
+                    }
+                }
+            ];
+            let html = template("answers-template", {data:data});
+            $("#answers-wrapper").html(html);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('responseText: ' + jqXHR.responseText);
