@@ -296,7 +296,7 @@ function answerCommentsWithPage(pageNum, answerId) {
 // 评论回答
 function postAnswerComment(id) {
 
-    var content = $('#answer-comment-' + id).val();
+    let content = $('#answer-comment-' + id).val();
     $('#answer-comment-' + id).val('');
 
     $.ajax({
@@ -304,8 +304,8 @@ function postAnswerComment(id) {
         url: basePath2 + "/answer-comment",
         data: {
             answerId: id,
-            reviewerId: $('#reviewer-id').val(),
-            parentCommentId: $('#parent-comment-id').val(),
+            reviewerId: $('#reviewer-id-' + id).val(),
+            parentCommentId: $('#parent-comment-id-' + id).val(),
             commentContent: content
         },
         dataType: "json",
@@ -545,31 +545,12 @@ function sortAnswer(questionId, sortType) {
 
 function sortAJAX(data, url) {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: basePath2 + url,
         data: data,
-        dataType: "text",
+        dataType: "json",
         success: function(data) {
-            console.log(data);
-
-            let data2 = [
-                {
-                    "name":"huochai",
-                    "age":29,
-                    "school":{
-                        "name":"diankeyuan",
-                        "location":"beijing"
-                    }
-                },
-                {
-                    "name":"huochai2",
-                    "age":292,
-                    "school":{
-                        "name":"diankeyuan2",
-                        "location":"beijing2"
-                    }
-                }
-            ];
+            // console.log(data);
             let html = template("answers-template", {data:data});
             $("#answers-wrapper").html(html);
         },

@@ -393,7 +393,7 @@
                     <div id="post_answer_wrapper"></div>
 
                     <!-- feed item -->
-                    <div class="custom-card" id="answers-wrapper">
+                    <div class="custom-card">
 
                         <div class="custom-list-header">
                             <h6 class="custom-list-headerText">
@@ -408,203 +408,437 @@
                             </div>
                         </div>
 
-                        <c:forEach var="answersDTOList" items="${answersDTOList}">
-                        <!-- feed -->
-                        <div class="custom-feed-item">
-                            <!-- feed author info -->
-                            <div class="custom-feed-src-info custom-feed-author-info">
-                                <!-- avatar image -->
-                                <a href="#" id="user-avatar-${answersDTOList.usersDO.id}">
-                                    <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>${answersDTOList.usersDO.avatarPath}" alt="Ellery">
-                                </a>
+                        <div id="answers-wrapper">
+                            <c:forEach var="answersDTOList" items="${answersDTOList}">
+                            <!-- feed -->
+                            <div class="custom-feed-item">
+                                <!-- feed author info -->
+                                <div class="custom-feed-src-info custom-feed-author-info">
+                                    <!-- avatar image -->
+                                    <a href="#" id="user-avatar-${answersDTOList.usersDO.id}">
+                                        <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>${answersDTOList.usersDO.avatarPath}" alt="Ellery">
+                                    </a>
 
-                                <div class="custom-author-info-content">
-                                    <div class="custom-author-info-head">
-                                        <a href="#">${answersDTOList.usersDO.fullname}</a>
-                                    </div>
-                                    <div class="custom-author-info-detail">
-                                        <div class="custom-author-badge">
-                                            <div class="custom-author-badge-text">
-                                                ${answersDTOList.usersDO.autograph}
+                                    <div class="custom-author-info-content">
+                                        <div class="custom-author-info-head">
+                                            <a href="#">${answersDTOList.usersDO.fullname}</a>
+                                        </div>
+                                        <div class="custom-author-info-detail">
+                                            <div class="custom-author-badge">
+                                                <div class="custom-author-badge-text">
+                                                    ${answersDTOList.usersDO.autograph}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div><!-- end feed author info -->
+                                </div><!-- end feed author info -->
 
-                            <!-- feed detail -->
-                            <div>
-                                <!-- feed content -->
-                                <div class="custom-rich-content">
-                                    <div class="custom-answerItem-extraInfo">
-                                    <span class="custom-voters">
-                                        <a href="">1 人赞同了该回答</a>
-                                    </span>
-                                    </div>
-                                    <!-- custom-is-collapsed -->
-                                    <div class="custom-rich-content-inner" id="ans-inner-${answersDTOList.answersDO.id}">
-                                        <span>${answersDTOList.answersDO.answerContent}</span>
-                                    </div>
-                                    <button id="ans-unfold-${answersDTOList.answersDO.id}" onclick="unfoldAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-rightBtn custom-btn-plain hide" type="button">
-                                        <span class="custom-margin-right5">展开阅读全文</span>
-                                        <i class="fa fa-chevron-down"></i>
-                                    </button>
-                                    <div class="custom-contentItem-time">
-                                        <a href="#">编辑于 ${answersDTOList.answersDO.answerTime}</a>
-                                    </div>
-                                    <div>
-                                        <div class="custom-contentItem-actions custom-sticky custom-is-fixed">
-                                            <span>
-                                                <c:choose>
-                                                    <c:when test="${answersDTOList.votesDO != null}">
-                                                        <c:if test="${answersDTOList.votesDO.voteType == 1}">
-                                                            <button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                <!-- feed detail -->
+                                <div>
+                                    <!-- feed content -->
+                                    <div class="custom-rich-content">
+                                        <div class="custom-answerItem-extraInfo">
+                                        <span class="custom-voters">
+                                            <a href="">1 人赞同了该回答</a>
+                                        </span>
+                                        </div>
+                                        <!-- custom-is-collapsed -->
+                                        <div class="custom-rich-content-inner" id="ans-inner-${answersDTOList.answersDO.id}">
+                                            <span>${answersDTOList.answersDO.answerContent}</span>
+                                        </div>
+                                        <button id="ans-unfold-${answersDTOList.answersDO.id}" onclick="unfoldAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-rightBtn custom-btn-plain hide" type="button">
+                                            <span class="custom-margin-right5">展开阅读全文</span>
+                                            <i class="fa fa-chevron-down"></i>
+                                        </button>
+                                        <div class="custom-contentItem-time">
+                                            <a href="#">编辑于 ${answersDTOList.answersDO.answerTime}</a>
+                                        </div>
+                                        <div>
+                                            <div class="custom-contentItem-actions custom-sticky custom-is-fixed">
+                                                <span>
+                                                    <c:choose>
+                                                        <c:when test="${answersDTOList.votesDO != null}">
+                                                            <c:if test="${answersDTOList.votesDO.voteType == 1}">
+                                                                <button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                                                    <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
+                                                                </button>
+                                                                <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
+                                                                    <i class="fa fa-caret-down"></i>
+                                                                </button>
+                                                            </c:if>
+                                                            <c:if test="${answersDTOList.votesDO.voteType == 2}">
+                                                                <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
+                                                                    <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
+                                                                </button>
+                                                                <button class="custom-vote-btn is-active" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
+                                                                    <i class="fa fa-caret-down"></i>
+                                                                </button>
+                                                            </c:if>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
                                                                 <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
                                                             </button>
                                                             <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
                                                                 <i class="fa fa-caret-down"></i>
                                                             </button>
-                                                        </c:if>
-                                                        <c:if test="${answersDTOList.votesDO.voteType == 2}">
-                                                            <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
-                                                                <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
-                                                            </button>
-                                                            <button class="custom-vote-btn is-active" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
-                                                                <i class="fa fa-caret-down"></i>
-                                                            </button>
-                                                        </c:if>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </span>
+                                                <button onclick="commentsList(${answersDTOList.answersDO.id})" data-toggle="collapse" data-target="#answer-comments-wrapper-${answersDTOList.answersDO.id}"
+                                                        aria-expanded="false" aria-controls="collapseExample" class="custom-contentItem-action custom-btn-plain" type="button">
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-comment custom-margin-right5"></i>
+                                                        ${answersDTOList.answersDO.commentCount} 条评论
+                                                    </span>
+                                                </button>
+                                                <div class="custom-drop-option2">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                        <i class="fa fa-paper-plane"></i> 分享
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#">复制链接</a></li>
+                                                        <li><a href="#">新浪微博</a></li>
+                                                        <li><a href="#">扫一扫</a></li>
+                                                    </ul>
+                                                </div>
+                                                <button onclick="showCollectModal('${answersDTOList.answersDO.id}')" class="custom-contentItem-action custom-btn-plain" type="button">
+                                                    <span style="display: inline-flex;align-items: center;">
+                                                        <i class="fa fa-star custom-margin-right5"></i>
+                                                        收藏
+                                                    </span>
+                                                </button>
+                                                <c:choose>
+                                                    <c:when test="${answersDTOList.thanked}">
+                                                    <button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain already-thanks" type="button">
+                                                        <span style="display: inline-flex;align-items: center;">
+                                                            <i class="fa fa-heart custom-margin-right5"></i>
+                                                            <span class="thanks-text">取消感谢</span>
+                                                        </span>
+                                                    </button>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">
-                                                            <i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}
-                                                        </button>
-                                                        <button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">
-                                                            <i class="fa fa-caret-down"></i>
+                                                        <button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain" type="button">
+                                                        <span style="display: inline-flex;align-items: center;">
+                                                            <i class="fa fa-heart custom-margin-right5"></i>
+                                                            <span class="thanks-text">感谢</span>
+                                                        </span>
                                                         </button>
                                                     </c:otherwise>
                                                 </c:choose>
-                                            </span>
-                                            <button onclick="commentsList(${answersDTOList.answersDO.id})" data-toggle="collapse" data-target="#answer-comments-wrapper-${answersDTOList.answersDO.id}"
-                                                    aria-expanded="false" aria-controls="collapseExample" class="custom-contentItem-action custom-btn-plain" type="button">
-                                                <span style="display: inline-flex;align-items: center;">
-                                                    <i class="fa fa-comment custom-margin-right5"></i>
-                                                    ${answersDTOList.answersDO.commentCount} 条评论
-                                                </span>
-                                            </button>
-                                            <div class="custom-drop-option2">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                                    <i class="fa fa-paper-plane"></i> 分享
-                                                </a>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">复制链接</a></li>
-                                                    <li><a href="#">新浪微博</a></li>
-                                                    <li><a href="#">扫一扫</a></li>
-                                                </ul>
-                                            </div>
-                                            <button onclick="showCollectModal('${answersDTOList.answersDO.id}')" class="custom-contentItem-action custom-btn-plain" type="button">
-                                                <span style="display: inline-flex;align-items: center;">
-                                                    <i class="fa fa-star custom-margin-right5"></i>
-                                                    收藏
-                                                </span>
-                                            </button>
-                                            <c:choose>
-                                                <c:when test="${answersDTOList.thanked}">
-                                                <button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain already-thanks" type="button">
+                                                <div class="custom-drop-option2">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                        •••
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <c:choose>
+                                                            <c:when test="${answersDTOList.noHelp}">
+                                                                <li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');" class="no-help">撤销没有帮助</a></li>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');">没有帮助</a></li>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <li><a onclick="report('${answersDTOList.answersDO.id}', 2);" href="javascript:void(0);">举报</a></li>
+                                                        <li><a href="javascript:void(0);">不感兴趣</a></li>
+                                                    </ul>
+                                                </div>
+                                                <button id="tuck-up-${answersDTOList.answersDO.id}" onclick="tuckUpAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
                                                     <span style="display: inline-flex;align-items: center;">
-                                                        <i class="fa fa-heart custom-margin-right5"></i>
-                                                        <span class="thanks-text">取消感谢</span>
+                                                        <span class="custom-margin-right5">收起</span>
+                                                        <i class="fa fa-chevron-up"></i>
                                                     </span>
                                                 </button>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain" type="button">
+                                            </div>
+                                        </div>
+                                    </div><!-- end feed content -->
+
+                                    <!-- feed comment -->
+                                    <div id="answer-comments-wrapper-${answersDTOList.answersDO.id}" class="collapse">
+                                        <div class="custom-comments custom-comments-withPagination custom-comments-container">
+                                            <!-- comment top bar -->
+                                            <div class="custom-comments-topbar">
+                                                <div class="custom-comments-topbar-title">
+                                                    <h2>${answersDTOList.answersDO.commentCount} 条评论</h2>
+                                                </div>
+                                                <div class="custom-comments-topbar-option">
+                                                    <button class="custom-btn-plain custom-contentItem-right" type="button">
                                                     <span style="display: inline-flex;align-items: center;">
-                                                        <i class="fa fa-heart custom-margin-right5"></i>
-                                                        <span class="thanks-text">感谢</span>
+                                                        <i class="fa fa-exchange custom-margin-right5"></i>
+                                                        <span>切换为时间排序</span>
                                                     </span>
                                                     </button>
-                                                </c:otherwise>
-                                            </c:choose>
-                                            <div class="custom-drop-option2">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                                    •••
-                                                </a>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <c:choose>
-                                                        <c:when test="${answersDTOList.noHelp}">
-                                                            <li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');" class="no-help">撤销没有帮助</a></li>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');">没有帮助</a></li>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                    <li><a onclick="report('${answersDTOList.answersDO.id}', 2);" href="javascript:void(0);">举报</a></li>
-                                                    <li><a href="javascript:void(0);">不感兴趣</a></li>
-                                                </ul>
+                                                </div>
+                                            </div><!-- end comment top bar -->
+
+                                            <div id="comments-container-${answersDTOList.answersDO.id}" class="custom-comment-list">
                                             </div>
-                                            <button id="tuck-up-${answersDTOList.answersDO.id}" onclick="tuckUpAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
-                                                <span style="display: inline-flex;align-items: center;">
-                                                    <span class="custom-margin-right5">收起</span>
-                                                    <i class="fa fa-chevron-up"></i>
-                                                </span>
-                                            </button>
-                                        </div>
+
+                                            <!-- comment pagination -->
+                                            <div id="answer-comments-paging-wrapper-${answersDTOList.answersDO.id}">
+                                            </div><!-- end comment pagination -->
+
+                                            <!-- collapse comment -->
+                                            <div class="custom-comment-list-action">
+                                                <div class="custom-comment-list-collapse">
+                                                    <span>1 条评论被折叠</span>
+                                                    （<a href="">为什么？</a>）
+                                                </div>
+                                            </div><!-- end collapse comment -->
+                                            <!-- comment footer -->
+                                            <div class="custom-comments-footer custom-comments-editor">
+                                                <div class="form-group" style="margin-bottom: 0px;">
+                                                    <input type="hidden" id="parent-comment-id-${answersDTOList.answersDO.id}" value="0">
+                                                    <input type="hidden" id="reviewer-id-${answersDTOList.answersDO.id}" value="0">
+                                                    <textarea id="answer-comment-${answersDTOList.answersDO.id}" class="form-control custom-border-shadow custom-question-comment" rows="1"></textarea>
+                                                    <button id="comment-answer-btn-${answersDTOList.answersDO.id}" onclick="postAnswerComment(${answersDTOList.answersDO.id});" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
+                                                </div>
+                                            </div><!-- end comment footer -->
+                                        </div><!-- end feed comment -->
                                     </div>
-                                </div><!-- end feed content -->
-
-                                <!-- feed comment -->
-                                <div id="answer-comments-wrapper-${answersDTOList.answersDO.id}" class="collapse">
-                                    <div class="custom-comments custom-comments-withPagination custom-comments-container">
-                                        <!-- comment top bar -->
-                                        <div class="custom-comments-topbar">
-                                            <div class="custom-comments-topbar-title">
-                                                <h2>${answersDTOList.answersDO.commentCount} 条评论</h2>
-                                            </div>
-                                            <div class="custom-comments-topbar-option">
-                                                <button class="custom-btn-plain custom-contentItem-right" type="button">
-                                                <span style="display: inline-flex;align-items: center;">
-                                                    <i class="fa fa-exchange custom-margin-right5"></i>
-                                                    <span>切换为时间排序</span>
-                                                </span>
-                                                </button>
-                                            </div>
-                                        </div><!-- end comment top bar -->
-
-                                        <div id="comments-container-${answersDTOList.answersDO.id}" class="custom-comment-list">
-                                        </div>
-
-                                        <!-- comment pagination -->
-                                        <div id="answer-comments-paging-wrapper-${answersDTOList.answersDO.id}">
-                                        </div><!-- end comment pagination -->
-
-                                        <!-- collapse comment -->
-                                        <div class="custom-comment-list-action">
-                                            <div class="custom-comment-list-collapse">
-                                                <span>1 条评论被折叠</span>
-                                                （<a href="">为什么？</a>）
-                                            </div>
-                                        </div><!-- end collapse comment -->
-                                        <!-- comment footer -->
-                                        <div class="custom-comments-footer custom-comments-editor">
-                                            <div class="form-group" style="margin-bottom: 0px;">
-                                                <input type="hidden" id="parent-comment-id" value="0">
-                                                <input type="hidden" id="reviewer-id" value="0">
-                                                <textarea id="answer-comment-${answersDTOList.answersDO.id}" class="form-control custom-border-shadow custom-question-comment" rows="1"></textarea>
-                                                <button id="comment-answer-btn-${answersDTOList.answersDO.id}" onclick="postAnswerComment(${answersDTOList.answersDO.id});" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
-                                            </div>
-                                        </div><!-- end comment footer -->
-                                    </div><!-- end feed comment -->
-                                </div>
-                            </div><!-- feed detail -->
-                        </div><!-- end feed -->
-                        </c:forEach>
+                                </div><!-- feed detail -->
+                            </div><!-- end feed -->
+                            </c:forEach>
+                        </div>
                     </div><!-- feed item -->
                 </div>
                 <!-- end feed list -->
 
                 <script type="text/html" id="answers-template">
                     {{each data}}
-                    <div>KEY:{{$value}}</div>
+                    <%--<div>KEY:{{$value.answersDO.id}}</div>--%>
+                    <!-- feed -->
+                    <div class="custom-feed-item">
+                        <!-- feed author info -->
+                        <div class="custom-feed-src-info custom-feed-author-info">
+                            <!-- avatar image -->
+                            <a href="#" id="user-avatar-{{$value.usersDO.id}}">
+                                <img class="media-object custom-avatar24" src="<%=request.getContextPath()%>{{$value.usersDO.avatarPath}}" alt="{{$value.usersDO.fullname}}">
+                            </a>
+
+                            <div class="custom-author-info-content">
+                                <div class="custom-author-info-head">
+                                    <a href="#">{{$value.usersDO.fullname}}</a>
+                                </div>
+                                <div class="custom-author-info-detail">
+                                    <div class="custom-author-badge">
+                                        <div class="custom-author-badge-text">
+                                            {{$value.usersDO.autograph}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end feed author info -->
+
+                        <!-- feed detail -->
+                        <div>
+                            <!-- feed content -->
+                            <div class="custom-rich-content">
+                                <div class="custom-answerItem-extraInfo">
+                                    <span class="custom-voters">
+                                        <a href="">1 人赞同了该回答</a>
+                                    </span>
+                                </div>
+                                <!-- custom-is-collapsed -->
+                                <div class="custom-rich-content-inner" id="ans-inner-{{$value.answersDO.id}}">
+                                    <span>{{$value.answersDO.answerContent}}</span>
+                                </div>
+                                <button id="ans-unfold-{{$value.answersDO.id}}" onclick="unfoldAnswer('{{$value.answersDO.id}}');" class="custom-contentItem-rightBtn custom-btn-plain hide" type="button">
+                                    <span class="custom-margin-right5">展开阅读全文</span>
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                                <div class="custom-contentItem-time">
+                                    <a href="#">编辑于 {{$value.answersDO.answerTime}}</a>
+                                </div>
+                                <div>
+                                    <div class="custom-contentItem-actions custom-sticky custom-is-fixed">
+                                        <span>
+                                            {{if $value.votesDO != null}}
+                                                {{if $value.votesDO.voteType == 1}}
+                                                    <button class="custom-vote-btn is-active" onclick="voteUp(this, '{{$value.answersDO.id}}');" aria-label="赞同" type="button">
+                                                        <i class="fa fa-caret-up"></i> {{$value.answersDO.approvalCount}}
+                                                    </button>
+                                                    <button class="custom-vote-btn" onclick="voteDown(this, '{{$value.answersDO.id}}');" aria-label="反对" type="button">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                {{else if $value.votesDO.voteType == 2}}
+                                                    <button class="custom-vote-btn" onclick="voteUp(this, '{{$value.answersDO.id}}');" aria-label="赞同" type="button">
+                                                        <i class="fa fa-caret-up"></i> {{$value.answersDO.approvalCount}}
+                                                    </button>
+                                                    <button class="custom-vote-btn is-active" onclick="voteDown(this, '{{$value.answersDO.id}}');" aria-label="反对" type="button">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                {{/if}}
+                                            {{else}}
+                                                <button class="custom-vote-btn" onclick="voteUp(this, '{{$value.answersDO.id}}');" aria-label="赞同" type="button">
+                                                    <i class="fa fa-caret-up"></i> {{$value.answersDO.approvalCount}}
+                                                </button>
+                                                <button class="custom-vote-btn" onclick="voteDown(this, '{{$value.answersDO.id}}');" aria-label="反对" type="button">
+                                                    <i class="fa fa-caret-down"></i>
+                                                </button>
+                                            {{/if}}
+                                            <%--<c:choose>--%>
+                                                <%--<c:when test="${answersDTOList.votesDO != null}">--%>
+                                                    <%--<c:if test="${answersDTOList.votesDO.voteType == 1}">--%>
+                                                        <%--<button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">--%>
+                                                            <%--<i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}--%>
+                                                        <%--</button>--%>
+                                                        <%--<button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">--%>
+                                                            <%--<i class="fa fa-caret-down"></i>--%>
+                                                        <%--</button>--%>
+                                                    <%--</c:if>--%>
+                                                    <%--<c:if test="${answersDTOList.votesDO.voteType == 2}">--%>
+                                                        <%--<button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">--%>
+                                                            <%--<i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}--%>
+                                                        <%--</button>--%>
+                                                        <%--<button class="custom-vote-btn is-active" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">--%>
+                                                            <%--<i class="fa fa-caret-down"></i>--%>
+                                                        <%--</button>--%>
+                                                    <%--</c:if>--%>
+                                                <%--</c:when>--%>
+                                                <%--<c:otherwise>--%>
+                                                    <%--<button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">--%>
+                                                        <%--<i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}--%>
+                                                    <%--</button>--%>
+                                                    <%--<button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">--%>
+                                                        <%--<i class="fa fa-caret-down"></i>--%>
+                                                    <%--</button>--%>
+                                                <%--</c:otherwise>--%>
+                                            <%--</c:choose>--%>
+                                        </span>
+                                        <button onclick="commentsList('{{$value.answersDO.id}}')" data-toggle="collapse" data-target="#answer-comments-wrapper-{{$value.answersDO.id}}"
+                                                aria-expanded="false" aria-controls="collapseExample" class="custom-contentItem-action custom-btn-plain" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-comment custom-margin-right5"></i>
+                                                {{$value.answersDO.commentCount}} 条评论
+                                            </span>
+                                        </button>
+                                        <div class="custom-drop-option2">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                <i class="fa fa-paper-plane"></i> 分享
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">复制链接</a></li>
+                                                <li><a href="#">新浪微博</a></li>
+                                                <li><a href="#">扫一扫</a></li>
+                                            </ul>
+                                        </div>
+                                        <button onclick="showCollectModal('{{$value.answersDO.id}}')" class="custom-contentItem-action custom-btn-plain" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-star custom-margin-right5"></i>
+                                                收藏
+                                            </span>
+                                        </button>
+                                        {{if $value.thanked}}
+                                            <button onclick="forThanks(this, '{{$value.answersDO.id}}');" class="custom-contentItem-action custom-btn-plain already-thanks" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-heart custom-margin-right5"></i>
+                                                    <span class="thanks-text">取消感谢</span>
+                                                </span>
+                                            </button>
+                                        {{else}}
+                                            <button onclick="forThanks(this, '{{$value.answersDO.id}}');" class="custom-contentItem-action custom-btn-plain" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-heart custom-margin-right5"></i>
+                                                    <span class="thanks-text">感谢</span>
+                                                </span>
+                                            </button>
+                                        {{/if}}
+                                        <%--<c:choose>--%>
+                                            <%--<c:when test="${answersDTOList.thanked}">--%>
+                                                <%--<button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain already-thanks" type="button">--%>
+                                                    <%--<span style="display: inline-flex;align-items: center;">--%>
+                                                        <%--<i class="fa fa-heart custom-margin-right5"></i>--%>
+                                                        <%--<span class="thanks-text">取消感谢</span>--%>
+                                                    <%--</span>--%>
+                                                <%--</button>--%>
+                                            <%--</c:when>--%>
+                                            <%--<c:otherwise>--%>
+                                                <%--<button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain" type="button">--%>
+                                                    <%--<span style="display: inline-flex;align-items: center;">--%>
+                                                        <%--<i class="fa fa-heart custom-margin-right5"></i>--%>
+                                                        <%--<span class="thanks-text">感谢</span>--%>
+                                                    <%--</span>--%>
+                                                <%--</button>--%>
+                                            <%--</c:otherwise>--%>
+                                        <%--</c:choose>--%>
+                                        <div class="custom-drop-option2">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                •••
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                {{if $value.noHelp}}
+                                                <li><a href="javascript:void(0);" onclick="noHelp(this, '{{$value.answersDO.id}}');" class="no-help">撤销没有帮助</a></li>
+                                                {{else}}
+                                                <li><a href="javascript:void(0);" onclick="noHelp(this, '{{$value.answersDO.id}}');">没有帮助</a></li>
+                                                {{/if}}
+                                                <%--<c:choose>--%>
+                                                    <%--<c:when test="${answersDTOList.noHelp}">--%>
+                                                        <%--<li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');" class="no-help">撤销没有帮助</a></li>--%>
+                                                    <%--</c:when>--%>
+                                                    <%--<c:otherwise>--%>
+                                                        <%--<li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');">没有帮助</a></li>--%>
+                                                    <%--</c:otherwise>--%>
+                                                <%--</c:choose>--%>
+                                                <li><a onclick="report('{{$value.answersDO.id}}', 2);" href="javascript:void(0);">举报</a></li>
+                                                <li><a href="javascript:void(0);">不感兴趣</a></li>
+                                            </ul>
+                                        </div>
+                                        <button id="tuck-up-{{$value.answersDO.id}}" onclick="tuckUpAnswer('{{$value.answersDO.id}}');" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <span class="custom-margin-right5">收起</span>
+                                                <i class="fa fa-chevron-up"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div><!-- end feed content -->
+
+                            <!-- feed comment -->
+                            <div id="answer-comments-wrapper-{{$value.answersDO.id}}" class="collapse">
+                                <div class="custom-comments custom-comments-withPagination custom-comments-container">
+                                    <!-- comment top bar -->
+                                    <div class="custom-comments-topbar">
+                                        <div class="custom-comments-topbar-title">
+                                            <h2>{{$value.answersDO.commentCount}} 条评论</h2>
+                                        </div>
+                                        <div class="custom-comments-topbar-option">
+                                            <button class="custom-btn-plain custom-contentItem-right" type="button">
+                                                <span style="display: inline-flex;align-items: center;">
+                                                    <i class="fa fa-exchange custom-margin-right5"></i>
+                                                    <span>切换为时间排序</span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div><!-- end comment top bar -->
+
+                                    <div id="comments-container-{{$value.answersDO.id}}" class="custom-comment-list">
+                                    </div>
+
+                                    <!-- comment pagination -->
+                                    <div id="answer-comments-paging-wrapper-{{$value.answersDO.id}}">
+                                    </div><!-- end comment pagination -->
+
+                                    <!-- collapse comment -->
+                                    <div class="custom-comment-list-action">
+                                        <div class="custom-comment-list-collapse">
+                                            <span>1 条评论被折叠</span>
+                                            （<a href="">为什么？</a>）
+                                        </div>
+                                    </div><!-- end collapse comment -->
+                                    <!-- comment footer -->
+                                    <div class="custom-comments-footer custom-comments-editor">
+                                        <div class="form-group" style="margin-bottom: 0px;">
+                                            <input type="hidden" id="parent-comment-id-{{$value.answersDO.id}}" value="0">
+                                            <input type="hidden" id="reviewer-id-{{$value.answersDO.id}}" value="0">
+                                            <textarea id="answer-comment-{{$value.answersDO.id}}" class="form-control custom-border-shadow custom-question-comment" rows="1"></textarea>
+                                            <button id="comment-answer-btn-{{$value.answersDO.id}}" onclick="postAnswerComment('{{$value.answersDO.id}}');" class="btn btn-primary btn-sm" style="float:right;" type="button">评论</button>
+                                        </div>
+                                    </div><!-- end comment footer -->
+                                </div><!-- end feed comment -->
+                            </div>
+                        </div><!-- feed detail -->
+                    </div><!-- end feed -->
                     {{/each}}
                 </script>
 

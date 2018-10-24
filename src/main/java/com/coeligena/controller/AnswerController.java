@@ -8,10 +8,7 @@ import com.coeligena.model.*;
 import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -210,9 +207,9 @@ public class AnswerController {
      * @param questionId 问题 id
      * @return 回答信息列表
      */
-    @RequestMapping(value="/default-sort", method = RequestMethod.POST)
+    @RequestMapping(value="/default-sort", method = RequestMethod.GET)
     @ResponseBody
-    public List<AnswersDTO> defaultSortAnswer(HttpServletRequest request, int questionId) {
+    public List<AnswersDTO> defaultSortAnswer(HttpServletRequest request, @RequestParam("questionId") int questionId) {
         // 查询回答列表
         List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSI(questionId);
         return sortAnswerFunc(request, answersList);
@@ -223,9 +220,9 @@ public class AnswerController {
      * @param questionId 问题 id
      * @return 回答信息列表
      */
-    @RequestMapping(value="/time-sort", method = RequestMethod.POST)
+    @RequestMapping(value="/time-sort", method = RequestMethod.GET)
     @ResponseBody
-    public List<AnswersDTO> timeSortAnswer(HttpServletRequest request, int questionId) {
+    public List<AnswersDTO> timeSortAnswer(HttpServletRequest request, @RequestParam("questionId")  int questionId) {
 
         // 查询回答列表
         List<AnswersDO> answersList = answersService.queryAnswersByQuestionId(questionId);
