@@ -543,12 +543,14 @@
                                                         <li><a href="javascript:void(0);">不感兴趣</a></li>
                                                     </ul>
                                                 </div>
+                                                <c:if test="${fn:length(answersDTOList.answersDO.answerContent) > 150}">
                                                 <button id="tuck-up-${answersDTOList.answersDO.id}" onclick="tuckUpAnswer(${answersDTOList.answersDO.id});" class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
                                                     <span style="display: inline-flex;align-items: center;">
                                                         <span class="custom-margin-right5">收起</span>
                                                         <i class="fa fa-chevron-up"></i>
                                                     </span>
                                                 </button>
+                                                </c:if>
                                             </div>
                                         </div>
                                     </div><!-- end feed content -->
@@ -641,7 +643,7 @@
                                 </div>
                                 <!-- custom-is-collapsed -->
                                 <div class="custom-rich-content-inner" id="ans-inner-{{$value.answersDO.id}}">
-                                    <span>{{$value.answersDO.answerContent}}</span>
+                                    <span>{{@$value.answersDO.answerContent}}</span>
                                 </div>
                                 <button id="ans-unfold-{{$value.answersDO.id}}" onclick="unfoldAnswer('{{$value.answersDO.id}}');" class="custom-contentItem-rightBtn custom-btn-plain hide" type="button">
                                     <span class="custom-margin-right5">展开阅读全文</span>
@@ -677,34 +679,7 @@
                                                     <i class="fa fa-caret-down"></i>
                                                 </button>
                                             {{/if}}
-                                            <%--<c:choose>--%>
-                                                <%--<c:when test="${answersDTOList.votesDO != null}">--%>
-                                                    <%--<c:if test="${answersDTOList.votesDO.voteType == 1}">--%>
-                                                        <%--<button class="custom-vote-btn is-active" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">--%>
-                                                            <%--<i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}--%>
-                                                        <%--</button>--%>
-                                                        <%--<button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">--%>
-                                                            <%--<i class="fa fa-caret-down"></i>--%>
-                                                        <%--</button>--%>
-                                                    <%--</c:if>--%>
-                                                    <%--<c:if test="${answersDTOList.votesDO.voteType == 2}">--%>
-                                                        <%--<button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">--%>
-                                                            <%--<i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}--%>
-                                                        <%--</button>--%>
-                                                        <%--<button class="custom-vote-btn is-active" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">--%>
-                                                            <%--<i class="fa fa-caret-down"></i>--%>
-                                                        <%--</button>--%>
-                                                    <%--</c:if>--%>
-                                                <%--</c:when>--%>
-                                                <%--<c:otherwise>--%>
-                                                    <%--<button class="custom-vote-btn" onclick="voteUp(this, '${answersDTOList.answersDO.id}');" aria-label="赞同" type="button">--%>
-                                                        <%--<i class="fa fa-caret-up"></i> ${answersDTOList.answersDO.approvalCount}--%>
-                                                    <%--</button>--%>
-                                                    <%--<button class="custom-vote-btn" onclick="voteDown(this, '${answersDTOList.answersDO.id}');" aria-label="反对" type="button">--%>
-                                                        <%--<i class="fa fa-caret-down"></i>--%>
-                                                    <%--</button>--%>
-                                                <%--</c:otherwise>--%>
-                                            <%--</c:choose>--%>
+
                                         </span>
                                         <button onclick="commentsList('{{$value.answersDO.id}}')" data-toggle="collapse" data-target="#answer-comments-wrapper-{{$value.answersDO.id}}"
                                                 aria-expanded="false" aria-controls="collapseExample" class="custom-contentItem-action custom-btn-plain" type="button">
@@ -744,24 +719,7 @@
                                                 </span>
                                             </button>
                                         {{/if}}
-                                        <%--<c:choose>--%>
-                                            <%--<c:when test="${answersDTOList.thanked}">--%>
-                                                <%--<button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain already-thanks" type="button">--%>
-                                                    <%--<span style="display: inline-flex;align-items: center;">--%>
-                                                        <%--<i class="fa fa-heart custom-margin-right5"></i>--%>
-                                                        <%--<span class="thanks-text">取消感谢</span>--%>
-                                                    <%--</span>--%>
-                                                <%--</button>--%>
-                                            <%--</c:when>--%>
-                                            <%--<c:otherwise>--%>
-                                                <%--<button onclick="forThanks(this, '${answersDTOList.answersDO.id}');" class="custom-contentItem-action custom-btn-plain" type="button">--%>
-                                                    <%--<span style="display: inline-flex;align-items: center;">--%>
-                                                        <%--<i class="fa fa-heart custom-margin-right5"></i>--%>
-                                                        <%--<span class="thanks-text">感谢</span>--%>
-                                                    <%--</span>--%>
-                                                <%--</button>--%>
-                                            <%--</c:otherwise>--%>
-                                        <%--</c:choose>--%>
+
                                         <div class="custom-drop-option2">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                                 •••
@@ -772,14 +730,7 @@
                                                 {{else}}
                                                 <li><a href="javascript:void(0);" onclick="noHelp(this, '{{$value.answersDO.id}}');">没有帮助</a></li>
                                                 {{/if}}
-                                                <%--<c:choose>--%>
-                                                    <%--<c:when test="${answersDTOList.noHelp}">--%>
-                                                        <%--<li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');" class="no-help">撤销没有帮助</a></li>--%>
-                                                    <%--</c:when>--%>
-                                                    <%--<c:otherwise>--%>
-                                                        <%--<li><a href="javascript:void(0);" onclick="noHelp(this, '${answersDTOList.answersDO.id}');">没有帮助</a></li>--%>
-                                                    <%--</c:otherwise>--%>
-                                                <%--</c:choose>--%>
+
                                                 <li><a onclick="report('{{$value.answersDO.id}}', 2);" href="javascript:void(0);">举报</a></li>
                                                 <li><a href="javascript:void(0);">不感兴趣</a></li>
                                             </ul>
