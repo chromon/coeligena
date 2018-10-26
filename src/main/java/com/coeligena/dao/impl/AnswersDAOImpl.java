@@ -1,6 +1,7 @@
 package com.coeligena.dao.impl;
 
 import com.coeligena.dao.AnswersDAO;
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswersDO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -50,11 +51,49 @@ public class AnswersDAOImpl implements AnswersDAO {
                 .setParameter("questionId", questionId).list();
     }
 
+    /**
+     * 由问题 id 查询回答列表， 由排序分数进行排序
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
     @Override
+    @SuppressWarnings("unchecked")
     public List<AnswersDO> queryAnswersByQuestionIdSortedWSI(int questionId) {
         String sql = "select a from AnswersDO a where a.questionId=:questionId order by a.wsiScore desc";
         return this.getSession().createQuery(sql)
                 .setParameter("questionId", questionId).list();
+    }
+
+    /**
+     * 由问题 id 查询回答列表并分页
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<AnswersDO> queryAnswersByQuestionIdWithPage(Page page, int questionId) {
+        String sql = "select a from AnswersDO a where a.questionId=:questionId";
+        Query query = this.getSession().createQuery(sql);
+        query.setParameter("questionId", questionId);
+        query.setFirstResult(page.getStartPos());
+        query.setMaxResults(page.getPageSize());
+        return query.list();
+    }
+
+    /**
+     * 由问题 id 查询回答列表，由排序分数进行排序，并分页
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<AnswersDO> queryAnswersByQuestionIdSortedWSIWithPage(Page page, int questionId) {
+        String sql = "select a from AnswersDO a where a.questionId=:questionId order by a.wsiScore desc";
+        Query query = this.getSession().createQuery(sql);
+        query.setParameter("questionId", questionId);
+        query.setFirstResult(page.getStartPos());
+        query.setMaxResults(page.getPageSize());
+        return query.list();
     }
 
     /**

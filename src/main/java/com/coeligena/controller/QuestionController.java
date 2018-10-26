@@ -2,6 +2,7 @@ package com.coeligena.controller;
 
 import com.coeligena.dto.AnswersDTO;
 import com.coeligena.dto.UserInfoDTO;
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +50,15 @@ public class QuestionController {
         // 查询问题标签
         List<TopicNodesDO> questionTagsList = questionTagsService.queryQuestionTagByQid(questionsDO.getId());
 
+        // 初始化分页信息
+        int count = answersService.queryAnswersCountByQuestionId(questionId);
+        Page page = new Page(1, 5);
+        page.setSize(count);
+        page.setNavigatePages(3);
+        page.init();
+
         // 查询回答列表
-        List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSI(questionId);
+        List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSIWithPage(page, questionId);
         List<AnswersDTO> answersDTOList = new ArrayList<>();
         for (AnswersDO answersDO: answersList) {
             // 查询作者信息

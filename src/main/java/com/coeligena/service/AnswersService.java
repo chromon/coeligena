@@ -1,5 +1,6 @@
 package com.coeligena.service;
 
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswersDO;
 
 import java.util.List;
@@ -31,6 +32,20 @@ public interface AnswersService {
      * @return 回答列表
      */
     List<AnswersDO> queryAnswersByQuestionIdSortedWSI(int questionId);
+
+    /**
+     * 由问题 id 查询回答列表并分页
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    List<AnswersDO> queryAnswersByQuestionIdWithPage(Page page, int questionId);
+
+    /**
+     * 由问题 id 查询回答列表，按排序分数降序排列并分页
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    List<AnswersDO> queryAnswersByQuestionIdSortedWSIWithPage(Page page, int questionId);
 
     /**
      * 更新回答数据

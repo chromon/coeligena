@@ -1,8 +1,8 @@
-package com.coeligena.service.impl;
+package com.coeligena.service;
 
 import com.coeligena.function.date.DateUtils;
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswersDO;
-import com.coeligena.service.AnswersService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -78,5 +78,38 @@ public class AnswersServiceITest {
         Assert.assertEquals(
                 answersService.queryAnswersByQuestionId(1).size(),
                 answersService.queryAnswersCountByQuestionId(1));
+    }
+
+    @Test
+    public void testQueryAnswersByQuestionIdSortedWSI() {
+        Assert.assertEquals(
+                answersService.queryAnswersByQuestionIdSortedWSI(1).size(),
+                answersService.queryAnswersCountByQuestionId(1));
+    }
+
+    @Test
+    public void testQueryAnswerByQuestionIdWithPage() {
+
+        Page page = new Page(1, 2);
+        page.setSize(15);
+        page.setNavigatePages(3);
+        page.init();
+
+        Assert.assertEquals(
+                answersService.queryAnswersByQuestionIdWithPage(page, 1).size(),
+                2);
+    }
+
+    @Test
+    public void testQueryAnswersByQuestionIdSortedWSIWithPage() {
+
+        Page page = new Page(1, 2);
+        page.setSize(15);
+        page.setNavigatePages(3);
+        page.init();
+
+        Assert.assertEquals(
+                answersService.queryAnswersByQuestionIdSortedWSIWithPage(page, 1).size(),
+                2);
     }
 }

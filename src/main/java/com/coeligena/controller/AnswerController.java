@@ -3,6 +3,7 @@ package com.coeligena.controller;
 import com.coeligena.dto.*;
 import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.digest.AnswerDigest;
+import com.coeligena.function.paging.Page;
 import com.coeligena.function.vote.WilsonScoreInterval;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
@@ -210,8 +211,16 @@ public class AnswerController {
     @RequestMapping(value="/default-sort", method = RequestMethod.GET)
     @ResponseBody
     public List<AnswersDTO> defaultSortAnswer(HttpServletRequest request, @RequestParam("questionId") int questionId) {
+
+        // 初始化分页信息
+        int count = answersService.queryAnswersCountByQuestionId(questionId);
+        Page page = new Page(1, 5);
+        page.setSize(count);
+        page.setNavigatePages(3);
+        page.init();
+
         // 查询回答列表
-        List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSI(questionId);
+        List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSIWithPage(page, questionId);
         return sortAnswerFunc(request, answersList);
     }
 
@@ -224,8 +233,15 @@ public class AnswerController {
     @ResponseBody
     public List<AnswersDTO> timeSortAnswer(HttpServletRequest request, @RequestParam("questionId")  int questionId) {
 
+        // 初始化分页信息
+        int count = answersService.queryAnswersCountByQuestionId(questionId);
+        Page page = new Page(1, 5);
+        page.setSize(count);
+        page.setNavigatePages(3);
+        page.init();
+
         // 查询回答列表
-        List<AnswersDO> answersList = answersService.queryAnswersByQuestionId(questionId);
+        List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdWithPage(page, questionId);
         return sortAnswerFunc(request, answersList);
     }
 

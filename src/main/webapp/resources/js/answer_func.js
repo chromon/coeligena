@@ -550,7 +550,7 @@ function sortAJAX(data, url) {
         data: data,
         dataType: "json",
         success: function(data) {
-            console.log(data);
+            // console.log(data);
 
             // json 时间数据格式化
             for (var c = 0; c < data.length; c ++) {

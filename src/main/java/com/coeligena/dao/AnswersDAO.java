@@ -1,5 +1,6 @@
 package com.coeligena.dao;
 
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswersDO;
 
 import java.util.List;
@@ -31,6 +32,20 @@ public interface AnswersDAO {
      * @return 回答列表
      */
     List<AnswersDO> queryAnswersByQuestionIdSortedWSI(int questionId);
+
+    /**
+     * 由问题 id 查询回答列表并分页
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    List<AnswersDO> queryAnswersByQuestionIdWithPage(Page page, int questionId);
+
+    /**
+     * 由问题 id 查询回答列表，由排序分数进行排序，并分页
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    List<AnswersDO> queryAnswersByQuestionIdSortedWSIWithPage(Page page, int questionId);
 
     /**
      * 由回答 id 查询回答

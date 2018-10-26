@@ -1,6 +1,7 @@
 package com.coeligena.service.impl;
 
 import com.coeligena.dao.AnswersDAO;
+import com.coeligena.function.paging.Page;
 import com.coeligena.model.AnswersDO;
 import com.coeligena.service.AnswersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,34 @@ public class AnswersServiceImpl implements AnswersService {
         return answersDAO.queryAnswersByQuestionId(questionId);
     }
 
+    /**
+     * 由问题 id 查询回答列表，按排序分数降序排列
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
     @Override
     public List<AnswersDO> queryAnswersByQuestionIdSortedWSI(int questionId) {
         return answersDAO.queryAnswersByQuestionIdSortedWSI(questionId);
+    }
+
+    /**
+     * 由问题 id 查询回答列表并分页
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    @Override
+    public List<AnswersDO> queryAnswersByQuestionIdWithPage(Page page, int questionId) {
+        return answersDAO.queryAnswersByQuestionIdWithPage(page, questionId);
+    }
+
+    /**
+     * 由问题 id 查询回答列表，按排序分数降序排列并分页
+     * @param questionId 问题 id
+     * @return 回答列表
+     */
+    @Override
+    public List<AnswersDO> queryAnswersByQuestionIdSortedWSIWithPage(Page page, int questionId) {
+        return answersDAO.queryAnswersByQuestionIdSortedWSIWithPage(page, questionId);
     }
 
     /**
