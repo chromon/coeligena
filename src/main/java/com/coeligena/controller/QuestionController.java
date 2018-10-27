@@ -107,6 +107,7 @@ public class QuestionController {
         model.addAttribute("fromAnswer", false);
         model.addAttribute("answersDTOList", answersDTOList);
         model.addAttribute("followed", followed);
+        model.addAttribute("page", page);
         return "question";
     }
 

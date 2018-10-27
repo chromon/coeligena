@@ -294,6 +294,27 @@ public class AnswerController {
         return answersDTOList;
     }
 
+    @RequestMapping(value="/more-answers", method = RequestMethod.POST)
+    @ResponseBody
+    public PagingListDTO<AnswersDTO> moreAnswers(HttpServletRequest request,
+                                        @RequestParam("questionId")  int questionId,
+                                        @RequestParam("pageNum") int pageNum) {
+        // 初始化分页信息
+        int count = answersService.queryAnswersCountByQuestionId(questionId);
+        Page page = new Page(pageNum, 5);
+        page.setSize(count);
+        page.setNavigatePages(3);
+        page.init();
+
+        System.out.println(questionId);
+        System.out.println(pageNum);
+
+        // 查询回答列表
+        List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSIWithPage(page, questionId);
+
+        return new PagingListDTO<>(sortAnswerFunc(request, answersList), page);
+    }
+
     @Autowired
     public void setUsersService(UsersService usersService) {
         this.usersService = usersService;

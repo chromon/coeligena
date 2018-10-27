@@ -26,6 +26,7 @@
 <%@include file="navbar.jsp"%>
 
 <input id="usersDO" type="hidden" value="${userInfoDTO.usersDO}">
+<input id="questionId" type="hidden" value="${questionsDO.id}">
 
 <!-- main content -->
 <div class="container">
@@ -1011,7 +1012,7 @@
                 </script>
 
                 <!-- more -->
-                <div class="custom-card">
+                <div id="show_more_btn" class="custom-card hide">
                     <a href="javascript:void(0);" class="custom-question-more">
                         <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                     </a>
@@ -1189,6 +1190,81 @@
 
 <!-- js -->
 <%@include file="includeJs.jsp"%>
+
+<input type="hidden" id="answersPageNum" value="${page.pageNum}">
+<input type="hidden" id="answersHasNextPage" value="${page.hasNextPage}">
+
+<script type="text/javascript">
+    $(window).scroll(function () {
+
+        let answersPageNum = $('#answersPageNum').val();
+        let answersHasNextPage = $('#answersHasNextPage').val();
+        let questionId = $('#questionId').val();
+
+        // 获取网页的总高度，主要是考虑兼容性所以把Ie支持的documentElement也写了，这个方法至少支持IE8
+        let htmlHeight = $(document).height();
+        // clientHeight是网页在浏览器中的可视高度，
+        let clientHeight = $(window).height();
+        // scrollTop滚动条到顶部的垂直高度
+        let scrollTop = $(document).scrollTop();
+        // 通过判断滚动条的top位置与可视网页之和与整个网页的高度是否相等来决定是否加载内容；
+        let he = scrollTop + clientHeight;
+
+        if (JSON.parse(answersHasNextPage) && he >= htmlHeight) {
+            showMore(questionId, parseInt(answersPageNum) + 1);
+        }
+        // console.log("滚动条位置：" + scrollTop);
+        // console.log("可视高度：" + clientHeight);
+        // console.log("网页总高度" + htmlHeight);
+//        console.log(answersHasNextPage);
+    });
+    function showMore(questionId, pageNum) {
+
+        let data = {
+            questionId: questionId,
+            pageNum: pageNum
+        };
+
+        $.ajax({
+            type:"POST",
+            url: basePath2 + '/more-answers',
+            data: data,
+            dataType: 'json',
+            beforeSend: function() {
+                $('#show_more_btn').removeClass('hide');
+            },
+            success: function(dataRec) {
+                $('#show_more_btn').addClass('hide');
+
+                console.log(dataRec);
+
+                let data = dataRec['list'];
+                let page = dataRec['page'];
+
+                let answersPageNum = $('#answersPageNum').val(page.pageNum);
+                let answersHasNextPage = $('#answersHasNextPage').val(page.hasNextPage);
+
+                // json 时间数据格式化
+                for (let c = 0; c < data.length; c ++) {
+                    data[c]['answersDO']['answerTime'] = getLocalTime(data[c]['answersDO']['answerTime']);
+                }
+
+                let html = template("answers-template", {data:data});
+                $("#answers-wrapper").append(html);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('responseText: ' + jqXHR.responseText);
+                console.log('status: ' + jqXHR.status);
+                console.log('readyState: ' + jqXHR.readyState);
+                console.log('statusText: ' + jqXHR.statusText);
+
+                console.log('textStatus: ' + textStatus);
+                console.log('errorThrown: ' + errorThrown);
+            }
+        })
+    }
+</script>
+
 
 </body>
 </html>
