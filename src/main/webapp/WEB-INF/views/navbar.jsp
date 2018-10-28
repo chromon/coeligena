@@ -307,7 +307,7 @@
 
 <!-- back to top -->
 <div class="custom-backtotop" id="back_to_top">
-    <a class="custom-btn-action" href="">
+    <a class="custom-btn-action" href="javascript: void(0);">
         <div class="custom-arrow"></div>
         <div class="custom-stick"></div>
     </a>

@@ -1210,15 +1210,15 @@
         // 通过判断滚动条的top位置与可视网页之和与整个网页的高度是否相等来决定是否加载内容；
         let he = scrollTop + clientHeight;
 
-        if (JSON.parse(answersHasNextPage) && he >= htmlHeight) {
-            showMore(questionId, parseInt(answersPageNum) + 1);
+        if (JSON.parse(answersHasNextPage) && he == htmlHeight) {
+            if ($('#default-sort').hasClass('custom-current')) {
+                showMore(questionId, parseInt(answersPageNum) + 1, '/default-more-answers');
+            } else {
+                showMore(questionId, parseInt(answersPageNum) + 1, '/time-more-answers');
+            }
         }
-        // console.log("滚动条位置：" + scrollTop);
-        // console.log("可视高度：" + clientHeight);
-        // console.log("网页总高度" + htmlHeight);
-//        console.log(answersHasNextPage);
     });
-    function showMore(questionId, pageNum) {
+    function showMore(questionId, pageNum, url) {
 
         let data = {
             questionId: questionId,
@@ -1227,7 +1227,7 @@
 
         $.ajax({
             type:"POST",
-            url: basePath2 + '/more-answers',
+            url: basePath2 + url,
             data: data,
             dataType: 'json',
             beforeSend: function() {
