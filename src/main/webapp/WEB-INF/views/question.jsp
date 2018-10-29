@@ -1195,6 +1195,8 @@
 <input type="hidden" id="answersHasNextPage" value="${page.hasNextPage}">
 
 <script type="text/javascript">
+    // 防止重复加载
+    let lock = true;
     $(window).scroll(function () {
 
         let answersPageNum = $('#answersPageNum').val();
@@ -1210,11 +1212,15 @@
         // 通过判断滚动条的top位置与可视网页之和与整个网页的高度是否相等来决定是否加载内容；
         let he = scrollTop + clientHeight;
 
-        if (JSON.parse(answersHasNextPage) && he == htmlHeight) {
-            if ($('#default-sort').hasClass('custom-current')) {
-                showMore(questionId, parseInt(answersPageNum) + 1, '/default-more-answers');
-            } else {
-                showMore(questionId, parseInt(answersPageNum) + 1, '/time-more-answers');
+        // 加载缓冲区为 50px
+        if (JSON.parse(answersHasNextPage) && he >= htmlHeight - 50) {
+            if(lock) {
+                lock = false;
+                if ($('#default-sort').hasClass('custom-current')) {
+                    showMore(questionId, parseInt(answersPageNum) + 1, '/default-more-answers');
+                } else {
+                    showMore(questionId, parseInt(answersPageNum) + 1, '/time-more-answers');
+                }
             }
         }
     });
@@ -1235,8 +1241,9 @@
             },
             success: function(dataRec) {
                 $('#show_more_btn').addClass('hide');
+                lock = true;
 
-                console.log(dataRec);
+                // console.log(dataRec);
 
                 let data = dataRec['list'];
                 let page = dataRec['page'];
