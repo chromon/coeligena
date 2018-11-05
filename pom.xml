@@ -38,6 +38,10 @@
         <hibernate.version>5.2.10.Final</hibernate.version>
         <mysql.version>6.0.6</mysql.version>
         <jackson.version>2.9.1</jackson.version>
+        <jedis.clients.version>2.9.0</jedis.clients.version>
+        <spring.data.jedis.version>2.1.2.RELEASE</spring.data.jedis.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <patchca.version>0.0.1</patchca.version>
     </properties>
 
     <!-- 继承自该项目的所有子项目的默认依赖信息。
@@ -204,15 +208,30 @@
         <dependency>
             <groupId>com.github.bingoohuang</groupId>
             <artifactId>patchca</artifactId>
-            <version>0.0.1</version>
+            <version>${patchca.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <!-- commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.7</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
+
+        <!-- jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.clients.version}</version>
+        </dependency>
+
+        <!-- spring-data-redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>${spring.data.jedis.version}</version>
+        </dependency>
+
 
     </dependencies>
 

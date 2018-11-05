@@ -25,6 +25,11 @@
     <!-- DispatcherServlet 启用基于 annotation 的 HandlerMapping，将请求参数绑定到控制器参数 -->
     <mvc:annotation-driven/>
 
+    <!-- 引入 redis 配置 -->
+    <context:property-placeholder location="classpath:redis.properties"/>
+    <!-- 引入 redis -->
+    <import resource="redis-context.xml"/>
+
     <!--<mvc:view-controller path="/" view-name="forward:/hello/index"/>-->
 
     <!-- 静态资源处理，js、css、images -->
