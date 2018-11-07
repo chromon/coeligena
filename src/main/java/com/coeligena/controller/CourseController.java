@@ -7,12 +7,14 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.coeligena.model.Course;
 import com.coeligena.service.CourseService;
+
 
 @Controller
 @RequestMapping("/courses")
@@ -22,6 +24,22 @@ public class CourseController {
 
 	@Autowired
 	private CourseService courseService;
+
+	@Autowired
+    private RedisTemplate redisTemplate;
+
+	@ResponseBody
+    @RequestMapping(value="/redis", method=RequestMethod.GET)
+    public Course testRedis() {
+	    Course c = new Course();
+	    c.setCourseId(1);
+	    c.setCourseName("test");
+
+        redisTemplate.opsForValue().set("course:" + c.getCourseId(), c);
+
+        Course c2 = (Course) redisTemplate.opsForValue().get("course:" + c.getCourseId());
+        return c2;
+    }
 
 	@RequestMapping(value="/viewall", method=RequestMethod.GET)
 	public String viewAllCourse(Model model) {

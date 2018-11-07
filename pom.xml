@@ -42,6 +42,8 @@
         <spring.data.jedis.version>2.1.2.RELEASE</spring.data.jedis.version>
         <commons-lang3.version>3.7</commons-lang3.version>
         <patchca.version>0.0.1</patchca.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <!-- 继承自该项目的所有子项目的默认依赖信息。

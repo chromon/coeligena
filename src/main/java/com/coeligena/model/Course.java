@@ -1,10 +1,13 @@
 package com.coeligena.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "course")
-public class Course {
+public class Course implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
 	private int courseId;
 	
