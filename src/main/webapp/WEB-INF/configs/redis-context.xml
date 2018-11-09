@@ -6,14 +6,15 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="maxTotal" value="${redis.pool.maxTotal}"/>
-        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
-        <property name="minIdle" value="${redis.pool.minIdle}"/>
-        <property name="maxWaitMillis" value="${redis.pool.maxWaitMillis}"/>
-        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
-    </bean>
+    <!-- JedisPoolConfig 连接池参数配置-->
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig"
+          p:maxTotal="${redis.pool.maxTotal}"
+          p:maxIdle="${redis.pool.maxIdle}"
+          p:minIdle="${redis.pool.minIdle}"
+          p:maxWaitMillis="${redis.pool.maxWaitMillis}"
+          p:testOnBorrow="${redis.pool.testOnBorrow}"/>
 
+    <!-- 配置 JedisConnectionFactory 来通过服务器或者连接池的方式获取 redis 服务器的连接 -->
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
           p:host-name="${redis.host}"
           p:port="${redis.port}"
@@ -23,11 +24,10 @@
     <bean id="stringRedisSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
     <bean id="valueSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
 
-    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
-        <property name="connectionFactory" ref="jedisConnectionFactory"/>
-        <property name="defaultSerializer" ref="stringRedisSerializer"/>
-        <property name="keySerializer" ref="stringRedisSerializer"/>
-        <property name="valueSerializer" ref="valueSerializer"/>
-    </bean>
-
+    <!-- redis 模板配置 spring-data-redis 提供了一个基础的泛型 RedisTemplate 封装了基础的 crud 操作 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+          p:connectionFactory-ref="jedisConnectionFactory"
+          p:defaultSerializer-ref="stringRedisSerializer"
+          p:keySerializer-ref="stringRedisSerializer"
+          p:valueSerializer-ref="valueSerializer"/>
 </beans>
