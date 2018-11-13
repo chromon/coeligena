@@ -6,10 +6,13 @@ import com.coeligena.function.paging.Page;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HyperLogLogOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,9 @@ public class QuestionController {
     private NoHelpsService noHelpsService;
     private FollowService followService;
 
+    @Resource
+    private RedisTemplate<String, String> redisTemplate;
+
     /**
      * 问题页面
      * @param questionId 问题 id
@@ -46,6 +52,14 @@ public class QuestionController {
 
         // 查询问题信息
         QuestionsDO questionsDO = questionsService.queryQuestionById(questionId);
+
+        // 处理问题浏览量
+        HyperLogLogOperations<String, String> hLLO = redisTemplate.opsForHyperLogLog();
+        hLLO.add("question::" + questionsDO.getId() + "::viewCount",
+                userInfoDTO.getUsersDO().getId() + "");
+        // 更新问题浏览量
+        questionsDO.setViewCount(hLLO.size("question::" + questionsDO.getId() + "::viewCount").intValue());
+        questionsService.modifyQuestion(questionsDO);
 
         // 查询问题标签
         List<TopicNodesDO> questionTagsList = questionTagsService.queryQuestionTagByQid(questionsDO.getId());

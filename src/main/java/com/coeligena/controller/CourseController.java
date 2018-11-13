@@ -7,6 +7,7 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HyperLogLogOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +39,14 @@ public class CourseController {
         redisTemplate.opsForValue().set("course:" + c.getCourseId(), c);
 
         Course c2 = (Course) redisTemplate.opsForValue().get("course:" + c.getCourseId());
+
+
+
+        HyperLogLogOperations<String, String> vo = redisTemplate.opsForHyperLogLog();
+
+        vo.add("book", "1","2","3","2","2","4");
+        System.out.println("---------------" + vo.size("book"));
+
         return c2;
     }
 
