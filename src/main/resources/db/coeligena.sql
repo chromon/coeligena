@@ -466,7 +466,7 @@ CREATE TABLE IF NOT EXISTS thanks (
     thank_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, /* 感谢回答时间 */
     PRIMARY KEY (id),
     INDEX (answer_id),
-    INDEX (thanker_id)
+    INDEX (thank_user_id)
 );
 
 /*

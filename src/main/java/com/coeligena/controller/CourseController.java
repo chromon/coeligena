@@ -40,12 +40,7 @@ public class CourseController {
 
         Course c2 = (Course) redisTemplate.opsForValue().get("course:" + c.getCourseId());
 
-
-
-        HyperLogLogOperations<String, String> vo = redisTemplate.opsForHyperLogLog();
-
-        vo.add("book", "1","2","3","2","2","4");
-        System.out.println("---------------" + vo.size("book"));
+        redisTemplate.convertAndSend("hello-channel2", "hello world!");
 
         return c2;
     }

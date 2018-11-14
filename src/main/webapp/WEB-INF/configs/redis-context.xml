@@ -30,4 +30,23 @@
           p:defaultSerializer-ref="stringRedisSerializer"
           p:keySerializer-ref="stringRedisSerializer"
           p:valueSerializer-ref="valueSerializer"/>
+
+    <!-- Spring Redis Channel -->
+    <bean id="messageQueueListener" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
+        <constructor-arg>
+            <bean class="com.coeligena.listener.MessageQueueListener"/>
+        </constructor-arg>
+    </bean>
+    <bean id="redisContainer" class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
+        <property name="connectionFactory" ref="jedisConnectionFactory"/>
+        <property name="messageListeners">
+            <map>
+                <entry key-ref="messageQueueListener">
+                    <bean class="org.springframework.data.redis.listener.ChannelTopic">
+                        <constructor-arg value="hello-channel2" />
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
 </beans>
