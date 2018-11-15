@@ -40,7 +40,7 @@ public class CourseController {
 
         Course c2 = (Course) redisTemplate.opsForValue().get("course:" + c.getCourseId());
 
-        redisTemplate.convertAndSend("hello-channel2", "hello world!");
+        redisTemplate.convertAndSend("java", c2);
 
         return c2;
     }

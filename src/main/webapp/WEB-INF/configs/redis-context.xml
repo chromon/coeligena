@@ -2,9 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:redis="http://www.springframework.org/schema/redis"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/redis
+        http://www.springframework.org/schema/redis/spring-redis.xsd">
 
     <!-- JedisPoolConfig 连接池参数配置-->
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig"
@@ -31,22 +34,13 @@
           p:keySerializer-ref="stringRedisSerializer"
           p:valueSerializer-ref="valueSerializer"/>
 
-    <!-- Spring Redis Channel -->
-    <bean id="messageQueueListener" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
-        <constructor-arg>
-            <bean class="com.coeligena.listener.MessageQueueListener"/>
-        </constructor-arg>
-    </bean>
-    <bean id="redisContainer" class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
-        <property name="connectionFactory" ref="jedisConnectionFactory"/>
-        <property name="messageListeners">
-            <map>
-                <entry key-ref="messageQueueListener">
-                    <bean class="org.springframework.data.redis.listener.ChannelTopic">
-                        <constructor-arg value="hello-channel2" />
-                    </bean>
-                </entry>
-            </map>
-        </property>
-    </bean>
+    <!-- 消息监听容器声明 -->
+    <bean id="messageDelegate" class="com.coeligena.listener.DefaultMessageDelegate"/>
+
+    <!-- 消息接收和分派到侦听器中 -->
+    <redis:listener-container connection-factory="jedisConnectionFactory">
+        <!-- 定义 topic 可以是具体的 channel 的名字也可以是 Pattern，多个频道（主题）用空格隔开即可 -->
+        <redis:listener ref="messageDelegate" method="handleMessage"
+                        serializer="valueSerializer" topic="java"/>
+    </redis:listener-container>
 </beans>
