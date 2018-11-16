@@ -41,13 +41,13 @@
                 <div class="custom-profileHeader-userWrapper">
                     <div class="custom-profileHeader-main">
                         <div class="custom-user-avatar custom-profileHeader-avatar" style="top: -25px;">
-                            <img class="custom-avatar160 custom-user-avatar-inner" src="<%=request.getContextPath()%>/resources/images/avatar/a.jpg" alt="Ellery">
+                            <img class="custom-avatar160 custom-user-avatar-inner" src="<%=request.getContextPath()%>${profileInfo.avatarPath}" alt="${profileInfo.fullname}">
                         </div>
                         <div class="custom-profileHeader-content">
                             <div class="custom-profileHeader-contentHead">
                                 <h1 class="custom-profileHeader-title">
-                                    <span class="custom-profileHeader-name">Bone</span>
-                                    <span class="custom-profileHeader-headline">人的观点，是随着现实而改变的...</span>
+                                    <span class="custom-profileHeader-name">${profileInfo.fullname}</span>
+                                    <span class="custom-profileHeader-headline">${profileInfo.autograph}</span>
                                 </h1>
                             </div>
                             <div class="custom-profileHeader-contentBody">
@@ -82,13 +82,13 @@
                                     <span>查看详细资料</span>
                                 </button>
                                 <div class="custom-member-btn-group custom-profileHeader-btns">
-                                    <button class="btn btn-primary" type="button">
+                                    <button class="btn btn-primary" onclick="followFunc(this, ${profileInfo.id});" type="button">
                                         <span style="display: inline-flex; align-items: center;">
                                             <i class="fa fa-plus" style="margin-right: 8px;"></i>
-                                            关注
+                                            <span id="profile-follow-text">关注</span>
                                         </span>
                                     </button>
-                                    <button class="btn btn-default btn--grey custom-contentItem-right" type="button">
+                                    <button class="btn btn-outline-primary custom-contentItem-right" type="button">
                                         <span style="display: inline-flex; align-items: center;">
                                             <i class="fa fa-comments" style="margin-right: 8px;"></i>
                                             发私信

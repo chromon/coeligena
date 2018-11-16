@@ -75,7 +75,7 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/people/123">
+                            <a href="${pageContext.request.contextPath}/people/<%=request.getContextPath()%>${userInfoDTO.usersDO.id}">
                                 <i class="fa fa-user-o custom-menu-mright"></i> 我的主页
                             </a>
                         </li>
