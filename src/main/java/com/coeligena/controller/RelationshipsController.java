@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,6 +32,7 @@ public class RelationshipsController {
      * @throws JsonProcessingException json format
      */
     @RequestMapping(value="/follow-user", method= RequestMethod.POST)
+    @ResponseBody
     public String followUser(HttpServletRequest request, int followId,
                              int followAction) throws JsonProcessingException {
         // 查询用户信息
@@ -49,7 +51,11 @@ public class RelationshipsController {
             info.setInfoContent("follow success.");
         } else {
             // 取关
-
+            RelationshipsDO relationshipsDO = relationshipsService.queryRelationshipsByUidAndFid(
+                    userInfoDTO.getUsersDO().getId(), followId);
+            if (relationshipsDO != null) {
+                relationshipsService.deleteRelationships(relationshipsDO);
+            }
             info.setInfoType("success");
             info.setInfoContent("cancel follow success.");
         }

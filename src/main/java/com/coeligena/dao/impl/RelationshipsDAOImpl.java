@@ -4,6 +4,7 @@ import com.coeligena.dao.RelationshipsDAO;
 import com.coeligena.model.RelationshipsDO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -38,5 +39,20 @@ public class RelationshipsDAOImpl implements RelationshipsDAO {
     @Override
     public void deleteRelationships(RelationshipsDO relationshipsDO) {
         this.getSession().delete(relationshipsDO);
+    }
+
+    /**
+     * 由用户 id 和被关注用户 id 查询关注信息
+     * @param userId 用户 id
+     * @param followedId 被关注用户 id
+     * @return 关注信息
+     */
+    @Override
+    public RelationshipsDO queryRelationshipsByUidAndFid(int userId, int followedId) {
+        String sql = "from RelationshipsDO r where r.userId =:userId and r.followedId =:followedId";
+        Query query = this.getSession().createQuery(sql);
+        query.setParameter("userId", userId);
+        query.setParameter("followedId", followedId);
+        return (RelationshipsDO) query.uniqueResult();
     }
 }

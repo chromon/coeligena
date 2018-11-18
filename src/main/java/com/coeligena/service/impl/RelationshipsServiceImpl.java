@@ -33,6 +33,17 @@ public class RelationshipsServiceImpl implements RelationshipsService {
         this.relationshipsDAO.deleteRelationships(relationshipsDO);
     }
 
+    /**
+     * 由用户 id 和被关注用户 id 查询关注信息
+     * @param userId 用户 id
+     * @param followedId 被关注用户 id
+     * @return 关注信息
+     */
+    @Override
+    public RelationshipsDO queryRelationshipsByUidAndFid(int userId, int followedId) {
+        return this.relationshipsDAO.queryRelationshipsByUidAndFid(userId, followedId);
+    }
+
     @Autowired
     public void setRelationshipsDAO(RelationshipsDAO relationshipsDAO) {
         this.relationshipsDAO = relationshipsDAO;
