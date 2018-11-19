@@ -14,8 +14,8 @@ function followFunc(obj, id) {
         $(obj).removeClass('btn-primary');
         $(obj).addClass('btn-default');
         $(obj).addClass('btn--grey');
-        follow_icon.addClass('hide');
-        profile_follow_text.text('已关注');
+        $(obj).find('i').addClass('hide');
+        $(obj).find('span').text('已关注');
 
         data = {
             followId: id,
@@ -25,8 +25,8 @@ function followFunc(obj, id) {
         $(obj).removeClass('btn-default');
         $(obj).removeClass('btn--grey');
         $(obj).addClass('btn-primary');
-        follow_icon.removeClass('hide');
-        profile_follow_text.text('关注');
+        $(obj).find('i').removeClass('hide');
+        $(obj).find('span').text('关注');
 
         data = {
             followId: id,
@@ -45,7 +45,7 @@ function followAJAXfunc(data) {
         data: data,
         dataType: "text",
         success: function(data) {
-            console.log(data);
+            // console.log(data);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('responseText: ' + jqXHR.responseText);

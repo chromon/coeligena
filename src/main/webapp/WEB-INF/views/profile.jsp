@@ -85,18 +85,14 @@
                                     <c:choose>
                                         <c:when test="${profileInfo.followed}">
                                             <button class="btn btn-default btn--grey" onclick="followFunc(this, ${profileInfo.usersDO.id});" type="button">
-                                                <%--<span style="display: inline-flex; align-items: center;">--%>
-                                                    <i id="follow-icon" class="fa fa-plus hide" style="margin-right: 8px;"></i>
-                                                    <span id="profile-follow-text">已关注</span>
-                                                <%--</span>--%>
+                                                <i class="fa fa-plus hide" style="margin-right: 8px;"></i>
+                                                <span>已关注</span>
                                             </button>
                                         </c:when>
                                         <c:otherwise>
                                             <button class="btn btn-primary" onclick="followFunc(this, ${profileInfo.usersDO.id});" type="button">
-                                                <%--<span style="display: inline-flex; align-items: center;">--%>
-                                                    <i id="follow-icon" class="fa fa-plus" style="margin-right: 8px;"></i>
-                                                    <span id="profile-follow-text">关注</span>
-                                                <%--</span>--%>
+                                                <i class="fa fa-plus" style="margin-right: 8px;"></i>
+                                                <span>关注</span>
                                             </button>
                                         </c:otherwise>
                                     </c:choose>

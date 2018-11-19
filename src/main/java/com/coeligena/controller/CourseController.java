@@ -40,8 +40,19 @@ public class CourseController {
 
         Course c2 = (Course) redisTemplate.opsForValue().get("course:" + c.getCourseId());
 
-        redisTemplate.convertAndSend("java", c2);
+//        redisTemplate.convertAndSend("java", c2);
 
+        redisTemplate.opsForZSet().add("zset1","zset-1",1.0);
+        redisTemplate.opsForZSet().add("zset1","zset-11",2.0);
+        redisTemplate.opsForZSet().add("zset2","zset-2",3.0);
+        redisTemplate.opsForZSet().add("zset3","zset-3",4.0);
+
+        System.out.println(redisTemplate.opsForZSet().range("zset1", 0, -1));
+        System.out.println(redisTemplate.opsForZSet().range("zset1", 0, 1));
+        System.out.println(redisTemplate.opsForZSet().range("zset1", 0, 1).toArray()[0]);
+        System.out.println(redisTemplate.opsForZSet().rangeByScore("zset1", 0 ,1));
+        System.out.println(redisTemplate.opsForZSet().remove("zset1", "zset-1"));
+        System.out.println(redisTemplate.opsForZSet().range("zset1", 0 ,1));
         return c2;
     }
 

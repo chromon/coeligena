@@ -19,4 +19,8 @@ public class DateUtils {
         String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         return Timestamp.valueOf(dateFormat);
     }
+
+    public static long getDate() {
+        return new Date().getTime();
+    }
 }

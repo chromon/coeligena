@@ -1,17 +1,20 @@
 package com.coeligena.controller;
 
 import com.coeligena.dto.UserInfoDTO;
+import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.info.Information;
 import com.coeligena.model.RelationshipsDO;
 import com.coeligena.service.RelationshipsService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -20,6 +23,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class RelationshipsController {
+
+    @Resource
+    private RedisTemplate redisTemplate;
 
     private RelationshipsService relationshipsService;
 
@@ -33,6 +39,7 @@ public class RelationshipsController {
      */
     @RequestMapping(value="/follow-user", method= RequestMethod.POST)
     @ResponseBody
+    @SuppressWarnings("unchecked")
     public String followUser(HttpServletRequest request, int followId,
                              int followAction) throws JsonProcessingException {
         // 查询用户信息
@@ -43,6 +50,15 @@ public class RelationshipsController {
 
         if (followAction == 1) {
             // 关注
+
+            // redis
+            long time = DateUtils.getDate();
+            redisTemplate.opsForZSet().add("following::" + userInfoDTO.getUsersDO().getId(),
+                    String.valueOf(followId), time);
+            redisTemplate.opsForZSet().add("followers::" + followId,
+                    String.valueOf(userInfoDTO.getUsersDO().getId()), time);
+
+            // db
             RelationshipsDO relationshipsDO = new RelationshipsDO();
             relationshipsDO.setUserId(userInfoDTO.getUsersDO().getId());
             relationshipsDO.setFollowedId(followId);
@@ -51,6 +67,14 @@ public class RelationshipsController {
             info.setInfoContent("follow success.");
         } else {
             // 取关
+
+            // redis
+            redisTemplate.opsForZSet().remove("following::"+ userInfoDTO.getUsersDO().getId(),
+                    String.valueOf(followId));
+            redisTemplate.opsForZSet().remove("followers::" + followId,
+                    String.valueOf(userInfoDTO.getUsersDO().getId()));
+
+            // db
             RelationshipsDO relationshipsDO = relationshipsService.queryRelationshipsByUidAndFid(
                     userInfoDTO.getUsersDO().getId(), followId);
             if (relationshipsDO != null) {
