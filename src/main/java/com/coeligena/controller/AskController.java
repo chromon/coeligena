@@ -7,9 +7,11 @@ import com.coeligena.function.ip.IPAddress;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -30,6 +32,9 @@ public class AskController {
     private QuestionsService questionsService;
     private QuestionTagsService questionTagsService;
     private FeedsService feedsService;
+
+    @Resource
+    private RedisTemplate redisTemplate;
 
     /**
      * 提问时话题自动补全
@@ -110,6 +115,10 @@ public class AskController {
         feedsDO.setFeedsTime(now);
         feedsDO.setFeedsUserId(usersDO.getId());
         feedsService.saveFeeds(feedsDO);
+
+        // redis cache
+        redisTemplate.convertAndSend("feedHandler", feedsDO);
+
 
         // 更新全局用户信息
         userInfoDTO.setUsersDO(usersDO);

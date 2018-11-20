@@ -51,7 +51,7 @@ public class RelationshipsController {
         if (followAction == 1) {
             // 关注
 
-            // redis
+            // redis cache
             long time = DateUtils.getDate();
             redisTemplate.opsForZSet().add("following::" + userInfoDTO.getUsersDO().getId(),
                     String.valueOf(followId), time);
@@ -68,7 +68,7 @@ public class RelationshipsController {
         } else {
             // 取关
 
-            // redis
+            // redis cache
             redisTemplate.opsForZSet().remove("following::"+ userInfoDTO.getUsersDO().getId(),
                     String.valueOf(followId));
             redisTemplate.opsForZSet().remove("followers::" + followId,

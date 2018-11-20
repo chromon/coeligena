@@ -17,4 +17,8 @@ public interface MessageDelegate {
 
     // pass the channel/pattern as well
     void handleMessage(Serializable message, String channel);
+
+    void feedHandleMessage(Serializable message, String channel);
+
+    void followHandleMessage(Serializable message, String channel);
 }

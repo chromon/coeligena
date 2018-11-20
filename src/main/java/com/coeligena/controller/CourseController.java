@@ -36,24 +36,24 @@ public class CourseController {
 	    c.setCourseId(1);
 	    c.setCourseName("test");
 
-        redisTemplate.opsForValue().set("course:" + c.getCourseId(), c);
+//        redisTemplate.opsForValue().set("course:" + c.getCourseId(), c);
+//
+//        Course c2 = (Course) redisTemplate.opsForValue().get("course:" + c.getCourseId());
 
-        Course c2 = (Course) redisTemplate.opsForValue().get("course:" + c.getCourseId());
+        redisTemplate.convertAndSend("feedHandler", c);
 
-//        redisTemplate.convertAndSend("java", c2);
-
-        redisTemplate.opsForZSet().add("zset1","zset-1",1.0);
-        redisTemplate.opsForZSet().add("zset1","zset-11",2.0);
-        redisTemplate.opsForZSet().add("zset2","zset-2",3.0);
-        redisTemplate.opsForZSet().add("zset3","zset-3",4.0);
-
-        System.out.println(redisTemplate.opsForZSet().range("zset1", 0, -1));
-        System.out.println(redisTemplate.opsForZSet().range("zset1", 0, 1));
-        System.out.println(redisTemplate.opsForZSet().range("zset1", 0, 1).toArray()[0]);
-        System.out.println(redisTemplate.opsForZSet().rangeByScore("zset1", 0 ,1));
-        System.out.println(redisTemplate.opsForZSet().remove("zset1", "zset-1"));
-        System.out.println(redisTemplate.opsForZSet().range("zset1", 0 ,1));
-        return c2;
+//        redisTemplate.opsForZSet().add("zset=1","zset-1哈",1.0);
+//        redisTemplate.opsForZSet().add("zset=1","zset-11哈",2.0);
+//        redisTemplate.opsForZSet().add("zset=2","zset-2哈",3.0);
+//        redisTemplate.opsForZSet().add("zset=3","zset-3哈",4.0);
+//
+//        System.out.println(redisTemplate.opsForZSet().range("zset=1", 0, -1));
+//        System.out.println(redisTemplate.opsForZSet().range("zset=1", 0, 1));
+//        System.out.println(redisTemplate.opsForZSet().range("zset=1", 0, 1).toArray()[0]);
+//        System.out.println(redisTemplate.opsForZSet().rangeByScore("zset=1", 0 ,1));
+//        System.out.println(redisTemplate.opsForZSet().remove("zset=1", "zset-1哈"));
+//        System.out.println(redisTemplate.opsForZSet().range("zset=1", 0 ,10));
+        return c;
     }
 
 	@RequestMapping(value="/viewall", method=RequestMethod.GET)
