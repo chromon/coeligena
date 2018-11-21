@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import com.coeligena.model.Course;
 import com.coeligena.service.CourseService;
 
+import javax.annotation.Resource;
+
 
 @Controller
 @RequestMapping("/courses")
@@ -26,7 +28,7 @@ public class CourseController {
 	@Autowired
 	private CourseService courseService;
 
-	@Autowired
+	@Resource
     private RedisTemplate redisTemplate;
 
 	@ResponseBody

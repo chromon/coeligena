@@ -3,6 +3,7 @@ package com.coeligena.controller;
 import com.coeligena.dto.CreateQuestionDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.date.DateUtils;
+import com.coeligena.function.digest.ContentDigest;
 import com.coeligena.function.ip.IPAddress;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
@@ -61,6 +62,7 @@ public class AskController {
      * @return 跳转到问题页面
      */
     @RequestMapping(value="/ask-question", method=RequestMethod.POST)
+    @SuppressWarnings("unchecked")
     public String saveCourse(HttpServletRequest request,
                              @ModelAttribute CreateQuestionDTO cqDTO) {
 
@@ -84,6 +86,7 @@ public class AskController {
         QuestionsDO questionsDO = new QuestionsDO();
         questionsDO.setQuestionContent(cqDTO.getQuestionContent());
         questionsDO.setQuestionDetail(cqDTO.getQuestionDetail());
+        questionsDO.setQuestionDigest(ContentDigest.getDigest(cqDTO.getQuestionDetail(), 100, "..."));
         questionsDO.setQuestionTime(now);
         questionsDO.setUpdateTime(now);
         questionsDO.setQuestionIP(IPAddress.getIpAdrress(request));
@@ -117,8 +120,11 @@ public class AskController {
         feedsService.saveFeeds(feedsDO);
 
         // redis cache
+        // 发送 feed 有续集，存放提问用户动态信息
+        redisTemplate.opsForZSet().add("user:" + usersDO.getId() + "::sendFeed",
+                feedsDO, DateUtils.getDate());
+        // 提问 feed 信息，发送到动态发布处理队列，用于提问之后的动态推送
         redisTemplate.convertAndSend("feedHandler", feedsDO);
-
 
         // 更新全局用户信息
         userInfoDTO.setUsersDO(usersDO);

@@ -55,7 +55,7 @@ public class QuestionController {
 
         // 处理问题浏览量
         HyperLogLogOperations<String, String> hLLO = redisTemplate.opsForHyperLogLog();
-        hLLO.add("question::" + questionsDO.getId() + "::viewCount",
+        hLLO.add("question:" + questionsDO.getId() + "::viewCount",
                 userInfoDTO.getUsersDO().getId() + "");
         // 更新问题浏览量
         questionsDO.setViewCount(hLLO.size("question::" + questionsDO.getId() + "::viewCount").intValue());
@@ -66,47 +66,51 @@ public class QuestionController {
 
         // 初始化分页信息
         int count = answersService.queryAnswersCountByQuestionId(questionId);
-        Page page = new Page(1, 5);
-        page.setSize(count);
-        page.setNavigatePages(3);
-        page.init();
+        Page page = null;
+        List<AnswersDTO> answersDTOList = null;
+        if (count > 0) {
+            page = new Page(1, 5);
+            page.setSize(count);
+            page.setNavigatePages(3);
+            page.init();
 
-        // 查询回答列表
-        List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSIWithPage(page, questionId);
-        List<AnswersDTO> answersDTOList = new ArrayList<>();
-        for (AnswersDO answersDO: answersList) {
-            // 查询作者信息
-            UsersDO usersDO = usersService.queryUserByUserId(answersDO.getAuthorId());
+            // 查询回答列表
+            List<AnswersDO> answersList = answersService.queryAnswersByQuestionIdSortedWSIWithPage(page, questionId);
+            answersDTOList = new ArrayList<>();
+            for (AnswersDO answersDO : answersList) {
+                // 查询作者信息
+                UsersDO usersDO = usersService.queryUserByUserId(answersDO.getAuthorId());
 
-            // 查询回答投票信息
-            VotesDO votesDO = this.votesService.queryVotesByAnswerIdAndVoterId(
-                    answersDO.getId(), usersDO.getId());
+                // 查询回答投票信息
+                VotesDO votesDO = this.votesService.queryVotesByAnswerIdAndVoterId(
+                        answersDO.getId(), usersDO.getId());
 
-            // 查询感谢信息
-            ThanksDO thanksDO = thanksService.queryThanksByAnswerIdAndUId(answersDO.getId(), userInfoDTO.getUsersDO().getId());
+                // 查询感谢信息
+                ThanksDO thanksDO = thanksService.queryThanksByAnswerIdAndUId(answersDO.getId(), userInfoDTO.getUsersDO().getId());
 
-            // 查询是否提交没有帮助
-            NoHelpsDO noHelpsDO = noHelpsService.queryNoHelpByAnswerIdAndUid(answersDO.getId(), userInfoDTO.getUsersDO().getId());
+                // 查询是否提交没有帮助
+                NoHelpsDO noHelpsDO = noHelpsService.queryNoHelpByAnswerIdAndUid(answersDO.getId(), userInfoDTO.getUsersDO().getId());
 
-            // 回答信息
-            AnswersDTO answersDTO = new AnswersDTO();
-            answersDTO.setUsersDO(usersDO);
-            answersDTO.setAnswersDO(answersDO);
-            answersDTO.setVotesDO(votesDO);
+                // 回答信息
+                AnswersDTO answersDTO = new AnswersDTO();
+                answersDTO.setUsersDO(usersDO);
+                answersDTO.setAnswersDO(answersDO);
+                answersDTO.setVotesDO(votesDO);
 
-            if (thanksDO != null) {
-                answersDTO.setThanked(true);
-            } else {
-                answersDTO.setThanked(false);
+                if (thanksDO != null) {
+                    answersDTO.setThanked(true);
+                } else {
+                    answersDTO.setThanked(false);
+                }
+
+                if (noHelpsDO != null) {
+                    answersDTO.setNoHelp(true);
+                } else {
+                    answersDTO.setNoHelp(false);
+                }
+
+                answersDTOList.add(answersDTO);
             }
-
-            if (noHelpsDO != null) {
-                answersDTO.setNoHelp(true);
-            } else {
-                answersDTO.setNoHelp(false);
-            }
-
-            answersDTOList.add(answersDTO);
         }
 
         // 是否已关注

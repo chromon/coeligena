@@ -1213,13 +1213,16 @@
         let he = scrollTop + clientHeight;
 
         // 加载缓冲区为 50px
-        if (JSON.parse(answersHasNextPage) && he >= htmlHeight - 50) {
-            if(lock) {
-                lock = false;
-                if ($('#default-sort').hasClass('custom-current')) {
-                    showMore(questionId, parseInt(answersPageNum) + 1, '/default-more-answers');
-                } else {
-                    showMore(questionId, parseInt(answersPageNum) + 1, '/time-more-answers');
+        // page 不为空，即 page.hasNextPage 存在，否则 JSON.parse 会报错
+        if (answersHasNextPage.length > 0) {
+            if (JSON.parse(answersHasNextPage) && he >= htmlHeight - 50) {
+                if (lock) {
+                    lock = false;
+                    if ($('#default-sort').hasClass('custom-current')) {
+                        showMore(questionId, parseInt(answersPageNum) + 1, '/default-more-answers');
+                    } else {
+                        showMore(questionId, parseInt(answersPageNum) + 1, '/time-more-answers');
+                    }
                 }
             }
         }

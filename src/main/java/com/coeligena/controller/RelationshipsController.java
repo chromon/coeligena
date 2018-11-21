@@ -53,9 +53,9 @@ public class RelationshipsController {
 
             // redis cache
             long time = DateUtils.getDate();
-            redisTemplate.opsForZSet().add("following::" + userInfoDTO.getUsersDO().getId(),
+            redisTemplate.opsForZSet().add("user:" + userInfoDTO.getUsersDO().getId() + "::following",
                     String.valueOf(followId), time);
-            redisTemplate.opsForZSet().add("followers::" + followId,
+            redisTemplate.opsForZSet().add("user:" + followId + "::followers",
                     String.valueOf(userInfoDTO.getUsersDO().getId()), time);
 
             // db
@@ -69,9 +69,9 @@ public class RelationshipsController {
             // 取关
 
             // redis cache
-            redisTemplate.opsForZSet().remove("following::"+ userInfoDTO.getUsersDO().getId(),
+            redisTemplate.opsForZSet().remove("user:" + userInfoDTO.getUsersDO().getId() + "::following",
                     String.valueOf(followId));
-            redisTemplate.opsForZSet().remove("followers::" + followId,
+            redisTemplate.opsForZSet().remove("user:" + followId + "::followers",
                     String.valueOf(userInfoDTO.getUsersDO().getId()));
 
             // db

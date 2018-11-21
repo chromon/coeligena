@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
  * answer digest
  * Created by Ellery on 2018/6/22.
  */
-public class AnswerDigest {
+public class ContentDigest {
 
     /**
      * 对输入的字符串进行截取

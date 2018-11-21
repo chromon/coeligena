@@ -52,15 +52,22 @@ public class DefaultMessageDelegate implements MessageDelegate {
     @Override
     @SuppressWarnings("unchecked")
     public void feedHandleMessage(Serializable message, String channel) {
+
+        // System.out.println(message + " --> " + channel);
+
         FeedsDO feedsDO = (FeedsDO) message;
+        // 动态发布者 id，
         int feedsUserId = feedsDO.getFeedsUserId();
+        // 动态发布者粉丝集合
         Set<String> followersSet = redisTemplate.opsForZSet()
-                .rangeByScore("followers::" + feedsUserId, 0 , -1);
+                .range("user:" + feedsUserId + "::followers", 0 , -1);
+
+        // 遍历粉丝集合，向每个粉丝的接收 feed 有续集添加动态信息
+        // TODO 后序可扩展有选择性的发送
         for (String followersId: followersSet) {
-            redisTemplate.opsForZSet().add("receiveFeed::" + followersId,
+            redisTemplate.opsForZSet().add("user:" + followersId + "::receiveFeed",
                     feedsDO, DateUtils.getDate());
         }
-
     }
 
     /**

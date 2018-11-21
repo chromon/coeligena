@@ -2,7 +2,7 @@ package com.coeligena.controller;
 
 import com.coeligena.dto.*;
 import com.coeligena.function.date.DateUtils;
-import com.coeligena.function.digest.AnswerDigest;
+import com.coeligena.function.digest.ContentDigest;
 import com.coeligena.function.paging.Page;
 import com.coeligena.function.vote.WilsonScoreInterval;
 import com.coeligena.model.*;
@@ -66,7 +66,7 @@ public class AnswerController {
         answersDO.setQuestionId(Integer.parseInt(postAnswerDTO.getQuestionId()));
         answersDO.setAuthorId(usersDO.getId());
         answersDO.setCover("");
-        answersDO.setAnswerDigest(AnswerDigest.getDigest(postAnswerDTO.getAnswerContent(), 100, "..."));
+        answersDO.setAnswerDigest(ContentDigest.getDigest(postAnswerDTO.getAnswerContent(), 100, "..."));
         answersDO.setAnswerContent(postAnswerDTO.getAnswerContent());
         answersDO.setAnswerTime(now);
         answersDO.setAnonymous(Byte.parseByte(postAnswerDTO.getAnonymous()));

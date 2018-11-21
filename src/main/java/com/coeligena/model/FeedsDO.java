@@ -1,6 +1,7 @@
 package com.coeligena.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -11,7 +12,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "feeds")
-public class FeedsDO {
+public class FeedsDO implements Serializable {
 
     /** 动态 id */
     private int id;
