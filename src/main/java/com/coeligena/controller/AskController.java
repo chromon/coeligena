@@ -123,6 +123,9 @@ public class AskController {
         // 发送 feed 有续集，存放提问用户动态信息
         redisTemplate.opsForZSet().add("user:" + usersDO.getId() + "::sendFeed",
                 feedsDO, DateUtils.getDate());
+        // 用户动态里可以看见自己的提问信息，所以接收 feed 有续集也要存放
+        redisTemplate.opsForZSet().add("user:" + usersDO.getId() + "::receiveFeed",
+                feedsDO, DateUtils.getDate());
         // 提问 feed 信息，发送到动态发布处理队列，用于提问之后的动态推送
         redisTemplate.convertAndSend("feedHandler", feedsDO);
 

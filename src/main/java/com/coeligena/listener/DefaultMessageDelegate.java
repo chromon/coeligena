@@ -1,5 +1,6 @@
 package com.coeligena.listener;
 
+import com.coeligena.dto.FollowDTO;
 import com.coeligena.function.date.DateUtils;
 import com.coeligena.model.FeedsDO;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -78,5 +79,12 @@ public class DefaultMessageDelegate implements MessageDelegate {
     @Override
     public void followHandleMessage(Serializable message, String channel) {
         System.out.println(message + " --> " + channel);
+
+        FollowDTO followDTO = (FollowDTO) message;
+        if (followDTO.getFollowAction() == 0) {
+            // 取关
+        } else if (followDTO.getFollowAction() == 1) {
+            // 关注
+        }
     }
 }

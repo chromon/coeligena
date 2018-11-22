@@ -1,5 +1,6 @@
 package com.coeligena.controller;
 
+import com.coeligena.dto.FollowDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.date.DateUtils;
 import com.coeligena.function.info.Information;
@@ -53,12 +54,21 @@ public class RelationshipsController {
 
             // redis cache
             long time = DateUtils.getDate();
+            // 添加关注和粉丝信息
             redisTemplate.opsForZSet().add("user:" + userInfoDTO.getUsersDO().getId() + "::following",
                     String.valueOf(followId), time);
             redisTemplate.opsForZSet().add("user:" + followId + "::followers",
                     String.valueOf(userInfoDTO.getUsersDO().getId()), time);
 
-            // db
+            // 将关注信息添加到关注取关处理队列
+            FollowDTO followDTO = new FollowDTO();
+            followDTO.setUserId(userInfoDTO.getUsersDO().getId());
+            followDTO.setFollowedId(followId);
+            followDTO.setFollowAction(1);
+            // 关注信息，发送到关注取关处理队列，用于后续操作
+            redisTemplate.convertAndSend("followHandler", followDTO);
+
+            // 数据库持久化
             RelationshipsDO relationshipsDO = new RelationshipsDO();
             relationshipsDO.setUserId(userInfoDTO.getUsersDO().getId());
             relationshipsDO.setFollowedId(followId);
@@ -74,7 +84,15 @@ public class RelationshipsController {
             redisTemplate.opsForZSet().remove("user:" + followId + "::followers",
                     String.valueOf(userInfoDTO.getUsersDO().getId()));
 
-            // db
+            // 将关注信息添加到关注取关处理队列
+            FollowDTO followDTO = new FollowDTO();
+            followDTO.setUserId(userInfoDTO.getUsersDO().getId());
+            followDTO.setFollowedId(followId);
+            followDTO.setFollowAction(0);
+            // 关注信息，发送到关注取关处理队列，用于后续操作
+            redisTemplate.convertAndSend("followHandler", followDTO);
+
+            // 数据库持久化
             RelationshipsDO relationshipsDO = relationshipsService.queryRelationshipsByUidAndFid(
                     userInfoDTO.getUsersDO().getId(), followId);
             if (relationshipsDO != null) {
