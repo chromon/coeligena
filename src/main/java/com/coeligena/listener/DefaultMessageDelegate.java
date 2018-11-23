@@ -4,11 +4,11 @@ import com.coeligena.dto.FollowDTO;
 import com.coeligena.function.date.DateUtils;
 import com.coeligena.model.FeedsDO;
 import org.springframework.data.redis.core.RedisTemplate;
-import sun.util.resources.cldr.eu.CalendarData_eu_ES;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 
 import javax.annotation.Resource;
+import javax.swing.text.StyledEditorKit;
 import java.io.Serializable;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -77,14 +77,32 @@ public class DefaultMessageDelegate implements MessageDelegate {
      * @param channel 频道
      */
     @Override
+    @SuppressWarnings("unchecked")
     public void followHandleMessage(Serializable message, String channel) {
-        System.out.println(message + " --> " + channel);
+//        System.out.println(message + " --> " + channel);
 
         FollowDTO followDTO = (FollowDTO) message;
         if (followDTO.getFollowAction() == 0) {
             // 取关
+            // 遍历用户自己的接收 Feed，剔除其中已取关 ID 的动态记录
+            Set<Object> feedsDOSet = redisTemplate.opsForZSet().range("user:" + followDTO.getUserId() + "::receiveFeed", 0, -1);
+            for (Object obj: feedsDOSet) {
+                FeedsDO feedsDO = (FeedsDO) obj;
+                if (feedsDO.getFeedsUserId() == followDTO.getFollowedId()) {
+                    redisTemplate.opsForZSet().remove(
+                            "user:" + followDTO.getUserId() + "::receiveFeed", feedsDO);
+                }
+            }
         } else if (followDTO.getFollowAction() == 1) {
             // 关注
+            // 拉取被关注者的发送 Feed 有序集中的动态，将最近的动态写入用户自己的接收 Feed 中
+            // TODO 写入的动态可以扩展为：按照 score 由高到低排序，取前段一定数量
+            Set<TypedTuple<Object>> feedsDOSet = redisTemplate.opsForZSet()
+                    .reverseRangeWithScores("user:" + followDTO.getFollowedId() + "::sendFeed", 0, -1);
+            for (TypedTuple<Object> tuple: feedsDOSet) {
+                redisTemplate.opsForZSet().add("user:" + followDTO.getUserId() + "::receiveFeed",
+                        tuple.getValue(), tuple.getScore());
+            }
         }
     }
 }

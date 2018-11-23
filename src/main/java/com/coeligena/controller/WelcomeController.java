@@ -149,6 +149,7 @@ public class WelcomeController {
         UsersDO usersDO = new UsersDO();
         usersDO.setAuthUserId(authUsersDO.getId());
         usersDO.setFullname(signUpFormDTO.getFullName());
+        usersDO.setAvatarPath("/resources/images/avatar/default_avatar.png");
         usersService.saveUsersForSignUp(usersDO);
 
         // 跳转页面发送注册成功通知消息
