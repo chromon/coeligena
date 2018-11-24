@@ -1,7 +1,9 @@
 package com.coeligena.controller;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.slf4j.Logger;
@@ -9,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HyperLogLogOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -55,6 +59,27 @@ public class CourseController {
 //        System.out.println(redisTemplate.opsForZSet().rangeByScore("zset=1", 0 ,1));
 //        System.out.println(redisTemplate.opsForZSet().remove("zset=1", "zset-1哈"));
 //        System.out.println(redisTemplate.opsForZSet().range("zset=1", 0 ,10));
+
+        redisTemplate.opsForZSet().add("fan6", "a", 1);
+        redisTemplate.opsForZSet().add("fan6", "b", 3);
+        redisTemplate.opsForZSet().add("fan6", "c", 2);
+        redisTemplate.opsForZSet().add("fan6", "d", -1);
+        //从排序集中获取开始和结束之间的元组(Tuple)。
+        Set<TypedTuple<Object>> rangeWithScores = redisTemplate.opsForZSet().rangeWithScores("fan6", 0  , -1);
+        Iterator<TypedTuple<Object>> iterator = rangeWithScores.iterator();
+        while(iterator.hasNext()){
+            TypedTuple<Object> next = iterator.next();
+            System.out.println("value:"+next.getValue()+" score:"+next.getScore());
+
+        }
+        System.out.println("----------");
+        Set<TypedTuple<Object>> rangeWithScores2 = redisTemplate.opsForZSet().reverseRangeWithScores("fan6", 0  , 2);
+        Iterator<TypedTuple<Object>> iterator2 = rangeWithScores2.iterator();
+        while(iterator2.hasNext()){
+            TypedTuple<Object> next2 = iterator2.next();
+            System.out.println("value:"+next2.getValue()+" score:"+next2.getScore());
+
+        }
         return c;
     }
 

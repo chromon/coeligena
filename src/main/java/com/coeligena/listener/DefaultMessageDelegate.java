@@ -79,7 +79,7 @@ public class DefaultMessageDelegate implements MessageDelegate {
     @Override
     @SuppressWarnings("unchecked")
     public void followHandleMessage(Serializable message, String channel) {
-//        System.out.println(message + " --> " + channel);
+        // System.out.println(message + " --> " + channel);
 
         FollowDTO followDTO = (FollowDTO) message;
         if (followDTO.getFollowAction() == 0) {

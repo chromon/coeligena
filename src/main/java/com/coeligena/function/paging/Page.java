@@ -37,6 +37,8 @@ public class Page {
 
     // 当前页面第一个元素在数据库中的行号
     private int startPos;
+    // 当前页面最后一个元素在数据库中的行号
+    private int endPos;
 
     // 前一页
     private int prePage;
@@ -80,6 +82,10 @@ public class Page {
     public void init() {
         // 计算总页数
         calcPages();
+        // 计算起始位置
+        calcStartPos();
+        // 计算结束位置
+        calcEndPos();
         // 计算导航页
         calcNavigatePageNums();
         // 计算前后页
@@ -97,6 +103,16 @@ public class Page {
      */
     private void calcStartPos() {
         this.startPos = (this.pageNum - 1) * this.pageSize;
+    }
+
+    /**
+     * 计算每页结束位置
+     */
+    private void calcEndPos() {
+        this.endPos = this.pageNum * this.pageSize - 1;
+        if (this.endPos >= this.size) {
+            this.endPos = this.size - 1;
+        }
     }
 
     /**
@@ -238,13 +254,19 @@ public class Page {
     }
 
     public int getStartPos() {
-        // 计算起始位置
-        calcStartPos();
         return startPos;
     }
 
     public void setStartPos(int startPos) {
         this.startPos = startPos;
+    }
+
+    public int getEndPos() {
+        return endPos;
+    }
+
+    public void setEndPos(int endPos) {
+        this.endPos = endPos;
     }
 
     public int getPrePage() {
@@ -351,6 +373,7 @@ public class Page {
                 ", totalPages=" + totalPages +
                 ", size=" + size +
                 ", startPos=" + startPos +
+                ", endPos=" + endPos +
                 ", prePage=" + prePage +
                 ", nextPage=" + nextPage +
                 ", isFirstPage=" + isFirstPage +
@@ -368,6 +391,12 @@ public class Page {
 
     public static void main(String[] args) {
         Page page = new Page(1, 2);
+        page.setSize(11);
+        page.setNavigatePages(3);
+        page.init();
+        System.out.println(page.toString());
+
+        page = new Page(2, 2);
         page.setSize(11);
         page.setNavigatePages(3);
         page.init();

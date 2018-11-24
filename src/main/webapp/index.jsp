@@ -125,6 +125,19 @@
 
             <!-- left main feed -->
             <div>
+                <c:if test="${empty feedsDTOList}">
+                    <!-- no answers -->
+                    <div class="custom-card custom-feed-item custom-answers-none">
+                        <div class="custom-empty-state">
+                            <div class="custom-empty-state-inner">
+                                <i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
+                                <div>
+                                    暂时还没有动态
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end no answers -->
+                </c:if>
                 <c:forEach var="feedsDTO" items="${feedsDTOList}">
                 <div class="custom-card custom-feed-item">
                     <a href="" class="custom-feed-item-right">
@@ -135,7 +148,7 @@
                         <!-- feed status -->
                         <div class="custom-feed-src-status">
                             <span>
-                                <a href="#">Ellery</a>
+                                <a href="#">${feedsDTO.usersDO.fullname}</a>
                                 添加了问题
                                 <!-- collect article -->
                                 <!-- 关注了问题 -->
