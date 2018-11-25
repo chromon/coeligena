@@ -23,4 +23,19 @@ public interface FeedsDAO {
      * @return 动态列表
      */
     List<FeedsDO> queryFeeds();
+
+    /**
+     * 根据动态类型对应 id，动态类型以及动态发起人查询动态
+     * @param feedsId 动态类型对应 id
+     * @param feedsType 动态类型
+     * @param feedsUserId 动态发起人
+     * @return 动态信息
+     */
+    FeedsDO queryFeedsByIdType(int feedsId, int feedsType, int feedsUserId);
+
+    /**
+     * 删除动态
+     * @param feedsDO 动态信息
+     */
+    void deleteFeeds(FeedsDO feedsDO);
 }

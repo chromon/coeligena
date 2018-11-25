@@ -20,5 +20,7 @@ public interface MessageDelegate {
 
     void feedHandleMessage(Serializable message, String channel);
 
+    void cancelFeedHandleMessage(Serializable message, String channel);
+
     void followHandleMessage(Serializable message, String channel);
 }

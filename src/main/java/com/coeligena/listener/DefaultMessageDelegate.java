@@ -1,5 +1,6 @@
 package com.coeligena.listener;
 
+import com.coeligena.dto.FeedsDTO;
 import com.coeligena.dto.FollowDTO;
 import com.coeligena.function.date.DateUtils;
 import com.coeligena.model.FeedsDO;
@@ -57,7 +58,7 @@ public class DefaultMessageDelegate implements MessageDelegate {
         // System.out.println(message + " --> " + channel);
 
         FeedsDO feedsDO = (FeedsDO) message;
-        // 动态发布者 id，
+        // 动态发布者 id
         int feedsUserId = feedsDO.getFeedsUserId();
         // 动态发布者粉丝集合
         Set<String> followersSet = redisTemplate.opsForZSet()
@@ -68,6 +69,37 @@ public class DefaultMessageDelegate implements MessageDelegate {
         for (String followersId: followersSet) {
             redisTemplate.opsForZSet().add("user:" + followersId + "::receiveFeed",
                     feedsDO, DateUtils.getDate());
+        }
+    }
+
+    /**
+     * 取消动态处理队列
+     * @param message 消息
+     * @param channel 频道
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public void cancelFeedHandleMessage(Serializable message, String channel) {
+
+        // System.out.println(message + " --> " + channel);
+
+        FeedsDTO feedsDTO = (FeedsDTO) message;
+        // 动态发布者 id
+        int feedsUserId = feedsDTO.getFeedsDO().getFeedsUserId();
+        // 动态发布者粉丝集合
+        Set<String> followersSet = redisTemplate.opsForZSet()
+                .range("user:" + feedsUserId + "::followers", 0 , -1);
+        // 遍历粉丝集合，删除每个粉丝的接收 feed 有续集中此条动态信息
+        for (String followersId: followersSet) {
+            Set<Object> feedsDOSet = redisTemplate.opsForZSet().range("user:" + followersId + "::receiveFeed", 0, -1);
+            for (Object obj: feedsDOSet) {
+                FeedsDO feeds = (FeedsDO) obj;
+                if (feeds.getId() == feedsDTO.getFeedsDO().getId()) {
+                    redisTemplate.opsForZSet().remove("user:" + followersId + "::receiveFeed", feeds);
+                    // 只有一条，删完就跳出寻找下一个粉丝
+                    break;
+                }
+            }
         }
     }
 

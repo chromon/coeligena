@@ -42,8 +42,13 @@
     <!-- 消息接收和分派到侦听器中 -->
     <redis:listener-container connection-factory="jedisConnectionFactory">
         <!-- 定义 topic 可以是具体的 channel 的名字也可以是 Pattern，多个频道（主题）用空格隔开即可 -->
+        <!-- 动态发布处理队列 -->
         <redis:listener ref="messageDelegate" method="feedHandleMessage"
                         serializer="valueSerializer" topic="feedHandler"/>
+        <!-- 取消动态处理队列 -->
+        <redis:listener ref="messageDelegate" method="cancelFeedHandleMessage"
+                        serializer="valueSerializer" topic="cancelFeedHandler"/>
+        <!-- 用户关注取关处理队列 -->
         <redis:listener ref="messageDelegate" method="followHandleMessage"
                         serializer="valueSerializer" topic="followHandler"/>
     </redis:listener-container>
