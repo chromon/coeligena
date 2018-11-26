@@ -111,7 +111,8 @@ public class FollowingController {
         this.questionsService.modifyQuestion(questionsDO);
 
         // 删除 feeds
-        FeedsDO feedsDO = feedsService.queryFeedsByIdType(questionId, 1, userInfoDTO.getUsersDO().getId());
+        byte feedsType = 1;
+        FeedsDO feedsDO = feedsService.queryFeedsByIdType(questionId, feedsType, userInfoDTO.getUsersDO().getId());
         FeedsDTO feedsDTO = new FeedsDTO();
         feedsDTO.setFeedsDO(feedsDO);
         feedsService.deleteFeeds(feedsDO);

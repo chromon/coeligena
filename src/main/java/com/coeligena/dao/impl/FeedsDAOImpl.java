@@ -55,7 +55,7 @@ public class FeedsDAOImpl implements FeedsDAO {
      * @return 动态信息
      */
     @Override
-    public FeedsDO queryFeedsByIdType(int feedsId, int feedsType, int feedsUserId) {
+    public FeedsDO queryFeedsByIdType(int feedsId, byte feedsType, int feedsUserId) {
         String sql = "from FeedsDO f where f.feedsId =:feedsId and f.feedsType =:feedsType and f.feedsUserId =:feedsUserId";
         Query query = this.getSession().createQuery(sql);
         query.setParameter("feedsId", feedsId);

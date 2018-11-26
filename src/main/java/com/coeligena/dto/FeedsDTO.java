@@ -5,12 +5,14 @@ import com.coeligena.model.FeedsDO;
 import com.coeligena.model.QuestionsDO;
 import com.coeligena.model.UsersDO;
 
+import java.io.Serializable;
+
 /**
  * 首页动态内容传输对象
  *
  * Created by Ellery on 2018/5/26.
  */
-public class FeedsDTO {
+public class FeedsDTO implements Serializable {
 
     private FeedsDO feedsDO;
 

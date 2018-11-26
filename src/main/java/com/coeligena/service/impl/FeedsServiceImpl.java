@@ -45,7 +45,7 @@ public class FeedsServiceImpl implements FeedsService {
      * @return 动态信息
      */
     @Override
-    public FeedsDO queryFeedsByIdType(int feedsId, int feedsType, int feedsUserId) {
+    public FeedsDO queryFeedsByIdType(int feedsId, byte feedsType, int feedsUserId) {
         return feedsDAO.queryFeedsByIdType(feedsId, feedsType, feedsUserId);
     }
 

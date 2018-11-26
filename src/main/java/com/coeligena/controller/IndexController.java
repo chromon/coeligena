@@ -98,11 +98,11 @@ public class IndexController {
                             page.getStartPos(), page.getEndPos());
             for (TypedTuple<Object> tuple : feedsSet) {
                 FeedsDO feedsDO = (FeedsDO) tuple.getValue();
-                // 提出问题
-                if (feedsDO.getFeedsType() == 4) {
-                    // 所提问题信息
+                // 提出/关注问题
+                if (feedsDO.getFeedsType() == 4 || feedsDO.getFeedsType() == 1) {
+                    // 所提问题/关注问题信息
                     QuestionsDO questionsDO = questionsService.queryQuestionById(feedsDO.getFeedsId());
-                    // 提问用户信息
+                    // 提问用户/关注问题用户信息
                     UsersDO usersDO = usersService.queryUserByUserId(feedsDO.getFeedsUserId());
 
                     FeedsDTO feedsDTO = new FeedsDTO();

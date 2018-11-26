@@ -31,7 +31,7 @@ public interface FeedsService {
      * @param feedsUserId 动态发起人
      * @return 动态信息
      */
-    FeedsDO queryFeedsByIdType(int feedsId, int feedsType, int feedsUserId);
+    FeedsDO queryFeedsByIdType(int feedsId, byte feedsType, int feedsUserId);
 
 
     /**

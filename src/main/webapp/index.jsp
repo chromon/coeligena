@@ -149,7 +149,12 @@
                         <div class="custom-feed-src-status">
                             <span>
                                 <a href="#">${feedsDTO.usersDO.fullname}</a>
-                                添加了问题
+                                <c:if test="${feedsDTO.feedsDO.feedsType == 4}">
+                                    添加了问题
+                                </c:if>
+                                <c:if test="${feedsDTO.feedsDO.feedsType == 1}">
+                                    关注了问题
+                                </c:if>
                                 <!-- collect article -->
                                 <!-- 关注了问题 -->
                                 <!-- collect article -->

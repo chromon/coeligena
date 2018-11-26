@@ -336,7 +336,7 @@ function followQuestionAJAX(id, url) {
         },
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            // console.log(data);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             /*

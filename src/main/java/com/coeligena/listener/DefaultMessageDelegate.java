@@ -4,6 +4,7 @@ import com.coeligena.dto.FeedsDTO;
 import com.coeligena.dto.FollowDTO;
 import com.coeligena.function.date.DateUtils;
 import com.coeligena.model.FeedsDO;
+import org.hibernate.annotations.SourceType;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 
@@ -55,7 +56,7 @@ public class DefaultMessageDelegate implements MessageDelegate {
     @SuppressWarnings("unchecked")
     public void feedHandleMessage(Serializable message, String channel) {
 
-        // System.out.println(message + " --> " + channel);
+        System.out.println(message + " --> " + channel);
 
         FeedsDO feedsDO = (FeedsDO) message;
         // 动态发布者 id
@@ -81,7 +82,7 @@ public class DefaultMessageDelegate implements MessageDelegate {
     @SuppressWarnings("unchecked")
     public void cancelFeedHandleMessage(Serializable message, String channel) {
 
-        // System.out.println(message + " --> " + channel);
+        System.out.println(message + " --> " + channel);
 
         FeedsDTO feedsDTO = (FeedsDTO) message;
         // 动态发布者 id
