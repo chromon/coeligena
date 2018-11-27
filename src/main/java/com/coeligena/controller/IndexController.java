@@ -3,9 +3,11 @@ package com.coeligena.controller;
 import com.coeligena.dto.FeedsDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.paging.Page;
+import com.coeligena.model.AnswersDO;
 import com.coeligena.model.FeedsDO;
 import com.coeligena.model.QuestionsDO;
 import com.coeligena.model.UsersDO;
+import com.coeligena.service.AnswersService;
 import com.coeligena.service.FeedsService;
 import com.coeligena.service.QuestionsService;
 import com.coeligena.service.UsersService;
@@ -35,6 +37,7 @@ public class IndexController {
     private FeedsService feedsService;
     private QuestionsService questionsService;
     private UsersService usersService;
+    private AnswersService answersService;
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
@@ -47,42 +50,10 @@ public class IndexController {
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public String index(HttpServletRequest request, Model model) {
 
-
         // 查询用户信息
         UserInfoDTO userInfoDTO = (UserInfoDTO) request.getSession().getAttribute("userInfoDTO");
 
-        List<FeedsDO> feedsList = feedsService.queryAllFeeds();
         List<FeedsDTO> feedsDTOList = new ArrayList<>();
-
-//        if (feedsList != null) {
-//            for (FeedsDO feedsDO: feedsList) {
-//
-//                /*
-//                    feeds_id  动态类型所对应的ID, 如关注和提出问题对应的是问题ID，赞同回答和回答问题对应的是回答ID
-//                    feeds_type 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题
-//                    parent_feeds_id 父动态类型所对应的ID，赞同回答和回答问题对应的是问题ID
-//                    parent_feeds_type 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题
-//                 */
-//
-//                // 提出问题
-//                if (feedsDO.getFeedsType() == 4) {
-//                    // 所提问题信息
-//                    QuestionsDO questionsDO = questionsService.queryQuestionById(feedsDO.getFeedsId());
-//                    // 提问用户信息
-//                    UsersDO usersDO = usersService.queryUserByUserId(feedsDO.getFeedsUserId());
-//
-//                    FeedsDTO feedsDTO = new FeedsDTO();
-//                    feedsDTO.setFeedsDO(feedsDO);
-//                    feedsDTO.setQuestionsDO(questionsDO);
-//                    feedsDTO.setUsersDO(usersDO);
-//
-//                    feedsDTOList.add(feedsDTO);
-//                }
-//            }
-//        }
-//
-//        model.addAttribute("feedsDTOList", feedsDTOList);
-
 
         // 初始化分页信息
         int count = redisTemplate.opsForZSet().size("user:" + userInfoDTO.getUsersDO().getId() + "::receiveFeed").intValue();
@@ -111,6 +82,21 @@ public class IndexController {
                     feedsDTO.setUsersDO(usersDO);
 
                     feedsDTOList.add(feedsDTO);
+                } else if (feedsDO.getFeedsType() == 3) {
+                    // 被回答的问题信息
+                    QuestionsDO questionsDO = questionsService.queryQuestionById(feedsDO.getParentFeedsId());
+                    // 回答用户信息
+                    UsersDO usersDO = usersService.queryUserByUserId(feedsDO.getFeedsUserId());
+                    // 回答信息
+                    AnswersDO answersDO = answersService.queryAnswersById(feedsDO.getFeedsId());
+
+                    FeedsDTO feedsDTO = new FeedsDTO();
+                    feedsDTO.setFeedsDO(feedsDO);
+                    feedsDTO.setQuestionsDO(questionsDO);
+                    feedsDTO.setAnswersDO(answersDO);
+                    feedsDTO.setUsersDO(usersDO);
+
+                    feedsDTOList.add(feedsDTO);
                 }
             }
         }
@@ -133,5 +119,10 @@ public class IndexController {
     @Autowired
     public void setUsersService(UsersService usersService) {
         this.usersService = usersService;
+    }
+
+    @Autowired
+    public void setAnswersService(AnswersService answersService) {
+        this.answersService = answersService;
     }
 }

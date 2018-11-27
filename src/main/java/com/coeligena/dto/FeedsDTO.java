@@ -18,7 +18,7 @@ public class FeedsDTO implements Serializable {
 
     private QuestionsDO questionsDO;
 
-    private AnswersDO   answersDO;
+    private AnswersDO answersDO;
 
     private UsersDO usersDO;
 

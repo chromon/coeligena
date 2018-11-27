@@ -155,10 +155,13 @@
                                 <c:if test="${feedsDTO.feedsDO.feedsType == 1}">
                                     关注了问题
                                 </c:if>
+                                <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
+                                    回答了问题
+                                </c:if>
                                 <!-- collect article -->
-                                <!-- 关注了问题 -->
+                                <!-- 赞同了回答 -->
                                 <!-- collect article -->
-                                <!-- 关注了问题 -->
+                                <!-- 回答了问题 -->
                                 <!-- collect answer -->
                                 <!-- 收藏了回答 -->
                                 <!-- collect article -->
@@ -178,15 +181,44 @@
 
                             <!-- feed content -->
                             <div class="custom-rich-content">
+                                <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
+                                <div class="custom-rich-content-inner">
+                                    ${feedsDTO.answersDO.answerDigest}
+                                    <button class="custom-contentItem-more custom-btn-plain" type="button">
+                                        <span class="custom-margin-right5">阅读全文</span>
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                                <div class="custom-contentItem-time">
+                                    <a href="#">编辑于 ${feedsDTO.answersDO.answerTime}</a>
+                                </div>
+                                </c:if>
                                 <div>
                                     <div class="custom-contentItem-actions">
+                                        <c:if test="${feedsDTO.feedsDO.feedsType == 1 || feedsDTO.feedsDO.feedsType == 4}">
                                         <span>
                                             <button type="button" class="custom-btn btn-outline-primary">关注问题</button>
                                         </span>
+                                        </c:if>
+                                        <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
+                                        <span>
+                                            <button class="custom-vote-btn" aria-label="赞同" type="button">
+                                                <i class="fa fa-caret-up"></i> ${feedsDTO.answersDO.approvalCount}
+                                            </button>
+                                            <button class="custom-vote-btn" aria-label="反对" type="button">
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                        </span>
+                                        </c:if>
                                         <button class="custom-contentItem-action custom-btn-plain" type="button">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <i class="fa fa-comment custom-margin-right5"></i>
-                                                ${feedsDTO.questionsDO.commentCount} 条评论
+                                                <c:if test="${feedsDTO.feedsDO.feedsType == 1 || feedsDTO.feedsDO.feedsType == 4}">
+                                                    ${feedsDTO.questionsDO.commentCount} 条评论
+                                                </c:if>
+                                                <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
+                                                    ${feedsDTO.answersDO.commentCount} 条评论
+                                                </c:if>
                                             </span>
                                         </button>
                                         <div class="custom-drop-option2">
@@ -199,12 +231,38 @@
                                                 <li><a href="#">扫一扫</a></li>
                                             </ul>
                                         </div>
+                                        <c:if test="${feedsDTO.feedsDO.feedsType == 1 || feedsDTO.feedsDO.feedsType == 4}">
                                         <button class="custom-contentItem-action custom-btn-plain" type="button">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <i class="fa fa-align-left custom-margin-right5"></i>
                                                 ${feedsDTO.questionsDO.answerCount} 个回答
                                             </span>
                                         </button>
+                                        </c:if>
+                                        <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
+                                            <button class="custom-contentItem-action custom-btn-plain" type="button" data-toggle="modal" data-target="#collectModal">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-star custom-margin-right5"></i>
+                                                收藏
+                                            </span>
+                                            </button>
+                                            <button class="custom-contentItem-action custom-btn-plain" type="button">
+                                            <span style="display: inline-flex;align-items: center;">
+                                                <i class="fa fa-heart custom-margin-right5"></i>
+                                                感谢
+                                            </span>
+                                            </button>
+                                            <div class="custom-drop-option2">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                    •••
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">没有帮助</a></li>
+                                                    <li><a href="#" data-toggle="modal" data-target="#reportModal">举报</a></li>
+                                                    <li><a href="#">不感兴趣</a></li>
+                                                </ul>
+                                            </div>
+                                        </c:if>
                                         <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <span class="custom-margin-right5">收起</span>

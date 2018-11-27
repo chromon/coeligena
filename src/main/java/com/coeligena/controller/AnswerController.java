@@ -8,9 +8,11 @@ import com.coeligena.function.vote.WilsonScoreInterval;
 import com.coeligena.model.*;
 import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -32,6 +34,9 @@ public class AnswerController {
     private FeedsService feedsService;
     private ThanksService thanksService;
     private NoHelpsService noHelpsService;
+
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
 
     /**
      * 回答问题 Ajax 请求
@@ -73,6 +78,25 @@ public class AnswerController {
         answersDO.setReprintType(Byte.parseByte(postAnswerDTO.getReprintType()));
         answersDO.setCommentType(Byte.parseByte(postAnswerDTO.getCommentType()));
         answersService.saveAnswer(answersDO);
+
+        // 添加动态
+        FeedsDO feedsDO = new FeedsDO();
+        // 动态类型所对应的 ID,如关注和提出问题对应的是问题 ID，赞同回答和回答问题对应的是回答 ID
+        feedsDO.setFeedsId(answersDO.getId());
+        // 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题
+        byte feedsType = 3;
+        feedsDO.setFeedsType(feedsType);
+        // 父动态类型所对应的 ID，赞同回答和回答问题对应的是问题 ID
+        feedsDO.setParentFeedsId(questionsDO.getId());
+        // 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题
+        byte parentFeedsType = 2;
+        feedsDO.setParentFeedsType(parentFeedsType);
+        feedsDO.setFeedsTime(DateUtils.currentTime());
+        feedsDO.setFeedsUserId(userInfoDTO.getUsersDO().getId());
+        feedsService.saveFeeds(feedsDO);
+
+        // 回答问题 feed 信息，发送到动态发布处理队列，用于问题信息的动态推送
+        redisTemplate.convertAndSend("feedHandler", feedsDO);
 
         return answersDO;
     }
