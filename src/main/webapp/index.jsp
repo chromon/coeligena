@@ -158,6 +158,9 @@
                                 <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
                                     回答了问题
                                 </c:if>
+                                <c:if test="${feedsDTO.feedsDO.feedsType == 2}">
+                                    赞同了回答
+                                </c:if>
                                 <!-- collect article -->
                                 <!-- 赞同了回答 -->
                                 <!-- collect article -->
@@ -181,7 +184,7 @@
 
                             <!-- feed content -->
                             <div class="custom-rich-content">
-                                <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
+                                <c:if test="${feedsDTO.feedsDO.feedsType == 2 || feedsDTO.feedsDO.feedsType == 3}">
                                 <div class="custom-rich-content-inner">
                                     ${feedsDTO.answersDO.answerDigest}
                                     <button class="custom-contentItem-more custom-btn-plain" type="button">
@@ -200,15 +203,41 @@
                                             <button type="button" class="custom-btn btn-outline-primary">关注问题</button>
                                         </span>
                                         </c:if>
-                                        <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
-                                        <span>
-                                            <button class="custom-vote-btn" aria-label="赞同" type="button">
-                                                <i class="fa fa-caret-up"></i> ${feedsDTO.answersDO.approvalCount}
-                                            </button>
-                                            <button class="custom-vote-btn" aria-label="反对" type="button">
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                        </span>
+                                        <c:if test="${feedsDTO.feedsDO.feedsType == 2 || feedsDTO.feedsDO.feedsType == 3}">
+                                            <c:choose>
+                                                <c:when test="${feedsDTO.votesDO != null}">
+                                                    <c:if test="${feedsDTO.votesDO.voteType == 1}">
+                                                        <span>
+                                                        <button class="custom-vote-btn is-active" onclick="voteUp(this, '${feedsDTO.answersDO.id}');" aria-label="赞同" type="button">
+                                                            <i class="fa fa-caret-up"></i> ${feedsDTO.answersDO.approvalCount}
+                                                        </button>
+                                                        <button class="custom-vote-btn" onclick="voteDown(this, '${feedsDTO.answersDO.id}');" aria-label="反对" type="button">
+                                                            <i class="fa fa-caret-down"></i>
+                                                        </button>
+                                                        </span>
+                                                    </c:if>
+                                                    <c:if test="${feedsDTO.votesDO.voteType == 2}">
+                                                        <span>
+                                                        <button class="custom-vote-btn" onclick="voteUp(this, '${feedsDTO.answersDO.id}');" aria-label="赞同" type="button">
+                                                            <i class="fa fa-caret-up"></i> ${feedsDTO.answersDO.approvalCount}
+                                                        </button>
+                                                        <button class="custom-vote-btn is-active" onclick="voteDown(this, '${feedsDTO.answersDO.id}');" aria-label="反对" type="button">
+                                                            <i class="fa fa-caret-down"></i>
+                                                        </button>
+                                                        </span>
+                                                    </c:if>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span>
+                                                    <button class="custom-vote-btn" onclick="voteUp(this, '${feedsDTO.answersDO.id}');" aria-label="赞同" type="button">
+                                                        <i class="fa fa-caret-up"></i> ${feedsDTO.answersDO.approvalCount}
+                                                    </button>
+                                                    <button class="custom-vote-btn" onclick="voteDown(this, '${feedsDTO.answersDO.id}');" aria-label="反对" type="button">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                    </span>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </c:if>
                                         <button class="custom-contentItem-action custom-btn-plain" type="button">
                                             <span style="display: inline-flex;align-items: center;">
@@ -216,7 +245,7 @@
                                                 <c:if test="${feedsDTO.feedsDO.feedsType == 1 || feedsDTO.feedsDO.feedsType == 4}">
                                                     ${feedsDTO.questionsDO.commentCount} 条评论
                                                 </c:if>
-                                                <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
+                                                <c:if test="${feedsDTO.feedsDO.feedsType == 2 || feedsDTO.feedsDO.feedsType == 3}">
                                                     ${feedsDTO.answersDO.commentCount} 条评论
                                                 </c:if>
                                             </span>
@@ -239,7 +268,7 @@
                                             </span>
                                         </button>
                                         </c:if>
-                                        <c:if test="${feedsDTO.feedsDO.feedsType == 3}">
+                                        <c:if test="${feedsDTO.feedsDO.feedsType == 2 || feedsDTO.feedsDO.feedsType == 3}">
                                             <button class="custom-contentItem-action custom-btn-plain" type="button" data-toggle="modal" data-target="#collectModal">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <i class="fa fa-star custom-margin-right5"></i>

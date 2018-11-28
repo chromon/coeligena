@@ -3,14 +3,8 @@ package com.coeligena.controller;
 import com.coeligena.dto.FeedsDTO;
 import com.coeligena.dto.UserInfoDTO;
 import com.coeligena.function.paging.Page;
-import com.coeligena.model.AnswersDO;
-import com.coeligena.model.FeedsDO;
-import com.coeligena.model.QuestionsDO;
-import com.coeligena.model.UsersDO;
-import com.coeligena.service.AnswersService;
-import com.coeligena.service.FeedsService;
-import com.coeligena.service.QuestionsService;
-import com.coeligena.service.UsersService;
+import com.coeligena.model.*;
+import com.coeligena.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
@@ -38,6 +32,7 @@ public class IndexController {
     private QuestionsService questionsService;
     private UsersService usersService;
     private AnswersService answersService;
+    private VotesService votesService;
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
@@ -58,7 +53,7 @@ public class IndexController {
         // 初始化分页信息
         int count = redisTemplate.opsForZSet().size("user:" + userInfoDTO.getUsersDO().getId() + "::receiveFeed").intValue();
         if (count > 0) {
-            Page page = new Page(1, 2);
+            Page page = new Page(1, 5);
             page.setSize(count);
             page.setNavigatePages(3);
             page.init();
@@ -67,8 +62,10 @@ public class IndexController {
             Set<TypedTuple<Object>> feedsSet = redisTemplate.opsForZSet()
                     .reverseRangeWithScores("user:" + userInfoDTO.getUsersDO().getId() + "::receiveFeed",
                             page.getStartPos(), page.getEndPos());
+            System.out.println(feedsSet.size());
             for (TypedTuple<Object> tuple : feedsSet) {
                 FeedsDO feedsDO = (FeedsDO) tuple.getValue();
+                System.out.println("feedsDO.getFeedsType()--"+feedsDO.getFeedsType());
                 // 提出/关注问题
                 if (feedsDO.getFeedsType() == 4 || feedsDO.getFeedsType() == 1) {
                     // 所提问题/关注问题信息
@@ -82,18 +79,23 @@ public class IndexController {
                     feedsDTO.setUsersDO(usersDO);
 
                     feedsDTOList.add(feedsDTO);
-                } else if (feedsDO.getFeedsType() == 3) {
-                    // 被回答的问题信息
+                } else if (feedsDO.getFeedsType() == 2 || feedsDO.getFeedsType() == 3) {
+                    // 被赞同/被回答的问题信息
                     QuestionsDO questionsDO = questionsService.queryQuestionById(feedsDO.getParentFeedsId());
-                    // 回答用户信息
+                    // 赞同/回答用户信息
                     UsersDO usersDO = usersService.queryUserByUserId(feedsDO.getFeedsUserId());
-                    // 回答信息
+                    // 赞同/回答信息
                     AnswersDO answersDO = answersService.queryAnswersById(feedsDO.getFeedsId());
+
+                    // 投票信息
+                    VotesDO votesDO = votesService.queryVotesByAnswerIdAndVoterId(
+                            answersDO.getId(), userInfoDTO.getUsersDO().getId());
 
                     FeedsDTO feedsDTO = new FeedsDTO();
                     feedsDTO.setFeedsDO(feedsDO);
                     feedsDTO.setQuestionsDO(questionsDO);
                     feedsDTO.setAnswersDO(answersDO);
+                    feedsDTO.setVotesDO(votesDO);
                     feedsDTO.setUsersDO(usersDO);
 
                     feedsDTOList.add(feedsDTO);
@@ -124,5 +126,10 @@ public class IndexController {
     @Autowired
     public void setAnswersService(AnswersService answersService) {
         this.answersService = answersService;
+    }
+
+    @Autowired
+    public void setVotesService(VotesService votesService) {
+        this.votesService = votesService;
     }
 }

@@ -128,6 +128,22 @@ public class AnswerController {
         // 对应回答信息
         AnswersDO answersDO = this.answersService.queryAnswersById(answerId);
 
+        // 添加动态
+        FeedsDO feedsDO = new FeedsDO();
+        if ((votesDO == null || votesDO.getVoteType() == 2) && voteAction == 1) {
+            // 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同回答和回答问题对应的是回答ID
+            feedsDO.setFeedsId(answersDO.getId());
+            // 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题
+            byte feedsType = 2;
+            feedsDO.setFeedsType(feedsType);
+            feedsDO.setParentFeedsId(answersDO.getQuestionId());
+            feedsDO.setFeedsTime(now);
+            feedsDO.setFeedsUserId(userInfoDTO.getUsersDO().getId());
+            feedsService.saveFeeds(feedsDO);
+        } else {
+            feedsDO = feedsService.queryFeedsByIdType(answersDO.getId(), (byte) 2, userInfoDTO.getUsersDO().getId());
+        }
+
         if (votesDO == null) {
             // 赞同反对不存在
             // 保存赞同信息
@@ -144,6 +160,10 @@ public class AnswerController {
                 double wsiScore = WilsonScoreInterval.getWSI(
                         answersDO.getApprovalCount(), answersDO.getAgainstCount());
                 answersDO.setWsiScore(wsiScore);
+
+                // 赞同回答 feed 信息，发送到动态发布处理队列，用于回答信息的动态推送
+                redisTemplate.convertAndSend("feedHandler", feedsDO);
+
             } else if (voteAction == 2) {
                 // 反对
                 votesDO1.setVoteType((byte) 2);
@@ -168,6 +188,10 @@ public class AnswerController {
                     // 更新排序分数
                     double wsiScore = WilsonScoreInterval.getWSI(
                             answersDO.getApprovalCount(), answersDO.getAgainstCount());
+                    // 赞同反对数同时为0时，不能进行计算 NaN
+                    if (answersDO.getApprovalCount() == 0 && answersDO.getAgainstCount() == 0)  {
+                        wsiScore = 0;
+                    }
                     answersDO.setWsiScore(wsiScore);
                     this.answersService.modifyAnswers(answersDO);
                 } else if (voteAction == 2) {
@@ -183,6 +207,15 @@ public class AnswerController {
                     answersDO.setWsiScore(wsiScore);
                     this.answersService.modifyAnswers(answersDO);
                 }
+
+                // 取消赞同回答 feed 信息，发送到取消动态处理队列，用于回答信息推送的删除
+                FeedsDTO feedsDTO = new FeedsDTO();
+                feedsDTO.setFeedsDO(feedsDO);
+
+                feedsService.deleteFeeds(feedsDO);
+
+                redisTemplate.convertAndSend("cancelFeedHandler", feedsDTO);
+
             } else if (votesDO.getVoteType() == 2) {
                 // 已踩
                 if (voteAction == 1) {
@@ -197,6 +230,10 @@ public class AnswerController {
                             answersDO.getApprovalCount(), answersDO.getAgainstCount());
                     answersDO.setWsiScore(wsiScore);
                     this.answersService.modifyAnswers(answersDO);
+
+                    // 赞同回答 feed 信息，发送到动态发布处理队列，用于回答信息的动态推送
+                    redisTemplate.convertAndSend("feedHandler", feedsDO);
+
                 } else if (voteAction == 2) {
                     // 反对（取消反对，删除信息）
                     this.votesService.deleteVotes(votesDO);
@@ -205,23 +242,14 @@ public class AnswerController {
                     // 更新排序分数
                     double wsiScore = WilsonScoreInterval.getWSI(
                             answersDO.getApprovalCount(), answersDO.getAgainstCount());
+                    // 赞同反对数同时为0时，不能进行计算 NaN
+                    if (answersDO.getApprovalCount() == 0 && answersDO.getAgainstCount() == 0)  {
+                        wsiScore = 0;
+                    }
                     answersDO.setWsiScore(wsiScore);
                     this.answersService.modifyAnswers(answersDO);
                 }
             }
-        }
-
-        if ((votesDO == null || votesDO.getVoteType() == 2) && voteAction == 1) {
-            // 添加动态
-            FeedsDO feedsDO = new FeedsDO();
-            // 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同回答和回答问题对应的是回答ID
-            feedsDO.setFeedsId(answersDO.getId());
-            // 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题
-            byte feedsType = 2;
-            feedsDO.setFeedsType(feedsType);
-            feedsDO.setFeedsTime(now);
-            feedsDO.setFeedsUserId(userInfoDTO.getUsersDO().getId());
-            feedsService.saveFeeds(feedsDO);
         }
 
         return answersDO.getApprovalCount() + "";

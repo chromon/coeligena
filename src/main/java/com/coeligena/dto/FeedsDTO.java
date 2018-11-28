@@ -1,9 +1,6 @@
 package com.coeligena.dto;
 
-import com.coeligena.model.AnswersDO;
-import com.coeligena.model.FeedsDO;
-import com.coeligena.model.QuestionsDO;
-import com.coeligena.model.UsersDO;
+import com.coeligena.model.*;
 
 import java.io.Serializable;
 
@@ -19,6 +16,8 @@ public class FeedsDTO implements Serializable {
     private QuestionsDO questionsDO;
 
     private AnswersDO answersDO;
+
+    private VotesDO votesDO;
 
     private UsersDO usersDO;
 
@@ -52,5 +51,13 @@ public class FeedsDTO implements Serializable {
 
     public void setUsersDO(UsersDO usersDO) {
         this.usersDO = usersDO;
+    }
+
+    public VotesDO getVotesDO() {
+        return votesDO;
+    }
+
+    public void setVotesDO(VotesDO votesDO) {
+        this.votesDO = votesDO;
     }
 }
