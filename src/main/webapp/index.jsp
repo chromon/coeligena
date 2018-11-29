@@ -140,7 +140,7 @@
                 </c:if>
                 <c:forEach var="feedsDTO" items="${feedsDTOList}">
                 <div class="custom-card custom-feed-item">
-                    <a href="" class="custom-feed-item-right">
+                    <a href="" class="custom-feed-item-right hide">
                         <i class="fa fa-times"></i>
                     </a>
                     <!-- feed -->
@@ -275,29 +275,50 @@
                                                 收藏
                                             </span>
                                             </button>
-                                            <button class="custom-contentItem-action custom-btn-plain" type="button">
-                                            <span style="display: inline-flex;align-items: center;">
-                                                <i class="fa fa-heart custom-margin-right5"></i>
-                                                感谢
-                                            </span>
-                                            </button>
+                                            <c:choose>
+                                                <c:when test="${feedsDTO.thanksDO != null}">
+                                                    <button onclick="forThanks(this, '${feedsDTO.answersDO.id}');" class="custom-contentItem-action custom-btn-plain already-thanks" type="button">
+                                                        <span style="display: inline-flex;align-items: center;">
+                                                            <i class="fa fa-heart custom-margin-right5"></i>
+                                                            <span class="thanks-text">取消感谢</span>
+                                                        </span>
+                                                    </button>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <button onclick="forThanks(this, '${feedsDTO.answersDO.id}');" class="custom-contentItem-action custom-btn-plain" type="button">
+                                                        <span style="display: inline-flex;align-items: center;">
+                                                            <i class="fa fa-heart custom-margin-right5"></i>
+                                                            <span class="thanks-text">感谢</span>
+                                                        </span>
+                                                    </button>
+                                                </c:otherwise>
+                                            </c:choose>
                                             <div class="custom-drop-option2">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                                     •••
                                                 </a>
                                                 <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">没有帮助</a></li>
+                                                    <c:choose>
+                                                        <c:when test="${feedsDTO.noHelpsDO != null}">
+                                                            <li><a href="javascript:void(0);" onclick="noHelp(this, '${feedsDTO.answersDO.id}');" class="no-help">撤销没有帮助</a></li>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <li><a href="javascript:void(0);" onclick="noHelp(this, '${feedsDTO.answersDO.id}');">没有帮助</a></li>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                     <li><a href="#" data-toggle="modal" data-target="#reportModal">举报</a></li>
                                                     <li><a href="#">不感兴趣</a></li>
                                                 </ul>
                                             </div>
                                         </c:if>
+                                        <c:if test="${feedsDTO.feedsDO.feedsType == 2 || feedsDTO.feedsDO.feedsType == 3}">
                                         <button class="custom-contentItem-action custom-btn-plain custom-contentItem-right" type="button">
                                             <span style="display: inline-flex;align-items: center;">
                                                 <span class="custom-margin-right5">收起</span>
                                                 <i class="fa fa-chevron-up"></i>
                                             </span>
                                         </button>
+                                        </c:if>
                                     </div>
                                 </div>
                             </div><!-- end feed content -->

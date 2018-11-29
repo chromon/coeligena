@@ -33,6 +33,8 @@ public class IndexController {
     private UsersService usersService;
     private AnswersService answersService;
     private VotesService votesService;
+    private ThanksService thanksService;
+    private NoHelpsService noHelpsService;
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
@@ -91,12 +93,20 @@ public class IndexController {
                     VotesDO votesDO = votesService.queryVotesByAnswerIdAndVoterId(
                             answersDO.getId(), userInfoDTO.getUsersDO().getId());
 
+                    // 查询感谢信息
+                    ThanksDO thanksDO = thanksService.queryThanksByAnswerIdAndUId(answersDO.getId(), userInfoDTO.getUsersDO().getId());
+
+                    // 查询是否提交没有帮助
+                    NoHelpsDO noHelpsDO = noHelpsService.queryNoHelpByAnswerIdAndUid(answersDO.getId(), userInfoDTO.getUsersDO().getId());
+
                     FeedsDTO feedsDTO = new FeedsDTO();
                     feedsDTO.setFeedsDO(feedsDO);
                     feedsDTO.setQuestionsDO(questionsDO);
                     feedsDTO.setAnswersDO(answersDO);
                     feedsDTO.setVotesDO(votesDO);
                     feedsDTO.setUsersDO(usersDO);
+                    feedsDTO.setThanksDO(thanksDO);
+                    feedsDTO.setNoHelpsDO(noHelpsDO);
 
                     feedsDTOList.add(feedsDTO);
                 }
@@ -131,5 +141,15 @@ public class IndexController {
     @Autowired
     public void setVotesService(VotesService votesService) {
         this.votesService = votesService;
+    }
+
+    @Autowired
+    public void setThanksService(ThanksService thanksService) {
+        this.thanksService = thanksService;
+    }
+
+    @Autowired
+    public void setNoHelpsService(NoHelpsService noHelpsService) {
+        this.noHelpsService = noHelpsService;
     }
 }

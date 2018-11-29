@@ -21,6 +21,10 @@ public class FeedsDTO implements Serializable {
 
     private UsersDO usersDO;
 
+    private ThanksDO thanksDO;
+
+    private NoHelpsDO noHelpsDO;
+
     public FeedsDO getFeedsDO() {
         return feedsDO;
     }
@@ -59,5 +63,21 @@ public class FeedsDTO implements Serializable {
 
     public void setVotesDO(VotesDO votesDO) {
         this.votesDO = votesDO;
+    }
+
+    public ThanksDO getThanksDO() {
+        return thanksDO;
+    }
+
+    public void setThanksDO(ThanksDO thanksDO) {
+        this.thanksDO = thanksDO;
+    }
+
+    public NoHelpsDO getNoHelpsDO() {
+        return noHelpsDO;
+    }
+
+    public void setNoHelpsDO(NoHelpsDO noHelpsDO) {
+        this.noHelpsDO = noHelpsDO;
     }
 }
